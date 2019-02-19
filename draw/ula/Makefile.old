@@ -1,0 +1,35 @@
+CC=zcc
+MACHINE=+zx
+CLIB=-clib=sdcc_iy
+COMPILER=-compiler sdcc
+COPTS=-SO3 --max-allocs-per-node200000 --opt-code-size
+LIBOBJS=_hline.o _line.o _static.o _vline.o circle.o cls.o disc.o	\
+	ink.o line.o paper.o set.o _set.o _setbyte.o _setcolor.o	\
+	setmode.o
+ASM=_hline.asm _line.asm _static.asm _vline.asm circle.asm disc.asm	\
+	ink.asm line.asm paper.asm set.asm _setcolor.asm setmode.asm
+
+%.o: %.c draw.h
+	$(CC) $(MACHINE) $(CLIB) $(COPTS) -preserve -c $<
+
+%.o: %.asm
+	z80asm $<
+
+%.asm: %.c draw.h
+	$(CC) $(MACHINE) $(CLIB) -S $< -o $@
+
+all: test.tap
+
+asm: $(ASM)
+
+test.tap: test.o draw.lib
+	$(CC) $(MACHINE) $(CLIB) -ldraw -lm -create-app -otest.bin $<
+
+draw.lib: $(LIBOBJS)
+	z80asm -d -xdraw $^
+
+clean:
+	rm -f *~ $(LIBOBJS) $(ASM) test.o *.def *.bin
+
+distclean: clean
+	rm -f test.tap draw.lib
