@@ -1,9 +1,0 @@
-Bit,7,6,5,4,3,2,1,0
-format 1,P_6,P_5,P_4,P_3,P_2,P_1,P_0,I_0
-format 3,P_5,P_4,P_3,P_2,P_1,P_0,I_1,I_0
-format 7,P_4,P_3,P_2,P_1,P_0,I_2,I_1,I_0
-format 15,P_3,P_2,P_1,P_0,I_3,I_2,I_1,I_0
-format 31,P_2,P_1,P_0,I_4,I_3,I_2,I_1,I_0
-format 63,P_1,P_0,I_5,I_4,I_3,I_2,I_1,I_0
-format 127,P_0,I_6,I_5,I_4,I_3,I_2,I_1,I_0
-format 255,I_7,I_6,I_5,I_4,I_3,I_2,I_1,I_0

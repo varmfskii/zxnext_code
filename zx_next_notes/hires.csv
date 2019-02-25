@@ -1,0 +1,9 @@
+Port 0xff bits 5-3,Attribute,Ink,Paper
+000,01111000,black,white
+001,01110001,blue,yellow
+010,01101010,red,cyan
+011,01100011,magenta,green
+100,01011100,green,magenta
+101,01010101,cyan,red
+110,01001110,yellow,blue
+111,01000111,white,black

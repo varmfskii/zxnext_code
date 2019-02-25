@@ -13,35 +13,11 @@ Video is rendered as three layers which are referred to as ULA (which
 includes the tilemap), layer 2, and sprites.  The ordering of the
 layers is controlled by Next port \$15 (21) bits 4-2:
 
-\begin{table}[h!]
-  \begin{center}
-    \caption{Video Layering}
-    \label{table1}
-    \pgfplotstabletypeset[
-      multicolumn names, % allows to have multicolumn names
-      col sep=comma, % the seperator in our .csv file
-      display columns/0/.style={
-	column name=Value, % name of first column
-	column type={c},string type},  % use siunitx for formatting
-      display columns/1/.style={
-	column name=Top,
-	column type={c},string type},
-      display columns/2/.style={
-	column name=Middle,
-	column type={c},string type},
-      display columns/3/.style={
-	column name=Bottom,
-	column type={c},string type},
-      every head row/.style={
-	before row={\toprule}, % have a rule at top
-	after row={
-	  \midrule} % rule under units
-      },
-      every last row/.style={after row=\bottomrule}, % rule at bottom
-    ]{video_layering.csv} % filename/path to file
-  \end{center}
+\begin{table}[h]\centering
+  \caption{Video Layering}
+  \csvautotabular{videolayering.csv}
 \end{table}
-                  
+
 Transparency for Layer2, ULA, and LoRes are controlled by Next
 register \$14 (20) and defaults to \$E3. This colour ignores the state
 of the least significant blue bit, so \$E3 equates to both \$1C6 and
@@ -138,7 +114,7 @@ if the auto-increment is enabled by reg \$43.
      
 Reads only return the 2nd byte and do not auto-increment.
 
-\subsection{CLipping}
+\subsection{Clipping}
 
 There are two clipping modes: normal clipping and over border
 clipping. With normal clipping the clipping coordinates are relative
@@ -205,6 +181,11 @@ palette format) and \$43 (67, palette control).  Palette control
 switches between flashing enabled (0, default) and flashing disabled
 (1)
 
+\begin{table}[h]\centering
+  \caption{Flashing Enabled}
+  \csvautotabular{flash.csv}
+\end{table}
+
 Flashing Enabled is similar to the original Spectrum colour attributes:
 
 The ULA next modes use a varying number of bits from the attribute
@@ -213,6 +194,11 @@ appropriate bits (all others being zero) and the paper colours coming
 from the indicated value+128 with palette format 255 being a special
 case where all the bits determine the ink colour while the paper is
 always palette index 128.
+
+\begin{table}[h]\centering
+  \caption{ULA Next}
+  \csvautotabular{palfmt.csv}
+\end{table}
 
 \subsubsection{ZX Spectrum Mode}
 
@@ -338,6 +324,11 @@ Timex mode 6
 This is a monochrome $512\times192$ video mode. It is selected by
 writing to the Timex ULA port (\$ff with values that also select which
 two colours (or colour entries in ULANext mode) you use.
+
+\begin{table}[h]\centering
+  \caption{Hi-Resolution Colours}
+  \csvautotabular{hires.csv}
+\end{table}
   
 Pixels are mapped into both the bitmap 1 and bitmap 2 areas where
 8-pixel wide character columns alternate between the two bitmap areas.
@@ -635,45 +626,49 @@ Port \$303B, if read, returns some information:
 \item bit 0: Collision flag.
 \end{itemize}
 
-Port \$303B, if written, defines the sprite slot to be configured by
-ports \$57 and \$5B, and also initializes the address of the
-palette. If bit 7 is set on write an offset of 128 is added to the
-pattern index.
-
-Port \$53 is write-only and is used to send the palette, the palette
-index is auto-incremented each write. The palette is initialized at
-the reset with colours from 0 to 255.  Sprite colours are doubly
-indexed.  One sprite palette contains 256 values which are indexes
-into the main sprite palette stored in the regular Next registers
-which in turn determine which of the 512 colours are used by each
-index.
+The current sprite number to be modified can be set using either port
+\$303b or Next register \$34. If bit 4 of Next register \$09 is set
+then the sprite number controlled by I/O port commands is synchronized
+with those controlled by Next register commands otherwise they are
+independent. When written, this defines the sprite slot to be
+configured, and also initializes the address of the palette. If bit 7
+is set on write an offset of 128 is added to the pattern index.
 
 Port \$57 is write-only and is used to send the attributes of the
 selected sprite slot, being the address is auto-incremented each
 writing and after sending the 4 or 5 bytes of attributes the address
-points to the next sprite. The description of each byte follows below:
+points to the next sprite.
+
+Next registers \$35-\$39 are non-incrementing controls of the sprite
+attributes 0-4 while Next registers \$75-\$79 are auto incrementins
+controls of the sprite attributes.
+
 \begin{enumerate}
-\item X position (bits 7-0).
-\item Y position (bits 7-0).
-\item Arrtibutes 1
+\item Attribute 0 - registers \$35 and \$75
+
+  X position (bits 7-0).
+\item Attribute 1 = registers \$36 and \$76
+
+  Y position (bits 7-0).
+\item Arrtibute 2 - registers \$37 and \$77
   \begin{itemize}
   \item bits 7-4 = palette offset
   \item bit 3 = X mirror
   \item bit 2 = Y mirror
   \item bit 1 = rotate flag
-  \item and bit 0 = X MSB.
+  \item bit 0 = X MSB.
   \end{itemize}
-\item Attributes 2
+\item Attribute 3 - registers \$38 and \$78
   \begin{itemize}
-  \item bit 7 = visible flag
-  \item bit 6 = enable 5th attribute byte
+  \item bit 7 = visible flag (1 = displayed)
+  \item bit 6 = extended attribute (use attribute 4)
   \item bits 5-0 = Name (pattern index, 0-63).
   \end{itemize}
-\item Attributes 3
+\item Attribute 4 - registers \$39 and \$79
   \begin{itemize}
   \item bits 7-6 = bit pattern depth and slot
     \begin{itemize}
-    \item 00 = 8-bit patterns,  anchor sprite (absolute position)
+    \item 00 = 8-bit patterns, anchor sprite (absolute position)
     \item 01 = position relative to anchor sprite (same bit depth as anchor)
     \item 10 = 4-bit pattern, lower half of pattern, anchor sprite
     \item 11 = 4-bit pattern, upper half of pattern, anchor sprite
@@ -727,7 +722,8 @@ reserved for the Left or top border, for the X axis the values 288 to
 If the display of the sprites on the border is disabled, the
 coordinates of the sprites range from (32,32) to (287,223).
 
-The priority of the sprites can be set to either run from 0 to 63 or 63 to 0.
+The priority of the sprites can be set using bit 6 of Next register
+\$15 to either run from (top to bottom) 0 to 127 (1) or 127 to 0 (0)
 
 Each sprite has the Name attribute that defines which pattern it will
 display, and more than one sprite can display the same pattern. Each
@@ -742,7 +738,8 @@ the palette index \$14, but if the palette offset is set to \$20, The
 palette index will be \$34.
 
 In the palette each byte represents an index into the master sprite
-palette format, and sprite transparency index (default \$e3) determines the transparency color.
+palette format, and sprite transparency index (default \$e3)
+determines the transparency color.
 
 Collisions of 2 or more sprites only happen if at least 2
 non-transparent pixels are drawn in the same position on the screen.
