@@ -1,0 +1,9 @@
+Value,Top,Middle,Bottom
+000,Sprites,Layer2,ULA
+001,Layer2,Sprites,ULA
+010,Sprites,ULA,Layer2
+011,Layer2,ULA,Sprites
+100,ULA,Sprites,Layer2
+101,ULA,Layer2,Sprites
+110,Sprites,,ULA+Layer2 ($>$7 = 7)
+111,Sprites,,ULA+Layer2-5 ($<$0 = 0 / $>$7 = 7)

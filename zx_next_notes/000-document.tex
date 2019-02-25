@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{pgfplotstable} % Generates table from .csv
+\usepackage{booktabs}
+
+\title{ZX Spectrum Next Programming Notes}
+\date{2019-02-24}
+\author{Theodore (Alex) Evans}
+\begin{document}
+\pagenumbering{gobble}
+\maketitle
+\newpage
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\input{video.tex}
+\include{audio}
+\include{memory_management}
+\include{dma}
+\include{copper}
+\include{interrupts}
+\include{pi0}
+\include{storage}
+\appendix
+\include{ports}
+\include{registers}
+\include{opcode-mnemonic}
+\include{mnemonic-opcode}
+\include{memory_map}
+\include{file_formats}
+\end{document}
