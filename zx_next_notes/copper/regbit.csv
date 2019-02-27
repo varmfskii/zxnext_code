@@ -1,0 +1,4 @@
+Reg,7-0,Description
+0x60,DDDDDDDD,BYTE data to write to COPPER program RAM
+0x61,IIIIIIII,Program RAM index 7..0
+0x62,CC000III,Program RAM index 10..8 and control bits

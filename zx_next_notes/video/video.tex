@@ -1,0 +1,405 @@
+\chapter{Video}
+
+ZX Spectrum Next video splits the display types into four categories
+(ULA, tilemap, layer2, and sprites) which have their own sets of
+controls for colour palettes, clipping, and scrolling. Some aspects of
+ULA and tilemap are tied together, but all the rest operate in a
+largely independent manner using a layering system. The ULA category
+has a number of seperate video modes that it can use. One of these
+(LoRes) is incompatible with using tilemaps.
+
+\section{Video Layering and Transparency}
+Video is rendered as three layers which are referred to as ULA (which
+includes the tilemap), layer 2, and sprites.  The ordering of the
+layers is controlled by Next port \$15 (21) bits 4-2:
+
+\begin{table}[h]\centering
+  \caption{Video Layering}
+  \csvautotabular{video/videolayering.csv}
+\end{table}
+
+Transparency for Layer2, ULA, and LoRes are controlled by Next
+register \$14 (20) and defaults to \$E3. This colour ignores the state
+of the least significant blue bit, so \$E3 equates to both \$1C6 and
+\$1C7. For Sprites and Tilemaps transparency is determined by colour
+index. For Sprites this is controlled by register \$4B (with only the
+leas significant 4-bits being relevant for 16-colour Sprites). For
+Tilemaps, the transparency index is set by register \$4C. If all
+layers are transparent, the transparency fallback colour is
+displayed. This is set by register \$4A.
+
+\section{Colour Palette}
+
+The ZX Spectrum Next has 8 palettes, two each for ULA, tilemap,
+layer2, and sprites.  There is a palette in use and an alternate that
+can be quickly swapped.  Each palette consists of 256 entries out of a
+total of 512 (RRRGGGBBB) colours.  Register \$43 (67, Palette Control)
+is used to select which palette can be read/written and whether each
+layer is using its primary or secondary palette and whether or not
+writes to the palette value registers auto-increment. Palette values
+are written to registers \$41 (65, 8-bit) and \$44 (70, 9-bit)
+
+(R/W) \$40 (64) $\Rightarrow$ Palette Index
+\begin{itemize}
+\item bits 7-0 = Select the palette index to change the associated colour.
+For the ULA only, INKs are mapped to indices 0-7, Bright INKS to
+indices 8-15, PAPERs to indices 16-23 and Bright PAPERs to indices
+24-31.  In ULANext mode, INKs come from a subset of indices 0-127 and
+PAPERs come from a subset of indices 128-255.  The number of active
+indices depends on the number of attribute bits assigned to INK and
+PAPER out of the attribute byte.  The ULA always takes border colour
+from paper.
+\end{itemize}
+(R/W) \$41 (65) $\Rightarrow$ Palette Value (8 bit colour)
+\begin{itemize}
+\item bits 7-0 = Colour for the palette index selected by the register \$40.
+(Format is RRRGGGBB - the lower blue bit of the 9-bit colour will be a
+logical OR of blue bits 1 and 0 of this 8-bit value.)  After the
+write, the palette index is auto-incremented to the next index if the
+auto-increment is enabled at reg \$43.  Reads do not auto-increment.
+\end{itemize}
+(R/W) \$43 (67) $\Rightarrow$ Palette Control
+\begin{itemize}
+\item bit 7 = '1' to disable palette write auto-increment.
+\item bits 6-4 = Select palette for reading or writing:
+  \begin{itemize}
+  \item 000 = ULA first palette
+  \item 100 = ULA second palette
+  \item 001 = Layer 2 first palette
+  \item 101 = Layer 2 second palette
+  \item 010 = Sprites first palette 
+  \item 110 = Sprites second palette
+  \item 011 = Tilemap first palette
+  \item 111 = Tilemap second palette
+  \end{itemize}
+\item bit 3 = Select Sprites palette (0 = first palette, 1 = second palette)
+\item bit 2 = Select Layer 2 palette (0 = first palette, 1 = second palette)
+\item bit 1 = Select ULA palette (0 = first palette, 1 = second palette)
+\item bit 0 = Enable ULANext mode if 1. (0 after a reset)
+\end{itemize}
+(R/W) \$44 (68) $\Rightarrow$ Palette Value (9 bit colour)
+
+Two consecutive writes are needed to write the 9 bit colour
+
+1st write:
+
+\begin{itemize}
+\item bits 7-0 = RRRGGGBB
+\end{itemize}
+
+2nd write: 
+
+If writing a L2 palette
+
+\hrulefill
+\begin{itemize}
+\item bit 7 = 1 for L2 priority colour, 0 for normal priority colour will always be on top even on an SLU priority arrangement. 
+
+If you need the exact same colour on priority and non priority
+locations you will need to program the same colour twice changing bit
+7 to 0 for the second colour bits 6-1 = Reserved, must be 0
+
+\item bit 0 = lsb B
+\end{itemize}
+     
+If writing another palette
+
+\hrulefill
+\begin{itemize}
+\item bits 7-1 = Reserved, must be 0
+\item bit 0 = lsb B
+\end{itemize}           
+After the two consecutive writes the palette index is auto-incremented
+if the auto-increment is enabled by reg \$43.
+     
+Reads only return the 2nd byte and do not auto-increment.
+
+\section{Clipping}
+
+There are two clipping modes: normal clipping and over border
+clipping. With normal clipping the clipping coordinates are relative
+to the regular $256\times192$ video area, so 0,0 is the display area origin,
+X range is 0-255, and Y range is 0-191. With over border clipping, the
+ULA origin is now located so the clipping coordinate 32,32 is the
+display area origin, the X range is 0-320, but values given for X1 and
+X2 are doubled, the Y range is now 0-255.
+
+ULA and Layer2 always use normal clipping.  Tilemaps always use over
+border clipping, and Using bit 5 of register \$15 selects which
+clipping mode is used for sprites (0=normal, 1=over border).
+
+Each group as its own register to control clipping (\$18=Layer2,
+\$19=Sprites, \$1A=ULA, and \$1B=Tilemap) with the clipping area
+controlled by four consecutive writes in the order X1, X2, Y1,
+Y2. Where you are in this sequence can be controlled by either using
+register \$1C to reset the next write to control X1 (bit 3=tilemap,
+2=ULA, 1=sprite, and 0=layer2) or register \$1D to set all of the
+indices (bits 7-6=tilemap, 5-4=layer 2, 3-2=sprite, and 1-0=ULA).
+
+\section{Scrolling}
+
+On the ZX Spectrum Next, all of the screen area (less clipping) is
+visible at any given time. Scrolling controls where the screen origin
+is located with your image being mapped onto a toroidal coordinate
+system. Each group that is scrollable is controlled its won set of
+registers.
+
+Layer2 scrolling is controlled by registers \$16 (X) and \$17 (Y). The
+legal range is 0-255 for X and 0-191 for Y.
+
+ULA is controlled by registers \$32 (X-offset) and \$33
+(Y-offset). Legacy ULA modes scroll horizontally in 8-pixel increments
+(ignoring the least significant 3-bits) and vertically in 1-pixel
+increments while LoRes scrolls in half-pixel increments. The legal
+range is 0-255 for X and 0-191 for Y.
+
+Tilemap scrolling uses three registers. \$2F (X bit 8), \$30 (X bits
+7-0), \$31 (Y). The legal range is 0-319 for X and 0-255 for Y.
+
+\section{ULA group}
+
+The ULA layer supports ZX Spectrum video, Timex video modes, and the
+Spectrum Next’s lores video mode all use 16k memory bank 5 or 7 with
+the data coming from some combination of addresses \$0000-\$17FF
+(bitmap 1), \$1800-\$1AFF (attribute 1), \$2000-\$37FF (bitmap 2), and
+\$3800-\$3AFF (attribute 2) within the selected bank.  Assuming
+default memory mapping and the use of bank 5 this will be mapped as
+some combination of memory \$4000-\$57FF, \$5800-\$5AFF,
+\$6000-\$77FF, \$780-\$7AFF. All of the modes other than the lores
+mode can either use the default ZX Spectrum colours, or ULANext mode
+which uses a 256 entry palette to determine the colour. In the
+Spectrum and Timex modes all colours are either Paper (foreground),
+paper (background), or border colours.
+
+\subsection{Colour Attributes}
+
+The ZX Spectrum Next has two major modes for colour attributes
+allowing a total of nine ways to map the palette to the original ZX
+Spectrum attributes. One with flashing enabled and eight with flashing
+disabled. This mapping is controlled by Next registers \$42 (66,
+palette format) and \$43 (67, palette control).  Palette control
+switches between flashing enabled (0, default) and flashing disabled
+(1)
+
+\begin{table}[h]\centering
+  \caption{Flashing Enabled}
+  \csvautotabular{video/flash.csv}
+\end{table}
+
+Flashing Enabled is similar to the original Spectrum colour attributes:
+
+The ULA next modes use a varying number of bits from the attribute
+byte to determine the ink colour as the palette index from the
+appropriate bits (all others being zero) and the paper colours coming
+from the indicated value+128 with palette format 255 being a special
+case where all the bits determine the ink colour while the paper is
+always palette index 128.
+
+\begin{table}[h]\centering
+  \caption{ULA Next}
+  \csvautotabular{video/palfmt.csv}
+\end{table}
+
+\subsection{ZX Spectrum Mode}
+
+Timex mode 0
+
+This is the default ULA mode and has its origins in the original ZX
+Spectrum. It uses $256\times192$ pixels with $8\times8$ colour
+attribute areas mapped into a $32\times24$ grid. If Timex modes are
+not enabled, this and the LoRes mode are the only ones available, so
+you would switch back to this mode by writing 000xxxxx to Next
+register \$15 (21, the sprites and layers register). If anothe Timex
+mode is enabled, then this is mode 0 so you would write 0 to port \$ff
+to enable it. This is a $256\times192$ video mode. The bitmap 1 area
+is used for selection between ink and paper colours with one bit per
+pixel and the attribute 1 area for colour attributes.
+
+The easiest way to visualize the mapping of this mode is to think of
+the $256\times192$ area as being divided into a $32\times24$ grid of
+$8\times8$ characters.  IF we consider X and Y as the position in the
+grid and R to the the row within the character.  For ink/paper
+selection, 0=paper, 1=ink and the entries are stored left to right as
+lsb to msb within the bye.  The address for a pixel value is:
+$0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$. Each $8\times8$ cell has
+its own colour attribute where the address for an attribute cell is
+$0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$ in other words mapped lineally
+column-wise starting at the beginning of the attribute 1 area.
+
+Code:
+\begin{verbatim}
+  ;; from any other Timex mode:
+  ld a,$00
+  ld c,$ff
+  out (c),a
+
+  ;; from LoRes mode:
+  ld bc,$243B ; next register select port
+  ld a,$15
+  out (c),a
+  ld bc,$253B ; next register r/w port
+  in a,(c)
+  and $7f
+  out (c),a
+\end{verbatim}
+
+\subsection{Alternate Page Mode}
+
+Timex mode 1
+
+This mode is the same as ZX Spectrum mode at alternate
+addresses. Alternate page mode is selected by enabling Timex modes by
+writing 00xxxx1xx to Next register \$08 (8, Peripheral 3 setting) then
+writing 1 to the Timex ULA port (\$ff).  It is identical to ZX
+Spectrum mode except the pixel are mapped to the bitmap 2 area giving
+use pixel addresses of $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$ and
+the attributes to the attribute 2 area with addresses of
+$1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$.
+
+Code:
+
+\begin{verbatim}
+;; disable LoRes mode:
+ld bc,$243B ; next register select port
+ld a,$15
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+and $7f
+out (c),a
+;; set Timex mode
+ld bc,$243B ; next register select port
+ld a,$08
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+or $04
+out (c),a
+;; set alternate page mode
+ld c,$ff
+ld a,$01
+out (c),a
+\end{verbatim}
+
+\subsection{Timex Hi-Colour Mode}
+
+Timex mode 2
+
+This mode is a $256\times192$ video mode with $8\times1$ colour
+attribute mapping on a $32\times192$ grid. It is selected by writing 2
+to the Timex ULA port (\$ff).  Pixel mapping in this mode is the same
+as in ZX Spectrum mode using the bitmap 1 area based on
+$0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$.  The colour attributes use
+the bitmap 2 area with $8\times1$ colour attribute areas corresponding
+to the addresses $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$.
+
+Code:
+\begin{verbatim}
+;; disable LoRes mode:
+ld bc,$243B ; next register select port
+ld a,$15
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+and $7f
+out (c),a
+;; set Timex mode
+ld bc,$243B ; next register select port
+ld a,$08
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+or $04
+out (c),a
+;; set hi-colour mode
+ld c,$ff
+ld a,$02
+out (c),a
+\end{verbatim}
+
+\subsection{Timex Hi-Resolution Mode}
+
+Timex mode 6
+
+This is a monochrome $512\times192$ video mode. It is selected by
+writing to the Timex ULA port (\$ff with values that also select which
+two colours (or colour entries in ULANext mode) you use.
+
+\begin{table}[h]\centering
+  \caption{Hi-Resolution Colours}
+  \csvautotabular{video/hires.csv}
+\end{table}
+  
+Pixels are mapped into both the bitmap 1 and bitmap 2 areas where
+8-pixel wide character columns alternate between the two bitmap areas.
+The pixels within a byte being rendered left to right lsb to msb as in
+other Spectrum video modes.  The addresses for each row within a
+character are based on a $64\times32$ grid of $8\times8$ characters
+which using a $64\times24$ R, C, and Y scheme gives us addresses of
+the form $C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1$.
+
+Code:
+\begin{verbatim}
+;; disable LoRes mode:
+ld bc,$243B ; next register select port
+ld a,$15
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+and $7f
+out (c),a
+;; set Timex mode
+ld bc,$243B ; next register select port
+ld a,$08
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+or $04
+out (c),a
+;; set hi-res mode, black on white
+ld c,$ff
+ld a,$06
+out (c),a
+\end{verbatim}
+
+\subsection{Lo-Resolution Mode}
+
+This is a Spectrum Next specific video mode with a resolution of
+$128\times96$ replacing the old Radistan mode.  It allows for
+independent selection from the 256 entries in the ULA palette on a
+pixel by pixel basis. The pixel data is mapped into the bitmap 1 and
+bitmap 2 areas.  It is selected by writing $100xxxxx$ to Next register
+\$15 (21, the sprites and layers register).  Each byte corresponds to
+a ULA palette entry and bytes are mapped linearly in a row-wise
+fashion.
+
+Code:
+\begin{verbatim}
+;; enable LoRes mode:
+ld bc,$243B ; next register select port
+ld a,$15
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+or $80
+out (c),a
+\end{verbatim}
+
+\input{video/tilemap.tex}
+
+\section{Layer2}
+Layer 2 is a linearly mapped, row-wise, upper left to lower right,
+$256\times192\times256$ bit-map graphics area.  Both the main version
+(8k pages 16-21/16k banks 8-10) and a shadow version (8k pages
+22-27/16k banks 11-13) are six contiguous 8k pages (three contiguous
+16k blocks) in the extended RAM space indicated by the contents of
+Next registers \$12 (18 Layer 2 RAM page, default 8) and \$13 (19,
+Layer 2 shadow page, default 11).  The layer 2 pages can be accessed
+either by mapping the pages into normal RAM, or write only access
+using port \$123B to fix them in the same space as the ROMs at
+\$0000-\$3FFF.  The colours come from the indices in the layer 2
+palette.  Layer 2 is drawn according to the values in registers \$16
+(22, Layer 2 Offset X, default 0) and \$17 (23, Layer 2 Offset Y,
+default 0).
+
+\input{video/sprites.tex}

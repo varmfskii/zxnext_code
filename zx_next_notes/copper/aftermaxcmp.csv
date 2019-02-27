@@ -1,0 +1,5 @@
+clocks/line,,slack
+858,(52 * 16 = 832),26 dot clocks
+864,(52 * 16 = 832),32 dot clocks
+896,(54 * 16 = 864),32 dot clocks
+912,(55 * 16 = 880),32 dot clocks

@@ -1,0 +1,8 @@
+Register Group,Register Function Description,Bitmask,Notes
+WR0,Direction Operation and Port A configuration,0XXXXXAA,AA must NOT be 00
+WR1,Port A configuration,0XXXX100,
+WR2,Port B configuration,0XXXX000,
+WR3,Activation,1XXXXX00,It's best to use WR6
+WR4,Port B, Timing and Interrupt configuration,1XXXXX01,
+WR5,Ready and Stop configuration,10XXX010,
+WR6,Command Register,1XXXXX11,

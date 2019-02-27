@@ -1,0 +1,9 @@
+Compare,Standard,Timex,HDMI,48k,128k,Pentagon
+0-31,0-255,0-511,Display,Display,Display,Display
+32-36,256-295,512-591,R-Border,R-Border,R-Border,R-Border
+37,296-303,592-607,R-Border,R-Border,Blanking,Blanking
+38-48,304-391,608-783,Blanking,Blanking,Blanking,Blanking
+49,392-399,784-799,L-Border,Blanking,Blanking,L-Border
+50-52,400-423,800-847,L-Border,L-Border,L-Border,L-Border
+53-54,424-439,848-879,--,L-Border,L-Border,L-Border
+55,440-447,880-895,--,--,L-Border,--

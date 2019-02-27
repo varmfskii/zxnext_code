@@ -1,1 +1,17 @@
-\section{Raspberry Pi0 Acceleration}
+\chapter{Raspberry Pi0 Acceleration}
+The Spectrum Next is known to have an header (with male pins) which
+can attach a Raspberry Pi Zero.
+
+The Raspberry Pi 0 has a Broadcom BCM2835 SoC with an ARMv6 core, a
+Videocore 4 GPU, and its own 512 MB memory and HDMI output. It has its
+own SD card from which it boots. While it can traditionally run Linux,
+it can also be programmed "bare metal" directly in assembly language,
+which may be more likely for this implementation.
+
+It is not yet known how the Raspberry Pi 0 will interface with the
+Spectrum Next. It was originally used as an HDMI converter, but the
+HDMI functionality was moved onto the main board, makes this
+unnecessary.
+
+It is known that the Raspberry Pi versions supporting Wi-Fi will not
+provide that Wi-Fi to the Next.

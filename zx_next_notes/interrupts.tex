@@ -1,1 +1,55 @@
-\section{Interrupts}
+\chapter{Interrupts}
+CPU processing of interrupts is enabled using the EI instruction and
+disabled with the DI instruction. Interrupts can happen at any time
+and should preserve register contents.  If none of your code uses the
+alternate registers the EXX and EX AF,AF’ instructions can make this
+faster and easier. Upon completion of your interrupt routine you
+should call the RTI instruction and re-enable interrupts.
+ 
+IM0 – When an interrupt is received by the CPU it disables interrupts
+and executes the instruction placed on the bus by the interrupting
+device and (no known use on the Next) It is enabled with the IM0
+instruction and enabling interrupts (EI).
+
+IM1 – When an interrupt is received, the CPU disables interrupts and
+jumps to an interrupt handler at \$0038 (normally in ROM). The ROM
+interrupt handler updates the frame counter and scans the
+keyboard. This is the default interrupt handling method for the ZX
+Spectrum and is probably the method to use if you don’t need the ROMs
+for anything. It is enabled using the IM1 instruction and enabling
+interrupts.
+
+IM2 – When the CPU receives an interrupt it disables interrupts and
+jumps to an interrupt routine starting at the contents of the jump
+table at I. The start of the interrupt routine is the contents of
+I*\$100+bus and I*\$100+bus+1. Most devices that can supply interrupts
+on the ZX Spectrum leave the data bus in a floating state.  As a
+result the interpreted state of the data bus while generally \$FF is
+not entirely predictable.  The solution to place your interrupt
+routine at an address where the MSB and LSB are the same (\$0101,
+\$0202, … \$FFFF) then place 257 copies of that value in a block
+starting at I*\$100 (you can set the value of the I register).
+
+Code:
+\begin{verbatim}
+;; my program
+org $8000
+;; enable interrupt mode im2
+ld i,$fe
+im2
+ei
+;; program body
+;; interrupt routine
+handler:
+;; preserve registers used
+;; handle interrupt
+;; restore registers
+ei
+rti
+;; jump to interrupt routine
+org $fdfd
+jp handler
+;; im2 jump table
+org $fe00 ; not actually legal
+defs $101,$fd
+\end{verbatim}

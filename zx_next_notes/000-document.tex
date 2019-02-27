@@ -1,23 +1,21 @@
-\documentclass{article}
+\documentclass[11pt]{book}
 \usepackage{csvsimple}
 \usepackage{booktabs}
+\usepackage{enumerate}
 
 \title{ZX Spectrum Next Programming Notes}
-\date{2019-02-24}
+\date{\today}
 \author{Theodore (Alex) Evans}
 \begin{document}
-\pagenumbering{gobble}
+\frontmatter
 \maketitle
-\newpage
-\pagenumbering{roman}
 \tableofcontents
-\newpage
-\pagenumbering{arabic}
-\input{video.tex}
-\include{audio}
+\mainmatter
+\input{video/video.tex}
+\include{audio/audio}
 \include{memory_management}
-\include{dma}
-\include{copper}
+\include{zxndma/zxndma}
+\include{copper/copper}
 \include{interrupts}
 \include{pi0}
 \include{storage}

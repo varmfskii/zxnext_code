@@ -1,0 +1,655 @@
+\chapter{zxnDMA}
+ February 25, 2019  Phoebus Dokos  Off  Hardware, Resources,
+
+The ZX Spectrum Next DMA (zxnDMA)
+
+\section{Overview}
+
+The ZX Spectrum Next DMA (zxnDMA) is a single channel dma device that
+implements a subset of the Z80 DMA functionality. The subset is large
+enough to be compatible with common uses of the similar Datagear
+interface available for standard ZX Spectrum computers and
+compatibles. It also adds a burst mode capability that can deliver
+audio at programmable sample rates to the DAC device.
+
+\section{Accessing the zxnDMA}
+The zxnDMA is mapped to a single Read/Write IO Port 0x6B which is the
+same one used by the Datagear but unlike the Datagear it doesn't also
+map itself to a second port 0x0B similar to the MB-02 interface.
+
+\begin{verbatim}
+PORT $6b: zxnDMA
+\end{verbatim}
+
+\section{Description}
+The normal Z80 DMA (Z8410) chip is a pipelined device and because of
+that it has numerous off-by-one idiosyncrasies and requirements on the
+order that certain commands should be carried out. These issues are
+not duplicated in the zxnDMA. You can continue to program the zxnDMA
+as if it is were a Z8410 DMA device but it can also be programmed in a
+simpler manner.
+
+The single channel of the zxnDMA chip consists of two ports named A
+and B. Transfers can occur in either direction between ports A and B,
+each port can describe a target in memory or IO, and each can be
+configured to autoincrement, autodecrement or stay fixed after a byte
+is transferred.
+
+A special feature of the zxnDMA can force each byte transfer to take a
+fixed amount of time so that the zxnDMA can be used to deliver sampled
+audio.
+
+\section{Modes of Operation}
+The zxnDMA can operate in a z80-dma compatibility mode.
+
+The z80-dma compatibility mode is selected by setting bit 6 of nextreg
+\$06. In this mode, all transfers involve length+1 bytes which is the
+same behaviour as the z80-dma chip. In zxn-dma mode, the transfer
+length is exactly the number of bytes programmed. This mode is mainly
+present to accommodate existing spectrum software that uses the
+z80-dma and for cp/m programs that may have a z80-dma option.
+
+The zxnDMA can also operate in either burst or continuous modes.
+
+Continuous mode means the DMA chip runs to completion without allowing
+the CPU to run. When the CPU starts the DMA, the DMA operation will
+complete before the CPU executes its next instruction.
+
+Burst mode nominally means the DMA lets the CPU run if either port is
+not ready. This condition can't happen in the zxnDMA chip except when
+operated in the special fixed time transfer mode. In this mode, the
+zxnDMA will let the CPU run while it waits for the fixed time to
+expire between bytes transferred.
+
+Note that there is no byte transfer mode as in the Z80 DMA.
+
+\section{Programming the zxnDMA}
+Like the Z80 DMA chip, the zxnDMA has seven write registers named
+WR0-WR6 that control the device. Each register WR0-WR6 can have zero
+or more parameters associated with it.
+
+In a first write to the zxnDMA port, the write value is compared
+against a bitmask to determine which of the WR0-WR6 is the
+target. Remaining bits in the written value can contain data as well
+as a list of associated parameter bits. The parameter bits determine
+if further writes are expected to deliver parameter values. If there
+are multiple parameter bits set, the expected order of parameter
+values written is determined by parameter bit position from right to
+left (bit 0 through bit 7). Once all parameters are written, the
+zxnDMA again expects a regular register write selecting WR0-WR6.
+
+The table X.Y describes the registers and the bitmask required to
+select them on the zxnDMA.
+
+\begin{table}[h]\centering
+  \caption{zxnDMA Registers}
+  \csvautotabular{zxndma/registers.csv}
+\end{table}
+
+\section{zxnDMA Registers}
+These are described below following the same convention used by Zilog
+for its DMA chip:
+
+\paragraph{WR0 – Write Register Group 0}
+\begin{verbatim}
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 0   |   |   |   |   |   |   |
+     |   |   |   |   |   0   0  Do not use
+     |   |   |   |   |   0   1  Transfer (Prefer this for Z80 DMA compatibility)
+     |   |   |   |   |   1   0  Do not use (Behaves like Transfer, Search on Z80
+     |   |   |   |   |                       DMA)
+     |   |   |   |   |   1   1  Do not use (Behaves like Transfer, Search/Trans-
+     |   |   |   |   |                      fer on Z80 DMA)
+     |   |   |   |   0 = Port B -> Port A (Byte transfer direction)
+     |   |   |   |   1 = Port A -> Port B
+     |   |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT A STARTING ADDRESS (LOW BYTE)
+     |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT A STARTING ADDRESS (HIGH BYTE)
+     |   V
+D7  D6  D5  D4  D3  D2  D1  D0  BLOCK LENGTH (LOW BYTE)
+     V
+D7  D6  D5  D4  D3  D2  D1  D0  BLOCK LENGTH (HIGH BYTE)
+\end{verbatim}
+Several registers are accessible from WR0. The first write to WR0 is
+to the base register byte. Bits D6:D3 are optionally set to indicate
+that associated registers in this group will be written next. The
+order the writes come in are from D3 to D6 (right to left). For
+example, if bits D6 and D3 are set, the next two writes will be
+directed to PORT A STARTING ADDRESS LOW followed by BLOCK LENGTH HIGH.
+
+\paragraph{WR1 – Write Register Group 1}
+\begin{verbatim}
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 0   |   |   |   |   1   0   0
+     |   |   |   |
+     |   |   |   0 = Port A is memory
+     |   |   |   1 = Port A is IO
+     |   |   |
+     |   0   0 = Port A address decrements
+     |   0   1 = Port A address increments
+     |   1   0 = Port A address is fixed
+     |   1   1 = Port A address is fixed
+     |
+     V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT A VARIABLE TIMING BYTE
+ 0   0   0   0   0   0   |   |
+                         0   0 = Cycle Length = 4
+                         0   1 = Cycle Length = 3
+                         1   0 = Cycle Length = 2
+                         1   1 = Do not use
+\end{verbatim}
+The cycle length is the number of cycles used in a read or write
+ operation. The first cycle asserts signals and the last cycle
+ releases them. There is no half cycle timing for the control signals.
+
+\paragraph{WR2 – Write Register Group 2}
+\begin{verbatim}
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 0   |   |   |   |   0   0   0
+     |   |   |   |
+     |   |   |   0 = Port B is memory
+     |   |   |   1 = Port B is IO
+     |   |   |
+     |   0   0 = Port B address decrements
+     |   0   1 = Port B address increments
+     |   1   0 = Port B address is fixed
+     |   1   1 = Port B address is fixed
+     |
+     V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT B VARIABLE TIMING BYTE
+ 0   0   |   0   0   0   |   |
+         |               0   0 = Cycle Length = 4
+         |               0   1 = Cycle Length = 3
+         |               1   0 = Cycle Length = 2
+         |               1   1 = Do not use
+         |
+         V
+D7  D6  D5  D4  D3  D2  D1  D0  ZXN PRESCALAR (FIXED TIME TRANSFER)
+\end{verbatim}
+The ZXN PRESCALAR is a feature of the zxnDMA implementation. If
+non-zero, a delay will be inserted after each byte is transferred such
+that the total time needed for each transfer is determined by the
+prescalar. This works in both the continuous mode and the burst
+mode. If the DMA is operated in burst mode, the DMA will give up any
+waiting time to the CPU so that the CPU can run while the DMA is idle.
+
+The rate of transfer is given by the formula "Frate = 875kHz /
+prescalar" or, rearranged, "prescalar = 875kHz / Frate". The formula
+is framed in terms of a sample rate (Frate) but Frate can be inverted
+to set a transfer time for each byte instead. The 875kHz constant is a
+nominal value assuming a 28MHz system clock; the system clock actually
+varies from this depending on the video timing selected by the user
+(HDMI, VGA0-6) so for complete accuracy the constant should be
+prorated according to documentation for nextreg \$11.
+
+In a DMA audio setting, selecting a sample rate of 16kHz would mean
+setting the prescalar value to 55. This sample period is constant
+across changes in CPU speed.
+
+\paragraph{WR3 – Write Register Group 3}
+\begin{verbatim}
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 1   |   0   0   0   0   0   0
+     |
+     1 = DMA Enable
+\end{verbatim}
+The Z80 DMA defines more fields but they are ignored by the zxnDMA.
+
+The two other registers defined by the Z80 DMA in this group on D4 and
+D3 are implemented by the zxnDMA but they do nothing.
+
+It is preferred to start the DMA by writing an Enable DMA command to
+WR6.
+
+\paragraph{WR4 – Write Register Group 4}
+\begin{verbatim}
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 1   |   |   0   |   |   0   1
+     |   |       |   |
+     0   0 = Do not use (Behaves like Continuous mode, Byte mode on Z80 DMA)
+     0   1 = Continuous mode
+     1   0 = Burst mode
+     1   1 = Do not use
+                 |   |
+                 |   V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT B STARTING ADDRESS (LOW BYTE)
+                 |
+                 V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT B STARTING ADDRESS (HIGH BYTE)
+\end{verbatim}
+The Z80 DMA defines three more registers in this group through D4 that
+define interrupt behaviour. Interrups and pulse generation are not
+implemented in the zxnDMA nor are these registers available for
+writing.
+
+\paragraph{WR5 – Write Register Group 5}
+\begin{verbatim}
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 1   0   |   |   0   0   1   0
+         |   |
+         |   0 = /ce only
+         |   1 = /ce & /wait multiplexed
+         |
+         0 = Stop on end of block
+         1 = Auto restart on end of block
+\end{verbatim}
+The /ce \& /wait mode is implemented in the zxnDMA but is not currently
+used. This mode has an external device using the DMA's /ce pin to
+insert wait states during the DMA's transfer.
+
+The auto restart feature causes the DMA to automatically reload its
+source and destination addresses and reset its byte counter to zero to
+repeat the last transfer when a previous one is finished.
+
+\paragraph{WR6 – Command Register}
+\begin{verbatim}
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 1   ?   ?   ?   ?   ?   1   1
+     |   |   |   |   |
+     1   0   0   0   0 = \$C3 = Reset
+     1   0   0   0   1 = \$C7 = Reset Port A Timing
+     1   0   0   1   0 = \$CB = Reset Port B Timing
+     0   1   1   1   1 = \$BF = Read Status Byte
+     0   0   0   1   0 = \$8B = Reinitialize Status Byte
+     0   1   0   0   1 = \$A7 = Initialize Read Sequence
+     1   0   0   1   1 = \$CF = Load
+     1   0   1   0   0 = \$D3 = Continue
+     0   0   0   0   1 = \$87 = Enable DMA
+     0   0   0   0   0 = \$83 = Disable DMA
+ +-- 0   1   1   1   0 = \$BB = Read Mask Follows
+ |
+D7  D6  D5  D4  D3  D2  D1  D0  READ MASK
+ 0   |   |   |   |   |   |   |
+     |   |   |   |   |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Status Byte
+     |   |   |   |   |   |
+     |   |   |   |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Byte Counter Low
+     |   |   |   |   |
+     |   |   |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Byte Counter High
+     |   |   |   |
+     |   |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Port A Address Low
+     |   |   |
+     |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Port A Address High
+     |   |
+     |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Port B Address Low
+     |
+     V
+D7  D6  D5  D4  D3  D2  D1  D0  Port B Address High
+\end{verbatim}
+Unimplemented Z80 DMA commands are ignored.
+
+Prior to starting the DMA, a LOAD command must be issued to copy the
+Port A and Port B addresses into the DMA's internal pointers. Then an
+ìEnable DMAî command is issued to start the DMA.
+
+The ìContinueî command resets the DMA’s byte counter so that a
+following ìEnable DMAî allows the DMA to repeat the last transfer but
+using the current internal address pointers. I.e. it continues from
+where the last copy operation left off.
+
+Registers can be read via an IO read from the DMA port after setting
+the read mask. (At power up the read mask is set to \$7f). Register
+values are the current internal dma counter values. So ìPort Address A
+Lowî is the lower 8-bits of Port A’s next transfer address. Once the
+end of the read mask is reached, further reads loop around to the
+first one.
+
+The format of the DMA status byte is as follows:
+
+00E1101T
+
+E is set to 0 if the total block length has been transferred
+at least once.
+
+T is set to 1 if at least one byte has been transferred.
+
+\paragraph{Operating speed}
+
+The zxnDMA operates at the same speed as the CPU, that is 3.5MHz, 7MHz
+or 14MHz. This is a contended clock that is modified by the ULA and
+the auto-slowdown by Layer2.
+
+Auto-slowdown occurs without user intervention if speed exceeds 7Mhz
+and the active Layer2 display is being generated (higher speed
+operation resumes when the active Layer2 display is not
+generated). Programmers do NOT need to account for speed differences
+regarding DMA transfers as this happens automatically.
+
+Because of this, the cycle lengths for Ports A and B can be set to
+their minimum values without ill effects. The cycle lengths specified
+for Ports A and B are intended to selectively slow down read or write
+cycles for hardware that cannot operate at the DMA's full speed.
+
+\paragraph{The DMA and Interrupts}
+
+The zxnDMA cannot currently generate interrupts.
+
+The other side of this is that while the DMA controls the bus, the Z80
+cannot respond to interrupts. On the Z80, the nmi interrupt is edge
+triggered so if an nmi occurs the fact that it occurred is stored
+internally in the Z80 so that it will respond when it is woken up. On
+the other hand, maskable interrupts are level triggered. That is, the
+Z80 must be active to regularly sample the /INT line to determine if a
+maskable interrupt is occurring. On the Spectrum and the ZX Next, the
+ULA (and line interrupt) are only asserted for a fixed amount of time
+~30 cycles at 3.5MHz. If the DMA is executing a transfer while the
+interrupt is asserted, the CPU will not be able to see this and it
+will most likely miss the interrupt. In burst mode, the CPU will never
+miss these interrupts, although this may change if multiple channels
+are implemented.
+
+\section{Programming examples}
+
+A simple way to program the DMA is to walk down the list of registers
+WR0-WR5, sending desired settings to each. Then start the DMA by
+sending a LOAD command followed by an ENABLE\_DMA command to WR6. Once
+more familiar with the DMA, you will discover that the amount of
+information sent can be reduced to what changes between transfers.
+
+\begin{enumerate}
+\item Assembly
+
+  Short example program to DMA memory to the screen then DMA a sprite
+  image from memory to sprite RAM, and then showing said sprite scroll
+  across the screen.
+\begin{verbatim}
+;------------------------------------------------------------------------------
+device zxspectrum48
+;------------------------------------------------------------------------------
+; DEFINE testing
+;------------------------------------------------------------------------------
+; DMA (Register 6)
+;
+;------------------------------------------------------------------------------
+;zxnDMA programming example
+;------------------------------------------------------------------------------
+;(c) Jim Bagley
+;------------------------------------------------------------------------------
+DMA_RESET equ $c3
+DMA_RESET_PORT_A_TIMING equ $c7
+DMA_RESET_PORT_B_TIMING equ $cb
+DMA_LOAD equ $cf ; %11001111
+DMA_CONTINUE equ $d3
+DMA_DISABLE_INTERUPTS equ $af
+DMA_ENABLE_INTERUPTS equ $ab
+DMA_RESET_DISABLE_INTERUPTS equ $a3
+DMA_ENABLE_AFTER_RETI equ $b7
+DMA_READ_STATUS_BYTE equ $bf
+DMA_REINIT_STATUS_BYTE equ $8b
+DMA_START_READ_SEQUENCE equ $a7
+DMA_FORCE_READY equ $b3
+DMA_DISABLE equ $83
+DMA_ENABLE equ $87
+DMA_WRITE_REGISTER_COMMAND equ $bb
+DMA_BURST equ %11001101
+DMA_CONTINUOUS equ %10101101
+ZXN_DMA_PORT equ $6b
+SPRITE_STATUS_SLOT_SELECT equ $303B
+SPRITE_IMAGE_PORT equ $5b
+SPRITE_INFO_PORT equ $57
+;------------------------------------------------------------------------------
+
+IFDEF testing
+org $6000
+ELSE
+org $2000
+ENDIF
+
+start
+ld hl,$0000
+ld de,$4000
+ld bc,$800
+call TransferDMA ; copy some random data to the screen pointing
+; to ROM for now, for the purpose of showing
+; how to do a DMA copy.
+ld a,0 ; sprite image number we want to update
+ld bc,SPRITE_STATUS_SLOT_SELECT
+out (c),a ; set the sprite image number
+ld bc,1*256 ; number to transfer (1)
+ld hl,testsprite ; from
+call TransferDMASprite ; transfer to sprite ram
+
+nextreg 21,1 ; turn sprite on. for more info on this check
+; out https://www.specnext.com/tbblue-io-port-system/
+ld de,0
+ld (xpos),de ; set initial X position ( doesn't need it for
+; this demo, but if you run the .loop again it
+; will continue from where it was
+ld a,$20
+ld (ypos),a ; set initial Y position
+
+.loop
+ld a,0 ; sprite number we want to position
+ld bc,SPRITE_STATUS_SLOT_SELECT
+out (c),a
+ld de,(xpos)
+ld hl,(ypos) ; ignores H so doing this rather than
+; ld a,(ypos):ld l,a
+ld bc,(image) ; not flipped or palette shifted
+call SetSprite
+
+halt
+
+ld de,(xpos)
+inc de
+ld (xpos),de
+ld a,d
+cp $01
+jr nz,.loop ; if high byte of xpos is not 1 (right of
+; screen )
+ld a,e
+cp $20+1
+jr nz,.loop ; if low byte is not $21 just off the right of
+; the screen, $20 is off screen but as the
+; INC DE is just above and not updated sprite
+; after it, it needs to be $21
+xor a
+ret ; return back to basic with OK
+
+xpos dw 0 ; x position
+ypos db 0 ; y position
+; these next two BITS and IMAGE are swapped
+; as bits needs to go into B register image
+; db 0+$80 ; use image 0 (for the image we
+; transfered)+$80 to set the sprite to active
+bits db 0 ; not flipped or palette shifted
+
+c1 = %11100000
+c2 = %11000000
+c3 = %10100000
+c4 = %10000000
+c5 = %01100000
+c6 = %01000000
+c7 = %00100000
+c8 = %00000000
+
+testsprite
+db c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1
+db c1,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c1
+db c1,c2,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c2,c1
+db c1,c2,c3,c4,c4,c4,c4,c4,c4,c4,c4,c4,c4,c3,c2,c1
+db c1,c2,c3,c4,c5,c5,c5,c5,c5,c5,c5,c5,c4,c3,c2,c1
+db c1,c2,c3,c4,c5,c6,c6,c6,c6,c6,c6,c5,c4,c3,c2,c1
+db c1,c2,c3,c4,c5,c6,c7,c7,c7,c7,c6,c5,c4,c3,c2,c1
+db c1,c2,c3,c4,c5,c6,c7,c8,c8,c7,c6,c5,c4,c3,c2,c1
+db c1,c2,c3,c4,c5,c6,c7,c8,c8,c7,c6,c5,c4,c3,c2,c1
+db c1,c2,c3,c4,c5,c6,c7,c7,c7,c7,c6,c5,c4,c3,c2,c1
+db c1,c2,c3,c4,c5,c6,c6,c6,c6,c6,c6,c5,c4,c3,c2,c1
+db c1,c2,c3,c4,c5,c5,c5,c5,c5,c5,c5,c5,c4,c3,c2,c1
+db c1,c2,c3,c4,c4,c4,c4,c4,c4,c4,c4,c4,c4,c3,c2,c1
+db c1,c2,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c2,c1
+db c1,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c1
+db c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1
+
+;-------------------------------------------------
+; de = X
+; l = Y
+; b = bits
+; c = sprite image
+SetSprite
+push bc
+ld bc,SPRITE_INFO_PORT
+out (c),e ; Xpos
+out (c),l ; Ypos
+pop hl
+ld a,d
+and 1
+or h
+out (c),a
+ld a,l:or $80
+out (c),a ; image
+ret
+
+;--------------------------------
+; hl = source
+; de = destination
+; bc = length
+;--------------------------------
+TransferDMA
+di
+ld (DMASource),hl
+ld (DMADest),de
+ld (DMALength),bc
+ld hl,DMACode
+ld b,DMACode_Len
+ld c,ZXN_DMA_PORT
+otir
+ei
+ret
+
+DMACode db DMA_DISABLE
+db %01111101 ; R0-Transfer mode, A -> B, write adress
+; + block length
+DMASource dw 0 ; R0-Port A, Start address
+; (source address)
+DMALength dw 0 ; R0-Block length (length in bytes)
+db %01010100 ; R1-write A time byte, increment, to
+; memory, bitmask
+db %00000010 ; 2t
+db %01010000 ; R2-write B time byte, increment, to
+; memory, bitmask
+db %00000010 ; R2-Cycle length port B
+db DMA_CONTINUOUS ; R4-Continuous mode (use this for block
+; transfer), write dest adress
+DMADest dw 0 ; R4-Dest address (destination address)
+db %10000010 ; R5-Restart on end of block, RDY active
+; LOW
+db DMA_LOAD ; R6-Load
+db DMA_ENABLE ; R6-Enable DMA
+
+DMACode_Len equ $-DMACode
+
+;------------------------------------------------------------------------------
+; hl = source
+; bc = length
+; set port to write to with TBBLUE_REGISTER_SELECT
+; prior to call
+;------------------------------------------------------------------------------
+TransferDMAPort
+di
+ld (DMASourceP),hl
+ld (DMALengthP),bc
+ld hl,DMACodeP
+ld b,DMACode_LenP
+ld c,ZXN_DMA_PORT
+otir
+ei
+ret
+
+DMACodeP db DMA_DISABLE
+db %01111101 ; R0-Transfer mode, A -> B, write adress
+; + block length
+DMASourceP dw 0 ; R0-Port A, Start address (source address)
+DMALengthP dw 0 ; R0-Block length (length in bytes)
+db %01010100 ; R1-read A time byte, increment, to
+; memory, bitmask
+db %00000010 ; R1-Cycle length port A
+db %01101000 ; R2-write B time byte, increment, to
+; memory, bitmask
+db %00000010 ; R2-Cycle length port B
+db %10101101 ; R4-Continuous mode (use this for block
+; transfer), write dest adress
+dw $253b ; R4-Dest address (destination address)
+db %10000010 ; R5-Restart on end of block, RDY active
+; LOW
+db DMA_LOAD ; R6-Load
+db DMA_ENABLE ; R6-Enable DMA
+
+DMACode_LenP equ $-DMACodeP
+;------------------------------------------------------------------------------
+; hl = source
+; bc = length
+;------------------------------------------------------------------------------
+TransferDMASprite
+di
+ld (DMASourceS),hl
+ld (DMALengthS),bc
+ld hl,DMACodeS
+ld b,DMACode_LenS
+ld c,ZXN_DMA_PORT
+otir
+ei
+ret
+
+DMACodeS db DMA_DISABLE
+db %01111101 ; R0-Transfer mode, A -> B, write adress
+; + block length
+DMASourceS dw 0 ; R0-Port A, Start address (source address)
+DMALengthS dw 0 ; R0-Block length (length in bytes)
+db %01010100 ; R1-read A time byte, increment, to
+; memory, bitmask
+db %00000010 ; R1-Cycle length port A
+db %01101000 ; R2-write B time byte, increment, to
+; memory, bitmask
+db %00000010 ; R2-Cycle length port B
+db %10101101 ; R4-Continuous mode (use this for block
+; transfer), write dest adress
+dw SPRITE_IMAGE_PORT ; R4-Dest address (destination address)
+db %10000010 ; R5-Restart on end of block, RDY active
+; LOW
+db DMA_LOAD ; R6-Load
+db DMA_ENABLE ; R6-Enable DMA
+DMACode_LenS equ $-DMACodeS
+;------------------------------------------------------------------------------
+; de = dest, a = fill value, bc = lenth
+;------------------------------------------------------------------------------
+DMAFill
+di
+ld (FillValue),a
+ld (DMACDest),de
+ld (DMACLength),bc
+ld hl,DMACCode
+ld b,DMACCode_Len
+ld c,ZXN_DMA_PORT
+otir
+ei
+ret
+
+FillValue db 22
+DMACCode db DMA_DISABLE
+db %01111101
+DMACSource dw FillValue
+DMACLength dw 0
+db %00100100,%00010000,%10101101
+DMACDest dw 0
+db DMA_LOAD,DMA_ENABLE
+DMACCode_Len equ $-DMACCode
+
+;------------------------------------------------------------------------------
+; End of file
+;------------------------------------------------------------------------------
+
+IFDEF testing
+savesna "dmatest.sna",start
+ELSE
+fin
+savebin "DMATEST",start,fin-start
+ENDIF
+\end{verbatim}
+\end{enumerate}

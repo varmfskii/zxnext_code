@@ -1,3 +1,261 @@
-\section{Ports}
-\subsection{8-bit}
-\subsection{16-bit}
+\chapter{Ports}
+\begin{verbatim}
++-+-+----------------+---------+-----------------------------+
+| | |AAAAAAAAAAAAAAAA|         |                             |
+| | |1111110000000000|         |                             |
+|R|W|5432109876543210|Port(hex)|Description                  |
++-+-+----------------+---------+-----------------------------+
+|*|*|XXXXXXXXXXXXXXX0| 0xfe    |ULA                          |
+|*|*|XXXXXXXX11111111| 0xff    |Timex video                  |  
+| |*|01XXXXXXXXXXXX01| 0x7ffd  |ZX Spectrum 128 memory       |  
+| |*|1101XXXXXXXXXX01| 0xdffd  |ZX Spectrum 128 memory       |  
+| |*|0001XXXXXXXXXX01| 0x1ffd  |ZX Spectrum +3 memory        |  
+|*| |0000XXXXXXXXXX01|         |ZX Spectrum +3 floating bus  |  
+|*|*|0010010000111011| 0x243b  |NextREG Register Select      |  
+|*|*|0010010100111011| 0x253b  |NextREG data/value           |  
+| |*|0001000000111011| 0x103b  |i2c SCL                      |  
+|*|*|0001000100111011| 0x113b  |i2c SDA                      |  
+|*|*|0001001000111011| 0x123b  |Layer 2                      |  
+|*|*|0001001100111011| 0x133b  |UART tx                      |  
+|*|*|0001010000111011| 0x143b  |UART rx                      |  
+|*|*|XXXXXXXX01101011| 0x6b    |zxnDMA                       |  
+|*|*|11XXXXXXXXXXX101| 0xfffd  |AY reg                       |  
+| |*|10XXXXXXXXXXX101| 0xbffd  |AY dat                       |  
+| |*|XXXXXXXX00001111| 0x0f    |DAC A                        |  
+| |*|XXXXXXXX11110001| 0xf1    |DAC A                        |  
+| |*|XXXXXXXX00111111| 0x3f    |DAC A                        |  
+| |*|XXXXXXXX11011111| 0xdf    |DAC A,C specdrum             |  
+| |*|XXXXXXXX00011111| 0x1f    |DAC B                        |  
+| |*|XXXXXXXX11110011| 0xf3    |DAC B                        |  
+| |*|XXXXXXXX01001111| 0x4f    |DAC C                        |  
+| |*|XXXXXXXX11111001| 0xf9    |DAC C                        |  
+| |*|XXXXXXXX01011111| 0x5f    |DAC D                        |  
+| |*|XXXXXXXX11111011| 0xfb    |DAC D                        |  
+| |*|XXXXXXXX11100111| 0xe7    |SPI /CS                      |  
+|*|*|XXXXXXXX11101011| 0xeb    |SPI /DATA                    |  
+|*|*|XXXXXXXX11100011| 0xe3    |divMMC Control               |  
+|*| |XXXX101111011111| 0xfbdf  |Kempston mouse x             |
+|*| |XXXX111111011111| 0xffdf  |Kempston mouse y             |
+|*| |XXXX101011011111| 0xfadf  |Kempston mouse wheel, buttons|  
+|*| |XXXXXXXX00011111| 0x1f    |Kempston joy 1               |  
+|*| |XXXXXXXX00110111| 0x37    |Kempston joy 2               |  
+|*|*|XXXXXXXX00011111| 0x1f    |Multiface 1 disable          |  
+|*| |XXXXXXXX10011111| 0x9f    |Multiface 1 enable           |  
+|*|*|XXXXXXXX00111111| 0x3f    |Multiface 128 disable        |  
+|*| |XXXXXXXX10111111| 0xbf    |Multiface 128 enable         |  
+|*|*|XXXXXXXX10111111| 0xbf    |Multiface +3 disable         |  
+|*| |XXXXXXXX00111111| 0x3f    |Multiface +3 enable          |  
+|*|*|0011000000111011| 0x303b  |Sprite slot, flags           |  
+| |*|XXXXXXXX01010011| 0x57    |Sprite attributes            |  
+| |*|XXXXXXXX01011011| 0x5b    |Sprite pattern               |  
++-+-+----------------+---------+-----------------------------+
+\end{verbatim}
+
+\section{8-bit}
+Port \$0B (11) MB02 DMA
+
+Port \$1F (31) Kempston Joystick
+
+Port \$57 (87) Sprite Attribute
+
+Port \$5B (91) Sprite Pattern
+
+Port \$6B (107) Datagear DMA
+
+Port \$DF (229) SpecDrum DAC
+
+Port \$FE (254) ULA
+\begin{itemize}
+  \item[] bits 5-7: unused
+  \item[] bit 4: enable ear output
+  \item[] bit 3: enable mic output
+  \item[] bits 0-2: border colour
+\end{itemize}
+
+Port \$FF (255) Timex Sinclair
+\begin{itemize}
+\item[] bit 7: memory paging (not on Next)
+\item[] bit 6: disables generation of interrupts
+\item[] bits 3-5: set hi-res mode colour combination
+\item[] bits 0-2: screen mode
+  \begin{itemize}
+  \item[] 000=normal ULA mode
+  \item[] 001=alternate ULA address
+  \item[] 010=hi-colour
+  \item[] 110=hi-res
+  \end{itemize}
+\end{itemize}
+
+\section{16-bit}
+Port \$123B (4667) Layer 2 Access
+\begin{itemize}
+  \item[] bits 6-7: Video RAM bank select
+  \item[] bit 3: Shadow layer 2 select
+  \item[] bit 1: Layer 2 visible
+  \item[] bit 0: Enable layer 2 write paging
+\end{itemize}
+
+Port \$1FFD (8189) Plus 3
+
+Values written to this port should also be written to \$5B67 if you
+are going to use OS routines.
+\begin{itemize}
+\item[] bits 5-7: Undocumented (extra bits of slot 4 bank select)
+\item[] bit 4: Printer port strobe
+\item[] bit 3: Disk motor enable
+\item[] bit 2:
+  normal mode High bit of ROM select
+  
+  special mode: High bit of memory configuration number
+\item[] bit 1:
+  special mode: Low bit of memory configuration number
+\item[] bit 0: Paging mode (0=Normal, 1Special)
+\end{itemize}
+
+Port \$243B (9275) Next Register Select
+
+Write-only and is used to set the registry number, listed below.
+
+Port \$253B (9531) Next Register Access
+
+Used to access the registry value, the registry being either only a
+few bits or all bits only read, write or read/write, depending on the
+registry number set.
+
+The nextreg instruction can be used to control Spectrum Next registers
+more directly.
+
+Port \$303B (12347) Sprite Status/Slot Select
+
+Write: Sprite Slot Select
+
+select sprite slot for Sprite Attribute and Sprite Pattern ports which
+independently auto-increment
+
+Read: Sprite status
+\begin{itemize}
+\item[] bits 2-7: reserved
+\item[] bit 1: Max sprites per line
+\item[] bit 0: Collision flag
+\end{itemize}
+
+Port \$7FFD (32765) Memory Paging Control
+\begin{itemize}
+\item[] bits 6-7: reserved
+\item[] bit 5: Lock memory paging (unlocks only on reset)
+\item[] bit 4: ROM Select (low bit of ROM select for +2/+3)
+\item[] bit 3: Shadow screen toggle
+\item[] bits 0-2: Bank number for slot 4
+\end{itemize}
+
+Port \$7FFE (32766) Keyboard 8 (read only)
+\begin{itemize}
+\item[] bit 0: 'B'
+\item[] bit 1: 'N'
+\item[] bit 2: 'M'
+\item[] bit 3: Symbol Shift
+\item[] bit 4: Space
+\end{itemize}
+
+Port \$BFFD (49149) Sound Chip Register Write
+
+Writes to selected register of selected sound chip
+
+Port \$BFFE (49150) Keyboard 7 (read only)
+\begin{itemize}
+\item[] bit 0: 'H'
+\item[] bit 1: 'J'
+\item[] bit 2: 'K'
+\item[] bit 3: 'L'
+\item[] bit 4: Enter
+\end{itemize}
+
+Port \$DFFD (57341) Next Memory Bank Select
+
+Port \$DFFE (57342) Keyboard 6 (read only)
+\begin{itemize}
+\item[] bit 0: 'Y'
+\item[] bit 1: 'U'
+\item[] bit 2: 'I'
+\item[] bit 3: 'O'
+\item[] bit 4: 'P'
+\end{itemize}
+
+Port \$EFFE (61438) Keyboard 5 (read only)
+\begin{itemize}
+\item[] bit 0: ‘6’
+\item[] bit 1: ‘7’
+\item[] bit 2: ‘8’
+\item[] bit 3: ‘9’
+\item[] bit 4: ‘0’
+\end{itemize}
+
+Port \$F7FE (63486) Keyboard 4 (read only)
+\begin{itemize}
+\item[] bit 0: ‘5’
+\item[] bit 1: ‘4’
+\item[] bit 2: ‘3’
+\item[] bit 3: ‘2’
+\item[] bit 4: ‘1’
+\end{itemize}
+
+Port \$FADF (64223) Kempston Mouse Buttons
+
+Port \$FBFE (64510) Keyboard 3 (read only)
+\begin{itemize}
+\item[] bit 0: ‘T’
+\item[] bit 1: ‘R’
+\item[] bit 2: ‘E’
+\item[] bit 3: ‘W’
+\item[] bit 4: ‘Q’
+\end{itemize}
+
+Port \$FDDF (64991) Kempston Mouse X
+
+Kempston Mouse X coordinate (0-255)
+ 
+Port \$FDFE (65022) Keyboard 2 (read only)
+\begin{itemize}
+\item[] bit 0: ‘G’
+\item[] bit 1: ‘F’
+\item[] bit 2: ‘D’
+\item[] bit 3: ‘S’
+\item[] bit 4: ‘A’
+\end{itemize}
+
+Port \$FEFE (65278) Keyboard 1 (read only)
+\begin{itemize}
+\item[] bit 0: ‘V’
+\item[] bit 1: ‘C’
+\item[] bit 2: ‘X’
+\item[] bit 3: ‘Z’
+\item[] bit 4: Caps Shift
+\end{itemize}
+
+Port \$FFDF (65503) Kempston Mouse Y
+
+Kempston Mouse Y coordinate (0-191)
+
+Port \$FFFD (65533) Turbo Sound Next Control
+
+Select active sound chip/sound chip register
+
+Select Chip
+\begin{itemize}
+\item[] bit 7: 1=select chip
+\item[] bit 6: Left audio enable
+\item[] bit 5: Right audio enable
+\item[] bits 2-4: reserved=111
+\item[] bits 0-1: Select active chip
+  \begin{itemize}
+  \item[] 01=AY3
+  \item[] 10=AY2
+  \item[] 11=AY1 (default)
+  \end{itemize}
+\end{itemize}
+ Select Register
+\begin{itemize}
+\item[] bit 7: 0=select register
+\item[] bits 4-6: reserved=000
+\item[] bits 0-3: register number
+\end{itemize}

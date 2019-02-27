@@ -1,3 +1,103 @@
-\section{Memory Management}
-\subsection{ZX Spectrum 128}
-\subsection{ZX Spectrum Next}
+\chapter{Memory Management}
+\section{ZX Spectrum 128}
+128-style memory management can only alter the bank addressed at
+\$c000 (16k-slot 4, or 8k-slot 7-8). The active 16k-bank at \$c000 is
+selected by writing the 3 LSBs of the 16k-bank number to the bottom 3
+bits of Memory Paging Control (\$7FFD), and the 3 MSBs to the bottom 3
+bits of Next Memory Bank Select (\$DFFD). (The reason for the division
+is that the original Spectrum 128, having only 128k of memory, only
+needed 3 bits.)
+
+On an unexpanded Next, this allows any 16k-bank to be paged in at
+\$c000. On an expanded next, there are not enough bits available to
+access the banks at the bottom of the expanded memory, so Next memory
+management must be used to access these.
+
+If you are using the standard interrupt handler or OS routines, then
+any time you write to Memory Paging Control (\$7FFD) you should also
+store the value at \$5B5C. Any time you write to Plus 3 Memory Paging
+Control (\$1FFD) you should also store the value at \$5B67. There is
+no corresponding system variable for the Next-only Next Memory Bank
+Select (\$DFFD) and standard OS routines may not support the extended
+banks properly.
+
+\paragraph{128 Special Paging Mode}
+
+"Special paging mode" (also called "AllRam mode" or "CP/M mode") is
+enabled by writing a value with the LSB set to Plus 3 Memory Paging
+Control (\$1FFD). Depending on the 3 low bits of this value a memory
+configuration is selected as follows:
+
+\begin{table}[h]\centering
+  \caption{Special Paging Modes}
+  \csvautotabular{zx128mm.csv}
+\end{table}
+
+\section{ZX Spectrum Next}
+The 8k-bank accessed in an 8k-slot is selected by writing the 8k-bank
+number to the bottom 7 bits of the 8 Next registers from (\$50)
+upwards. \$50 addresses 8k-slot 0, \$51 addresses 8k-slot 1, and so
+on.
+
+In addition, in 8k-slots 1 and 2 only, the ROM can be paged in by
+selecting the otherwise non-existent 8k-page \$FF. Whether the high or
+the low 8k of the ROM is mapped is determined by which 8k-slot is
+used.
+
+\paragraph{Interactions between paging methods}
+Changes made in 128 style and Next style memory management are
+synchronized. The most recent change always has priority. This means
+that
+
+using 128-style memory management to select a new 16k-bank in 16k-slot
+4 will update the MMU registers for the two 8k-slots with the
+corresponding 8k-bank numbers.  enabling AllRam mode will update all
+of the 8k-bank values with the appropriate 8k-slot numbers. These may
+then be overwritten using Next memory management without needing to
+alter the value at port \$1FFD.  Since the 128-style memory management
+ports are not readable, there is no synchronization applicable in the
+other direction.
+
+\paragraph{ROM paging and selection}
+\$0000-\$3fff is usually mapped to ROM. This area can only be fully
+remapped using Next memory management. ROM is not considered one of
+the numbered banks; it is mapped to the two 8k-banks by default, or by
+setting their 8k-bank numbers to 255.
+
+The 128k Spectrum has 2 ROM pages. Which of these is mapped is
+selected by altering Bit 4 of Memory Paging Control (\$7FFD). The
++2a/+3 has 4 ROM pages; the extra bit needed to select between these
+is bit 2 of Plus 3 Memory Paging Control (\$1FFD). This maintains
+compatibility with the original machines' ROM paging as long as the
+ROM is not paged out.
+
+\paragraph{Paging out ROM}
+ROM can be paged out by enabling AllRam mode, or by using Next memory
+management. Beware that some programs may assume that they can find
+ROM service routines at fixed addresses between \$0000-\$3fff. More
+importantly, if the default interrupt mode (IM 1) is set, the Z80 will
+jump the program counter to \$0038 every frame expecting to find an
+interrupt handler there. If it does not, pain and suffering will
+likely result. DI is your friend. On the plus side, this does allow
+you to write your own interrupt handler without the nuisance of using
+IM 2.
+
+\paragraph{Layer 2 Switching}
+Layer 2 switching can allow any 16k-bank to be written to (but not
+read) in 16k-slot 1, by writing the 16k-bank number to Layer 2 RAM
+Page Register (\$12) and then enabling Layer 2 paging by writing a
+value with the LSB set to Layer 2 Access Port (\$123B).
+
+Writing to this area will then write the appropriate area of memory,
+whereas reading from it will give the area mapped by other memory
+management.
+
+\paragraph{Screen}
+16k-Bank 5 is the bank read by the ULA to determine what to show on
+screen. The ULA connects directly to the larger memory space ignoring
+mapping; the screen is always 16k-Bank 5, no matter where in memory it
+is (or if it is switched in at all). Setting bit 3 of Memory Paging
+Control (\$7FFD) will have the ULA read from 16k-bank 7 (the "shadow
+screen") instead, which can be used as an alternate screen. Beware
+that this does not map 16k-bank 7 into RAM; to alter 16k-bank 7 it
+must be mapped by other means.

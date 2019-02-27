@@ -1,0 +1,5 @@
+Name,CC,Description
+STOP,00,STOP COPPER
+RESET,01,RESET PC and start COPPER
+START,10,START COPPER
+FRAME,11,Reset PC and start COPPER, reset PC each video FRAME at 0 0

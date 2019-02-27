@@ -1,0 +1,21 @@
+Line,HDMI 50Hz,HDMI 60Hz,48k 50Hz,48k 60Hz,128k 50Hz,128k 60Hz,Pentagon
+0-191,Display,Display,Display,Display,Display,Display,Display
+192-211,B-Border,B-Border,B-Border,B-Border,B-Border,B-Border,B-Border
+212-224,B-Border,Blanking,B-Border,B-Border,B-Border,B-Border,B-Border
+225-231,B-Border,Blanking,B-Border,Blanking,B-Border,Blanking,B-Border
+232-238,Blanking,Blanking,B-Border,Blanking,B-Border,Blanking,B-Border
+239,Blanking,Blanking,B-Border,T-Border,B-Border,T-Border,B-Border*
+240,Blanking,Blanking,B-Border,T-Border,B-Border,T-Border,B-Border
+241-244,Blanking,Blanking,B-Border,T-Border,B-Border,T-Border,Blanking
+245-247,Blanking,T-Border,B-Border,T-Border,B-Border,T-Border,Blanking
+248,Blanking,T-Border,B-Border*,T-Border,B-Border*,T-Border,Blanking
+249-255,Blanking,T-Border,Blanking,T-Border,Blanking,T-Border,Blanking
+255,Blanking,T-Border,Blanking,T-Border,Blanking,T-Border,T-Border
+256,Blanking*,T-Border,Blanking,T-Border,Blanking,T-Border,T-Border
+257-260,Blanking,T-Border,Blanking,T-Border,Blanking,T-Border,T-Border
+261,Blanking,T-Border,Blanking,T-Border,Blanking,--,T-Border
+262,Blanking,--,Blanking,--,Blanking,--,T-Border
+263-271,Blanking,--,T-Border,--,T-Border,--,T-Border
+272-310,T-Border,--,T-Border,--,T-Border,--,T-Border
+311,T-Border,--,T-Border,--,--,--,T-Border
+312-319,--,--,--,--,--,--,T-Border
