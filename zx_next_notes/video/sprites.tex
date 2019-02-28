@@ -86,8 +86,12 @@ pixel can be one of 256 colours. One colour indicates transparency and
 this is programmed into the Sprite Transparency Index register
 (nextreg \$4B). By default the transparent value is \$E3.
 
-As an example of an 8-bit sprite, let’s have a look at the sprite
-below:
+As an example of an 8-bit sprite, let’s have a look at figure 1.1.
+
+\begin{figure}\centering
+  \includegraphics{video/sprite_1.png}
+  \caption{Pattern Example}
+\end{figure}
 
 Using the default palette, which is initialised with RGB332 colours
 from 0-255, the hexadecimal values for this pattern arranged in a
@@ -247,6 +251,10 @@ Rotation is applied before mirroring.
 
 Relative sprites, described below, replace X8 with PR.
 
+\begin{figure}\centering
+  \includegraphics{video/flags.png}
+  \caption{All Rotate and Mirror Flags}
+\end{figure}
 
 Sprite Attribute 3
 \begin{verbatim}
