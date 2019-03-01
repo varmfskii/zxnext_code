@@ -1,7 +1,7 @@
 \chapter{Video}
 
 ZX Spectrum Next video splits the display types into four categories
-(ULA, tilemap, layer2, and sprites) which have their own sets of
+(ULA, tilemap, layer 2, and sprites) which have their own sets of
 controls for colour palettes, clipping, and scrolling. Some aspects of
 ULA and tilemap are tied together, but all the rest operate in a
 largely independent manner using a layering system. The ULA category
@@ -18,7 +18,8 @@ layers is controlled by Next port \$15 (21) bits 4-2:
   \csvautotabular{video/videolayering.csv}
 \end{table}
 
-Transparency for Layer2, ULA, and LoRes are controlled by Next
+\index{transparency}
+Transparency for Layer 2, ULA, and LoRes are controlled by Next
 register \$14 (20) and defaults to \$E3. This colour ignores the state
 of the least significant blue bit, so \$E3 equates to both \$1C6 and
 \$1C7. For Sprites and Tilemaps transparency is determined by colour
@@ -28,136 +29,88 @@ Tilemaps, the transparency index is set by register \$4C. If all
 layers are transparent, the transparency fallback colour is
 displayed. This is set by register \$4A.
 
-\section{Colour Palette}
+(R/W) \$4A (74) $\Rightarrow$ Transparency colour fallback
+\begin{itemize}
+\item[] bits 7-0 = Set the 8 bit colour used if all layers are transparent.
+\end{itemize}
+(black on reset = 0)
 
-The ZX Spectrum Next has 8 palettes, two each for ULA, tilemap,
-layer2, and sprites.  There is a palette in use and an alternate that
-can be quickly swapped.  Each palette consists of 256 entries out of a
-total of 512 (RRRGGGBBB) colours.  Register \$43 (67, Palette Control)
-is used to select which palette can be read/written and whether each
-layer is using its primary or secondary palette and whether or not
-writes to the palette value registers auto-increment. Palette values
-are written to registers \$41 (65, 8-bit) and \$44 (70, 9-bit)
+\section{Palette}
+\index{palette}
+Each video mode group has a pair of palettes addigned to it a primary
+and an alternate palette.
+
+(R/W) \$43 (67) $\Rightarrow$ Palette Control
+\begin{itemize}
+\item[] bit 7 = '1' to disable palette write auto-increment.
+\item[] bits 6-4 = Select palette for reading or writing:
+  \begin{itemize}
+  \item[] 000 = ULA first palette
+  \item[] 100 = ULA second palette
+  \item[] 001 = Layer 2 first palette
+  \item[] 101 = Layer 2 second palette
+  \item[] 010 = Sprites first palette
+  \item[] 110 = Sprites second palette
+  \item[] 011 = Tilemap first palette
+  \item[] 111 = Tilemap second palette
+  \end{itemize}
+\item[] bit 3 = Select Sprites palette (0 = first palette, 1 = second palette)
+\item[] bit 2 = Select Layer 2 palette (0 = first palette, 1 = second palette)
+\item[] bit 1 = Select ULA palette (0 = first palette, 1 = second palette)
+\item[] bit 0 = Enabe ULANext mode if 1. (0 after a reset)
+\end{itemize}
 
 (R/W) \$40 (64) $\Rightarrow$ Palette Index
 \begin{itemize}
-\item bits 7-0 = Select the palette index to change the associated colour.
+\item[] bits 7-0 = Select the palette index to change the associated colour.
+\end{itemize}
 For the ULA only, INKs are mapped to indices 0-7, Bright INKS to
 indices 8-15, PAPERs to indices 16-23 and Bright PAPERs to indices
-24-31.  In ULANext mode, INKs come from a subset of indices 0-127 and
-PAPERs come from a subset of indices 128-255.  The number of active
-indices depends on the number of attribute bits assigned to INK and
-PAPER out of the attribute byte.  The ULA always takes border colour
-from paper.
-\end{itemize}
+24-31.\\
+In ULANext mode, INKs come from a subset of indices 0-127 and PAPERs
+come from a subset of indices 128-255. The number of active indices
+depends on the number of attribute bits assigned to INK and PAPER out
+of the attribute byte.  The ULA always takes border colour from paper.
+
 (R/W) \$41 (65) $\Rightarrow$ Palette Value (8 bit colour)
 \begin{itemize}
-\item bits 7-0 = Colour for the palette index selected by the register \$40.
+\item[] bits 7-0 = Colour for the palette index selected by the register \$40.
+\end{itemize}
 (Format is RRRGGGBB - the lower blue bit of the 9-bit colour will be a
-logical OR of blue bits 1 and 0 of this 8-bit value.)  After the
-write, the palette index is auto-incremented to the next index if the
-auto-increment is enabled at reg \$43.  Reads do not auto-increment.
-\end{itemize}
-(R/W) \$43 (67) $\Rightarrow$ Palette Control
-\begin{itemize}
-\item bit 7 = '1' to disable palette write auto-increment.
-\item bits 6-4 = Select palette for reading or writing:
-  \begin{itemize}
-  \item 000 = ULA first palette
-  \item 100 = ULA second palette
-  \item 001 = Layer 2 first palette
-  \item 101 = Layer 2 second palette
-  \item 010 = Sprites first palette 
-  \item 110 = Sprites second palette
-  \item 011 = Tilemap first palette
-  \item 111 = Tilemap second palette
-  \end{itemize}
-\item bit 3 = Select Sprites palette (0 = first palette, 1 = second palette)
-\item bit 2 = Select Layer 2 palette (0 = first palette, 1 = second palette)
-\item bit 1 = Select ULA palette (0 = first palette, 1 = second palette)
-\item bit 0 = Enable ULANext mode if 1. (0 after a reset)
-\end{itemize}
-(R/W) \$44 (68) $\Rightarrow$ Palette Value (9 bit colour)
+logical OR of blue bits 1 and 0 of this 8-bit value.)\\
+After the write, the palette index is auto-incremented to the next
+index if the auto-increment is enabled at reg \$43. Reads do not
+auto-increment.
 
+(R/W) \$44 (68) $\Rightarrow$ Palette Value (9 bit colour)\\
 Two consecutive writes are needed to write the 9 bit colour
-
-1st write:
-
 \begin{itemize}
-\item bits 7-0 = RRRGGGBB
+\item[] 1st write:
+  \begin{itemize}
+  \item[] bits 7-0 = RRRGGGBB
+  \end{itemize}
+\item[] 2nd write.
+  If writing a L2 palette\\
+  \begin{itemize}
+  \item[] bit 7 = 1 for L2 priority colour, 0 for normal\\
+    Priority colour will always be on top even on an SLU priority
+    arrangement. If you need the exact same colour on priority and non
+    priority locations you will need to program the same colour twice
+    changing bit 7 to 0 for the second colour
+  \item[] bits 6-1 = Reserved, must be 0
+  \item[] bit 0 = lsb B
+  \end{itemize}
+  If writing another palette
+  \begin{itemize}
+  \item[] bits 7-1 = Reserved, must be 0
+  \item[] bit 0 = lsb B
+  \end{itemize}
 \end{itemize}
-
-2nd write: 
-
-If writing a L2 palette
-
-\hrulefill
-\begin{itemize}
-\item bit 7 = 1 for L2 priority colour, 0 for normal priority colour will always be on top even on an SLU priority arrangement. 
-
-If you need the exact same colour on priority and non priority
-locations you will need to program the same colour twice changing bit
-7 to 0 for the second colour bits 6-1 = Reserved, must be 0
-
-\item bit 0 = lsb B
-\end{itemize}
-     
-If writing another palette
-
-\hrulefill
-\begin{itemize}
-\item bits 7-1 = Reserved, must be 0
-\item bit 0 = lsb B
-\end{itemize}           
-After the two consecutive writes the palette index is auto-incremented
-if the auto-increment is enabled by reg \$43.
-     
+After the two consecutives writes the palette index is
+auto-incremented if the auto-increment is enabled by reg \$43.\\
 Reads only return the 2nd byte and do not auto-increment.
 
-\section{Clipping}
-
-There are two clipping modes: normal clipping and over border
-clipping. With normal clipping the clipping coordinates are relative
-to the regular $256\times192$ video area, so 0,0 is the display area origin,
-X range is 0-255, and Y range is 0-191. With over border clipping, the
-ULA origin is now located so the clipping coordinate 32,32 is the
-display area origin, the X range is 0-320, but values given for X1 and
-X2 are doubled, the Y range is now 0-255.
-
-ULA and Layer2 always use normal clipping.  Tilemaps always use over
-border clipping, and Using bit 5 of register \$15 selects which
-clipping mode is used for sprites (0=normal, 1=over border).
-
-Each group as its own register to control clipping (\$18=Layer2,
-\$19=Sprites, \$1A=ULA, and \$1B=Tilemap) with the clipping area
-controlled by four consecutive writes in the order X1, X2, Y1,
-Y2. Where you are in this sequence can be controlled by either using
-register \$1C to reset the next write to control X1 (bit 3=tilemap,
-2=ULA, 1=sprite, and 0=layer2) or register \$1D to set all of the
-indices (bits 7-6=tilemap, 5-4=layer 2, 3-2=sprite, and 1-0=ULA).
-
-\section{Scrolling}
-
-On the ZX Spectrum Next, all of the screen area (less clipping) is
-visible at any given time. Scrolling controls where the screen origin
-is located with your image being mapped onto a toroidal coordinate
-system. Each group that is scrollable is controlled its won set of
-registers.
-
-Layer2 scrolling is controlled by registers \$16 (X) and \$17 (Y). The
-legal range is 0-255 for X and 0-191 for Y.
-
-ULA is controlled by registers \$32 (X-offset) and \$33
-(Y-offset). Legacy ULA modes scroll horizontally in 8-pixel increments
-(ignoring the least significant 3-bits) and vertically in 1-pixel
-increments while LoRes scrolls in half-pixel increments. The legal
-range is 0-255 for X and 0-191 for Y.
-
-Tilemap scrolling uses three registers. \$2F (X bit 8), \$30 (X bits
-7-0), \$31 (Y). The legal range is 0-319 for X and 0-255 for Y.
-
 \section{ULA group}
-
 The ULA layer supports ZX Spectrum video, Timex video modes, and the
 Spectrum Next’s lores video mode all use 16k memory bank 5 or 7 with
 the data coming from some combination of addresses \$0000-\$17FF
@@ -172,7 +125,6 @@ Spectrum and Timex modes all colours are either Paper (foreground),
 paper (background), or border colours.
 
 \subsection{Colour Attributes}
-
 The ZX Spectrum Next has two major modes for colour attributes
 allowing a total of nine ways to map the palette to the original ZX
 Spectrum attributes. One with flashing enabled and eight with flashing
@@ -186,14 +138,16 @@ switches between flashing enabled (0, default) and flashing disabled
   \csvautotabular{video/flash.csv}
 \end{table}
 
-Flashing Enabled is similar to the original Spectrum colour attributes:
+Flashing Enabled is similar to the original Spectrum colour
+attributes. INKs are mapped to indices 0-7, Bright INKS to indices
+8-15, PAPERs to indices 16-23 and Bright PAPERs to indices 24-31.
 
 The ULA next modes use a varying number of bits from the attribute
 byte to determine the ink colour as the palette index from the
 appropriate bits (all others being zero) and the paper colours coming
 from the indicated value+128 with palette format 255 being a special
 case where all the bits determine the ink colour while the paper is
-always palette index 128.
+always palette index 128. The ULA always takes border colour from paper.
 
 \begin{table}[h]\centering
   \caption{ULA Next}
@@ -385,9 +339,132 @@ or $80
 out (c),a
 \end{verbatim}
 
+\subsection{Programming}
+
+(R/W) \$15 (21) $\Rightarrow$ Sprite and Layers system
+\begin{itemize}
+\item[] bit 7 = LoRes mode, 128 x 96 x 256 colours (1 = enabled)
+\item[] bit 6 = Sprite priority (1 = sprite 0 on top, 0 = sprite 127 on top)
+\item[] bit 5 = Enable sprite clipping in over border mode (1 = enabled)
+\item[] bits 4-2 = set layers priorities:\\
+  Reset default is 000, sprites over the Layer 2, over the ULA graphics
+  \begin{itemize}
+  \item[] 000 - S L U
+  \item[] 001 - L S U
+  \item[] 010 - S U L
+  \item[] 011 - L U S
+  \item[] 100 - U S L
+  \item[] 101 - U L S
+  \item[] 110 - S(U+L) ULA and Layer 2 combined, colours clamped to 7
+  \item[] 111 - S(U+L-5) ULA and Layer 2 combined, colours clamped to [0,7]
+  \end{itemize}
+\item[] bit 1 = Over border (1 = yes)(Back to 0 after a reset)
+\item[] bit 0 = Sprites visible (1 = visible)(Back to 0 after a reset)
+\end{itemize}
+
+Port \$ff (255) Timex Sinclair/floating bus\\
+Disable with bit 2 to Nextreg \$08
+\begin{itemize}
+\item[] bit 7: memory paging (not on Next)
+\item[] bit 6: disables generation of interrupts
+\item[] bits 3-5: set hi-res mode colour combination
+\item[] bits 0-2: screen mode
+  \begin{itemize}
+  \item[] 000=normal ULA mode
+  \item[] 001=alternate ULA address
+  \item[] 010=hi-colour
+  \item[] 110=hi-res
+  \end{itemize}
+\end{itemize}
+
+For information on controlling the palette see the Palette section.
+
+\index{transparency}
+(R/W) \$14 (20) $\Rightarrow$ Global transparency color
+\begin{itemize}
+\item[] bits 7-0 = Transparency color value (\$E3 after a reset)
+\end{itemize}
+(Note: this value is 8-bit, so the transparency is compared against
+only by the MSB bits of the final 9-bit colour)\\
+(Note2: this only affects Layer 2, ULA and LoRes. Sprites use register
+\$4B for transparency and tilemap uses nextreg \$4C)
+
+\index{clip window}
+(R/W) \$1A (26) $\Rightarrow$ Clip Window ULA/LoRes
+\begin{itemize}
+\item[] bits 7-0 = Coord. of the clip window
+  \begin{itemize}
+  \item[] 1st write = X1 position
+  \item[] 2nd write = X2 position
+  \item[] 3rd write = Y1 position
+  \item[] 4rd write = Y2 position
+  \end{itemize}
+\end{itemize}
+The values are 0,255,0,191 after a Reset\\
+Reads do not advance the clip position
+
+(W) \$1C (28) $\Rightarrow$ Clip Window control
+\begin{itemize}
+\item[] bits 7-4 = Reserved, must be 0
+\item[] bit 3 - reset the tilemap clip index
+\item[] bit 2 - reset the ULA/LoRes clip index.
+\item[] bit 1 - reset the sprite clip index.
+\item[] bit 0 - reset the Layer 2 clip index.
+\end{itemize}
+
+(R) \$1C (28) $\Rightarrow$ Clip Window control\\
+(may change)
+\begin{itemize}
+\item[] bits 7-6 = Tilemap clip index
+\item[] bits 5-4 = Layer 2 clip index
+\item[] bits 3-2 = Sprite clip index
+\item[] bits 1-0 = ULA clip index
+\end{itemize}
+
+\index{scroll offset}
+(R/W) \$32 (50) $\Rightarrow$ ULA / LoRes Offset X
+\begin{itemize}
+\item[] bits 7-0 = X Offset (0-255)(Reset to 0 after a reset)
+\end{itemize}
+ULA can only scroll in multiples of 8 pixels so the lowest 3 bits have
+no effect at this time.\\
+LoRes scrolls in "half-pixels" at the same resolution and smoothness
+as Layer 2.
+
+(R/W) \$33 (51) $\Rightarrow$ ULA / LoRes Offset Y
+\begin{itemize}
+\item[] bits 7-0 = Y Offset (0-191)(Reset to 0 after a reset)
+\end{itemize}
+LoRes scrolls in "half-pixels" at the same resolution and smoothness
+as Layer 2.
+
+(R/W) \$42 (66) $\Rightarrow$ ULANext Attribute Byte Format
+\begin{itemize}
+\item[] bits 7-0 = Mask indicating which bits of an attribute byte are
+  used to represent INK. The rest will represent PAPER.
+\end{itemize}
+(15 on reset)\\
+The mask can only indicate a solid sequence of bits on the right side
+of the attribute byte (1, 3, 7, 15, 31, 63, 127 or 255).\\
+INKs are mapped to base index 0 in the palette and PAPERs and border
+are mapped to base index 128 in the palette.\\
+The 255 value enables the full ink colour mode making all the palette
+entries INK. PAPER and border both take on the fallback colour
+(nextreg \$4A) in this mode.
+
+Port \$7ffd (32765) ZX Spectrum 128 Memory\\
+Disable with bit 5 port \$7ffd
+\begin{itemize}
+\item[] bits 6-7: reserved
+\item[] bit 5: Lock memory paging (unlocks only on reset)
+\item[] bit 4: ROM Select (low bit of ROM select for +2/+3)
+\item[] bit 3: Shadow screen toggle
+\item[] bits 0-2: Bank number for slot 4
+\end{itemize}
+
 \input{video/tilemap.tex}
 
-\section{Layer2}
+\section{Layer 2}
 Layer 2 is a linearly mapped, row-wise, upper left to lower right,
 $256\times192\times256$ bit-map graphics area.  Both the main version
 (8k pages 16-21/16k banks 8-10) and a shadow version (8k pages
@@ -401,5 +478,84 @@ using port \$123B to fix them in the same space as the ROMs at
 palette.  Layer 2 is drawn according to the values in registers \$16
 (22, Layer 2 Offset X, default 0) and \$17 (23, Layer 2 Offset Y,
 default 0).
+
+\subsection{Programming}
+
+Port \$123b (4667) Layer 2
+\begin{itemize}
+  \item[] bits 6-7: Video RAM bank select
+  \item[] bit 3: Shadow layer 2 select
+  \item[] bit 1: Layer 2 visible
+  \item[] bit 0: Enable layer 2 write paging
+\end{itemize}
+
+For information on controlling the palette see the Palette section.
+
+\index{transparency}
+(R/W) \$14 (20) $\Rightarrow$ Global transparency color
+\begin{itemize}
+\item[] bits 7-0 = Transparency color value (\$E3 after a reset)
+\end{itemize}
+(Note: this value is 8-bit, so the transparency is compared against
+only by the MSB bits of the final 9-bit colour)\\
+(Note2: this only affects Layer 2, ULA and LoRes. Sprites use register
+\$4B for transparency and tilemap uses nextreg \$4C)
+
+\index{scroll offset}
+(R/W) \$16 (22) $\Rightarrow$ Layer2 Offset X
+\begin{itemize}
+\item[] bits 7-0 = X Offset (0-255)(0 after a reset)
+\end{itemize}
+
+(R/W) \$17 (23) $\Rightarrow$ Layer2 Offset Y
+\begin{itemize}
+\item[] bits 7-0 = Y Offset (0-191)(0 after a reset)
+\end{itemize}
+
+\index{clip window}
+(R/W) \$18 (24) $\Rightarrow$ Clip Window Layer 2
+\begin{itemize}
+\item[] bits 7-0 = Coords of the clip window
+  \begin{itemize}
+  \item[] 1st write - X1 position
+  \item[] 2nd write - X2 position
+  \item[] 3rd write - Y1 position
+  \item[] 4rd write - Y2 position
+  \end{itemize}
+\end{itemize}
+Reads do not advance the clip position\\
+The values are 0,255,0,191 after a Reset
+
+(W) \$1C (28) $\Rightarrow$ Clip Window control
+\begin{itemize}
+\item[] bits 7-4 = Reserved, must be 0
+\item[] bit 3 - reset the tilemap clip index
+\item[] bit 2 - reset the ULA/LoRes clip index.
+\item[] bit 1 - reset the sprite clip index.
+\item[] bit 0 - reset the Layer 2 clip index.
+\end{itemize}
+
+(R) \$1C (28) $\Rightarrow$ Clip Window control\\
+(may change)
+\begin{itemize}
+\item[] bits 7-6 = Tilemap clip index
+\item[] bits 5-4 = Layer 2 clip index
+\item[] bits 3-2 = Sprite clip index
+\item[] bits 1-0 = ULA clip index
+\end{itemize}
+
+(R/W) \$12 (18) $\Rightarrow$ Layer 2 RAM bank
+\begin{itemize}
+\item[] bits 7-6 = Reserved, must be 0
+\item[] bits 5-0 = RAM bank (point to bank 8 after a Reset, NextZXOS
+  modifies to 9)
+\end{itemize}
+
+(R/W) \$13 (19) $\Rightarrow$ Layer 2 RAM shadow bank
+\begin{itemize}
+\item[] bits 7-6 = Reserved, must be 0
+\item[] bits 5-0 = RAM bank (point to bank 11 after a Reset, NextZXOS
+  modifies to 12)
+\end{itemize}
 
 \input{video/sprites.tex}

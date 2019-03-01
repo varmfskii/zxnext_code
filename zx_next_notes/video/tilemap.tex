@@ -1,6 +1,6 @@
 \section{Tilemap Mode}
 
-February 25, 2019  Phoebus Dokos
+February 25, 2019 Phoebus Dokos
 
 \subsection{General Description}
 The tilemap is a hardware character oriented display that comes in two
@@ -37,7 +37,8 @@ Tilemap Entry
 \item[] bit 11 : x mirror
 \item[] bit 10 : y mirror
 \item[] bit 9 : rotate
-\item[] bit 8 : ULA over tilemap (in 512 tile mode, bit 8 of the tile number)
+\item[] bit 8 : ULA over tilemap (in 512 tile mode, bit 8 of the tile
+  number)
 \item[] bits 7-0 : tile number
 \end{itemize}
 The character displayed is indicated by the “tile number” which can be
@@ -98,16 +99,16 @@ allows one layer to act as a cut-out for the other.
 
 \subsection{Programming Tilemap mode}
 
-\begin{verbatim}
-(R/W) $6B (107) => Tilemap Control
-  bit 7    = 1 to enable the tilemap
-  bit 6    = 0 for 40x32, 1 for 80x32
-  bit 5    = 1 to eliminate the attribute entry in the tilemap
-  bit 4    = palette select
-  bits 3-2 = Reserved set to 0
-  bit 1    = 1 to activate 512 tile mode
-  bit 0    = 1 to force tilemap on top of ULA
-\end{verbatim}
+(R/W) \$6B (107) $\Rightarrow$ Tilemap Control
+\begin{itemize}
+\item[] bit 7    = 1 to enable the tilemap
+\item[] bit 6    = 0 for $40\times32$, 1 for $80\times32$
+\item[] bit 5    = 1 to eliminate the attribute entry in the tilemap
+\item[] bit 4    = palette select
+\item[] bits 3-2 = Reserved set to 0
+\item[] bit 1    = 1 to activate 512 tile mode
+\item[] bit 0    = 1 to force tilemap on top of ULA
+\end{itemize}
 
 Bits 7 \& 6 enable the tilemap and select resolution. Bit 4 selects one
 of two tilemap palettes used for final colour lookup. Bit 5 changes
@@ -125,26 +126,26 @@ Bit 0 forces the tilemap to be on top of the ULA. It can be useful in
 512 tile mode to change the relative display order of the ULA and
 tilemap.
 
-\begin{verbatim}
-(R/W) $6C (108) => Default Tilemap Attribute
-  bits 7-4 = Palette Offset
-  bit 3    = X mirror
-  bit 2    = Y mirror
-  bit 1    = Rotate
-  bit 0    = ULA over tilemap
-             (bit 8 of the tile number if 512 tile mode is enabled)
-\end{verbatim}
+(R/W) \$6C (108) $\Rightarrow$ Default Tilemap Attribute
+\begin{itemize}
+\item[] bits 7-4 = Palette Offset
+\item[] bit 3    = X mirror
+\item[] bit 2    = Y mirror
+\item[] bit 1    = Rotate
+\item[] bit 0    = ULA over tilemap\\
+  (bit 8 of the tile number if 512 tile mode is enabled)
+\end{itemize}
 
 If bit 5 of nextreg \$6B is set, the tilemapís structure is modified
 to contain only 8-bit tile numbers instead of the usual 16-bit tilemap
 entries. In this case, the tile attributes used are taken from this
 register instead.
 
-\begin{verbatim}
-(R/W) $6E (110) => Tilemap Base Address
-  bits 7-6 = Read back as zero, write values ignored
-  bits 5-0 = MSB of address of the tilemap in Bank 5
-\end{verbatim}
+(R/W) \$6E (110) $\Rightarrow$ Tilemap Base Address
+\begin{itemize}
+\item[] bits 7-6 = Read back as zero, write values ignored
+\item[] bits 5-0 = MSB of address of the tilemap in Bank 5
+\end{itemize}
 
 This register determines the tilemapís base address in bank 5. The
 base address is the MSB of an offset into the 16k bank, allowing the
@@ -158,11 +159,11 @@ the resolution selected in nextreg \$6B. Each entry in the tilemap is
 normally two bytes but can be one byte if attributes are eliminated by
 setting bit 5 of nextreg \$6B.
 
-\begin{verbatim}
-(R/W) $6F (111) => Tile Definitions Base Address
-  bits 7-6 = Read back as zero, write values ignored
-  bits 5-0 = MSB of address of tile definitions in Bank 5
-\end{verbatim}
+(R/W) \$6F (111) $\Rightarrow$ Tile Definitions Base Address
+\begin{itemize}
+\item[] bits 7-6 = Read back as zero, write values ignored
+\item[] bits 5-0 = MSB of address of tile definitions in Bank 5
+\end{itemize}
 
 This register determines the base address of tile definitions in bank
 5. As with nextreg \$6E, the base address is the MSB of the an offset
@@ -172,57 +173,34 @@ or \$c0-\$ff, corresponding to traditional ULA physical addresses, is
 permitted. The value read back should be treated as a fully
 significant 8-bit value.
 
-Each tile definition is 32 bytes in size and is located at address:
-
-\begin{verbatim}
+Each tile definition is 32 bytes in size and is located at address:\\
 Tile Def Base Addr + 32 * (Tile Number)
 
-(R/W) $4C (76) => Transparency index for the tilemap
-bits 7-4 = Reserved, must be 0
-bits 3-0 = Set the index value ($F after reset)
-\end{verbatim}
+\index{transparency}
+(R/W) \$4C (76) $\Rightarrow$ Transparency index for the tilemap
+\begin{itemize}
+\item[] bits 7-4 = Reserved, must be 0
+\item[] bits 3-0 = Set the index value (\$F after reset)
+\end{itemize}
 
 Defines the transparent colour index for tiles. The 4-bit pixels of a
 tile definition are compared to this value to determine if they are
 transparent.
 
-\begin{verbatim}
-(R/W) $43 (67) => Palette Control
-  bit 7 = '1' to disable palette write auto-increment.
-  bits 6-4 = Select palette for reading or writing:
-     000 = ULA first palette
-     100 = ULA second palette
-     001 = Layer 2 first palette
-     101 = Layer 2 second palette
-     010 = Sprites first palette 
-     110 = Sprites second palette
-     011 = Tilemap first palette
-     111 = Tilemap second palette
-  bit 3 = Select Sprites palette (0 = first palette, 1 = second palette)
-  bit 2 = Select Layer 2 palette (0 = first palette, 1 = second palette)
-  bit 1 = Select ULA palette (0 = first palette, 1 = second palette)
-  bit 0 = Enabe ULANext mode if 1. (0 after a reset)
-\end{verbatim}
+For palette information see palette section.
 
-The tilemap has its own pair of palettes for looking up 9-bit
-colours. Each tile definition pixel is 4-bits which is combined with
-the 4-bit palette offset from the tilemap entry in the most
-significant 8-bits. This 8-bit value is passed through the tilemap
-palette to generate the final 9-bit colour for the pixel.
-
-\begin{verbatim}
-(R/W) $1B (27) => Clip Window Tilemap
-  bits 7-0 = Coord. of the clip window
-  1st write = X1 position
-  2nd write = X2 position
-  3rd write = Y1 position
-  4rd write = Y2 position
-  The values are 0,159,0,255 after a Reset
-  Reads do not advance the clip position
-\end{verbatim}
-
-The values are 0,159,0,255 after a Reset
-
+\index{clip window}
+(R/W) \$1B (27) $\Rightarrow$ Clip Window Tilemap
+\begin{itemize}
+\item[] bits 7-0 = Coord. of the clip window
+  \begin{itemize}
+  \item[] 1st write = X1 position
+  \item[] 2nd write = X2 position
+  \item[] 3rd write = Y1 position
+  \item[] 4rd write = Y2 position
+  \end{itemize}
+\end{itemize}
+The values are 0,159,0,255 after a Reset\\
 Reads do not advance the clip position
 
 The tilemap display surface extends 32 pixels around the central
@@ -234,46 +212,46 @@ window indicates the portion of the tilemap display that is
 non-transparent and its indicated extent is inclusive; it will extend
 from X1*2 to X2*2+1 horizontally and from Y1 to Y2 vertically.
 
-\begin{verbatim}
-(R/W) $2F (47) => Tilemap Offset X MSB
-bits 7-2 = Reserved, must be 0
-bits 1-0 = MSB X Offset
-\end{verbatim}
-
+\index{scroll offset}
+(R/W) \$2F (47) $\Rightarrow$ Tilemap Offset X MSB
+\begin{itemize}
+\item[] bits 7-2 = Reserved, must be 0
+\item[] bits 1-0 = MSB X Offset
+\end{itemize}
 Meaningful Range is 0-319 in 40 char mode, 0-639 in 80 char mode
 
-\begin{verbatim}
-(R/W) $30 (48) => Tilemap Offset X LSB
-  bits 7-0 = LSB X Offset
-\end{verbatim}
-
+(R/W) \$30 (48) $\Rightarrow$ Tilemap Offset X LSB
+\begin{itemize}
+\item[] bits 7-0 = LSB X Offset
+\end{itemize}
 Meaningful range is 0-319 in 40 char mode, 0-639 in 80 char mode
 
-\begin{verbatim}
-(R/W) $31 (49) => Tilemap Offset Y
-  bits 7-0 = Y Offset (0-191)
-\end{verbatim}
-
+(R/W) \$31 (49) $\Rightarrow$ Tilemap Offset Y
+\begin{itemize}
+\item[] bits 7-0 = Y Offset (0-191)
+\end{itemize}
 These are scroll registers for scrolling the tilemap area. As with
 other layers, the scroll region wraps.
 
-\begin{verbatim}
-(R/W) $68 (104) => ULA Control
-  bit 7    = 1 to disable ULA output
-  bit 6    = 0 to select the ULA colour for blending in SLU modes 6 & 7
-           = 1 to select the ULA/tilemap mix for blending in SLU modes 6 & 7
-  bits 5-1 = Reserved must be 0
-  bit 0    = 1 to enable stencil mode when both the ULA and tilemap are enabled
-            (if either are transparent the result is transparent otherwise the
-             result is a logical AND of both colours)
-\end{verbatim}
+(R/W) \$68 (104) $\Rightarrow$ ULA Control
+\begin{itemize}
+\item[] bit 7    = 1 to disable ULA output
+\item[] bit 6 = 0 to select the ULA colour for blending in SLU modes 6
+  \& 7\\
+  = 1 to select the ULA/tilemap mix for blending in SLU modes 6 \& 7
+\item[] bits 5-1 = Reserved must be 0
+\item[] bit 0 = 1 to enable stencil mode when both the ULA and tilemap
+  are enabled\\
+  (if either are transparent the result is transparent otherwise the
+  result is a logical AND of both colours)
+\end{itemize}
 
 Bit 0 can be set to choose stencil mode for the combined output of the
 ULA and tilemap. Bit 6 determines what colour is used in SLU modes 6 \&
 7 where the ULA is combined with Layer 2 to generate highlighting
 effects.
 
-Changes Since 2.00.26
+\paragraph{Changes Since 2.00.26}
 
 \begin{enumerate}
 \item 512 Tile Mode. In 2.00.26, the 512 tile mode was automatically
@@ -290,7 +268,7 @@ Changes Since 2.00.26
   display over the ULA when in 512 mode.
 \end{enumerate}
 
-Future Direction
+\paragraph{Future Direction}
 
 The following compatible changes may be applied at a later date:
 

@@ -1,8 +1,14 @@
 \documentclass[11pt]{book}
 \usepackage{csvsimple}
 \usepackage{booktabs}
-\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+%\usepackage{enumerate}
 \usepackage{graphicx}
+\usepackage{makeidx}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlist{nosep}
+\makeindex
 
 \title{ZX Spectrum Next Programming Notes}
 \date{\today}
@@ -22,9 +28,12 @@
 \include{storage}
 \appendix
 \include{ports/ports}
-\include{registers}
+\include{registers/registers}
 \include{opcode-mnemonic}
 \include{mnemonic-opcode}
 \include{memory_map}
 \include{file_formats}
+\listoffigures
+\listoftables
+\printindex
 \end{document}

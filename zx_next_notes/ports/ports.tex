@@ -8,42 +8,35 @@ February 25, 2019  Phoebus Dokos
 \end{table}
 
 \section{8-bit}
-Port \$0f (15) DAC A
-
+Port \$0f (15) DAC A\\
 Disable with bit 3 of Nextreg \$08
 
-Port \$1f (31) Kempston Joystick 1
-
+Port \$1f (31) Kempston Joystick 1\\
 Disable with Nextreg \$05
 
-Port \$1f (31) DAC B
-
+Port \$1f (31) DAC B\\
 Disable with bit 3 of Nextreg \$08
 
 Port \$1f (31) Multiface 1 Disable
 
-Port \$37 (55) Kempston Joystick 2
-
+Port \$37 (55) Kempston Joystick 2\\
 Disable with Nextreg \$05
 
-Port \$3f (63) DAC A
-
+Port \$3f (63) DAC A\\
 Disable with bit 3 of Nextreg \$08
 
 Port \$3f (63) Multiface 128 Disable
 
 Port \$3f (63) Multiface +3 Enable
 
-Port \$4f (79) DAC C
-
+Port \$4f (79) DAC C\\
 Disable with bit 3 of Nextreg \$08
 
 Port \$57 (87) Sprite Attributes
 
 Port \$5b (91) Sprite Pattern
 
-Port \$5f (95) DAC D
-
+Port \$5f (95) DAC D\\
 Disable with bit 3 of Nextreg \$08
 
 Port \$6b (107) zxnDMA
@@ -54,36 +47,28 @@ Port \$bf (191) Multiface 128 Enable
 
 Port \$bf (191) Multiface +3 Disable
 
-Port \$df (223) DAC A/C SpecDrum
-
+Port \$df (223) DAC A/C SpecDrum\\
 Disable with bit 3 of Nextreg \$08
 
-Port \$e3 (227) divMMC Control
-
+Port \$e3 (227) divMMC Control\\
 Disable with bit 2 of Nextreg \$09
 
-Port \$e7 (231) SPI /CS (SD card, flash, rpi)
-
+Port \$e7 (231) SPI /CS (SD card, flash, rpi)\\
 Disable with bit 2 of Nextreg \$09
 
-Port \$eb (235) SPI /DATA (SD card, flash, rpi)
-
+Port \$eb (235) SPI /DATA (SD card, flash, rpi)\\
 Disable with bit 2 of Nextreg \$09
 
-Port \$f1 (241) DAC A (precedence over \$xxfd)
-
+Port \$f1 (241) DAC A (precedence over \$xxfd)\\
 Disable with bit 3 of Nextreg \$08
 
-Port \$f3 (243) DAC B
-
+Port \$f3 (243) DAC B\\
 Disable with bit 3 of Nextreg \$08
 
-Port \$f9 (249) DAC C (precedence over \$xxfd)
-
+Port \$f9 (249) DAC C (precedence over \$xxfd)\\
 Disable with bit 3 of Nextreg \$08
 
-Port \$fb (251) DAC D
-
+Port \$fb (251) DAC D\\
 Disable with bit 3 of Nextreg \$08
 
 Port \$fe (254) ULA
@@ -94,8 +79,7 @@ Port \$fe (254) ULA
   \item[] bits 0-2: border colour
 \end{itemize}
 
-Port \$ff (255) Timex Sinclair/floating bus
-
+Port \$ff (255) Timex Sinclair/floating bus\\
 Disable with bit 2 to Nextreg \$08
 \begin{itemize}
 \item[] bit 7: memory paging (not on Next)
@@ -127,26 +111,20 @@ Port \$133b (4923) UART tx (esp)
 
 Port \$143b (5179) UART rx (esp)
 
-Port \$243b (9275) Next Register Select
-
+Port \$243b (9275) Next Register Select\\
 Write-only and is used to set the registry number, listed below.
 
-Port \$253b (9531) Next Register Data/Value
-
+Port \$253b (9531) Next Register Data/Value\\
 Used to access the registry value, the registry being either only a
 few bits or all bits only read, write or read/write, depending on the
-registry number set.
-
+registry number set.\\
 The nextreg instruction can be used to control Spectrum Next registers
 more directly.
 
-Port \$303b (12347) Sprite Slot/Flags
-
-Write: Sprite Slot Select
-
+Port \$303b (12347) Sprite Slot/Flags\\
+Write: Sprite Slot Select\\
 select sprite slot for Sprite Attribute and Sprite Pattern ports which
-independently auto-increment
-
+independently auto-increment\\
 Read: Sprite status
 \begin{itemize}
 \item[] bits 2-7: reserved
@@ -154,8 +132,7 @@ Read: Sprite status
 \item[] bit 0: Collision flag
 \end{itemize}
 
-Port \$7ffd (32765) ZX Spectrum 128 Memory
-
+Port \$7ffd (32765) ZX Spectrum 128 Memory\\
 Disable with bit 5 port \$7ffd
 \begin{itemize}
 \item[] bits 6-7: reserved
@@ -174,8 +151,7 @@ Port \$7ffe (32766) Keyboard 8 (read only)
 \item[] bit 4: Space
 \end{itemize}
 
-Port \$bffd (49149) AY (TurboSound Next) Data
-
+Port \$bffd (49149) AY (TurboSound Next) Data\\
 Writes to selected register of selected sound chip
 
 Port \$BFFE (49150) Keyboard 7 (read only)
@@ -187,10 +163,8 @@ Port \$BFFE (49150) Keyboard 7 (read only)
 \item[] bit 4: Enter
 \end{itemize}
 
-Port \$dffd (57341) ZX Spectrum 128 Memory (precedence over AY)
-
-Disble with bit 5 port \$7ffd
-
+Port \$dffd (57341) ZX Spectrum 128 Memory (precedence over AY)\\
+Disable with bit 5 port \$7ffd\\
 See Port \$7ffd
 
 Port \$dffe (57342) Keyboard 6 (read only)
@@ -220,12 +194,10 @@ Port \$f7fe (63486) Keyboard 4 (read only)
 \item[] bit 4: ‘1’
 \end{itemize}
 
-Port \$fadf (64223) Kempston Mouse Wheel/Buttons
+Port \$fadf (64223) Kempston Mouse Wheel/Buttons\\
+Disable with bit 2 of Nextreg \%09
 
-Diable with bit 2 of Nextreg \%09
-
-Port \$fbdf (64479) Kempston Mouse X
-
+Port \$fbdf (64479) Kempston Mouse X\\
 Disable with bit 2 of Nextreg \$09
 
 Port \$fbfe (64510) Keyboard 3 (read only)
@@ -255,16 +227,12 @@ Port \$fefe (65278) Keyboard 1 (read only)
 \item[] bit 4: Caps Shift
 \end{itemize}
 
-Port \$fbdf (65503) Kempston Mouse Y
-
-Disable with bit 2 of Nextreg \$09
-
+Port \$fbdf (65503) Kempston Mouse Y\\
+Disable with bit 2 of Nextreg \$09\\
 Kempston Mouse Y coordinate (0-191)
 
-Port \$fffd (65533) AY (Turbo Sound Next) Register
-
-Select active sound chip/sound chip register
-
+Port \$fffd (65533) AY (Turbo Sound Next) Register\\
+Select active sound chip/sound chip register\\
 Select Chip
 \begin{itemize}
 \item[] bit 7: 1=select chip

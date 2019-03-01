@@ -167,6 +167,7 @@ palette, described below. The default palette will not likely generate
 suitable colours for 4-bit sprites.
 
 \subsection{Sprite Palette}
+\index{palette}
 Each pixel of a sprite image is 8-bit for 8-bit patterns or 4-bit for
 4-bit patterns. The pixel value is known as a pixel colour index. This
 colour index is combined with the sprite’s palette offset. The palette
@@ -234,21 +235,14 @@ Sprite Attribute 2
 \begin{verbatim}
 P P P P XM YM R X8/PR
 \end{verbatim}
-P = 4-bit Palette Offset
-
-XM = 1 to mirror the sprite image horizontally
-
-YM = 1 to mirror the sprite image vertically
-
-R = 1 to rotate the sprite image 90 degrees clockwise
-
-X8 = Ninth bit of the sprite’s X coordinate
-
+P = 4-bit Palette Offset\\
+XM = 1 to mirror the sprite image horizontally\\
+YM = 1 to mirror the sprite image vertically\\
+R = 1 to rotate the sprite image 90 degrees clockwise\\
+X8 = Ninth bit of the sprite’s X coordinate\\
 PR = 1 to indicate P is relative to the anchor’s palette offset
-(relative sprites only)
-
-Rotation is applied before mirroring.
-
+(relative sprites only)\\
+Rotation is applied before mirroring.\\
 Relative sprites, described below, replace X8 with PR.
 
 \begin{figure}\centering
@@ -260,17 +254,13 @@ Sprite Attribute 3
 \begin{verbatim}
 V E N5 N4 N3 N2 N1 N0
 \end{verbatim}
-V = 1 to make the sprite visible
-
-E = 1 to enable attribute byte 4
-
-N = Sprite pattern to use 0-63
-
+V = 1 to make the sprite visible\\
+E = 1 to enable attribute byte 4\\
+N = Sprite pattern to use 0-63\\
 If E=0, the sprite is fully described by sprite attributes 0-3. The
 sprite pattern is an 8-bit one identified by pattern N=0-63. The
 sprite is an anchor and cannot be made relative. The sprite is
-displayed as if sprite attribute 4 is zero.
-
+displayed as if sprite attribute 4 is zero.\\
 If E=1, the sprite is further described by sprite attribute 4.
 
 Sprite Attribute 4
@@ -279,20 +269,14 @@ Sprite Attribute 4
 \begin{verbatim}
 H N6 T X X Y Y Y8
 \end{verbatim}
-H = 1 if the sprite pattern is 4-bit
-
-N6 = 7th pattern bit if the sprite pattern is 4-bit
-
-T = 0 if relative sprites are composite type else 1 for unified type
-
+H = 1 if the sprite pattern is 4-bit\\
+N6 = 7th pattern bit if the sprite pattern is 4-bit\\
+T = 0 if relative sprites are composite type else 1 for unified type\\
 XX = Magnification in the X direction (00 = $1\times$, 01 = $2\times$,
-10 = $4\times4$, 11 = $8\times$)
-
+10 = $4\times4$, 11 = $8\times$)\\
 YY = Magnification in the Y direction (00 = $1\times$, 01 = $2\times$,
-10 = $4\times$, 11 = $8\times$)
-
-Y8 = Ninth bit of the sprite’s Y coordinate
-
+10 = $4\times$, 11 = $8\times$)\\
+Y8 = Ninth bit of the sprite’s Y coordinate\\
 {H,N6} must not equal {0,1} as this combination is used to indicate a
 relative sprite.
 
@@ -300,14 +284,11 @@ relative sprite.
 \begin{verbatim}
 0 1 N6 X X Y Y PO
 \end{verbatim}
-N6 = 7th pattern bit if the sprite pattern is 4-bit
-
+N6 = 7th pattern bit if the sprite pattern is 4-bit\\
 XX = Magnification in the X direction (00 = $1\times$, 01 = $2\times$,
-10 = $4\times$, 11 = $8\times$)
-
+10 = $4\times$, 11 = $8\times$)\\
 YY = Magnification in the Y direction (00 = $1\times$, 01 = $2\times$,
-10 = $4\times$, 11 = $8\times$)
-
+10 = $4\times$, 11 = $8\times$)\\
 PO = 1 to indicate the sprite pattern number is relative to the
 anchor’s
 
@@ -315,8 +296,7 @@ anchor’s
 \begin{verbatim}
 0 1 N6 0 0 0 0 PO
 \end{verbatim}
-N6 = 7th pattern bit if the sprite pattern is 4-bit
-
+N6 = 7th pattern bit if the sprite pattern is 4-bit\\
 PO = 1 to indicate the sprite pattern number is relative to the
 anchor’s
 \end{enumerate}
@@ -357,8 +337,7 @@ Sprites” and “Unified Sprites”. The type is determined by the anchor
 in the T bit of sprite attribute 4.
 
 \begin{enumerate}[A.]
-\item Composite Sprites
-
+\item Composite Sprites\\
   The sprite module records the following information from the anchor:
   \begin{itemize}
   \item Anchor.visible
@@ -469,10 +448,8 @@ Port \$303B (R)
 \begin{verbatim}
 0 0 0 0 0 0 M C
 \end{verbatim}
-M = 1 if the maximum number of sprites per line was exceeded
-
-C = 1 if any two displayed sprites collide on screen
-
+M = 1 if the maximum number of sprites per line was exceeded\\
+C = 1 if any two displayed sprites collide on screen\\
 Reading this port automatically resets the M and C bits.
 
 Besides the i/o interface, there is a nextreg interface to sprite
@@ -480,8 +457,7 @@ attributes. The nextreg interface allows the copper to manipulate
 sprites and grants the program random access to a sprite’s individual
 attribute bytes.
 
-(R/W) \$34 (52) $\Rightarrow$ Sprite Number
-
+(R/W) \$34 (52) $\Rightarrow$ Sprite Number\\
 If the sprite number is in lockstep with io port \$303B (nextreg \$09
 bit 4 is set)
 \begin{itemize}
@@ -497,8 +473,7 @@ Otherwise
 \item[] bit 7 = Ignored
 \item[] bits 6-0 = Sprite number 0-127
 \end{itemize}
-Selects which sprite has its attributes connected to the following registers.
-
+Selects which sprite has its attributes connected to the following registers.\\
 Bit 7 always reads back as zero.
 
 This nextreg can operate in two modes.
@@ -515,8 +490,7 @@ sprite selected for the i/o interface. This independence allows the
 copper, for example, to manipulate different sprites than the cpu
 using the i/o interface.
 
-(W) \$35 (53) $\Rightarrow$ Sprite Attribute 0
-
+(W) \$35 (53) $\Rightarrow$ Sprite Attribute 0\\
 (W) \$75 (117) $\Rightarrow$ Sprite Attribute 0 with automatic post
 increment of Sprite Number
 \begin{itemize}
@@ -525,8 +499,7 @@ increment of Sprite Number
 A write to nextreg \$75 also increases the selected sprite in nextreg
 \$34.
 
-(W) \$36 (54) $\Rightarrow$ Sprite Attribute 1
-
+(W) \$36 (54) $\Rightarrow$ Sprite Attribute 1\\
 (W) \$76 (118) $\Rightarrow$ Sprite Attribute 1 with automatic post
 increment of Sprite Number
 \begin{itemize}
@@ -535,8 +508,7 @@ increment of Sprite Number
 A write to nextreg \$76 also increases the selected sprite in nextreg
 \$34.
 
-(W) \$37 (55) $\Rightarrow$ Sprite Attribute 2
-
+(W) \$37 (55) $\Rightarrow$ Sprite Attribute 2\\
 (W) \$77 (119) $\Rightarrow$ Sprite Attribute 2 with automatic post
 increment of Sprite Number
 \begin{itemize}
@@ -550,8 +522,7 @@ increment of Sprite Number
 A write to nextreg \$77 also increases the selected sprite in nextreg
 \$34.
 
-(W) \$38 (56) $\Rightarrow$ Sprite Attribute 3
-
+(W) \$38 (56) $\Rightarrow$ Sprite Attribute 3\\
 (W) \$78 (120) $\Rightarrow$ Sprite Attribute 3 with automatic post
 increment of Sprite Number
 \begin{itemize}
@@ -562,11 +533,9 @@ increment of Sprite Number
 A write to nextreg \$78 also increases the selected sprite in nextreg
 \$34.
 
-(W) \$39 (57) $\Rightarrow$ Sprite Attribute 4
-
+(W) \$39 (57) $\Rightarrow$ Sprite Attribute 4\\
 (W) \$79 (121) $\Rightarrow$ Sprite Attribute 4 with automatic post
-increment of Sprite Number
-
+increment of Sprite Number\\
 4-bit Sprites
 \begin{itemize}
 \item[] bit 7 = H (1 = sprite uses 4-bit patterns)
@@ -579,8 +548,7 @@ increment of Sprite Number
 \item[] bit 0 = MSB of Y coordinate
 \end{itemize}
 A relative mode is enabled if H,N6 = 01. The byte format for relative
-sprites is described above.
-
+sprites is described above.\\
 A write to nextreg \$79 also increases the selected sprite in nextreg
 \$34.
 
@@ -605,7 +573,6 @@ The following nextreg are also of interest for sprites.
   \item[] 11 = scanlines 25\%
   \end{itemize}
 \end{itemize}
-
 Bit 4 determines if the i/o interface and nextreg interface operate in lockstep.
 
 (R/W) \$15 (21) $\Rightarrow$ Sprite and Layers system
@@ -616,8 +583,7 @@ Bit 4 determines if the i/o interface and nextreg interface operate in lockstep.
   on top)
 \item[] bit 5 = Enable sprite clipping in over border mode (1 =
   enabled)
-\item[] bits 4-2 = set layers priorities:
-
+\item[] bits 4-2 = set layers priorities:\\
 Reset default is 000, sprites over the Layer 2, over the ULA graphics
 \begin{itemize}
 \item[] 000 – S L U
@@ -633,13 +599,10 @@ Reset default is 000, sprites over the Layer 2, over the ULA graphics
 \item[] bit 1 = Over border (1 = yes)(Back to 0 after a reset)
 \item[] bit 0 = Sprites visible (1 = visible)(Back to 0 after a reset)
 \end{itemize}
-
-Bit 0 must be set for sprites to be visible.
-
+Bit 0 must be set for sprites to be visible.\\
 Bit 1 set allows sprites to be visible in the border area. When this
 bit is reset, sprites will not display outside the $256\times192$ area
-of the ULA display.
-
+of the ULA display.\\
 Bit 5 set enables clipping when sprites are visible in the border
 area. If reset, no clipping is applied and sprites will be visible in
 the full $320\times256$ space.
@@ -651,6 +614,7 @@ is topmost.
 Bits 4:2 determine layer priority and how sprites overlay or are
 obscured by other layers.
 
+\index{clip window}
 (R/W) \$19 (25) $\Rightarrow$ Clip Window Sprites
 \begin{itemize}
 \item[] bits 7-0 = Cood. of the clip window
@@ -661,8 +625,7 @@ obscured by other layers.
   \item[] 4rd write – Y2 position
   \end{itemize}
 \end{itemize}
-The values are 0,255,0,191 after a Reset
-
+The values are 0,255,0,191 after a Reset\\
 Reads do not advance the clip position
 
 When the clip window is enabled for sprites in “over border” mode, the
@@ -687,101 +650,14 @@ corresponding to the top left corner of the ULA screen.
 \item[] bit 1 – reset the sprite clip index.
 \item[] bit 0 – reset the Layer 2 clip index.
 \end{itemize}
-
 Can be used to reset nextreg \$19.
 
-(R/W) \$43 (67) $\Rightarrow$ Palette Control
-\begin{itemize}
-\item[] bit 7 = ‘1’ to disable palette write auto-increment.
-\item[] bits 6-4 = Select palette for reading or writing:
-  \begin{itemize}
-  \item[] 000 = ULA first palette
-  \item[] 100 = ULA second palette
-  \item[] 001 = Layer 2 first palette
-  \item[] 101 = Layer 2 second palette
-  \item[] 010 = Sprites first palette
-  \item[] 110 = Sprites second palette
-  \item[] 011 = Tilemap first palette
-  \item[] 111 = Tilemap second palette
-  \end{itemize}
-\item[] bit 3 = Select Sprites palette (0 = first palette, 1 = second
-  palette)
-\item[] bit 2 = Select Layer 2 palette (0 = first palette, 1 = second
-  palette)
-\item[] bit 1 = Select ULA palette (0 = first palette, 1 = second
-  palette)
-\item[] bit 0 = Enabe ULANext mode if 1. (0 after a reset)
-\end{itemize}
+See palette section on sprite palettes
 
-Sprites have two associated palettes which can be selected in this nextreg.
-
-(R/W) \$40 (64) $\Rightarrow$ Palette Index
-\begin{itemize}
-\item[] bits 7-0 = Select the palette index to change the associated
-  colour.
-\end{itemize}
-For the ULA only, INKs are mapped to indices 0-7, Bright INKS to
-indices 8-15, PAPERs to indices 16-23 and Bright PAPERs to indices
-24-31.
-
-In ULANext mode, INKs come from a subset of indices 0-127 and PAPERs
-come from a subset of indices 128-255. The number of active indices
-depends on the number of attribute bits assigned to INK and PAPER out
-of the attribute byte.  The ULA always takes border colour from paper.
-
-Select the starting palette index if writing the sprite palette.
-
-Palette values can be written in either 8-bit or 9-bit form:
-
-(R/W) \$41 (65) $\Rightarrow$ Palette Value (8 bit colour)
-\begin{itemize}
-\item[] bits 7-0 = Colour for the palette index selected by the register \$40.
-\end{itemize}
-(Format is RRRGGGBB – the lower blue bit of the 9-bit colour will be a
-logical OR of blue bits 1 and 0 of this 8-bit value.)
-
-After the write, the palette index is auto-incremented to the next
-index if the auto-increment is enabled at reg \$43. Reads do not
-auto-increment.
-
-(R/W) \$44 (68) $\Rightarrow$ Palette Value (9 bit colour)
-
-Two consecutive writes are needed to write the 9 bit colour
-\begin{itemize}
-\item[] 1st write:
-  \begin{itemize}
-  \item[] bits 7-0 = RRRGGGBB
-  \end{itemize}
-\item[] 2nd write.
-  If writing a L2 palette
-  \begin{itemize}
-  \item[] bit 7 = 1 for L2 priority colour, 0 for normal
-
-    Priority colour will always be on top even on an SLU priority
-    arrangement. If you need the exact same colour on priority and non
-    priority locations you will need to program the same colour twice
-    changing bit 7 to 0 for the second colour
-  \item[] bits 6-1 = Reserved, must be 0
-  \item[] bit 0 = lsb B
-  \end{itemize}
-  
-  If writing another palette
-  \begin{itemize}
-  \item[] bits 7-1 = Reserved, must be 0
-  \item[] bit 0 = lsb B
-  \end{itemize}
-\end{itemize}
-
-
-After the two consecutives writes the palette index is
-auto-incremented if the auto-increment is enabled by reg \$43.
-
-Reads only return the 2nd byte and do not auto-increment.
-
+\index{transparency}
 (R/W) \$4B (75) $\Rightarrow$ Transparency index for sprites
 \begin{itemize}
 \item[] bits 7-0 = Set the index value (\$E3 after reset)
 \end{itemize}
-For 4-bit sprites only the bottom 4-bits are relevant.
-
+For 4-bit sprites only the bottom 4-bits are relevant.\\
 Determines the transparent colour index used for sprites.
