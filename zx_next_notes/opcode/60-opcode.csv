@@ -1,0 +1,17 @@
+Op,Z80,8080,Sz,T,Op,Z80,8080,Sz,T
+{\$60},{ld h,b},{mov h,b},1,4,{\$70},{ld (hl),b},{mov m,b},1,4
+{\$61},{ld h,c},{mov h,c},1,4,{\$71},{ld (hl),c},{mov m,c},1,4
+{\$62},{ld h,d},{mov h,d},1,4,{\$72},{ld (hl),d},{mov m,d},1,4
+{\$63},{ld h,e},{mov h,e},1,4,{\$73},{ld (hl),e},{mov m,e},1,4
+{\$64},{ld h,h},{mov h,h},1,4,{\$74},{ld (hl),h},{mov m,h},1,4
+{\$65},{ld h,l},{mov h,l},1,4,{\$75},{ld (hl),l},{mov m,l},1,4
+{\$66},{ld h,(hl)},{mov h,m},1,7,{\$76},halt,halt,1,4+
+{\$67},{ld h,a},{mov h,a},1,4,{\$77},{ld (hl),a},{mov m,a},1,7
+{\$68},{ld l,b},{mov l,b},1,4,{\$78},{ld a,b},{mov a,b},1,4
+{\$69},{ld l,c},{mov l,c},1,4,{\$79},{ld a,c},{mov a,c},1,4
+{\$6A},{ld l,d},{mov l,d},1,4,{\$7A},{ld a,d},{mov a,d},1,4
+{\$6B},{ld l,e},{mov l,e},1,4,{\$7B},{ld a,e},{mov a,e},1,4
+{\$6C},{ld l,h},{mov l,h},1,4,{\$7C},{ld a,h},{mov a,h},1,4
+{\$6D},{ld l,l},{mov l,l},1,4,{\$7D},{ld a,l},{mov a,l},1,4
+{\$6E},{ld l,(hl)},{mov l,m},1,7,{\$7E},{ld a,(hl)},{mov a,m},1,7
+{\$6F},{ld l,a},{mov l,a},1,4,{\$7F},{ld a,a},{mov a,a},1,4

@@ -1,0 +1,17 @@
+Opcode,Mnemonic,Sz,T,Opcode,Mnemonic,Sz,T
+{\$CB20},sla b,2,8,{\$CB30},sll b,2,8
+{\$CB21},sla c,2,8,{\$CB31},sll c,2,8
+{\$CB22},sla d,2,8,{\$CB32},sll d,2,8
+{\$CB23},sla e,2,8,{\$CB33},sll e,2,8
+{\$CB24},sla h,2,8,{\$CB34},sll h,2,8
+{\$CB25},sla l,2,8,{\$CB35},sll l,2,8
+{\$CB26},sla (hl),2,15,{\$CB36},sll (hl),2,15
+{\$CB27},sla a,2,8,{\$CB37},sll a,2,8
+{\$CB28},sra b,2,8,{\$CB38},srl b,2,8
+{\$CB29},sra c,2,8,{\$CB39},srl c,2,8
+{\$CB2A},sra d,2,8,{\$CB3A},srl d,2,8
+{\$CB2B},sra e,2,8,{\$CB3B},srl e,2,8
+{\$CB2C},sra h,2,8,{\$CB3C},srl h,2,8
+{\$CB2D},sra l,2,8,{\$CB3D},srl l,2,8
+{\$CB2E},sra (hl),2,15,{\$CB3E},srl (hl),2,15
+{\$CB2F},sra a,2,8,{\$CB3F},srl a,2,8

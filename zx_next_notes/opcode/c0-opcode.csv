@@ -1,0 +1,17 @@
+Op,Z80,8080,Sz,T,Op,Z80,8080,Sz,T
+{\$C0},ret nz,rnz,1,11/5,{\$D0},ret nc,rnc,1,11/5
+{\$C1},pop bc,pop b,1,10,{\$D1},pop de,pop d,1,10
+{\$C2},{jp nz,xx},jnz xx,3,10,{\$D2},{jp nc,xx},jnc xx,3,10
+{\$C3},jp xx,jmp xx,3,10,{\$D3},{out (x),a},out x,2,11
+{\$C4},{call nz,xx},cnz xx,3,17/10,{\$D4},{call nc,xx},cnc xx,3,17/10
+{\$C5},push bc,push b,1,11,{\$D5},push de,push d,1,11
+{\$C6},{add a,x},adi x,2,7,{\$D6},sub x,sui x,2,7
+{\$C7},rst 00h,rst 0,1,11,{\$D7},rst 10h,rst 2,1,11
+{\$C8},ret z,rz,1,11/5,{\$D8},ret c,rc,1,11/5
+{\$C9},ret,ret,1,10,{\$D9},exx,--,1,4
+{\$CA},{jp z,xx},jz xx,3,10,{\$DA},{jp c,xx},jc xx,3,10
+{\$CB},xxBITxx,--,+1,--,{\$DB},{in a,(x)},in x,2,11
+{\$CC},{call z,xx},cz xx,3,17/10,{\$DC},{call c,xx},cc xx,3,17/11
+{\$CD},call xx,call xx,3,17,{\$DD},xxIXxx,--,+1,--
+{\$CE},{adc a,x},aci x,2,7,{\$DE},{sbc a,x},sbi x,2,7
+{\$CF},rst 08h,rst 1,1,11,{\$DF},rst 18h,rst 3,1,11

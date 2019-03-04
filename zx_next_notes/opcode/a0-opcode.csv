@@ -1,0 +1,17 @@
+Op,Z80,8080,Sz,T,Op,Z80,8080,Sz,T
+{\$A0},and b,ana b,1,4,{\$B0},or b,ora b,1,4
+{\$A1},and c,ana c,1,4,{\$B1},or c,ora c,1,4
+{\$A2},and d,ana d,1,4,{\$B2},or d,ora d,1,4
+{\$A3},and e,ana e,1,4,{\$B3},or e,ora e,1,4
+{\$A4},and h,ana h,1,4,{\$B4},or h,ora h,1,4
+{\$A5},and l,ana l,1,4,{\$B5},or l,ora l,1,4
+{\$A6},and (hl),ana m,1,7,{\$B6},or (hl),ora m,1,7
+{\$A7},and a,ana a,1,4,{\$B7},or a,ora a,1,4
+{\$A8},xor b,xra b,1,4,{\$B8},cp b,cmp b,1,4
+{\$A9},xor c,xra c,1,4,{\$B9},cp c,cmp c,1,4
+{\$AA},xor d,xra d,1,4,{\$BA},cp d,cmp d,1,4
+{\$AB},xor e,xra e,1,4,{\$BB},cp e,cmp e,1,4
+{\$AC},xor h,xra h,1,4,{\$BC},cp h,cmp h,1,4
+{\$AD},xor l,xra l,1,4,{\$BD},cp l,cmp l,1,4
+{\$AE},xor (hl),xra m,1,7,{\$BE},cp (hl),cmp m,1,7
+{\$AF},xor a,xra a,1,4,{\$BF},cp a,cmp a,1,4

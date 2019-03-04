@@ -1,0 +1,17 @@
+Opcode,Mnemonic,Bytes,Timing,Opcode,Mnemonic,Bytes,Timing
+{\$ED50},{in d,(c)},2,12,{\$ED67},rrd,2,18
+{\$ED51},{out (c),d},2,12,{\$ED68},{in l,(c)},2,12
+{\$ED52},{sbc hl,de},2,15,{\$ED69},{out (c),l},2,12
+{\$ED53},{ld (xx),de},4,20,{\$ED6A},{adc hl,hl},2,15
+{\$ED56},im 1,2,8,{\$ED6B},{ld hl,(xx)},4,20
+{\$ED57},{ld a,i},2,9,{\$ED6F},rld,2,18
+{\$ED58},{in e,(c)},2,12,{\$ED70},{in f,(c)},2,12
+{\$ED59},{out (c),e},2,12,{\$ED71},{out (c),f},2,12
+{\$ED5A },{adc hl,de},2,15,{\$ED72},{sbc hl,sp},2,15
+{\$ED5B},{ld de,(xx)},4,20,{\$ED73},{ld (xx),sp},4,20
+{\$ED5E},im 2,2,8,{\$ED78},{in a,(c)},2,12
+{\$ED5F},{ld a,r},2,9,{\$ED79},{out (c),a},2,12
+{\$ED60},{in h,(c)},2,12,{\$ED7A},{adc hl,sp},2,15
+{\$ED61},{out (c),h},2,12,{\$ED7B},{ld sp,(xx)},4,20
+{\$ED62},{sbc hl,hl},2,15,{\$ED8A},push xx,4,*
+{\$ED63},{ld (xx),hl},4,,,,,

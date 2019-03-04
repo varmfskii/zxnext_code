@@ -1,0 +1,17 @@
+Opcode,Mnemonic,Sz,T,Opcode,Mnemonic,Sz,T
+{\$CB00},rlc b,2,8,{\$CB10},rl b,2,8
+{\$CB01},rlc c,2,8,{\$CB11},rl c,2,8
+{\$CB02},rlc d,2,8,{\$CB12},rl d,2,8
+{\$CB03},rlc e,2,8,{\$CB13},rl e,2,8
+{\$CB04},rlc h,2,8,{\$CB14},rl h,2,8
+{\$CB05},rlc l,2,8,{\$CB15},rl l,2,8
+{\$CB06},rlc (hl),2,15,{\$CB16},rl (hl),2,15
+{\$CB07},rlc a,2,8,{\$CB17},rl a,2,8
+{\$CB08},rrc b,2,8,{\$CB18},rr b,2,8
+{\$CB09},rrc c,2,8,{\$CB19},rr c,2,8
+{\$CB0A},rrc d,2,8,{\$CB1A},rr d,2,8
+{\$CB0B},rrc e,2,8,{\$CB1B},rr e,2,8
+{\$CB0C},rrc h,2,8,{\$CB1C},rr h,2,8
+{\$CB0D},rrc l,2,8,{\$CB1D},rr l,2,8
+{\$CB0E},rrc (hl),2,15,{\$CB1E},rr (hl),2,15
+{\$CB0F},rrc a,2,8,{\$CB1F},rr a,2,8

@@ -1,0 +1,16 @@
+Opcode,Mnemonic,Sz,T,Opcode,Mnemonic,Sz,T
+{\$FD09},{add iy,bc},2,15,{\$FD35},dec (iy+x),3,23
+{\$FD19},{add iy,de},2,15,{\$FD36},{ld (iy+x),x},5,19
+{\$FD21},{ld iy,xx},4,14,{\$FD39},{add iy,sp},2,15
+{\$FD22},{ld (xx),iy},4,20,{\$FD44},{ld b,iyh},2,8
+{\$FD23},inc iy,2,10,{\$FD45},{ld b,iyl},2,8
+{\$FD24},inc iyh,2,8,{\$FD46},{ld b,(iy+x)},2,19
+{\$FD25},dec iyh,2,8,{\$FD4C},{ld c,iyh},2,8
+{\$FD26},{ld iyh,x},3,11,{\$FD4D},{ld c,iyl},2,8
+{\$FD29},{add iy,iy},2,15,{\$FD4E},{ld c,(iy+x)},3,19
+{\$FD2A},{ld iy,(xx)},4,20,{\$FD54},{ld d,iyh},2,8
+{\$FD2B},dec iy,2,10,{\$FD55},{ld d,iyl},2,8
+{\$FD2C},inc iyl,2,8,{\$FD56},{ld d,(iy+x)},3,19
+{\$FD2D},dec iyl,2,8,{\$FD5C},{ld e,iyh},2,8
+{\$FD2E},{ld iyl,x},4,11,{\$FD5D},{ld e,iyl},2,8
+{\$FD34},inc (iy+x),3,23,{\$FD5E},{ld e,(iy+x)},3,19

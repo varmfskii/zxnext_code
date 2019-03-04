@@ -1,0 +1,17 @@
+Op,Z80,8080,Sz,T,Op,Z80,8080,Sz,T
+{\$00},nop,nop,1,4,{\$10},djnz x,--,2,13/8
+{\$01},{ld bc,xx},{lxi b,xx},3,10,{\$11},{ld de,xx},{lxi d,xx},3,10
+{\$02},{ld (bc),a},stax b,1,7,{\$12},{ld (de),a},stax d,1,7
+{\$03},inc bc,inx b,1,6,{\$13},inc de,inx d,1,6
+{\$04},inc b,inr b,1,4,{\$14},inc d,inr d,1,4
+{\$05},dec b,dcr b,1,4,{\$15},dec d,dcr d,1,4
+{\$06},{ld b,x},{mvi b,x},2,7,{\$16},{ld d,x},{mvi d,x},2,7
+{\$07},rlca,rlc,1,4,{\$17},rla,ral,1,4
+{\$08},{ex af,af'},--,1,4,{\$18},jr x,--,2,12
+{\$09},{add hl,bc},dad b,1,11,{\$19},{add hl,de},dad d,1,11
+{\$0A},{ld a,(bc)},ldax b,1,7,{\$1A},{ld a,(de)},ldax d,1,7
+{\$0B},dec bc,dcx b,1,6,{\$1B},dec de,dcx d,1,6
+{\$0C},inc c,icr c,1,4,{\$1C},inc e,icr e,1,4
+{\$0D},dec c,dcr c,1,4,{\$1D},dec e,dcr e,1,4
+{\$0E},{ld c,x},{mvi c,x},2,7,{\$1E},{ld e,x},{mvi e,x},2,7
+{\$0F},rrca,rrc,1,4,{\$1F},rra,rar,1,4

@@ -1,0 +1,16 @@
+Opcode,Mnemonic,Sz,T,Opcode,Mnemonic,Sz,T
+{\$DD09},{add ix,bc},2,15,{\$DD35},dec (ix+x),3,23
+{\$DD19},{add ix,de},2,15,{\$DD36},{ld (ix+x),x},5,19
+{\$DD21},{ld ix,xx},4,14,{\$DD39},{add ix,sp},2,15
+{\$DD22},{ld (xx),ix},4,20,{\$DD44},{ld b,ixh},2,8
+{\$DD23},inc ix,2,10,{\$DD45},{ld b,ixl},2,8
+{\$DD24},inc ixh,2,8,{\$DD46},{ld b,(ix+x)},2,19
+{\$DD25},dec ixh,2,8,{\$DD4C},{ld c,ixh},2,8
+{\$DD26},{ld ixh,x},3,11,{\$DD4D},{ld c,ixl},2,8
+{\$DD29},{add ix,ix},2,15,{\$DD4E},{ld c,(ix+x)},3,19
+{\$DD2A},{ld ix,(xx)},4,20,{\$DD54},{ld d,ixh},2,8
+{\$DD2B},dec ix,2,10,{\$DD55},{ld d,ixl},2,8
+{\$DD2C},inc ixl,2,8,{\$DD56},{ld d,(ix+x)},3,19
+{\$DD2D},dec ixl,2,8,{\$DD5C},{ld e,ixh},2,8
+{\$DD2E},{ld ixl,x},4,11,{\$DD5D},{ld e,ixl},2,8
+{\$DD34},inc (ix+x),3,23,{\$DD5E},{ld e,(ix+x)},3,19

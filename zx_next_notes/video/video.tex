@@ -5,7 +5,7 @@ ZX Spectrum Next video splits the display types into four categories
 controls for colour palettes, clipping, and scrolling. Some aspects of
 ULA and tilemap are tied together, but all the rest operate in a
 largely independent manner using a layering system. The ULA category
-has a number of seperate video modes that it can use. One of these
+has a number of separate video modes that it can use. One of these
 (LoRes) is incompatible with using tilemaps.
 
 \section{Video Layering and Transparency}
@@ -24,7 +24,7 @@ register \$14 (20) and defaults to \$E3. This colour ignores the state
 of the least significant blue bit, so \$E3 equates to both \$1C6 and
 \$1C7. For Sprites and Tilemaps transparency is determined by colour
 index. For Sprites this is controlled by register \$4B (with only the
-leas significant 4-bits being relevant for 16-colour Sprites). For
+least significant 4-bits being relevant for 16-colour Sprites). For
 Tilemaps, the transparency index is set by register \$4C. If all
 layers are transparent, the transparency fallback colour is
 displayed. This is set by register \$4A.
@@ -37,7 +37,7 @@ displayed. This is set by register \$4A.
 
 \section{Palette}
 \index{palette}
-Each video mode group has a pair of palettes addigned to it a primary
+Each video mode group has a pair of palettes assigned to it a primary
 and an alternate palette.
 
 (R/W) \$43 (67) $\Rightarrow$ Palette Control
@@ -57,7 +57,7 @@ and an alternate palette.
 \item[] bit 3 = Select Sprites palette (0 = first palette, 1 = second palette)
 \item[] bit 2 = Select Layer 2 palette (0 = first palette, 1 = second palette)
 \item[] bit 1 = Select ULA palette (0 = first palette, 1 = second palette)
-\item[] bit 0 = Enabe ULANext mode if 1. (0 after a reset)
+\item[] bit 0 = Enable ULANext mode if 1. (0 after a reset)
 \end{itemize}
 
 (R/W) \$40 (64) $\Rightarrow$ Palette Index
@@ -106,7 +106,7 @@ Two consecutive writes are needed to write the 9 bit colour
   \item[] bit 0 = lsb B
   \end{itemize}
 \end{itemize}
-After the two consecutives writes the palette index is
+After the two consecutive writes the palette index is
 auto-incremented if the auto-increment is enabled by reg \$43.\\
 Reads only return the 2nd byte and do not auto-increment.
 
@@ -163,7 +163,7 @@ Spectrum. It uses $256\times192$ pixels with $8\times8$ colour
 attribute areas mapped into a $32\times24$ grid. If Timex modes are
 not enabled, this and the LoRes mode are the only ones available, so
 you would switch back to this mode by writing 000xxxxx to Next
-register \$15 (21, the sprites and layers register). If anothe Timex
+register \$15 (21, the sprites and layers register). If another Timex
 mode is enabled, then this is mode 0 so you would write 0 to port \$ff
 to enable it. This is a $256\times192$ video mode. The bitmap 1 area
 is used for selection between ink and paper colours with one bit per

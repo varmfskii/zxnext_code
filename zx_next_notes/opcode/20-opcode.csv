@@ -1,0 +1,17 @@
+Op,Z80,8080,Sz,T,Op,Z80,8080,Sz,T
+{\$20},{jr nz,x},--,2,12/7,{\$30},{jr nc,x},--,2,12/7
+{\$21},{ld hl,xx},{lxi h,xx},3,10,{\$31},{ld sp,xx},{lxi sp,xx},3,10
+{\$22},{ld (xx),hl},shld xx,3,16,{\$32},{ld (xx),a},sta xx,3,13
+{\$23},inc hl,inx h,1,6,{\$33},inc sp,inx sp,1,6
+{\$24},inc h,inr h,1,4,{\$34},inc (hl),inr m,1,11
+{\$25},dec h,dcr h,1,4,{\$35},dec (hl),dcr m,1,11
+{\$26},{ld h,x},{mvi h,x},2,7,{\$36},{ld (hl),x},{mvi m,x},2,10
+{\$27},daa,daa,1,4,{\$37},scf,stc,1,4
+{\$28},{jr z,x},--,2,12/7,{\$38},{jr c,x},--,2,12/7
+{\$29},{add hl,hl},dad h,1,11,{\$39},{add hl,sp},dad sp,1,11
+{\$2A},{ld hl,(xx)},lhld xx,3,16,{\$3A},{ld a,(xx)},lda xx,3,13
+{\$2B},dec hl,dcx h,1,6,{\$3B},dec sp,dcx sp,1,6
+{\$2C},inc l,inr l,1,4,{\$3C},inc a,inr a,1,4
+{\$2D},dec l,dcr l,1,4,{\$3D},dec a,dcr a,1,4
+{\$2E},{ld l,x},{mvi l,x},2,7,{\$3E},{ld a,x},{mvi a,x},2,7
+{\$2F},cpl,cma,1,4,{\$3F},ccf,cmc,1,4

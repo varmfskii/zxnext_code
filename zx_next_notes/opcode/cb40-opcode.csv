@@ -1,0 +1,17 @@
+Opcode,Mnemonic,Sz,T,Opcode,Mnemonic,Sz,T
+{\$CB40},{bit 0,b},2,8,{\$CB50},{bit 2,b},2,8
+{\$CB41},{bit 0,c},2,8,{\$CB51},{bit 2,c},2,8
+{\$CB42},{bit 0,d},2,8,{\$CB52},{bit 2,d},2,8
+{\$CB43},{bit 0,e},2,8,{\$CB53},{bit 2,e},2,8
+{\$CB44},{bit 0,h},2,8,{\$CB54},{bit 2,h},2,8
+{\$CB45},{bit 0,l},2,8,{\$CB55},{bit 2,l},2,8
+{\$CB46},{bit 0,(hl)},2,12,{\$CB56},{bit 2,(hl)},2,12
+{\$CB47},{bit 0,a},2,8,{\$CB57},{bit 2,a},2,8
+{\$CB48},{bit 1,b},2,8,{\$CB58},{bit 3,b},2,8
+{\$CB49},{bit 1,c},2,8,{\$CB59},{bit 3,c},2,8
+{\$CB4A},{bit 1,d},2,8,{\$CB5A},{bit 3,d},2,8
+{\$CB4B},{bit 1,e},2,8,{\$CB5B},{bit 3,e},2,8
+{\$CB4C},{bit 1,h},2,8,{\$CB5C},{bit 3,h},2,8
+{\$CB4D},{bit 1,l},2,8,{\$CB5D},{bit 3,l},2,8
+{\$CB4E},{bit 1,(hl)},2,12,{\$CB5E},{bit 3,(hl)},2,12
+{\$CB4F},{bit 1,a},2,8,{\$CB5F},{bit 3,a},2,8

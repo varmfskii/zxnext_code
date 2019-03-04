@@ -1,0 +1,17 @@
+Opcode,Mnemonic,Sz,T,Opcode,Mnemonic,Sz,T
+{\$DD60},{ld ixh,b},2,8,{\$DD70},{ld (ix+x),b},3,19
+{\$DD61},{ld ixh,c},2,8,{\$DD71},{ld (ix+x),c},3,19
+{\$DD62},{ld ixh,d},2,8,{\$DD72},{ld (ix+x),d},3,19
+{\$DD63},{ld ixh,e},2,8,{\$DD73},{ld (ix+x),e},3,19
+{\$DD64},{ld ixh,ixh},2,8,{\$DD74},{ld (ix+x),h},3,19
+{\$DD65},{ld h,(ix+x)},3,19,{\$DD75},{ld (ix+x),l},3,19
+{\$DD65},{ld ixh,ixl},2,8,{\$DD77},{ld (ix+x),a},3,19
+{\$DD67},{ld ixh,a},2,8,{\$DD7C},{ld a,ixh},2,8
+{\$DD68},{ld ixl,b},2,8,{\$DD7D},{ld a,ixl},2,8
+{\$DD69},{ld ixl,c},2,8,{\$DD7E},{ld a,(ix+x)},3,19
+{\$DD6A},{ld ixl,d},2,8,{\$DD84},{add a,ixh},2,8
+{\$DD6B},{ld ixl,e},2,8,{\$DD85},{add a,ixl},2,8
+{\$DD6C},{ld ixl,ixh},2,2,{\$DD86},{add a,(ix+x)},3,19
+{\$DD6D},{ld ixl,ixl},2,2,{\$DD8C},{adc a,ixh},2,8
+{\$DD6E},{ld l,(ix+x)},3,19,{\$DD8D},{adc a,ixl},2,8
+{\$DD6F},{ld ixl,a},2,8,{\$DD8E},{adc a,(ix+x)},3,19

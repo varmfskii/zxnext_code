@@ -1,0 +1,17 @@
+Opcode,Mnemonic,Sz,T,Opcode,Mnemonic,Sz,T
+{\$CBC0},{set 0,b},2,8,{\$CBD0},{set 2,b},2,8
+{\$CBC1},{set 0,c},2,8,{\$CBD1},{set 2,c},2,8
+{\$CBC2},{set 0,d},2,8,{\$CBD2},{set 2,d},2,8
+{\$CBC3},{set 0,e},2,8,{\$CBD3},{set 2,e},2,8
+{\$CBC4},{set 0,h},2,8,{\$CBD4},{set 2,h},2,8
+{\$CBC5},{set 0,l},2,8,{\$CBD5},{set 2,l},2,8
+{\$CBC6},{set 0,(hl)},2,15,{\$CBD6},{set 2,(hl)},2,15
+{\$CBC7},{set 0,a},2,8,{\$CBD7},{set 2,a},2,8
+{\$CBC8},{set 1,b},2,8,{\$CBD8},{set 3,b},2,8
+{\$CBC9},{set 1,c},2,8,{\$CBD9},{set 3,c},2,8
+{\$CBCA},{set 1,d},2,8,{\$CBDA},{set 3,d},2,8
+{\$CBCB},{set 1,e},2,8,{\$CBDB},{set 3,e},2,8
+{\$CBCC},{set 1,h},2,8,{\$CBDC},{set 3,h},2,8
+{\$CBCD},{set 1,l},2,8,{\$CBDD},{set 3,l},2,8
+{\$CBCE},{set 1,(hl)},2,15,{\$CBDE},{set 3,(hl)},2,15
+{\$CBCF},{set 1,a},2,8,{\$CBDF},{set 3,a},2,8

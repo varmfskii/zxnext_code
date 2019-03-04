@@ -1,0 +1,17 @@
+Opcode,Mnemonic,Sz,T,Opcode,Mnemonic,Sz,T
+{\$CB80},{res 0,b},2,8,{\$CB90},{res 2,b},2,8
+{\$CB81},{res 0,c},2,8,{\$CB91},{res 2,c},2,8
+{\$CB82},{res 0,d},2,8,{\$CB92},{res 2,d},2,8
+{\$CB83},{res 0,e},2,8,{\$CB93},{res 2,e},2,8
+{\$CB84},{res 0,h},2,8,{\$CB94},{res 2,h},2,8
+{\$CB85},{res 0,l},2,8,{\$CB95},{res 2,l},2,8
+{\$CB86},{res 0,(hl)},2,15,{\$CB96},{res 2,(hl)},2,15
+{\$CB87},{res 0,a},2,8,{\$CB97},{res 2,a},2,8
+{\$CB88},{res 1,b},2,8,{\$CB98},{res 3,b},2,8
+{\$CB89},{res 1,c},2,8,{\$CB99},{res 3,c},2,8
+{\$CB8A},{res 1,d},2,8,{\$CB9A},{res 3,d},2,8
+{\$CB8B},{res 1,e},2,8,{\$CB9B},{res 3,e},2,8
+{\$CB8C},{res 1,h},2,8,{\$CB9C},{res 3,h},2,8
+{\$CB8D},{res 1,l},2,8,{\$CB9D},{res 3,l},2,8
+{\$CB8E},{res 1,(hl)},2,15,{\$CB9E},{res 3,(hl)},2,15
+{\$CB8F},{res 1,a},2,8,{\$CB9F},{res 3,a},2,8

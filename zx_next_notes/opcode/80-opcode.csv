@@ -1,0 +1,17 @@
+Op,Z80,8080,Sz,T,Op,Z80,8080,Sz,T
+{\$80},{add a,b},add b,1,4,{\$90},sub b,sub b,1,4
+{\$81},{add a,c	},add c	,1,4,{\$91},sub c,sub c,1,4
+{\$82},{add a,d},add d,1,4,{\$92},sub d,sub d,1,4
+{\$83},{add a,e},add e,1,4,{\$93},sub e,sub e,1,4
+{\$84},{add a,h	},add h	,1,4,{\$94},sub h,sub h,1,4
+{\$85},{add a,l},add l,1,4,{\$95},sub l,sub l,1,4
+{\$86},{add a,(hl)},add m,1,7,{\$96},sub (hl),sub m,1,7
+{\$87},{add a,a	},add a	,1,4,{\$97},sub a,sub a,1,4
+{\$88},{adc a,b},adc b,1,4,{\$98},{sbc a,b},sbb b,1,4
+{\$89},{adc a,c	},adc c	,1,4,{\$99},{sbc a,c},sbb c,1,4
+{\$8A},{adc a,d},adc d,1,4,{\$9A},{sbc a,d},sbb d,1,4
+{\$8B},{adc a,e},adc e,1,4,{\$9B},{sbc a,e},sbb e,1,4
+{\$8C},{adc a,h},adc h,1,4,{\$9C},{sbc a,h},sbb h,1,4
+{\$8D},{adc a,l},adc l,1,4,{\$9D},{sbc a,l},sbb l,1,4
+{\$8E},{adc a,(hl)},adc m,1,7,{\$9E},{sbc a,(hl)},sbb m,1,7
+{\$8F},{adc a,a},adc a,1,4,{\$9F},{sbc a,a},sbb a,1,4

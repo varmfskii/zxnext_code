@@ -1,0 +1,16 @@
+Opcode,Mnemonic,Bytes,Timing,Opcode,Mnemonic,Bytes,Timing
+{\$ED23},swapinb *,2,8,{\$ED40},{in b,(c)},2,12
+{\$ED24},mirror a *,2,8,{\$ED41},{out (c),b},2,12
+{\$ED27},test x *,3,11,{\$ED42},{sbc hl,bc},2,15
+{\$ED28},{bsla de,b *},2,8,{\$ED43},{ld (xx),bc},4,20
+{\$ED29},{bsra de,b *},2,8,{\$ED44},neg,2,8
+{\$ED2A},{bsrl de,b *},2,8,{\$ED45},retn,2,14
+{\$ED2B},{bsrf de,b *},2,8,{\$ED46},im 0,2,8
+{\$ED2C},{brlc de,b *},2,8,{\$ED47},{ld i,a},2,9
+{\$ED30},{mul d,e *},2,8,{\$ED48},{in c,(c)},2,12
+{\$ED31},{add hl,a *},2,8,{\$ED49},{out (c),c},2,12
+{\$ED32},{add de,a *},2,8,{\$ED4A},{adc hl,bc},2,15
+{\$ED33},{add bc,a *},2,8,{\$ED4B},{ld bc,(xx)},4,20
+{\$ED34},{add hl,xx *},4,16,{\$ED4D},reti,2,14
+{\$ED35},{add de,xx *},4,16,{\$ED4F},{ld r,a},2,9
+{\$ED36},{add bc,xx *},4,16,,,,

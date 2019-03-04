@@ -1,0 +1,16 @@
+Opcode,Mnemonic,Bytes,Timing,Opcode,Mnemonic,Bytes,Timing
+{\$ED90},outinb *,2,16,{\$EDAA},ind,2,16
+{\$ED91},{nextreg r,v *},4,20,{\$EDAB},outd,2,16
+{\$ED92},{nextreg r,a *},3,17,{\$EDAC},lddx *,2,16
+{\$ED93},pixeldn *,2,8,{\$EDB0},ldir,2,21/16
+{\$ED94},pixelad *,2,8,{\$EDB1},cpir,2,21/16
+{\$ED95},setae *,2,8,{\$EDB2},inir,2,21/16
+{\$ED98},jp (c) *,2,13,{\$EDB3},otir,2,21/16
+{\$EDA0},ldi,2,16,{\$EDB4},ldirx *,2,21/16
+{\$EDA1},cpi,2,16,{\$EDB7},ldpirx *,2,21/16
+{\$EDA2},ini,2,16,{\$EDB8},lddr,2,21/16
+{\$EDA3},outi,2,16,{\$EDB9},cpdr,2,21/16
+{\$EDA4},ldix *,2,16,{\$EDBA},indr,2,21/16
+{\$EDA5},ldws *,2,14,{\$EDBB},otdr,2,12/16
+{\$EDA8},ldd,2,16,{\$EDBC},lddrx *,2,21/16
+{\$EDA9},cpd,2,16,,,,

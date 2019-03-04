@@ -1,0 +1,13 @@
+Opcode,Mnemonic,Sz,T,Opcode,Mnemonic,Sz,T
+{\$FD94},sub iyh,2,8,{\$FDB4},or iyh,2,8
+{\$FD95},sub iyl,2,8,{\$FDB5},or iyl,2,8
+{\$FD96},sub (iy+x),3,19,{\$FDB6},or (iy+x),3,19
+{\$FD9C},{sbc a,iyh},2,8,{\$FDBC},cp iyh,2,8
+{\$FD9D},{sbc a,iyl},2,8,{\$FDBD},cp iyl,2,8
+{\$FD9E},{sbc a,(iy+x)},3,1,{\$FDBE},cp (iy+x),2,19
+{\$FDA4},and iyh,2,8,{\$FDCB},xBIT+IYx,+1,--
+{\$FDA5},and iyl,2,8,{\$FDE1},pop iy,2,14
+{\$FDA6},and (iy+x),3,19,{\$FDE3},{ex (sp),iy},2,23
+{\$FDAC},xor iyh,2,8,{\$FDE5},push iy,2,15
+{\$FDAD},xor iyl,2,8,{\$FDE9},jp (iy),3,8
+{\$FDAE},xor (iy+x),3,19,{\$FDF9},{ld sp,iy},2,10

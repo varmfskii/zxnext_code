@@ -1,0 +1,17 @@
+Op,Z80,8080,Sz,T,Op,Z80,8080,Sz,T
+{\$E0},ret po,rpo,1,11/5,{\$F0},ret p,rp,1,11/5
+{\$E1},pop hl,pop h,1,10,{\$F1},pop af,pop psw,1,10
+{\$E2},{jp po,xx},jpo xx,3,10,{\$F2},{jp p,xx},jp xx,3,10
+{\$E3},{ex (sp),hl},xthl,1,19,{\$F3},di,di,1,4
+{\$E4},{call po,xx},cpo xx,3,17/10,{\$F4},{call p,xx},cp xx,3,17/10
+{\$E5},push hl,push h,1,11,{\$F5},push af,push psw,1,11
+{\$E6},and x,ani x,2,7,{\$F6},or x,ori x,2,7
+{\$E7},rst 20h,rst 4,1,11,{\$F7},rst 30h,rst 6,1,11
+{\$E8},ret pe,rpe,1,11/5,{\$F8},ret m,rm,1,11/5
+{\$E9},jp (hl),pchl,1,4,{\$F9},{ld sp,hl},sphl,1,6
+{\$EA},{jp pe,xx},jpe xx,3,10,{\$FA},{jp m,xx},jm xx,3,10
+{\$EB},{ex de,hl},xchg,1,4,{\$FB},ei,ei,1,4
+{\$EC},{call pe,xx},cpe,3,17/10,{\$FC},{call m,xx},cm xx,3,17/10
+{\$ED},xx80xx,--,+1,--,{\$FD},xxIYxx,--,+1,--
+{\$EE},xor x,xri x,2,7,{\$FE},cp x,cpi x,2,7
+{\$EF},rst 28h,rst 5,1,11,{\$FF},rst 38h,rst 7,1,11

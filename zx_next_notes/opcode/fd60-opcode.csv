@@ -1,0 +1,17 @@
+Opcode,Mnemonic,Sz,T,Opcode,Mnemonic,Sz,T
+{\$FD60},{ld iyh,b},2,8,{\$FD70},{ld (iy+x),b},3,19
+{\$FD61},{ld iyh,c},2,8,{\$FD71},{ld (iy+x),c},3,19
+{\$FD62},{ld iyh,d},2,8,{\$FD72},{ld (iy+x),d},3,19
+{\$FD63},{ld iyh,e},2,8,{\$FD73},{ld (iy+x),e},3,19
+{\$FD64},{ld iyh,iyh},2,8,{\$FD74},{ld (iy+x),h},3,19
+{\$FD65},{ld h,(iy+x)},3,19,{\$FD75},{ld (iy+x),l},3,19
+{\$FD65},{ld iyh,iyl},2,8,{\$FD77},{ld (iy+x),a},3,19
+{\$FD67},{ld iyh,a},2,8,{\$FD7C},{ld a,iyh},2,8
+{\$FD68},{ld iyl,b},2,8,{\$FD7D},{ld a,iyl},2,8
+{\$FD69},{ld iyl,c},2,8,{\$FD7E},{ld a,(iy+x)},3,19
+{\$FD6A},{ld iyl,d},2,8,{\$FD84},{add a,iyh},2,8
+{\$FD6B},{ld iyl,e},2,8,{\$FD85},{add a,iyl},2,8
+{\$FD6C},{ld iyl,iyh},2,2,{\$FD86},{add a,(iy+x)},3,19
+{\$FD6D},{ld iyl,iyl},2,2,{\$FD8C},{adc a,iyh},2,8
+{\$FD6E},{ld l,(iy+x)},3,19,{\$FD8D},{adc a,iyl},2,8
+{\$FD6F},{ld iyl,a},2,8,{\$FD8E},{adc a,(iy+x)},3,19
