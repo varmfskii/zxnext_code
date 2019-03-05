@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Sprite Patterns</TITLE>
+<META NAME="description" CONTENT="Sprite Patterns">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="next" HREF="node30.html">
+<LINK REL="previous" HREF="node25.html">
+<LINK REL="next" HREF="node27.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node27.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node25.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node25.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html374"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html376"
+  HREF="node125.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node27.html">Pattern Number</A>
+<B> Up:</B> <A
+ HREF="node25.html">Sprites</A>
+<B> Previous:</B> <A
+ HREF="node25.html">Sprites</A>
+ &nbsp; <B>  <A ID="tex2html375"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html377"
+  HREF="node125.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A ID="SECTION00261000000000000000">
+Sprite Patterns</A>
+</H2>
+Sprite patterns are the images that each sprite can take on. The
+images are stored in a 16K memory internal to the FPGA and are
+identified by pattern number. A particular sprite chooses a pattern by
+storing a pattern number in its attributes.
+
+<P>
+All sprites are <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img28.svg"
+ ALT="$16\times16$"></SPAN> pixels in size but the come in two
+flavours: 4-bit and 8-bit. The bit width describes how many bits are
+used to code the colour of each pixel.
+
+<P>
+An 8-bit sprite uses a full byte to colour each of its pixels so that
+each pixel can be one of 256 colours. In this case, a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img28.svg"
+ ALT="$16\times16$"></SPAN>
+sprite requires 256 bytes of pattern memory to store its image.
+
+<P>
+A 4-bit sprite uses a nibble to colour each of its pixels so that each
+pixel can be one of 16 colours. In this case, a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img28.svg"
+ ALT="$16\times16$"></SPAN> sprite
+requires just 128 bytes of pattern memory to store its image.
+
+<P>
+The 16K pattern memory can contain any combination of these images,
+whether they are 128 bytes or 256 bytes and their locations in the
+pattern memory are described by a pattern number. This pattern number
+is 7 bits with bits named as follows:
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><A ID="tex2html378"
+  HREF="node27.html">Pattern Number</A>
+<UL>
+<LI><A ID="tex2html379"
+  HREF="node28.html">8-Bit Sprite Patterns</A>
+<LI><A ID="tex2html380"
+  HREF="node29.html">4-Bit Sprite Patterns</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node27.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node25.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node25.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html374"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html376"
+  HREF="node125.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node27.html">Pattern Number</A>
+<B> Up:</B> <A
+ HREF="node25.html">Sprites</A>
+<B> Previous:</B> <A
+ HREF="node25.html">Sprites</A>
+ &nbsp; <B>  <A ID="tex2html375"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html377"
+  HREF="node125.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

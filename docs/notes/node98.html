@@ -1,0 +1,279 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>16-bit</TITLE>
+<META NAME="description" CONTENT="16-bit">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="previous" HREF="node97.html">
+<LINK REL="next" HREF="node99.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node99.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node96.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node97.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html757"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html759"
+  HREF="node125.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node99.html">Registers</A>
+<B> Up:</B> <A
+ HREF="node96.html">Ports</A>
+<B> Previous:</B> <A
+ HREF="node97.html">8-bit</A>
+ &nbsp; <B>  <A ID="tex2html758"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html760"
+  HREF="node125.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A ID="SECTION001020000000000000000">
+16-bit</A>
+</H1>
+Port $103b (4155) i2c SCL (rtc)
+
+<P>
+Port $113b (4411) i2c SDA (rtc)
+
+<P>
+Port $123b (4667) Layer 2
+<table width="90%">
+  <tr><td valign="top">&nbsp;bits 6-7: Video RAM bank select
+  </td></tr>
+<tr><td valign="top">&nbsp;bit 3: Shadow layer 2 select
+  </td></tr>
+<tr><td valign="top">&nbsp;bit 1: Layer 2 visible
+  </td></tr>
+<tr><td valign="top">&nbsp;bit 0: Enable layer 2 write paging
+</td></tr></table>
+
+<P>
+Port $133b (4923) UART tx (esp)
+
+<P>
+Port $143b (5179) UART rx (esp)
+
+<P>
+Port $243b (9275) Next Register Select
+<BR>
+Write-only and is used to set the registry number, listed below.
+
+<P>
+Port $253b (9531) Next Register Data/Value
+<BR>
+Used to access the registry value, the registry being either only a
+few bits or all bits only read, write or read/write, depending on the
+registry number set.
+<BR>
+The nextreg instruction can be used to control Spectrum Next registers
+more directly.
+
+<P>
+Port $303b (12347) Sprite Slot/Flags
+<BR>
+Write: Sprite Slot Select
+<BR>
+select sprite slot for Sprite Attribute and Sprite Pattern ports which
+independently auto-increment
+<BR>
+Read: Sprite status
+<table width="90%"><tr><td valign="top">&nbsp;bits 2-7: reserved</td></tr>
+<tr><td valign="top">&nbsp;bit 1: Max sprites per line</td></tr>
+<tr><td valign="top">&nbsp;bit 0: Collision flag
+</td></tr></table>
+
+<P>
+Port $7ffd (32765) ZX Spectrum 128 Memory
+<BR>
+Disable with bit 5 port $7ffd
+<table width="90%"><tr><td valign="top">&nbsp;bits 6-7: reserved</td></tr>
+<tr><td valign="top">&nbsp;bit 5: Lock memory paging (unlocks only on reset)</td></tr>
+<tr><td valign="top">&nbsp;bit 4: ROM Select (low bit of ROM select for +2/+3)</td></tr>
+<tr><td valign="top">&nbsp;bit 3: Shadow screen toggle</td></tr>
+<tr><td valign="top">&nbsp;bits 0-2: Bank number for slot 4
+</td></tr></table>
+
+<P>
+Port $7ffe (32766) Keyboard 8 (read only)
+<table width="90%"><tr><td valign="top">&nbsp;bit 0: 'B'</td></tr>
+<tr><td valign="top">&nbsp;bit 1: 'N'</td></tr>
+<tr><td valign="top">&nbsp;bit 2: 'M'</td></tr>
+<tr><td valign="top">&nbsp;bit 3: Symbol Shift</td></tr>
+<tr><td valign="top">&nbsp;bit 4: Space
+</td></tr></table>
+
+<P>
+Port $bffd (49149) AY (TurboSound Next) Data
+<BR>
+Writes to selected register of selected sound chip
+
+<P>
+Port $BFFE (49150) Keyboard 7 (read only)
+<table width="90%"><tr><td valign="top">&nbsp;bit 0: 'H'</td></tr>
+<tr><td valign="top">&nbsp;bit 1: 'J'</td></tr>
+<tr><td valign="top">&nbsp;bit 2: 'K'</td></tr>
+<tr><td valign="top">&nbsp;bit 3: 'L'</td></tr>
+<tr><td valign="top">&nbsp;bit 4: Enter
+</td></tr></table>
+
+<P>
+Port $dffd (57341) ZX Spectrum 128 Memory (precedence over AY)
+<BR>
+Disable with bit 5 port $7ffd
+<BR>
+See Port $7ffd
+
+<P>
+Port $dffe (57342) Keyboard 6 (read only)
+<table width="90%"><tr><td valign="top">&nbsp;bit 0: 'Y'</td></tr>
+<tr><td valign="top">&nbsp;bit 1: 'U'</td></tr>
+<tr><td valign="top">&nbsp;bit 2: 'I'</td></tr>
+<tr><td valign="top">&nbsp;bit 3: 'O'</td></tr>
+<tr><td valign="top">&nbsp;bit 4: 'P'
+</td></tr></table>
+
+<P>
+Port $effe (61438) Keyboard 5 (read only)
+<table width="90%"><tr><td valign="top">&nbsp;bit 0: ‘6’</td></tr>
+<tr><td valign="top">&nbsp;bit 1: ‘7’</td></tr>
+<tr><td valign="top">&nbsp;bit 2: ‘8’</td></tr>
+<tr><td valign="top">&nbsp;bit 3: ‘9’</td></tr>
+<tr><td valign="top">&nbsp;bit 4: ‘0’
+</td></tr></table>
+
+<P>
+Port $f7fe (63486) Keyboard 4 (read only)
+<table width="90%"><tr><td valign="top">&nbsp;bit 0: ‘5’</td></tr>
+<tr><td valign="top">&nbsp;bit 1: ‘4’</td></tr>
+<tr><td valign="top">&nbsp;bit 2: ‘3’</td></tr>
+<tr><td valign="top">&nbsp;bit 3: ‘2’</td></tr>
+<tr><td valign="top">&nbsp;bit 4: ‘1’
+</td></tr></table>
+
+<P>
+Port $fadf (64223) Kempston Mouse Wheel/Buttons
+<BR>
+Disable with bit 2 of Nextreg %09
+
+<P>
+Port $fbdf (64479) Kempston Mouse X
+<BR>
+Disable with bit 2 of Nextreg $09
+
+<P>
+Port $fbfe (64510) Keyboard 3 (read only)
+<table width="90%"><tr><td valign="top">&nbsp;bit 0: ‘T’</td></tr>
+<tr><td valign="top">&nbsp;bit 1: ‘R’</td></tr>
+<tr><td valign="top">&nbsp;bit 2: ‘E’</td></tr>
+<tr><td valign="top">&nbsp;bit 3: ‘W’</td></tr>
+<tr><td valign="top">&nbsp;bit 4: ‘Q’
+</td></tr></table>
+
+<P>
+Port $fdfe (65022) Keyboard 2 (read only)
+<table width="90%"><tr><td valign="top">&nbsp;bit 0: ‘G’</td></tr>
+<tr><td valign="top">&nbsp;bit 1: ‘F’</td></tr>
+<tr><td valign="top">&nbsp;bit 2: ‘D’</td></tr>
+<tr><td valign="top">&nbsp;bit 3: ‘S’</td></tr>
+<tr><td valign="top">&nbsp;bit 4: ‘A’
+</td></tr></table>
+
+<P>
+Port $fefe (65278) Keyboard 1 (read only)
+<table width="90%"><tr><td valign="top">&nbsp;bit 0: ‘V’</td></tr>
+<tr><td valign="top">&nbsp;bit 1: ‘C’</td></tr>
+<tr><td valign="top">&nbsp;bit 2: ‘X’</td></tr>
+<tr><td valign="top">&nbsp;bit 3: ‘Z’</td></tr>
+<tr><td valign="top">&nbsp;bit 4: Caps Shift
+</td></tr></table>
+
+<P>
+Port $fbdf (65503) Kempston Mouse Y
+<BR>
+Disable with bit 2 of Nextreg $09
+<BR>
+Kempston Mouse Y coordinate (0-191)
+
+<P>
+Port $fffd (65533) AY (Turbo Sound Next) Register
+<BR>
+Select active sound chip/sound chip register
+<BR>
+Select Chip
+<table width="90%"><tr><td valign="top">&nbsp;bit 7: 1=select chip</td></tr>
+<tr><td valign="top">&nbsp;bit 6: Left audio enable</td></tr>
+<tr><td valign="top">&nbsp;bit 5: Right audio enable</td></tr>
+<tr><td valign="top">&nbsp;bits 2-4: reserved=111</td></tr>
+<tr><td valign="top">&nbsp;bits 0-1: Select active chip
+  <table width="90%">  <tr><td valign="top">&nbsp;01=AY3
+  </td></tr>
+<tr><td valign="top">&nbsp;10=AY2
+  </td></tr>
+<tr><td valign="top">&nbsp;11=AY1 (default)
+  </td></tr></table>
+</td></tr></table>
+
+ Select Register
+<table width="90%"><tr><td valign="top">&nbsp;bit 7: 0=select register</td></tr>
+<tr><td valign="top">&nbsp;bits 4-6: reserved=000</td></tr>
+<tr><td valign="top">&nbsp;bits 0-3: register number
+</td></tr></table>
+
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node99.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node96.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node97.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html757"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html759"
+  HREF="node125.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node99.html">Registers</A>
+<B> Up:</B> <A
+ HREF="node96.html">Ports</A>
+<B> Previous:</B> <A
+ HREF="node97.html">8-bit</A>
+ &nbsp; <B>  <A ID="tex2html758"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html760"
+  HREF="node125.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

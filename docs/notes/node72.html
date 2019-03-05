@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Dot Clock</TITLE>
+<META NAME="description" CONTENT="Dot Clock">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="next" HREF="node73.html">
+<LINK REL="previous" HREF="node71.html">
+<LINK REL="next" HREF="node73.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node73.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node68.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node71.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html637"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html639"
+  HREF="node125.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node73.html">Coordinates</A>
+<B> Up:</B> <A
+ HREF="node68.html">Timing</A>
+<B> Previous:</B> <A
+ HREF="node71.html">Resolution</A>
+ &nbsp; <B>  <A ID="tex2html638"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html640"
+  HREF="node125.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H4><A ID="SECTION00610040000000000000">
+Dot Clock</A>
+</H4>
+
+<P>
+The dot clock on the ZX Spectrum Next runs at 13.5Mhz for HDMI and
+around14Mhz for VGA. The COPPER clock runs at the same frequency as
+the dot clock.
+
+<P>
+The number of dot clocks per line is calculated by multiplying the
+number of 3.5Mhz Z80 T-states per line by four. Example: 228Ts * 4 =
+912 dot clocks.
+
+<P>
+The number of dot clocks per second is calculated by the following:
+
+<P>
+T-states per line * 4 * line count * refresh rate
+
+<P>
+In standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
+ ALT="$256\times192$"></SPAN> resolution the duration of one pixel is two
+dot clocks. In Timex HIRES <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img14.svg"
+ ALT="$512\times192$"></SPAN> resolution the duration of
+one pixel is one dot clock.
+
+<P>
+Details of the dot clock counts can be found in tables 5.1 and 5.2.
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1239"></A>
+<TABLE>
+<CAPTION><STRONG>Table 5.1:</STRONG>
+Vertical Line Counts and Dot Clock Combinations</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img37.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/perline.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1243"></A>
+<TABLE>
+<CAPTION><STRONG>Table 5.2:</STRONG>
+Dot Clocks per Second</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img38.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/persec.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Description</TITLE>
+<META NAME="description" CONTENT="Description">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="next" HREF="node52.html">
+<LINK REL="previous" HREF="node50.html">
+<LINK REL="next" HREF="node52.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node52.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node48.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node50.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html512"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html514"
+  HREF="node125.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node52.html">Modes of Operation</A>
+<B> Up:</B> <A
+ HREF="node48.html">zxnDMA</A>
+<B> Previous:</B> <A
+ HREF="node50.html">Accessing the zxnDMA</A>
+ &nbsp; <B>  <A ID="tex2html513"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html515"
+  HREF="node125.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A ID="SECTION00530000000000000000">
+Description</A>
+</H1>
+The normal Z80 DMA (Z8410) chip is a pipelined device and because of
+that it has numerous off-by-one idiosyncrasies and requirements on the
+order that certain commands should be carried out. These issues are
+not duplicated in the zxnDMA. You can continue to program the zxnDMA
+as if it is were a Z8410 DMA device but it can also be programmed in a
+simpler manner.
+
+<P>
+The single channel of the zxnDMA chip consists of two ports named A
+and B. Transfers can occur in either direction between ports A and B,
+each port can describe a target in memory or IO, and each can be
+configured to autoincrement, autodecrement or stay fixed after a byte
+is transferred.
+
+<P>
+A special feature of the zxnDMA can force each byte transfer to take a
+fixed amount of time so that the zxnDMA can be used to deliver sampled
+audio.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

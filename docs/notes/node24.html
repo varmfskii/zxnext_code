@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Programming</TITLE>
+<META NAME="description" CONTENT="Programming">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="previous" HREF="node23.html">
+<LINK REL="next" HREF="node25.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node25.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node23.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node23.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html357"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html359"
+  HREF="node125.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node25.html">Sprites</A>
+<B> Up:</B> <A
+ HREF="node23.html">Layer 2</A>
+<B> Previous:</B> <A
+ HREF="node23.html">Layer 2</A>
+ &nbsp; <B>  <A ID="tex2html358"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html360"
+  HREF="node125.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A ID="SECTION00251000000000000000">
+Programming</A>
+</H2>
+
+<P>
+Port $123b (4667) Layer 2
+<table width="90%">
+  <tr><td valign="top">&nbsp;bits 6-7: Video RAM bank select
+  </td></tr>
+<tr><td valign="top">&nbsp;bit 3: Shadow layer 2 select
+  </td></tr>
+<tr><td valign="top">&nbsp;bit 1: Layer 2 visible
+  </td></tr>
+<tr><td valign="top">&nbsp;bit 0: Enable layer 2 write paging
+</td></tr></table>
+
+<P>
+For information on controlling the palette see the Palette section.
+
+<P>
+<A NAME="354"></A>
+(R/W) $14 (20) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Global transparency color
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Transparency color value ($E3 after a reset)
+</td></tr></table>
+
+(Note: this value is 8-bit, so the transparency is compared against
+only by the MSB bits of the final 9-bit colour)
+<BR>(Note2: this only affects Layer 2, ULA and LoRes. Sprites use register
+$4B for transparency and tilemap uses nextreg $4C)
+
+<P>
+<A NAME="357"></A>
+(R/W) $16 (22) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Layer2 Offset X
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = X Offset (0-255)(0 after a reset)
+</td></tr></table>
+
+<P>
+(R/W) $17 (23) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Layer2 Offset Y
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Y Offset (0-191)(0 after a reset)
+</td></tr></table>
+
+<P>
+<A NAME="362"></A>
+(R/W) $18 (24) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Clip Window Layer 2
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Coords of the clip window
+  <table width="90%">  <tr><td valign="top">&nbsp;1st write - X1 position
+  </td></tr>
+<tr><td valign="top">&nbsp;2nd write - X2 position
+  </td></tr>
+<tr><td valign="top">&nbsp;3rd write - Y1 position
+  </td></tr>
+<tr><td valign="top">&nbsp;4rd write - Y2 position
+  </td></tr></table>
+</td></tr></table>
+
+Reads do not advance the clip position
+<BR>
+The values are 0,255,0,191 after a Reset
+
+<P>
+(W) $1C (28) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Clip Window control
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Reserved, must be 0</td></tr>
+<tr><td valign="top">&nbsp;bit 3 - reset the tilemap clip index</td></tr>
+<tr><td valign="top">&nbsp;bit 2 - reset the ULA/LoRes clip index.</td></tr>
+<tr><td valign="top">&nbsp;bit 1 - reset the sprite clip index.</td></tr>
+<tr><td valign="top">&nbsp;bit 0 - reset the Layer 2 clip index.
+</td></tr></table>
+
+<P>
+(R) $1C (28) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Clip Window control
+<BR>(may change)
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Tilemap clip index</td></tr>
+<tr><td valign="top">&nbsp;bits 5-4 = Layer 2 clip index</td></tr>
+<tr><td valign="top">&nbsp;bits 3-2 = Sprite clip index</td></tr>
+<tr><td valign="top">&nbsp;bits 1-0 = ULA clip index
+</td></tr></table>
+
+<P>
+(R/W) $12 (18) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Layer 2 RAM bank
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Reserved, must be 0</td></tr>
+<tr><td valign="top">&nbsp;bits 5-0 = RAM bank (point to bank 8 after a Reset, NextZXOS
+  modifies to 9)
+</td></tr></table>
+
+<P>
+(R/W) $13 (19) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Layer 2 RAM shadow bank
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Reserved, must be 0</td></tr>
+<tr><td valign="top">&nbsp;bits 5-0 = RAM bank (point to bank 11 after a Reset, NextZXOS
+  modifies to 12)
+</td></tr></table>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node25.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node23.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node23.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html357"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html359"
+  HREF="node125.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node25.html">Sprites</A>
+<B> Up:</B> <A
+ HREF="node23.html">Layer 2</A>
+<B> Previous:</B> <A
+ HREF="node23.html">Layer 2</A>
+ &nbsp; <B>  <A ID="tex2html358"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html360"
+  HREF="node125.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

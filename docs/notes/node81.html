@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Control</TITLE>
+<META NAME="description" CONTENT="Control">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="next" HREF="node86.html">
+<LINK REL="previous" HREF="node76.html">
+<LINK REL="next" HREF="node82.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node82.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node65.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node80.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html677"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html679"
+  HREF="node125.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node82.html">STOP</A>
+<B> Up:</B> <A
+ HREF="node65.html">Copper and Display Timing</A>
+<B> Previous:</B> <A
+ HREF="node80.html">Example</A>
+ &nbsp; <B>  <A ID="tex2html678"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html680"
+  HREF="node125.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A ID="SECTION00630000000000000000">
+Control</A>
+</H1>
+
+<P>
+The COPPER is controlled by the following three write-only registers:
+
+<P>
+<table width="90%"><tr><td valign="top">&nbsp;$60 (96)   Copper data</td></tr>
+<tr><td valign="top">&nbsp;$61 (97)   Copper control LO BYTE</td></tr>
+<tr><td valign="top">&nbsp;$62 (98)   Copper control HI BYTE
+</td></tr></table>
+
+<P>
+The COPPER instructions are written one BYTE at a time to the program
+RAM using register $60 (Copper data).
+
+<P>
+An index system is used to select the destination write address within
+the 2K program RAM. Eleven bits are needed to represent the
+index. Registers $61 and $62 hold this 11 bit index.
+
+<P>
+The index increments each time one BYTE is written to register
+$60. The index wraps to zero when the last BYTE of program RAM is
+written.
+
+<P>
+The instruction data is normally written in big endian format although
+there is no rule stating that partial instruction BYTES cannot be
+written. It is safe to write to the COPPER program RAM while the
+COPPER is executing as long the instruction data written does not
+create a mall formed instruction which comprises of one half of the
+current executing instruction and one half the new instruction - this
+could result in unexpected behaviour.
+
+<P>
+The Z80 and DMA can be used to write the instruction data.
+
+<P>
+Writing to program RAM while the COPPER is running has no impact on
+system performance as the RAM is contention free. COPPER timing is not
+affected by the Z80 or DMA writing to the program RAM. Program RAM is
+write-only.
+
+<P>
+The contents of the 2k program RAM are preserved during a hard/soft reset.
+
+<P>
+Register $61 holds the lower 8 bits of the index. Register $62 holds
+the upper 3 bits of the index as well as two control bits which set
+the COPPER operating mode.
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1288"></A>
+<TABLE>
+<CAPTION><STRONG>Table 5.10:</STRONG>
+Register Bit Definitions</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img48.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/regbit.csv}
+\par
+\raggedright D 8 bit data
+\par
+I 11 bit index
+\par
+C 2 bit control
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+The COPPER has an internal 10 bit program counter (PC). Each
+instruction advances the program counter by one after completion. The
+program counter wraps to zero after the last instruction at location
+1023. This causes the copper list to loop.
+
+<P>
+The program counter defaults to zero during a hard/soft reset.
+
+<P>
+The control bits require a change to update the operating mode. This
+feature preserves COPPER operation when setting the program RAM index
+address.
+
+<P>
+The program counter is preserved when stopping the COPPER. Two of the
+four control settings reset the internal PC to zero.
+
+<P>
+Table 5.11 describes the control bits:
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1292"></A>
+<TABLE>
+<CAPTION><STRONG>Table 5.11:</STRONG>
+Control Mode Definitions</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img49.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/controlmodes.csv}
+\par
+\ragged...
+...ntrol mode names used in this guide differ from
+the official names.
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Here is a detailed description of the control bits:
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html681"
+  HREF="node82.html">STOP</A>
+<LI><A ID="tex2html682"
+  HREF="node83.html">RESET</A>
+<LI><A ID="tex2html683"
+  HREF="node84.html">START</A>
+<LI><A ID="tex2html684"
+  HREF="node85.html">FRAME</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node82.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node65.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node80.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html677"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html679"
+  HREF="node125.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node82.html">STOP</A>
+<B> Up:</B> <A
+ HREF="node65.html">Copper and Display Timing</A>
+<B> Previous:</B> <A
+ HREF="node80.html">Example</A>
+ &nbsp; <B>  <A ID="tex2html678"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html680"
+  HREF="node125.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

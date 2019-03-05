@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Changes Since 2.00.26</TITLE>
+<META NAME="description" CONTENT="Changes Since 2.00.26">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="next" HREF="node22.html">
+<LINK REL="previous" HREF="node20.html">
+<LINK REL="next" HREF="node22.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node22.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node20.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node20.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html344"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html346"
+  HREF="node125.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node22.html">Future Direction</A>
+<B> Up:</B> <A
+ HREF="node20.html">Programming Tilemap mode</A>
+<B> Previous:</B> <A
+ HREF="node20.html">Programming Tilemap mode</A>
+ &nbsp; <B>  <A ID="tex2html345"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html347"
+  HREF="node125.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H4><A ID="SECTION00245010000000000000">
+Changes Since 2.00.26</A>
+</H4>
+
+<P>
+
+<OL>
+<LI>512 Tile Mode. In 2.00.26, the 512 tile mode was automatically
+  selected when the ULA was disabled. With the ULA disabled, the
+  tilemap attribute bit “ULA on top” was re-purposed to be bit 8 of
+  the tile number. In 2.00.27, selection of the 512 tile mode is moved
+  to bit 1 of Tilemap Control nextreg $6B. This way 512 tile mode can
+  be independently chosen without disabling the ULA. The “ULA on top”
+  bit is still taken as bit 8 of the tile number and in the 512 mode,
+  the tilemap is always displayed underneath the ULA.
+</LI>
+<LI>Tilemap Always On Top of ULA. In 2.00.27, bit 0 of Tilemap
+  Control nextreg $6B is used to indicate that the tilemap should
+  always be displayed on top of the ULA. This allows the tilemap to
+  display over the ULA when in 512 mode.
+</LI>
+</OL>
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

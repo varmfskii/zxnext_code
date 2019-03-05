@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>WR6 – Command Register</TITLE>
+<META NAME="description" CONTENT="WR6 – Command Register">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="next" HREF="node62.html">
+<LINK REL="previous" HREF="node60.html">
+<LINK REL="next" HREF="node62.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node62.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node54.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node60.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html561"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html563"
+  HREF="node125.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node62.html">Operating speed</A>
+<B> Up:</B> <A
+ HREF="node54.html">zxnDMA Registers</A>
+<B> Previous:</B> <A
+ HREF="node60.html">WR5 – Write Register</A>
+ &nbsp; <B>  <A ID="tex2html562"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html564"
+  HREF="node125.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H4><A ID="SECTION00560070000000000000">
+WR6 – Command Register</A>
+</H4>
+<PRE>
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 1   ?   ?   ?   ?   ?   1   1
+     |   |   |   |   |
+     1   0   0   0   0 = \$C3 = Reset
+     1   0   0   0   1 = \$C7 = Reset Port A Timing
+     1   0   0   1   0 = \$CB = Reset Port B Timing
+     0   1   1   1   1 = \$BF = Read Status Byte
+     0   0   0   1   0 = \$8B = Reinitialize Status Byte
+     0   1   0   0   1 = \$A7 = Initialize Read Sequence
+     1   0   0   1   1 = \$CF = Load
+     1   0   1   0   0 = \$D3 = Continue
+     0   0   0   0   1 = \$87 = Enable DMA
+     0   0   0   0   0 = \$83 = Disable DMA
+ +-- 0   1   1   1   0 = \$BB = Read Mask Follows
+ |
+D7  D6  D5  D4  D3  D2  D1  D0  READ MASK
+ 0   |   |   |   |   |   |   |
+     |   |   |   |   |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Status Byte
+     |   |   |   |   |   |
+     |   |   |   |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Byte Counter Low
+     |   |   |   |   |
+     |   |   |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Byte Counter High
+     |   |   |   |
+     |   |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Port A Address Low
+     |   |   |
+     |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Port A Address High
+     |   |
+     |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Port B Address Low
+     |
+     V
+D7  D6  D5  D4  D3  D2  D1  D0  Port B Address High
+</PRE>
+Unimplemented Z80 DMA commands are ignored.
+
+<P>
+Prior to starting the DMA, a LOAD command must be issued to copy the
+Port A and Port B addresses into the DMA's internal pointers. Then an
+ìEnable DMAî command is issued to start the DMA.
+
+<P>
+The ìContinueî command resets the DMA’s byte counter so that a
+following ìEnable DMAî allows the DMA to repeat the last transfer but
+using the current internal address pointers. I.e. it continues from
+where the last copy operation left off.
+
+<P>
+Registers can be read via an IO read from the DMA port after setting
+the read mask. (At power up the read mask is set to $7f). Register
+values are the current internal dma counter values. So ìPort Address A
+Lowî is the lower 8-bits of Port A’s next transfer address. Once the
+end of the read mask is reached, further reads loop around to the
+first one.
+
+<P>
+The format of the DMA status byte is as follows:
+
+<P>
+00E1101T
+
+<P>
+E is set to 0 if the total block length has been transferred
+at least once.
+
+<P>
+T is set to 1 if at least one byte has been transferred.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

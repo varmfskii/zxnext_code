@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Tilemap</TITLE>
+<META NAME="description" CONTENT="Tilemap">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="next" HREF="node17.html">
+<LINK REL="previous" HREF="node15.html">
+<LINK REL="next" HREF="node17.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node17.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node15.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node15.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html322"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html324"
+  HREF="node125.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node17.html">Tile Definitions</A>
+<B> Up:</B> <A
+ HREF="node15.html">Data Structures</A>
+<B> Previous:</B> <A
+ HREF="node15.html">Data Structures</A>
+ &nbsp; <B>  <A ID="tex2html323"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html325"
+  HREF="node125.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H4><A ID="SECTION00242010000000000000">
+Tilemap</A>
+</H4>
+
+<P>
+The first data structure is the tilemap itself which indicates what
+characters occupy each cell on screen. Each tilemap entry is two bytes
+so for <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img21.svg"
+ ALT="$40\times32$"></SPAN> resolution, a full size tilemap will occupy 2560
+bytes, and for <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img23.svg"
+ ALT="$80\times32$"></SPAN> resolution the space taken is twice that
+at 5120 bytes. The tilemap entries are stored in X-major order and
+each two-byte tilemap entry is stored little endian:
+
+<P>
+Tilemap Entry
+<table width="90%"><tr><td valign="top">&nbsp;bits 15-12 : palette offset</td></tr>
+<tr><td valign="top">&nbsp;bit 11 : x mirror</td></tr>
+<tr><td valign="top">&nbsp;bit 10 : y mirror</td></tr>
+<tr><td valign="top">&nbsp;bit 9 : rotate</td></tr>
+<tr><td valign="top">&nbsp;bit 8 : ULA over tilemap (in 512 tile mode, bit 8 of the tile
+  number)</td></tr>
+<tr><td valign="top">&nbsp;bits 7-0 : tile number
+</td></tr></table>
+
+The character displayed is indicated by the “tile number” which can be
+thought of as an ASCII code. The tile number is normally eight bits
+allowing up to 256 unique tiles to be displayed but this can be
+extended to nine bits for 512 unique tiles if 512 tile mode is enabled
+via the Tilemap Control register.
+
+<P>
+The other bits are tile attributes that modify how the tile image is
+drawn. Their function is the same as the equivalent sprite attributes
+for sprites. Bits apply rotation then mirroring, and colour can be
+shifted with a palette offset. If 512 tile mode is not enabled, bit 8
+will determine if the tile is above or below the ULA display on a per
+tile basis.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node17.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node15.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node15.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html322"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html324"
+  HREF="node125.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node17.html">Tile Definitions</A>
+<B> Up:</B> <A
+ HREF="node15.html">Data Structures</A>
+<B> Previous:</B> <A
+ HREF="node15.html">Data Structures</A>
+ &nbsp; <B>  <A ID="tex2html323"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html325"
+  HREF="node125.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>
