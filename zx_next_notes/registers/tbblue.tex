@@ -124,9 +124,12 @@ Joystick modes:
 \item[] bit 5 = Stereo mode (0 = ABC, 1 = ACB)(0 after a PoR or Hard-reset)
 \item[] bit 4 = Enable internal speaker (1 = enabled)(1 after a PoR or
   Hard-reset)
-\item[] bit 3 = Enable Specdrum/Covox (1 = enabled)(0 after a PoR or Hard-reset)
-\item[] bit 2 = Enable Timex modes (1 = enabled)(0 after a PoR or Hard-reset)
-\item[] bit 1 = Enable TurboSound (1 = enabled)(0 after a PoR or Hard-reset)
+\item[] bit 3 = Enable Specdrum/Covox (1 = enabled)(0 after a PoR or
+  Hard-reset)
+\item[] bit 2 = Enable Timex modes (1 = enabled)(0 after a PoR or
+  Hard-reset)
+\item[] bit 1 = Enable TurboSound (1 = enabled)(0 after a PoR or
+  Hard-reset)
 \item[] bit 0 = Reserved, must be 0
 \end{itemize}
 
@@ -135,7 +138,8 @@ Joystick modes:
 \item[] bit 7 = Mono setting for AY 2 (1 = mono, 0 default)
 \item[] bit 6 = Mono setting for AY 1 (1 = mono, 0 default)
 \item[] bit 5 = Mono setting for AY 0 (1 = mono, 0 default)
-\item[] bit 4 = Sprite id lockstep (1 = Nextreg \$34 and IO Port \$303B are in lockstep, 0 default)
+\item[] bit 4 = Sprite id lockstep (1 = Nextreg \$34 and IO Port
+  \$303B are in lockstep, 0 default)
 \item[] bit 3 = Disables Kempston port (\$DF) if set
 \item[] bit 2 = Disables divMMC ports (\$E3, \$E7, \$EB) if set
 \item[] bits 1-0 = scanlines (0 after a PoR or Hard-reset)
@@ -414,7 +418,7 @@ value\\
 Otherwise
 \begin{itemize}
 \item[] bit 7 = Ignored
-\item[] bits 6-0 = Sprite number 0-127
+\item[] bits 6-0 = Sprite number 0-127\\
   Selects which sprite has its attributes connected to the following registers.
 \item[] Bit 7 always reads back as zero.
 \end{itemize}
