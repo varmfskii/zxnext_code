@@ -1,5 +1,5 @@
-SRCS=closefile.c openfile.c printresponse.c readconfig.c readline.c	\
-	startserver.c uartio.c
+SRCS=closefile.c endserver.c openfile.c printresponse.c readconfig.c	\
+	readline.c startserver.c uartio.c
 
 OBJS=$(SRCS:.c=.o)
 
@@ -16,6 +16,7 @@ readconfig.tap: $(OBJS)
 	zcc +zxn -o readconfig $(OPT) $(APP) $^
 
 closefile.o: closefile.c readconfig.h
+endserver.o: endserver.c readconfig.h
 openfile.o: openfile.c readconfig.h
 readconfig.o: readconfig.c readconfig.h
 readline.o: readline.c readconfig.h
