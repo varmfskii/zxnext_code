@@ -1,4 +1,5 @@
-SRCS=readconfig.c openfile.c closefile.c readline.c
+SRCS=closefile.c openfile.c printresponse.c readconfig.c readline.c	\
+	startserver.c uartio.c
 
 OBJS=$(SRCS:.c=.o)
 
@@ -14,10 +15,13 @@ all: readconfig.tap
 readconfig.tap: $(OBJS)
 	zcc +zxn -o readconfig $(OPT) $(APP) $^
 
-closefile.o: closefile.c myfile.h
-openfile.o: openfile.c myfile.h
-readconfig.o: readconfig.c myfile.h
-readline.o: readline.c myfile.h
+closefile.o: closefile.c readconfig.h
+openfile.o: openfile.c readconfig.h
+readconfig.o: readconfig.c readconfig.h
+readline.o: readline.c readconfig.h
+startserver.o: startserver.c readconfig.h
+printresponse.o: printresponse.c readconfig.h
+uartio.o: uartio.c readconfig.h
 
 .PHONY: clean distclean
 

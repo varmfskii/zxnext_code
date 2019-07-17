@@ -1,10 +1,9 @@
 #include <arch/zxn.h>
 #include <arch/zxn/esxdos.h>
-#include "myfile.h"
+#include "readconfig.h"
 
-int readline(char *line, int sz, file *fp) {
-  int i;
-  unsigned char c;
+uint8_t readline(char *line, uint8_t sz, file *fp) {
+  uint8_t i, c;
 
   for(i=0; i<sz-1; i++) {
     if (fp->ix==fp->valid) {

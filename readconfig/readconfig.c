@@ -1,22 +1,9 @@
 #include <stdio.h>
-#include "myfile.h"
-
-#define CONFIG "d:\config"
-#define LINESZ 100
-
-file *openfile(char *);
-void closefile(file *);
-int readline(char *, int, file *);
+#include <sys/ioctl.h>
+#include "readconfig.h"
 
 int main() {
-  file *in;
-  char line[LINESZ];
-  
-  if(!(in=openfile(CONFIG))) {
-    fprintf(stderr, "Unable to open %s\n", CONFIG);
-    return 1;
-  }
-  while(readline(line, LINESZ, in)) printf("[%s]\n", line);
-  closefile(in);
+  ioctl(1, IOCTL_OTERM_PAUSE, 0);
+  startserver();
   return 0;
 }

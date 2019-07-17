@@ -1,0 +1,14 @@
+read configuration
+set mode to station
+    AT+CWMODE=1
+set ip address
+    AT+CIPSTA="<ip>","<gateway>","<network>"
+connect to WiFi
+    AT+CWJAP="<ssid>","<password>"
+start server
+    AT+CIPMUX=1
+    AT+CIPSERVERMAXCONN=1
+    AT+CIPSERVER=1,<port>
+recieve +IPD and data
+tx rx commands loop
+    
