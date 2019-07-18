@@ -3,7 +3,8 @@
 #include "server.h"
 
 int main() {
-  //ioctl(1, IOCTL_OTERM_PAUSE, 0);
+  puts("ZX Spectrum Next simple server");
+  ioctl(1, IOCTL_OTERM_PAUSE, 0);
   puts("starting server");
   if (startserver()) return 1;
   puts("server started");
