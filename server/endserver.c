@@ -4,9 +4,7 @@
 
 void endserver(void) {
   // end server
-  uartwrite("AT+CIPSERVER=0\r\n", 16);
-  if (uartresponse()) return;
+  if (cmdresponse("AT+CIPSERVER=0\r\n")) return;
   // echo on
-  uartwrite("ATE1\r\n", 6); 
-  if (uartresponse()) return;
+  if (cmdresponse("ATE1\r\n")) return; 
 }

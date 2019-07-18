@@ -8,6 +8,5 @@ uint8_t netclose(uint8_t n) {
   char command[16];
 
   sprintf(command, "AT+CIPCLOSE=%d\r\n", n);
-  UARTWRITES(command);
-  return uartresponse();
+  return cmdresponse(command);
 }

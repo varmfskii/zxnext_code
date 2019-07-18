@@ -20,6 +20,7 @@ __sfr __banked __at 0x143b RX;
 
 char *netrx(uint8_t *, uint16_t *);
 file *openfile(char *);
+uint8_t cmdresponse(char *);
 uint8_t netclose(uint8_t);
 uint8_t nettx(char *, uint8_t, uint8_t);
 uint8_t uartresponse(void);
