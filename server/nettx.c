@@ -10,5 +10,5 @@ uint8_t nettx(char *buf, uint8_t n, uint8_t len) {
   sprintf(command, "AT+CIPSEND=%d,%d\r\n", n, len);
   if (cmdresponse(command)) return 1;
   uartwrite(buf, len);
-  return uartresponse()!=2;
+  return uartresponse()!=SEND_OK;
 }

@@ -4,7 +4,7 @@
 
 void endserver(void) {
   // end server
-  if (cmdresponse("AT+CIPSERVER=0\r\n")) return;
+  cmdresponse("AT+CIPSERVER=0\r\n");
   // echo on
-  if (cmdresponse("ATE1\r\n")) return; 
+  cmdresponse("ATE1\r\n"); 
 }

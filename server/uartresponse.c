@@ -1,41 +1,24 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "server.h"
 
+#define LINESZ 255
+
 uint8_t uartresponse(void) {
-  uint8_t l, done, i, j, cr;
-  char buffer[256], line[256];
-  
-  for(i=done=cr=0; !done; ) 
-    while(l=uartread(buffer, 255)) {
-      for(j=0; j<l; j++)
-	switch(buffer[j]) {
-	case '\r':
-	  cr=1;
-	  break;
-	case '\n':
-	  if (cr) {
-	    line[i]='\0';
-	    i=0;
-	    //puts(line);
-	    if (!strcmp(line, "OK"))
-	      done=1;
-	    else if (!strcmp(line, "ERROR"))
-	      done=2;
-	    else if (!strcmp(line, "SEND OK"))
-	      done=3;
-	    else if (!strcmp(line, "SEND FAIL"))
-	      done=4;
-	  } else {
-	    line[i++]='\n';
-	  }
-	  break;
-	default:
-	  cr=0;
-	  line[i++]=buffer[j];
-	}
+  uint8_t i, j;
+  char line[LINESZ];
+  const char *responses[]={ "OK\r", "ERROR\r", "SEND OK\r", "SEND FAIL\r", NULL };
+
+  i=0;
+  for(; i<LINESZ;)
+    if ((line[i++]=uartchar())=='\n') {
+      line[i-1]='\0';
+      for(j=0; responses[j]; j++)
+	if (!strcmp(line, responses[j])) return j;
+      i=0;
     }
-  line[i]='\0';
-  //puts(line);
-  return done-1;
+  fprintf(stderr, "Line length exceeded\n");
+  exit(1);
+  return 0xff;
 }

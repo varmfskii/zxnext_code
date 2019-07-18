@@ -1,6 +1,6 @@
-SRCS=closefile.c cmdresponse.c endserver.c netclose.c netrx.c nettx.c	\
-	openfile.c uartresponse.c server.c readline.c startserver.c	\
-	uartchar.c uartread.c uartwrite.c work.c
+SRCS=cmdresponse.c endserver.c netclose.c netrx.c nettx.c		\
+	uartresponse.c server.c readline.c startserver.c uartchar.c	\
+	uartread.c uartwrite.c work.c
 
 OBJS=$(SRCS:.c=.o)
 
@@ -16,13 +16,11 @@ all: server.tap
 server.tap: $(OBJS)
 	zcc +zxn -o server $(OPT) $(APP) $^
 
-closefile.o: closefile.c server.h
 cmdresponse.o: cmdresponse.c server.h
 endserver.o: endserver.c server.h
 netclose.o: netclose.c server.h
 netrx.o: netrx.c server.h
 nettx.o: nettx.c server.h
-openfile.o: openfile.c server.h
 readline.o: readline.c server.h
 server.o: server.c server.h
 startserver.o: startserver.c server.h

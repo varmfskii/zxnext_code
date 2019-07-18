@@ -11,14 +11,18 @@ char *netrx(uint8_t *n, uint16_t *len) {
   i=0;
   for(;;) {
     while((cbuf[i]=uartchar())!=':') i=(i+1)&0x0f;
-    for(start=(i-1)&0x0f; cbuf[start]!='+' && cbuf[start]!=':'; start=(start-1)&0x0f);
-    for(i=0, j=(start+1)&0x0f; cbuf[j]!=':'; i++, j=(j+1)&0x0f) buf[i]=cbuf[j];
+    for(start=(i-1)&0x0f;
+	cbuf[start]!='+' && cbuf[start]!=':';
+	start=(start-1)&0x0f);
+    for(i=0, j=(start+1)&0x0f; cbuf[j]!=':'; i++, j=(j+1)&0x0f)
+      buf[i]=cbuf[j];
     buf[i]='\0';
     if (strncmp(buf, "IPD,", 4)) continue;
     if (buf[4]<'0' || buf[4]>'9') continue;
     *n=buf[4]-'0';
     if (buf[5]!=',') continue;
-    for(i=6, *len=0; buf[i]>='0' && buf[i]<='9'; i++) *len=*len*10+buf[i]-'0';
+    for(i=6, *len=0; buf[i]>='0' && buf[i]<='9'; i++)
+      *len=*len*10+buf[i]-'0';
     if (!buf[i]) break;
   }
   rv=malloc(*len);

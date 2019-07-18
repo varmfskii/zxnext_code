@@ -1,46 +1,38 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <arch/zxn.h>
+#include <arch/zxn/esxdos.h>
 #include "server.h"
 
-#define CONFIG "config"
-#define LINESZ 512
+#define LINESZ 255
 
-void startserver(void) {
+uint8_t startserver(void) {
   file *in;
-  uint8_t i, j, len;
-  char line[LINESZ], command[256];
-  char *params[6];
+  uint8_t len, f;
+  char line[LINESZ];
   int ix=0;
-  const char *fields[] =
-    {
-     "ip", "gateway", "mask", "ssid", "password", "port", "excess"
-    };
-  
-  if(!(in=openfile(CONFIG))) {
+
+  f=0xff;
+  if ((f=esx_f_open(CONFIG, ESX_MODE_OPEN_EXIST|ESX_MODE_R))==0xff
+      || !(in=(file *)malloc(sizeof(file)))) {
     fprintf(stderr, "Unable to open %s\n", CONFIG);
-    return;
+    return 1;
   }
-  for(ix=i=j=0; i<6; i++) {
-    if (!(len=readline(line+ix, (LINESZ-ix)?255:(LINESZ-ix), in))) break;
-    params[i]=line+ix;
-    ix+=len;
+  in->fp=f;
+  in->valid=in->ix=0;
+  for(;;) {
+    if (!(len=readline(line, (uint8_t)(LINESZ-3), in))) break;
+    line[len-1]='\r';
+    line[len]='\n';
+    line[len+1]='\0';
+    if (cmdresponse(line)!=OK) {
+      line[len]='\0';
+      fprintf(stderr, "failed command: %s\n", line);
+      return 1;
+    }
   }
-  closefile(in);
-  puts("start server");
-  // echo off
-  if (cmdresponse("ATE0\r\n")) return;
-  // station mode
-  if(cmdresponse("AT+CWMODE=1\r\n")) return;
-  // set ip address
-  sprintf(command, "AT+CIPSTA=\"%s\",\"%s\",\"%s\"\r\n", params[0], params[1], params[2]);
-  if (cmdresponse(command)) return;
-  // connect to wifi
-  sprintf(command, "AT+CWJAP=\"$s\",\"%s\"\r\n", params[3], params[4]);
-  if (cmdresponse(command)) return;
-  // multiplex off
-  if (cmdresponse("AT+CIPMUX=1\r\n")) return;
-  // start server
-  sprintf(command, "AT+CIPSERVER=1,%s\r\n", params[5]);
-  if (cmdresponse(command)) return;
-  puts("server started");  
+  esx_f_close(in->fp);
+  free(in);
+  return 0;
 }

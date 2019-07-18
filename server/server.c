@@ -4,7 +4,9 @@
 
 int main() {
   //ioctl(1, IOCTL_OTERM_PAUSE, 0);
-  startserver();
+  puts("starting server");
+  if (startserver()) return 1;
+  puts("server started");
   work();
   puts("stopping server");
   endserver();
