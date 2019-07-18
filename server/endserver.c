@@ -5,8 +5,8 @@
 void endserver(void) {
   // end server
   uartwrite("AT+CIPSERVER=0\r\n", 16);
-  if (printresponse()) return;
+  if (uartresponse()) return;
   // echo on
   uartwrite("ATE1\r\n", 6); 
-  if (printresponse()) return;
+  if (uartresponse()) return;
 }

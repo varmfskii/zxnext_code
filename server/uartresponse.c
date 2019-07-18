@@ -2,7 +2,7 @@
 #include <string.h>
 #include "readconfig.h"
 
-uint8_t printresponse(void) {
+uint8_t uartresponse(void) {
   uint8_t l, done, i, j, cr;
   char buffer[256], line[256];
   
@@ -17,11 +17,15 @@ uint8_t printresponse(void) {
 	  if (cr) {
 	    line[i]='\0';
 	    i=0;
-	    puts(line);
+	    //puts(line);
 	    if (!strcmp(line, "OK"))
 	      done=1;
 	    else if (!strcmp(line, "ERROR"))
 	      done=2;
+	    else if (!strcmp(line, "SEND OK"))
+	      done=3;
+	    else if (!strcmp(line, "SEND FAIL"))
+	      done=4;
 	  } else {
 	    line[i++]='\n';
 	  }
@@ -32,6 +36,6 @@ uint8_t printresponse(void) {
 	}
     }
   line[i]='\0';
-  puts(line);
+  //puts(line);
   return done-1;
 }
