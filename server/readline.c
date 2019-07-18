@@ -1,6 +1,6 @@
 #include <arch/zxn.h>
 #include <arch/zxn/esxdos.h>
-#include "readconfig.h"
+#include "server.h"
 
 uint8_t readline(char *line, uint8_t sz, file *fp) {
   uint8_t i, c;

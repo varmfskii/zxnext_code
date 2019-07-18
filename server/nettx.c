@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-#include "readconfig.h"
+#include "server.h"
 
 uint8_t nettx(char *buf, uint8_t n, uint8_t len) {
   char command[19];

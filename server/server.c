@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <sys/ioctl.h>
-#include "readconfig.h"
+#include "server.h"
 
 int main() {
   //ioctl(1, IOCTL_OTERM_PAUSE, 0);

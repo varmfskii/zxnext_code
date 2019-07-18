@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <arch/zxn.h>
 #include <arch/zxn/esxdos.h>
-#include "readconfig.h"
+#include "server.h"
 
 file *openfile(char *fn) {
   unsigned char f=0xff;

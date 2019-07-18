@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-#include "readconfig.h"
+#include "server.h"
 
 char *netrx(uint8_t *n, uint16_t *len) {
   char cbuf[16], buf[17], *rv;

@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
-#include "readconfig.h"
+#include "server.h"
 
 uint8_t netclose(uint8_t n) {
   char command[16];

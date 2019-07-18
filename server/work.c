@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "readconfig.h"
+#include "server.h"
 
 void work(void) {
   char *msg;

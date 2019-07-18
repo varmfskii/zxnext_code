@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
-#include "readconfig.h"
+#include "server.h"
 
 void uartwrite(char *buf, uint8_t n) {
   uint8_t i;

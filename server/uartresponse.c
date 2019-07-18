@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "readconfig.h"
+#include "server.h"
 
 uint8_t uartresponse(void) {
   uint8_t l, done, i, j, cr;

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "readconfig.h"
+#include "server.h"
 
 void endserver(void) {
   // end server
