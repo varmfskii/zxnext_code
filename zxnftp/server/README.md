@@ -7,15 +7,15 @@ Spectrum Next
 
     - CD \<dir>                - chand directory on ZX Next
 
-    - GT \<file>     -> \<data> - copy file from ZX Next to client
+    - GT \<file>     $\rightarrow$ \<data> - copy file from ZX Next to client
 
-    - L.            -> \<data> - get contents of current directory on ZX Next
+    - L.            $\rightarrow$ \<data> - get contents of current directory on ZX Next
 
-    - LS \<dir>      -> \<data> - get contents of directory on ZX Next
+    - LS \<dir>      $\rightarrow$ \<data> - get contents of directory on ZX Next
 
     - MD \<dir>                - create directory on ZX Next
 
-    - PD            -> \<data> - get current directory from ZX Next
+    - PD            $\rightarrow$ \<data> - get current directory from ZX Next
 
     - PT \<file>     \<- \<data> - copy file from client to ZX Next
 
