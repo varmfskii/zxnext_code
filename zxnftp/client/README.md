@@ -5,28 +5,28 @@ another computer.
 
 - Commands
 
--- ? [<cmd>] - print help message
+    - ? [\<cmd>] - print help message
 
--- cd <dir> - change directory (remote)
+    - cd \<dir> - change directory (remote)
 
--- dir [<dir>] - get directory listing from the ZX Next
+    - dir [\<dir>] - get directory listing from the ZX Next
 
--- exit - terminate client and server
+    - exit - terminate client and server
 
--- get <file> - get file from the ZX Next
+    - get \<file> - get file from the ZX Next
 
--- help [<cmd>] - print help message
+    - help [\<cmd>] - print help message
 
--- ls [<dir>] - get directory listing from the ZX Next
+    - ls [\<dir>] - get directory listing from the ZX Next
 
--- mget <patt> - multiple file get (unimplimented)
+    - mget \<patt> - multiple file get (unimplimented)
 
--- mkdir <dir> - create a directory on the ZX Next
+    - mkdir \<dir> - create a directory on the ZX Next
 
--- mput <patt> - multiple file put (unimplemented)
+    - mput \<patt> - multiple file put (unimplemented)
 
--- put <file> - puta file to the ZX Next
+    - put \<file> - puta file to the ZX Next
 
--- quit - terminate client and server
+    - quit - terminate client and server
 
--- rm <file> - delete a file/directory on the ZX Next
+    - rm \<file> - delete a file/directory on the ZX Next
