@@ -14,9 +14,9 @@ void cmd_rm(char **params) {
   }
   waddch(status, ')');
   if (!params[1] || params[2]) {
-    waddstr(win, "Error: Incorrect number of arguments. rm <dir>\n");
+    waddstr(win, "Error: Incorrect number of arguments. rm <file/dir>\n");
     return;
   }
-  call_simple("RM", params[1], FLASE);
+  call_simple("RM", params[1], FALSE);
   return;
 }

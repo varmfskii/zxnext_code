@@ -33,7 +33,7 @@ void call_put(char *param) {
  terminate:
   fclose(local);
 #else
-  waddstr(debug, "data\n");
+  waddstr(debug, "<data>\n");
 #endif
 }
   

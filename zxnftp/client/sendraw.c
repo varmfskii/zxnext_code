@@ -9,8 +9,7 @@ int sendraw(char *s, int len) {
   char buf[BLKSZ+1];
   
 #ifdef DEBUG
-  for(i=0; i<len; i++) waddch(win, s[i]);
-  waddch(win, '\n');
+  for(i=0; i<len; i++) waddch(debug, s[i]);
 #endif
 #ifndef NONET
   write(server, s, len);

@@ -6,13 +6,14 @@
 
 int sendstr(char *s) {
   char buf[BLKSZ];
-  int len;
+  int len=strlen(s);
+  
   if (len>=BLKSZ) {
     waddstr(win, "Error: string too long\n");
     return 1;
   }
   memcpy(buf, s, len);
   buf[len]='\n';
-  return sendraw(s, len+1);
+  return sendraw(buf, len+1);
 }
   

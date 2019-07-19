@@ -1,59 +1,32 @@
-# Client
+# zxnftp - client
 
-The master zxnftp for the monitor wich will run on the Pi0 accelerator
+A client for zxnftp which transferrs files between a ZX Next and
+another computer.
 
 - Commands
 
--- A ascii - Display in ASCII, non-ASCII as blanks
+-- ? [<cmd>] - print help message
 
--- B byte - Set byte mode
+-- cd <dir> - change directory (remote)
 
--- C continue - Continue from breakpoint
+-- dir [<dir>] - get directory listing from the ZX Next
 
--- D display - Display current breakpoints
+-- exit - terminate client and server
 
--- E editor - Edit text file
+-- get <file> - get file from the ZX Next
 
--- G go - Start exection
+-- help [<cmd>] - print help message
 
--- H half - Set half Mnemonic mode. Display instruction addresses as numeric, but instructions as mnemonic
+-- ls [<dir>] - get directory listing from the ZX Next
 
--- I input_base - Set input base
+-- mget <patt> - multiple file get (unimplimented)
 
--- M mnemonic - Set Mnemonic mode. Display in mnemonic form
+-- mkdir <dir> - create a directory on the ZX Next
 
--- O output_base - Ser output base
+-- mput <patt> - multiple file put (unimplemented)
 
--- P save - Dump memory to file
+-- put <file> - puta file to the ZX Next
 
--- R registers - Display registers
+-- quit - terminate client and server
 
--- S symbolic - Set symbolic mode. Display addresses in symbolic form
-
--- T block - Display a block of memory
-
--- U move - Move a block of memory
-
--- W word - Set word mode. Data is displayed as 16-bit words
-
--- X breakpoint - Set a breakpoint
-
--- Y yank - Yank (remove) a breakpoint
-
--- 8 - examine preceeding location
-
--- 2 - examine next location
-
--- 6 - branch indirect, change current location to contents of current location
-
--- ; - force numeric, one time display of current data as numeric
-
--- = - force byte, one time display of curent data as numeric byte
-
--- / - Examine contents of register, label, or location
-
--- , - single step
-
--- assemble - Assemble current file
-
--- configure - set configuration options
+-- rm <file> - delete a file/directory on the ZX Next

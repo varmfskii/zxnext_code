@@ -57,4 +57,5 @@ void cmd_mkdir(char **);
 void cmd_mput(char **);
 void cmd_put(char **);
 void cmd_pwd(char **);
+void cmd_rm(char **);
 #endif
