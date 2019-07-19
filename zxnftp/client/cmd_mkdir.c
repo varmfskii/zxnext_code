@@ -17,6 +17,6 @@ void cmd_mkdir(char **params) {
     waddstr(win, "Error: Incorrect number of arguments. mkdir <dir>\n");
     return;
   }
-  call_mkdir(params[1]);
+  call_simple("MD", params[1], FALSE);
   return;
 }

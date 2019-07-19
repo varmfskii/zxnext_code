@@ -1,9 +1,8 @@
 #include "zxnftp.h"
-#include <stdio.h>
 #include <stdlib.h>
 
-void error(char *text, int err) {
-  if (server) finish();
-  fprintf(stderr, "%s\n", text);
-  exit(err);
+void error(char *err, int num) {
+  finish();
+  fprintf(stderr, "%s\n", err);
+  exit(num);
 }

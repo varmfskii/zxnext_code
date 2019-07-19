@@ -11,7 +11,7 @@ void execute(char *command) {
   if (!*command) return;
   fields=parse(command);
   for(i=0; commands[i].name; i++) {
-    if (!strcmp(fields[0], commands[i].name)) break;
+    if (!strcasecmp(fields[0], commands[i].name)) break;
   }
   if (commands[i].name) {
     commands[i].routine(fields);

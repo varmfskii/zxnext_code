@@ -29,7 +29,7 @@ int main() {
     switch (c) {
     case '\003': // break
     case '\004': // eof
-      call_exit();
+      cmd_exit(NULL);
       break;
     case KEY_BACKSPACE:
     case '\177':

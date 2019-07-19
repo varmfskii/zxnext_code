@@ -1,21 +1,38 @@
 #include "zxnftp.h"
-#include "server.h"
 #include <curses.h>
 #include <string.h>
 #include <unistd.h>
 
 void call_get(char *param) {
-  char outbuf[255];
+  char buf[BLKSZ];
 
-  if (param)
-    sprintf(outbuf, "GET %s\n", param);
-  else
-    strcpy(outbuf, "GET\n");
+#ifndef NONET
+  if (!(local=fopen(param, "w"))) {
+    waddstr(win, "Error: Unable to open local file: ");
+    waddstr(win, param);
+    waddch(win, '\n');
+    return;
+  }
+  if (sendstr("GT")) goto terminate;
+#endif
 #ifdef DEBUG
-  waddstr(debug, outbuf);
+  waddstr(debug, "GT");
+  waddch(debug, '\n');
 #endif
 #ifndef NONET
-  write(server, outbuf, strlen(outbuf));
+  if (sendstr(param)) goto terminate;
+#endif
+#ifdef DEBUG
+  waddstr(debug, param);
+  waddch(debug, '\n');
+#endif
+#ifndef NONET
+  while((len=read(server, buf, BLKSZ))) {
+    fwrite(buf, 1, len, local);
+    if (sendstr("RR")) goto terminate;
+  }
+ terminate:
+  fclose(local);
 #endif
 }
   

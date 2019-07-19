@@ -1,4 +1,5 @@
 #include <curses.h>
+#include <stdlib.h>
 #include "zxnftp.h"
 
 void cmd_exit(char **params) {
@@ -7,16 +8,19 @@ void cmd_exit(char **params) {
   wmove(status, 0, 0);
   wdeleteln(status);
   waddstr(status, "exit(");
-  for(i=1; params[i]; i++) {
-    waddch(status, '(');
-    waddstr(status, params[i]);
-    waddch(status, ')');
-  }
+  if (params)
+    for(i=1; params[i]; i++) {
+      waddch(status, '(');
+      waddstr(status, params[i]);
+      waddch(status, ')');
+    }
   waddch(status, ')');
-  if (params[1]) {
+  if (params && params[1]) {
     waddstr(win, "Error: Incorrect number of arguments. exit\n");
-    return;
+    finish();
+    exit(1);
   }
-  call_exit();
-  return;
+  call_simple("XX", NULL, FALSE);
+  finish();
+  exit(0);
 }
