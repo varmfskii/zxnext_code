@@ -5,7 +5,7 @@ Spectrum Next
 
 - Commands
 
-    - CD \<dir> - chand directory on ZX Next
+    - CD \<dir> - change directory on ZX Next
 
     - GT \<file> => \<data> - copy file from ZX Next to client
 

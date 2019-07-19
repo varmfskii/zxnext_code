@@ -1,74 +1,33 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include "zxnftp.h"
 
+typedef struct command {
+  char *name;
+  void (*routine)(uint8_t);
+} command;
+
+command commands[]={
+		    { "CD\n", cmd_cd },
+		    { "GT\n", cmd_get },
+		    { "ID\n", cmd_id },
+		    { "L.\n", cmd_ls0 },
+		    { "LS\n", cmd_ls },
+		    { "MD\n", cmd_mkdir },
+		    { "PD\n", cmd_put },
+		    { "RM\n", cmd_rm },
+		    { "XX\n", cmd_exit },
+		    { NULL, NULL }};
+
 void work(void) {
-  char *msg, *para;
-  uint8_t n;
-  uint16_t len, i;
-  const char *cmds[]={ "EXIT", "LS", "CD", "GET", "PUT", "PWD", NULL };
+  uint8_t n, i;
+
   for(;;) {
-    msg=netrx(&n, &len);
-    para=parse(msg);
-    for(i=0; cmds[i]; i++)
-      if (!strcmp(cmds[i], msg)) break;
-    switch(i) {
-    case 0:
-      nettx("EXIT\n", n, 5);
-      puts("closing server");
-      netclose(n);
-      return;
-    case 1:
-      fputs("LS", stdout);
-      if (para) {
-	putchar(' ');
-	puts(para);
-      } else
-	putchar('\n');
-      nettx("OK\n", n, 3);
-      break;
-    case 2:
-      fputs("CD", stdout);
-      if (para) {
-	putchar(' ');
-	puts(para);
-      } else
-	putchar('\n');
-      nettx("OK\n", n, 3);
-      break;
-    case 3:
-      fputs("GET", stdout);
-      if (para) {
-	putchar(' ');
-	puts(para);
-      } else
-	putchar('\n');
-      nettx("OK\n", n, 3);
-      break;
-    case 4:
-      fputs("PUT", stdout);
-      if (para) {
-	putchar(' ');
-	puts(para);
-      } else
-	putchar('\n');
-      nettx("OK\n", n, 3);
-      break;
-    case 5:
-      fputs("PWD", stdout);
-      if (para) {
-	putchar(' ');
-	puts(para);
-      } else
-	putchar('\n');
-      nettx("OK\n", n, 3);
-      break;
-    default:
-      puts("UNKNOWN");
-      nettx("UNKNOWN\n", n, 6);
-      break;
+    n=netrxs(buf);
+    for(i=0; commands[i].name && !strcmp(commands[i].name, buf); i++);
+    if (!commands[i].name) {
+      nettx("UK\n", n, 3);
+      continue;
     }
-    free(msg);
+    commands[i].routine(n);
   }
 }

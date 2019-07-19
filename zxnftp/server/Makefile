@@ -1,6 +1,4 @@
-SRCS=cmdresponse.c endserver.c netclose.c netrx.c nettx.c parse.c	\
-	uartresponse.c zxnftp.c readline.c startserver.c uartchar.c	\
-	uartread.c uartwrite.c work.c
+SRCS=zxnftp.c cmd_cd.c cmd_exit.c cmd_get.c cmd_id.c cmd_ls0.c cmd_ls.c cmd_mkdir.c cmd_put.c cmd_rm.c endserver.c net.c readline.c startserver.c uart.c work.c
 
 OBJS=$(SRCS:.c=.o)
 
@@ -16,18 +14,21 @@ all: zxnftp.tap
 zxnftp.tap: $(OBJS)
 	zcc +zxn -o zxnftp $(OPT) $(APP) $^
 
-cmdresponse.o: cmdresponse.c zxnftp.h
+cmd_cd.o: cmd_cd.c zxnftp.h
+cmd_exit.o: cmd_exit.c zxnftp.h
+cmd_get.o: cmd_get.c zxnftp.h
+cmd_id.o: cmd_id.c zxnftp.h
+cmd_ls0.o: cmd_ls0.c zxnftp.h
+cmd_ls.o: cmd_ls.c zxnftp.h
+cmd_mkdir.o: cmd_mkdir.c zxnftp.h
+cmd_put.o: cmd_put.c zxnftp.h
+cmd_rm.o: cmd_rm.c zxnftp.h
 endserver.o: endserver.c zxnftp.h
-netclose.o: netclose.c zxnftp.h
-netrx.o: netrx.c zxnftp.h
-nettx.o: nettx.c zxnftp.h
-parse.o: parse.c zxnftp.h
+net.o: net.c zxnftp.h
+ok.o: ok.c zxnftp.h
 readline.o: readline.c zxnftp.h
 startserver.o: startserver.c zxnftp.h
-uartchar.o: uartchar.c zxnftp.h
-uartread.o: uartread.c zxnftp.h
-uartresponse.o: uartresponse.c zxnftp.h
-uartwrite.o: uartwrite.c zxnftp.h
+uart.o: uart.c zxnftp.h
 work.o: work.c zxnftp.h
 zxnftp.o: zxnftp.c zxnftp.h
 

@@ -25,7 +25,7 @@ another computer.
 
     - mput \<patt> - multiple file put (unimplemented)
 
-    - put \<file> - puta file to the ZX Next
+    - put \<file> - put a file to the ZX Next
 
     - quit - terminate client and server
 
