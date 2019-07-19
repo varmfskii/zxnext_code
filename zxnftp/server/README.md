@@ -5,22 +5,22 @@ Spectrum Next
 
 - Commands
 
-    - CD \<dir>                - chand directory on ZX Next
+    - CD \<dir> - chand directory on ZX Next
 
-    - GT \<file>     $\rightarrow$ \<data> - copy file from ZX Next to client
+    - GT \<file> => \<data> - copy file from ZX Next to client
 
-    - L.            $\rightarrow$ \<data> - get contents of current directory on ZX Next
+    - L. => \<data> - get contents of current directory on ZX Next
 
-    - LS \<dir>      $\rightarrow$ \<data> - get contents of directory on ZX Next
+    - LS \<dir> => \<data> - get contents of directory on ZX Next
 
-    - MD \<dir>                - create directory on ZX Next
+    - MD \<dir> - create directory on ZX Next
 
-    - PD            $\rightarrow$ \<data> - get current directory from ZX Next
+    - PD => \<data> - get current directory from ZX Next
 
-    - PT \<file>     \<- \<data> - copy file from client to ZX Next
+    - PT \<file> \<= \<data> - copy file from client to ZX Next
 
-    - RM \<file/dir>           - delete file/directory on ZX Next
+    - RM \<file/dir> - delete file/directory on ZX Next
 
-    - XX                      - kill server
+    - XX - kill server
 
 configuration is in a file produced by mkzxnftpcfg.py
