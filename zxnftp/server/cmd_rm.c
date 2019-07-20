@@ -3,8 +3,8 @@
 #include "zxnftp.h"
 
 void cmd_rm(uint8_t n) {
-  n=netrxs(buf);
-  printf("rm %s", buf);
+  n=netrxln(buf);
+  printf("rm %s\n", buf);
   ok(n);
 }
 

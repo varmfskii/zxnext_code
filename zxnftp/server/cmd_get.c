@@ -4,18 +4,18 @@
 #include "zxnftp.h"
 
 void cmd_get(uint8_t n) {
-  n=netrxs(buf);
-  printf("get %s", buf);
+  n=netrxln(buf);
+  printf("get %s\n", buf);
   // open file
   ok(n);
-  n=netrxs(buf);
-  if (strcmp("RR\n", buf)) {
-    nettx("XX\n", n, 3);
+  n=netrxln(buf);
+  if (strcmp("RR", buf)) {
+    nettxs("XX\n", n);
     return;
   }
   // read from file
   // transmit block
-  nettx("<file contents>\n", n, 16);
+  nettxs("<file contents>\n", n);
   // close file
 }
 

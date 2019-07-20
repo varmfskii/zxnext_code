@@ -3,6 +3,9 @@
 #include "zxnftp.h"
 
 char buf[BLKSZ];
+const char *cstrs[] = {
+		  "OK\n"
+};
 
 int main() {
   puts("ZX Spectrum Next ZXNFTP server");

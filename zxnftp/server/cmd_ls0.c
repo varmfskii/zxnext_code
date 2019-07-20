@@ -5,12 +5,12 @@
 
 void cmd_ls0(uint8_t n) {
   puts("ls .");
-  n=netrxs(buf);
-  if (strcmp("RR\n", buf)) {
-    nettx("XX\n", n, 3);
+  n=netrxln(buf);
+  if (strcmp("RR", buf)) {
+    nettxs("XX\n", n);
     return;
   }
-  nettx("<directory data>\n", n, 17);
+  nettxs("<directory data>\n", n);
 }
 
   

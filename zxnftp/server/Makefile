@@ -1,4 +1,6 @@
-SRCS=zxnftp.c cmd_cd.c cmd_exit.c cmd_get.c cmd_id.c cmd_ls0.c cmd_ls.c cmd_mkdir.c cmd_put.c cmd_rm.c endserver.c net.c readline.c startserver.c uart.c work.c
+SRCS=zxnftp.c cmd_cd.c cmd_drive.c cmd_exit.c cmd_get.c cmd_id.c	\
+	cmd_ls0.c cmd_ls.c cmd_mkdir.c cmd_put.c cmd_pwd.c cmd_rm.c	\
+	endserver.c net.c readline.c startserver.c uart.c work.c
 
 OBJS=$(SRCS:.c=.o)
 
@@ -15,6 +17,7 @@ zxnftp.tap: $(OBJS)
 	zcc +zxn -o zxnftp $(OPT) $(APP) $^
 
 cmd_cd.o: cmd_cd.c zxnftp.h
+cmd_drive.o: cmd_drive.c zxnftp.h
 cmd_exit.o: cmd_exit.c zxnftp.h
 cmd_get.o: cmd_get.c zxnftp.h
 cmd_id.o: cmd_id.c zxnftp.h
@@ -25,7 +28,6 @@ cmd_put.o: cmd_put.c zxnftp.h
 cmd_rm.o: cmd_rm.c zxnftp.h
 endserver.o: endserver.c zxnftp.h
 net.o: net.c zxnftp.h
-ok.o: ok.c zxnftp.h
 readline.o: readline.c zxnftp.h
 startserver.o: startserver.c zxnftp.h
 uart.o: uart.c zxnftp.h

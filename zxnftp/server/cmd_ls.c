@@ -4,18 +4,18 @@
 #include "zxnftp.h"
 
 void cmd_ls(uint8_t n) {
-  n=netrxs(buf);
-  printf("ls %s", buf);
+  n=netrxln(buf);
+  printf("ls %s\n", buf);
   // open directory
   ok(n);
-  n=netrxs(buf);
-  if (strcmp("RR\n", buf)) {
-    nettx("XX\n", n, 3);
+  n=netrxln(buf);
+  if (strcmp("RR", buf)) {
+    nettxs("XX\n", n);
     return;
   }
   // read from file
   // transmit block
-  nettx("<directory data>\n", n, 17);
+  nettxs("<directory data>\n", n);
   // close file
 }
 

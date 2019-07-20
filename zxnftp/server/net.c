@@ -16,14 +16,16 @@ void netrx(char *rx, uint8_t *n, uint16_t *len) {
 
   i=0;
   for(;;) {
-    while((cbuf[i]=uartchar())!=':') i=(i+1)&0x0f;
+    while((cbuf[i]=uartchar())!=':') {
+      i=(i+1)&0x0f;
+    }
     for(start=(i-1)&0x0f;
 	cbuf[start]!='+' && cbuf[start]!=':';
 	start=(start-1)&0x0f);
     for(i=0, j=(start+1)&0x0f; cbuf[j]!=':'; i++, j=(j+1)&0x0f)
       lbuf[i]=cbuf[j];
     lbuf[i]='\0';
-    if (strncmp(buf, "IPD,", 4)) continue;
+    if (strncmp(lbuf, "IPD,", 4)) continue;
     if (lbuf[4]<'0' || lbuf[4]>'9') continue;
     *n=lbuf[4]-'0';
     if (lbuf[5]!=',') continue;
@@ -38,11 +40,16 @@ void netrx(char *rx, uint8_t *n, uint16_t *len) {
   for(rd=0; rd<*len;) rd+=uartread(rx+rd, *len-rd);
 }
 
-int netrxs(char *s) {
+uint8_t netrxln(char *s) {
   uint8_t n, len;
   
   netrx(s, &n, &len);
-  s[len]='\0';
+  if (s[len-2]=='\n' || s[len-2]=='\r')
+    s[len-2]='\0';
+  else if (s[len-1]=='\n' || s[len-1]=='\r')
+    s[len-1]='\0';
+  else
+    s[len]='\0';
   return n;
 }
 
@@ -53,6 +60,19 @@ uint8_t nettx(char *buf, uint8_t n, uint8_t len) {
   if (cmdresponse(command)) return 1;
   uartwrite(buf, len);
   return uartresponse()!=SEND_OK;
+}
+
+uint8_t nettxs(char *s, uint8_t n) {
+  return nettx(s, n, strlen(s));
+}
+
+uint8_t nettxln(char *s, uint8_t n) {
+  uint8_t len=strlen(s);
+
+  printf("len: %d\n", len);
+  s[len]='\n';
+  s[len+1]='\0';
+  return nettx(s, n, len+1);
 }
 
 void ok(uint8_t n) {

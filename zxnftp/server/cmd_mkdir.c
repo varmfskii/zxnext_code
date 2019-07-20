@@ -3,8 +3,8 @@
 #include "zxnftp.h"
 
 void cmd_mkdir(uint8_t n) {
-  n=netrxs(buf);
-  printf("mkdir %s", buf);
+  n=netrxln(buf);
+  printf("mkdir %s\n", buf);
   ok(n);
 }
 

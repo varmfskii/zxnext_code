@@ -7,14 +7,14 @@ void cmd_put(uint8_t n) {
   uint16_t sz;
   uint8_t len;
   
-  n=netrxs(buf);
-  printf("put %s", buf);
+  n=netrxln(buf);
+  printf("put %s\n", buf);
   // open file
   ok(n);
   for(sz=0; ; sz+=len) {
-    n=netrxs(buf);
+    n=netrxln(buf);
     ok(n);
-    if (strcmp("RR\n", buf)) break;
+    if (strcmp("RR", buf)) break;
     netrx(buf, &n, &len);
     ok(n);
   }
