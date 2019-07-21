@@ -168,6 +168,15 @@ int main() {
       puts("mkdir start");
 #endif
       nettxln("OK");
+      netrxln(buf);
+      f=0xff;
+      f=esx_f_mkdir(buf);
+      if (f==0xff)
+	nettxln("XX");
+      else {
+	nettxln("OK");
+	printf("mkdir %s\n", buf);
+      }
 #ifdef DEBUG
       puts("mkdir end");
 #endif
@@ -188,11 +197,37 @@ int main() {
 #ifdef DEBUG
       puts("put end");
 #endif
+    } else if (!strcmp("RD", buf)) {
+#ifdef DEBUG
+      puts("rmdir start");
+#endif
+      nettxln("OK");
+      netrxln(buf);
+      f=0xff;
+      f=esx_f_rmdir(buf);
+      if (f==0xff)
+	nettxln("NE");
+      else {
+	nettxln("OK");
+	printf("rmdir %s\n", buf);
+      }
+#ifdef DEBUG
+      puts("mkdir end");
+#endif
     } else if (!strcmp("RM", buf)) {
 #ifdef DEBUG
       puts("rm start");
 #endif
       nettxln("OK");
+      netrxln(buf);
+      f=0xff;
+      f=esx_f_unlink(buf);
+      if (f==0xff)
+	nettxln("NE");
+      else {
+	nettxln("OK");
+	printf("rm %s\n", buf);
+      }
 #ifdef DEBUG
       puts("rm end");
 #endif
