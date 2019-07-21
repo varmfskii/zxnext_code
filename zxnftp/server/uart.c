@@ -45,7 +45,7 @@ uint8_t uartresponse(void) {
   return 0xff;
 }
 
-void uartwrite(char *buf, uint8_t n) {
+void uartwrite(const char *buf, uint8_t n) {
   uint8_t i;
 
   for(i=0; i<n; i++) {
