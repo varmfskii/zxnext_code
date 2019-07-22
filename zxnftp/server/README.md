@@ -1,7 +1,8 @@
 # zxnftp - ZX Next Server
 
 A server which allows file operations between a computer and this ZX
-Spectrum Next
+Spectrum Next. Server commands are meant to be sent by a client, but
+interaction is human readable.
 
 - Commands
 
@@ -30,15 +31,23 @@ Spectrum Next
 
     - RM \<file> - delete file on ZX Next
 
-    - RR - Continue (intermediate command)
-
     - XX - close session
 
 - Responses
 
     - OK - No error
 
+    - EX - File/directory exists
+
+    - ID - Is a directory (should be a file)
+    
+    - N0 - Directory not empty
+
+    - ND - Is not a directory
+    
     - NE - File/directory does not exist
+
+    - RR - Continue (intermediate command)
 
     - UK - Unrecognized command
 

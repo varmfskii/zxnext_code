@@ -3,7 +3,7 @@
 #include <string.h>
 #include "zxnftp.h"
 
-void netrx(char *rx, uint16_t *rlen, uint8_t mode) {
+void netrx(char *rx, uint8_t *rlen, uint8_t mode) {
   char cbuf[16], lbuf[17];
   uint8_t i, j, start, len;
 

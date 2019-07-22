@@ -13,7 +13,9 @@ struct esx_dirent_slice *slice;
 struct tm dt;
 struct esx_stat stat;
 uint8_t f, len;
+uint32_t rlen, flen;
 
+/* handle simple commands that translate as a single call */
 void cmd_simple(const char *name, uint8_t (*fn)(char *)) {
   nettxln("OK");
   netrxln(buf);
@@ -27,10 +29,12 @@ void cmd_simple(const char *name, uint8_t (*fn)(char *)) {
   }
 }
 
+/* change directories, simple */
 void cmd_cd(void) {
   cmd_simple("cd", esx_f_chdir);
 }
 
+/* change drive */
 void cmd_drive(void) {
   nettxln("OK");
   netrxln(buf);
@@ -44,6 +48,7 @@ void cmd_drive(void) {
   }
 }
 
+/* get a file from server */
 void cmd_get(void) {
   nettxln("OK");
   netrxln(buf);
@@ -53,8 +58,9 @@ void cmd_get(void) {
     senderr();
     return;
   }
+  printf("get %s: ", buf);
   esx_f_fstat(f, &stat);
-  sprintf(buf, "%d", stat.size);
+  sprintf(buf, "%d bytes", stat.size);
   nettxln(buf);
   for(;;) {
     netrxln(buf);
@@ -63,7 +69,6 @@ void cmd_get(void) {
       break;
     }
     len=esx_f_read(f, buf, BLKSZ);
-    printf("read: %d\n", len);
     if (!len) {
       nettxln("OK");
       break;
@@ -73,10 +78,12 @@ void cmd_get(void) {
   esx_f_close(f);
 }
 
+/* send server id */
 void cmd_id(void) {
   nettxln(ID);
 }
 
+/* handle directory listing */
 void do_ls(void) {
   f=0xff;
   f=esx_f_opendir_ex(buf, ESX_DIR_USE_LFN);
@@ -106,30 +113,63 @@ void do_ls(void) {
   esx_f_close(f);
 }
 
+/* list current directory */
 void cmd_l_(void) {
   esx_f_getcwd(buf);
   do_ls();
 }
 
+/* list a directory */
 void cmd_ls(void) {
   nettxln("OK");
   netrxln(buf);
   do_ls();
 }
 
+/* create a directory, simple */
 void cmd_mkdir(void) {
   cmd_simple("mkdir", esx_f_mkdir);
 }
 
+/* display the current directory */
 void cmd_pwd(void) {
   esx_f_getcwd(buf);
   nettxln(buf);
 }
 
+/* put a file to the server */
 void cmd_put(void) {
+  nettxln("OK");
+  netrxln(buf);
+  f=0xff;
+  f=esx_f_open(buf, ESX_MODE_OPEN_CREAT_NOEXIST|ESX_MODE_W);
+  if (f==0xff) {
+    senderr();
+    return;
+  }
+  nettxln("OK");
+  printf("put %s: ", buf);
+  netrxln(buf);
+  sscanf(buf, "%d", &flen);
+  printf("%d bytes\n", flen);
+  for(rlen=0; rlen<flen; rlen+=len) {
+    nettxln("RR");
+    netrx(buf, &len, RAW);
+    errno=0;
+    esx_f_write(f, buf, len);
+    if (errno) {
+      senderr();
+      esx_f_close(f);
+      return;
+    }
+  }
+  esx_f_close(f);
+  nettxln("RR");
+  netrxln(buf);
   nettxln("OK");
 }
 
+/* shutdown server */
 void cmd_quit(void) {
   nettxln("OK");
   cmdresponse("AT+CIPCLOSE=0\r\n");
@@ -139,14 +179,17 @@ void cmd_quit(void) {
   exit(0);
 }
 
+/* remove a directory, simple */
 void cmd_rmdir(void) {
   cmd_simple("rmdir", esx_f_rmdir);
 }
 
+/* remoce a file, simple */
 void cmd_rm(void) {
   cmd_simple("rm", esx_f_unlink);
 }
 
+/* quit a session on the server, leave server running */
 void cmd_exit(void) {
   nettxln("OK");
   cmdresponse("AT+CIPCLOSE=0\r\n");
