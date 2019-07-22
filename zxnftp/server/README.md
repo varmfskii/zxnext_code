@@ -24,13 +24,15 @@ Spectrum Next
     - PT \<file> \<= \<data> - copy file from client to ZX Next
       (unimplemented)
 
+    - QU - kill server
+
     - RD \<dir> - delete directory on ZX Next
 
     - RM \<file> - delete file on ZX Next
 
     - RR - Continue (intermediate command)
 
-    - XX - kill server
+    - XX - close session
 
 - Responses
 

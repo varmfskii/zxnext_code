@@ -1,4 +1,4 @@
-SRCS=zxnftp.c uart.c net.c cmd_simple.c senderr.c
+SRCS=zxnftp_new.c cmds.c net.c senderr.c uart.c
 
 OBJS=$(SRCS:.c=.o)
 
@@ -10,16 +10,16 @@ SNA=-create-app -subtype=sna
 %.o: %.c
 	zcc +zxn -c $(OPT) $<
 
-all: zxnftp.tap zxnftp.sna
+all: zxnftp_new.tap zxnftp_new.sna
 
-zxnftp.tap: $(OBJS)
-	zcc +zxn -o zxnftp $(OPT) $(TAP) $^
+zxnftp_new.tap: $(OBJS)
+	zcc +zxn -o zxnftp_new $(OPT) $(TAP) $^
 
-zxnftp.sna: $(OBJS)
-	zcc +zxn -o zxnftp $(OPT) $(SNA) $^
+zxnftp_new.sna: $(OBJS)
+	zcc +zxn -o zxnftp_new $(OPT) $(SNA) $^
 
-zxnftp.o: zxnftp.c zxnftp.h
-cmd_simple.o: cmd_simple.c zxnftp.h
+zxnftp_new.o: zxnftp_new.c zxnftp.h
+cmds.o: cmds.c zxnftp_new.h
 net.o: net.c zxnftp.h
 senderr.o: senderr.c zxnftp.h
 uart.o: uart.c zxnftp.h
@@ -28,7 +28,7 @@ uart.o: uart.c zxnftp.h
 
 clean:
 	rm -f $(OBJS) *~ zcc_opt.def
-	rm -f zxnftp_CODE.bin zxnftp_UNASSIGNED.bin
+	rm -f zxnftp_new_CODE.bin zxnftp_new_UNASSIGNED.bin
 
 distclean: clean
-	rm -f zxnftp.tap zxnftp.sna
+	rm -f zxnftp_new.tap

@@ -53,6 +53,7 @@ int main() {
 #ifdef DEBUG
       puts("cd start");
 #endif
+      /*
       nettxln("OK");
       netrxln(buf);
       f=0xff;
@@ -63,6 +64,8 @@ int main() {
 	nettxln("OK");
 	printf("cd %s\n", buf);
       }
+      */
+      cmd_simple("cd", esx_f_chdir);
 #ifdef DEBUG
       puts("cd end");
 #endif
@@ -75,7 +78,7 @@ int main() {
       f=0xff;
       f=esx_dos_set_drive(buf[0]);
       if (f==0xff)
-	nettxln("NE");
+	senderr();
       else {
 	nettxln("OK");
 	printf("drive %c\n", buf[0]);
@@ -92,7 +95,7 @@ int main() {
       f=0xff;
       f=esx_f_open(buf, ESX_MODE_OPEN_EXIST|ESX_MODE_R);
       if (f==0xff) {
-	nettxln("NE");
+	senderr();
 	continue;
       }
       esx_f_fstat(f, &stat);
@@ -137,9 +140,9 @@ int main() {
       f=0xff;
       f=esx_f_opendir_ex(buf, ESX_DIR_USE_LFN);
       if (f==0xff) {
-	  nettxln("NE");
-	  continue;
-	}
+	senderr();
+	continue;
+      }
       nettxln("OK");
       for(;;) {
 	netrxln(buf);
@@ -167,6 +170,7 @@ int main() {
 #ifdef DEBUG
       puts("mkdir start");
 #endif
+      /*
       nettxln("OK");
       netrxln(buf);
       f=0xff;
@@ -177,6 +181,8 @@ int main() {
 	nettxln("OK");
 	printf("mkdir %s\n", buf);
       }
+      */
+      cmd_simple("mkdir", esx_f_mkdir);
 #ifdef DEBUG
       puts("mkdir end");
 #endif
@@ -197,10 +203,17 @@ int main() {
 #ifdef DEBUG
       puts("put end");
 #endif
+    } else if (!strcmp("QU", buf)) {
+#ifdef DEBUG
+      puts("quit start");
+#endif
+      nettxln("OK");
+      break;
     } else if (!strcmp("RD", buf)) {
 #ifdef DEBUG
       puts("rmdir start");
 #endif
+      /*
       nettxln("OK");
       netrxln(buf);
       f=0xff;
@@ -211,6 +224,8 @@ int main() {
 	nettxln("OK");
 	printf("rmdir %s\n", buf);
       }
+      */
+      cmd_simple("rmdir", esx_f_rmdir);
 #ifdef DEBUG
       puts("mkdir end");
 #endif
@@ -218,6 +233,7 @@ int main() {
 #ifdef DEBUG
       puts("rm start");
 #endif
+      /*
       nettxln("OK");
       netrxln(buf);
       f=0xff;
@@ -228,6 +244,8 @@ int main() {
 	nettxln("OK");
 	printf("rm %s\n", buf);
       }
+      */
+      cmd_simple("rm", esx_f_unlink);
 #ifdef DEBUG
       puts("rm end");
 #endif
@@ -236,13 +254,17 @@ int main() {
       puts("exit start");
 #endif
       nettxln("OK");
-      break;
+      cmdresponse("AT+CIPCLOSE=0\r\n");
+#ifdef DEBUG
+      puts("exit end");
+#endif
     } else {
       puts("unknown command");
       nettxln("UK");
     }
   }
   cmdresponse("AT+CIPCLOSE=0\r\n");
+  cmdresponse("AT+CIPSERVER=0\r\n");
   cmdresponse("ATE1\r\n");
   puts("server done");
   return 0;
