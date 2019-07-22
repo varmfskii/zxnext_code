@@ -19,7 +19,7 @@
 typedef struct command {
   char *name;
   void (*routine)(char **);
-  char *use;
+  char *use, *help;
 } command;
 
 typedef struct string {
@@ -41,8 +41,8 @@ extern command commands[];
 extern unsigned char mem[];
 #endif
 
-int neterr(void);
 char **parse(char *);
+int neterr(char *);
 int sendraw(char *, int);
 int sendstr(char *);
 void backspace(WINDOW *);
@@ -50,17 +50,19 @@ void error(char *, int);
 void execute(char *);
 void finish(void);
 void init(void);
-void puthex(WINDOW *, int);
-void srvrerr(char *);
 void netrx(char *, uint8_t *, uint8_t);
 void nettx(const char *, uint8_t);
+void puthex(WINDOW *, int);
+void srvrerr(char *);
 
-void call_get(char *);
+char *call_get(char *, int *);
 void call_id();
 void call_put(char *);
 void call_simple(char *, char *);
 
+void cmd_cat(char **);
 void cmd_cd(char **);
+void cmd_dir(char **);
 void cmd_exit(char **);
 void cmd_get(char **);
 void cmd_help(char **);

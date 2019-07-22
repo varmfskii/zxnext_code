@@ -7,17 +7,20 @@ another computer.
 
     - ? [\<cmd>] - print help message
 
+    - cat \<file> - show the contents of a file
+    
     - cd \<dir> - change directory (remote)
 
     - dir [\<dir>] - get directory listing from the ZX Next
 
     - exit - terminate client and server
 
-    - get \<file> - get file from the ZX Next
+    - get \<file> [\<file>]- get file from the ZX Next
 
     - help [\<cmd>] - print help message
 
     - ls [\<dir>] - get directory listing from the ZX Next
+      (unimplemented)
 
     - mget \<patt> - multiple file get (unimplimented)
 
@@ -25,8 +28,11 @@ another computer.
 
     - mput \<patt> - multiple file put (unimplemented)
 
-    - put \<file> - put a file to the ZX Next
+    - put \<file> [\<file>] - put a file to the ZX Next
+      (unimplemented)
 
     - quit - terminate client and server
 
-    - rm \<file> - delete a file/directory on the ZX Next
+    - rm \<file> - delete a file on the ZX Next
+
+    - rmdir \<dir> - delete a directory on the ZX Next

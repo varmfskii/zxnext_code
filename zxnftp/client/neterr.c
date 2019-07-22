@@ -12,15 +12,14 @@ struct neterr errs[]={
 	      { "UK", "unrecognized command\n" },
 	      { NULL, NULL }};
 
-int neterr(void) {
+int neterr(char *err) {
   char buf[BLKSZ];
 
-#ifdef DEBUG
-  waddstr(debug, "neterr\n");
-  wrefresh(debug);
-#endif
-  netrxln(buf);
-  if (!strcmp("OK", buf)) return 0;
+  if (!err) {
+    netrxln(buf);
+    if (!strcmp("OK", buf)) return 0;
+  } else
+    strcmp(buf, err);
 #ifdef DEBUG
   waddstr(debug, buf);
   waddch(debug, '\n');

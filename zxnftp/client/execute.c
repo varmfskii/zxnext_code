@@ -13,17 +13,8 @@ void execute(char *command) {
   for(i=0; commands[i].name; i++) {
     if (!strcasecmp(fields[0], commands[i].name)) break;
   }
-  if (commands[i].name) {
+  if (commands[i].name) 
     commands[i].routine(fields);
-  } else {
-    wmove(status, 0, 0);
-    wdeleteln(status);
-    waddstr(status, "execute(");
-    for(i=0; fields[i]; i++) {
-      waddch(status, '(');
-      waddstr(status, fields[i]);
-      waddch(status, ')');
-    }
-    waddch(status, ')');
-  }
+  else 
+    waddstr(win, "Error: unknown command\n");
 }

@@ -18,7 +18,7 @@ void call_simple(char *cmd, char *param) {
 #endif
 #ifndef NONET
   nettxln(cmd);
-  if (neterr()) return;
+  if (neterr(NULL)) return;
 #ifdef DEBUG
   waddstr(debug, "no error\n");
   wrefresh(debug);
@@ -31,7 +31,7 @@ void call_simple(char *cmd, char *param) {
   wrefresh(debug);
 #endif
     nettxln(param);
-    if (neterr()) return;
+    if (neterr(NULL)) return;
   }
 #endif
   waddstr(win, "Ok\n");

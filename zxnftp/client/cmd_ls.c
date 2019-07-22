@@ -1,27 +1,30 @@
 #include <curses.h>
+#include <string.h>
 #include "zxnftp.h"
 
 void cmd_ls(char **params) {
-  /*
+  uint8_t len;
   int i;
+  char buf[BLKSZ];
   
-  wmove(status, 0, 0);
-  wdeleteln(status);
-  waddstr(status, "ls(");
-  for(i=1; params[i]; i++) {
-    waddch(status, '(');
-    waddstr(status, params[i]);
-    waddch(status, ')');
+  if (params[1]) {
+    nettxln("LS");
+    if (neterr(NULL)) return;
+    nettxln(params[1]);
+  } else
+    nettxln("L.");
+  if (neterr(NULL)) return;
+  for(;;) {
+    nettxln("RR");
+    netrxln(buf);
+    if (!strncmp("OK", buf, 2)) break;
+    waddstr(win, "Attr:\n");
+    waddstr(win, buf);
+    netrxln(buf);
+    waddstr(win, "\nName:\n");
+    waddstr(win, buf);
+    waddch(win, '\n');
   }
-  waddch(status, ')');
-  if (params[1] && params[2]) {
-    waddstr(win, "Error: Incorrect number of arguments. ls or ls <dir>\n");
-    return;
-  }
-  if (params[1])
-    call_simple("LS", params[1], TRUE);
-  else
-    call_simple("L.", NULL, TRUE);
+  waddstr(win, "Ok\n");
   return;
-  */
 }

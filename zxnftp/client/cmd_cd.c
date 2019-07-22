@@ -21,14 +21,14 @@ void cmd_cd(char **params) {
   }
   if (params[1][0] && params[1][1]==':') {
     nettxln("DR");
-    if (neterr()) return;
+    if (neterr(NULL)) return;
     buf[0]=params[1][0];
     buf[1]='\0';
     nettxln(buf);
-    if (neterr()) return;
+    if (neterr(NULL)) return;
   }
   nettxln("CD");
-  if (neterr()) return;
+  if (neterr(NULL)) return;
   len=strlen(params[1]);
   if (len && params[1][len-1]!='/') {
 #ifdef DEBUG
@@ -38,7 +38,7 @@ void cmd_cd(char **params) {
     nettxln(buf);
   } else
     nettxln(params[1]);
-  if (neterr()) return;
+  if (neterr(NULL)) return;
   waddstr(win, "Ok\n");
   return;
 }

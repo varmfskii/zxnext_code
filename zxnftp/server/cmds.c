@@ -102,13 +102,13 @@ void do_ls(void) {
       nettxln("OK");
       break;
     }
-    nettxln(dirent.name);
     slice=esx_slice_dirent(&dirent);
     tm_from_dostm(&dt, &(slice->time));
-    sprintf(buf, "%02x\n%02u/%02u/%04u\n%02u:%02u:%02u\n",
+    sprintf(buf, "%02x\n%02u/%02u/%04u\n%02u:%02u:%02u",
 	    dirent.attr, dt.tm_mday, dt.tm_mon+1, dt.tm_year+1900,
 	    dt.tm_hour, dt.tm_min, dt.tm_sec);
-    nettxs(buf);
+    nettxln(buf);
+    nettxln(dirent.name);
   }
   esx_f_close(f);
 }

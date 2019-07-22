@@ -3,7 +3,7 @@ sources=zxnftp.c backspace.c call_get.c call_id.c call_put.c		\
 	cmd_help.c cmd_ls.c cmd_mget.c cmd_mkdir.c cmd_mput.c		\
 	cmd_put.c cmd_pwd.c cmd_quit.c cmd_rm.c cmd_rmdir.c		\
 	commands.c error.c execute.c finish.c init.c net.c parse.c	\
-	neterr.c
+	neterr.c cmd_cat.c cmd_dir.c
 
 objects=$(sources:.c=.o)
 
