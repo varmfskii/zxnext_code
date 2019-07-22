@@ -32,7 +32,7 @@ uart.o: uart.c zxnftp.h
 
 clean:
 	rm -f $(OBJS) *~ zcc_opt.def
-	rm -f zxnftp_CODE.bin zxnftp_UNASSIGNED.bin
+	rm -f zxnftp_CODE.bin zxnftp_UNASSIGNED.bin zxnftp_MAIN.bin
 
 distclean: clean
 	rm -f zxnftp.tap zxnftp.sna ZXNFTP
