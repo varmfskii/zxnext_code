@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "zxnftp.h"
 
-void cmd_exit(char **params) {
+void cmd_quit(char **params) {
   int i;
   
   wmove(status, 0, 0);
@@ -20,7 +20,7 @@ void cmd_exit(char **params) {
     finish();
     exit(1);
   }
-  call_simple("XX", NULL);
+  call_simple("QU", NULL);
   finish();
   exit(0);
 }

@@ -3,6 +3,7 @@
 
 void cmd_pwd(char **params) {
   int i;
+  char buf[BLKSZ];
   
   wmove(status, 0, 0);
   wdeleteln(status);
@@ -17,6 +18,17 @@ void cmd_pwd(char **params) {
     waddstr(win, "Error: Incorrect number of arguments. pwd\n");
     return;
   }
-  call_simple("PD", NULL, TRUE);
+#ifdef DEBUG
+  waddstr(debug, "pwd\n");
+#endif
+#ifdef NONET
+  waddstr(win, "<working directory>\n");
+#else
+  nettxln("PD");
+  netrxln(buf);
+  waddstr(win, buf);
+  waddch(win, '\n');
+#endif
+  waddstr(win, "Ok\n");
   return;
 }

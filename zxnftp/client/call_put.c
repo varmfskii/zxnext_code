@@ -4,6 +4,7 @@
 #include <unistd.h>
 
 void call_put(char *param) {
+  /*
   char buf[BLKSZ];
 
 #ifndef NONET
@@ -35,5 +36,6 @@ void call_put(char *param) {
 #else
   waddstr(debug, "<data>\n");
 #endif
+  */
 }
   

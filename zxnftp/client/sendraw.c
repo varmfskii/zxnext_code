@@ -17,7 +17,7 @@ int sendraw(char *s, int len) {
   buf[len]='\0';
   if (!strcmp(buf, "OK\n")) return 0;
   waddstr(win, "Error: ");
-  error(buf);
+  fprintf(stderr, buf);
   return 1;
 #else
   return 0;

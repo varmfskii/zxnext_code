@@ -13,10 +13,17 @@ void cmd_mkdir(char **params) {
     waddch(status, ')');
   }
   waddch(status, ')');
+  wrefresh(status);
   if (!params[1] || params[2]) {
     waddstr(win, "Error: Incorrect number of arguments. mkdir <dir>\n");
     return;
   }
-  call_simple("MD", params[1], FALSE);
+#ifdef DEBUG
+  waddstr(debug, "mkdir ");
+  waddstr(debug, params[1]);
+  waddch(debug, '\n');
+  wrefresh(debug);
+#endif
+  call_simple("MD", params[1]);
   return;
 }

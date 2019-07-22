@@ -3,22 +3,45 @@
 #include <string.h>
 #include <unistd.h>
 
-void call_simple(char *cmd, char *param, int list) {
-  char buf[255];
+void call_simple(char *cmd, char *param) {
+  char buf[BLKSZ];
   int i, len;
 
-  if (sendstr(cmd)) return;
-  if (param && sendstr(param)) return;
-  if (list) {
-    if (sendstr("RR")) return;
-#ifndef NONET
-    do {
-      len=read(server, buf, 255);
-      for(i=0; i<len; i++) waddch(win, buf[i]);
-    } while (len==255);
-#else
-    waddstr(win, "response\n");
-#endif
+#ifdef DEBUG
+  waddstr(debug, cmd);
+  if (param) {
+    waddch(debug, ' ');
+    waddstr(debug, param);
   }
+  waddch(debug, '\n');
+  wrefresh(debug);
+#endif
+#ifndef NONET
+  nettxln(cmd);
+  if (neterr()) return;
+#ifdef DEBUG
+  waddstr(debug, "no error\n");
+  wrefresh(debug);
+#endif
+  if (param) {
+#ifdef DEBUG
+  waddstr(debug, "parameter: ");
+  waddstr(debug, param);
+  waddch(debug, '\n');
+  wrefresh(debug);
+#endif
+    nettxln(param);
+    if (neterr()) return;
+  }
+#endif
   waddstr(win, "Ok\n");
+#ifdef DEBUG
+  waddstr(debug, cmd);
+  if (param) {
+    waddch(debug, ' ');
+    waddstr(debug, param);
+  }
+  waddch(debug, '\n');
+  wrefresh(debug);
+#endif
 }

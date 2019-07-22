@@ -6,6 +6,8 @@
 
 int server, w, h;
 int disp_mode=NUMERIC;
+int port;
+char *id, *addr;
 WINDOW *status, *win;
 #ifdef DEBUG
 WINDOW *debug;
@@ -20,8 +22,7 @@ int main() {
   
   init();
   refresh();
-  wrefresh(win);
-  waddstr(win, "ZX Next FTP client\n");
+  //wrefresh(win);
   waddstr(win, "> ");
   wrefresh(win);
   for(pos=done=0; !done;) {

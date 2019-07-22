@@ -2,6 +2,7 @@
 #include "zxnftp.h"
 
 void cmd_ls(char **params) {
+  /*
   int i;
   
   wmove(status, 0, 0);
@@ -22,4 +23,5 @@ void cmd_ls(char **params) {
   else
     call_simple("L.", NULL, TRUE);
   return;
+  */
 }

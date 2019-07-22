@@ -4,6 +4,7 @@
 #include <unistd.h>
 
 void call_get(char *param) {
+  /*
   char buf[BLKSZ];
 
 #ifndef NONET
@@ -34,5 +35,6 @@ void call_get(char *param) {
  terminate:
   fclose(local);
 #endif
+  */
 }
   

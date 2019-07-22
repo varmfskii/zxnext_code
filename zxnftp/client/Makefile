@@ -1,18 +1,24 @@
-sources=zxnftp.c backspace.c execute.c backspace.c finish.c		\
-	commands.c init.c parse.c cmd_help.c cmd_cd.c cmd_ls.c		\
-	cmd_exit.c cmd_get.c cmd_help.c cmd_mget.c cmd_mput.c		\
-	cmd_put.c cmd_pwd.c cmd_mkdir.c call_simple.c sendstr.c		\
-	error.c srvrerr.c sendraw.c call_put.c call_get.c cmd_rm.c
+sources=zxnftp.c backspace.c call_get.c call_id.c call_put.c		\
+	call_simple.c cmd_cd.c cmd_exit.c cmd_get.c cmd_help.c		\
+	cmd_help.c cmd_ls.c cmd_mget.c cmd_mkdir.c cmd_mput.c		\
+	cmd_put.c cmd_pwd.c cmd_quit.c cmd_rm.c cmd_rmdir.c		\
+	commands.c error.c execute.c finish.c init.c net.c parse.c	\
+	neterr.c
 
 objects=$(sources:.c=.o)
 
-all: dependencies zxnftp
+PREFIX=$(CURDIR)/..
+
+all: dependencies zxnftp zxnftp.cfg
 
 dependencies: $(sources)
 	./mkdeps.sh $@ $^
 
 zxnftp: $(objects)
 	$(CC) -o $@ $^ -lcurses
+
+zxnftp.cfg:
+	cd .. ; ./mkzxnftpcfg.py
 
 include dependencies
 
@@ -23,3 +29,7 @@ clean:
 
 distclean: clean
 	rm -f zxnftp dependencies
+
+install: all
+	mkdir -p $(PREFIX)/bin
+	cp zxnftp zxnftp.cfg $(PREFIX)/bin

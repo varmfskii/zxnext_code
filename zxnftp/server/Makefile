@@ -2,16 +2,24 @@ SRCS=zxnftp.c cmds.c net.c senderr.c uart.c
 
 OBJS=$(SRCS:.c=.o)
 
+PREFIX=$(CURDIR)/..
+
 OPT=-clib=sdcc_iy -SO3 --max-allocs-per-node200000 --opt-code-size
 #OPT=-clib=sdcc_iy
+
 TAP=-create-app -subtype=tap
+
 SNA=-create-app -subtype=sna
+
 DOTN=-create-app -subtype=dotn
 
 %.o: %.c
 	zcc +zxn -c $(OPT) $<
 
-all: zxnftp.tap zxnftp.sna ZXNFTP
+all: zxnftp.cfg zxnftp.tap zxnftp.sna ZXNFTP
+
+zxnftp.cfg:
+	cd .. ; ./mkzxnftpcfg.py
 
 zxnftp.tap: $(OBJS)
 	zcc +zxn -o zxnftp $(OPT) $(TAP) $^
@@ -28,7 +36,7 @@ net.o: net.c zxnftp.h
 senderr.o: senderr.c zxnftp.h
 uart.o: uart.c zxnftp.h
 
-.PHONY: clean distclean
+.PHONY: clean distclean install
 
 clean:
 	rm -f $(OBJS) *~ zcc_opt.def
@@ -36,3 +44,8 @@ clean:
 
 distclean: clean
 	rm -f zxnftp.tap zxnftp.sna ZXNFTP
+
+install:
+	mkdir -p $(PREFIX)/zxnext/dot
+	cp zxnftp.tap zxnftp.sna zxnftp.cfg $(PREFIX)/zxnext
+	cp ZXNFTP $(PREFIX)/zxnext/dot

@@ -13,8 +13,9 @@ command commands[]={
 		    { "mput", cmd_mput, "mput <patt>" },
 		    { "put", cmd_put, "put <file>" },
 		    { "pwd", cmd_pwd, "pwd" },
-		    { "quit", cmd_exit, "quit" },
-		    { "rm", cmd_rm, "rm <file/dir>" },
+		    { "quit", cmd_quit, "quit" },
+		    { "rm", cmd_rm, "rm <file>" },
+		    { "rmdir", cmd_rmdir, "rmdir <dir>" },
 		    { NULL, NULL, NULL }
 };
 
