@@ -9,7 +9,7 @@ command commands[]=
    { "cd", cmd_cd, "cd <dir>",
      "change the current working directory on the server to <dir>\n" },
    { "dir", cmd_dir, "dir [<dir>]" ,
-     "show a simple file listing (file names only) on the client\n\n"
+     "show an extended file listing on the client\n\n"
      "If there are no parameters, it will show the fles in the server's"
      "current working directory\n\nOtherwise it will show the contents of"
      "the server's indicated directory.\n" },
@@ -28,7 +28,7 @@ command commands[]=
      "their syntax\n\nIf a <cmd> is given, show extended help for that"
      "command\n" },
    { "ls", cmd_ls, "ls [<dir>]",
-     "show an extended file listing on the client\n\n"
+     "show a simple file listing (file names only) on the client\n\n"
      "If there are no parameters, it will show the fles in the server's"
      "current working directory\n\nOtherwise it will show the contents of"
      "the server's indicated directory.\n" },

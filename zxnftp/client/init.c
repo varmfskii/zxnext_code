@@ -14,6 +14,10 @@ void init(void) {
   int i, c, colon;
   FILE *in;
 
+  data=(char *)malloc(DATASZ);
+  data_sz=DATASZ;
+  lines=(char **)malloc(LINESSZ*(sizeof (char *)));
+  lines_sz=LINESSZ;
   if (!(in=fopen("zxnftp.cfg", "r"))) {
     fprintf(stderr, "Unable to open zxnftp.cfg\n");
     exit(1);

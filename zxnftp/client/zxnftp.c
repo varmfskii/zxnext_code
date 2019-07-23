@@ -8,6 +8,9 @@ int server, w, h;
 int disp_mode=NUMERIC;
 int port;
 char *id, *addr;
+char *data, **lines;
+size_t data_sz, lines_sz;
+
 WINDOW *status, *win;
 #ifdef DEBUG
 WINDOW *debug;

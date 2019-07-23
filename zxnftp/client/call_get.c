@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 char *call_get(char *param, int *fsize) {
-  char buf[BLKSZ], *data;
+  char buf[BLKSZ];
   int rsize;
   uint8_t len;
 
@@ -19,14 +19,16 @@ char *call_get(char *param, int *fsize) {
     return NULL;
   }
   *fsize=atoi(buf);
-  data=(char *)malloc(*fsize);
+  if (*fsize>data_sz) {
+    data_sz*=2;
+    data=(char *)realloc(data, data_sz);
+  }
   for(rsize=0; rsize<*fsize; rsize+=len) {
     nettxln("RR");
     netrx(data+rsize, &len, BLKSZ);
   }
   nettxln("RR");
   if (neterr(NULL)) {
-    free(data);
     return NULL;
   }
   return data;

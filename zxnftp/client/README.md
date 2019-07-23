@@ -11,7 +11,7 @@ another computer.
     
     - cd \<dir> - change directory (remote)
 
-    - dir [\<dir>] - get directory listing from the ZX Next
+    - dir [\<dir>] - get directory listing from the ZX Next (long)
 
     - exit - terminate client and server
 
@@ -19,8 +19,7 @@ another computer.
 
     - help [\<cmd>] - print help message
 
-    - ls [\<dir>] - get directory listing from the ZX Next
-      (unimplemented)
+    - ls [\<dir>] - get directory listing from the ZX Next (short)
 
     - mget \<patt> - multiple file get (unimplimented)
 

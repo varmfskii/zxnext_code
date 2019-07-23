@@ -6,11 +6,14 @@
 #define DEBUG
 #endif
 
-#define NUMERIC 0
-#define STRING 0xff
-#define LINE 0xfe
-#define RAW 0xfd
 #define BLKSZ 200
+#define DATASZ 8192
+#define LINE 0xfe
+#define LINESSZ 256
+#define NUMERIC 0
+#define RAW 0xfd
+#define STRING 0xff
+
 #define netrxln(X) netrx((X), NULL, (LINE))
 #define netrxs(X) netrx((X), NULL, (STRING))
 #define nettxln(X) nettx((X), (LINE))
@@ -42,9 +45,9 @@ extern unsigned char mem[];
 #endif
 
 char **parse(char *);
+int cmpls(const void *, const void *);
+int cmpdir(const void *, const void *);
 int neterr(char *);
-int sendraw(char *, int);
-int sendstr(char *);
 void backspace(WINDOW *);
 void error(char *, int);
 void execute(char *);
@@ -52,8 +55,7 @@ void finish(void);
 void init(void);
 void netrx(char *, uint8_t *, uint8_t);
 void nettx(const char *, uint8_t);
-void puthex(WINDOW *, int);
-void srvrerr(char *);
+void wpause(void);
 
 char *call_get(char *, int *);
 void call_id();
@@ -79,4 +81,6 @@ void cmd_rmdir(char **);
 extern char *id;
 extern char *addr;
 extern int port;
+extern char *data, **lines;
+extern size_t data_sz, lines_sz;
 #endif
