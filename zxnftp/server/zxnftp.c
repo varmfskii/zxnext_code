@@ -32,7 +32,7 @@ struct cmd cmds[]={
 int main() {
   uint8_t f, i, j, len;
 
-  puts("ZX Spectrum Next ZXNFTP server");
+  puts("ZXNFTP server id: " ID);
   ioctl(1, IOCTL_OTERM_PAUSE, 0);
   puts("starting server");
   f=0xff;

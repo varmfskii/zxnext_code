@@ -45,7 +45,7 @@ clean:
 distclean: clean
 	rm -f zxnftp.tap zxnftp.sna ZXNFTP
 
-install:
+install: all
 	mkdir -p $(PREFIX)/zxnext/dot
 	cp zxnftp.tap zxnftp.sna zxnftp.cfg $(PREFIX)/zxnext
 	cp ZXNFTP $(PREFIX)/zxnext/dot

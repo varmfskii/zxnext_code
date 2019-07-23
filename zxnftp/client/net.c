@@ -31,17 +31,23 @@ void netrx(char *rx, uint8_t *rlen, uint8_t mode) {
 
 void nettx(const char *buff, uint8_t len) {
   uint8_t len1;
+  char t[BLKSZ+3];
+  const char *out;
   
-  if (len=STRING || len==LINE)
+  if (len==LINE) {
+    strcpy(t, buff);
+    strcat(t, "\r\n");
+    out=t;
+  } else
+    out=buff;
+  if (len==STRING || len==LINE)
     len1=strlen(buff);
   else
     len1=len;
   write(server, buff, len1);
 #ifdef DEBUG
-  waddstr(debug, "write: ");
-  for(int i=0; i<len1; i++) waddch(debug, buff[i]);
-  waddch(debug, '\n');
+  sprintf(t, "write: %d\n", len1);
+  waddstr(debug, t);
   wrefresh(debug);
 #endif
-  if (len==LINE) write(server, "\r\n", 2);
 }

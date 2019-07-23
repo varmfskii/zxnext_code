@@ -59,7 +59,7 @@ void wpause(void);
 
 char *call_get(char *, int *);
 void call_id();
-void call_put(char *);
+void call_put(char *, size_t);
 void call_simple(char *, char *);
 
 void cmd_cat(char **);

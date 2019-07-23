@@ -14,7 +14,8 @@ struct neterr errs[]={
 
 int neterr(char *err) {
   char buf[BLKSZ];
-
+  int i;
+  
   if (!err) {
     netrxln(buf);
     if (!strcmp("OK", buf)) return 0;
@@ -26,9 +27,11 @@ int neterr(char *err) {
   wrefresh(debug);
 #endif
   waddstr(win, "Error: ");
-  for (int i=0; errs[i].s; i++)
+  for (i=0; errs[i].s; i++)
     if (!strcmp(errs[i].s, buf)) {
       waddstr(win, errs[i].l);
       return i;
     }
+  waddstr(win, "unknown error\n");
+  return i;
 }

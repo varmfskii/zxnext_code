@@ -3,7 +3,7 @@
 
 void cmd_get(char **params) {
   int i, len, numpar;
-  char *data, *dest;
+  char *data, *src, *dest;
   FILE *out;
   
   wmove(status, 0, 0);
@@ -19,21 +19,20 @@ void cmd_get(char **params) {
     waddstr(win, "Error: Incorrect number of arguments. get <file> [<file>]\n");
     return;
   }
-  data=call_get(params[1], &len);
+  src=(i==2)?params[1]:params[2];
+  dest=params[1];
+  data=call_get(src, &len);
   if (!data) {
     waddstr(win, "Error: no data\n");
     return;
   }
-  dest=(i==2)?params[1]:params[2];
   if (!(out=fopen(dest, "w"))) {
     waddstr(win, "Error: unable to open ");
     waddstr(win, dest);
     waddch(win, '\n');
-    free(data);
     return;
   }
   fwrite(data, len, 1, out);
-  free(data);
   waddstr(win, "Ok\n");
   return;
 }
