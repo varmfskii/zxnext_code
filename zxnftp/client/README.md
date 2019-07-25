@@ -7,6 +7,8 @@ another computer.
 
     - ? [\<cmd>] - print help message
 
+    - baud \<file> - set the baudrate on on teh ZX Next
+    
     - cat \<file> - show the contents of a file
     
     - cd \<dir> - change directory (remote)
@@ -28,7 +30,6 @@ another computer.
     - mput \<patt> - multiple file put (unimplemented)
 
     - put \<file> [\<file>] - put a file to the ZX Next
-      (unimplemented)
 
     - quit - terminate client and server
 
