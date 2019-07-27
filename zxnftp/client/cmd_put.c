@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <sys/stat.h>
 #include "zxnftp.h"
 
 void cmd_put(char **params) {
@@ -23,9 +24,9 @@ void cmd_put(char **params) {
   }
   src=(i==2)?params[1]:params[2];
   dest=params[1];
-  fstat(src, &st);
-  if (st.size>data_sz) {
-    data_sz=st.size;
+  stat(src, &st);
+  if (st.st_size>data_sz) {
+    data_sz=st.st_size;
     free(data);
     data=(char *)malloc(data_sz);
   }
@@ -35,7 +36,7 @@ void cmd_put(char **params) {
     waddch(win, '\n');
     return;
   }
-  fread(data, 1, sz.size, in);
+  fread(data, 1, st.st_size, in);
   fclose(in);
   call_put(dest, len);
 }
