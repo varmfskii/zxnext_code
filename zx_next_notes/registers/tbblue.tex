@@ -394,6 +394,7 @@ Meaningful range is 0-319 in 40 char mode, 0-639 in 80 char mode
 \end{itemize}
 ULA can only scroll in multiples of 8 pixels so the lowest 3 bits have
 no effect at this time.\\
+v3.00 system allows single pixel scrolling\\
 LoRes scrolls in "half-pixels" at the same resolution and smoothness
 as Layer 2.
 
@@ -747,5 +748,40 @@ See nextreg \$38
 (W) \$79 (121) $\Rightarrow$ Sprite Attribute 4 with automatic post
 increment of Sprite Number\\
 See nextreg \$39
+
+(R/W) \$90 (144) $\Rightarrow$ Pi GPIO output enable 0 (3.00)\\
+Control output enable for Pi GPIO pins 0-7
+
+(R/W) \$91 (145) $\Rightarrow$ Pi GPIO output enable 1 (3.00)\\
+Control output enable for Pi GPIO pins 8-15
+
+(R/W) \$92 (146) $\Rightarrow$ Pi GPIO output enable 2 (3.00)\\
+Control output enable for Pi GPIO pins 16-23
+
+(R/W) \$93 (147) $\Rightarrow$ Pi GPIO output enable 3 (3.00)\\
+Control output enable for Pi GPIO pins 24-27
+
+(R/W) \$98 (152) $\Rightarrow$ Pi GPIO data 0 (3.00)\\
+Set value of GPIO pin if enabled Pi GPIO pins 0-7
+
+(R/W) \$99 (153) $\Rightarrow$ Pi GPIO data 1 (3.00)\\
+Set value of GPIO pin if enabled Pi GPIO pins 8-15
+
+(R/W) \$9a (154) $\Rightarrow$ Pi GPIO data 2 (3.00)\\
+Set value of GPIO pin if enabled Pi GPIO pins 16-23
+
+(R/W) \$9b (155) $\Rightarrow$ Pi GPIO data 3 (3.00)\\
+Set value of GPIO pin if enabled Pi GPIO pins 24-27
+
+(R/W) \$a0 (160) $\Rightarrow$ Pi peripheral enable (3.00)
+\begin{itemize}
+\item[] bits 7-6 = Reserved (00)
+\item[] bit 5 = RXTX
+\item[] bit 4 = UART
+\item[] bit 3 = I2C1
+\item[] bits 2-1 = Reserved (00)
+\item[] bit 0 = SPIO
+\end{itemize}
+Control Pi GPIO function overlay
 
 (W) \$FF (255) $\Rightarrow$ Debug LEDs (DE-1, DE-2 am Multicore only)

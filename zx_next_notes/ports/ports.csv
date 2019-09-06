@@ -11,8 +11,9 @@ R,W,16----------------0,Port(hex),Description,Disable
 ,*,0001 0000 0011 1011,\$103b,i2c SCL (rtc),
 *,*,0001 0001 0011 1011,\$113b,i2c SDA (rtc),
 *,*,0001 0010 0011 1011,\$123b,Layer 2,
-*,*,0001 0011 0011 1011,\$133b,UART tx (esp),
-*,*,0001 0100 0011 1011,\$143b,UART rx (esp),
+*,*,0001 0011 0011 1011,\$133b,UART tx,
+*,*,0001 0100 0011 1011,\$143b,UART rx,
+*,*,0001 0101 0011 1011,\$153b,UART control,
 *,*,XXXX XXXX 0110 1011,\$6b,zxnDMA,
 *,*,11XX XXXX XXXX X101,\$fffd,AY reg,Nextreg \$06 bit 0
 ,*,10XX XXXX XXXX X101,\$bffd,AY dat,Nextreg \$06 bit 0
@@ -43,3 +44,5 @@ R,W,16----------------0,Port(hex),Description,Disable
 *,*,0011 0000 0011 1011,\$303b,Sprite slot/flags,
 ,*,XXXX XXXX 0101 0111,\$57,Sprite attributes,
 ,*,XXXX XXXX 0101 1011,\$5b,Sprite pattern,
+,*,1011 1111 0011 1011,\$bf3b,ULAPlus register,
+*,*,1111 1111 0011 1011,\$ff3b,ULAPlus data,

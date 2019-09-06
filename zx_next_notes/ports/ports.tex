@@ -101,15 +101,37 @@ Port \$113b (4411) i2c SDA (rtc)
 
 Port \$123b (4667) Layer 2
 \begin{itemize}
-  \item[] bits 6-7: Video RAM bank select
-  \item[] bit 3: Shadow layer 2 select
-  \item[] bit 1: Layer 2 visible
-  \item[] bit 0: Enable layer 2 write paging
+\item[] bits 6-7: Video RAM bank select
+  \begin{itemize}
+  \item[] 00=first 16k
+  \item[] 01=middle 16k
+  \item[] 10=last 16k
+  \item[] 11=full 48k (3.00)
+  \end{itemize}
+\item[] bits 4-5: Reserved (00)
+\item[] bit 3: Shadow layer 2 select
+\item[] bit 2: Enable layer 2 read paging (3.00)
+\item[] bit 1: Layer 2 visible
+\item[] bit 0: Enable layer 2 write paging
 \end{itemize}
 
-Port \$133b (4923) UART tx (esp)
+Port \$133b (4923) UART tx
 
-Port \$143b (5179) UART rx (esp)
+Port \$143b (5179) UART rx
+
+Port \$153b (5435) UART control (3.0)
+\begin{itemize}
+\item[] bit 7: Reserved (0)
+\item[] bit 6: UART select
+  \begin{itemize}
+  \item[] 0=ESP
+  \item[] 1=Pi
+  \end{itemize}
+\item[] bit 5: Reserved (0)
+\item[] bit 4: Prescalar valid in this write
+\item[] bit 3: Reserved (0)
+\item[] bits 2-0: Prescalar top bits
+\end{itemize}
 
 Port \$243b (9275) Next Register Select\\
 Write-only and is used to set the registry number, listed below.
@@ -150,6 +172,8 @@ Port \$7ffe (32766) Keyboard 8 (read only)
 \item[] bit 3: Symbol Shift
 \item[] bit 4: Space
 \end{itemize}
+
+Port \$bf3b (48955) ULAPlus register port (write only) (3.00)
 
 Port \$bffd (49149) AY (TurboSound Next) Data\\
 Writes to selected register of selected sound chip
@@ -227,9 +251,11 @@ Port \$fefe (65278) Keyboard 1 (read only)
 \item[] bit 4: Caps Shift
 \end{itemize}
 
-Port \$fbdf (65503) Kempston Mouse Y\\
+Port \$fbdf (64479) Kempston Mouse Y\\
 Disable with bit 2 of Nextreg \$09\\
 Kempston Mouse Y coordinate (0-191)
+
+Port \$ff3b (65339) ULAPlus data port (3.00)
 
 Port \$fffd (65533) AY (Turbo Sound Next) Register\\
 Select active sound chip/sound chip register\\

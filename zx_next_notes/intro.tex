@@ -1,0 +1,45 @@
+\chapter{Introduction}
+The ZX Spectrum Next is an extension of the original ZX Spectrum
+implemented in FPGA which implements many of the common additions to
+the system includin the characteristics of all of the original ZX
+Spectrum line, including the Timex/Sinclair 2068, along with a number
+of characteristics to modernize the design.
+
+This document is an attempt to consolidate the programming interface
+for the ZX Spectrum Next into a single location. This document started
+when much of the documentation on the ZX Spectrum Next site
+(https://www.specnext.com/) was out of date and/or difficult to figure
+out. The way to figure out how things actually worked was to either
+dig through the forums and ask questions or find someones code that
+implemented a particular bit of functionality and reverse engineer
+it. The situation has greatly improved and this document may even be
+redundant at this point.
+
+Description from http://www.specnext.com/about/:
+
+The Spectrum Next is fully implemented with FPGA technology, ensuring
+it can be upgraded and enhanced while remaining truly compatible with
+the original hardware by using special memory chips and clever
+design. Here’s what under the hood of the machine:
+
+\begin{itemize}
+\item Processor: Z80 normal and turbo modes
+\item Memory: 1024Kb RAM (expandable to 2048Kb on board)
+\item Video: Hardware sprites, 256 colours mode and more.
+\item Video Output: RGB, VGA, HDMI
+\item Storage: SD Card slot, with DivMMC-compatible protocol
+\item Audio: Turbo Sound Next (3x AY-3-8912 audio chips with stereo
+  output)
+\item Joystick: DB9 compatible with Cursor, Kempston and Interface 2
+  protocols (selectable)
+\item PS/2 port: Mouse with Kempston mode emulation and an external keyboard
+\item Special: Multiface functionality for memory access, savegames,
+  cheats etc.
+\item Tape support: Mic and Ear ports for tape loading and saving
+\item Expansion: Original external bus expansion port and accelerator
+  expansion port
+\item Accelerator board (optional): GPU / 1Ghz CPU / 512Mb RAM
+\item Network (optional): Wi Fi module
+\item Extras: Real Time Clock (optional), internal speaker (optional)
+\end{itemize}
+
