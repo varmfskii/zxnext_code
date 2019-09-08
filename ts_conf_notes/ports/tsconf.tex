@@ -1,0 +1,389 @@
+\chapter{Ports}
+
+26 May 2015  Vbi
+
+\begin{table}[h]\centering\tiny
+  \caption{ZX Evolution TS-Conf Ports}
+  \csvautotabular{ports/tsconf.csv}
+\end{table}
+
+\section{16-bit}
+Port \$00af (175) Video Config/Status\\
+Write: Video Config
+\begin{itemize}
+\item[] bits 6-7: RRES
+  \begin{itemize}
+  \item[] 00=256x192
+  \item[] 01=320x200
+  \item[] 10=320x240
+  \item[] 11=360x288
+  \end{itemize}
+\item[] bit 5: NOGFX
+  \begin{itemize}
+  \item[] 0=Plain graphics controller enabled, pixels displayed
+  \item[] 1=Plain graphics controller disabled, pixels not displayed
+  \end{itemize}
+\item[] bit 4: NOTSU
+  \begin{itemize}
+  \item[] 0=TSU pixels displayed
+  \item[] 1=TSU pixels not displayed, TSU still enabled by TSConfig register
+  \end{itemize}
+\item[] bit 3: GFXOVR (VDAC)
+  \begin{itemize}
+  \item[] 0=Plain graphics is under TSU
+  \item[] 1=Plain graphics is over TSU (pixels with code 0 are transparent)
+  \end{itemize}
+\item[] bit 2: FT\_EN (VDAC2)
+  \begin{itemize}
+  \item[] 0=Regular video adapter selected
+  \item[] 1=FT812 output selected
+  \end{itemize}
+\item[] bit 1-0: VM
+  \begin{itemize}
+  \item[] 00=ZX
+  \item[] 01=16c
+  \item[] 10=256c
+  \item[] 11=Text
+  \end{itemize}
+\end{itemize}
+Read: Status
+\begin{itemize}
+\item[] bit 7: Reserved
+\item[] bit 6: PWR\_UP
+\item[] bit 5: FDRVER
+  \begin{itemize}
+  \item[] 0=Regular Version
+  \item[] 1=FDD Ripper version (TSU is disabled)
+  \end{itemize}
+\item[] bit 4-3: Reserved
+\item[] bit 2-0: VDVER
+  \begin{itemize}
+  \item[] 000=2-bit VDAC+PWM levels 0-24
+  \item[] 001=3-bit VDAC
+  \item[] 010=4-bit VDAC
+  \item[] 011=5-bit VDAC
+  \item[] 100:110=Reserved
+  \item[] 111=2-bit VDAC+PWM levels 0-24
+  \end{itemize}
+\end{itemize}
+
+Port \$01af (431) Video Page
+RA[21:14]
+
+Port \$02af (687) X-offset LSB
+
+Port \$03af (943) X-offset LSb
+
+Port \$04af (1199) Y-offset LSB
+
+Port \$05af (1455) Y-offset LSb
+
+Port \$06af (1711) TS Engine Config
+\begin{itemize}
+\item[] bit 7: Sprite layers enable
+\item[] bit 6: Tile layer 1 enable
+\item[] bit 5: Tile layer 0 enable
+\item[] bit 4: Reserved
+\item[] bit 3: Tiles with number 0 display enable, layer 1
+\item[] bit 2: Tiles with number 1 display enable, layer 1
+\item[] bit 1: Reserved
+\item[] bit 0: TSU raster extended (VDAC, not ZX-Evo)
+  \begin{itemize}
+  \item[] 0=TSU graphics is limited with border
+  \item[] 1=TSU graphics is always 360x288
+  \end{itemize}
+\end{itemize}
+
+Port \$07af (1967) Palette selection
+\begin{itemize}
+\item[] bit 6-7: T1PAL[7:6]
+\item[] bit 4-5: T0PAL[7:6]
+\item[] bit 0-3: GPAL[7:4]
+\end{itemize}
+
+Port \$0faf (4015) Border color
+
+Port \$10af (4271) Page at \$0000-\$3fff\\
+RA[21:14]
+
+Port \$11af (4527) Page at \$4000-\$7fff
+RA[21:14]
+
+Port \$12af (4783) Page at \$8000-\$bfff
+RA[21:14]
+
+Port \$13af (5039) Page at \$c000-\$ffff
+RA[21:14]
+
+Port \$15af (5551) FMaps Addr
+\begin{itemize}
+\item[] bit 5-7: Reserved
+\item[] bit 4: FM\_EN
+\item[] bit 0-3: A[15:12]  
+\end{itemize}
+
+Port \$16af (5807) Tile Map Page\\
+RA[21:14]
+
+Port \$17af (6063) Tile 0 Graphics Page\\
+RA[21:14]
+
+Port \$18af (6319) Tile 1 Graphics Page\\
+RA[21:14]
+
+Port \$19af (6575) Sprite Graphics Page\\
+RA[21:14]
+
+Port \$1aaf (6831) DMA Source Address L
+\begin{itemize}
+\item[] bit 1-7: RA[7:1]
+\item[] bit 0: Must be 0
+\end{itemize}
+
+Port \$1baf (7087) DMA Source Address H
+\begin{itemize}
+\item[] bit 6-7: Reserved
+\item[] bit 0-5: RA[13:8]
+\end{itemize}
+
+Port \$1caf (7343) DMA Source Address X\\
+RA[21:14]
+
+Port \$1daf (7599) DMA Destination Address L
+\begin{itemize}
+\item[] bit 1-7: RA[7:1]
+\item[] bit 0: Must be 0
+\end{itemize}
+
+Port \$1eaf (7855) DMA Destination Address H
+\begin{itemize}
+\item[] bit 6-7: Reserved
+\item[] bit 0-5: RA[13:8]
+\end{itemize}
+
+Port \$1faf (8111) DMA Destination Address X\\
+RA[21:14]
+
+Port \$20af (8367) System Config
+\begin{itemize}
+\item[] bits 3-7: Reserved
+\item[] bit 2: CACHE\_EN
+\item[] bits 0-1: ZCLK
+  \begin{itemize}
+  \item[] 00=3.5 MHz
+  \item[] 01=7.0 MHz
+  \item[] 10=14 MHz
+  \item[] 11=Reserved
+  \end{itemize}
+\end{itemize}
+
+Port \$21af (8623) Memory Config
+\begin{itemize}
+\item[] bits 6-7: LCK128
+  \begin{itemize}
+  \item[] 00=512k \$7ffd[7:6]=Page3[4:3]
+  \item[] 01=128k \$7ffd[7:6]=00
+  \item[] 10=Auto
+  \item[] 11=1024k \%7ffd[7:6]=Page3[4:3], \$7ffd[5]=Page3[5]
+  \end{itemize}
+\item[] bits 4-5: Reeserved
+\item[] bit 3: W0\_RAM
+  \begin{itemize}
+  \item[] 0=ROM
+  \item[] 1=RAM
+  \end{itemize}
+\item[] bit 2: !W0\_MAP
+  \begin{itemize}
+  \item[] 0=mapped
+    \begin{itemize}
+      \item[] bits 2-7: Page0[7:2]
+      \item[] bits 0-1:
+        \begin{itemize}
+        \item[] 00=Service
+        \item[] 01=DOS
+        \item[] 10=128
+        \item[] 11=48
+        \end{itemize}
+    \end{itemize}
+  \item[] 1=page 0
+  \end{itemize}
+\item[] bit 1: W0\_WE (for ROM and RAM)
+  \begin{itemize}
+  \item[] 0=WP
+  \item[] 1=WE 
+  \end{itemize}
+\item[] bit 0: ROM128\\
+  Same as bit for in \$7ffd
+\end{itemize}
+
+Port \$22af (8879) Horizontal INT Position\\
+HCNT[8:1]
+
+Port \$23af (9135) Vertical INT Position\\
+VCNT[7:0]
+
+Port \$24af (9391) Vertical INT Position Autoincrement
+\begin{itemize}
+\item[] bits 4-7: VINT\_INC
+\item[] bits 1-3: Reserved
+\item[] bit 0: VCNT[8]
+\end{itemize}
+
+Port \$25af (9647) DMA Wait Port Device
+\begin{itemize}
+\item[] bits 2-7: Reserved
+\item[] bits 0-1: DWPD
+  \begin{itemize}
+  \item[] 00=GluClock
+  \item[] 01=Comport
+  \item[] 10=Reserved
+  \item[] 11=Reserved
+\end{itemize}
+\end{itemize}
+
+Port \$26af (9903) DMA Burst Length\\
+DBL
+
+Port \$27af (10159) DMA Control/Start/DMA Status\\
+Write: DMA Control/Start
+\begin{itemize}
+\item[] bit 7: DDEV[3]
+\item[] bit 6: OPT (VDAC only)
+  \begin{itemize}
+  \item[] 0=Saturation off
+  \item[] 1=Saturation on
+  \end{itemize}
+\item[] bit 5: Source address alignment
+  \begin{itemize}
+  \item[] 0=After each burst address is kept as is
+  \item[] 1=After each burst lower bits of address restored to their
+    initial values before burst, upper bits increased by 1
+  \end{itemize}
+\item[] bit 4: Destination address alignment
+  \begin{itemize}
+  \item[] 0=After each burst address is kept as is
+  \item[] 1=After each burst lower bits of address restored to their
+    initial values before burst, upper bits increased by 1
+  \end{itemize}
+\item[] bit 3: A\_SZ
+  \begin{itemize}
+  \item[] 0=Address Alignment Size 256 bytes, 4 bits per pixel
+  \item[] 1=Address Alignment Size 512 bytes, 8 bits per pixel
+  \end{itemize}
+\item[] bits 0-2: DDEV[2:0]\\
+  with DDEV[3]
+  \begin{itemize}
+  \item[] 0000=Reserved
+  \item[] 0001=RAM->RAM
+  \item[] 0010=SPI->RAM
+  \item[] 0011=IDE->RAM
+  \item[] 0100=FILL->RAM RAM is filled with word from RAM
+  \item[] 0101=FDD->RAM (VDAC2 only)
+  \item[] 0110=BLT2->RAM pixels from RAM are blitted with adder (VDAC only)
+  \item[] 0111=WTP->RAM Wait ports from MCU to RAM
+  \item[] 1000=Reserved
+  \item[] 1001=BLT1->RAM pixels are copied if they are non-zero
+  \item[] 1010=RAM->SPI
+  \item[] 1011=RAM->IDE
+  \item[] 1100=RAM->CRAM
+  \item[] 1101=RAM->SFILE
+  \item[] 1110=Reserved
+  \item[] 1111=RAM->WTP Wait ports from RAM to MCU
+  \end{itemize}
+\end{itemize}
+Read: DMA Status
+\begin{itemize}
+\item[] bit 7: DMA\_ACT
+\item[] bits 0-6: Reserved
+\end{itemize}
+
+Port \$28af (10415) DMA Bursts Number\\
+DBN[7:0]
+
+Port \$29af (10671) FDD Virtual Drive Enable
+\begin{itemize}
+\item[] bit 7: VG\_OPEN
+\item[] bits 4-6: Reserved
+\item[] bit 3: FDDD
+\item[] bit 2: FDDC
+\item[] bit 1: FDDB
+\item[] bit 0: FDDA
+\end{itemize}
+
+Port \$2aaf (10927) INT Enable Mask
+\begin{itemize}
+\item[] bits 4-7: Reserved
+\item[] bit 3: WTP
+\item[] bit 2: DMA
+\item[] bit 1: LINE
+\item[] bit 0: FRAME
+\end{itemize}
+
+Port \$2baf (11183) Cache Config
+\begin{itemize}
+\item[] bits 4-7: Reserved
+\item[] bit 3: EN\_C000
+\item[] bit 2: EN\_8000
+\item[] bit 1: EN\_4000
+\item[] bit 0: EN\_0000
+\end{itemize}
+
+Port \$2caf (11439) DMA Bursts Number High\\
+DBN[9:8]
+
+Port \$2daf (11695) DMA Wait Port Address\\
+DWPA
+
+Port \$30af (12463) FDD Ripper Counter Byte0\\
+Write:\\
+FRCNT[7:0]\\
+Read:
+\begin{itemize}
+\item[] bits 1-7: Reserved
+\item[] bit 0: FR\_EN
+\end{itemize}
+
+Port \$31af (12719) FDD Ripper Counter Byte1\\
+FRCNT[15:8]
+
+Port \$32af (12975) FDD Ripper Counter Byte2
+\begin{itemize}
+\item[] bits 3-7: Reserved
+\item[] bits 0-2: FRCNT[18:16]
+\end{itemize}
+
+Port \$40af (16559) X-offset for tile-plane 0 LSB\\
+XO[7:0]
+
+Port \$41af (16815) X-offset for tile-plane 0 MSb
+\begin{itemize}
+\item[] bits 1-7: Reserved
+\item[] bit 0: XO[8]
+\end{itemize}
+
+Port \$42af (17071) Y-offset for tile-plane 0 LSB\\
+YO[7:0]
+
+Port \$43af (17327) Y-offset for tile-plane 0 MSb
+\begin{itemize}
+\item[] bits 1-7: Reserved
+\item[] bit 0: YO[8]
+\end{itemize}
+
+Port \$44af (17583) X-offset for tile-plane 1 LSB
+XO[7:0]
+
+Port \$45af (17839) X-offset for tile-plane 1 MSb
+\begin{itemize}
+\item[] bits 1-7: Reserved
+\item[] bit 0: XO[8]
+\end{itemize}
+
+Port \$46af (18095) Y-offset for tile-plane 1 LSB
+YO[7:0]
+
+Port \$47af (18351) Y-offset for tile-plane 1 MSb
+\begin{itemize}
+\item[] bits 1-7: Reserved
+\item[] bit 0: YO[8]
+\end{itemize}

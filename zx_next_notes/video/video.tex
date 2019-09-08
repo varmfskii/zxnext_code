@@ -37,6 +37,7 @@ displayed. This is set by register \$4A.
 
 \section{Palette}
 \index{palette}
+\paragraph{ULANext Colour Palette}
 Each video mode group has a pair of palettes assigned to it a primary
 and an alternate palette.
 
@@ -109,6 +110,198 @@ Two consecutive writes are needed to write the 9 bit colour
 After the two consecutive writes the palette index is
 auto-incremented if the auto-increment is enabled by reg \$43.\\
 Reads only return the 2nd byte and do not auto-increment.
+
+\paragraph{ULAPlus Colour Palette}
+From v3.00, the ZX Next emulates ULAPlus using the last 64 (192-255)
+entries of the ULA palette
+
+\subparagraph{I/O ports}
+ULAplus is controlled by two ports.
+
+\$BF3B is the register port (write only)
+
+The byte output will be interpreted as follows:
+\begin{itemize}
+\item[] Bits 0-5: Select the register sub-group
+\item[] Bits 6-7: Select the register group. Two groups are currently available:
+  \begin{itemize}
+  \item[] 00=palette group\\
+    When this group is selected, the sub-group determines the entry in the
+    palette table (0-63).
+  \item[] 01=mode group\\
+    The sub-group is (optionally) used to mirror the video functionality
+    of Timex port \$FF as follows:
+  \end{itemize}
+\item[] Bits 0-1: Screen mode.
+  \begin{itemize}
+  \item[] 000=screen 0 (bank 5)
+  \item[] 001=screen 1 (bank 5)
+  \item[] 010=hi-colour (bank 5)
+  \item[] 100=screen 0 (bank 7)
+  \item[] 101=screen 1 (bank 7)
+  \item[] 110=hi-colour (bank 7)
+  \item[] 110=hi-res (bank 5)
+  \item[] 111=hi-res (bank 7)
+  \end{itemize}
+\item[] Bits 3-5: Sets the screen colour in hi-res mode.
+  \begin{itemize}
+  \item[] 000=Black on White
+  \item[] 001=Blue on Yellow
+  \item[] 010=Red on Cyan
+  \item[] 011=Magenta on Green
+  \item[] 100=Green on Magenta
+  \item[] 101=Cyan on Red
+  \item[] 110=Yellow on Blue
+  \item[] 111=White on Black
+  \end{itemize}
+\end{itemize}
+
+\$FF3B is the data port (read/write)
+
+When the palette group is selected, the byte written will describe the
+color.
+
+When the mode group is selected, the byte output will be interpreted
+as follows:
+\begin{itemize}
+\item[] Bit 0: ULAplus palette on (1) / off (0)
+\item[] Bit 1: (optional) grayscale: on (1) / off (0) (same as turing
+  the color off on the television)
+\end{itemize}
+
+Implementations that support the Timex video modes use the \$FF
+register as the primary means to set the video mode, as per the Timex
+machines. It is left to the individual implementations to determine if
+reading the port returns the previous write or the floating bus.
+
+\subparagraph{GRB palette entries}
+
+G3R3B2 encoding\\
+For a device using the GRB colour space the palette entry is
+interpreted as follows
+\begin{itemize}
+\item[] Bits 0-1: Blue intensity.
+\item[] Bits 2-4: Red intensity.
+\item[] Bits 5-7: Green intensity.
+\end{itemize}
+
+This colour space uses a sub-set of 9-bit GRB. The missing lowest blue
+bit is set to OR of the other two blue bits (Bb becomes 000 for 00,
+and Bb1 for anything else). This gives access to a fixed half the
+potential 512 colour palette. The reduces the jump in intensity in the
+lower range in the earlier version of the specification. It also means
+the standard palette can now be represented by the ULAplus palette.
+
+\subparagraph{Grayscale palette entries}
+In grayscale mode, each palette entry describes an intensity from zero
+to 255. This can be achieved by simply removing the colour from the
+output signal.
+
+\subparagraph{Limitations}
+Although in theory 64 colours can be displayed at once, in practice
+this is usually not possible except when displaying colour bars,
+because the four CLUTs are mutually exclusive; it is not possible to
+mix colours from two CLUTs in the same cell. However, with software
+palette cycling it is possible to display all 256 colours on screen at
+once.
+
+\subparagraph{Emulation}
+The 64 colour mode lookup table is organized as 4 palettes of 16
+colours.
+
+Bits 7 and 6 of each Spectrum attribute byte (normally used for FLASH
+and BRIGHT) will be used as an index value (0-3) to select one of the
+four colour palettes.
+
+Each colour palette has 16 entries (8 for INK, 8 for PAPER). Bits 0 to
+2 (INK) and 3 to 5 (PAPER) of the attribute byte will be used as
+indexes to retrieve colour data from the selected palette.
+
+With the standard Spectrum display, the BORDER colour is the same as
+the PAPER colour in the first CLUT. For example BORDER 0 would set the
+border to the same colour as PAPER 0 (with the BRIGHT and FLASH bits
+not set).
+
+The complete index can be calculated as\\
+ink\_colour = (FLASH * 2 + BRIGHT) * 16 + INK
+paper\_colour = (FLASH * 2 + BRIGHT) * 16 + PAPER + 8
+
+\subparagraph{Palette file format}
+The palette format doubles as the BASIC patch loader. This enables you
+to edit patches produced by other people.
+\begin{verbatim}
+; 64 colour palette file format (internal) - version 1.0
+; copyright (c) 2009 Andrew Owen
+;
+; The palette file is stored as a BASIC program with embedded machine code
+
+header:
+
+db 0x00 ; program file
+db 0x14, 0x01, "64colour" ; file name
+dw 0x0097 ; data length
+dw 0x0000 ; autostart line
+dw 0x0097 ; program length
+
+basic:
+
+; 0 RANDOMIZE USR ((PEEK VAL "2
+; 3635"+VAL "256"*PEEK VAL "23636"
+; )+VAL "48"): LOAD "": REM
+
+db 0x00, 0x00, 0x93, 0x00, 0xf9, 0xc0, 0x28, 0x28
+db 0xbe, 0xb0, 0x22, 0x32, 0x33, 0x36, 0x33, 0x35
+db 0x22, 0x2b, 0xb0, 0x22, 0x32, 0x35, 0x36, 0x22
+db 0x2a, 0xbe, 0xb0, 0x22, 0x32, 0x33, 0x36, 0x33
+db 0x36, 0x22, 0x29, 0x2b, 0xb0, 0x22, 0x34, 0x38
+db 0x22, 0x29, 0x3a, 0xef, 0x22, 0x22, 0x3a, 0xea
+
+start:
+
+di ; disable interrupts
+ld hl, 38 ; HL = length of code
+add hl, bc ; BC = entry point (start) from BASIC
+ld bc, 0xbf3b ; register select
+ld a, 64 ; mode group
+out (c), a ;
+ld a, 1 ;
+ld b, 0xff ; choose register port
+out (c), a ; turn palette mode on
+xor a ; first register
+
+setreg:
+
+ld b, 0xbf ; choose register port
+out (c), a ; select register
+ex af, af' ; save current register select
+ld a, (hl) ; get data
+ld b, 0xff ; choose data port
+out (c), a ; set it
+ex af, af' ; restore current register
+inc hl ; advance pointer
+inc a ; increase register
+cp 64 ; are we nearly there yet?
+jr nz, setreg ; repeat until all 64 have been done
+ei ; enable interrupts
+ret ; return
+
+; this is where the actual data is stored. The following is an example palette.
+
+registers:
+
+db 0x00, 0x02, 0x18, 0x1b, 0xc0, 0xc3, 0xd8, 0xdb ; INK
+db 0x00, 0x02, 0x18, 0x1b, 0xc0, 0xc3, 0xd8, 0xdb ; PAPER
+db 0x00, 0x03, 0x1c, 0x1f, 0xe0, 0xe3, 0xfc, 0xff ; +BRIGHT
+db 0x00, 0x03, 0x1c, 0x1f, 0xe0, 0xe3, 0xfc, 0xff ;
+db 0xdb, 0xd8, 0xc3, 0xc0, 0x1b, 0x18, 0x02, 0x00 ; +FLASH
+db 0xdb, 0xd8, 0xc3, 0xc0, 0x1b, 0x18, 0x02, 0x00 ;
+db 0xff, 0xfc, 0xe3, 0xe0, 0x1f, 0x1c, 0x03, 0x00 ; +BRIGHT/
+db 0xff, 0xfc, 0xe3, 0xe0, 0x1f, 0x1c, 0x03, 0x00 ; +FLASH
+
+terminating_byte:
+
+db 0x0d 
+\end{verbatim}
 
 \section{ULA group}
 The ULA layer supports ZX Spectrum video, Timex video modes, and the

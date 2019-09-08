@@ -1,0 +1,109 @@
+
+Tao says: Sprite is a graphic tile with a size from 8 to 64 points, which can be displayed in coordinates 0-511 in X and Y, with the possibility of reflecting the display vertically / horizontally, and having transparency. 
+A total of 85 sprites are available for one sprite layer.
+
+
+In general, working out sprites is as follows:
+The sprite needs to be placed in memory in exactly the same way as for tiles (or on the screen in 16 color mode).
+The sprite palette must also be loaded into the overall palette of the system.
+After that - we load the description of the sprite into the system and turn on the display.
+Sprite becomes visible.
+
+Let's sort it out in order: 
+
+Well, firstly - the sprite itself. 
+Sprite we can have a size of a multiple of 8 points in both X and Y, from 8 to 64;
+XS X Size. (0 = 8, 1 = 16, ... 7 = 64 pixels) 
+YS Y Size. (0 = 8, 1 = 16, ... 7 = 64 lines)
+those. - 16x64 - please, 48x8 - also, but 6x33 - alas, no. The size will be a multiple of 8 points. 
+This is due to the fact that the sprites are almost the same tiles . 
+The sprite does not fit even in the size of 64 points? No problem! Solve, but a little later;) 
+You also need to consider that in TSconf for one sprite, one palette is selected, which includes 15 colors of the sprite and a transparent color. Transparency is the color number 0 in the palette chosen for the sprite. The palette, of course, is loaded into the palette memory, the number of this palette is noted. 
+
+Sprite must be placed in memory. To do this, select the page, the number of which must be a multiple of 8 (0, 8, 192, 240, etc.).
+Sprite data should not lie in a linear way, but as on the screen - i.e. the next line of the sprite corresponds to the next line of the screen. 
+To do this, you should use DMA and copy it to the page used to store the graphics of the sprite, taking into account these requirements. 
+Well, we will assume that the sprite is correctly copied into memory. 
+
+In order for us to see the sprite, it is necessary to transfer information about it to the system. For the operation of the sprites in the system there is a separate memory block, which is responsible for storing the "descriptors" of sprites - information describing the sprite, its size, position, etc. 
+A single sprite handle takes 6 bytes:
+
+SFILE	Reg.16	7	6	5	4	        3    2    1        	0
+0	R0L	Y[7:0]							
+1	R0H	YF	LEAP	ACT	reserved	YS[2:0]			Y[8]
+2	R1L	X[7:0]							
+3	R1H	XF	-	-	reserved	XS[2:0]			X[8]
+4	R2L	TNUM[7:0]							
+5	R2H	SPAL[7:4]				TNUM[11:8]			
+
+Описание:
+X	X координата, байт + 1 бит (адрес может быть в пределах 0-511)						
+Y	Y координата, байтом + 1 бит
+XS	X размер. (0=8, 1=16, ... 7=64 pixels)
+YS	Y размер. (0=8, 1=16, ... 7=64 lines)							
+XF	Горизонтальное отражение спрайта при выводе. <em>Отмечаем себе, что спрайтов рисовать уже нужно в 2 раза меньше!</em>
+YF	Вертикальное отражение спрайта при выводе
+ACT	Отображение спрайта (вкл/выкл)
+LEAP	Бит, определяющий переход на следующий слой для последующих спрайтов. Третий переход обозначает конец описателей спрайтов
+TNUM	Номер первого тайла спрайта указанного размера. Биты 0-5 - X позиция тайла в странице графики спрайтов, биты 6-11 - позиция по Y.
+SPAL	Выбор палитры. 4 бита - 16 палитр доступно.						
+
+
+Let's look at an example of the descriptor: The 
+sprite will be 64x64 pixels in size, the palette for it is number 1, located in memory from the address # c000 - i.e. Start - Tile number 0:
+
+sprite    	db 0    ; позиция по Y
+		db %00111110    ; биты: 0 - поворот (flip, отражение) по Х выкл,  0 -переход на следующий слой спрайтов выкл, 
+; 1 - спрайт будет отображаться,1 - резерв для будущего применения; три бита размера (111 - 64 точки) по Y, 
+; и последний бит - 0 - старший бит позиции по  Y
+		db Xpos_logo    ; позиция по Х
+		db %00001110    ; 0 - поворот (flip) по Y выкл, дальше биты не юзаются до битов размера, 111 - 64 точки по Х; последний бит - это старший бит позиции по Х
+		db 0            ; номер тайла на карте графики спрайта. отсчёт от левого верхнего угла, один тайл 8х8 точек.
+		db %00010000    ; старшая тетрада - это номер палитры, младшая - старшие биты номера тайла
+sprite_end
+
+
+After the data descriptor will be sent to the system, display it on the screen.
+
+		ld hl,logo_spr
+		call set_ports
+; ...
+logo_spr
+		defb    #1a,low logo ; logo - все дескрипторы спрайтов, не забываем выравнивание адреса по 2
+	        defb    #1b,high logo
+		defb    #1c,2
+	        defb    #1d,0
+	        defb    #1e,2    ; отправляем в спрайтовую память
+	        defb    #1f,0
+	        defb    #26,(sprite_end-sprite)/2    ;длина транзакции
+	        defb    #28,0
+		db 	#27,#85    ; DMA_RAM_SFILE
+		db #ff
+
+
+To do this, you must inform the system that the sprites will be used. To do this, set the bit responsible for enabling the display of sprites when outputting a TSConfig port, called S_EN (Sprite_ENable):
+
+    		ld bc,TSCONFIG
+		ld a,TSU_SEN     ; 7й бит
+		out (c),a
+
+
+Sprite prepared and included. We observe it on the screen. It is indestructible, dog! 
+
+For that, he began to move - changing its position on the screen in the handle - X and Y. 
+In order that-be looked sprite sprite (sprite image changed) - change in the schedule of the tile number of the sprite on the right. 
+Do not forget to send the changed data to the sprite memory by transfer. 
+
+So, to render the sprite more than 64 points - use TWO sprites with the necessary coordinates;) 
+
+Questions and answers 
+:? How to hide the sprite? 
+! Turn off the Act bit, the sprite will not be displayed 
+
+? How to bring the sprite from the edge of the screen? 
+! Specify the coordinates outside the screen: for example, -32 
+
+? My sprites are closed with tiles, why?
+Because you need to use the Leap bit to go to the desired layer. 2 times - and the sprite is on top of all layers. 
+
+Well, I went! ;)
