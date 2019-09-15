@@ -1,89 +1,12 @@
-<!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
-<HEAD>
-<TITLE>Lo-Resolution Mode</TITLE>
-<META NAME="description" CONTENT="Lo-Resolution Mode">
-<META NAME="keywords" CONTENT="000-document">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
-
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
-<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
-
-<LINK REL="STYLESHEET" HREF="000-document.css">
-
-<LINK REL="next" HREF="node12.html">
-<LINK REL="previous" HREF="node10.html">
-<LINK REL="next" HREF="node12.html">
-</HEAD>
-
-<BODY >
-
-<DIV CLASS="navigation"><!--Navigation Panel-->
-<A
- HREF="node12.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node5.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node10.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html291"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html293"
-  HREF="node125.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node12.html">Programming</A>
-<B> Up:</B> <A
- HREF="node5.html">ULA group</A>
-<B> Previous:</B> <A
- HREF="node10.html">Timex Hi-Resolution Mode</A>
- &nbsp; <B>  <A ID="tex2html292"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html294"
-  HREF="node125.html">Index</A></B> 
-<BR>
-<BR></DIV>
-<!--End of Navigation Panel-->
-
-<H2><A ID="SECTION00236000000000000000">
-Lo-Resolution Mode</A>
-</H2>
+<H5><A NAME="SECTION00320024000000000000">
+Limitations</A>
+</H5>
+Although in theory 64 colours can be displayed at once, in practice
+this is usually not possible except when displaying colour bars,
+because the four CLUTs are mutually exclusive; it is not possible to
+mix colours from two CLUTs in the same cell. However, with software
+palette cycling it is possible to display all 256 colours on screen at
+once.
 
 <P>
-This is a Spectrum Next specific video mode with a resolution of
-<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img19.svg"
- ALT="$128\times96$"></SPAN> replacing the old Radistan mode.  It allows for
-independent selection from the 256 entries in the ULA palette on a
-pixel by pixel basis. The pixel data is mapped into the bitmap 1 and
-bitmap 2 areas.  It is selected by writing <SPAN CLASS="MATH"><IMG STYLE="height: 1.70ex; vertical-align: -0.11ex; " SRC="img20.svg"
- ALT="$100xxxxx$"></SPAN> to Next register
-$15 (21, the sprites and layers register).  Each byte corresponds to
-a ULA palette entry and bytes are mapped linearly in a row-wise
-fashion.
-
-<P>
-Code:
-<PRE>
-;; enable LoRes mode:
-ld bc,$243B ; next register select port
-ld a,$15
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-or $80
-out (c),a
-</PRE>
-
-<P>
-<BR><HR>
-
-</BODY>
-</HTML>

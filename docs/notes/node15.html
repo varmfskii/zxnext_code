@@ -1,76 +1,46 @@
-<!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
-<HEAD>
-<TITLE>Data Structures</TITLE>
-<META NAME="description" CONTENT="Data Structures">
-<META NAME="keywords" CONTENT="000-document">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
-
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
-<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
-
-<LINK REL="STYLESHEET" HREF="000-document.css">
-
-<LINK REL="next" HREF="node18.html">
-<LINK REL="previous" HREF="node14.html">
-<LINK REL="next" HREF="node16.html">
-</HEAD>
-
-<BODY >
-
-<DIV CLASS="navigation"><!--Navigation Panel-->
-<A
- HREF="node16.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node13.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node14.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html316"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html318"
-  HREF="node125.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node16.html">Tilemap</A>
-<B> Up:</B> <A
- HREF="node13.html">Tilemap Mode</A>
-<B> Previous:</B> <A
- HREF="node14.html">General Description</A>
- &nbsp; <B>  <A ID="tex2html317"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html319"
-  HREF="node125.html">Index</A></B> 
-<BR>
-<BR></DIV>
-<!--End of Navigation Panel-->
-
-<H2><A ID="SECTION00242000000000000000">
-Data Structures</A>
+<H2><A NAME="SECTION00331000000000000000">
+Colour Attributes</A>
 </H2>
+The ZX Spectrum Next has two major modes for colour attributes
+allowing a total of nine ways to map the palette to the original ZX
+Spectrum attributes. One with flashing enabled and eight with flashing
+disabled. This mapping is controlled by Next registers $42 (66,
+palette format) and $43 (67, palette control).  Palette control
+switches between flashing enabled (0, default) and flashing disabled
+(1)
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="90"><tex2html_anchor_mark></A>
+<TABLE>
+<CAPTION><STRONG><#5008#>Table<#5008#> 2.2:</STRONG>
+<#5009#>Flashing Enabled<#5009#></CAPTION>
+<TR><TD><tex2html_image_mark>#table89#</TD></TR>
+</TABLE>
+</DIV><P></P><BR>
 
-<UL CLASS="ChildLinks">
-<LI><UL>
-<LI><A ID="tex2html320"
-  HREF="node16.html">Tilemap</A>
-<LI><A ID="tex2html321"
-  HREF="node17.html">Tile Definitions</A>
-</UL></UL>
-<!--End of Table of Child-Links-->
-<BR><HR>
+<P>
+Flashing Enabled is similar to the original Spectrum colour
+attributes. INKs are mapped to indices 0-7, Bright INKS to indices
+8-15, PAPERs to indices 16-23 and Bright PAPERs to indices 24-31.
 
-</BODY>
-</HTML>
+<P>
+The ULA next modes use a varying number of bits from the attribute
+byte to determine the ink colour as the palette index from the
+appropriate bits (all others being zero) and the paper colours coming
+from the indicated value+128 with palette format 255 being a special
+case where all the bits determine the ink colour while the paper is
+always palette index 128. The ULA always takes border colour from paper.
+
+<P>
+<BR><P></P>
+<DIV ALIGN="CENTER"><A NAME="94"><tex2html_anchor_mark></A>
+<TABLE>
+<CAPTION><STRONG><#5011#>Table<#5011#> 2.3:</STRONG>
+<#5012#>ULA Next<#5012#></CAPTION>
+<TR><TD><tex2html_image_mark>#table93#</TD></TR>
+</TABLE>
+</DIV><P></P><BR>
+
+<P>

@@ -1,113 +1,24 @@
-<!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
-<HEAD>
-<TITLE>Timex Hi-Colour Mode</TITLE>
-<META NAME="description" CONTENT="Timex Hi-Colour Mode">
-<META NAME="keywords" CONTENT="000-document">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
-
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
-<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
-
-<LINK REL="STYLESHEET" HREF="000-document.css">
-
-<LINK REL="next" HREF="node10.html">
-<LINK REL="previous" HREF="node8.html">
-<LINK REL="next" HREF="node10.html">
-</HEAD>
-
-<BODY >
-
-<DIV CLASS="navigation"><!--Navigation Panel-->
-<A
- HREF="node10.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node5.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node8.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html283"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html285"
-  HREF="node125.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node10.html">Timex Hi-Resolution Mode</A>
-<B> Up:</B> <A
- HREF="node5.html">ULA group</A>
-<B> Previous:</B> <A
- HREF="node8.html">Alternate Page Mode</A>
- &nbsp; <B>  <A ID="tex2html284"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html286"
-  HREF="node125.html">Index</A></B> 
-<BR>
-<BR></DIV>
-<!--End of Navigation Panel-->
-
-<H2><A ID="SECTION00234000000000000000">
-Timex Hi-Colour Mode</A>
-</H2>
+<H5><A NAME="SECTION00320022000000000000">
+GRB palette entries</A>
+</H5>
 
 <P>
-Timex mode 2
+G3R3B2 encoding
+<BR>For a device using the GRB colour space the palette entry is
+interpreted as follows
+<table width="90%"><tr><td align="right" valign="top"><#4999#><#4996#><#4996#><#4999#></td><td valign="top">&nbsp;Bits 0-1: Blue intensity.</td></tr>
+<tr><td align="right" valign="top"><#5000#><#4997#><#4997#><#5000#></td><td valign="top">&nbsp;Bits 2-4: Red intensity.</td></tr>
+<tr><td align="right" valign="top"><#5001#><#4998#><#4998#><#5001#></td><td valign="top">&nbsp;Bits 5-7: Green intensity.
+</td></tr></table>
+
 
 <P>
-This mode is a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
- ALT="$256\times192$"></SPAN> video mode with <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img12.svg"
- ALT="$8\times1$"></SPAN> colour
-attribute mapping on a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img13.svg"
- ALT="$32\times192$"></SPAN> grid. It is selected by writing 2
-to the Timex ULA port ($ff).  Pixel mapping in this mode is the same
-as in ZX Spectrum mode using the bitmap 1 area based on
-<!-- MATH
- $0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$
- -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img8.svg"
- ALT="$0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>.  The colour attributes use
-the bitmap 2 area with <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img12.svg"
- ALT="$8\times1$"></SPAN> colour attribute areas corresponding
-to the addresses <!-- MATH
- $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$
- -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img10.svg"
- ALT="$1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>.
+This colour space uses a sub-set of 9-bit GRB. The missing lowest blue
+bit is set to OR of the other two blue bits (Bb becomes 000 for 00,
+and Bb1 for anything else). This gives access to a fixed half the
+potential 512 colour palette. The reduces the jump in intensity in the
+lower range in the earlier version of the specification. It also means
+the standard palette can now be represented by the ULAplus palette.
 
 <P>
-Code:
-<PRE>
-;; disable LoRes mode:
-ld bc,$243B ; next register select port
-ld a,$15
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-and $7f
-out (c),a
-;; set Timex mode
-ld bc,$243B ; next register select port
-ld a,$08
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-or $04
-out (c),a
-;; set hi-colour mode
-ld c,$ff
-ld a,$02
-out (c),a
-</PRE>
-
-<P>
-<BR><HR>
-
-</BODY>
-</HTML>

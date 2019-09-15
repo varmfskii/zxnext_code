@@ -1,75 +1,31 @@
-<!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
-<HEAD>
-<TITLE>Audio</TITLE>
-<META NAME="description" CONTENT="Audio">
-<META NAME="keywords" CONTENT="000-document">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
+<H2><A NAME="SECTION00361000000000000000">
+Sprite Patterns</A>
+</H2>
+Sprite patterns are the images that each sprite can take on. The
+images are stored in a 16K memory internal to the FPGA and are
+identified by pattern number. A particular sprite chooses a pattern by
+storing a pattern number in its attributes.
 
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
-<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<P>
+All sprites are <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline745#</SPAN> pixels in size but the come in two
+flavours: 4-bit and 8-bit. The bit width describes how many bits are
+used to code the colour of each pixel.
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<P>
+An 8-bit sprite uses a full byte to colour each of its pixels so that
+each pixel can be one of 256 colours. In this case, a <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline747#</SPAN>
+sprite requires 256 bytes of pattern memory to store its image.
 
-<LINK REL="next" HREF="node39.html">
-<LINK REL="previous" HREF="node2.html">
-<LINK REL="next" HREF="node36.html">
-</HEAD>
+<P>
+A 4-bit sprite uses a nibble to colour each of its pixels so that each
+pixel can be one of 16 colours. In this case, a <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline749#</SPAN> sprite
+requires just 128 bytes of pattern memory to store its image.
 
-<BODY >
+<P>
+The 16K pattern memory can contain any combination of these images,
+whether they are 128 bytes or 256 bytes and their locations in the
+pattern memory are described by a pattern number. This pattern number
+is 7 bits with bits named as follows:
 
-<DIV CLASS="navigation"><!--Navigation Panel-->
-<A
- HREF="node36.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="000-document.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node34.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html415"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html417"
-  HREF="node125.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node36.html">Internal Speaker</A>
-<B> Up:</B> <A
- HREF="000-document.html">ZX Spectrum Next Programming</A>
-<B> Previous:</B> <A
- HREF="node34.html">Global Control of Sprites</A>
- &nbsp; <B>  <A ID="tex2html416"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html418"
-  HREF="node125.html">Index</A></B> 
-<BR>
-<BR></DIV>
-<!--End of Navigation Panel-->
-
-<H1><A ID="SECTION00300000000000000000">
-Audio</A>
-</H1>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
-
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html419"
-  HREF="node36.html">Internal Speaker</A>
-<LI><A ID="tex2html420"
-  HREF="node37.html">Spectdrum/Convox</A>
-<LI><A ID="tex2html421"
-  HREF="node38.html">Turbosound</A>
-</UL>
-<!--End of Table of Child-Links-->
-<BR><HR>
-
-</BODY>
-</HTML>
+<P>

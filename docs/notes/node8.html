@@ -1,112 +1,83 @@
-<!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
-<HEAD>
-<TITLE>Alternate Page Mode</TITLE>
-<META NAME="description" CONTENT="Alternate Page Mode">
-<META NAME="keywords" CONTENT="000-document">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
-
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
-<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
-
-<LINK REL="STYLESHEET" HREF="000-document.css">
-
-<LINK REL="next" HREF="node9.html">
-<LINK REL="previous" HREF="node7.html">
-<LINK REL="next" HREF="node9.html">
-</HEAD>
-
-<BODY >
-
-<DIV CLASS="navigation"><!--Navigation Panel-->
-<A
- HREF="node9.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node5.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node7.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html279"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html281"
-  HREF="node125.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node9.html">Timex Hi-Colour Mode</A>
-<B> Up:</B> <A
- HREF="node5.html">ULA group</A>
-<B> Previous:</B> <A
- HREF="node7.html">ZX Spectrum Mode</A>
- &nbsp; <B>  <A ID="tex2html280"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html282"
-  HREF="node125.html">Index</A></B> 
-<BR>
-<BR></DIV>
-<!--End of Navigation Panel-->
-
-<H2><A ID="SECTION00233000000000000000">
-Alternate Page Mode</A>
-</H2>
+<H5><A NAME="SECTION00320021000000000000">
+I/O ports</A>
+</H5>
+ULAplus is controlled by two ports.
 
 <P>
-Timex mode 1
+$BF3B is the register port (write only)
 
 <P>
-This mode is the same as ZX Spectrum mode at alternate
-addresses. Alternate page mode is selected by enabling Timex modes by
-writing 00xxxx1xx to Next register $08 (8, Peripheral 3 setting) then
-writing 1 to the Timex ULA port ($ff).  It is identical to ZX
-Spectrum mode except the pixel are mapped to the bitmap 2 area giving
-use pixel addresses of <!-- MATH
- $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$
- -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img10.svg"
- ALT="$1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN> and
-the attributes to the attribute 2 area with addresses of
-<!-- MATH
- $1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$
- -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img11.svg"
- ALT="$1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>.
+The byte output will be interpreted as follows:
+<table width="90%"><tr><td align="right" valign="top"><#4987#><#4929#><#4929#><#4987#></td><td valign="top">&nbsp;Bits 0-5: Select the register sub-group</td></tr>
+<tr><td align="right" valign="top"><#4988#><#4930#><#4930#><#4988#></td><td valign="top">&nbsp;Bits 6-7: Select the register group. Two groups are currently available:
+  <table width="90%">  <tr><td align="right" valign="top"><#4953#><#4951#><#4931#><#4931#><#4951#><#4953#></td><td valign="top">&nbsp;00=palette group
+<BR>    When this group is selected, the sub-group determines the entry in the
+    palette table (0-63).
+  </td></tr>
+<tr><td align="right" valign="top"><#4954#><#4952#><#4932#><#4932#><#4952#><#4954#></td><td valign="top">&nbsp;01=mode group
+<BR>    The sub-group is (optionally) used to mirror the video functionality
+    of Timex port $FF as follows:
+  </td></tr></table>
+</td></tr>
+<tr><td align="right" valign="top"><#4989#><#4933#><#4933#><#4989#></td><td valign="top">&nbsp;Bits 0-1: Screen mode.
+  <table width="90%">  <tr><td align="right" valign="top"><#4963#><#4955#><#4934#><#4934#><#4955#><#4963#></td><td valign="top">&nbsp;000=screen 0 (bank 5)
+  </td></tr>
+<tr><td align="right" valign="top"><#4964#><#4956#><#4935#><#4935#><#4956#><#4964#></td><td valign="top">&nbsp;001=screen 1 (bank 5)
+  </td></tr>
+<tr><td align="right" valign="top"><#4965#><#4957#><#4936#><#4936#><#4957#><#4965#></td><td valign="top">&nbsp;010=hi-colour (bank 5)
+  </td></tr>
+<tr><td align="right" valign="top"><#4966#><#4958#><#4937#><#4937#><#4958#><#4966#></td><td valign="top">&nbsp;100=screen 0 (bank 7)
+  </td></tr>
+<tr><td align="right" valign="top"><#4967#><#4959#><#4938#><#4938#><#4959#><#4967#></td><td valign="top">&nbsp;101=screen 1 (bank 7)
+  </td></tr>
+<tr><td align="right" valign="top"><#4968#><#4960#><#4939#><#4939#><#4960#><#4968#></td><td valign="top">&nbsp;110=hi-colour (bank 7)
+  </td></tr>
+<tr><td align="right" valign="top"><#4969#><#4961#><#4940#><#4940#><#4961#><#4969#></td><td valign="top">&nbsp;110=hi-res (bank 5)
+  </td></tr>
+<tr><td align="right" valign="top"><#4970#><#4962#><#4941#><#4941#><#4962#><#4970#></td><td valign="top">&nbsp;111=hi-res (bank 7)
+  </td></tr></table>
+</td></tr>
+<tr><td align="right" valign="top"><#4990#><#4942#><#4942#><#4990#></td><td valign="top">&nbsp;Bits 3-5: Sets the screen colour in hi-res mode.
+  <table width="90%">  <tr><td align="right" valign="top"><#4979#><#4971#><#4943#><#4943#><#4971#><#4979#></td><td valign="top">&nbsp;000=Black on White
+  </td></tr>
+<tr><td align="right" valign="top"><#4980#><#4972#><#4944#><#4944#><#4972#><#4980#></td><td valign="top">&nbsp;001=Blue on Yellow
+  </td></tr>
+<tr><td align="right" valign="top"><#4981#><#4973#><#4945#><#4945#><#4973#><#4981#></td><td valign="top">&nbsp;010=Red on Cyan
+  </td></tr>
+<tr><td align="right" valign="top"><#4982#><#4974#><#4946#><#4946#><#4974#><#4982#></td><td valign="top">&nbsp;011=Magenta on Green
+  </td></tr>
+<tr><td align="right" valign="top"><#4983#><#4975#><#4947#><#4947#><#4975#><#4983#></td><td valign="top">&nbsp;100=Green on Magenta
+  </td></tr>
+<tr><td align="right" valign="top"><#4984#><#4976#><#4948#><#4948#><#4976#><#4984#></td><td valign="top">&nbsp;101=Cyan on Red
+  </td></tr>
+<tr><td align="right" valign="top"><#4985#><#4977#><#4949#><#4949#><#4977#><#4985#></td><td valign="top">&nbsp;110=Yellow on Blue
+  </td></tr>
+<tr><td align="right" valign="top"><#4986#><#4978#><#4950#><#4950#><#4978#><#4986#></td><td valign="top">&nbsp;111=White on Black
+  </td></tr></table>
+</td></tr></table>
+
 
 <P>
-Code:
+$FF3B is the data port (read/write)
 
 <P>
-<PRE>
-;; disable LoRes mode:
-ld bc,$243B ; next register select port
-ld a,$15
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-and $7f
-out (c),a
-;; set Timex mode
-ld bc,$243B ; next register select port
-ld a,$08
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-or $04
-out (c),a
-;; set alternate page mode
-ld c,$ff
-ld a,$01
-out (c),a
-</PRE>
+When the palette group is selected, the byte written will describe the
+color.
 
 <P>
-<BR><HR>
+When the mode group is selected, the byte output will be interpreted
+as follows:
+<table width="90%"><tr><td align="right" valign="top"><#4993#><#4991#><#4991#><#4993#></td><td valign="top">&nbsp;Bit 0: ULAplus palette on (1) / off (0)</td></tr>
+<tr><td align="right" valign="top"><#4994#><#4992#><#4992#><#4994#></td><td valign="top">&nbsp;Bit 1: (optional) grayscale: on (1) / off (0) (same as turing
+  the color off on the television)
+</td></tr></table>
 
-</BODY>
-</HTML>
+
+<P>
+Implementations that support the Timex video modes use the $FF
+register as the primary means to set the video mode, as per the Timex
+machines. It is left to the individual implementations to determine if
+reading the port returns the previous write or the floating bus.
+
+<P>

@@ -1,227 +1,39 @@
-<!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
-<HEAD>
-<TITLE>Turbosound</TITLE>
-<META NAME="description" CONTENT="Turbosound">
-<META NAME="keywords" CONTENT="000-document">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
-
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
-<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
-
-<LINK REL="STYLESHEET" HREF="000-document.css">
-
-<LINK REL="previous" HREF="node37.html">
-<LINK REL="next" HREF="node39.html">
-</HEAD>
-
-<BODY >
-
-<DIV CLASS="navigation"><!--Navigation Panel-->
-<A
- HREF="node39.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node35.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node37.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html430"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html432"
-  HREF="node125.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node39.html">Memory Management</A>
-<B> Up:</B> <A
- HREF="node35.html">Audio</A>
-<B> Previous:</B> <A
- HREF="node37.html">Spectdrum/Convox</A>
- &nbsp; <B>  <A ID="tex2html431"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html433"
-  HREF="node125.html">Index</A></B> 
-<BR>
-<BR></DIV>
-<!--End of Navigation Panel-->
-
-<H1><A ID="SECTION00330000000000000000">
-Turbosound</A>
-</H1>
+<H5><A NAME="SECTION00361012000000000000">
+4-Bit Sprite Patterns</A>
+</H5>
 
 <P>
-TurboSound consists of the implementation of three AY-3-8912 chips. To
-enable TurboSound set bit 1 of Next Register $08 (8). Once enabled
-the sound chips and registers of the sound chips are selected using
-port $fffd (65533) TurboSound Next Control while the registers are
-accessed using $bffd () Sound Chip Register Access.  To enable access
-to a particular chip write 111111xx to the control register where
-01=AY1, 10=AY2, and 11=AY3.  Access to particular registers of the
-selected chip is selected by writing the register number to the
-control register. You can then access a chip register using the access
-port.
+The <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline755#</SPAN> pixel image uses 4-bits for each pixel so that each
+pixel can be one of 16 colours. One colour indicates transparency and
+this is programmed into the lower 4-bits of the Sprite Transparency
+Index register (nextreg $4B). By default the transparency value is
+$3. Note that the same register is shared with 8-bit patterns to
+identify the transparent index.
 
 <P>
-Code:
-<PRE>
-;; enable TurboSound audio
-ld bc,$243B
-ld a,$08
-out (c),a
-ld bc,$253B
-in a,(c)
-or $02
-out (c),a
-</PRE>
+Since each pixel only occupies 4-bits, two pixels are stored in each
+byte. The leftmost pixel is stored in the upper 4-bits and the
+rightmost pixel is stored in the lower 4-bits.
 
 <P>
-Each of the three AY chips has three channels, A, B, and C whose
-mapping is controlled by bit 5 of Next register 0x08 (8).
+As an example we will use the same sprite image as was given in the
+8-bit pattern example. Here only the lower 4 bits of each pixel is
+retained to confine each pixel’s color to 4-bits:
 
 <P>
+<PRE><tex2html_verbatim_mark>verbatim10#</PRE>
 
-<UL>
-<LI>(R/W) 0x00 (0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel A fine tune
-</LI>
-<LI>(R/W) 0x01 (1) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel A coarse tune (4 bits)
-</LI>
-<LI>(R/W) 0x02 (2) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel B fine tune
-</LI>
-<LI>(R/W) 0x03 (3) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel B coarse tune (4 bits)
-</LI>
-<LI>(R/W) 0x04 (4) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel C fine tune
-</LI>
-<LI>(R/W) 0x05 (5) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel C coarse tune (4 bits)
-</LI>
-<LI>(R/W) 0x06 (6) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Noise period (5 bits)
-</LI>
-<LI>(R/W) 0x07 (7) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Tone Enable
-  
-<UL>
-<LI>bit 5: Channel C tone enable (0=enable, 1=disable)
-</LI>
-<LI>bit 4: Channel B tone enable (0=enable, 1=disable)
-</LI>
-<LI>bit 3: Channel A tone enable (0=enable, 1=disable)
-</LI>
-<LI>bit 2: Channel C noise enable (0=enable, 1=disable)
-</LI>
-<LI>bit 1: Channel B noise enable (0=enable, 1=disable)
-</LI>
-<LI>bit 0: Channel A noise enable (0=enable, 1=disable)
-  
-</LI>
-</UL>
-</LI>
-<LI>(R/W) 0x08 (8) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel A amplitude
-  
-<UL>
-<LI>bit 4: 0=fixed amplitude, 1=use envelope generator (bits 0-3 ignored)
-</LI>
-<LI>bits 0-3: value of fixed amplitude
-  
-</LI>
-</UL>
-</LI>
-<LI>(R/W) 0x09 (9) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel B amplitude
-  
-<UL>
-<LI>bit 4: 0=fixed amplitude, 1=use envelope generator (bits 0-3 ignored)
-</LI>
-<LI>bits 0-3: value of fixed amplitude
-  
-</LI>
-</UL>
-</LI>
-<LI>(R/W) 0x0A (10) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel C amplitude
-  
-<UL>
-<LI>bit 4: 0=fixed amplitude, 1=use envelope generator (bits 0-3 ignored)
-</LI>
-<LI>bits 0-3: value of fixed amplitude
-  
-</LI>
-</UL>
-</LI>
-<LI>(R/W) 0x0B (11) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Envelope period fine
-</LI>
-<LI>(R/W) 0x0C (12) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Envelope period coarse
-</LI>
-<LI>(R/W) 0x0D (13) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Envelope shape
-  
-<UL>
-<LI>bit 3: Continue: 0=drop to amplitude 0 after 1 cycle, 1=use ‘Hold’ value
-</LI>
-<LI>bit 2: Attack: 0=generator counts down, 1=generator counts up
-</LI>
-<LI>bit 1: Alternate:
-    
-<UL>
-<LI>hold=0: 0=generator resets after each cycle, 1=generator
-      reverses direction each cycle
-</LI>
-<LI>hold=1: 0=hold final value, 1=hold initial value
-    
-</LI>
-</UL>
-</LI>
-<LI>bit 0: Hold: 0=cycle continuously, 1=perform one cycle and hold
-  
-</LI>
-</UL>
-</LI>
-</UL>
+<P>
+$3 is used as the transparent index.
 
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node39.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node35.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node37.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html430"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html432"
-  HREF="node125.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node39.html">Memory Management</A>
-<B> Up:</B> <A
- HREF="node35.html">Audio</A>
-<B> Previous:</B> <A
- HREF="node37.html">Spectdrum/Convox</A>
- &nbsp; <B>  <A ID="tex2html431"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html433"
-  HREF="node125.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<P>
+These 128 bytes would be stored in pattern memory in left to right,
+top to bottom order.
 
-</BODY>
-</HTML>
+<P>
+The actual colour that will appear on screen will depend on the
+palette, described below. The default palette will not likely generate
+suitable colours for 4-bit sprites.
+
+<P>

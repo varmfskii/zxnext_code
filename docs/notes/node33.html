@@ -1,277 +1,100 @@
-<!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
-<HEAD>
-<TITLE>Programming Sprites</TITLE>
-<META NAME="description" CONTENT="Programming Sprites">
-<META NAME="keywords" CONTENT="000-document">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
-
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
-<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
-
-<LINK REL="STYLESHEET" HREF="000-document.css">
-
-<LINK REL="next" HREF="node34.html">
-<LINK REL="previous" HREF="node32.html">
-<LINK REL="next" HREF="node34.html">
-</HEAD>
-
-<BODY >
-
-<DIV CLASS="navigation"><!--Navigation Panel-->
-<A
- HREF="node34.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node25.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node32.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html407"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html409"
-  HREF="node125.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node34.html">Global Control of Sprites</A>
-<B> Up:</B> <A
- HREF="node25.html">Sprites</A>
-<B> Previous:</B> <A
- HREF="node32.html">Relative Sprites</A>
- &nbsp; <B>  <A ID="tex2html408"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html410"
-  HREF="node125.html">Index</A></B> 
-<BR>
-<BR></DIV>
-<!--End of Navigation Panel-->
-
-<H2><A ID="SECTION00265000000000000000">
-Programming Sprites</A>
+<H2><A NAME="SECTION00351000000000000000">
+Programming</A>
 </H2>
 
 <P>
-Sprites are created via three io registers and a nextreg interface.
-
-<P>
-Port $303B (W)
-<PRE>
-X S S S S S S S
-N6 X N N N N N N
-</PRE>
-A write to this port has two effects.
-
-<P>
-One is it selects one of 128 sprites for writing sprite attributes via
-port $57.
-
-<P>
-The other is it selects one of 128 4-bit patterns in pattern memory
-for writing sprite patterns via port $5B. The N6 bit shown is the
-least significant in the 7-bit pattern number and should always be
-zero when selecting one of 64 8-bit patterns indicated by N.
-
-<P>
-Port $57 (W)
-
-<P>
-Once a sprite is selected via port $303B, its attributes can be
-written to this port one byte after another. Sprites can have either
-four or five attribute bytes and the internal attribute pointer will
-move onto the next sprite after those four or five attribute bytes are
-written. This means you can select a sprite via port $303B and write
-attributes for as many sequential sprites as desired. The attribute
-pointer will roll over from sprite 127 to sprite 0.
-
-<P>
-Port $5B (W)
-
-<P>
-Once a pattern number is selected via port $303B, the 256-byte or
-128-byte pattern can be written to this port. The internal pattern
-pointer auto-increments after each write so as many sequential
-patterns as desired can be written. The internal pattern pointer will
-roll over from pattern 127 to pattern 0 (4-bit patterns) or from
-pattern 63 to pattern 0 (8-bit patterns) automatically.
-
-<P>
-Port $303B (R)
-
-<P>
-<PRE>
-0 0 0 0 0 0 M C
-</PRE>
-M = 1 if the maximum number of sprites per line was exceeded
-<BR>
-C = 1 if any two displayed sprites collide on screen
-<BR>
-Reading this port automatically resets the M and C bits.
-
-<P>
-Besides the i/o interface, there is a nextreg interface to sprite
-attributes. The nextreg interface allows the copper to manipulate
-sprites and grants the program random access to a sprite’s individual
-attribute bytes.
-
-<P>
-(R/W) $34 (52) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Number
-<BR>
-If the sprite number is in lockstep with io port $303B (nextreg $09
-bit 4 is set)
-<table width="90%"><tr><td valign="top">&nbsp;bits 7 = Pattern address offset (Add 128 to pattern address)</td></tr>
-<tr><td valign="top">&nbsp;bits 6-0 = Sprite number 0-127, Pattern number 0-63
+Port $123b (4667) Layer 2
+<table width="90%">
+  <tr><td align="right" valign="top"><#5285#><#5281#><#5281#><#5285#></td><td valign="top">&nbsp;bits 6-7: Video RAM bank select
+  </td></tr>
+<tr><td align="right" valign="top"><#5286#><#5282#><#5282#><#5286#></td><td valign="top">&nbsp;bit 3: Shadow layer 2 select
+  </td></tr>
+<tr><td align="right" valign="top"><#5287#><#5283#><#5283#><#5287#></td><td valign="top">&nbsp;bit 1: Layer 2 visible
+  </td></tr>
+<tr><td align="right" valign="top"><#5288#><#5284#><#5284#><#5288#></td><td valign="top">&nbsp;bit 0: Enable layer 2 write paging
 </td></tr></table>
 
-Selects which sprite has its attributes connected to the following registers.
 
 <P>
-Effectively performs an out to port $303B with the same value
+For information on controlling the palette see the Palette section.
 
 <P>
-Otherwise
-<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Ignored</td></tr>
-<tr><td valign="top">&nbsp;bits 6-0 = Sprite number 0-127
+<A NAME="425"><tex2html_anchor_invisible_mark></A>
+(R/W) $14 (20) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline504#</SPAN> Global transparency color
+<table width="90%"><tr><td align="right" valign="top"><#5291#><#5290#><#5290#><#5291#></td><td valign="top">&nbsp;bits 7-0 = Transparency color value ($E3 after a reset)
 </td></tr></table>
 
-Selects which sprite has its attributes connected to the following registers.
-<BR>
-Bit 7 always reads back as zero.
+(Note: this value is 8-bit, so the transparency is compared against
+only by the MSB bits of the final 9-bit colour)
+<BR>(Note2: this only affects Layer 2, ULA and LoRes. Sprites use register
+$4B for transparency and tilemap uses nextreg $4C)
 
 <P>
-This nextreg can operate in two modes.
-
-<P>
-If nextreg $09 bit 4 is set, then this register is kept in lockstep
-with i/o port $303B. A write to this nextreg is equivalent to a write
-to port $303B and vice versa. In this mode, the i/o interface and
-nextreg interface are exactly equivalent.
-
-<P>
-If nextreg $09 bit 4 is reset, then the nextreg interface is
-decoupled from i/o port $303B. This nextreg is used to select a
-particular sprite 0-127 and this is completely independent from the
-sprite selected for the i/o interface. This independence allows the
-copper, for example, to manipulate different sprites than the cpu
-using the i/o interface.
-
-<P>
-(W) $35 (53) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Attribute 0
-<BR>(W) $75 (117) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Attribute 0 with automatic post
-increment of Sprite Number
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = LSB of X coordinate
+<A NAME="428"><tex2html_anchor_invisible_mark></A>
+(R/W) $16 (22) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline506#</SPAN> Layer2 Offset X
+<table width="90%"><tr><td align="right" valign="top"><#5294#><#5293#><#5293#><#5294#></td><td valign="top">&nbsp;bits 7-0 = X Offset (0-255)(0 after a reset)
 </td></tr></table>
 
-A write to nextreg $75 also increases the selected sprite in nextreg
-$34.
 
 <P>
-(W) $36 (54) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Attribute 1
-<BR>(W) $76 (118) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Attribute 1 with automatic post
-increment of Sprite Number
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = LSB of Y coordinate
+(R/W) $17 (23) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline508#</SPAN> Layer2 Offset Y
+<table width="90%"><tr><td align="right" valign="top"><#5297#><#5296#><#5296#><#5297#></td><td valign="top">&nbsp;bits 7-0 = Y Offset (0-191)(0 after a reset)
 </td></tr></table>
 
-A write to nextreg $76 also increases the selected sprite in nextreg
-$34.
 
 <P>
-(W) $37 (55) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Attribute 2
-<BR>(W) $77 (119) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Attribute 2 with automatic post
-increment of Sprite Number
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Palette offset added to top 4 bits of sprite colour
-  index</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = X mirror</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = Y mirror</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = Rotate</td></tr>
-<tr><td valign="top">&nbsp;bit 0 = MSB of X coordinate
+<A NAME="433"><tex2html_anchor_invisible_mark></A>
+(R/W) $18 (24) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline510#</SPAN> Clip Window Layer 2
+<table width="90%"><tr><td align="right" valign="top"><#5312#><#5299#><#5299#><#5312#></td><td valign="top">&nbsp;bits 7-0 = Coords of the clip window
+  <table width="90%">  <tr><td align="right" valign="top"><#5308#><#5304#><#5300#><#5300#><#5304#><#5308#></td><td valign="top">&nbsp;1st write - X1 position
+  </td></tr>
+<tr><td align="right" valign="top"><#5309#><#5305#><#5301#><#5301#><#5305#><#5309#></td><td valign="top">&nbsp;2nd write - X2 position
+  </td></tr>
+<tr><td align="right" valign="top"><#5310#><#5306#><#5302#><#5302#><#5306#><#5310#></td><td valign="top">&nbsp;3rd write - Y1 position
+  </td></tr>
+<tr><td align="right" valign="top"><#5311#><#5307#><#5303#><#5303#><#5307#><#5311#></td><td valign="top">&nbsp;4rd write - Y2 position
+  </td></tr></table>
 </td></tr></table>
 
-A write to nextreg $77 also increases the selected sprite in nextreg
-$34.
+Reads do not advance the clip position
+<BR>The values are 0,255,0,191 after a Reset
 
 <P>
-(W) $38 (56) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Attribute 3
-<BR>(W) $78 (120) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Attribute 3 with automatic post
-increment of Sprite Number
-<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Visible flag (1 = displayed)</td></tr>
-<tr><td valign="top">&nbsp;bit 6 = Extended attribute (1 = Sprite Attribute 4 is active)</td></tr>
-<tr><td valign="top">&nbsp;bits 5-0 = Pattern used by sprite (0-63)
+(W) $1C (28) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline512#</SPAN> Clip Window control
+<table width="90%"><tr><td align="right" valign="top"><#5319#><#5314#><#5314#><#5319#></td><td valign="top">&nbsp;bits 7-4 = Reserved, must be 0</td></tr>
+<tr><td align="right" valign="top"><#5320#><#5315#><#5315#><#5320#></td><td valign="top">&nbsp;bit 3 - reset the tilemap clip index</td></tr>
+<tr><td align="right" valign="top"><#5321#><#5316#><#5316#><#5321#></td><td valign="top">&nbsp;bit 2 - reset the ULA/LoRes clip index.</td></tr>
+<tr><td align="right" valign="top"><#5322#><#5317#><#5317#><#5322#></td><td valign="top">&nbsp;bit 1 - reset the sprite clip index.</td></tr>
+<tr><td align="right" valign="top"><#5323#><#5318#><#5318#><#5323#></td><td valign="top">&nbsp;bit 0 - reset the Layer 2 clip index.
 </td></tr></table>
 
-A write to nextreg $78 also increases the selected sprite in nextreg
-$34.
 
 <P>
-(W) $39 (57) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Attribute 4
-<BR>(W) $79 (121) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Attribute 4 with automatic post
-increment of Sprite Number
-<BR>
-4-bit Sprites
-<table width="90%"><tr><td valign="top">&nbsp;bit 7 = H (1 = sprite uses 4-bit patterns)</td></tr>
-<tr><td valign="top">&nbsp;bit 6 = N6 (0 = use the first 128 bytes of the pattern else
-  use the last 128 bytes)</td></tr>
-<tr><td valign="top">&nbsp;bit 5 = 1 if relative sprites are composite, 0 if relative
-  sprites are unified Scaling</td></tr>
-<tr><td valign="top">&nbsp;bits 4-3 = X scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)</td></tr>
-<tr><td valign="top">&nbsp;bits 2-1 = Y scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)</td></tr>
-<tr><td valign="top">&nbsp;bit 0 = MSB of Y coordinate
+(R) $1C (28) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline514#</SPAN> Clip Window control
+<BR>(may change)
+<table width="90%"><tr><td align="right" valign="top"><#5329#><#5325#><#5325#><#5329#></td><td valign="top">&nbsp;bits 7-6 = Tilemap clip index</td></tr>
+<tr><td align="right" valign="top"><#5330#><#5326#><#5326#><#5330#></td><td valign="top">&nbsp;bits 5-4 = Layer 2 clip index</td></tr>
+<tr><td align="right" valign="top"><#5331#><#5327#><#5327#><#5331#></td><td valign="top">&nbsp;bits 3-2 = Sprite clip index</td></tr>
+<tr><td align="right" valign="top"><#5332#><#5328#><#5328#><#5332#></td><td valign="top">&nbsp;bits 1-0 = ULA clip index
 </td></tr></table>
 
-A relative mode is enabled if H,N6 = 01. The byte format for relative
-sprites is described above.
-<BR>
-A write to nextreg $79 also increases the selected sprite in nextreg
-$34.
 
 <P>
+(R/W) $12 (18) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline516#</SPAN> Layer 2 RAM bank
+<table width="90%"><tr><td align="right" valign="top"><#5336#><#5334#><#5334#><#5336#></td><td valign="top">&nbsp;bits 7-6 = Reserved, must be 0</td></tr>
+<tr><td align="right" valign="top"><#5337#><#5335#><#5335#><#5337#></td><td valign="top">&nbsp;bits 5-0 = RAM bank (point to bank 8 after a Reset, NextZXOS
+  modifies to 9)
+</td></tr></table>
 
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node34.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node25.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node32.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html407"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html409"
-  HREF="node125.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node34.html">Global Control of Sprites</A>
-<B> Up:</B> <A
- HREF="node25.html">Sprites</A>
-<B> Previous:</B> <A
- HREF="node32.html">Relative Sprites</A>
- &nbsp; <B>  <A ID="tex2html408"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html410"
-  HREF="node125.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
 
-</BODY>
-</HTML>
+<P>
+(R/W) $13 (19) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline518#</SPAN> Layer 2 RAM shadow bank
+<table width="90%"><tr><td align="right" valign="top"><#5341#><#5339#><#5339#><#5341#></td><td valign="top">&nbsp;bits 7-6 = Reserved, must be 0</td></tr>
+<tr><td align="right" valign="top"><#5342#><#5340#><#5340#><#5342#></td><td valign="top">&nbsp;bits 5-0 = RAM bank (point to bank 11 after a Reset, NextZXOS
+  modifies to 12)
+</td></tr></table>
+
+
+<P>
+<tex2html_file>#./video/sprites.tex#

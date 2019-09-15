@@ -1,114 +1,91 @@
-<!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
-<HEAD>
-<TITLE>Colour Attributes</TITLE>
-<META NAME="description" CONTENT="Colour Attributes">
-<META NAME="keywords" CONTENT="000-document">
-<META NAME="resource-type" CONTENT="document">
-<META NAME="distribution" CONTENT="global">
-
-<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
-<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
-
-<LINK REL="STYLESHEET" HREF="000-document.css">
-
-<LINK REL="next" HREF="node7.html">
-<LINK REL="previous" HREF="node5.html">
-<LINK REL="next" HREF="node7.html">
-</HEAD>
-
-<BODY >
-
-<DIV CLASS="navigation"><!--Navigation Panel-->
-<A
- HREF="node7.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node5.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node5.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html271"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html273"
-  HREF="node125.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node7.html">ZX Spectrum Mode</A>
-<B> Up:</B> <A
- HREF="node5.html">ULA group</A>
-<B> Previous:</B> <A
- HREF="node5.html">ULA group</A>
- &nbsp; <B>  <A ID="tex2html272"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html274"
-  HREF="node125.html">Index</A></B> 
-<BR>
-<BR></DIV>
-<!--End of Navigation Panel-->
-
-<H2><A ID="SECTION00231000000000000000">
-Colour Attributes</A>
-</H2>
-The ZX Spectrum Next has two major modes for colour attributes
-allowing a total of nine ways to map the palette to the original ZX
-Spectrum attributes. One with flashing enabled and eight with flashing
-disabled. This mapping is controlled by Next registers $42 (66,
-palette format) and $43 (67, palette control).  Palette control
-switches between flashing enabled (0, default) and flashing disabled
-(1)
+<H4><A NAME="SECTION00320010000000000000">
+ULANext Colour Palette</A>
+</H4>
+Each video mode group has a pair of palettes assigned to it a primary
+and an alternate palette.
 
 <P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="57"></A>
-<TABLE>
-<CAPTION><STRONG>Table 1.2:</STRONG>
-Flashing Enabled</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img3.svg"
- ALT="\begin{table}\centering
-\csvautotabular{video/flash.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
+(R/W) $43 (67) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline148#</SPAN> Palette Control
+<table width="90%"><tr><td align="right" valign="top"><#4892#><#4862#><#4862#><#4892#></td><td valign="top">&nbsp;bit 7 = '1' to disable palette write auto-increment.</td></tr>
+<tr><td align="right" valign="top"><#4893#><#4863#><#4863#><#4893#></td><td valign="top">&nbsp;bits 6-4 = Select palette for reading or writing:
+  <table width="90%">  <tr><td align="right" valign="top"><#4884#><#4876#><#4864#><#4864#><#4876#><#4884#></td><td valign="top">&nbsp;000 = ULA first palette
+  </td></tr>
+<tr><td align="right" valign="top"><#4885#><#4877#><#4865#><#4865#><#4877#><#4885#></td><td valign="top">&nbsp;100 = ULA second palette
+  </td></tr>
+<tr><td align="right" valign="top"><#4886#><#4878#><#4866#><#4866#><#4878#><#4886#></td><td valign="top">&nbsp;001 = Layer 2 first palette
+  </td></tr>
+<tr><td align="right" valign="top"><#4887#><#4879#><#4867#><#4867#><#4879#><#4887#></td><td valign="top">&nbsp;101 = Layer 2 second palette
+  </td></tr>
+<tr><td align="right" valign="top"><#4888#><#4880#><#4868#><#4868#><#4880#><#4888#></td><td valign="top">&nbsp;010 = Sprites first palette
+  </td></tr>
+<tr><td align="right" valign="top"><#4889#><#4881#><#4869#><#4869#><#4881#><#4889#></td><td valign="top">&nbsp;110 = Sprites second palette
+  </td></tr>
+<tr><td align="right" valign="top"><#4890#><#4882#><#4870#><#4870#><#4882#><#4890#></td><td valign="top">&nbsp;011 = Tilemap first palette
+  </td></tr>
+<tr><td align="right" valign="top"><#4891#><#4883#><#4871#><#4871#><#4883#><#4891#></td><td valign="top">&nbsp;111 = Tilemap second palette
+  </td></tr></table>
+</td></tr>
+<tr><td align="right" valign="top"><#4894#><#4872#><#4872#><#4894#></td><td valign="top">&nbsp;bit 3 = Select Sprites palette (0 = first palette, 1 = second palette)</td></tr>
+<tr><td align="right" valign="top"><#4895#><#4873#><#4873#><#4895#></td><td valign="top">&nbsp;bit 2 = Select Layer 2 palette (0 = first palette, 1 = second palette)</td></tr>
+<tr><td align="right" valign="top"><#4896#><#4874#><#4874#><#4896#></td><td valign="top">&nbsp;bit 1 = Select ULA palette (0 = first palette, 1 = second palette)</td></tr>
+<tr><td align="right" valign="top"><#4897#><#4875#><#4875#><#4897#></td><td valign="top">&nbsp;bit 0 = Enable ULANext mode if 1. (0 after a reset)
+</td></tr></table>
+
 
 <P>
-Flashing Enabled is similar to the original Spectrum colour
-attributes. INKs are mapped to indices 0-7, Bright INKS to indices
-8-15, PAPERs to indices 16-23 and Bright PAPERs to indices 24-31.
+(R/W) $40 (64) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline150#</SPAN> Palette Index
+<table width="90%"><tr><td align="right" valign="top"><#4900#><#4899#><#4899#><#4900#></td><td valign="top">&nbsp;bits 7-0 = Select the palette index to change the associated colour.
+</td></tr></table>
+
+For the ULA only, INKs are mapped to indices 0-7, Bright INKS to
+indices 8-15, PAPERs to indices 16-23 and Bright PAPERs to indices
+24-31.
+<BR>In ULANext mode, INKs come from a subset of indices 0-127 and PAPERs
+come from a subset of indices 128-255. The number of active indices
+depends on the number of attribute bits assigned to INK and PAPER out
+of the attribute byte.  The ULA always takes border colour from paper.
 
 <P>
-The ULA next modes use a varying number of bits from the attribute
-byte to determine the ink colour as the palette index from the
-appropriate bits (all others being zero) and the paper colours coming
-from the indicated value+128 with palette format 255 being a special
-case where all the bits determine the ink colour while the paper is
-always palette index 128. The ULA always takes border colour from paper.
+(R/W) $41 (65) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline152#</SPAN> Palette Value (8 bit colour)
+<table width="90%"><tr><td align="right" valign="top"><#4903#><#4902#><#4902#><#4903#></td><td valign="top">&nbsp;bits 7-0 = Colour for the palette index selected by the register $40.
+</td></tr></table>
+
+(Format is RRRGGGBB - the lower blue bit of the 9-bit colour will be a
+logical OR of blue bits 1 and 0 of this 8-bit value.)
+<BR>After the write, the palette index is auto-incremented to the next
+index if the auto-increment is enabled at reg $43. Reads do not
+auto-increment.
 
 <P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="61"></A>
-<TABLE>
-<CAPTION><STRONG>Table 1.3:</STRONG>
-ULA Next</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img4.svg"
- ALT="\begin{table}\centering
-\csvautotabular{video/palfmt.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
+(R/W) $44 (68) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline154#</SPAN> Palette Value (9 bit colour)
+<BR>Two consecutive writes are needed to write the 9 bit colour
+<table width="90%"><tr><td align="right" valign="top"><#4925#><#4905#><#4905#><#4925#></td><td valign="top">&nbsp;1st write:
+  <table width="90%">  <tr><td align="right" valign="top"><#4914#><#4913#><#4906#><#4906#><#4913#><#4914#></td><td valign="top">&nbsp;bits 7-0 = RRRGGGBB
+  </td></tr></table>
+</td></tr>
+<tr><td align="right" valign="top"><#4926#><#4907#><#4907#><#4926#></td><td valign="top">&nbsp;2nd write.
+  If writing a L2 palette
+<BR>  <table width="90%">  <tr><td align="right" valign="top"><#4918#><#4915#><#4908#><#4908#><#4915#><#4918#></td><td valign="top">&nbsp;bit 7 = 1 for L2 priority colour, 0 for normal
+<BR>    Priority colour will always be on top even on an SLU priority
+    arrangement. If you need the exact same colour on priority and non
+    priority locations you will need to program the same colour twice
+    changing bit 7 to 0 for the second colour
+  </td></tr>
+<tr><td align="right" valign="top"><#4919#><#4916#><#4909#><#4909#><#4916#><#4919#></td><td valign="top">&nbsp;bits 6-1 = Reserved, must be 0
+  </td></tr>
+<tr><td align="right" valign="top"><#4920#><#4917#><#4910#><#4910#><#4917#><#4920#></td><td valign="top">&nbsp;bit 0 = lsb B
+  </td></tr></table>
+
+  If writing another palette
+  <table width="90%">  <tr><td align="right" valign="top"><#4923#><#4921#><#4911#><#4911#><#4921#><#4923#></td><td valign="top">&nbsp;bits 7-1 = Reserved, must be 0
+  </td></tr>
+<tr><td align="right" valign="top"><#4924#><#4922#><#4912#><#4912#><#4922#><#4924#></td><td valign="top">&nbsp;bit 0 = lsb B
+  </td></tr></table>
+</td></tr></table>
+
+After the two consecutive writes the palette index is
+auto-incremented if the auto-increment is enabled by reg $43.
+<BR>Reads only return the 2nd byte and do not auto-increment.
 
 <P>
-<BR><HR>
-
-</BODY>
-</HTML>
