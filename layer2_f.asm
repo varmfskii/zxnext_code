@@ -1,3 +1,4 @@
+	device zxspectrumnext
 	org $8000
 start:
 	ld bc,$123b
@@ -15,14 +16,15 @@ start:
 	ret
 wrtpage:	
 	ld hl,$0000
-	ld a,$40
-loopblk:	
-	ld b,$00
-loop256:
+	ld bc,$0040
+loop:	
 	ld (hl),b
 	inc hl
-	djnz loop256
-	dec a
-	jr nz,loopblk
+	djnz loop
+	dec c
+	jr nz,loop
 	ret
+	savenex open "layer2_f.nex",start
+	savenex auto
+	savenex close
 	
