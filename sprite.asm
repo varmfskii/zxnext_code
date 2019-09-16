@@ -2,8 +2,7 @@
 	org $8000
 p_s_palette:	defl $0053 	; sprite palette port
 p_s_attrib:	defl $0057 	; sprite attribute port
-p_s_data:	defl $0055 	; sprite data port
-	;; defc p_s_data=$005B 	; sprite data port
+p_s_data:	defl $005b 	; sprite data port
 p_r_select:	defl $243b 	; port to select register
 p_r_write:	defl $253b 	; port to write to register
 p_s_select:	defl $303b 	; sprite select port
@@ -16,22 +15,14 @@ start:
 	xor a			; sprite 0
 	out (c),a
 	;; write 256 bytes of sprite data to sprite data port
-	;; ld hl,sprite0
-	;; ld c,p_s_data
-	;; ld b,0
-	;; otir
 	ld hl,sprite0
-	ld bc,p_s_data
-	exx
-	ld b,$0
-loop:
-	exx
-	ld a,(hl)
+	ld c,p_s_data
+	ld b,0
+	otir
+	;; select sprite
+	ld bc,p_s_select	; sprite select
+	xor a			; sprite 0
 	out (c),a
-	inc hl
-	exx
-	djnz loop
-	exx
 	;; set sprite position and make sprite visible
 	ld bc,p_s_attrib	; sprite attibutes (location, rotation)
 	ld a,$98
@@ -40,9 +31,10 @@ loop:
 	out (c),a		; y=129
 	xor a
 	out (c),a 		; paloff=0, no mirror, xmsb=0
-	ld a,$80 		; visible, pattern=0
+	ld a,$80		; visible, pattern=0
 	out (c),a
-	ret
+loop:	
+	jp loop
 sprite0:
 	defb $04,$04,$04,$04,$04,$04,$04,$E3,$E3,$E3,$E3,$E3,$E3,$E3,$E3,$E3
 	defb $04,$FF,$FF,$FF,$FF,$FF,$04,$E3,$E3,$E3,$E3,$E3,$E3,$E3,$E3,$E3

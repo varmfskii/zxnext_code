@@ -1,6 +1,9 @@
-	defc screen=$4000
-	defc ulaattr=$5800
-	defc tilemap=$5b00
+	device zxspectrumnext
+screen:		defl $4000
+ulaattr:	defl $5800
+tilemap:	defl $5b00
+	org $8000
+start:	
 	di
 	ld hl,tilemap
 	ld bc,$0005
@@ -59,3 +62,6 @@ tiles:
 	include "tiles.asm"
 tiles_end:	
 	include "palette.asm"
+	savenex open "outlands_tile.nex",start
+	savenex auto
+	savenex close
