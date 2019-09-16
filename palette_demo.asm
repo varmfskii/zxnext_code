@@ -33,7 +33,7 @@
 ;; You are responsible for any legal issues arising from your use of this code.
 ;;
 
-	;; device zxspectrum48	
+	device zxspectrum48	
 	
 	org 30000
 
@@ -157,6 +157,6 @@ set_val:
 
 
 last:
-	;; SAVESNA "screen.sna",start1	
+	SAVESNA "screen.sna",start1	
 
 ;;-------------------------------

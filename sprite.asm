@@ -1,20 +1,16 @@
+	device zxspectrumnext
 	org $8000
-	defc p_s_palette=$0053 	; sprite palette port
-	defc p_s_attrib=$0057 	; sprite attribute port
-	defc p_s_data=$0055 	; sprite data port
+p_s_palette:	defl $0053 	; sprite palette port
+p_s_attrib:	defl $0057 	; sprite attribute port
+p_s_data:	defl $0055 	; sprite data port
 	;; defc p_s_data=$005B 	; sprite data port
-	defc p_r_select=$243b 	; port to select register
-	defc p_r_write=$253b 	; port to write to register
-	defc p_s_select=$303b 	; sprite select port
-	defc r_sprite=21
+p_r_select:	defl $243b 	; port to select register
+p_r_write:	defl $253b 	; port to write to register
+p_s_select:	defl $303b 	; sprite select port
+r_sprite:	defl 21
 start:
 	;; enable sprites
-	ld bc,p_r_select	; select register
-	ld a,r_sprite 		; register 21=sprite
-	out (c),a
-	ld bc,p_r_write		; register in
-	ld a,$03		; enable sprites
-	out (c),a
+	nextreg r_sprite, $03	; enable sprites
 	;; select sprite 0
 	ld bc,p_s_select	; sprite select
 	xor a			; sprite 0
@@ -37,10 +33,12 @@ loop:
 	djnz loop
 	exx
 	;; set sprite position and make sprite visible
-	xor a
 	ld bc,p_s_attrib	; sprite attibutes (location, rotation)
-	out (c),a		; xlsb=0
-	out (c),a		; y=0
+	ld a,$98
+	out (c),a		; xlsb=152
+	ld a,$78
+	out (c),a		; y=129
+	xor a
 	out (c),a 		; paloff=0, no mirror, xmsb=0
 	ld a,$80 		; visible, pattern=0
 	out (c),a
@@ -62,3 +60,7 @@ sprite0:
 	defb $E3,$E3,$E3,$E3,$E3,$E3,$E3,$04,$4D,$4D,$04,$E3,$04,$F5,$04,$E3
 	defb $E3,$E3,$E3,$E3,$E3,$E3,$E3,$E3,$04,$04,$E3,$E3,$E3,$04,$FA,$04
 	defb $E3,$E3,$E3,$E3,$E3,$E3,$E3,$E3,$E3,$E3,$E3,$E3,$E3,$E3,$04,$04
+	savenex open "sprite.nex",start
+	savenex auto
+	savenex close
+	

@@ -1,82 +1,54 @@
+	device zxspectrumnext
 	org $8000
-	defc REG_NO=$243b
-	defc REG_IO=$253b
-	defc PAL_IDX=$40
-	defc PAL_VAL=$41
-	defc PAL_FMT=$42
-	defc PAL_CTL=$43
-	defc PAL_LOB=$44
+REG_NO:	defl $243b
+REG_IO:	defl $253b
+PAL_IDX:	defl $40
+PAL_V8:	defl $41
+PAL_FMT:	defl $42
+PAL_CTL:	defl $43
+PAL_V9:	defl $44
+start:	
 	;; set pixels
 	ld hl,$4000
-	ld a,$0c
-pixel_lp:
-	ld b,$00
-	ld d,$55
-in1:
-	ld (hl),d
+	ld bc,$000c
+	ld a,$55
+pixel1:
+	ld (hl),a
 	inc hl
-	djnz in1
-	ld d,$aa
-in2:
-	ld (hl),d
+	djnz pixel1
+	ld a,$aa
+pixel2:
+	ld (hl),a
 	inc hl
-	djnz in2
-	dec a
-	jp NZ,pixel_lp
+	djnz pixel2
+	ld a,$55
+	dec c
+	jp NZ,pixel1
 	;; set attributes
-	ld a,$3
-	ld d,$00
-attr_lp:
-	ld b,$00
-in3:
-	ld (hl),d
-	inc d
+	ld bc,$0003
+	xor a
+attr:
+	ld (hl),a
+	inc a
 	inc hl
-	djnz in3
-	dec a
-	jp NZ,attr_lp
+	djnz attr
+	dec c
+	jp NZ,attr
 	;; set palette values
-	;; select palette index 0
-	ld bc,REG_NO
-	ld a,PAL_IDX
-	out (c),a
-	ld bc,REG_IO
+	nextreg PAL_IDX,0	; select palette index 0
+	;; select pallet value (8-bit)
 	xor a
-	out (c),a
-	;; select pallet value register
-	ld bc,REG_NO
-	ld a,PAL_VAL
-	out (c),a
-	ld bc,REG_IO
-	xor a
-palhi_lp:
-	out (c),a
+pal_lp:
+	nextreg PAL_V8,a
 	inc a
-	jp NZ,palhi_lp
-	;;  select palette low register
-	ld bc,REG_NO
-	ld a,PAL_LOB
-	out (c),a
-	ld bc,REG_IO
-pallo_lp:
-	out (c),0
-	inc a
-	jp NZ,pallo_lp
+	jp NZ,pal_lp
 	;; set palette format
-	ld bc,REG_NO
-	ld a,PAL_FMT
-	out (c),a
-	ld bc,REG_IO
-	ld a,$ff
-	out (c),a
+	nextreg PAL_FMT,$ff
 	;; disable flash
-	ld bc,REG_NO
-	ld a,PAL_CTL
-	out (c),a
-	ld bc,REG_IO
-	ld a,$01
-	out (c),a
+	nextreg PAL_CTL,$01
 idle:
 	jp idle
 	ret
-	
+	savenex open "screen3.nex", start
+	savenex auto
+	savenex close
