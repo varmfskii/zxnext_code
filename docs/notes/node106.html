@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>$DDxx IX</TITLE>
-<META NAME="description" CONTENT="$DDxx IX">
+<TITLE>8-bit</TITLE>
+<META NAME="description" CONTENT="8-bit">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,75 +27,197 @@
  HREF="node107.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node103.html">
+ HREF="node105.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node105.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html799"
+<A ID="tex2html806"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html801"
-  HREF="node125.html">
+<A ID="tex2html808"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node107.html">$EDxx Block/Port</A>
+ HREF="node107.html">16-bit</A>
 <B> Up:</B> <A
- HREF="node103.html">Extended Opcodes to Mnemonics</A>
+ HREF="node105.html">Ports</A>
 <B> Previous:</B> <A
- HREF="node105.html">$CBxx Bit Operations</A>
- &nbsp; <B>  <A ID="tex2html800"
+ HREF="node105.html">Ports</A>
+ &nbsp; <B>  <A ID="tex2html807"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html802"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html809"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION001230000000000000000">
-$DDxx IX</A>
+<H1><A ID="SECTION001110000000000000000">
+8-bit</A>
 </H1>
-<BR><P></P>
-<DIV class="CENTER"><A ID="2513"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.17:</STRONG>
-$DD00-$DD5F</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img68.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvautotabular{opcode/dd00-opcode.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+Port $0f (15) DAC A
 <BR>
-<BR><P></P>
-<DIV class="CENTER"><A ID="2517"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.18:</STRONG>
-$DD60-$DD8F</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img69.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvautotabular{opcode/dd60-opcode.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $1f (31) Kempston Joystick 1
 <BR>
-<BR><P></P>
-<DIV class="CENTER"><A ID="2521"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.19:</STRONG>
-$DD90-$DDFF</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img70.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvautotabular{opcode/dd90-opcode.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+Disable with Nextreg $05
+
+<P>
+Port $1f (31) DAC B
 <BR>
-<BR><HR>
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $1f (31) Multiface 1 Disable
+
+<P>
+Port $37 (55) Kempston Joystick 2
+<BR>
+Disable with Nextreg $05
+
+<P>
+Port $3f (63) DAC A
+<BR>
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $3f (63) Multiface 128 Disable
+
+<P>
+Port $3f (63) Multiface +3 Enable
+
+<P>
+Port $4f (79) DAC C
+<BR>
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $57 (87) Sprite Attributes
+
+<P>
+Port $5b (91) Sprite Pattern
+
+<P>
+Port $5f (95) DAC D
+<BR>
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $6b (107) zxnDMA
+
+<P>
+Port $9f (159) Multiface 1 Enable
+
+<P>
+Port $bf (191) Multiface 128 Enable
+
+<P>
+Port $bf (191) Multiface +3 Disable
+
+<P>
+Port $df (223) DAC A/C SpecDrum
+<BR>
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $e3 (227) divMMC Control
+<BR>
+Disable with bit 2 of Nextreg $09
+
+<P>
+Port $e7 (231) SPI /CS (SD card, flash, rpi)
+<BR>
+Disable with bit 2 of Nextreg $09
+
+<P>
+Port $eb (235) SPI /DATA (SD card, flash, rpi)
+<BR>
+Disable with bit 2 of Nextreg $09
+
+<P>
+Port $f1 (241) DAC A (precedence over $xxfd)
+<BR>
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $f3 (243) DAC B
+<BR>
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $f9 (249) DAC C (precedence over $xxfd)
+<BR>
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $fb (251) DAC D
+<BR>
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $fe (254) ULA
+<table width="90%">
+  <tr><td valign="top">&nbsp;bits 5-7: unused
+  </td></tr>
+<tr><td valign="top">&nbsp;bit 4: enable ear output
+  </td></tr>
+<tr><td valign="top">&nbsp;bit 3: enable mic output
+  </td></tr>
+<tr><td valign="top">&nbsp;bits 0-2: border colour
+</td></tr></table>
+
+<P>
+Port $ff (255) Timex Sinclair/floating bus
+<BR>
+Disable with bit 2 to Nextreg $08
+<table width="90%"><tr><td valign="top">&nbsp;bit 7: memory paging (not on Next)</td></tr>
+<tr><td valign="top">&nbsp;bit 6: disables generation of interrupts</td></tr>
+<tr><td valign="top">&nbsp;bits 3-5: set hi-res mode colour combination</td></tr>
+<tr><td valign="top">&nbsp;bits 0-2: screen mode
+  <table width="90%">  <tr><td valign="top">&nbsp;000=normal ULA mode
+  </td></tr>
+<tr><td valign="top">&nbsp;001=alternate ULA address
+  </td></tr>
+<tr><td valign="top">&nbsp;010=hi-colour
+  </td></tr>
+<tr><td valign="top">&nbsp;110=hi-res
+  </td></tr></table>
+</td></tr></table>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node107.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node105.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node105.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html806"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html808"
+  HREF="node134.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node107.html">16-bit</A>
+<B> Up:</B> <A
+ HREF="node105.html">Ports</A>
+<B> Previous:</B> <A
+ HREF="node105.html">Ports</A>
+ &nbsp; <B>  <A ID="tex2html807"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html809"
+  HREF="node134.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

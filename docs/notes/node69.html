@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Machines</TITLE>
-<META NAME="description" CONTENT="Machines">
+<TITLE>WR5 – Write Register Group 5</TITLE>
+<META NAME="description" CONTENT="WR5 – Write Register Group 5">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,47 +27,53 @@
  HREF="node70.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node68.html">
+ HREF="node63.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node68.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html625"
+<A ID="tex2html610"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html627"
-  HREF="node125.html">
+<A ID="tex2html612"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node70.html">Display</A>
+ HREF="node70.html">WR6 – Command Register</A>
 <B> Up:</B> <A
- HREF="node68.html">Timing</A>
+ HREF="node63.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node68.html">Timing</A>
- &nbsp; <B>  <A ID="tex2html626"
+ HREF="node68.html">WR4 – Write Register</A>
+ &nbsp; <B>  <A ID="tex2html611"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html628"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html613"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00610010000000000000">
-Machines</A>
+<H4><A ID="SECTION00660060000000000000">
+WR5 – Write Register Group 5</A>
 </H4>
+<PRE>
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 1   0   |   |   0   0   1   0
+         |   |
+         |   0 = /ce only
+         |   1 = /ce &amp; /wait multiplexed
+         |
+         0 = Stop on end of block
+         1 = Auto restart on end of block
+</PRE>
+The /ce &amp; /wait mode is implemented in the zxnDMA but is not currently
+used. This mode has an external device using the DMA's /ce pin to
+insert wait states during the DMA's transfer.
 
 <P>
-The ZX Spectrum Next has four machine types (48k, 128k, Pentagon, and
-HDMI). The machine timing and HDMI determine the number of T-states
-per line which determines the base dot clock frequency and Z80/DMA
-clock speed.
-
-<P>
-This guide groups machine types by their timing for convenience. The
-HDMI video mode overrides the default machine timing so it is included
-as an extra machine type which does not exist in the official
-documentation.
+The auto restart feature causes the DMA to automatically reload its
+source and destination addresses and reset its byte counter to zero to
+repeat the last transfer when a previous one is finished.
 
 <P>
 <BR><HR>

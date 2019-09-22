@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>WR1 – Write Register Group 1</TITLE>
-<META NAME="description" CONTENT="WR1 – Write Register Group 1">
+<TITLE>Screen</TITLE>
+<META NAME="description" CONTENT="Screen">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="000-document.css">
 
-<LINK REL="next" HREF="node57.html">
 <LINK REL="previous" HREF="node55.html">
 <LINK REL="next" HREF="node57.html">
 </HEAD>
@@ -27,60 +26,43 @@
  HREF="node57.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node54.html">
+ HREF="node51.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node55.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html541"
+<A ID="tex2html533"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html543"
-  HREF="node125.html">
+<A ID="tex2html535"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node57.html">WR2 – Write Register</A>
+ HREF="node57.html">zxnDMA</A>
 <B> Up:</B> <A
- HREF="node54.html">zxnDMA Registers</A>
+ HREF="node51.html">ZX Spectrum Next</A>
 <B> Previous:</B> <A
- HREF="node55.html">WR0 – Write Register</A>
- &nbsp; <B>  <A ID="tex2html542"
+ HREF="node55.html">Layer 2 Switching</A>
+ &nbsp; <B>  <A ID="tex2html534"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html544"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html536"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00560020000000000000">
-WR1 – Write Register Group 1</A>
+<H4><A ID="SECTION00520050000000000000">
+Screen</A>
 </H4>
-<PRE>
-D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
- 0   |   |   |   |   1   0   0
-     |   |   |   |
-     |   |   |   0 = Port A is memory
-     |   |   |   1 = Port A is IO
-     |   |   |
-     |   0   0 = Port A address decrements
-     |   0   1 = Port A address increments
-     |   1   0 = Port A address is fixed
-     |   1   1 = Port A address is fixed
-     |
-     V
-D7  D6  D5  D4  D3  D2  D1  D0  PORT A VARIABLE TIMING BYTE
- 0   0   0   0   0   0   |   |
-                         0   0 = Cycle Length = 4
-                         0   1 = Cycle Length = 3
-                         1   0 = Cycle Length = 2
-                         1   1 = Do not use
-</PRE>
-The cycle length is the number of cycles used in a read or write
- operation. The first cycle asserts signals and the last cycle
- releases them. There is no half cycle timing for the control signals.
-
-<P>
+16k-Bank 5 is the bank read by the ULA to determine what to show on
+screen. The ULA connects directly to the larger memory space ignoring
+mapping; the screen is always 16k-Bank 5, no matter where in memory it
+is (or if it is switched in at all). Setting bit 3 of Memory Paging
+Control ($7FFD) will have the ULA read from 16k-bank 7 (the "shadow
+screen") instead, which can be used as an alternate screen. Beware
+that this does not map 16k-bank 7 into RAM; to alter 16k-bank 7 it
+must be mapped by other means.
 <BR><HR>
 
 </BODY>

@@ -1,10 +1,65 @@
+<!DOCTYPE HTML>
 
-<H5><A NAME="SECTION00361011000000000000">
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>8-Bit Sprite Patterns</TITLE>
+<META NAME="description" CONTENT="8-Bit Sprite Patterns">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="next" HREF="node38.html">
+<LINK REL="previous" HREF="node36.html">
+<LINK REL="next" HREF="node38.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node38.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node36.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node36.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html440"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html442"
+  HREF="node134.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node38.html">4-Bit Sprite Patterns</A>
+<B> Up:</B> <A
+ HREF="node36.html">Pattern Number</A>
+<B> Previous:</B> <A
+ HREF="node36.html">Pattern Number</A>
+ &nbsp; <B>  <A ID="tex2html441"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html443"
+  HREF="node134.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H5><A ID="SECTION00361011000000000000">
 8-Bit Sprite Patterns</A>
 </H5>
 
 <P>
-The <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline751#</SPAN> pixel image uses 8-bits for each pixel so that each
+The <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img28.svg"
+ ALT="$16\times16$"></SPAN> pixel image uses 8-bits for each pixel so that each
 pixel can be one of 256 colours. One colour indicates transparency and
 this is programmed into the Sprite Transparency Index register
 (nextreg $4B). By default the transparent value is $E3.
@@ -14,27 +69,43 @@ As an example of an 8-bit sprite, let’s have a look at figure 1.1.
 
 <P>
 
-<DIV ALIGN="CENTER"><A NAME="648"><tex2html_anchor_mark></A>
+<DIV class="CENTER"><A ID="648"></A>
 <TABLE>
-<CAPTION ALIGN="BOTTOM"><STRONG><#5360#>Figure<#5360#> 2.1:</STRONG>
-<#5361#>Pattern Example<#5361#></CAPTION>
-<TR><TD><DIV ALIGN="CENTER">
-
-</DIV>  <IMG
-  WIDTH="127" HEIGHT="127" ALIGN="BOTTOM" BORDER="0"
+<CAPTION class="BOTTOM"><STRONG>Figure 2.1:</STRONG>
+Pattern Example</CAPTION>
+<TR><TD>
+<DIV class="CENTER">  <IMG STYLE=""
  SRC="./sprite_1.png"
- ALT="Image sprite_1"></TD></TR>
+ ALT="Image sprite_1">
+  </DIV></TD></TR>
 </TABLE>
 </DIV>
-
 
 <P>
 Using the default palette, which is initialised with RGB332 colours
 from 0-255, the hexadecimal values for this pattern arranged in a
-<SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline753#</SPAN> array are shown below:
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img28.svg"
+ ALT="$16\times16$"></SPAN> array are shown below:
 
 <P>
-<PRE><tex2html_verbatim_mark>verbatim9#</PRE>
+<PRE>
+04040404040404E3E3E3E3E3E3E3E3E3
+04FFFFFFFFFF04E3E3E3E3E3E3E3E3E3
+04FFFBFBFBFF04E3E3E3E3E3E3E3E3E3
+04FFFBF5F5FBFF04E3E3E3E3E3E3E3E3
+04FFFBF5A8A8FBFF04E3E3E3E3E3E3E3
+04FFFFFBA844A8FBFF04E3E3E3E3E3E3
+040404FFFBA844A8FBFF04E3E3E3E3E3
+E3E3E304FFFBA84444FBFF04E304E3E3
+E3E3E3E304FFFB444444FBFF044D04E3
+E3E3E3E3E304FFFB44444444FA4D04E3
+E3E3E3E3E3E304FFFB44FFF54404E3E3
+E3E3E3E3E3E3E304FF44F5A804E3E3E3
+E3E3E3E3E3E3E3E304FA4404A804E3E3
+E3E3E3E3E3E3E3044D4D04E304F504E3
+E3E3E3E3E3E3E3E30404E3E3E304FA04
+E3E3E3E3E3E3E3E3E3E3E3E3E3E30404
+</PRE>
 Here $E3 is used as the transparent index.
 
 <P>
@@ -42,3 +113,7 @@ These 256 bytes would be stored in pattern memory in left to right,
 top to bottom order.
 
 <P>
+<BR><HR>
+
+</BODY>
+</HTML>

@@ -1,5 +1,59 @@
+<!DOCTYPE HTML>
 
-<H2><A NAME="SECTION00334000000000000000">
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Timex Hi-Colour Mode</TITLE>
+<META NAME="description" CONTENT="Timex Hi-Colour Mode">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="next" HREF="node19.html">
+<LINK REL="previous" HREF="node17.html">
+<LINK REL="next" HREF="node19.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node19.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node14.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node17.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html336"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html338"
+  HREF="node134.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node19.html">Timex Hi-Resolution Mode</A>
+<B> Up:</B> <A
+ HREF="node14.html">ULA group</A>
+<B> Previous:</B> <A
+ HREF="node17.html">Alternate Page Mode</A>
+ &nbsp; <B>  <A ID="tex2html337"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html339"
+  HREF="node134.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A ID="SECTION00334000000000000000">
 Timex Hi-Colour Mode</A>
 </H2>
 
@@ -7,16 +61,53 @@ Timex Hi-Colour Mode</A>
 Timex mode 2
 
 <P>
-This mode is a <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline180#</SPAN> video mode with <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline182#</SPAN> colour
-attribute mapping on a <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline184#</SPAN> grid. It is selected by writing 2
+This mode is a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
+ ALT="$256\times192$"></SPAN> video mode with <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img12.svg"
+ ALT="$8\times1$"></SPAN> colour
+attribute mapping on a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img13.svg"
+ ALT="$32\times192$"></SPAN> grid. It is selected by writing 2
 to the Timex ULA port ($ff).  Pixel mapping in this mode is the same
 as in ZX Spectrum mode using the bitmap 1 area based on
-<tex2html_verbatim_mark>#math73#<SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline186#</SPAN>.  The colour attributes use
-the bitmap 2 area with <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline188#</SPAN> colour attribute areas corresponding
-to the addresses <tex2html_verbatim_mark>#math74#<SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline190#</SPAN>.
+<!-- MATH
+ $0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img8.svg"
+ ALT="$0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>.  The colour attributes use
+the bitmap 2 area with <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img12.svg"
+ ALT="$8\times1$"></SPAN> colour attribute areas corresponding
+to the addresses <!-- MATH
+ $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img10.svg"
+ ALT="$1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>.
 
 <P>
 Code:
-<PRE><tex2html_verbatim_mark>verbatim4#</PRE>
+<PRE>
+;; disable LoRes mode:
+ld bc,$243B ; next register select port
+ld a,$15
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+and $7f
+out (c),a
+;; set Timex mode
+ld bc,$243B ; next register select port
+ld a,$08
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+or $04
+out (c),a
+;; set hi-colour mode
+ld c,$ff
+ld a,$02
+out (c),a
+</PRE>
 
 <P>
+<BR><HR>
+
+</BODY>
+</HTML>

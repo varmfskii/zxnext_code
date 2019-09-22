@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Configuration</TITLE>
-<META NAME="description" CONTENT="Configuration">
+<TITLE>NOOP</TITLE>
+<META NAME="description" CONTENT="NOOP">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="000-document.css">
 
-<LINK REL="previous" HREF="node81.html">
+<LINK REL="next" HREF="node87.html">
+<LINK REL="previous" HREF="node85.html">
 <LINK REL="next" HREF="node87.html">
 </HEAD>
 
@@ -26,67 +27,52 @@
  HREF="node87.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node65.html">
+ HREF="node85.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node85.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html701"
+<A ID="tex2html714"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html703"
-  HREF="node125.html">
+<A ID="tex2html716"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node87.html">Refresh Rate</A>
+ HREF="node87.html">MOVE</A>
 <B> Up:</B> <A
- HREF="node65.html">Copper and Display Timing</A>
+ HREF="node85.html">Instructions</A>
 <B> Previous:</B> <A
- HREF="node85.html">FRAME</A>
- &nbsp; <B>  <A ID="tex2html702"
+ HREF="node85.html">Instructions</A>
+ &nbsp; <B>  <A ID="tex2html715"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html704"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html717"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00640000000000000000">
-Configuration</A>
-</H1>
+<H4><A ID="SECTION00720010000000000000">
+NOOP</A>
+</H4>
 
 <P>
-Hardware registers provide timing and configuration data allowing
-software to build and configure COPPER programs that function
-correctly across the various video modes and machine types. It is not
-essential to detect the machine type but it should be noted that
-software should not assume that it is running on a specific machine as
-the COPPER hardware is available across all four machine types.
+NOOP (no-operation) executes in one dot clock. It is useful for fine
+tuning timing, initialising COPPER RAM and 'NOP' out COPPER program
+instructions.
 
 <P>
-Three registers can be read to determine the machine configuration for
-Ts per line, dot clocks, refresh rate, line count and maximum
-horizontal dot clock/pixel position compare.
+It can be used to align colour and display changes to half pixel
+positions in standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
+ ALT="$256\times192$"></SPAN> resolution. Its duration is equal
+to one Timex HIRES pixel.
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+This guide uses the name 'NOOP' to avoid confusion with the Z80 opcode
+NOP.
 
-<UL CLASS="ChildLinks">
-<LI><UL>
-<LI><UL>
-<LI><A ID="tex2html705"
-  HREF="node87.html">Refresh Rate</A>
-<LI><A ID="tex2html706"
-  HREF="node88.html">Video Modes</A>
-<LI><A ID="tex2html707"
-  HREF="node89.html">Machine Type</A>
-<LI><A ID="tex2html708"
-  HREF="node90.html">Summary</A>
-</UL></UL></UL>
-<!--End of Table of Child-Links-->
+<P>
 <BR><HR>
 
 </BODY>

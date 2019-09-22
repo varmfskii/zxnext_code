@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Overview</TITLE>
-<META NAME="description" CONTENT="Overview">
+<TITLE>ZX Spectrum 128</TITLE>
+<META NAME="description" CONTENT="ZX Spectrum 128">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="000-document.css">
 
-<LINK REL="next" HREF="node50.html">
+<LINK REL="next" HREF="node51.html">
 <LINK REL="previous" HREF="node48.html">
 <LINK REL="next" HREF="node50.html">
 </HEAD>
@@ -32,41 +32,95 @@
 <A
  HREF="node48.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html504"
+<A ID="tex2html499"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html506"
-  HREF="node125.html">
+<A ID="tex2html501"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node50.html">Accessing the zxnDMA</A>
+ HREF="node50.html">128 Special Paging Mode</A>
 <B> Up:</B> <A
- HREF="node48.html">zxnDMA</A>
+ HREF="node48.html">Memory Management</A>
 <B> Previous:</B> <A
- HREF="node48.html">zxnDMA</A>
- &nbsp; <B>  <A ID="tex2html505"
+ HREF="node48.html">Memory Management</A>
+ &nbsp; <B>  <A ID="tex2html500"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html507"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html502"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
 <H1><A ID="SECTION00510000000000000000">
-Overview</A>
+ZX Spectrum 128</A>
 </H1>
+128-style memory management can only alter the bank addressed at
+$c000 (16k-slot 4, or 8k-slot 7-8). The active 16k-bank at $c000 is
+selected by writing the 3 LSBs of the 16k-bank number to the bottom 3
+bits of Memory Paging Control ($7FFD), and the 3 MSBs to the bottom 3
+bits of Next Memory Bank Select ($DFFD). (The reason for the division
+is that the original Spectrum 128, having only 128k of memory, only
+needed 3 bits.)
 
 <P>
-The ZX Spectrum Next DMA (zxnDMA) is a single channel dma device that
-implements a subset of the Z80 DMA functionality. The subset is large
-enough to be compatible with common uses of the similar Datagear
-interface available for standard ZX Spectrum computers and
-compatibles. It also adds a burst mode capability that can deliver
-audio at programmable sample rates to the DAC device.
+On an unexpanded Next, this allows any 16k-bank to be paged in at
+$c000. On an expanded next, there are not enough bits available to
+access the banks at the bottom of the expanded memory, so Next memory
+management must be used to access these.
+
+<P>
+If you are using the standard interrupt handler or OS routines, then
+any time you write to Memory Paging Control ($7FFD) you should also
+store the value at $5B5C. Any time you write to Plus 3 Memory Paging
+Control ($1FFD) you should also store the value at $5B67. There is
+no corresponding system variable for the Next-only Next Memory Bank
+Select ($DFFD) and standard OS routines may not support the extended
+banks properly.
 
 <P>
 <BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html503"
+  HREF="node50.html">128 Special Paging Mode</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node50.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node48.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node48.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html499"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html501"
+  HREF="node134.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node50.html">128 Special Paging Mode</A>
+<B> Up:</B> <A
+ HREF="node48.html">Memory Management</A>
+<B> Previous:</B> <A
+ HREF="node48.html">Memory Management</A>
+ &nbsp; <B>  <A ID="tex2html500"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html502"
+  HREF="node134.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

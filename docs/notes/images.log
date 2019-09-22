@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.2.27)  4 MAR 2019 17:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2019.8.24)  22 SEP 2019 16:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -142,16 +142,18 @@ l.80 ...preview}\copy\lthtmlPageBox\end{preview}}}
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-(./images.aux (/home/alex/zxnext/code/zx_next_notes/audio/audio.aux) (/home/ale
-x/zxnext/code/zx_next_notes/memory_management.aux) (/home/alex/zxnext/code/zx_n
-ext_notes/zxndma/zxndma.aux) (/home/alex/zxnext/code/zx_next_notes/copper/coppe
-r.aux) (/home/alex/zxnext/code/zx_next_notes/interrupts.aux) (/home/alex/zxnext
-/code/zx_next_notes/pi0.aux) (/home/alex/zxnext/code/zx_next_notes/storage.aux)
-(/home/alex/zxnext/code/zx_next_notes/ports/ports.aux) (/home/alex/zxnext/code/
-zx_next_notes/registers/registers.aux) (/home/alex/zxnext/code/zx_next_notes/op
-code/opcode-mnemonic.aux) (/home/alex/zxnext/code/zx_next_notes/mnemonic-opcode
-.aux) (/home/alex/zxnext/code/zx_next_notes/memory_map.aux) (/home/alex/zxnext/
-code/zx_next_notes/file_formats.aux))
+(./images.aux (/home/alex/zxnext/zxnext/code/zx_next_notes/video/video.aux) (/h
+ome/alex/zxnext/zxnext/code/zx_next_notes/audio/audio.aux) (/home/alex/zxnext/z
+xnext/code/zx_next_notes/memory_management.aux) (/home/alex/zxnext/zxnext/code/
+zx_next_notes/zxndma/zxndma.aux) (/home/alex/zxnext/zxnext/code/zx_next_notes/c
+opper/copper.aux) (/home/alex/zxnext/zxnext/code/zx_next_notes/interrupts.aux) 
+(/home/alex/zxnext/zxnext/code/zx_next_notes/pi0.aux) (/home/alex/zxnext/zxnext
+/code/zx_next_notes/storage.aux) (/home/alex/zxnext/zxnext/code/zx_next_notes/p
+orts/ports.aux) (/home/alex/zxnext/zxnext/code/zx_next_notes/registers/register
+s.aux) (/home/alex/zxnext/zxnext/code/zx_next_notes/opcode/opcode-mnemonic.aux)
+(/home/alex/zxnext/zxnext/code/zx_next_notes/instructions.aux) (/home/alex/zxne
+xt/zxnext/code/zx_next_notes/memory_map.aux) (/home/alex/zxnext/zxnext/code/zx_
+next_notes/file_formats.aux))
 \openout1 = `images.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 111.
@@ -198,12 +200,7 @@ Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 (/usr/share/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
-)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-))) (/usr/share/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+)))) (/usr/share/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
 )
 (/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
@@ -250,431 +247,431 @@ latex2htmlLength oddsidemargin=29.0pt
 latex2htmlLength evensidemargin=80.0pt
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 141.
+(Font)              <10.95> on input line 142.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 141.
+(Font)              <8> on input line 142.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 141.
+(Font)              <6> on input line 142.
 
-:table29:lthtmlCropMarkHeight:=129.5999pt
+:table40:lthtmlCropMarkHeight:=129.5999pt
 
-:table29:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table40:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 Preview: Tightpage -32891 -32891 32891 32891
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
-:tex2html_wrap_inline113:lthtmlCropMarkHeight:=10.01727pt
+:tex2html_wrap_inline146:lthtmlCropMarkHeight:=10.01727pt
 
-:tex2html_wrap_inline113:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline146:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [2]
 
-:table56:lthtmlCropMarkHeight:=34.39996pt
+:table89:lthtmlCropMarkHeight:=34.39996pt
 
-:table56:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table89:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [3]
 
-:table60:lthtmlCropMarkHeight:=129.5999pt
+:table93:lthtmlCropMarkHeight:=129.5999pt
 
-:table60:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table93:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [4]
 
-:tex2html_wrap_inline123:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline156:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline123:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline156:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [5]
 
-:tex2html_wrap_inline125:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline158:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline125:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline158:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [6]
 
-:tex2html_wrap_inline127:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline160:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline127:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline160:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [7]
 
-:tex2html_wrap_inline137:lthtmlCropMarkHeight:=13.48248pt
+:tex2html_wrap_inline170:lthtmlCropMarkHeight:=13.48248pt
 
-:tex2html_wrap_inline137:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
+:tex2html_wrap_inline170:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
 [8]
 
-:tex2html_wrap_inline141:lthtmlCropMarkHeight:=13.48248pt
+:tex2html_wrap_inline174:lthtmlCropMarkHeight:=13.48248pt
 
-:tex2html_wrap_inline141:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
+:tex2html_wrap_inline174:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
 [9]
 
-:tex2html_wrap_inline143:lthtmlCropMarkHeight:=13.48248pt
+:tex2html_wrap_inline176:lthtmlCropMarkHeight:=13.48248pt
 
-:tex2html_wrap_inline143:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
+:tex2html_wrap_inline176:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
 [10]
 
-:tex2html_wrap_inline145:lthtmlCropMarkHeight:=13.48248pt
+:tex2html_wrap_inline178:lthtmlCropMarkHeight:=13.48248pt
 
-:tex2html_wrap_inline145:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
+:tex2html_wrap_inline178:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
 [11]
 
-:tex2html_wrap_inline149:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline182:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline149:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline182:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [12]
 
-:tex2html_wrap_inline151:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline184:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline151:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline184:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [13]
 
-:tex2html_wrap_inline159:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline192:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline159:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline192:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [14]
 
-:table74:lthtmlCropMarkHeight:=129.5999pt
+:table107:lthtmlCropMarkHeight:=129.5999pt
 
-:table74:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table107:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [15]
 
-:tex2html_wrap_inline161:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline194:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline161:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline194:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [16]
 
-:tex2html_wrap_inline165:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline198:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline165:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline198:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [17]
 
-:tex2html_wrap_inline167:lthtmlCropMarkHeight:=13.48248pt
+:tex2html_wrap_inline200:lthtmlCropMarkHeight:=13.48248pt
 
-:tex2html_wrap_inline167:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
+:tex2html_wrap_inline200:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
 [18]
 
-:tex2html_wrap_inline169:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline202:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline169:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline202:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [19]
 
-:tex2html_wrap_inline171:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline204:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline171:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline204:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [20]
 
-:tex2html_wrap_inline375:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline446:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline375:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline446:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [21]
 
-:tex2html_wrap_inline377:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline448:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline377:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline448:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [22]
 
-:tex2html_wrap_inline379:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline450:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline379:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline450:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [23]
 
-:tex2html_wrap_inline381:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline452:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline381:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline452:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [24]
 
-:tex2html_wrap_inline385:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline456:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline385:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline456:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [25]
 
-:tex2html_wrap_inline387:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline458:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline387:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline458:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [26]
 
-:tex2html_wrap_inline431:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline502:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline431:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline502:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [27]
 
-:tex2html_wrap_inline658:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline729:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline658:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline729:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [28]
 
-:tex2html_wrap_inline660:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline731:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline660:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline731:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [29]
 
-:tex2html_wrap_inline662:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline733:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline662:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline733:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [30]
 
-:tex2html_wrap_inline664:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline735:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline664:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline735:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [31]
 
-:tex2html_wrap_inline686:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline757:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline686:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline757:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [32]
 
-:tex2html_wrap_inline690:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline761:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline690:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline761:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [33]
 
-:tex2html_wrap_inline752:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline823:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline752:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline823:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [34]
 
-:table1043:lthtmlCropMarkHeight:=75.19994pt
+:table1114:lthtmlCropMarkHeight:=75.19994pt
 
-:table1043:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1114:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [35]
-Overfull \hbox (157.3037pt too wide) in paragraph at lines 416--416
+Overfull \hbox (157.3037pt too wide) in paragraph at lines 425--425
  [][] 
  []
 
 
-:table1095:lthtmlCropMarkHeight:=102.39992pt
+:table1166:lthtmlCropMarkHeight:=102.39992pt
 
-:table1095:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1166:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [36]
 
-:table1238:lthtmlCropMarkHeight:=115.99991pt
+:table1309:lthtmlCropMarkHeight:=115.99991pt
 
-:table1238:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1309:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [37]
 
-:table1242:lthtmlCropMarkHeight:=115.99991pt
+:table1313:lthtmlCropMarkHeight:=115.99991pt
 
-:table1242:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1313:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [38]
 
-:table1248:lthtmlCropMarkHeight:=75.19994pt
+:table1319:lthtmlCropMarkHeight:=75.19994pt
 
-:table1248:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1319:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [39]
 
-:table1252:lthtmlCropMarkHeight:=75.19994pt
+:table1323:lthtmlCropMarkHeight:=75.19994pt
 
-:table1252:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1323:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [40]
-Overfull \hbox (36.52087pt too wide) in paragraph at lines 484--484
+Overfull \hbox (36.52087pt too wide) in paragraph at lines 493--493
  [][] 
  []
 
 
-:table1256:lthtmlCropMarkHeight:=140.33322pt
+:table1327:lthtmlCropMarkHeight:=140.33322pt
 
-:table1256:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1327:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [41]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 497.
+(Font)              <5> on input line 506.
 
-Overfull \hbox (11.31319pt too wide) in paragraph at lines 497--497
+Overfull \hbox (11.31319pt too wide) in paragraph at lines 506--506
  [][] 
  []
 
 
-:table1260:lthtmlCropMarkHeight:=167.53333pt
+:table1331:lthtmlCropMarkHeight:=167.53333pt
 
-:table1260:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1331:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [42]
 
-:tex2html_wrap_inline1360:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline1431:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline1360:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline1431:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [43]
 
-:tex2html_wrap_inline1362:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline1433:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline1362:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline1433:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [44]
 
-:table1265:lthtmlCropMarkHeight:=47.99995pt
+:table1336:lthtmlCropMarkHeight:=47.99995pt
 
-:table1265:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1336:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [45]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 542.
+(Font)              <7> on input line 551.
 
-Overfull \hbox (33.41745pt too wide) in paragraph at lines 542--542
+Overfull \hbox (33.41745pt too wide) in paragraph at lines 551--551
  [][] 
  []
 
 
-:table1269:lthtmlCropMarkHeight:=234.19998pt
+:table1340:lthtmlCropMarkHeight:=234.19998pt
 
-:table1269:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1340:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [46]
 
-:table1274:lthtmlCropMarkHeight:=111.00412pt
+:table1345:lthtmlCropMarkHeight:=111.00412pt
 
-:table1274:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1345:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [47]
-Overfull \hbox (11.48543pt too wide) in paragraph at lines 580--580
+Overfull \hbox (11.48543pt too wide) in paragraph at lines 589--589
  [][] 
  []
 
 
-:table1287:lthtmlCropMarkHeight:=97.40411pt
+:table1358:lthtmlCropMarkHeight:=97.40411pt
 
-:table1287:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1358:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [48]
 
-:table1291:lthtmlCropMarkHeight:=84.41245pt
+:table1362:lthtmlCropMarkHeight:=84.41245pt
 
-:table1291:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1362:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [49]
-Overfull \hbox (132.6706pt too wide) in paragraph at lines 610--610
+Overfull \hbox (132.6706pt too wide) in paragraph at lines 619--619
  [][] 
  []
 
 
-:table1322:lthtmlCropMarkHeight:=319.99977pt
+:table1393:lthtmlCropMarkHeight:=319.99977pt
 
-:table1322:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1393:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [50]
-Overfull \hbox (71.23457pt too wide) in paragraph at lines 626--626
+Overfull \hbox (71.23457pt too wide) in paragraph at lines 635--635
  [][] 
  []
 
 
-:table1796:lthtmlCropMarkHeight:=322.19998pt
+:table1867:lthtmlCropMarkHeight:=343.19998pt
 
-:table1796:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1867:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [51]
 
-:table2446:lthtmlCropMarkHeight:=168.69972pt
+:table2579:lthtmlCropMarkHeight:=168.69972pt
 
-:table2446:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2579:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [52]
 
-:table2450:lthtmlCropMarkHeight:=168.69972pt
+:table2583:lthtmlCropMarkHeight:=168.69972pt
 
-:table2450:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2583:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [53]
 
-:table2454:lthtmlCropMarkHeight:=168.69972pt
+:table2587:lthtmlCropMarkHeight:=168.69972pt
 
-:table2454:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2587:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [54]
 
-:table2458:lthtmlCropMarkHeight:=168.69972pt
+:table2591:lthtmlCropMarkHeight:=168.69972pt
 
-:table2458:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2591:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [55]
 
-:table2462:lthtmlCropMarkHeight:=168.69972pt
+:table2595:lthtmlCropMarkHeight:=168.69972pt
 
-:table2462:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2595:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [56]
 
-:table2466:lthtmlCropMarkHeight:=168.69972pt
+:table2599:lthtmlCropMarkHeight:=168.69972pt
 
-:table2466:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2599:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [57]
 
-:table2470:lthtmlCropMarkHeight:=168.69972pt
+:table2603:lthtmlCropMarkHeight:=168.69972pt
 
-:table2470:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2603:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [58]
 
-:table2474:lthtmlCropMarkHeight:=168.69972pt
+:table2607:lthtmlCropMarkHeight:=168.69972pt
 
-:table2474:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2607:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [59]
 
-:table2479:lthtmlCropMarkHeight:=168.69972pt
+:table2612:lthtmlCropMarkHeight:=168.69972pt
 
-:table2479:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2612:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [60]
 
-:table2483:lthtmlCropMarkHeight:=168.69972pt
+:table2616:lthtmlCropMarkHeight:=168.69972pt
 
-:table2483:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2616:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [61]
 
-:table2487:lthtmlCropMarkHeight:=168.69972pt
+:table2620:lthtmlCropMarkHeight:=168.69972pt
 
-:table2487:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2620:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [62]
 
-:table2491:lthtmlCropMarkHeight:=168.69972pt
+:table2624:lthtmlCropMarkHeight:=168.69972pt
 
-:table2491:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2624:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [63]
 
-:table2495:lthtmlCropMarkHeight:=168.69972pt
+:table2628:lthtmlCropMarkHeight:=168.69972pt
 
-:table2495:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2628:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [64]
 
-:table2499:lthtmlCropMarkHeight:=168.69972pt
+:table2632:lthtmlCropMarkHeight:=168.69972pt
 
-:table2499:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2632:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [65]
 
-:table2503:lthtmlCropMarkHeight:=168.69972pt
+:table2636:lthtmlCropMarkHeight:=168.69972pt
 
-:table2503:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2636:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [66]
 
-:table2507:lthtmlCropMarkHeight:=168.69972pt
+:table2640:lthtmlCropMarkHeight:=168.69972pt
 
-:table2507:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2640:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [67]
 
-:table2512:lthtmlCropMarkHeight:=159.19974pt
+:table2645:lthtmlCropMarkHeight:=159.19974pt
 
-:table2512:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2645:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [68]
 
-:table2516:lthtmlCropMarkHeight:=168.69972pt
+:table2649:lthtmlCropMarkHeight:=168.69972pt
 
-:table2516:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2649:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [69]
 
-:table2520:lthtmlCropMarkHeight:=130.69978pt
+:table2653:lthtmlCropMarkHeight:=130.69978pt
 
-:table2520:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2653:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [70]
 
-:table2525:lthtmlCropMarkHeight:=167.7553pt
+:table2658:lthtmlCropMarkHeight:=167.7553pt
 
-:table2525:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2658:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [71]
 
-:table2529:lthtmlCropMarkHeight:=168.69972pt
+:table2662:lthtmlCropMarkHeight:=168.69972pt
 
-:table2529:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2662:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [72]
 
-:table2533:lthtmlCropMarkHeight:=167.7553pt
+:table2666:lthtmlCropMarkHeight:=167.7553pt
 
-:table2533:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2666:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [73]
 
-:table2538:lthtmlCropMarkHeight:=159.19974pt
+:table2671:lthtmlCropMarkHeight:=159.19974pt
 
-:table2538:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2671:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [74]
 
-:table2542:lthtmlCropMarkHeight:=168.69972pt
+:table2675:lthtmlCropMarkHeight:=168.69972pt
 
-:table2542:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2675:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [75]
 
-:table2546:lthtmlCropMarkHeight:=130.69978pt
+:table2679:lthtmlCropMarkHeight:=130.69978pt
 
-:table2546:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2679:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [76] (./images.aux) ) 
 Here is how much of TeX's memory you used:
- 4030 strings out of 492616
- 69742 string characters out of 6135177
- 172073 words of memory out of 5000000
- 7797 multiletter control sequences out of 15000+600000
+ 4032 strings out of 492623
+ 70116 string characters out of 6135669
+ 174377 words of memory out of 5000000
+ 7796 multiletter control sequences out of 15000+600000
  6379 words of font info for 23 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,10n,49p,795b,383s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -683,7 +680,7 @@ Here is how much of TeX's memory you used:
 are/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/publi
 c/amsfonts/cm/cmsy10.pfb>
-Output written on images.pdf (76 pages, 153730 bytes).
+Output written on images.pdf (76 pages, 153925 bytes).
 PDF statistics:
  270 PDF objects out of 1000 (max. 8388607)
  185 compressed objects within 2 object streams

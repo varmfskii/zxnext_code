@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>8-bit</TITLE>
-<META NAME="description" CONTENT="8-bit">
+<TITLE>Video Modes</TITLE>
+<META NAME="description" CONTENT="Video Modes">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,163 +27,104 @@
  HREF="node98.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node96.html">
+ HREF="node95.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node96.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html753"
+<A ID="tex2html766"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html755"
-  HREF="node125.html">
+<A ID="tex2html768"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node98.html">16-bit</A>
+ HREF="node98.html">Machine Type</A>
 <B> Up:</B> <A
- HREF="node96.html">Ports</A>
+ HREF="node95.html">Configuration</A>
 <B> Previous:</B> <A
- HREF="node96.html">Ports</A>
- &nbsp; <B>  <A ID="tex2html754"
+ HREF="node96.html">Refresh Rate</A>
+ &nbsp; <B>  <A ID="tex2html767"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html756"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html769"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION001010000000000000000">
-8-bit</A>
-</H1>
-Port $0f (15) DAC A
-<BR>
-Disable with bit 3 of Nextreg $08
+<H4><A ID="SECTION00740020000000000000">
+Video Modes</A>
+</H4>
 
 <P>
-Port $1f (31) Kempston Joystick 1
-<BR>
-Disable with Nextreg $05
+The video mode can only be changed during the boot process so one
+initial read is required of this register during software start up
+phase.
 
 <P>
-Port $1f (31) DAC B
-<BR>
-Disable with bit 3 of Nextreg $08
+The machine timing is identical for the seven VGA modes although the
+physical refresh rate of the video output speeds up for each mode in
+turn by roughly 1Hz. The internal timing of the machine remains
+constant and as close to the original hardware as possible. VGA is a
+perfect Amstrad ZX Spectrum 128k +3 for example as far as timing is
+concerned across the seven VGA modes.
 
 <P>
-Port $1f (31) Multiface 1 Disable
+The effect of this speed up means that mode 0 will execute in one
+second of time whereas mode 6 will execute in a shorter time
+period. Mode 0 is as close to 50/60 Hz as possible where mode 6 is
+closer to 60/70 Hz. That would mean that one second of machine time
+for mode 6 will execute in 0.83 seconds of human time when running 50
+frames per second at 60Hz.
 
 <P>
-Port $37 (55) Kempston Joystick 2
-<BR>
-Disable with Nextreg $05
+The eighth mode (mode 7) is used for HDMI timing. Machine
+configuration is forced for this mode. Line counts, Ts and various
+other settings are set to meet the rigid HDMI timing
+specification. For mode 7, 50/60 Hz are rock solid but the original
+hardware timing loses Ts across all machines to meet HDMI display
+requirements.
 
 <P>
-Port $3f (63) DAC A
-<BR>
-Disable with bit 3 of Nextreg $08
+Software that was previously written for specific hardware with
+hard-coded software timing loops may fail. This is one of the risks of
+coding timing loops counting Ts. We saw evidence of this with the
+release of the 1985 Sinclair ZX Spectrum 128k+ and the later Amstrad
+models as previous software written for the ZX Spectrum 48k/48k+ would
+fail when trying to display colour attribute and border effects as the
+number of Ts per line was changed from 224Ts (1982 original 48k) to
+228Ts (128k models). The ZX Spectrum Next runs slower in HDMI
+mode. Demos may fail to display correctly and games may slow down
+although setting the Z80 to 7Mhz can solve the game slow down, demos
+should be run in VGA mode for maximum compatibility.
 
 <P>
-Port $3f (63) Multiface 128 Disable
+Video timing also affects audio output as the sample rate can vary
+depending on the output timing method.
 
 <P>
-Port $3f (63) Multiface +3 Enable
+The following undocumented register allows software to read the video
+timing mode:
 
 <P>
-Port $4f (79) DAC C
-<BR>
-Disable with bit 3 of Nextreg $08
-
-<P>
-Port $57 (87) Sprite Attributes
-
-<P>
-Port $5b (91) Sprite Pattern
-
-<P>
-Port $5f (95) DAC D
-<BR>
-Disable with bit 3 of Nextreg $08
-
-<P>
-Port $6b (107) zxnDMA
-
-<P>
-Port $9f (159) Multiface 1 Enable
-
-<P>
-Port $bf (191) Multiface 128 Enable
-
-<P>
-Port $bf (191) Multiface +3 Disable
-
-<P>
-Port $df (223) DAC A/C SpecDrum
-<BR>
-Disable with bit 3 of Nextreg $08
-
-<P>
-Port $e3 (227) divMMC Control
-<BR>
-Disable with bit 2 of Nextreg $09
-
-<P>
-Port $e7 (231) SPI /CS (SD card, flash, rpi)
-<BR>
-Disable with bit 2 of Nextreg $09
-
-<P>
-Port $eb (235) SPI /DATA (SD card, flash, rpi)
-<BR>
-Disable with bit 2 of Nextreg $09
-
-<P>
-Port $f1 (241) DAC A (precedence over $xxfd)
-<BR>
-Disable with bit 3 of Nextreg $08
-
-<P>
-Port $f3 (243) DAC B
-<BR>
-Disable with bit 3 of Nextreg $08
-
-<P>
-Port $f9 (249) DAC C (precedence over $xxfd)
-<BR>
-Disable with bit 3 of Nextreg $08
-
-<P>
-Port $fb (251) DAC D
-<BR>
-Disable with bit 3 of Nextreg $08
-
-<P>
-Port $fe (254) ULA
-<table width="90%">
-  <tr><td valign="top">&nbsp;bits 5-7: unused
+Video timing register $11 (17)
+<table width="90%"><tr><td valign="top">&nbsp;bits 2-0 = Timing:
+  <table width="90%">  <tr><td valign="top">&nbsp;000 = Mode 0 (VGA)
   </td></tr>
-<tr><td valign="top">&nbsp;bit 4: enable ear output
+<tr><td valign="top">&nbsp;001 = Mode 1 (VGA)
   </td></tr>
-<tr><td valign="top">&nbsp;bit 3: enable mic output
+<tr><td valign="top">&nbsp;010 = Mode 2 (VGA)
   </td></tr>
-<tr><td valign="top">&nbsp;bits 0-2: border colour
-</td></tr></table>
-
-<P>
-Port $ff (255) Timex Sinclair/floating bus
-<BR>
-Disable with bit 2 to Nextreg $08
-<table width="90%"><tr><td valign="top">&nbsp;bit 7: memory paging (not on Next)</td></tr>
-<tr><td valign="top">&nbsp;bit 6: disables generation of interrupts</td></tr>
-<tr><td valign="top">&nbsp;bits 3-5: set hi-res mode colour combination</td></tr>
-<tr><td valign="top">&nbsp;bits 0-2: screen mode
-  <table width="90%">  <tr><td valign="top">&nbsp;000=normal ULA mode
+<tr><td valign="top">&nbsp;011 = Mode 3 (VGA)
   </td></tr>
-<tr><td valign="top">&nbsp;001=alternate ULA address
+<tr><td valign="top">&nbsp;100 = Mode 4 (VGA)
   </td></tr>
-<tr><td valign="top">&nbsp;010=hi-colour
+<tr><td valign="top">&nbsp;101 = Mode 5 (VGA)
   </td></tr>
-<tr><td valign="top">&nbsp;110=hi-res
+<tr><td valign="top">&nbsp;110 = Mode 6 (VGA)
+  </td></tr>
+<tr><td valign="top">&nbsp;111 = Mode 7 (HDMI) * Timing is forced to 216Ts 50Hz / 214.5Ts 60Hz
   </td></tr></table>
 </td></tr></table>
 
@@ -195,28 +136,28 @@ Disable with bit 2 to Nextreg $08
  HREF="node98.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node96.html">
+ HREF="node95.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node96.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html753"
+<A ID="tex2html766"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html755"
-  HREF="node125.html">
+<A ID="tex2html768"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node98.html">16-bit</A>
+ HREF="node98.html">Machine Type</A>
 <B> Up:</B> <A
- HREF="node96.html">Ports</A>
+ HREF="node95.html">Configuration</A>
 <B> Previous:</B> <A
- HREF="node96.html">Ports</A>
- &nbsp; <B>  <A ID="tex2html754"
+ HREF="node96.html">Refresh Rate</A>
+ &nbsp; <B>  <A ID="tex2html767"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html756"
-  HREF="node125.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html769"
+  HREF="node134.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

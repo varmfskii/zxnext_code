@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>RESET</TITLE>
-<META NAME="description" CONTENT="RESET">
+<TITLE>Compare</TITLE>
+<META NAME="description" CONTENT="Compare">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,43 +27,184 @@
  HREF="node84.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node81.html">
+ HREF="node77.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node82.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html689"
+<A ID="tex2html698"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html691"
-  HREF="node125.html">
+<A ID="tex2html700"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node84.html">START</A>
+ HREF="node84.html">Overscan</A>
 <B> Up:</B> <A
- HREF="node81.html">Control</A>
+ HREF="node77.html">Timing</A>
 <B> Previous:</B> <A
- HREF="node82.html">STOP</A>
- &nbsp; <B>  <A ID="tex2html690"
+ HREF="node82.html">Coordinates</A>
+ &nbsp; <B>  <A ID="tex2html699"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html692"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html701"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00630020000000000000">
-RESET</A>
+<H4><A ID="SECTION00710060000000000000">
+Compare</A>
 </H4>
 
 <P>
-The program counter is RESET to zero when entering this mode. The
-COPPER is started if idle otherwise entering this mode acts as a jump
-to location zero when the COPPER is running.
+The COPPER uses a 9 bit vertical line compare allowing it to handle
+the various line counts.
 
 <P>
-<BR><HR>
+The COPPER horizontal compare is 6 bits meaning that it can wait for
+64 positions across each line. The range of this value is limited by
+the machine timing as that determines the number of dot clocks per
+line.
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1320"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.3:</STRONG>
+Maximum Horizontal COPPER Compare</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img39.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/maxhcmp.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Each horizontal compare is in steps of 16 dot clocks to cover the full
+range across a raster line.
+
+<P>
+16 dot clocks = 4 pixels in lo <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img19.svg"
+ ALT="$128\times96$"></SPAN> resolution
+
+<P>
+16 dot clocks = 8 pixels in standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
+ ALT="$256\times192$"></SPAN> resolution
+
+<P>
+16 dot clocks = 16 pixels in high <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img14.svg"
+ ALT="$512\times192$"></SPAN> resolution
+
+<P>
+There is some slack to consider after the maximum horizontal compare
+value. The slack is calculated using the following:
+
+<P>
+dot clocks per line - maximum horizontal compare * 16
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1324"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.4:</STRONG>
+Slack Dot Clocks After Maximum Compare</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img40.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/aftermaxcmp.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Table 5.5 provides details of the horizontal display, left/right
+border, blanking and COPPER dot clock/pixel position compare values:
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1328"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.5:</STRONG>
+Horizontal Timing</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img41.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/htime.csv}
+\par
+\raggedright -- Dot clock compare is out of range.
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Table 5.6 provides a detailed list of vertical display, top/bottom
+border and blanking as well as maximum COPPER line compare. It also
+provides the ULA VBLANK interrupt line number.
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1332"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.6:</STRONG>
+Vertical Timing</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img42.svg"
+ ALT="\begin{table}\centering\tiny
+\csvautotabular{copper/vtime.csv}
+\par
+\raggedright -- Line compare is out of range
+\par
+* ULA VBLANK interrupt.
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Note: The HDMI overscan and blanking period is larger than that of a
+VGA monitor which can auto-adjust alignment. The following data is
+based on visible results from various monitors thus subject to
+refinement.
+
+<P>
+Pixels are visible during DISPLAY/BORDER and hidden during BLANKING.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node84.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node77.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node82.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html698"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html700"
+  HREF="node134.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node84.html">Overscan</A>
+<B> Up:</B> <A
+ HREF="node77.html">Timing</A>
+<B> Previous:</B> <A
+ HREF="node82.html">Coordinates</A>
+ &nbsp; <B>  <A ID="tex2html699"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html701"
+  HREF="node134.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

@@ -1,25 +1,81 @@
+<!DOCTYPE HTML>
 
-<H4><A NAME="SECTION00342010000000000000">
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Tilemap</TITLE>
+<META NAME="description" CONTENT="Tilemap">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="next" HREF="node26.html">
+<LINK REL="previous" HREF="node24.html">
+<LINK REL="next" HREF="node26.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node26.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node24.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node24.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html375"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html377"
+  HREF="node134.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node26.html">Tile Definitions</A>
+<B> Up:</B> <A
+ HREF="node24.html">Data Structures</A>
+<B> Previous:</B> <A
+ HREF="node24.html">Data Structures</A>
+ &nbsp; <B>  <A ID="tex2html376"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html378"
+  HREF="node134.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H4><A ID="SECTION00342010000000000000">
 Tilemap</A>
 </H4>
 
 <P>
 The first data structure is the tilemap itself which indicates what
 characters occupy each cell on screen. Each tilemap entry is two bytes
-so for <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline460#</SPAN> resolution, a full size tilemap will occupy 2560
-bytes, and for <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline462#</SPAN> resolution the space taken is twice that
+so for <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img21.svg"
+ ALT="$40\times32$"></SPAN> resolution, a full size tilemap will occupy 2560
+bytes, and for <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img23.svg"
+ ALT="$80\times32$"></SPAN> resolution the space taken is twice that
 at 5120 bytes. The tilemap entries are stored in X-major order and
 each two-byte tilemap entry is stored little endian:
 
 <P>
 Tilemap Entry
-<table width="90%"><tr><td align="right" valign="top"><#5181#><#5175#><#5175#><#5181#></td><td valign="top">&nbsp;bits 15-12 : palette offset</td></tr>
-<tr><td align="right" valign="top"><#5182#><#5176#><#5176#><#5182#></td><td valign="top">&nbsp;bit 11 : x mirror</td></tr>
-<tr><td align="right" valign="top"><#5183#><#5177#><#5177#><#5183#></td><td valign="top">&nbsp;bit 10 : y mirror</td></tr>
-<tr><td align="right" valign="top"><#5184#><#5178#><#5178#><#5184#></td><td valign="top">&nbsp;bit 9 : rotate</td></tr>
-<tr><td align="right" valign="top"><#5185#><#5179#><#5179#><#5185#></td><td valign="top">&nbsp;bit 8 : ULA over tilemap (in 512 tile mode, bit 8 of the tile
+<table width="90%"><tr><td valign="top">&nbsp;bits 15-12 : palette offset</td></tr>
+<tr><td valign="top">&nbsp;bit 11 : x mirror</td></tr>
+<tr><td valign="top">&nbsp;bit 10 : y mirror</td></tr>
+<tr><td valign="top">&nbsp;bit 9 : rotate</td></tr>
+<tr><td valign="top">&nbsp;bit 8 : ULA over tilemap (in 512 tile mode, bit 8 of the tile
   number)</td></tr>
-<tr><td align="right" valign="top"><#5186#><#5180#><#5180#><#5186#></td><td valign="top">&nbsp;bits 7-0 : tile number
+<tr><td valign="top">&nbsp;bits 7-0 : tile number
 </td></tr></table>
 
 The character displayed is indicated by the “tile number” which can be
@@ -37,3 +93,36 @@ will determine if the tile is above or below the ULA display on a per
 tile basis.
 
 <P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node26.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node24.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node24.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html375"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html377"
+  HREF="node134.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node26.html">Tile Definitions</A>
+<B> Up:</B> <A
+ HREF="node24.html">Data Structures</A>
+<B> Previous:</B> <A
+ HREF="node24.html">Data Structures</A>
+ &nbsp; <B>  <A ID="tex2html376"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html378"
+  HREF="node134.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Refresh Rate</TITLE>
-<META NAME="description" CONTENT="Refresh Rate">
+<TITLE>MOVE</TITLE>
+<META NAME="description" CONTENT="MOVE">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,50 +27,49 @@
  HREF="node88.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node86.html">
+ HREF="node85.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node86.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html709"
+<A ID="tex2html718"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html711"
-  HREF="node125.html">
+<A ID="tex2html720"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node88.html">Video Modes</A>
+ HREF="node88.html">WAIT</A>
 <B> Up:</B> <A
- HREF="node86.html">Configuration</A>
+ HREF="node85.html">Instructions</A>
 <B> Previous:</B> <A
- HREF="node86.html">Configuration</A>
- &nbsp; <B>  <A ID="tex2html710"
+ HREF="node86.html">NOOP</A>
+ &nbsp; <B>  <A ID="tex2html719"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html712"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html721"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00640010000000000000">
-Refresh Rate</A>
+<H4><A ID="SECTION00720020000000000000">
+MOVE</A>
 </H4>
 
 <P>
-The refresh rate must be taken into account and can change real-time
-so should be monitored and auto-configured when the COPPER is active
-as the line count will change with the refresh rate. This could lead
-to the COPPER waiting for lines that never occur.
+MOVE executes in two dot clocks. It moves 8 bits of data into any of
+the Next hardware registers in the range $00 (0) .. $7F (127).
 
 <P>
-Peripheral 1 setting register $05 (5)
-<table width="90%"><tr><td valign="top">&nbsp;bit 2 = 50/60 Hz mode
-  <table width="90%">  <tr><td valign="top">&nbsp;0 = 50Hz
-  </td></tr>
-<tr><td valign="top">&nbsp;1 = 60Hz * Pentagon 60Hz is not supported in VGA mode so always 50Hz
-  </td></tr></table>
-</td></tr></table>
+The WORD value $0000 is reserved for the NOOP instruction so no
+register access is carried out for that special case. Register $00 is
+read-only so not affected by the restriction of not being able to
+write zero to it.
+
+<P>
+This instruction can perform 7 million register writes per second for
+VGA and 6.75 million register writes per second for HDMI.
 
 <P>
 <BR><HR>

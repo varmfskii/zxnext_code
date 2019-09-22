@@ -1,5 +1,59 @@
+<!DOCTYPE HTML>
 
-<H1><A NAME="SECTION00310000000000000000">
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Video Layering and Transparency</TITLE>
+<META NAME="description" CONTENT="Video Layering and Transparency">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html259"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html261"
+  HREF="node134.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node5.html">Palette</A>
+<B> Up:</B> <A
+ HREF="node3.html">Video</A>
+<B> Previous:</B> <A
+ HREF="node3.html">Video</A>
+ &nbsp; <B>  <A ID="tex2html260"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html262"
+  HREF="node134.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A ID="SECTION00310000000000000000">
 Video Layering and Transparency</A>
 </H1>
 Video is rendered as three layers which are referred to as ULA (which
@@ -8,16 +62,21 @@ layers is controlled by Next port $15 (21) bits 4-2:
 
 <P>
 <BR><P></P>
-<DIV ALIGN="CENTER"><A NAME="41"><tex2html_anchor_mark></A>
+<DIV class="CENTER"><A ID="41"></A>
 <TABLE>
-<CAPTION><STRONG><#4853#>Table<#4853#> 2.1:</STRONG>
-<#4854#>Video Layering<#4854#></CAPTION>
-<TR><TD><tex2html_image_mark>#table40#</TD></TR>
+<CAPTION><STRONG>Table 2.1:</STRONG>
+Video Layering</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img1.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{video/videolayering.csv}
+\end{table}"></TD></TR>
 </TABLE>
-</DIV><P></P><BR>
+</DIV><P></P>
+<BR>
 
 <P>
-<A NAME="44"><tex2html_anchor_invisible_mark></A>
+<A NAME="44"></A>
 Transparency for Layer 2, ULA, and LoRes are controlled by Next
 register $14 (20) and defaults to $E3. This colour ignores the state
 of the least significant blue bit, so $E3 equates to both $1C6 and
@@ -29,10 +88,15 @@ layers are transparent, the transparency fallback colour is
 displayed. This is set by register $4A.
 
 <P>
-(R/W) $4A (74) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline146#</SPAN> Transparency colour fallback
-<table width="90%"><tr><td align="right" valign="top"><#4858#><#4857#><#4857#><#4858#></td><td valign="top">&nbsp;bits 7-0 = Set the 8 bit colour used if all layers are transparent.
+(R/W) $4A (74) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Transparency colour fallback
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Set the 8 bit colour used if all layers are transparent.
 </td></tr></table>
 
 (black on reset = 0)
 
 <P>
+<BR><HR>
+
+</BODY>
+</HTML>

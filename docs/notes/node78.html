@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>MOVE</TITLE>
-<META NAME="description" CONTENT="MOVE">
+<TITLE>Machines</TITLE>
+<META NAME="description" CONTENT="Machines">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,49 +27,47 @@
  HREF="node79.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node76.html">
+ HREF="node77.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node77.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html665"
+<A ID="tex2html678"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html667"
-  HREF="node125.html">
+<A ID="tex2html680"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node79.html">WAIT</A>
+ HREF="node79.html">Display</A>
 <B> Up:</B> <A
- HREF="node76.html">Instructions</A>
+ HREF="node77.html">Timing</A>
 <B> Previous:</B> <A
- HREF="node77.html">NOOP</A>
- &nbsp; <B>  <A ID="tex2html666"
+ HREF="node77.html">Timing</A>
+ &nbsp; <B>  <A ID="tex2html679"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html668"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html681"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00620020000000000000">
-MOVE</A>
+<H4><A ID="SECTION00710010000000000000">
+Machines</A>
 </H4>
 
 <P>
-MOVE executes in two dot clocks. It moves 8 bits of data into any of
-the Next hardware registers in the range $00 (0) .. $7F (127).
+The ZX Spectrum Next has four machine types (48k, 128k, Pentagon, and
+HDMI). The machine timing and HDMI determine the number of T-states
+per line which determines the base dot clock frequency and Z80/DMA
+clock speed.
 
 <P>
-The WORD value $0000 is reserved for the NOOP instruction so no
-register access is carried out for that special case. Register $00 is
-read-only so not affected by the restriction of not being able to
-write zero to it.
-
-<P>
-This instruction can perform 7 million register writes per second for
-VGA and 6.75 million register writes per second for HDMI.
+This guide groups machine types by their timing for convenience. The
+HDMI video mode overrides the default machine timing so it is included
+as an extra machine type which does not exist in the official
+documentation.
 
 <P>
 <BR><HR>

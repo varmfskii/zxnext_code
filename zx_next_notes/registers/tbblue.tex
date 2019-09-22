@@ -91,7 +91,7 @@ Joystick modes:
 \item[] 011 = Sinclair 1 (12345)
 \item[] 100 = Kempston 2 (port \$37)
 \item[] 101 = MD 1 (3 or 6 button joystick port \$1F)
-\item[] 110 = MD 2 (3 or 6 button joystick port \$37)
+item[] 110 = MD 2 (3 or 6 button joystick port \$37)
 \end{itemize}
 
 (R/W) \$06 (06) $\Rightarrow$ Peripheral 2 setting:
@@ -678,10 +678,20 @@ After a write, the index is auto-incremented to the next memory position.
   \& 7\\
   = 1 to select the ULA/tilemap mix for blending in SLU modes 6 \& 7
 \item[] bits 5-1 = Reserved must be 0
-\item[] bit 0 = 1 to enable stencil mode when both the ULA and tilemap are enabled
+\item[] bit 0 = 1 to enable stencil mode when both the ULA and tilemap
+  are enabled
 \end{itemize}
 (if either are transparent the result is transparent otherwise the
 result is a logical AND of both colours)
+
+(R/W) \$6A (106) $\Rightarrow$ LoRes Radistan Control (v3.00)
+\begin{itemize}
+\item[] bits 7-6 = reserved
+\item[] bit 5 = 1 Enable Radistan (16-colour)
+\item[] bit 4 = Half of LoRes area to use for Radistan, xor with bit 0
+  of port \$ff
+\item bits 3-0 = Radistsan palette offset
+\end{itemize}
 
 (R/W) \$6B (107) $\Rightarrow$ Tilemap Control
 \begin{itemize}
@@ -776,11 +786,11 @@ Set value of GPIO pin if enabled Pi GPIO pins 24-27
 (R/W) \$a0 (160) $\Rightarrow$ Pi peripheral enable (3.00)
 \begin{itemize}
 \item[] bits 7-6 = Reserved (00)
-\item[] bit 5 = RXTX
-\item[] bit 4 = UART
-\item[] bit 3 = I2C1
+\item[] bit 5 = RXTX (0=Pi hat, 1=Pi)
+\item[] bit 4 = UART (0=14/15 GPIO, 1=14/15 UART)
+\item[] bit 3 = I2C1 (0=2/3 GPIO, 1=2/3 I2C)
 \item[] bits 2-1 = Reserved (00)
-\item[] bit 0 = SPIO
+\item[] bit 0 = SPIO (0=7-11 GPIO, 1=7-11 SPI)
 \end{itemize}
 Control Pi GPIO function overlay
 

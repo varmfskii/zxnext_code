@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>EsxDOS</TITLE>
-<META NAME="description" CONTENT="EsxDOS">
+<TITLE>Configuration</TITLE>
+<META NAME="description" CONTENT="Configuration">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="000-document.css">
 
-<LINK REL="previous" HREF="node94.html">
+<LINK REL="previous" HREF="node90.html">
 <LINK REL="next" HREF="node96.html">
 </HEAD>
 
@@ -26,42 +26,67 @@
  HREF="node96.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node93.html">
+ HREF="node74.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node94.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html743"
+<A ID="tex2html754"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html745"
-  HREF="node125.html">
+<A ID="tex2html756"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node96.html">Ports</A>
+ HREF="node96.html">Refresh Rate</A>
 <B> Up:</B> <A
- HREF="node93.html">Storage</A>
+ HREF="node74.html">Copper and Display Timing</A>
 <B> Previous:</B> <A
- HREF="node94.html">NextOS</A>
- &nbsp; <B>  <A ID="tex2html744"
+ HREF="node94.html">FRAME</A>
+ &nbsp; <B>  <A ID="tex2html755"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html746"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html757"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00920000000000000000">
-EsxDOS</A>
+<H1><A ID="SECTION00740000000000000000">
+Configuration</A>
 </H1>
-esxDos is one of the operating systems that is integrated into the
-Next. It provides a posix-like api to access the SD card as disk and
-it provides a familiar basic interface to the disk from basic. The
-current version of ESXDOS is 0.8.6; a new version 0.9.x is being
-written for the Next. esxDos currently only supports the so-called
-USR0 mode in BASIC (single keyword/48k Basic)
 
+<P>
+Hardware registers provide timing and configuration data allowing
+software to build and configure COPPER programs that function
+correctly across the various video modes and machine types. It is not
+essential to detect the machine type but it should be noted that
+software should not assume that it is running on a specific machine as
+the COPPER hardware is available across all four machine types.
+
+<P>
+Three registers can be read to determine the machine configuration for
+Ts per line, dot clocks, refresh rate, line count and maximum
+horizontal dot clock/pixel position compare.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html758"
+  HREF="node96.html">Refresh Rate</A>
+<LI><A ID="tex2html759"
+  HREF="node97.html">Video Modes</A>
+<LI><A ID="tex2html760"
+  HREF="node98.html">Machine Type</A>
+<LI><A ID="tex2html761"
+  HREF="node99.html">Summary</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

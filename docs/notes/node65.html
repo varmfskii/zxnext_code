@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Copper and Display Timing</TITLE>
-<META NAME="description" CONTENT="Copper and Display Timing">
+<TITLE>WR1 – Write Register Group 1</TITLE>
+<META NAME="description" CONTENT="WR1 – Write Register Group 1">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="000-document.css">
 
-<LINK REL="next" HREF="node91.html">
-<LINK REL="previous" HREF="node48.html">
+<LINK REL="next" HREF="node66.html">
+<LINK REL="previous" HREF="node64.html">
 <LINK REL="next" HREF="node66.html">
 </HEAD>
 
@@ -27,112 +27,60 @@
  HREF="node66.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="000-document.html">
+ HREF="node63.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node64.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html577"
+<A ID="tex2html594"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html579"
-  HREF="node125.html">
+<A ID="tex2html596"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node66.html">Introduction</A>
+ HREF="node66.html">WR2 – Write Register</A>
 <B> Up:</B> <A
- HREF="000-document.html">ZX Spectrum Next Programming</A>
+ HREF="node63.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node64.html">Programming examples</A>
- &nbsp; <B>  <A ID="tex2html578"
+ HREF="node64.html">WR0 – Write Register</A>
+ &nbsp; <B>  <A ID="tex2html595"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html580"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html597"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00600000000000000000">
-Copper and Display Timing</A>
-</H1>
-From: KevB (aka 9bitcolour)
+<H4><A ID="SECTION00660020000000000000">
+WR1 – Write Register Group 1</A>
+</H4>
+<PRE>
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 0   |   |   |   |   1   0   0
+     |   |   |   |
+     |   |   |   0 = Port A is memory
+     |   |   |   1 = Port A is IO
+     |   |   |
+     |   0   0 = Port A address decrements
+     |   0   1 = Port A address increments
+     |   1   0 = Port A address is fixed
+     |   1   1 = Port A address is fixed
+     |
+     V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT A VARIABLE TIMING BYTE
+ 0   0   0   0   0   0   |   |
+                         0   0 = Cycle Length = 4
+                         0   1 = Cycle Length = 3
+                         1   0 = Cycle Length = 2
+                         1   1 = Do not use
+</PRE>
+The cycle length is the number of cycles used in a read or write
+ operation. The first cycle asserts signals and the last cycle
+ releases them. There is no half cycle timing for the control signals.
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
-
-<UL CLASS="ChildLinks">
-<LI><UL>
-<LI><UL>
-<LI><UL>
-<LI><A ID="tex2html581"
-  HREF="node66.html">Introduction</A>
-<LI><A ID="tex2html582"
-  HREF="node67.html">Overview</A>
-</UL>
-</UL>
-</UL>
-<BR>
-<LI><A ID="tex2html583"
-  HREF="node68.html">Timing</A>
-<UL>
-<LI><A ID="tex2html584"
-  HREF="node69.html">Machines</A>
-<LI><A ID="tex2html585"
-  HREF="node70.html">Display</A>
-<LI><A ID="tex2html586"
-  HREF="node71.html">Resolution</A>
-<LI><A ID="tex2html587"
-  HREF="node72.html">Dot Clock</A>
-<LI><A ID="tex2html588"
-  HREF="node73.html">Coordinates</A>
-<LI><A ID="tex2html589"
-  HREF="node74.html">Compare</A>
-<LI><A ID="tex2html590"
-  HREF="node75.html">Overscan</A>
-</UL>
-<BR>
-<LI><A ID="tex2html591"
-  HREF="node76.html">Instructions</A>
-<UL>
-<LI><A ID="tex2html592"
-  HREF="node77.html">NOOP</A>
-<LI><A ID="tex2html593"
-  HREF="node78.html">MOVE</A>
-<LI><A ID="tex2html594"
-  HREF="node79.html">WAIT</A>
-<LI><A ID="tex2html595"
-  HREF="node80.html">Example</A>
-</UL>
-<BR>
-<LI><A ID="tex2html596"
-  HREF="node81.html">Control</A>
-<UL>
-<LI><A ID="tex2html597"
-  HREF="node82.html">STOP</A>
-<LI><A ID="tex2html598"
-  HREF="node83.html">RESET</A>
-<LI><A ID="tex2html599"
-  HREF="node84.html">START</A>
-<LI><A ID="tex2html600"
-  HREF="node85.html">FRAME</A>
-</UL>
-<BR>
-<LI><A ID="tex2html601"
-  HREF="node86.html">Configuration</A>
-<UL>
-<LI><A ID="tex2html602"
-  HREF="node87.html">Refresh Rate</A>
-<LI><A ID="tex2html603"
-  HREF="node88.html">Video Modes</A>
-<LI><A ID="tex2html604"
-  HREF="node89.html">Machine Type</A>
-<LI><A ID="tex2html605"
-  HREF="node90.html">Summary</A>
-</UL></UL>
-<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

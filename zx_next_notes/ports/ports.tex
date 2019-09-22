@@ -115,9 +115,27 @@ Port \$123b (4667) Layer 2
 \item[] bit 0: Enable layer 2 write paging
 \end{itemize}
 
-Port \$133b (4923) UART tx
+Port \$133b (4923) UART tx\\
+Read: UART Status\\
+\begin{itemize}
+\item[] bits 7-3: Reserved (0)
+\item[] bit 2: UART full
+\item[] bit 1: UART transmit busy
+\item[] bit 0: UART receive has data
+\end{itemize}
+Write: UART Transmit
 
-Port \$143b (5179) UART rx
+Port \$143b (5179) UART rx\\
+Read: UART Receive\\
+Write: UART Prescalar
+\begin{itemize}
+\item[] bit 7:
+  \begin{itemize}
+  \item[] 0=Bits 6-0 of prescalar
+  \item[] 1=Bits 13-7 of prescalar
+  \end{itemize}
+\item[] bits 6-0: Prescalar low bits
+\end{itemize}
 
 Port \$153b (5435) UART control (3.0)
 \begin{itemize}
@@ -130,7 +148,7 @@ Port \$153b (5435) UART control (3.0)
 \item[] bit 5: Reserved (0)
 \item[] bit 4: Prescalar valid in this write
 \item[] bit 3: Reserved (0)
-\item[] bits 2-0: Prescalar top bits
+\item[] bits 2-0: Bits 16-14 of prescalar
 \end{itemize}
 
 Port \$243b (9275) Next Register Select\\

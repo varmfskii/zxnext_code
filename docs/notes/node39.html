@@ -1,6 +1,61 @@
+<!DOCTYPE HTML>
 
-<H2><A NAME="SECTION00362000000000000000"><tex2html_anchor_invisible_mark></A>
-<A NAME="656"><tex2html_anchor_invisible_mark></A><BR>
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Sprite Palette</TITLE>
+<META NAME="description" CONTENT="Sprite Palette">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="next" HREF="node40.html">
+<LINK REL="previous" HREF="node35.html">
+<LINK REL="next" HREF="node40.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node40.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node34.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node38.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html448"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html450"
+  HREF="node134.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node40.html">Sprite Attributes</A>
+<B> Up:</B> <A
+ HREF="node34.html">Sprites</A>
+<B> Previous:</B> <A
+ HREF="node38.html">4-Bit Sprite Patterns</A>
+ &nbsp; <B>  <A ID="tex2html449"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html451"
+  HREF="node134.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A ID="SECTION00362000000000000000"></A>
+<A NAME="656"></A>
+<BR>
 Sprite Palette
 </H2>
 Each pixel of a sprite image is 8-bit for 8-bit patterns or 4-bit for
@@ -16,7 +71,19 @@ the sum of the pixel index and the 4-bit palette offset. In pictures
 using binary math:
 
 <P>
-<PRE><tex2html_verbatim_mark>verbatim11#</PRE>
+<PRE>
+8-bit Sprite
+PPPP0000
++ IIIIIIII
+----------
+SSSSSSSS
+
+4-bit Sprite
+PPPP0000
++ 0000IIII
+----------
+SSSSSSSS = PPPPIIII
+</PRE>
 
 <P>
 Where “PPPP” is the 4-bit palette offset from the sprite’s attributes
@@ -40,3 +107,36 @@ OR of the two other blue bits. In short, for 8-bit sprites, the sprite
 index also acts like the colour when using the default palette.
 
 <P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node40.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node34.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node38.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html448"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html450"
+  HREF="node134.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node40.html">Sprite Attributes</A>
+<B> Up:</B> <A
+ HREF="node34.html">Sprites</A>
+<B> Previous:</B> <A
+ HREF="node38.html">4-Bit Sprite Patterns</A>
+ &nbsp; <B>  <A ID="tex2html449"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html451"
+  HREF="node134.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

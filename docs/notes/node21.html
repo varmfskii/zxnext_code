@@ -1,62 +1,117 @@
+<!DOCTYPE HTML>
 
-<H2><A NAME="SECTION00337000000000000000">
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Programming</TITLE>
+<META NAME="description" CONTENT="Programming">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="previous" HREF="node20.html">
+<LINK REL="next" HREF="node22.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node22.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node14.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node20.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html348"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html350"
+  HREF="node134.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node22.html">Tilemap Mode</A>
+<B> Up:</B> <A
+ HREF="node14.html">ULA group</A>
+<B> Previous:</B> <A
+ HREF="node20.html">Lo-Resolution Mode</A>
+ &nbsp; <B>  <A ID="tex2html349"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html351"
+  HREF="node134.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A ID="SECTION00337000000000000000">
 Programming</A>
 </H2>
 
 <P>
-(R/W) $15 (21) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline206#</SPAN> Sprite and Layers system
-<table width="90%"><tr><td align="right" valign="top"><#5079#><#5049#><#5049#><#5079#></td><td valign="top">&nbsp;bit 7 = LoRes mode, 128 x 96 x 256 colours (1 = enabled)</td></tr>
-<tr><td align="right" valign="top"><#5080#><#5050#><#5050#><#5080#></td><td valign="top">&nbsp;bit 6 = Sprite priority (1 = sprite 0 on top, 0 = sprite 127 on top)</td></tr>
-<tr><td align="right" valign="top"><#5081#><#5051#><#5051#><#5081#></td><td valign="top">&nbsp;bit 5 = Enable sprite clipping in over border mode (1 = enabled)</td></tr>
-<tr><td align="right" valign="top"><#5082#><#5052#><#5052#><#5082#></td><td valign="top">&nbsp;bits 4-2 = set layers priorities:
-<BR>  Reset default is 000, sprites over the Layer 2, over the ULA graphics
-  <table width="90%">  <tr><td align="right" valign="top"><#5071#><#5063#><#5053#><#5053#><#5063#><#5071#></td><td valign="top">&nbsp;000 - S L U
+(R/W) $15 (21) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite and Layers system
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = LoRes mode, 128 x 96 x 256 colours (1 = enabled)</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = Sprite priority (1 = sprite 0 on top, 0 = sprite 127 on top)</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = Enable sprite clipping in over border mode (1 = enabled)</td></tr>
+<tr><td valign="top">&nbsp;bits 4-2 = set layers priorities:
+<BR>
+Reset default is 000, sprites over the Layer 2, over the ULA graphics
+  <table width="90%">  <tr><td valign="top">&nbsp;000 - S L U
   </td></tr>
-<tr><td align="right" valign="top"><#5072#><#5064#><#5054#><#5054#><#5064#><#5072#></td><td valign="top">&nbsp;001 - L S U
+<tr><td valign="top">&nbsp;001 - L S U
   </td></tr>
-<tr><td align="right" valign="top"><#5073#><#5065#><#5055#><#5055#><#5065#><#5073#></td><td valign="top">&nbsp;010 - S U L
+<tr><td valign="top">&nbsp;010 - S U L
   </td></tr>
-<tr><td align="right" valign="top"><#5074#><#5066#><#5056#><#5056#><#5066#><#5074#></td><td valign="top">&nbsp;011 - L U S
+<tr><td valign="top">&nbsp;011 - L U S
   </td></tr>
-<tr><td align="right" valign="top"><#5075#><#5067#><#5057#><#5057#><#5067#><#5075#></td><td valign="top">&nbsp;100 - U S L
+<tr><td valign="top">&nbsp;100 - U S L
   </td></tr>
-<tr><td align="right" valign="top"><#5076#><#5068#><#5058#><#5058#><#5068#><#5076#></td><td valign="top">&nbsp;101 - U L S
+<tr><td valign="top">&nbsp;101 - U L S
   </td></tr>
-<tr><td align="right" valign="top"><#5077#><#5069#><#5059#><#5059#><#5069#><#5077#></td><td valign="top">&nbsp;110 - S(U+L) ULA and Layer 2 combined, colours clamped to 7
+<tr><td valign="top">&nbsp;110 - S(U+L) ULA and Layer 2 combined, colours clamped to 7
   </td></tr>
-<tr><td align="right" valign="top"><#5078#><#5070#><#5060#><#5060#><#5070#><#5078#></td><td valign="top">&nbsp;111 - S(U+L-5) ULA and Layer 2 combined, colours clamped to [0,7]
+<tr><td valign="top">&nbsp;111 - S(U+L-5) ULA and Layer 2 combined, colours clamped to [0,7]
   </td></tr></table>
 </td></tr>
-<tr><td align="right" valign="top"><#5083#><#5061#><#5061#><#5083#></td><td valign="top">&nbsp;bit 1 = Over border (1 = yes)(Back to 0 after a reset)</td></tr>
-<tr><td align="right" valign="top"><#5084#><#5062#><#5062#><#5084#></td><td valign="top">&nbsp;bit 0 = Sprites visible (1 = visible)(Back to 0 after a reset)
+<tr><td valign="top">&nbsp;bit 1 = Over border (1 = yes)(Back to 0 after a reset)</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Sprites visible (1 = visible)(Back to 0 after a reset)
 </td></tr></table>
-
 
 <P>
 Port $ff (255) Timex Sinclair/floating bus
-<BR>Disable with bit 2 to Nextreg $08
-<table width="90%"><tr><td align="right" valign="top"><#5101#><#5085#><#5085#><#5101#></td><td valign="top">&nbsp;bit 7: memory paging (not on Next)</td></tr>
-<tr><td align="right" valign="top"><#5102#><#5086#><#5086#><#5102#></td><td valign="top">&nbsp;bit 6: disables generation of interrupts</td></tr>
-<tr><td align="right" valign="top"><#5103#><#5087#><#5087#><#5103#></td><td valign="top">&nbsp;bits 3-5: set hi-res mode colour combination</td></tr>
-<tr><td align="right" valign="top"><#5104#><#5088#><#5088#><#5104#></td><td valign="top">&nbsp;bits 0-2: screen mode
-  <table width="90%">  <tr><td align="right" valign="top"><#5097#><#5093#><#5089#><#5089#><#5093#><#5097#></td><td valign="top">&nbsp;000=normal ULA mode
+<BR>
+Disable with bit 2 to Nextreg $08
+<table width="90%"><tr><td valign="top">&nbsp;bit 7: memory paging (not on Next)</td></tr>
+<tr><td valign="top">&nbsp;bit 6: disables generation of interrupts</td></tr>
+<tr><td valign="top">&nbsp;bits 3-5: set hi-res mode colour combination</td></tr>
+<tr><td valign="top">&nbsp;bits 0-2: screen mode
+  <table width="90%">  <tr><td valign="top">&nbsp;000=normal ULA mode
   </td></tr>
-<tr><td align="right" valign="top"><#5098#><#5094#><#5090#><#5090#><#5094#><#5098#></td><td valign="top">&nbsp;001=alternate ULA address
+<tr><td valign="top">&nbsp;001=alternate ULA address
   </td></tr>
-<tr><td align="right" valign="top"><#5099#><#5095#><#5091#><#5091#><#5095#><#5099#></td><td valign="top">&nbsp;010=hi-colour
+<tr><td valign="top">&nbsp;010=hi-colour
   </td></tr>
-<tr><td align="right" valign="top"><#5100#><#5096#><#5092#><#5092#><#5096#><#5100#></td><td valign="top">&nbsp;110=hi-res
+<tr><td valign="top">&nbsp;110=hi-res
   </td></tr></table>
 </td></tr></table>
-
 
 <P>
 For information on controlling the palette see the Palette section.
 
 <P>
-<A NAME="125"><tex2html_anchor_invisible_mark></A>
-(R/W) $14 (20) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline208#</SPAN> Global transparency color
-<table width="90%"><tr><td align="right" valign="top"><#5107#><#5106#><#5106#><#5107#></td><td valign="top">&nbsp;bits 7-0 = Transparency color value ($E3 after a reset)
+<A NAME="125"></A>
+(R/W) $14 (20) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Global transparency color
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Transparency color value ($E3 after a reset)
 </td></tr></table>
 
 (Note: this value is 8-bit, so the transparency is compared against
@@ -65,86 +120,127 @@ only by the MSB bits of the final 9-bit colour)
 $4B for transparency and tilemap uses nextreg $4C)
 
 <P>
-<A NAME="128"><tex2html_anchor_invisible_mark></A>
-(R/W) $1A (26) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline210#</SPAN> Clip Window ULA/LoRes
-<table width="90%"><tr><td align="right" valign="top"><#5122#><#5109#><#5109#><#5122#></td><td valign="top">&nbsp;bits 7-0 = Coord. of the clip window
-  <table width="90%">  <tr><td align="right" valign="top"><#5118#><#5114#><#5110#><#5110#><#5114#><#5118#></td><td valign="top">&nbsp;1st write = X1 position
+<A NAME="128"></A>
+(R/W) $1A (26) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Clip Window ULA/LoRes
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Coord. of the clip window
+  <table width="90%">  <tr><td valign="top">&nbsp;1st write = X1 position
   </td></tr>
-<tr><td align="right" valign="top"><#5119#><#5115#><#5111#><#5111#><#5115#><#5119#></td><td valign="top">&nbsp;2nd write = X2 position
+<tr><td valign="top">&nbsp;2nd write = X2 position
   </td></tr>
-<tr><td align="right" valign="top"><#5120#><#5116#><#5112#><#5112#><#5116#><#5120#></td><td valign="top">&nbsp;3rd write = Y1 position
+<tr><td valign="top">&nbsp;3rd write = Y1 position
   </td></tr>
-<tr><td align="right" valign="top"><#5121#><#5117#><#5113#><#5113#><#5117#><#5121#></td><td valign="top">&nbsp;4rd write = Y2 position
+<tr><td valign="top">&nbsp;4rd write = Y2 position
   </td></tr></table>
 </td></tr></table>
 
 The values are 0,255,0,191 after a Reset
-<BR>Reads do not advance the clip position
+<BR>
+Reads do not advance the clip position
 
 <P>
-(W) $1C (28) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline212#</SPAN> Clip Window control
-<table width="90%"><tr><td align="right" valign="top"><#5129#><#5124#><#5124#><#5129#></td><td valign="top">&nbsp;bits 7-4 = Reserved, must be 0</td></tr>
-<tr><td align="right" valign="top"><#5130#><#5125#><#5125#><#5130#></td><td valign="top">&nbsp;bit 3 - reset the tilemap clip index</td></tr>
-<tr><td align="right" valign="top"><#5131#><#5126#><#5126#><#5131#></td><td valign="top">&nbsp;bit 2 - reset the ULA/LoRes clip index.</td></tr>
-<tr><td align="right" valign="top"><#5132#><#5127#><#5127#><#5132#></td><td valign="top">&nbsp;bit 1 - reset the sprite clip index.</td></tr>
-<tr><td align="right" valign="top"><#5133#><#5128#><#5128#><#5133#></td><td valign="top">&nbsp;bit 0 - reset the Layer 2 clip index.
+(W) $1C (28) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Clip Window control
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Reserved, must be 0</td></tr>
+<tr><td valign="top">&nbsp;bit 3 - reset the tilemap clip index</td></tr>
+<tr><td valign="top">&nbsp;bit 2 - reset the ULA/LoRes clip index.</td></tr>
+<tr><td valign="top">&nbsp;bit 1 - reset the sprite clip index.</td></tr>
+<tr><td valign="top">&nbsp;bit 0 - reset the Layer 2 clip index.
 </td></tr></table>
 
-
 <P>
-(R) $1C (28) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline214#</SPAN> Clip Window control
+(R) $1C (28) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Clip Window control
 <BR>(may change)
-<table width="90%"><tr><td align="right" valign="top"><#5139#><#5135#><#5135#><#5139#></td><td valign="top">&nbsp;bits 7-6 = Tilemap clip index</td></tr>
-<tr><td align="right" valign="top"><#5140#><#5136#><#5136#><#5140#></td><td valign="top">&nbsp;bits 5-4 = Layer 2 clip index</td></tr>
-<tr><td align="right" valign="top"><#5141#><#5137#><#5137#><#5141#></td><td valign="top">&nbsp;bits 3-2 = Sprite clip index</td></tr>
-<tr><td align="right" valign="top"><#5142#><#5138#><#5138#><#5142#></td><td valign="top">&nbsp;bits 1-0 = ULA clip index
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Tilemap clip index</td></tr>
+<tr><td valign="top">&nbsp;bits 5-4 = Layer 2 clip index</td></tr>
+<tr><td valign="top">&nbsp;bits 3-2 = Sprite clip index</td></tr>
+<tr><td valign="top">&nbsp;bits 1-0 = ULA clip index
 </td></tr></table>
 
-
 <P>
-<A NAME="137"><tex2html_anchor_invisible_mark></A>
-(R/W) $32 (50) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline216#</SPAN> ULA / LoRes Offset X
-<table width="90%"><tr><td align="right" valign="top"><#5145#><#5144#><#5144#><#5145#></td><td valign="top">&nbsp;bits 7-0 = X Offset (0-255)(Reset to 0 after a reset)
+<A NAME="137"></A>
+(R/W) $32 (50) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> ULA / LoRes Offset X
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = X Offset (0-255)(Reset to 0 after a reset)
 </td></tr></table>
 
 ULA can only scroll in multiples of 8 pixels so the lowest 3 bits have
 no effect at this time.
-<BR>LoRes scrolls in ;SPMquot;half-pixels;SPMquot; at the same resolution and smoothness
+<BR>
+LoRes scrolls in "half-pixels" at the same resolution and smoothness
 as Layer 2.
 
 <P>
-(R/W) $33 (51) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline218#</SPAN> ULA / LoRes Offset Y
-<table width="90%"><tr><td align="right" valign="top"><#5148#><#5147#><#5147#><#5148#></td><td valign="top">&nbsp;bits 7-0 = Y Offset (0-191)(Reset to 0 after a reset)
+(R/W) $33 (51) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> ULA / LoRes Offset Y
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Y Offset (0-191)(Reset to 0 after a reset)
 </td></tr></table>
 
-LoRes scrolls in ;SPMquot;half-pixels;SPMquot; at the same resolution and smoothness
+LoRes scrolls in "half-pixels" at the same resolution and smoothness
 as Layer 2.
 
 <P>
-(R/W) $42 (66) <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline220#</SPAN> ULANext Attribute Byte Format
-<table width="90%"><tr><td align="right" valign="top"><#5151#><#5150#><#5150#><#5151#></td><td valign="top">&nbsp;bits 7-0 = Mask indicating which bits of an attribute byte are
+(R/W) $42 (66) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> ULANext Attribute Byte Format
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Mask indicating which bits of an attribute byte are
   used to represent INK. The rest will represent PAPER.
 </td></tr></table>
 
 (15 on reset)
-<BR>The mask can only indicate a solid sequence of bits on the right side
+<BR>
+The mask can only indicate a solid sequence of bits on the right side
 of the attribute byte (1, 3, 7, 15, 31, 63, 127 or 255).
-<BR>INKs are mapped to base index 0 in the palette and PAPERs and border
+<BR>
+INKs are mapped to base index 0 in the palette and PAPERs and border
 are mapped to base index 128 in the palette.
-<BR>The 255 value enables the full ink colour mode making all the palette
+<BR>
+The 255 value enables the full ink colour mode making all the palette
 entries INK. PAPER and border both take on the fallback colour
 (nextreg $4A) in this mode.
 
 <P>
 Port $7ffd (32765) ZX Spectrum 128 Memory
-<BR>Disable with bit 5 port $7ffd
-<table width="90%"><tr><td align="right" valign="top"><#5157#><#5152#><#5152#><#5157#></td><td valign="top">&nbsp;bits 6-7: reserved</td></tr>
-<tr><td align="right" valign="top"><#5158#><#5153#><#5153#><#5158#></td><td valign="top">&nbsp;bit 5: Lock memory paging (unlocks only on reset)</td></tr>
-<tr><td align="right" valign="top"><#5159#><#5154#><#5154#><#5159#></td><td valign="top">&nbsp;bit 4: ROM Select (low bit of ROM select for +2/+3)</td></tr>
-<tr><td align="right" valign="top"><#5160#><#5155#><#5155#><#5160#></td><td valign="top">&nbsp;bit 3: Shadow screen toggle</td></tr>
-<tr><td align="right" valign="top"><#5161#><#5156#><#5156#><#5161#></td><td valign="top">&nbsp;bits 0-2: Bank number for slot 4
+<BR>
+Disable with bit 5 port $7ffd
+<table width="90%"><tr><td valign="top">&nbsp;bits 6-7: reserved</td></tr>
+<tr><td valign="top">&nbsp;bit 5: Lock memory paging (unlocks only on reset)</td></tr>
+<tr><td valign="top">&nbsp;bit 4: ROM Select (low bit of ROM select for +2/+3)</td></tr>
+<tr><td valign="top">&nbsp;bit 3: Shadow screen toggle</td></tr>
+<tr><td valign="top">&nbsp;bits 0-2: Bank number for slot 4
 </td></tr></table>
 
-
 <P>
-<tex2html_file>#./video/tilemap.tex#
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node22.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node14.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node20.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html348"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html350"
+  HREF="node134.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node22.html">Tilemap Mode</A>
+<B> Up:</B> <A
+ HREF="node14.html">ULA group</A>
+<B> Previous:</B> <A
+ HREF="node20.html">Lo-Resolution Mode</A>
+ &nbsp; <B>  <A ID="tex2html349"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html351"
+  HREF="node134.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

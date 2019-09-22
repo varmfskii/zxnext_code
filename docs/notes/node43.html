@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Interactions between paging methods</TITLE>
-<META NAME="description" CONTENT="Interactions between paging methods">
+<TITLE>Global Control of Sprites</TITLE>
+<META NAME="description" CONTENT="Global Control of Sprites">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="000-document.css">
 
-<LINK REL="next" HREF="node44.html">
 <LINK REL="previous" HREF="node42.html">
 <LINK REL="next" HREF="node44.html">
 </HEAD>
@@ -27,7 +26,7 @@
  HREF="node44.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node42.html">
+ HREF="node34.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node42.html">
@@ -36,42 +35,196 @@
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
 <A ID="tex2html466"
-  HREF="node125.html">
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node44.html">ROM paging and selection</A>
+ HREF="node44.html">Audio</A>
 <B> Up:</B> <A
- HREF="node42.html">ZX Spectrum Next</A>
+ HREF="node34.html">Sprites</A>
 <B> Previous:</B> <A
- HREF="node42.html">ZX Spectrum Next</A>
+ HREF="node42.html">Programming Sprites</A>
  &nbsp; <B>  <A ID="tex2html465"
   HREF="node1.html">Contents</A></B> 
  &nbsp; <B>  <A ID="tex2html467"
-  HREF="node125.html">Index</A></B> 
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00420010000000000000">
-Interactions between paging methods</A>
-</H4>
-Changes made in 128 style and Next style memory management are
-synchronized. The most recent change always has priority. This means
-that
+<H2><A ID="SECTION00366000000000000000">
+Global Control of Sprites</A>
+</H2>
 
 <P>
-using 128-style memory management to select a new 16k-bank in 16k-slot
-4 will update the MMU registers for the two 8k-slots with the
-corresponding 8k-bank numbers.  enabling AllRam mode will update all
-of the 8k-bank values with the appropriate 8k-slot numbers. These may
-then be overwritten using Next memory management without needing to
-alter the value at port $1FFD.  Since the 128-style memory management
-ports are not readable, there is no synchronization applicable in the
-other direction.
+The following nextreg are also of interest for sprites.
 
 <P>
-<BR><HR>
+(R/W) $09 (09) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Peripheral 4 setting:
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Mono setting for AY 2 (1 = mono, 0 default)</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = Mono setting for AY 1 (1 = mono, 0 default)</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = Mono setting for AY 0 (1 = mono, 0 default)</td></tr>
+<tr><td valign="top">&nbsp;bit 4 = Sprite id lockstep (1 = Nextreg $34 and IO Port
+  $303B are in lockstep, 0 default)</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Disables Kempston port ($DF) if set</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = Disables divMMC ports ($E3, $E7, $EB) if set</td></tr>
+<tr><td valign="top">&nbsp;bits 1-0 = scanlines (0 after a PoR or Hard-reset)
+  <table width="90%">  <tr><td valign="top">&nbsp;00 = scanlines off
+  </td></tr>
+<tr><td valign="top">&nbsp;01 = scanlines 75%
+  </td></tr>
+<tr><td valign="top">&nbsp;10 = scanlines 50%
+  </td></tr>
+<tr><td valign="top">&nbsp;11 = scanlines 25%
+  </td></tr></table>
+</td></tr></table>
+
+Bit 4 determines if the i/o interface and nextreg interface operate in lockstep.
+
+<P>
+(R/W) $15 (21) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite and Layers system
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = LoRes mode, <!-- MATH
+ $128\times96\times256$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img34.svg"
+ ALT="$128\times96\times256$"></SPAN> colours (1 =
+  enabled)</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = Sprite priority (1 = sprite 0 on top, 0 = sprite 127
+  on top)</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = Enable sprite clipping in over border mode (1 =
+  enabled)</td></tr>
+<tr><td valign="top">&nbsp;bits 4-2 = set layers priorities:
+<BR>
+Reset default is 000, sprites over the Layer 2, over the ULA graphics
+<table width="90%"><tr><td valign="top">&nbsp;000 – S L U</td></tr>
+<tr><td valign="top">&nbsp;001 – L S U</td></tr>
+<tr><td valign="top">&nbsp;010 – S U L</td></tr>
+<tr><td valign="top">&nbsp;011 – L U S</td></tr>
+<tr><td valign="top">&nbsp;100 – U S L</td></tr>
+<tr><td valign="top">&nbsp;101 – U L S</td></tr>
+<tr><td valign="top">&nbsp;110 – S(U+L) ULA and Layer 2 combined, colours clamped to 7</td></tr>
+<tr><td valign="top">&nbsp;111 – S(U+L-5) ULA and Layer 2 combined, colours clamped to
+  [0,7]
+</td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Over border (1 = yes)(Back to 0 after a reset)</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Sprites visible (1 = visible)(Back to 0 after a reset)
+</td></tr></table>
+
+Bit 0 must be set for sprites to be visible.
+<BR>
+Bit 1 set allows sprites to be visible in the border area. When this
+bit is reset, sprites will not display outside the <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
+ ALT="$256\times192$"></SPAN> area
+of the ULA display.
+<BR>
+Bit 5 set enables clipping when sprites are visible in the border
+area. If reset, no clipping is applied and sprites will be visible in
+the full <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img22.svg"
+ ALT="$320\times256$"></SPAN> space.
+
+<P>
+The sprite module draws sprites in the order 0-127 in each
+scanline. Bit 6 determines whether sprite 0 is topmost or sprite 127
+is topmost.
+
+<P>
+Bits 4:2 determine layer priority and how sprites overlay or are
+obscured by other layers.
+
+<P>
+<A NAME="717"></A>
+(R/W) $19 (25) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Clip Window Sprites
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Cood. of the clip window
+  <table width="90%">  <tr><td valign="top">&nbsp;1st write – X1 position
+  </td></tr>
+<tr><td valign="top">&nbsp;2nd write – X2 position
+  </td></tr>
+<tr><td valign="top">&nbsp;3rd write – Y1 position
+  </td></tr>
+<tr><td valign="top">&nbsp;4rd write – Y2 position
+  </td></tr></table>
+</td></tr></table>
+
+The values are 0,255,0,191 after a Reset
+<BR>
+Reads do not advance the clip position
+
+<P>
+When the clip window is enabled for sprites in “over border” mode, the
+X coords are internally doubled and the clip window origin is moved to
+the sprite origin inside the border.
+
+<P>
+Sprites will only be visible inside the clipping window. When not in
+over-border mode (bit 1 of nextreg $15) the clipping window is given
+in ULA screen coordinates with 0,0 correspoding to the top left corner
+of the ULA screen. In over-border mode, the clipping window’s origin
+is moved to the sprite coordinate origin 32 pixels to the left and 32
+pixels above the ULA screen origin.
+
+<P>
+Regardless, sprite position is always in sprite coordinates with 32,32
+corresponding to the top left corner of the ULA screen.
+
+<P>
+(W) $1C (28) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Clip Window control
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Reserved, must be 0</td></tr>
+<tr><td valign="top">&nbsp;bit 3 – reset the tilemap clip index</td></tr>
+<tr><td valign="top">&nbsp;bit 2 – reset the ULA/LoRes clip index.</td></tr>
+<tr><td valign="top">&nbsp;bit 1 – reset the sprite clip index.</td></tr>
+<tr><td valign="top">&nbsp;bit 0 – reset the Layer 2 clip index.
+</td></tr></table>
+
+Can be used to reset nextreg $19.
+
+<P>
+See palette section on sprite palettes
+
+<P>
+<A NAME="724"></A>
+(R/W) $4B (75) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Transparency index for sprites
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Set the index value ($E3 after reset)
+</td></tr></table>
+
+For 4-bit sprites only the bottom 4-bits are relevant.
+<BR>
+Determines the transparent colour index used for sprites.
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node44.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node34.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node42.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html464"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html466"
+  HREF="node134.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node44.html">Audio</A>
+<B> Up:</B> <A
+ HREF="node34.html">Sprites</A>
+<B> Previous:</B> <A
+ HREF="node42.html">Programming Sprites</A>
+ &nbsp; <B>  <A ID="tex2html465"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html467"
+  HREF="node134.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

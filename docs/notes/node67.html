@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Overview</TITLE>
-<META NAME="description" CONTENT="Overview">
+<TITLE>WR3 – Write Register Group 3</TITLE>
+<META NAME="description" CONTENT="WR3 – Write Register Group 3">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="000-document.css">
 
+<LINK REL="next" HREF="node68.html">
 <LINK REL="previous" HREF="node66.html">
 <LINK REL="next" HREF="node68.html">
 </HEAD>
@@ -26,111 +27,53 @@
  HREF="node68.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node65.html">
+ HREF="node63.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node66.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html610"
+<A ID="tex2html602"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html612"
-  HREF="node125.html">
+<A ID="tex2html604"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node68.html">Timing</A>
+ HREF="node68.html">WR4 – Write Register</A>
 <B> Up:</B> <A
- HREF="node65.html">Copper and Display Timing</A>
+ HREF="node63.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node66.html">Introduction</A>
- &nbsp; <B>  <A ID="tex2html611"
+ HREF="node66.html">WR2 – Write Register</A>
+ &nbsp; <B>  <A ID="tex2html603"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html613"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html605"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00600020000000000000">
-Overview</A>
+<H4><A ID="SECTION00660040000000000000">
+WR3 – Write Register Group 3</A>
 </H4>
+<PRE>
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 1   |   0   0   0   0   0   0
+     |
+     1 = DMA Enable
+</PRE>
+The Z80 DMA defines more fields but they are ignored by the zxnDMA.
 
 <P>
-The ZX Spectrum Next COPPER has three instructions: NOOP, MOVE, WAIT. 
+The two other registers defined by the Z80 DMA in this group on D4 and
+D3 are implemented by the zxnDMA but they do nothing.
 
 <P>
-NOOP is used to fine tune timing. MOVE writes data to a specific range
-of hardware registers. WAIT waits for a pixel position on the video
-display.
+It is preferred to start the DMA by writing an Enable DMA command to
+WR6.
 
 <P>
-These instructions are stored in 2k (2048 BYTES) of dedicated
-write-only program RAM also known as a "Copper list".
-
-<P>
-Each instruction is 16 bits (WORD) in size allowing for a maximum of
-1024 instructions to be stored in the program RAM. The COPPER uses an
-internal 10 bit program counter (PC) which wraps to zero at the end of
-the list. The PC can be reset to zero, this is the default value after
-a hard/soft reset.
-
-<P>
-The instructions are stored in big endian format and transferred to
-the 2k program RAM using the Z80 or DMA (bits 15..8 followed by bits
-7..0).
-
-<P>
-Three write-only hardware registers control access to the program RAM
-as well as the operating modes.
-
-<P>
-System performance is not affected when the COPPER is executing instructions.
-
-<P>
-The hardware registers and COPPER program RAM are not connected to the
-main memory BUS. The overall design of this system together with the
-use of alternate clock edges means that contention between the COPPER,
-Z80 and DMA has been eliminated.
-
-<P>
-The COPPER has a base clock speed of 13.5Mhz for HDMI and 14Mhz for VGA.
-
-<P>
-The bandwidth is around 14 million single cycle NOOP/WAIT instructions
-and 7 million two cycle MOVE instructions per second.
-
-<P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node68.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node65.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node66.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html610"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html612"
-  HREF="node125.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node68.html">Timing</A>
-<B> Up:</B> <A
- HREF="node65.html">Copper and Display Timing</A>
-<B> Previous:</B> <A
- HREF="node66.html">Introduction</A>
- &nbsp; <B>  <A ID="tex2html611"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html613"
-  HREF="node125.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<BR><HR>
 
 </BODY>
 </HTML>

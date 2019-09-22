@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Description</TITLE>
-<META NAME="description" CONTENT="Description">
+<TITLE>ZX Spectrum Next</TITLE>
+<META NAME="description" CONTENT="ZX Spectrum Next">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="000-document.css">
 
-<LINK REL="next" HREF="node52.html">
-<LINK REL="previous" HREF="node50.html">
+<LINK REL="previous" HREF="node49.html">
 <LINK REL="next" HREF="node52.html">
 </HEAD>
 
@@ -32,50 +31,61 @@
 <A
  HREF="node50.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html512"
+<A ID="tex2html508"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html514"
-  HREF="node125.html">
+<A ID="tex2html510"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node52.html">Modes of Operation</A>
+ HREF="node52.html">Interactions between paging methods</A>
 <B> Up:</B> <A
- HREF="node48.html">zxnDMA</A>
+ HREF="node48.html">Memory Management</A>
 <B> Previous:</B> <A
- HREF="node50.html">Accessing the zxnDMA</A>
- &nbsp; <B>  <A ID="tex2html513"
+ HREF="node50.html">128 Special Paging Mode</A>
+ &nbsp; <B>  <A ID="tex2html509"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html515"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html511"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00530000000000000000">
-Description</A>
+<H1><A ID="SECTION00520000000000000000">
+ZX Spectrum Next</A>
 </H1>
-The normal Z80 DMA (Z8410) chip is a pipelined device and because of
-that it has numerous off-by-one idiosyncrasies and requirements on the
-order that certain commands should be carried out. These issues are
-not duplicated in the zxnDMA. You can continue to program the zxnDMA
-as if it is were a Z8410 DMA device but it can also be programmed in a
-simpler manner.
+The 8k-bank accessed in an 8k-slot is selected by writing the 8k-bank
+number to the bottom 7 bits of the 8 Next registers from ($50)
+upwards. $50 addresses 8k-slot 0, $51 addresses 8k-slot 1, and so
+on.
 
 <P>
-The single channel of the zxnDMA chip consists of two ports named A
-and B. Transfers can occur in either direction between ports A and B,
-each port can describe a target in memory or IO, and each can be
-configured to autoincrement, autodecrement or stay fixed after a byte
-is transferred.
+In addition, in 8k-slots 1 and 2 only, the ROM can be paged in by
+selecting the otherwise non-existent 8k-page $FF. Whether the high or
+the low 8k of the ROM is mapped is determined by which 8k-slot is
+used.
 
 <P>
-A special feature of the zxnDMA can force each byte transfer to take a
-fixed amount of time so that the zxnDMA can be used to deliver sampled
-audio.
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<P>
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html512"
+  HREF="node52.html">Interactions between paging methods</A>
+<LI><A ID="tex2html513"
+  HREF="node53.html">ROM paging and selection</A>
+<LI><A ID="tex2html514"
+  HREF="node54.html">Paging out ROM</A>
+<LI><A ID="tex2html515"
+  HREF="node55.html">Layer 2 Switching</A>
+<LI><A ID="tex2html516"
+  HREF="node56.html">Screen</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

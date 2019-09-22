@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Modes of Operation</TITLE>
-<META NAME="description" CONTENT="Modes of Operation">
+<TITLE>Interactions between paging methods</TITLE>
+<META NAME="description" CONTENT="Interactions between paging methods">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,62 +27,48 @@
  HREF="node53.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node48.html">
+ HREF="node51.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node51.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html516"
+<A ID="tex2html517"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html518"
-  HREF="node125.html">
+<A ID="tex2html519"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node53.html">Programming the zxnDMA</A>
+ HREF="node53.html">ROM paging and selection</A>
 <B> Up:</B> <A
- HREF="node48.html">zxnDMA</A>
+ HREF="node51.html">ZX Spectrum Next</A>
 <B> Previous:</B> <A
- HREF="node51.html">Description</A>
- &nbsp; <B>  <A ID="tex2html517"
+ HREF="node51.html">ZX Spectrum Next</A>
+ &nbsp; <B>  <A ID="tex2html518"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html519"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html520"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00540000000000000000">
-Modes of Operation</A>
-</H1>
-The zxnDMA can operate in a z80-dma compatibility mode.
+<H4><A ID="SECTION00520010000000000000">
+Interactions between paging methods</A>
+</H4>
+Changes made in 128 style and Next style memory management are
+synchronized. The most recent change always has priority. This means
+that
 
 <P>
-The z80-dma compatibility mode is selected by setting bit 6 of nextreg
-$06. In this mode, all transfers involve length+1 bytes which is the
-same behaviour as the z80-dma chip. In zxn-dma mode, the transfer
-length is exactly the number of bytes programmed. This mode is mainly
-present to accommodate existing spectrum software that uses the
-z80-dma and for cp/m programs that may have a z80-dma option.
-
-<P>
-The zxnDMA can also operate in either burst or continuous modes.
-
-<P>
-Continuous mode means the DMA chip runs to completion without allowing
-the CPU to run. When the CPU starts the DMA, the DMA operation will
-complete before the CPU executes its next instruction.
-
-<P>
-Burst mode nominally means the DMA lets the CPU run if either port is
-not ready. This condition can't happen in the zxnDMA chip except when
-operated in the special fixed time transfer mode. In this mode, the
-zxnDMA will let the CPU run while it waits for the fixed time to
-expire between bytes transferred.
-
-<P>
-Note that there is no byte transfer mode as in the Z80 DMA.
+using 128-style memory management to select a new 16k-bank in 16k-slot
+4 will update the MMU registers for the two 8k-slots with the
+corresponding 8k-bank numbers.  enabling AllRam mode will update all
+of the 8k-bank values with the appropriate 8k-slot numbers. These may
+then be overwritten using Next memory management without needing to
+alter the value at port $1FFD.  Since the 128-style memory management
+ports are not readable, there is no synchronization applicable in the
+other direction.
 
 <P>
 <BR><HR>

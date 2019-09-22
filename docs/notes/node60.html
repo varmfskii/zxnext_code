@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>WR5 – Write Register Group 5</TITLE>
-<META NAME="description" CONTENT="WR5 – Write Register Group 5">
+<TITLE>Description</TITLE>
+<META NAME="description" CONTENT="Description">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,53 +27,53 @@
  HREF="node61.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node54.html">
+ HREF="node57.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node59.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html557"
+<A ID="tex2html565"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html559"
-  HREF="node125.html">
+<A ID="tex2html567"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node61.html">WR6 – Command Register</A>
+ HREF="node61.html">Modes of Operation</A>
 <B> Up:</B> <A
- HREF="node54.html">zxnDMA Registers</A>
+ HREF="node57.html">zxnDMA</A>
 <B> Previous:</B> <A
- HREF="node59.html">WR4 – Write Register</A>
- &nbsp; <B>  <A ID="tex2html558"
+ HREF="node59.html">Accessing the zxnDMA</A>
+ &nbsp; <B>  <A ID="tex2html566"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html560"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html568"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00560060000000000000">
-WR5 – Write Register Group 5</A>
-</H4>
-<PRE>
-D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
- 1   0   |   |   0   0   1   0
-         |   |
-         |   0 = /ce only
-         |   1 = /ce &amp; /wait multiplexed
-         |
-         0 = Stop on end of block
-         1 = Auto restart on end of block
-</PRE>
-The /ce &amp; /wait mode is implemented in the zxnDMA but is not currently
-used. This mode has an external device using the DMA's /ce pin to
-insert wait states during the DMA's transfer.
+<H1><A ID="SECTION00630000000000000000">
+Description</A>
+</H1>
+The normal Z80 DMA (Z8410) chip is a pipelined device and because of
+that it has numerous off-by-one idiosyncrasies and requirements on the
+order that certain commands should be carried out. These issues are
+not duplicated in the zxnDMA. You can continue to program the zxnDMA
+as if it is were a Z8410 DMA device but it can also be programmed in a
+simpler manner.
 
 <P>
-The auto restart feature causes the DMA to automatically reload its
-source and destination addresses and reset its byte counter to zero to
-repeat the last transfer when a previous one is finished.
+The single channel of the zxnDMA chip consists of two ports named A
+and B. Transfers can occur in either direction between ports A and B,
+each port can describe a target in memory or IO, and each can be
+configured to autoincrement, autodecrement or stay fixed after a byte
+is transferred.
+
+<P>
+A special feature of the zxnDMA can force each byte transfer to take a
+fixed amount of time so that the zxnDMA can be used to deliver sampled
+audio.
 
 <P>
 <BR><HR>

@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Machine Type</TITLE>
-<META NAME="description" CONTENT="Machine Type">
+<TITLE>Example</TITLE>
+<META NAME="description" CONTENT="Example">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="000-document.css">
 
-<LINK REL="next" HREF="node90.html">
 <LINK REL="previous" HREF="node88.html">
 <LINK REL="next" HREF="node90.html">
 </HEAD>
@@ -27,166 +26,58 @@
  HREF="node90.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node86.html">
+ HREF="node85.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node88.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html717"
+<A ID="tex2html726"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html719"
-  HREF="node125.html">
+<A ID="tex2html728"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node90.html">Summary</A>
+ HREF="node90.html">Control</A>
 <B> Up:</B> <A
- HREF="node86.html">Configuration</A>
+ HREF="node85.html">Instructions</A>
 <B> Previous:</B> <A
- HREF="node88.html">Video Modes</A>
- &nbsp; <B>  <A ID="tex2html718"
+ HREF="node88.html">WAIT</A>
+ &nbsp; <B>  <A ID="tex2html727"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html720"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html729"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00640030000000000000">
-Machine Type</A>
+<H4><A ID="SECTION00720040000000000000">
+Example</A>
 </H4>
 
 <P>
-The machine type register can be used to provide the number of Ts per
-line, line count, dot clock and maximum horizontal COPPER wait.
+The following example provides a simple COPPER program to move data to
+a hardware register at two specific pixel positions. The BYTES for the
+program are listed in the left column:
 
 <P>
-The dot clock (DC) is the number of Ts per line * 4.
+<PRE>
+         PAL8 equ   0x41           ; 8 bit palette hardware register
+
+$80,$00       WAIT  0,0            ; wait for pixel position 0,0 (H,V)
+$00,$00       NOOP                 ; fine tune timing by one dot clock
+$41,$E0       MOVE  PAL8,11100000b ; write RED to palette register
+
+$C0,$BF       WAIT  32,191         ; wait for pixel position 256,191
+$00,$00       NOOP                 ; fine tune timing by one dot clock
+$41,$00       MOVE  PAL8,00000000b ; write BLACK to palette register
+
+$FF,$FF       WAIT  63,511         ; wait for an out of range position
+</PRE>
 
 <P>
-The maximum horizontal COPPER wait (H) is in multiples of 16 clocks.
-
-<P>
-Video mode 7 (HMDI) overrides the timing.
-
-<P>
-The following list shows the various parameters that can be gained
-from reading the machine register combined with the refresh register
-and video mode bits:
-
-<P>
-Machine type register $03 (3)
-<table width="90%"><tr><td valign="top">&nbsp;bits 6-4 = Timing:
-
-<P>
-VGA 50Hz
-  <table width="90%">  <tr><td valign="top">&nbsp;000 = 224.0Ts per line (312 lines) (DC=896) (H=54) (48k)
-  </td></tr>
-<tr><td valign="top">&nbsp;001 = 224.0Ts per line (312 lines) (DC=896) (H=54) (48k)
-  </td></tr>
-<tr><td valign="top">&nbsp;010 = 228.0Ts per line (311 lines) (DC=912) (H=55) (128k)
-  </td></tr>
-<tr><td valign="top">&nbsp;011 = 228.0Ts per line (311 lines) (DC=912) (H=55) (128k)
-  </td></tr>
-<tr><td valign="top">&nbsp;100 = 224.0Ts per line (320 lines) (DC=896) (H=54) (Pentagon)
-  </td></tr>
-<tr><td valign="top">&nbsp;101 = RESERVED
-  </td></tr>
-<tr><td valign="top">&nbsp;110 = RESERVED
-  </td></tr>
-<tr><td valign="top">&nbsp;111 = RESERVED
-  </td></tr></table>
-
-    VGA 60Hz
-  <table width="90%">  <tr><td valign="top">&nbsp;000 = 224.0Ts per line (262 lines) (DC=896) (H=54) (48k)
-  </td></tr>
-<tr><td valign="top">&nbsp;001 = 224.0Ts per line (262 lines) (DC=896) (H=54) (48k)
-  </td></tr>
-<tr><td valign="top">&nbsp;010 = 228.0Ts per line (261 lines) (DC=912) (H=55) (128k)
-  </td></tr>
-<tr><td valign="top">&nbsp;011 = 228.0Ts per line (261 lines) (DC=912) (H=55) (128k)
-  </td></tr>
-<tr><td valign="top">&nbsp;100 = 224.0Ts per line (320 lines) (DC=896) (H=54) (Pentagon)*
-  </td></tr>
-<tr><td valign="top">&nbsp;101 = RESERVED
-  </td></tr>
-<tr><td valign="top">&nbsp;110 = RESERVED
-  </td></tr>
-<tr><td valign="top">&nbsp;111 = RESERVED
-  </td></tr></table>
-
-    HDMI 50Hz
-  <table width="90%">  <tr><td valign="top">&nbsp;000 = 216.0Ts per line (312 lines) (DC=864) (H=52) (48k)
-  </td></tr>
-<tr><td valign="top">&nbsp;001 = 216.0Ts per line (312 lines) (DC=864) (H=52) (48k)
-  </td></tr>
-<tr><td valign="top">&nbsp;010 = 216.0Ts per line (312 lines) (DC=864) (H=52) (128k)
-  </td></tr>
-<tr><td valign="top">&nbsp;011 = 216.0Ts per line (312 lines) (DC=864) (H=52) (128k)
-  </td></tr>
-<tr><td valign="top">&nbsp;100 = 216.0Ts per line (312 lines) (DC=864) (H=52) (Pentagon)
-  </td></tr>
-<tr><td valign="top">&nbsp;101 = RESERVED
-  </td></tr>
-<tr><td valign="top">&nbsp;110 = RESERVED
-  </td></tr>
-<tr><td valign="top">&nbsp;111 = RESERVED
-  </td></tr></table>
-
-    HDMI 60Hz
-  <table width="90%">  <tr><td valign="top">&nbsp;000 = 214.5Ts per line (262 lines) (DC=858) (H=52) (48k)
-  </td></tr>
-<tr><td valign="top">&nbsp;001 = 214.5Ts per line (262 lines) (DC=858) (H=52) (48k)
-  </td></tr>
-<tr><td valign="top">&nbsp;010 = 214.5Ts per line (262 lines) (DC=858) (H=52) (128k)
-  </td></tr>
-<tr><td valign="top">&nbsp;011 = 214.5Ts per line (262 lines) (DC=858) (H=52) (128k)
-  </td></tr>
-<tr><td valign="top">&nbsp;100 = 214.5Ts per line (262 lines) (DC=858) (H=52) (Pentagon)
-  </td></tr>
-<tr><td valign="top">&nbsp;101 = RESERVED
-  </td></tr>
-<tr><td valign="top">&nbsp;110 = RESERVED
-  </td></tr>
-<tr><td valign="top">&nbsp;111 = RESERVED
-  </td></tr></table>
-</td></tr></table>
-
-<P>
-* Pentagon 60Hz is not supported in VGA mode so always 50Hz
-
-<P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node90.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node86.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node88.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html717"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html719"
-  HREF="node125.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node90.html">Summary</A>
-<B> Up:</B> <A
- HREF="node86.html">Configuration</A>
-<B> Previous:</B> <A
- HREF="node88.html">Video Modes</A>
- &nbsp; <B>  <A ID="tex2html718"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html720"
-  HREF="node125.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<BR><HR>
 
 </BODY>
 </HTML>

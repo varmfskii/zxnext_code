@@ -1,5 +1,59 @@
+<!DOCTYPE HTML>
 
-<H2><A NAME="SECTION00332000000000000000">
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>ZX Spectrum Mode</TITLE>
+<META NAME="description" CONTENT="ZX Spectrum Mode">
+<META NAME="keywords" CONTENT="000-document">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="000-document.css">
+
+<LINK REL="next" HREF="node17.html">
+<LINK REL="previous" HREF="node15.html">
+<LINK REL="next" HREF="node17.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node17.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node14.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node15.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html328"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html330"
+  HREF="node134.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node17.html">Alternate Page Mode</A>
+<B> Up:</B> <A
+ HREF="node14.html">ULA group</A>
+<B> Previous:</B> <A
+ HREF="node15.html">Colour Attributes</A>
+ &nbsp; <B>  <A ID="tex2html329"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html331"
+  HREF="node134.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A ID="SECTION00332000000000000000">
 ZX Spectrum Mode</A>
 </H2>
 
@@ -8,30 +62,93 @@ Timex mode 0
 
 <P>
 This is the default ULA mode and has its origins in the original ZX
-Spectrum. It uses <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline156#</SPAN> pixels with <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline158#</SPAN> colour
-attribute areas mapped into a <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline160#</SPAN> grid. If Timex modes are
+Spectrum. It uses <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
+ ALT="$256\times192$"></SPAN> pixels with <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img6.svg"
+ ALT="$8\times8$"></SPAN> colour
+attribute areas mapped into a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img7.svg"
+ ALT="$32\times24$"></SPAN> grid. If Timex modes are
 not enabled, this and the LoRes mode are the only ones available, so
 you would switch back to this mode by writing 000xxxxx to Next
 register $15 (21, the sprites and layers register). If another Timex
 mode is enabled, then this is mode 0 so you would write 0 to port $ff
-to enable it. This is a <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline162#</SPAN> video mode. The bitmap 1 area
+to enable it. This is a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
+ ALT="$256\times192$"></SPAN> video mode. The bitmap 1 area
 is used for selection between ink and paper colours with one bit per
 pixel and the attribute 1 area for colour attributes.
 
 <P>
 The easiest way to visualize the mapping of this mode is to think of
-the <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline164#</SPAN> area as being divided into a <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline166#</SPAN> grid of
-<SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline168#</SPAN> characters.  IF we consider X and Y as the position in the
+the <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
+ ALT="$256\times192$"></SPAN> area as being divided into a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img7.svg"
+ ALT="$32\times24$"></SPAN> grid of
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img6.svg"
+ ALT="$8\times8$"></SPAN> characters.  IF we consider X and Y as the position in the
 grid and R to the the row within the character.  For ink/paper
 selection, 0=paper, 1=ink and the entries are stored left to right as
 lsb to msb within the bye.  The address for a pixel value is:
-<tex2html_verbatim_mark>#math69#<SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline170#</SPAN>. Each <SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline172#</SPAN> cell has
+<!-- MATH
+ $0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img8.svg"
+ ALT="$0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>. Each <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img6.svg"
+ ALT="$8\times8$"></SPAN> cell has
 its own colour attribute where the address for an attribute cell is
-<tex2html_verbatim_mark>#math70#<SPAN CLASS="MATH"><tex2html_image_mark>#tex2html_wrap_inline174#</SPAN> in other words mapped lineally
+<!-- MATH
+ $0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img9.svg"
+ ALT="$0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN> in other words mapped lineally
 column-wise starting at the beginning of the attribute 1 area.
 
 <P>
 Code:
-<PRE><tex2html_verbatim_mark>verbatim2#</PRE>
+<PRE>
+  ;; from any other Timex mode:
+  ld a,$00
+  ld c,$ff
+  out (c),a
+
+  ;; from LoRes mode:
+  ld bc,$243B ; next register select port
+  ld a,$15
+  out (c),a
+  ld bc,$253B ; next register r/w port
+  in a,(c)
+  and $7f
+  out (c),a
+</PRE>
 
 <P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node17.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node14.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node15.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html328"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html330"
+  HREF="node134.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node17.html">Alternate Page Mode</A>
+<B> Up:</B> <A
+ HREF="node14.html">ULA group</A>
+<B> Previous:</B> <A
+ HREF="node15.html">Colour Attributes</A>
+ &nbsp; <B>  <A ID="tex2html329"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html331"
+  HREF="node134.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

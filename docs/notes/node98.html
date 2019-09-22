@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>16-bit</TITLE>
-<META NAME="description" CONTENT="16-bit">
+<TITLE>Machine Type</TITLE>
+<META NAME="description" CONTENT="Machine Type">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="000-document.css">
 
+<LINK REL="next" HREF="node99.html">
 <LINK REL="previous" HREF="node97.html">
 <LINK REL="next" HREF="node99.html">
 </HEAD>
@@ -26,224 +27,136 @@
  HREF="node99.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node96.html">
+ HREF="node95.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node97.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html757"
+<A ID="tex2html770"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html759"
-  HREF="node125.html">
+<A ID="tex2html772"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node99.html">Registers</A>
+ HREF="node99.html">Summary</A>
 <B> Up:</B> <A
- HREF="node96.html">Ports</A>
+ HREF="node95.html">Configuration</A>
 <B> Previous:</B> <A
- HREF="node97.html">8-bit</A>
- &nbsp; <B>  <A ID="tex2html758"
+ HREF="node97.html">Video Modes</A>
+ &nbsp; <B>  <A ID="tex2html771"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html760"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html773"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION001020000000000000000">
-16-bit</A>
-</H1>
-Port $103b (4155) i2c SCL (rtc)
+<H4><A ID="SECTION00740030000000000000">
+Machine Type</A>
+</H4>
 
 <P>
-Port $113b (4411) i2c SDA (rtc)
+The machine type register can be used to provide the number of Ts per
+line, line count, dot clock and maximum horizontal COPPER wait.
 
 <P>
-Port $123b (4667) Layer 2
-<table width="90%">
-  <tr><td valign="top">&nbsp;bits 6-7: Video RAM bank select
+The dot clock (DC) is the number of Ts per line * 4.
+
+<P>
+The maximum horizontal COPPER wait (H) is in multiples of 16 clocks.
+
+<P>
+Video mode 7 (HMDI) overrides the timing.
+
+<P>
+The following list shows the various parameters that can be gained
+from reading the machine register combined with the refresh register
+and video mode bits:
+
+<P>
+Machine type register $03 (3)
+<table width="90%"><tr><td valign="top">&nbsp;bits 6-4 = Timing:
+
+<P>
+VGA 50Hz
+  <table width="90%">  <tr><td valign="top">&nbsp;000 = 224.0Ts per line (312 lines) (DC=896) (H=54) (48k)
   </td></tr>
-<tr><td valign="top">&nbsp;bit 3: Shadow layer 2 select
+<tr><td valign="top">&nbsp;001 = 224.0Ts per line (312 lines) (DC=896) (H=54) (48k)
   </td></tr>
-<tr><td valign="top">&nbsp;bit 1: Layer 2 visible
+<tr><td valign="top">&nbsp;010 = 228.0Ts per line (311 lines) (DC=912) (H=55) (128k)
   </td></tr>
-<tr><td valign="top">&nbsp;bit 0: Enable layer 2 write paging
-</td></tr></table>
-
-<P>
-Port $133b (4923) UART tx (esp)
-
-<P>
-Port $143b (5179) UART rx (esp)
-
-<P>
-Port $243b (9275) Next Register Select
-<BR>
-Write-only and is used to set the registry number, listed below.
-
-<P>
-Port $253b (9531) Next Register Data/Value
-<BR>
-Used to access the registry value, the registry being either only a
-few bits or all bits only read, write or read/write, depending on the
-registry number set.
-<BR>
-The nextreg instruction can be used to control Spectrum Next registers
-more directly.
-
-<P>
-Port $303b (12347) Sprite Slot/Flags
-<BR>
-Write: Sprite Slot Select
-<BR>
-select sprite slot for Sprite Attribute and Sprite Pattern ports which
-independently auto-increment
-<BR>
-Read: Sprite status
-<table width="90%"><tr><td valign="top">&nbsp;bits 2-7: reserved</td></tr>
-<tr><td valign="top">&nbsp;bit 1: Max sprites per line</td></tr>
-<tr><td valign="top">&nbsp;bit 0: Collision flag
-</td></tr></table>
-
-<P>
-Port $7ffd (32765) ZX Spectrum 128 Memory
-<BR>
-Disable with bit 5 port $7ffd
-<table width="90%"><tr><td valign="top">&nbsp;bits 6-7: reserved</td></tr>
-<tr><td valign="top">&nbsp;bit 5: Lock memory paging (unlocks only on reset)</td></tr>
-<tr><td valign="top">&nbsp;bit 4: ROM Select (low bit of ROM select for +2/+3)</td></tr>
-<tr><td valign="top">&nbsp;bit 3: Shadow screen toggle</td></tr>
-<tr><td valign="top">&nbsp;bits 0-2: Bank number for slot 4
-</td></tr></table>
-
-<P>
-Port $7ffe (32766) Keyboard 8 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0: 'B'</td></tr>
-<tr><td valign="top">&nbsp;bit 1: 'N'</td></tr>
-<tr><td valign="top">&nbsp;bit 2: 'M'</td></tr>
-<tr><td valign="top">&nbsp;bit 3: Symbol Shift</td></tr>
-<tr><td valign="top">&nbsp;bit 4: Space
-</td></tr></table>
-
-<P>
-Port $bffd (49149) AY (TurboSound Next) Data
-<BR>
-Writes to selected register of selected sound chip
-
-<P>
-Port $BFFE (49150) Keyboard 7 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0: 'H'</td></tr>
-<tr><td valign="top">&nbsp;bit 1: 'J'</td></tr>
-<tr><td valign="top">&nbsp;bit 2: 'K'</td></tr>
-<tr><td valign="top">&nbsp;bit 3: 'L'</td></tr>
-<tr><td valign="top">&nbsp;bit 4: Enter
-</td></tr></table>
-
-<P>
-Port $dffd (57341) ZX Spectrum 128 Memory (precedence over AY)
-<BR>
-Disable with bit 5 port $7ffd
-<BR>
-See Port $7ffd
-
-<P>
-Port $dffe (57342) Keyboard 6 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0: 'Y'</td></tr>
-<tr><td valign="top">&nbsp;bit 1: 'U'</td></tr>
-<tr><td valign="top">&nbsp;bit 2: 'I'</td></tr>
-<tr><td valign="top">&nbsp;bit 3: 'O'</td></tr>
-<tr><td valign="top">&nbsp;bit 4: 'P'
-</td></tr></table>
-
-<P>
-Port $effe (61438) Keyboard 5 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0: ‘6’</td></tr>
-<tr><td valign="top">&nbsp;bit 1: ‘7’</td></tr>
-<tr><td valign="top">&nbsp;bit 2: ‘8’</td></tr>
-<tr><td valign="top">&nbsp;bit 3: ‘9’</td></tr>
-<tr><td valign="top">&nbsp;bit 4: ‘0’
-</td></tr></table>
-
-<P>
-Port $f7fe (63486) Keyboard 4 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0: ‘5’</td></tr>
-<tr><td valign="top">&nbsp;bit 1: ‘4’</td></tr>
-<tr><td valign="top">&nbsp;bit 2: ‘3’</td></tr>
-<tr><td valign="top">&nbsp;bit 3: ‘2’</td></tr>
-<tr><td valign="top">&nbsp;bit 4: ‘1’
-</td></tr></table>
-
-<P>
-Port $fadf (64223) Kempston Mouse Wheel/Buttons
-<BR>
-Disable with bit 2 of Nextreg %09
-
-<P>
-Port $fbdf (64479) Kempston Mouse X
-<BR>
-Disable with bit 2 of Nextreg $09
-
-<P>
-Port $fbfe (64510) Keyboard 3 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0: ‘T’</td></tr>
-<tr><td valign="top">&nbsp;bit 1: ‘R’</td></tr>
-<tr><td valign="top">&nbsp;bit 2: ‘E’</td></tr>
-<tr><td valign="top">&nbsp;bit 3: ‘W’</td></tr>
-<tr><td valign="top">&nbsp;bit 4: ‘Q’
-</td></tr></table>
-
-<P>
-Port $fdfe (65022) Keyboard 2 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0: ‘G’</td></tr>
-<tr><td valign="top">&nbsp;bit 1: ‘F’</td></tr>
-<tr><td valign="top">&nbsp;bit 2: ‘D’</td></tr>
-<tr><td valign="top">&nbsp;bit 3: ‘S’</td></tr>
-<tr><td valign="top">&nbsp;bit 4: ‘A’
-</td></tr></table>
-
-<P>
-Port $fefe (65278) Keyboard 1 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0: ‘V’</td></tr>
-<tr><td valign="top">&nbsp;bit 1: ‘C’</td></tr>
-<tr><td valign="top">&nbsp;bit 2: ‘X’</td></tr>
-<tr><td valign="top">&nbsp;bit 3: ‘Z’</td></tr>
-<tr><td valign="top">&nbsp;bit 4: Caps Shift
-</td></tr></table>
-
-<P>
-Port $fbdf (65503) Kempston Mouse Y
-<BR>
-Disable with bit 2 of Nextreg $09
-<BR>
-Kempston Mouse Y coordinate (0-191)
-
-<P>
-Port $fffd (65533) AY (Turbo Sound Next) Register
-<BR>
-Select active sound chip/sound chip register
-<BR>
-Select Chip
-<table width="90%"><tr><td valign="top">&nbsp;bit 7: 1=select chip</td></tr>
-<tr><td valign="top">&nbsp;bit 6: Left audio enable</td></tr>
-<tr><td valign="top">&nbsp;bit 5: Right audio enable</td></tr>
-<tr><td valign="top">&nbsp;bits 2-4: reserved=111</td></tr>
-<tr><td valign="top">&nbsp;bits 0-1: Select active chip
-  <table width="90%">  <tr><td valign="top">&nbsp;01=AY3
+<tr><td valign="top">&nbsp;011 = 228.0Ts per line (311 lines) (DC=912) (H=55) (128k)
   </td></tr>
-<tr><td valign="top">&nbsp;10=AY2
+<tr><td valign="top">&nbsp;100 = 224.0Ts per line (320 lines) (DC=896) (H=54) (Pentagon)
   </td></tr>
-<tr><td valign="top">&nbsp;11=AY1 (default)
+<tr><td valign="top">&nbsp;101 = RESERVED
+  </td></tr>
+<tr><td valign="top">&nbsp;110 = RESERVED
+  </td></tr>
+<tr><td valign="top">&nbsp;111 = RESERVED
+  </td></tr></table>
+
+    VGA 60Hz
+  <table width="90%">  <tr><td valign="top">&nbsp;000 = 224.0Ts per line (262 lines) (DC=896) (H=54) (48k)
+  </td></tr>
+<tr><td valign="top">&nbsp;001 = 224.0Ts per line (262 lines) (DC=896) (H=54) (48k)
+  </td></tr>
+<tr><td valign="top">&nbsp;010 = 228.0Ts per line (261 lines) (DC=912) (H=55) (128k)
+  </td></tr>
+<tr><td valign="top">&nbsp;011 = 228.0Ts per line (261 lines) (DC=912) (H=55) (128k)
+  </td></tr>
+<tr><td valign="top">&nbsp;100 = 224.0Ts per line (320 lines) (DC=896) (H=54) (Pentagon)*
+  </td></tr>
+<tr><td valign="top">&nbsp;101 = RESERVED
+  </td></tr>
+<tr><td valign="top">&nbsp;110 = RESERVED
+  </td></tr>
+<tr><td valign="top">&nbsp;111 = RESERVED
+  </td></tr></table>
+
+    HDMI 50Hz
+  <table width="90%">  <tr><td valign="top">&nbsp;000 = 216.0Ts per line (312 lines) (DC=864) (H=52) (48k)
+  </td></tr>
+<tr><td valign="top">&nbsp;001 = 216.0Ts per line (312 lines) (DC=864) (H=52) (48k)
+  </td></tr>
+<tr><td valign="top">&nbsp;010 = 216.0Ts per line (312 lines) (DC=864) (H=52) (128k)
+  </td></tr>
+<tr><td valign="top">&nbsp;011 = 216.0Ts per line (312 lines) (DC=864) (H=52) (128k)
+  </td></tr>
+<tr><td valign="top">&nbsp;100 = 216.0Ts per line (312 lines) (DC=864) (H=52) (Pentagon)
+  </td></tr>
+<tr><td valign="top">&nbsp;101 = RESERVED
+  </td></tr>
+<tr><td valign="top">&nbsp;110 = RESERVED
+  </td></tr>
+<tr><td valign="top">&nbsp;111 = RESERVED
+  </td></tr></table>
+
+    HDMI 60Hz
+  <table width="90%">  <tr><td valign="top">&nbsp;000 = 214.5Ts per line (262 lines) (DC=858) (H=52) (48k)
+  </td></tr>
+<tr><td valign="top">&nbsp;001 = 214.5Ts per line (262 lines) (DC=858) (H=52) (48k)
+  </td></tr>
+<tr><td valign="top">&nbsp;010 = 214.5Ts per line (262 lines) (DC=858) (H=52) (128k)
+  </td></tr>
+<tr><td valign="top">&nbsp;011 = 214.5Ts per line (262 lines) (DC=858) (H=52) (128k)
+  </td></tr>
+<tr><td valign="top">&nbsp;100 = 214.5Ts per line (262 lines) (DC=858) (H=52) (Pentagon)
+  </td></tr>
+<tr><td valign="top">&nbsp;101 = RESERVED
+  </td></tr>
+<tr><td valign="top">&nbsp;110 = RESERVED
+  </td></tr>
+<tr><td valign="top">&nbsp;111 = RESERVED
   </td></tr></table>
 </td></tr></table>
 
- Select Register
-<table width="90%"><tr><td valign="top">&nbsp;bit 7: 0=select register</td></tr>
-<tr><td valign="top">&nbsp;bits 4-6: reserved=000</td></tr>
-<tr><td valign="top">&nbsp;bits 0-3: register number
-</td></tr></table>
+<P>
+* Pentagon 60Hz is not supported in VGA mode so always 50Hz
 
+<P>
 
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
@@ -251,28 +164,28 @@ Select Chip
  HREF="node99.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node96.html">
+ HREF="node95.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node97.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html757"
+<A ID="tex2html770"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html759"
-  HREF="node125.html">
+<A ID="tex2html772"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node99.html">Registers</A>
+ HREF="node99.html">Summary</A>
 <B> Up:</B> <A
- HREF="node96.html">Ports</A>
+ HREF="node95.html">Configuration</A>
 <B> Previous:</B> <A
- HREF="node97.html">8-bit</A>
- &nbsp; <B>  <A ID="tex2html758"
+ HREF="node97.html">Video Modes</A>
+ &nbsp; <B>  <A ID="tex2html771"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html760"
-  HREF="node125.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html773"
+  HREF="node134.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

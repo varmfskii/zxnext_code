@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Video Modes</TITLE>
-<META NAME="description" CONTENT="Video Modes">
+<TITLE>WAIT</TITLE>
+<META NAME="description" CONTENT="WAIT">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,106 +27,76 @@
  HREF="node89.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node86.html">
+ HREF="node85.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node87.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html713"
+<A ID="tex2html722"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html715"
-  HREF="node125.html">
+<A ID="tex2html724"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node89.html">Machine Type</A>
+ HREF="node89.html">Example</A>
 <B> Up:</B> <A
- HREF="node86.html">Configuration</A>
+ HREF="node85.html">Instructions</A>
 <B> Previous:</B> <A
- HREF="node87.html">Refresh Rate</A>
- &nbsp; <B>  <A ID="tex2html714"
+ HREF="node87.html">MOVE</A>
+ &nbsp; <B>  <A ID="tex2html723"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html716"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html725"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00640020000000000000">
-Video Modes</A>
+<H4><A ID="SECTION00720030000000000000">
+WAIT</A>
 </H4>
 
 <P>
-The video mode can only be changed during the boot process so one
-initial read is required of this register during software start up
-phase.
+WAIT executes in one dot clock. It performs a compare with the current
+vertical line number and the current horizontal dot clock.
 
 <P>
-The machine timing is identical for the seven VGA modes although the
-physical refresh rate of the video output speeds up for each mode in
-turn by roughly 1Hz. The internal timing of the machine remains
-constant and as close to the original hardware as possible. VGA is a
-perfect Amstrad ZX Spectrum 128k +3 for example as far as timing is
-concerned across the seven VGA modes.
+WAIT will hold until the current raster line matches the 9 bit value
+stored in bits 8..0. When the line compare matches, WAIT will still
+hold if the current horizontal dot clock is less than the value in
+bits 14..9.
 
 <P>
-The effect of this speed up means that mode 0 will execute in one
-second of time whereas mode 6 will execute in a shorter time
-period. Mode 0 is as close to 50/60 Hz as possible where mode 6 is
-closer to 60/70 Hz. That would mean that one second of machine time
-for mode 6 will execute in 0.83 seconds of human time when running 50
-frames per second at 60Hz.
+This compare logic means that out of order vertical line compares will
+cause the COPPER to wait until the next video frame as the test is for
+an exact match of the line number. The COPPER will continue to the
+next instruction after an out of order horizontal pixel position
+compare as the test checks for the current dot clock being greater
+than or equal to the compare value.
 
 <P>
-The eighth mode (mode 7) is used for HDMI timing. Machine
-configuration is forced for this mode. Line counts, Ts and various
-other settings are set to meet the rigid HDMI timing
-specification. For mode 7, 50/60 Hz are rock solid but the original
-hardware timing loses Ts across all machines to meet HDMI display
-requirements.
+WAIT will stop the COPPER when a compare is made against an out of
+range vertical line or horizontal dot clock position as they will
+never occur
 
 <P>
-Software that was previously written for specific hardware with
-hard-coded software timing loops may fail. This is one of the risks of
-coding timing loops counting Ts. We saw evidence of this with the
-release of the 1985 Sinclair ZX Spectrum 128k+ and the later Amstrad
-models as previous software written for the ZX Spectrum 48k/48k+ would
-fail when trying to display colour attribute and border effects as the
-number of Ts per line was changed from 224Ts (1982 original 48k) to
-228Ts (128k models). The ZX Spectrum Next runs slower in HDMI
-mode. Demos may fail to display correctly and games may slow down
-although setting the Z80 to 7Mhz can solve the game slow down, demos
-should be run in VGA mode for maximum compatibility.
+A standard way to terminate a COPPER program is to wait for line 511
+and horizontal position 63. This encodes into the instruction WORD
+$FFFF.
 
 <P>
-Video timing also affects audio output as the sample rate can vary
-depending on the output timing method.
-
-<P>
-The following undocumented register allows software to read the video
-timing mode:
-
-<P>
-Video timing register $11 (17)
-<table width="90%"><tr><td valign="top">&nbsp;bits 2-0 = Timing:
-  <table width="90%">  <tr><td valign="top">&nbsp;000 = Mode 0 (VGA)
-  </td></tr>
-<tr><td valign="top">&nbsp;001 = Mode 1 (VGA)
-  </td></tr>
-<tr><td valign="top">&nbsp;010 = Mode 2 (VGA)
-  </td></tr>
-<tr><td valign="top">&nbsp;011 = Mode 3 (VGA)
-  </td></tr>
-<tr><td valign="top">&nbsp;100 = Mode 4 (VGA)
-  </td></tr>
-<tr><td valign="top">&nbsp;101 = Mode 5 (VGA)
-  </td></tr>
-<tr><td valign="top">&nbsp;110 = Mode 6 (VGA)
-  </td></tr>
-<tr><td valign="top">&nbsp;111 = Mode 7 (HDMI) * Timing is forced to 216Ts 50Hz / 214.5Ts 60Hz
-  </td></tr></table>
-</td></tr></table>
+The horizontal dot clock position compare includes an adjustment
+meaning that the compare completes three dot clocks early in standard
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
+ ALT="$256\times192$"></SPAN> resolution and two dot clocks early in Timex HIRES
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img14.svg"
+ ALT="$512\times192$"></SPAN> resolution. In practice, a pixel position can be
+specified with clocks to spare to write a register value before the
+pixel is displayed. This saves software having to auto-adjust
+positions to arrive early. It also means that a wait for 0,0 can
+affect the first pixel of the frame buffer before it is displayed and
+set the scroll registers without visual artefacts.
 
 <P>
 
@@ -136,28 +106,28 @@ Video timing register $11 (17)
  HREF="node89.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node86.html">
+ HREF="node85.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node87.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html713"
+<A ID="tex2html722"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html715"
-  HREF="node125.html">
+<A ID="tex2html724"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node89.html">Machine Type</A>
+ HREF="node89.html">Example</A>
 <B> Up:</B> <A
- HREF="node86.html">Configuration</A>
+ HREF="node85.html">Instructions</A>
 <B> Previous:</B> <A
- HREF="node87.html">Refresh Rate</A>
- &nbsp; <B>  <A ID="tex2html714"
+ HREF="node87.html">MOVE</A>
+ &nbsp; <B>  <A ID="tex2html723"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html716"
-  HREF="node125.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html725"
+  HREF="node134.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

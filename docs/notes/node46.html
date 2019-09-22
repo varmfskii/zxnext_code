@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Layer 2 Switching</TITLE>
-<META NAME="description" CONTENT="Layer 2 Switching">
+<TITLE>Spectdrum/Convox</TITLE>
+<META NAME="description" CONTENT="Spectdrum/Convox">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,44 +27,53 @@
  HREF="node47.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node42.html">
+ HREF="node44.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node45.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html476"
+<A ID="tex2html479"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html478"
-  HREF="node125.html">
+<A ID="tex2html481"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node47.html">Screen</A>
+ HREF="node47.html">Turbosound</A>
 <B> Up:</B> <A
- HREF="node42.html">ZX Spectrum Next</A>
+ HREF="node44.html">Audio</A>
 <B> Previous:</B> <A
- HREF="node45.html">Paging out ROM</A>
- &nbsp; <B>  <A ID="tex2html477"
+ HREF="node45.html">Internal Speaker</A>
+ &nbsp; <B>  <A ID="tex2html480"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html479"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html482"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00420040000000000000">
-Layer 2 Switching</A>
-</H4>
-Layer 2 switching can allow any 16k-bank to be written to (but not
-read) in 16k-slot 1, by writing the 16k-bank number to Layer 2 RAM
-Page Register ($12) and then enabling Layer 2 paging by writing a
-value with the LSB set to Layer 2 Access Port ($123B).
+<H1><A ID="SECTION00420000000000000000">
+Spectdrum/Convox</A>
+</H1>
 
 <P>
-Writing to this area will then write the appropriate area of memory,
-whereas reading from it will give the area mapped by other memory
-management.
+This is 8-bit D/A audio.  It is enabled by setting bit 3 of Next
+register $08 (8).  After that audio can be controlled by writing
+linear 8-bit unsigned values to port $df (223).
+
+<P>
+Code:
+<PRE>
+;; enable SpecDrum/Convox audio
+ld bc,$243B
+ld a,$08
+out (c),a
+ld bc,$253B
+in a,(c)
+or $08
+out (c),a
+</PRE>
 
 <P>
 <BR><HR>

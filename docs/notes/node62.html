@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Operating speed</TITLE>
-<META NAME="description" CONTENT="Operating speed">
+<TITLE>Programming the zxnDMA</TITLE>
+<META NAME="description" CONTENT="Programming the zxnDMA">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,53 +27,68 @@
  HREF="node63.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node54.html">
+ HREF="node57.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node61.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html565"
+<A ID="tex2html573"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html567"
-  HREF="node125.html">
+<A ID="tex2html575"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node63.html">The DMA and Interrupts</A>
+ HREF="node63.html">zxnDMA Registers</A>
 <B> Up:</B> <A
- HREF="node54.html">zxnDMA Registers</A>
+ HREF="node57.html">zxnDMA</A>
 <B> Previous:</B> <A
- HREF="node61.html">WR6 – Command Register</A>
- &nbsp; <B>  <A ID="tex2html566"
+ HREF="node61.html">Modes of Operation</A>
+ &nbsp; <B>  <A ID="tex2html574"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html568"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html576"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00560080000000000000">
-Operating speed</A>
-</H4>
+<H1><A ID="SECTION00650000000000000000">
+Programming the zxnDMA</A>
+</H1>
+Like the Z80 DMA chip, the zxnDMA has seven write registers named
+WR0-WR6 that control the device. Each register WR0-WR6 can have zero
+or more parameters associated with it.
 
 <P>
-The zxnDMA operates at the same speed as the CPU, that is 3.5MHz, 7MHz
-or 14MHz. This is a contended clock that is modified by the ULA and
-the auto-slowdown by Layer2.
+In a first write to the zxnDMA port, the write value is compared
+against a bitmask to determine which of the WR0-WR6 is the
+target. Remaining bits in the written value can contain data as well
+as a list of associated parameter bits. The parameter bits determine
+if further writes are expected to deliver parameter values. If there
+are multiple parameter bits set, the expected order of parameter
+values written is determined by parameter bit position from right to
+left (bit 0 through bit 7). Once all parameters are written, the
+zxnDMA again expects a regular register write selecting WR0-WR6.
 
 <P>
-Auto-slowdown occurs without user intervention if speed exceeds 7Mhz
-and the active Layer2 display is being generated (higher speed
-operation resumes when the active Layer2 display is not
-generated). Programmers do NOT need to account for speed differences
-regarding DMA transfers as this happens automatically.
+The table X.Y describes the registers and the bitmask required to
+select them on the zxnDMA.
 
 <P>
-Because of this, the cycle lengths for Ports A and B can be set to
-their minimum values without ill effects. The cycle lengths specified
-for Ports A and B are intended to selectively slow down read or write
-cycles for hardware that cannot operate at the DMA's full speed.
+<BR><P></P>
+<DIV class="CENTER"><A ID="1167"></A>
+<TABLE>
+<CAPTION><STRONG>Table 5.1:</STRONG>
+zxnDMA Registers</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img36.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{zxndma/registers.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
 
 <P>
 <BR><HR>

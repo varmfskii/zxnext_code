@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Programming the zxnDMA</TITLE>
-<META NAME="description" CONTENT="Programming the zxnDMA">
+<TITLE>ROM paging and selection</TITLE>
+<META NAME="description" CONTENT="ROM paging and selection">
 <META NAME="keywords" CONTENT="000-document">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,68 +27,47 @@
  HREF="node54.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node48.html">
+ HREF="node51.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node52.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html520"
+<A ID="tex2html521"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html522"
-  HREF="node125.html">
+<A ID="tex2html523"
+  HREF="node134.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node54.html">zxnDMA Registers</A>
+ HREF="node54.html">Paging out ROM</A>
 <B> Up:</B> <A
- HREF="node48.html">zxnDMA</A>
+ HREF="node51.html">ZX Spectrum Next</A>
 <B> Previous:</B> <A
- HREF="node52.html">Modes of Operation</A>
- &nbsp; <B>  <A ID="tex2html521"
+ HREF="node52.html">Interactions between paging methods</A>
+ &nbsp; <B>  <A ID="tex2html522"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html523"
-  HREF="node125.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html524"
+  HREF="node134.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00550000000000000000">
-Programming the zxnDMA</A>
-</H1>
-Like the Z80 DMA chip, the zxnDMA has seven write registers named
-WR0-WR6 that control the device. Each register WR0-WR6 can have zero
-or more parameters associated with it.
+<H4><A ID="SECTION00520020000000000000">
+ROM paging and selection</A>
+</H4>
+$0000-$3fff is usually mapped to ROM. This area can only be fully
+remapped using Next memory management. ROM is not considered one of
+the numbered banks; it is mapped to the two 8k-banks by default, or by
+setting their 8k-bank numbers to 255.
 
 <P>
-In a first write to the zxnDMA port, the write value is compared
-against a bitmask to determine which of the WR0-WR6 is the
-target. Remaining bits in the written value can contain data as well
-as a list of associated parameter bits. The parameter bits determine
-if further writes are expected to deliver parameter values. If there
-are multiple parameter bits set, the expected order of parameter
-values written is determined by parameter bit position from right to
-left (bit 0 through bit 7). Once all parameters are written, the
-zxnDMA again expects a regular register write selecting WR0-WR6.
-
-<P>
-The table X.Y describes the registers and the bitmask required to
-select them on the zxnDMA.
-
-<P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="1096"></A>
-<TABLE>
-<CAPTION><STRONG>Table 4.1:</STRONG>
-zxnDMA Registers</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img36.svg"
- ALT="\begin{table}\centering
-\csvautotabular{zxndma/registers.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
+The 128k Spectrum has 2 ROM pages. Which of these is mapped is
+selected by altering Bit 4 of Memory Paging Control ($7FFD). The
++2a/+3 has 4 ROM pages; the extra bit needed to select between these
+is bit 2 of Plus 3 Memory Paging Control ($1FFD). This maintains
+compatibility with the original machines' ROM paging as long as the
+ROM is not paged out.
 
 <P>
 <BR><HR>
