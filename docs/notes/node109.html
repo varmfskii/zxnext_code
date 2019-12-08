@@ -32,23 +32,23 @@
 <A
  HREF="node108.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html821"
+<A ID="tex2html824"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html823"
-  HREF="node134.html">
+<A ID="tex2html826"
+  HREF="node135.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node110.html">AY-3-8192</A>
+ HREF="node110.html">ZX Spectrum Next Registers</A>
 <B> Up:</B> <A
  HREF="node108.html">Registers</A>
 <B> Previous:</B> <A
  HREF="node108.html">Registers</A>
- &nbsp; <B>  <A ID="tex2html822"
+ &nbsp; <B>  <A ID="tex2html825"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html824"
-  HREF="node134.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html827"
+  HREF="node135.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
@@ -1010,10 +1010,12 @@ bit 7), Reads do not auto-increment.
 </UL>
 The mask can only indicate a solid sequence of bits on the right side
 of the attribute byte (1, 3, 7, 15, 31, 63, 127 or 255).
-<BR>
+
+<P>
 INKs are mapped to base index 0 in the palette and PAPERs and border
 are mapped to base index 128 in the palette.
-<BR>
+
+<P>
 The 255 value enables the full ink colour mode making all the palette
 entries INK. PAPER and border both take on the fallback colour
 (nextreg $4A) in this mode.
@@ -1023,7 +1025,7 @@ entries INK. PAPER and border both take on the fallback colour
  ALT="$\Rightarrow$"></SPAN> Palette Control
 
 <UL>
-<LI>bit 7 = '1' to disable palette write auto-increment.
+<LI>bit 7 = Disable palette write auto-increment.
 </LI>
 <LI>bits 6-4 = Select palette for reading or writing:
   
@@ -1036,236 +1038,226 @@ entries INK. PAPER and border both take on the fallback colour
 </LI>
 <LI>101 = Layer 2 second palette
 </LI>
-<LI>010 = Sprites first palette
+<LI>010 = Sprite first palette
 </LI>
-<LI>110 = Sprites second palette
+<LI>110 = Sprite second palette
 </LI>
-<LI>011 = Tilemap first palette
+<LI>011 = Layer 3 first palette
 </LI>
-<LI>111 = Tilemap second palette
+<LI>111 = Layer 3 second palette
   
 </LI>
 </UL>
 </LI>
-<LI>bit 3 = Select Sprites palette (0 = first palette, 1 = second palette)
+<LI>bit 3 = Select Sprite palette (0 = first palette, 1 = second
+  palette)
 </LI>
-<LI>bit 2 = Select Layer 2 palette (0 = first palette, 1 = second palette)
+<LI>bit 2 = Select Layer 2 palette (0 = first palette, 1 = second
+  palette)
 </LI>
-<LI>bit 1 = Select ULA palette (0 = first palette, 1 = second palette)
+<LI>bit 1 = Select ULA palette (0 = first palette, 1 = second
+  palette)
 </LI>
-<LI>bit 0 = Enabe ULANext mode if 1. (0 after a reset)
+<LI>bit 0 = Enable EnhancedULA mode if 1. (0 after a reset)
 </LI>
 </UL>
 
 <P>
 (R/W) $44 (44) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Palette Value (9 bit colour)
+ ALT="$\Rightarrow$"></SPAN> 9-bit Palette Data
 <BR>
-Two consecutive writes are needed to write the 9 bit colour
-<table width="90%">
-1st write:
-  
-<UL>
-<LI>bits 7-0 = RRRGGGBB
-  
-</LI>
-</UL><tr><td valign="top">&nbsp;2nd write.
-  If writing a L2 palette
-<BR>  
-<UL>
-<LI>bit 7 = 1 for L2 priority colour, 0 for normal
-<BR>
-Priority colour will always be on top even on an SLU priority
-    arrangement. If you need the exact same colour on priority and non
-    priority locations you will need to program the same colour twice
-    changing bit 7 to 0 for the second colour
-</LI>
-<LI>bits 6-1 = Reserved, must be 0
-</LI>
-<LI>bit 0 = lsb B
-  
-</LI>
-</UL>
-  If writing another palette
-  
-<UL>
-<LI>bits 7-1 = Reserved, must be 0
-</LI>
-<LI>bit 0 = lsb B
-  
-</LI>
-</UL></td></tr></table>
+Non Level 2
+<table width="90%"><tr><td valign="top">&nbsp;1st write
+bits 7-0 = MSB (RRRGGGBB)</td></tr>
+<tr><td valign="top">&nbsp;2nd write
+bits 7-1 = Reserved, must be 0
+bit 0 = LSB (B)
+</td></tr></table>
 
-After the two consecutives writes the palette index is
-auto-incremented if the auto-increment is enabled by reg $43.
-<BR>
-Reads only return the 2nd byte and do not auto-increment.
+Level 2
+<table width="90%"><tr><td valign="top">&nbsp;1st write
+bits 7-0 = MSB (RRRGGGBB)</td></tr>
+<tr><td valign="top">&nbsp;2nd write
+bit 7 = Priority
+bits 6-1 = Reserved, must be 0
+bit 0 = LSB (B)
+</td></tr></table>
+
+9-bit Palette Data is entered in two consecutive writes; the second
+write autoincrements the palette index if auto-increment is enabled in
+NextREG $43 bit 7
+
+<P>
+If writing an L2 palette, the second write's D7 holds the L2 priority
+bit which if set (1) brings the colour defined at that index on top of
+all other layers. If you also need the same colour in regular priority
+(for example: for enviromental masking) you will have to set it up
+again, this time with no priority.
+
+<P>
+Reads return the second byte and do not autoincrement.
 
 <P>
 (R/W) $4A (4A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Transparency colour fallback
+ ALT="$\Rightarrow$"></SPAN> Fallback Colour Value
 
 <UL>
-<LI>bits 7-0 = Set the 8 bit colour used if all layers are transparent.
+<LI>bits 7-0 = 8-bit colour if all layers are transparent ($E3 on
+  reset)
 </LI>
 </UL>
 (black on reset = 0)
 
 <P>
 (R/W) $4B (4B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Transparency index for sprites
+ ALT="$\Rightarrow$"></SPAN> Sprite Transparency Index
 
 <UL>
-<LI>bits 7-0 = Set the index value ($E3 after reset)
+<LI>bits 7-0 = Index value ($E3 if reset)
 </LI>
 </UL>
 For 4-bit sprites only the bottom 4-bits are relevant.
 
 <P>
 (R/W) $4C (4C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Transparency index for the tilemap
+ ALT="$\Rightarrow$"></SPAN> Level 3 Transparency Index
 
 <UL>
 <LI>bits 7-4 = Reserved, must be 0
 </LI>
-<LI>bits 3-0 = Set the index value ($F after reset)
+<LI>bits 3-0 = Index value ($0F on reset)
 </LI>
 </UL>
 
 <P>
 (R/W) $50 (50) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> MMU slot 0
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 0 Control
 
 <UL>
-<LI>bits 7-0 = Set a Spectrum RAM page at position $0000 to $1fff
+<LI>bits 7-0 = 8k RAM page at position $0000 to $1FFF ($ff on
+  reset)
 </LI>
 </UL>
-(255 after a reset)
-<BR>
 Pages can be from 0 to 223 on a fully expanded Next.
 <BR>
 A 255 value causes the ROM to become visible.
 
 <P>
 (R/W) $51 (51) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> MMU slot 1
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 1 Control
 
 <UL>
-<LI>bits 7-0 = Set a Spectrum RAM page at position $2000 to $3fff
+<LI>bits 7-0 = 8k RAM page at position $2000 to $3FFF ($ff on
+  reset)
 </LI>
 </UL>
-(255 after a reset)
-<BR>
-Pages can be from 0 to 223 on a full expanded Next.
+Pages can be from 0 to 223 on a fully expanded Next.
 <BR>
 A 255 value causes the ROM to become visible.
 
 <P>
 (R/W) $52 (52) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> MMU slot 2
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 2 Control
 
 <UL>
-<LI>bits 7-0 = Set a Spectrum RAM page at position $4000 to $5fff
+<LI>bits 7-0 = 8k RAM page at position $4000 to $5FFF ($0A on
+  reset)
 </LI>
 </UL>
-(10 after a reset)
-<BR>
-Pages can be from 0 to 223 on a full expanded Next.
+Pages can be from 0 to 223 on a fully expanded Next.
 
 <P>
 (R/W) $53 (53) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> MMU slot 3
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 3 Control
 
 <UL>
-<LI>bits 7-0 = Set a Spectrum RAM page at position $6000 to $7FFF
+<LI>bits 7-0 = 8k RAM page at position $6000 to $7FFF ($0B on
+  reset)
 </LI>
 </UL>
-(Reset to 11 after a reset)
-<BR>
-Pages can be from 0 to 223 on a full expanded Next.
+Pages can be from 0 to 223 on a fully expanded Next.
 
 <P>
 (R/W) $54 (54) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> MMU slot 4
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 4 Control
 
 <UL>
-<LI>bits 7-0 = Set a Spectrum RAM page at position $8000 to $9FFF
+<LI>bits 7-0 = 8k RAM page at position $8000 to $9FFF ($04 on
+  reset)
 </LI>
 </UL>
-(4 after a reset)
-<BR>
-Pages can be from 0 to 223 on a full expanded Next.
+Pages can be from 0 to 223 on a fully expanded Next.
 
 <P>
 (R/W) $55 (55) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> MMU slot 5
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 5 Control
 
 <UL>
-<LI>bits 7-0 = Set a Spectrum RAM page at position $A000 to $BFFF
+<LI>bits 7-0 = 8k RAM page at position $A000 to $BFFF ($05 on
+  reset)
 </LI>
 </UL>
-(Reset to 5 after a reset)
-<BR>
-Pages can be from 0 to 223 on a full expanded Next.
+Pages can be from 0 to 223 on a fully expanded Next.
 
 <P>
 (R/W) $56 (56) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> MMU slot 6
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 6 Control
 
 <UL>
-<LI>bits 7-0 = Set a Spectrum RAM page at position $C000 to $DFFF
+<LI>bits 7-0 = 8k RAM page at position $C000 to $DFFF ($00 on
+  reset)
 </LI>
 </UL>
-(0 after a reset)
-<BR>
-Pages can be from 0 to 223 on a full expanded Next.
+Pages can be from 0 to 223 on a fully expanded Next.
 
 <P>
 (R/W) $57 (57) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> MMU slot 7
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 7 Control
 
 <UL>
-<LI>bits 7-0 = Set a Spectrum RAM page at position $E000 to $FFFF
+<LI>bits 7-0 = 8k RAM page at position $E000 to $FFFF ($01 on
+  reset)
 </LI>
 </UL>
-(1 after a reset)
-<BR>
-Pages can be from 0 to 223 on a full expanded Next.
+Pages can be from 0 to 223 on a fully expanded Next.
 
 <P>
-Writing to ports $1FFD, $7FFD and $DFFD writes 255 to MMU0 and MMU1
-and writes appropriate values to MMU6 and MMU7 to map in the selected
-16k bank.
-<BR>+3 special modes override the MMUs if used.
+Writing to ports $1FFD, $7FFD and $DFFD writes $FF to MMU0 and
+MMU1 and writes appropriate values to MMU6 and MMU7 to map in the
+selected 16k bank.
+
+<P>
++3 special modes override the MMUs if used.
 
 <P>
 (W) $60 (60) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Copper data
+ ALT="$\Rightarrow$"></SPAN> Copper Data 8-bit Write
 
 <UL>
-<LI>bits 7-0 = Byte to write to copper instruction memory.
+<LI>bits 7-0 = Byte to write to copper instruction memory
 </LI>
 </UL>
-Note that each copper instruction is two bytes long.
-<BR>
+Note that each copper instruction is two bytes long, after a write,
+the coppen address is auto-incremented to the next memory position.
+
+<P>
 After a write, the index is auto-incremented to the next memory position.
 
 <P>
 (W) $61 (61) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Copper control LO bit
+ ALT="$\Rightarrow$"></SPAN> Copper Address LSB
 
 <UL>
-<LI>bits 7-0 = Copper instruction memory address LSB.
+<LI>bits 7-0 = Copper instruction memory address LSB (0 on reset)
 </LI>
 </UL>
-(Index is set to 0 after a reset)
 
 <P>
 (W) $62 (62) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Copper control HI bit
+ ALT="$\Rightarrow$"></SPAN> Copper Control
 
 <UL>
-<LI>bits 7-6 = Start control
+<LI>bits 7-6 = Start Control
   <table width="90%">  <tr><td valign="top">&nbsp;00 = Copper fully stopped
   </td></tr>
 <tr><td valign="top">&nbsp;01 = Copper start, execute the list from index 0, and loop
@@ -1279,265 +1271,11 @@ After a write, the index is auto-incremented to the next memory position.
   </td></tr></table>
 
 </LI>
-<LI>bits 2-0 = Copper instruction memory address MSB
+<LI>bits 2-0 = Copper instruction memory address (MSB) (0 on reset)
 </LI>
 </UL>
 
 <P>
-(R/W) $68 (68) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> ULA Control
-
-<UL>
-<LI>bit 7 = 1 to disable ULA output
-</LI>
-<LI>bit 6 = 0 to select the ULA colour for blending in SLU modes 6
-  &amp; 7
-<BR>  = 1 to select the ULA/tilemap mix for blending in SLU modes 6 &amp; 7
-</LI>
-<LI>bits 5-1 = Reserved must be 0
-</LI>
-<LI>bit 0 = 1 to enable stencil mode when both the ULA and tilemap
-  are enabled
-</LI>
-</UL>
-(if either are transparent the result is transparent otherwise the
-result is a logical AND of both colours)
-
-<P>
-(R/W) $6A (6A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> LoRes Radistan Control (v3.00)
-
-<UL>
-<LI>bits 7-6 = reserved
-</LI>
-<LI>bit 5 = 1 Enable Radistan (16-colour)
-</LI>
-<LI>bit 4 = Half of LoRes area to use for Radistan, xor with bit 0
-  of port $ff
-</LI>
-<LI>bits 3-0 = Radistsan palette offset
-</LI>
-</UL>
-
-<P>
-(R/W) $6B (6B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Tilemap Control
-
-<UL>
-<LI>bit 7 = 1 to enable the tilemap
-</LI>
-<LI>bit 6 = 0 for 40x32, 1 for 80x32
-</LI>
-<LI>bit 5 = 1 to eliminate the attribute entry in the tilemap
-</LI>
-<LI>bit 4 = palette select
-</LI>
-<LI>bits 3-2 = Reserved set to 0
-</LI>
-<LI>bit 1 = 1 to activate 512 tile mode
-</LI>
-<LI>bit 0 = 1 to force tilemap on top of ULA
-</LI>
-</UL>
-
-<P>
-(R/W) $6C (6C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Default Tilemap Attribute
-
-<UL>
-<LI>bits 7-4 = Palette Offset
-</LI>
-<LI>bit 3 = X mirror
-</LI>
-<LI>bit 2 = Y mirror
-</LI>
-<LI>bit 1 = Rotate
-</LI>
-<LI>bit 0 = ULA over tilemap
-</LI>
-</UL>
-(bit 8 of the tile number if 512 tile mode is enabled)
-<BR>
-Active tile attribute if bit 5 of nextreg $6B is set.
-
-<P>
-(R/W) $6E (6E) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Tilemap Base Address
-
-<UL>
-<LI>bits 7-6 = Read back as zero, write values ignored
-</LI>
-<LI>bits 5-0 = MSB of address of the tilemap in Bank 5
-</LI>
-</UL>
-The value written is an offset into Bank 5 allowing the tilemap to be
-placed at any multiple of 256 bytes.
-<BR>
-Writing a physical MSB address in $40-$7f or $c0-$ff range is
-permitted.
-<BR>
-The value read back should be treated as having a fully significant
-8-bit value.
-
-<P>
-(R/W) $6F (6F) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Tile Definitions Base Address
-
-<UL>
-<LI>bits 7-6 = Read back as zero, write values ignored
-</LI>
-<LI>bits 5-0 = MSB of address of tile definitions in Bank 5
-</LI>
-</UL>
-The value written is an offset into Bank 5 allowing tile definitions
-to be placed at any multiple of 256 bytes.
-<BR>
-Writing a physical MSB address in $40-$7f or $c0-$ff range is
-permitted.
-<BR>
-The value read back should be treated as having a fully significant
-8-bit value.
-
-<P>
-(W) $75 (75) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Attribute 0 with automatic post
-increment of Sprite Number
-<BR>
-See nextreg $35
-
-<P>
-(W) $76 (76) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Attribute 1 with automatic post
-increment of Sprite Number
-<BR>
-See nextreg $36
-
-<P>
-(W) $77 (77) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Attribute 2 with automatic post
-increment of Sprite Number
-<BR>
-See nextreg $37
-
-<P>
-(W) $78 (78) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Attribute 3 with automatic post
-increment of Sprite Number
-<BR>
-See nextreg $38
-
-<P>
-(W) $79 (79) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Sprite Attribute 4 with automatic post increment of Sprite Number
-<BR>
-See nextreg $39
-
-<P>
-(R/W) $90 (90) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 0 (3.00)
-<BR>
-Control output enable for Pi GPIO pins 0-7
-
-<P>
-(R/W) $91 (91) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 1 (3.00)
-<BR>
-Control output enable for Pi GPIO pins 8-15
-
-<P>
-(R/W) $92 (92) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 2 (3.00)
-<BR>
-Control output enable for Pi GPIO pins 16-23
-
-<P>
-(R/W) $93 (93) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 3 (3.00)
-<BR>
-Control output enable for Pi GPIO pins 24-27
-
-<P>
-(R/W) $98 (98) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Pi GPIO data 0 (3.00)
-<BR>
-Set value of GPIO pin if enabled Pi GPIO pins 0-7
-
-<P>
-(R/W) $99 (99) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Pi GPIO data 1 (3.00)
-<BR>
-Set value of GPIO pin if enabled Pi GPIO pins 8-15
-
-<P>
-(R/W) $9a (154) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Pi GPIO data 2 (3.00)
-<BR>
-Set value of GPIO pin if enabled Pi GPIO pins 16-23
-
-<P>
-(R/W) $9b (155) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Pi GPIO data 3 (3.00)
-<BR>
-Set value of GPIO pin if enabled Pi GPIO pins 24-27
-
-<P>
-(R/W) $a0 (160) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Pi peripheral enable (3.00)
-
-<UL>
-<LI>bits 7-6 = Reserved (00)
-</LI>
-<LI>bit 5 = RXTX (0=Pi hat, 1=Pi)
-</LI>
-<LI>bit 4 = UART (0=14/15 GPIO, 1=14/15 UART)
-</LI>
-<LI>bit 3 = I2C1 (0=2/3 GPIO, 1=2/3 I2C)
-</LI>
-<LI>bits 2-1 = Reserved (00)
-</LI>
-<LI>bit 0 = SPIO (0=7-11 GPIO, 1=7-11 SPI)
-</LI>
-</UL>
-Control Pi GPIO function overlay, 0 on reset
-
-<P>
-(R/W) $a2 (162) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Pi  I<SUP>2</SUP>S control (3.00)
-
-<UL>
-<LI>bit 7 = Enable left channel
-</LI>
-<LI>bit 6 = Enable right channel
-</LI>
-<LI>bit 5 = In/out
-  <table width="90%">  <tr><td valign="top">&nbsp;0 = (hats) PCM_DOUT to pi, PCM_DIN from pi
-  </td></tr>
-<tr><td valign="top">&nbsp;1 = (pi) PCM_DOUT from pi, PCM_DIN to pi
-  </td></tr></table>
-
-</LI>
-<LI>bit 4 = Mute left
-</LI>
-<LI>bit 3 = Mute right
-</LI>
-<LI>bit 2 = Slave, use external sck, ws
-</LI>
-<LI>bit 1 = Ear, connect audio to ear input of port $fe
-</LI>
-<LI>bit 0 = Reserved (0)
-</LI>
-</UL>
-Control audio channel between Pi0 and ZX Next, 0 on reset
-
-<P>
-(R/W) $a3 (163) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Pi  I<SUP>2</SUP>S clock divider (3.00)
-<BR>
-Audio sample rate is 538461/value, 11 on reset
-
-<P>
-(W) $FF (FF) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Debug LEDs (DE-1, DE-2 am Multicore only)
 
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
@@ -1550,23 +1288,23 @@ Audio sample rate is 538461/value, 11 on reset
 <A
  HREF="node108.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html821"
+<A ID="tex2html824"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html823"
-  HREF="node134.html">
+<A ID="tex2html826"
+  HREF="node135.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node110.html">AY-3-8192</A>
+ HREF="node110.html">ZX Spectrum Next Registers</A>
 <B> Up:</B> <A
  HREF="node108.html">Registers</A>
 <B> Previous:</B> <A
  HREF="node108.html">Registers</A>
- &nbsp; <B>  <A ID="tex2html822"
+ &nbsp; <B>  <A ID="tex2html825"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html824"
-  HREF="node134.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html827"
+  HREF="node135.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>
