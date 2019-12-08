@@ -11,237 +11,260 @@ Port \$253B (9531) is used to access the register value.
 
 Some registers are accessible only during the initialization process.
 
-2.00.27
-
-(R) \$00 (00) $\Rightarrow$ Machine ID
+\register{R}{00}{Machine ID}
 \begin{itemize}
-\item[] 00000001 = DE1A
-\item[] 00000010 = DE2A
-\item[] 00000101 = FBLABS
-\item[] 00000110 = VTRUCCO
-\item[] 00000111 = WXEDA
-\item[] 00001000 = EMULATORS *
-\item[] 00001010 = ZX Spectrum Next *
-\item[] 00001011 = Multicore
-\item[] 11111010 = ZX Spectrum Next Anti-brick *
+\item 00000001 = DE1A
+\item 00000010 = DE2A
+\item 00000101 = FBLABS
+\item 00000110 = VTRUCCO
+\item 00000111 = WXEDA
+\item 00001000 = EMULATORS*
+\item 00001010 = ZX Spectrum Next*
+\item 00001011 = Multicore
+\item 11111010 = ZX Spectrum Next Anti-brick*
 \end{itemize}
-* = Relevant for ZX Next machines \& software
+* Relevant for ZX Next machines \& software
 
-(R) \$01 (01) $\Rightarrow$ Core Version
+\register{R}{01}{Core Version}
 \begin{itemize}
-\item[] bits 7-4 = Major version number
-\item[] bits 3-0 = Minor version number
-\end{itemize}
-(see register \$0E for sub minor version number)
-
-(R/W) \$02 (02) $\Rightarrow$ Reset:
-\begin{itemize}
-\item[] bits 7-3 = Reserved, must be 0
-\item[] bit 2 = (R) Power-on reset (PoR)
-\item[] bit 1 = (R/W) Reading 1 indicates a Hard-reset.\\
-  If written 1 causes a Hard Reset.
-\item[] bit 0 = (R/W) Reading 1 indicates a Soft-reset.\\
-  If written 1 causes a Soft Reset.
+\item bits 7-4 = Major version number
+\item bits 3-0 = Minor version number
+\item[] See register \$0E for sub minor version number
 \end{itemize}
 
-(R/W) \$03 (03) $\Rightarrow$ Set machine type\\
-A write to this register disables the IPL in config mode\\
-(\$0000-\$3FFF is mapped to RAM instead of the internal ROM)
+\register{R/W}{02}{Reset}\\
+Read
 \begin{itemize}
-\item[] bit 7 = (W) lock timing\\
-  = (R) register \$44 second byte indicator
-\item[] bits 6-4 = Timing:\\
-  (always writable if bit 7 is set)
+\item bit 7 = Expansion bus \textoverline{RESET} Asserted
+\item bits 6-2 = Reserved
+\item bit 1 = Last reset was Hard reset
+\item bit 0 = Last reset was Soft reset
+\end{itemize}
+Write
+\begin{itemize}
+\item bit 7 = Generate/Release Expansion bus \textoverline{RESET}
+\item bits 6-2 = Reserved, must be 0
+\item bit 1 = generate Hard reset
+\item bit 0 = generate Soft reset
+\end{itemize}
+
+\register{R/W}{03}{Machine Type}\\
+A write to this register disables the boot rom in config mode\\
+bits 2-0 select machine type when in config mode
+\begin{itemize}
+\item bit 7 = (W) Display Timing change enable (allow changes to
+  bits 6-4) (0 on hard reset)
+\item bits 6-4 = Display Timing
+\item bit 3 = Display Timing user lock control
+  \item[] Read
   \begin{itemize}
-  \item[] 000 or 001 = ZX 48K
-  \item[] 010 = ZX 128K/+2 (Grey)
-  \item[] 011 = ZX +2A-B/+3e/Next Native
-  \item[] 100 = Pentagon 128K
-  \item[] bit 3 = Reserved, must be 0
-  \item[] bits 2-0 = Machine type (writable in config mode only):
-  \item[] 000 = Config mode
-  \item[] 001 = ZX 48K
-  \item[] 010 = ZX 128K/+2 (Grey)
-  \item[] 011 = ZX +2A-B/+3e/Next Native
-  \item[] 100 = Pentagon 128K
+  \item 0 = No user lock on display timing
+  \item 1 = User lock on display timing
+  \end{itemize}
+  \item[] Write
+  \begin{itemize}
+  \item 1 = Apply user lock on display timing (0 on hard reset)
+  \end{itemize}
+\item bits 2-1 = Machine Type
+\item[] Machine Types/Display Timings
+  \begin{itemize}
+  \item 000 or 001 = ZX 48K
+  \item 010 = ZX 128K/+2 (Grey)
+  \item 011 = ZX +2A-B/+3e/Next Native
+  \item 100 = Pentagon 128K
   \end{itemize}
 \end{itemize}
 
-(W) \$04 (04) $\Rightarrow$ Set page RAM, only in config mode (no IPL):
+\register{W}{04}{Configuration Mapping}
 \begin{itemize}
-\item[] bits 7-5 = Reserved, must be 0
-\item[] bits 4-0 = RAM bank mapped to \$0000-\$3FFF
-\end{itemize}
-(64 x 16k pages = 1024K, 0 after a PoR or Hard-reset)
-
-(R/W) \$05 (05) $\Rightarrow$ Peripheral 1 setting:
-\begin{itemize}
-\item[] bits 7-6 = joystick 1 mode (LSB)
-\item[] bits 5-4 = joystick 2 mode (LSB)
-\item[] bit 3 = joystick 1 mode (MSB)
-\item[] bit 2 = 50/60 Hz mode (0 = 50Hz, 1 = 60Hz)(0 after a PoR or Hard-reset)
-\item[] bit 1 = joystick 2 mode (MSB)
-\item[] bit 0 = Enable Scandoubler (1 = enabled)(1 after a PoR or Hard-reset)
-\end{itemize}
-Joystick modes:
-\begin{itemize}
-\item[] 000 = Sinclair 2 (67890)
-\item[] 001 = Kempston 1 (port \$1F)
-\item[] 010 = Cursor (56780)
-\item[] 011 = Sinclair 1 (12345)
-\item[] 100 = Kempston 2 (port \$37)
-\item[] 101 = MD 1 (3 or 6 button joystick port \$1F)
-item[] 110 = MD 2 (3 or 6 button joystick port \$37)
+\item bits 7-5 = Reserved, must be 0
+\item bits 4-0 = 16k SRAM bank mapping* (\$00 on hard reset)
+\item[] *Maps a 16k SRAM bank over the bottom 16k. Applies only in
+  config mode when the bootrom is disabled
 \end{itemize}
 
-(R/W) \$06 (06) $\Rightarrow$ Peripheral 2 setting:
+\register{R/W}{05}{Peripheral 1 Settings}
 \begin{itemize}
-\item[] bit 7 = Enable turbo mode (0 = disabled, 1 = enabled)\\
-  (0 after a PoR or Hard-reset)
-\item[] bit 6 = DMA mode (0 = zxn dma, 1 = z80 dma)\\
-  (Only ZX Next board, 0 after a PoR or Hard-reset)
-\item[] bit 5 = Enable Lightpen (1 = enabled)(0 after a PoR or Hard-reset)
-\item[] bit 4 = DivMMC automatic paging (1 = enabled)(0 after a PoR or
-  Hard-reset)
-\item[] bit 3 = Enable Multiface (1 = enabled)(0 after a PoR or Hard-reset)
-\item[] bit 2 = PS/2 mode (0 = keyboard, 1 = mouse)\\
-  (exchanges the keyboard/mouse pins on the PS/2 connector)\\
-  (0 after a PoR or Hard-reset)
-\item[] bits 1-0 = Audio chip mode (00 = YM, 01 = AY, 1X = Disabled)
+\item bits 7-6 = joystick 1 mode (MSB)
+\item bits 5-4 = joystick 2 mode (MSB)
+\item bit 3 = joystick 1 mode (LSB)
+\item bit 2 = 50/60 Hz mode (0 = 50Hz, 1 = 60Hz)
+\item bit 1 = joystick 2 mode (LSB)
+\item bit 0 = Enable Scandoubler
+\end{itemize}
+Joystick modes
+\begin{itemize}
+\item 000 = Sinclair 2 (67890)
+\item 001 = Kempston 2 (port \$37)
+\item 010 = Kempston 1 (port \$1F)
+\item 011 = Megadrive 1 (port \$1F)
+\item 100 = Cursor
+\item 101 = Megadrive 2 (port \$37)
+\item 110 = Simclair 1 (12345)
 \end{itemize}
 
-(R/W) \$07 (07) $\Rightarrow$ Turbo mode:
+\register{R/W}{06}{Peripheral 2 Settings}
 \begin{itemize}
-\item[] bit 1-0 = Turbo (00 = 3.5MHz, 01 = 7MHz, 10 = 14MHz)
-\end{itemize}
-(00 after a PoR or Hard-reset)
-
-(R/W) \$08 (08) $\Rightarrow$ Peripheral 3 setting:
-\begin{itemize}
-\item[] bit 7 = 128K paging enable (inverse of port \$7ffd, bit 5)\\
-  Use "1" to disable the locked paging.
-\item[] bit 6 = "1" to disable RAM contention. (0 after a reset)
-\item[] bit 5 = Stereo mode (0 = ABC, 1 = ACB)(0 after a PoR or Hard-reset)
-\item[] bit 4 = Enable internal speaker (1 = enabled)(1 after a PoR or
-  Hard-reset)
-\item[] bit 3 = Enable Specdrum/Covox (1 = enabled)(0 after a PoR or
-  Hard-reset)
-\item[] bit 2 = Enable Timex modes (1 = enabled)(0 after a PoR or
-  Hard-reset)
-\item[] bit 1 = Enable TurboSound (1 = enabled)(0 after a PoR or
-  Hard-reset)
-\item[] bit 0 = Reserved, must be 0
+\item bit 7 = F8 CPU Speed Hotkey Enable (1 on reset)
+\item bit 6 = DMA mode (0 = zxnDMA, 1 = Z80DMA) (0 on hard reset)
+\item bit 5 = F3 50Hz/60Hz Hotkey Enable (1 on reset)
+\item bit 4 = divMMC Automap/NMI Enable (0 on hard reset)
+\item bit 3 = NMI Button Enable (0 on hard reset)
+\item bit 2 = PS/2 Mode (0 = keyboard, 1 = mouse)
+\item bits 1-0 = PSG Mode (00 = YM, 01 = AY, 11 = hold all PSGs in Reset)
 \end{itemize}
 
-(R/W) \$09 (09) $\Rightarrow$ Peripheral 4 setting:
+\register{R/W}{07}{Turbo mode}\\
+Read
 \begin{itemize}
-\item[] bit 7 = Mono setting for AY 2 (1 = mono, 0 default)
-\item[] bit 6 = Mono setting for AY 1 (1 = mono, 0 default)
-\item[] bit 5 = Mono setting for AY 0 (1 = mono, 0 default)
-\item[] bit 4 = Sprite id lockstep (1 = Nextreg \$34 and IO Port
-  \$303B are in lockstep, 0 default)
-\item[] bit 3 = Disables Kempston port (\$DF) if set
-\item[] bit 2 = Disables divMMC ports (\$E3, \$E7, \$EB) if set
-\item[] bits 1-0 = scanlines (0 after a PoR or Hard-reset)
+\item bits 7-6 = Reserved
+\item bits 5-4 = Current Actual CPU Speed
+\item bits 3-2 = Reserved
+\item bits 1-0 = Current Selected CPU Speed (00 on reset)
+\end{itemize}
+Write
+\begin{itemize}
+\item bits 7-2 = Reserved, must be 0
+\item bits 1-0 = Select CPU Speed
+\end{itemize}
+CPU Speeds
+\begin{itemize}
+\item 00 = 3.5MHz
+\item 01 = 7MHz
+\item 10 = 14MHz
+\item 11 = 28MHz
+\end{itemize}
+
+\register{R/W}{08}{Peripheral 3 Settings}
+\begin{itemize}
+\item bit 7 = 128K Banking Unlock (inverse of port \$7FFD, bit 5) (0
+  on reset)
+\item bit 6 = Disable RAM and Port Contention (0 on reset)
+\item bit 5 = PSG Stereo Mode Control (0 = ABC, 1 = ACB) (0 on hard
+  reset)
+\item bit 4 = Enable internal speaker (1 on hard reset)
+\item bit 3 = Enable DACs (0 on hard reset)
+\item bit 2 = Enable read of port \$FF (Timex) (0 on hard reset)
+\item bit 1 = Enable Multiple PSGs (0 on hard reset)
+\item bit 0 = Enable Issue 2 Keyboard
+\end{itemize}
+
+\register{R/W}{09}{Peripheral 4 setting:}
+\begin{itemize}
+\item bit 7 = PSG 2 Mono Enable (0 on hard reset)
+\item bit 6 = PSG 1 Mono Enable (0 on hard reset)
+\item bit 5 = PSG 0 Mono Enable (0 on hard reset)
+\item bit 4 = Sprite ID lockstep enable (1 = Nextreg \$34 and IO Port
+  \$303B are in lockstep, 0 on reset)
+\item bit 3 = divMMC mapRAM bit Control (reset bit 7 of port \$E3)
+\item bit 2 = HDMI audio mute (0 on hard reset)
+\item bits 1-0 = scanlines
   \begin{itemize}
-  \item[] 00 = scanlines off
-  \item[] 01 = scanlines 75\%
-  \item[] 10 = scanlines 50\%
-  \item[] 11 = scanlines 25\%
+  \item 00 = scanlines off
+  \item 01 = scanlines 75\%
+  \item 10 = scanlines 50\%
+  \item 11 = scanlines 25\%
   \end{itemize}
+\item[] In Sprite lockstep, NextREG \$34 and Port \$303B are in
+  lockstep
 \end{itemize}
 
-(R) \$0E (14) $\Rightarrow$ Core Version (sub minor number)\\
-(see register \$01 for the major and minor version number)
-
-(R) \$10 (16) $\Rightarrow$ Anti-brick system
+\register{R}{0E}{Core Version (sub minor number)}
 \begin{itemize}
-\item[] bits 7-2 = Reserved, must be 0
-\item[] bit 1 = Button DivMMC (1 = pressed)
-\item[] bit 0 = Button Multiface (1 = pressed)
+\item bits 7-0 = Core sub minor version number
+\item[] (see register \$01 for the major and minor version number)
 \end{itemize}
 
-(W) \$10 (16) $\Rightarrow$ Core Boot
+\register{R/W}{10}{Core Boot}\\
+Read
 \begin{itemize}
-\item[] bit 7 = Start selected core (1 = start)
-\item[] bits 6-5 = Reserved, must be 0
-\item[] bits 4-0 = Core ID 0-31 (writable in config mode only, default is 2)
+\item bits 7-2 = Reserved
+\item bit 1 = Drive button pressed
+\item bit 0 = NMI button pressed
+\end{itemize}
+Write
+\begin{itemize}
+\item bit 7 = Reboot FPGA using selected core (0 on reset)
+\item bits 6-5 = Reserved, must be 0
+\item bits 4-0 = Core ID
+\item[] Core ID with bits 4-0 can only be set in configuration mode
 \end{itemize}
 
-(R/W) \$11 (17) $\Rightarrow$ Video Timing (writable in config mode only)
+\register{R/W}{11}{Video Timing (writable in config mode only)}
 \begin{itemize}
-\item[] bits 7-3 = Reserved, must be 0
-\item[] bits 2-0 = Mode (VGA = 0..6, HDMI = 7)
+\item bits 7-3 = Reserved, must be 0
+\item bits 2-0 = Mode (VGA = 0..6, HDMI = 7)
   \begin{itemize}
-  \item[] 000 = Base VGA timing, clk28 = 28000000
-  \item[] 001 = VGA setting 1, clk28 = 28571429
-  \item[] 010 = VGA setting 2, clk28 = 29464286
-  \item[] 011 = VGA setting 3, clk28 = 30000000
-  \item[] 100 = VGA setting 4, clk28 = 31000000
-  \item[] 101 = VGA setting 5, clk28 = 32000000
-  \item[] 110 = VGA setting 6, clk28 = 33000000
-  \item[] 111 = HDMI, clk28 = 27000000
+  \item 000 = Base VGA timing, clk28 = 28000000
+  \item 001 = VGA setting 1, clk28 = 28571429
+  \item 010 = VGA setting 2, clk28 = 29464286
+  \item 011 = VGA setting 3, clk28 = 30000000
+  \item 100 = VGA setting 4, clk28 = 31000000
+  \item 101 = VGA setting 5, clk28 = 32000000
+  \item 110 = VGA setting 6, clk28 = 33000000
+  \item 111 = HDMI, clk28 = 27000000
   \end{itemize}
+\item[] 50/60Hz selection depends on bit 2 of register \$05
+\item[] Only writable in config mode
 \end{itemize}
-50/60Hz selection depends on bit 2 of register \$05
 
-(R/W) \$12 (18) $\Rightarrow$ Layer 2 RAM bank
+\register{R/W}{12}{Layer 2 Active RAM bank}
 \begin{itemize}
-\item[] bits 7-6 = Reserved, must be 0
-\item[] bits 5-0 = RAM bank (point to bank 8 after a Reset, NextZXOS
+\item bits 7-6 = Reserved, must be 0
+\item bits 5-0 = RAM bank (point to bank 8 after a Reset, NextZXOS
   modifies to 9)
 \end{itemize}
 
-(R/W) \$13 (19) $\Rightarrow$ Layer 2 RAM shadow bank
+\register{R/W}{13}{Layer 2 Shadow RAM bank}
 \begin{itemize}
-\item[] bits 7-6 = Reserved, must be 0
-\item[] bits 5-0 = RAM bank (point to bank 11 after a Reset, NextZXOS
+\item bits 7-6 = Reserved, must be 0
+\item bits 5-0 = RAM bank (point to bank 11 after a Reset, NextZXOS
   modifies to 12)
 \end{itemize}
 
-(R/W) \$14 (20) $\Rightarrow$ Global transparency color
+\register{R/W}{14}{Global transparency color}
 \begin{itemize}
-\item[] bits 7-0 = Transparency color value (\$E3 after a reset)
+\item bits 7-0 = Transparency color value (\$E3 after a reset)
 \end{itemize}
 (Note: this value is 8-bit, so the transparency is compared against
 only by the MSB bits of the final 9-bit colour)\\
 (Note2: this only affects Layer 2, ULA and LoRes. Sprites use register
 \$4B for transparency and tilemap uses nextreg \$4C)
 
-(R/W) \$15 (21) $\Rightarrow$ Sprite and Layers system
+\register{R/W}{15}{Sprite and Layer System Setup}
 \begin{itemize}
-\item[] bit 7 = LoRes mode, 128 x 96 x 256 colours (1 = enabled)
-\item[] bit 6 = Sprite priority (1 = sprite 0 on top, 0 = sprite 127 on top)
-\item[] bit 5 = Enable sprite clipping in over border mode (1 = enabled)
-\item[] bits 4-2 = set layers priorities:\\
-  Reset default is 000, sprites over the Layer 2, over the ULA graphics
+\item bit 7 = LoRes mode (0 on reset)
+\item bit 6 = Sprite priority (1 = sprite 0 on top, 0 = sprite 127 on
+  top) (0 on reset)
+\item bit 5 = Enable sprite clipping in over border mode (0 on reset)
+\item bits 4-2 = set layers priorities (000 on reset)
   \begin{itemize}
-  \item[] 000 - S L U
-  \item[] 001 - L S U
-  \item[] 010 - S U L
-  \item[] 011 - L U S
-  \item[] 100 - U S L
-  \item[] 101 - U L S
-  \item[] 110 - S(U+L) ULA and Layer 2 combined, colours clamped to 7
-  \item[] 111 - S(U+L-5) ULA and Layer 2 combined, colours clamped to [0,7]
+  \item 000 - S L U
+  \item 001 - L S U
+  \item 010 - S U L
+  \item 011 - L U S
+  \item 100 - U S L
+  \item 101 - U L S
+  \item 110 - S(U+L) ULA and Layer 2 combined, colours clamped to 7
+  \item 111 - S(U+L-5) ULA and Layer 2 combined, colours clamped to [0,7]
   \end{itemize}
-\item[] bit 1 = Over border (1 = yes)(Back to 0 after a reset)
-\item[] bit 0 = Sprites visible (1 = visible)(Back to 0 after a reset)
+\item bit 1 = Enable Sprites Over border (0 on reset)
+\item bit 0 = Enable Sprites (0 on reset)
 \end{itemize}
 
-(R/W) \$16 (22) $\Rightarrow$ Layer2 Offset X
+\register{R/W}{16}{Layer 2 Horizontal Scroll Control}
 \begin{itemize}
-\item[] bits 7-0 = X Offset (0-255)(0 after a reset)
+\item bits 7-0 = X Offset (0-255)(0 on reset)
 \end{itemize}
 
-(R/W) \$17 (23) $\Rightarrow$ Layer2 Offset Y
+\register{R/W}{17}{Layer 2 Vertical Scroll Control}
 \begin{itemize}
-\item[] bits 7-0 = Y Offset (0-191)(0 after a reset)
+\item bits 7-0 = Y Offset (0-191)(0 on reset)
 \end{itemize}
 
-(R/W) \$18 (24) $\Rightarrow$ Clip Window Layer 2
+\register{R/W}{18}{Layer 2 Clip Window Definition}
 \begin{itemize}
-\item[] bits 7-0 = Coords of the clip window
+\item bits 7-0 = Coords of the clip window
   \begin{itemize}
   \item[] 1st write - X1 position
   \item[] 2nd write - X2 position
@@ -252,9 +275,9 @@ only by the MSB bits of the final 9-bit colour)\\
 Reads do not advance the clip position\\
 The values are 0,255,0,191 after a Reset
 
-(R/W) \$19 (25) $\Rightarrow$ Clip Window Sprites
+\register{R/W}{19}{Sprite Clip Window Definition}
 \begin{itemize}
-\item[] bits 7-0 = Cood. of the clip window
+\item bits 7-0 = Cood. of the clip window
   \begin{itemize}
   \item[] 1st write - X1 position
   \item[] 2nd write - X2 position
@@ -269,9 +292,9 @@ When the clip window is enabled for sprites in "over border" mode, the
 X coords are internally doubled and the clip window origin is moved to
 the sprite origin inside the border.
 
-(R/W) \$1A (26) $\Rightarrow$ Clip Window ULA/LoRes
+\register{R/W}{1A}{Layer 0 (ULA/LoRes) Clip Window Definition}
 \begin{itemize}
-\item[] bits 7-0 = Coord. of the clip window
+\item bits 7-0 = Coord. of the clip window
   \begin{itemize}
   \item[] 1st write = X1 position
   \item[] 2nd write = X2 position
@@ -282,9 +305,9 @@ the sprite origin inside the border.
 The values are 0,255,0,191 after a Reset\\
 Reads do not advance the clip position
 
-(R/W) \$1B (27) $\Rightarrow$ Clip Window Tilemap
+\register{R/W}{1B}{Layer 3 (Tilemap) Clip Window Definition}
 \begin{itemize}
-\item[] bits 7-0 = Coord. of the clip window
+\item bits 7-0 = Coord. of the clip window
   \begin{itemize}
   \item[] 1st write = X1 position
   \item[] 2nd write = X2 position
@@ -296,216 +319,257 @@ The values are 0,159,0,255 after a Reset\\
 Reads do not advance the clip position\\
 The X coords are internally doubled.
 
-(W) \$1C (28) $\Rightarrow$ Clip Window control
+\register{R/W}{1C}{Clip Window Control}\\
+Read
 \begin{itemize}
-\item[] bits 7-4 = Reserved, must be 0
-\item[] bit 3 - reset the tilemap clip index
-\item[] bit 2 - reset the ULA/LoRes clip index.
-\item[] bit 1 - reset the sprite clip index.
-\item[] bit 0 - reset the Layer 2 clip index.
+\item bits 7-6 = Layer 3 Clip Index
+\item bits 5-4 = Layer 0/1 Clip Index
+\item bits 3-2 = Sprite clip index
+\item bits 1-0 = Layer 2 Clip Index
+\end{itemize}
+Write
+\begin{itemize}
+\item bits 7-4 = Reserved, must be 0
+\item bit 3 - reset Layer 3 clip index
+\item bit 2 - reset Layer 0/1 clip index
+\item bit 1 - reset sprite clip index.
+\item bit 0 - reset Layer 2 clip index.
 \end{itemize}
 
-(R) \$1C (28) $\Rightarrow$ Clip Window control\\
-(may change)
+\register{R}{1E}{Active video line (MSB)}
 \begin{itemize}
-\item[] bits 7-6 = Tilemap clip index
-\item[] bits 5-4 = Layer 2 clip index
-\item[] bits 3-2 = Sprite clip index
-\item[] bits 1-0 = ULA clip index
+\item bits 7-1 = Reserved
+\item bit 0 = Active line MSB
 \end{itemize}
 
-(R) \$1E (30) $\Rightarrow$ Active video line (MSB)
+\register{R}{1F}{Active video line (LSB)}
 \begin{itemize}
-\item[] bits 7-1 = Reserved, always 0
-\item[] bit 0 = Active line MSB (Reset to 0 after a reset)
+\item bits 7-0 = Active line LSB (0-255)
 \end{itemize}
 
-(R) \$1F (31) = Active video line (LSB)
+\register{R/W}{22}{Line Interrupt control}
 \begin{itemize}
-\item[] bits 7-0 = Active line LSB (0-255)(Reset to 0 after a reset)
+\item bit 7 = (R) ULA asserting interrupt
+\item bit 7 = (W) Reserved, must be 0
+\item bits 6-3 = Reserved, must be 0
+\item bit 2 = Disable ULA Interrupt (0 on reset)
+\item bit 1 = Enable Line Interrupt (0 on reset)
+\item bit 0 = MSB of Line Interrupt line value (0 on reset)
 \end{itemize}
 
-(R/W) \$22 (34) $\Rightarrow$ Line Interrupt control
+\register{R/W}{23}{Line Interrupt value LSB}
 \begin{itemize}
-\item[] bit 7 = (R) INT flag, 1=During INT\\
-  (even if the processor has interrupt disabled)
-\item[] bits 6-3 = Reserved, must be 0
-\item[] bit 2 = If 1 disables original ULA interrupt (Reset to 0 after a reset)
-\item[] bit 1 = If 1 enables Line Interrupt (Reset to 0 after a reset)
-\item[] bit 0 = MSB of Line Interrupt line value (Reset to 0 after a reset)
+\item bits 7-0 = Line Interrupt line value LSB (0-255)(0 on reset)
 \end{itemize}
 
-(R/W) \$23 (35) $\Rightarrow$ Line Interrupt value LSB
+\register{R/W}{26}{ULA Horizontal Scroll Control}
 \begin{itemize}
-\item[] bits 7-0 = Line Interrupt line value LSB (0-255)(Reset to 0
-  after a reset)
+\item bits 7-0 = ULA X Offset (0-255) (0 on reset)
 \end{itemize}
 
-(W) \$28 (40) $\Rightarrow$ High address of Keymap
+\register{R/W}{27}{ULA Vertical Scroll Control}
 \begin{itemize}
-\item[] bits 7-1 = Reserved, must be 0
-\item[] bit 0 = MSB address
+\item bits 7-0 = ULA Y Offset (0-191) (0 on reset)
 \end{itemize}
 
-(W) \$29 (41) $\Rightarrow$ Low address of Keymap
+\register{R/W}{28}{Stored Palette Value and PS/2 Keymap Address MSB}\\
+Read
 \begin{itemize}
-\item[] bits 7-0 = LSB adress
+\item bits 7-0 = Stored palette value (see NextREG \$44)
+\end{itemize}
+Write  
+\begin{itemize}
+\item bits 7-1 = Reserved, must be 0
+\item bit 0 = PS/2 Keymap Address MSB
 \end{itemize}
 
-(W) \$2A (42) $\Rightarrow$ High data to Keymap
+\register{W}{29}{PS/2 Keymap Address LSB}
 \begin{itemize}
-\item[] bits 7-1 = Reserved, must be 0
-\item[] bit 0 = MSB data
+\item bits 7-0 = PS/2 Keymap Address LSB
 \end{itemize}
 
-(W) \$2B (43) $\Rightarrow$ Low data to Keymap\\
-(writing this register the address is auto-incremented)
+\register{W}{2A}{PS/2 Keymap Data MSB}
 \begin{itemize}
-\item[] bits 7-0 = LSB data
+\item bits 7-1 = Reserved, must be 0
+\item bit 0 = PS/2 Keymap Data MSB
 \end{itemize}
 
-(W) \$2D (45) $\Rightarrow$ SpecDrum port \$DF / DAC A+C mirror
+\register{W}{2B}{PS/2 Keymap Data LSB}
 \begin{itemize}
-\item[] bits 7-0 = Data to be written to mono DAC
+\item bits 7-0 = PS/2 Keymap Data LSB
 \end{itemize}
-(this port can be used to generate mono audio using the copper)
+(writing this register auto-increments the address)
 
-(R/W) \$2F (47) $\Rightarrow$ Tilemap Offset X MSB
+\register{R/W}{2C}{DAC B Mirror (Left)/\iis Left Sample MSB}\\
+Read
 \begin{itemize}
-\item[] bits 7-2 = Reserved, must be 0
-\item[] bits 1-0 = MSB X Offset
+\item bits 7-0 = \iis Left Sample MSB
+\end{itemize}
+Write
+\begin{itemize}
+\item bits 7-0 = 8-bit sample left DAC (\$80 on reset)
+\end{itemize}
+
+\register{R/W}{2D}{DAC A+D Mirror (mono/\iis Sample LSB}\\
+Read
+\begin{itemize}
+\item bits 7-0 = \iis Last Sample LSB
+\end{itemize}
+Write
+\begin{itemize}
+\item bits 7-0 = 8-bit sample DACs A + D (\$80 on reset)
+\end{itemize}
+
+\register{R/W}{2E}{DAC C Mirror (Right/\iis Risht Sample MSB}\\
+Read
+\begin{itemize}
+\item bits 7-0 = \iis Right Sameple MSB
+\end{itemize}
+Write
+\begin{itemize}
+\item bits 7-0 = 8-bit sample Right DACs C (\$80 on reset)
+\end{itemize}
+
+\register{R/W}{2F}{Layer 3 (Tilemap) Horizontal Scroll Control MSB}
+\begin{itemize}
+\item bits 7-2 = Reserved, must be 0
+\item bits 1-0 = X Offset MSB (\$00 on reset)
 \end{itemize}
 Meaningful Range is 0-319 in 40 char mode, 0-639 in 80 char mode
 
-(R/W) \$30 (48) $\Rightarrow$ Tilemap Offset X LSB
+\register{R/W}{30}{Layer 3 (Tilemap) Horizontal Scroll Control LSB}
 \begin{itemize}
-\item[] bits 7-0 = LSB X Offset
+\item bits 7-0 = X Offset LSB (\$00 on reset)
 \end{itemize}
 Meaningful range is 0-319 in 40 char mode, 0-639 in 80 char mode
 
-(R/W) \$31 (49) $\Rightarrow$ Tilemap Offset Y
+\register{R/W}{31}{Layer 3 (Tilemap) Vertical Scroll Control}
 \begin{itemize}
-\item[] bits 7-0 = Y Offset (0-255)
+\item bits 7-0 = Y Offset (0-255) )\$00 on reset)
 \end{itemize}
 
-(R/W) \$32 (50) $\Rightarrow$ ULA / LoRes Offset X
+\register{R/W}{32}{Layer 1,0 (LoRes) Horizontal Scroll Control)}
 \begin{itemize}
-\item[] bits 7-0 = X Offset (0-255)(Reset to 0 after a reset)
+\item bits 7-0 = X Offset (0-255) (\$00 on reset)
 \end{itemize}
-ULA can only scroll in multiples of 8 pixels so the lowest 3 bits have
-no effect at this time.\\
-v3.00 system allows single pixel scrolling\\
-LoRes scrolls in "half-pixels" at the same resolution and smoothness
-as Layer 2.
+Layer 1,0 (LoRes) scrolls in "half-pixels" at the same resolution and
+smoothness as Layer 2.
 
-(R/W) \$33 (51) $\Rightarrow$ ULA / LoRes Offset Y
+\register{R/W}{33}{Layer 1,0 (LoRes) Vertical Scroll Control)}
 \begin{itemize}
-\item[] bits 7-0 = Y Offset (0-191)(Reset to 0 after a reset)
+\item bits 7-0 = Y Offset (0-191) (\$00 on reset)
 \end{itemize}
-LoRes scrolls in "half-pixels" at the same resolution and smoothness
-as Layer 2.
+Layer 1,0 (LoRes) scrolls in "half-pixels" at the same resolution and
+smoothness as Layer 2.
 
-(R/W) \$34 (52) $\Rightarrow$ Sprite Number
-
-If the sprite number is in lockstep with io port \$303B (nextreg \$09
-bit 4 is set)
+\register{R/W}{34}{Sprite Number}\\
+Lockstep (NextReg \$09 bit 4 set)
 \begin{itemize}
-\item[] bits 7 = Pattern address offset (Add 128 to pattern address)
-\item[] bits 6-0 = Sprite number 0-127, Pattern number 0-63
+\item bit 7 = Pattern address offset (Add 128 to pattern address)
+\item bits 6-0 = Sprite number 0-127, Pattern number 0-63
+\item[] effectively performs an out to port \$303B
 \end{itemize}
-Selects which sprite has its attributes connected to the following
-registers.  Effectively performs an out to port \$303B with the same
-value\\
-Otherwise
+No Lockstep (NextReg \$09 bit 4 clear)
 \begin{itemize}
-\item[] bit 7 = Ignored
-\item[] bits 6-0 = Sprite number 0-127\\
-  Selects which sprite has its attributes connected to the following registers.
-\item[] Bit 7 always reads back as zero.
+\item bit 7 = Reserved, must be 0
+\item bits 6-0 = Sprite number 0-127
+\end{itemize}
+This register selects which sprite has its attributes connected to the
+sprite attribute registers
+
+\register{W}{35}{Sprite Attribute 0}
+\begin{itemize}
+\item bits 7-0 = Sprite X coordinate LSB (MSB in NextReg \$37)
 \end{itemize}
 
-(W) \$35 (53) $\Rightarrow$ Sprite Attribute 0\\
-(W) \$75 (117) $\Rightarrow$ Sprite Attribute 0 with automatic post
-increment of Sprite Number
+\register{W}{36}{Sprite Attribute 1}
 \begin{itemize}
-\item[] bits 7-0 = LSB of X coordinate
+\item bits 7-0 = Sprite Y coordinate LSB (MSB in NextReg \$39)
 \end{itemize}
 
-(W) \$36 (54) $\Rightarrow$ Sprite Attribute 1\\
-(W) \$76 (118) $\Rightarrow$ Sprite Attribute 1 with automatic post
-increment of Sprite Number
+\register{W}{37}{Sprite Attribute 2}
 \begin{itemize}
-\item[] bits 7-0 = LSB of Y coordinate
+\item bits 7-4 = 4-bit Palette offset
+\item bit 3 = Enable horizontal mirror (reverse)
+\item bit 2 = Enable vertical mirror (reverse)
+\item bit 1 = Enable 90$^O$  Clockwise Rotation
+\end{itemize}
+Normal Sprites
+\begin{itemize}
+\item bit 0 = X coordinate MSB
+\end{itemize}
+Relative Sprites
+\begin{itemize}
+\item bit 0 = Palette offset is relative to anchor sprite
+\end{itemize}
+Rotation is applied before mirroring
+
+\register{W}{38}{Sprite Attribute 3}
+\begin{itemize}
+\item bit 7 = Enable Visiblity
+\item bit 6 = Enable Attribute 4 (0 = Attribute 4 effectively \$00)
+\item bits 5-0 = Sprite Pattern Number
 \end{itemize}
 
-(W) \$37 (55) $\Rightarrow$ Sprite Attribute 2\\
-(W) \$77 (119) $\Rightarrow$ Sprite Attribute 2 with automatic post
-increment of Sprite Number
+\register{W}{39}{Sprite Attribute 4}\\
+Normal Sprites
 \begin{itemize}
-\item[] bits 7-4 = Palette offset added to top 4 bits of sprite colour index
-\item[] bit 3 = X mirror
-\item[] bit 2 = Y mirror
-\item[] bit 1 = Rotate
-\item[] bit 0 = MSB of X coordinate (palette offset indicator for
-  relative sprites)
+\item bit 7 = 4-bit pattern switch (0 = 8-bit sprite, 1 = 4-bit sprite)
+\item bit 6 = Pattern number bit-7 for 4-bit, 0 for 8-bit
+\item bit 5 = Type of attached relative sprites (0 = Composite, 1 =
+  Unified)
+\item bits 4-3 = X scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+\item bits 2-1 = Y scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+\item bit 0 = MSB of Y coordinate
+\end{itemize}
+Relative, Composite Sprites
+\begin{itemize}
+\item bit 7-6 = 01
+\item bit 5 = Pattern number bit-7 for 4-bit, 0 for 8-bit
+\item bits 4-3 = X scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+\item bits 2-1 = Y scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+\item bit 0 = Pattern number is relative to anchor
+\end{itemize}
+Relative, Unified Sprites
+\begin{itemize}
+\item bit 7-6 = 01
+\item bit 5 = Pattern number bit-7 for 4-bit, 0 for 8-bit
+\item bits 4-1 = 0000
+\item bit 0 = Pattern number is relative to anchor
 \end{itemize}
 
-(W) \$38 (56) $\Rightarrow$ Sprite Attribute 3\\
-(W) \$78 (120) $\Rightarrow$ Sprite Attribute 3 with automatic post
-increment of Sprite Number
+\register{R/W}{40}{Palette Index Select}
 \begin{itemize}
-\item[] bit 7 = Visible flag (1 = displayed)
-\item[] bit 6 = Extended attribute (1 = Sprite Attribute 4 is active)
-\item[] bits 5-0 = Pattern used by sprite (0-63)
+\item bits 7-0 = Palette Index Number
 \end{itemize}
+Selects the palette index to change the associated colour
 
-(W) \$39 (57) $\Rightarrow$ Sprite Attribute 4\\
-(W) \$79 (121) $\Rightarrow$ Sprite Attribute 4 with automatic post
-increment of Sprite Number\\
-4-bit Sprites
-\begin{itemize}
-\item[] bit 7 = H (1 = sprite uses 4-bit patterns)
-\item[] bit 6 = N6 (0 = use the first 128 bytes of the pattern else
-  use the last 128 bytes)
-\item[] bit 5 = 1 if relative sprites are composite, 0 if relative
-  sprites are unified Scaling
-\item[] bits 4-3 = X scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
-\item[] bits 2-1 = Y scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
-\item[] bit 0 = MSB of Y coordinate
-\end{itemize}
-A relative mode is enabled if H,N6 = 01 that changes this byte
-format. Documentation for sprites can be found at specnext.com.\\
-If this attribute is not active, the sprite behaves as if this byte is
-zero.
+For ULA only, INKs are mapped to indices 0 through 7, BRIGHT INKs to
+indices 8 through 15, PAPERs to indices 16 through 23 and BRIGHT
+PAPERs to indices 24 through 31.  In EnhancedULA mode, INKs come from
+a subset of indices from 0 through 127 and PAPERs from a subset of
+indices from 128 through 255.
 
-(R/W) \$40 (64) $\Rightarrow$ Palette Index
-\begin{itemize}
-\item[] bits 7-0 = Select the palette index to change the associated colour.
-\end{itemize}
-For the ULA only, INKs are mapped to indices 0-7, Bright INKS to
-indices 8-15, PAPERs to indices 16-23 and Bright PAPERs to indices
-24-31.\\
-In ULANext mode, INKs come from a subset of indices 0-127 and PAPERs
-come from a subset of indices 128-255. The number of active indices
-depends on the number of attribute bits assigned to INK and PAPER out
-of the attribute byte.  The ULA always takes border colour from paper.
+The number of active indices depends on the number of attribute bits
+assigned to INK and PAPER out of the attribute byte.
 
-(R/W) \$41 (65) $\Rightarrow$ Palette Value (8 bit colour)
-\begin{itemize}
-\item[] bits 7-0 = Colour for the palette index selected by the register \$40.
-\end{itemize}
-(Format is RRRGGGBB - the lower blue bit of the 9-bit colour will be a
-logical OR of blue bits 1 and 0 of this 8-bit value.)\\
-After the write, the palette index is auto-incremented to the next
-index if the auto-increment is enabled at reg \$43. Reads do not
-auto-increment.
+In ULAplus mode, the last 64 entries (indices 192 to 255) hold the
+ULAplus palette.  The ULA always takes border colour from PAPER for
+standard ULA and Enhanced ULA
 
-(R/W) \$42 (66) $\Rightarrow$ ULANext Attribute Byte Format
+\register{R/W}{41}{8-bit Palette Data}
 \begin{itemize}
-\item[] bits 7-0 = Mask indicating which bits of an attribute byte are
-  used to represent INK. The rest will represent PAPER.
+\item bits 7-0 = Colour Entry in RRRGGGBB format
 \end{itemize}
-(15 on reset)\\
+The lower blue bit of the 9-bit internal colour will be the logical or
+of bits 0 and 1 of the 8-bit entry. After each write, the palette
+index auto-increments if aut-increment has been enabled (NextReg \$43
+bit 7), Reads do not auto-increment.
+
+\register{R/W}{42}{ULANext Attribute Byte Format}
+\begin{itemize}
+\item bits 7-0 = Attribute byte's INK representation mask (7 on reset)
+\end{itemize}
 The mask can only indicate a solid sequence of bits on the right side
 of the attribute byte (1, 3, 7, 15, 31, 63, 127 or 255).\\
 INKs are mapped to base index 0 in the palette and PAPERs and border
@@ -514,126 +578,126 @@ The 255 value enables the full ink colour mode making all the palette
 entries INK. PAPER and border both take on the fallback colour
 (nextreg \$4A) in this mode.
 
-(R/W) \$43 (67) $\Rightarrow$ Palette Control
+\register{R/W}{43}{Palette Control}
 \begin{itemize}
-\item[] bit 7 = '1' to disable palette write auto-increment.
-\item[] bits 6-4 = Select palette for reading or writing:
+\item bit 7 = '1' to disable palette write auto-increment.
+\item bits 6-4 = Select palette for reading or writing:
   \begin{itemize}
-  \item[] 000 = ULA first palette
-  \item[] 100 = ULA second palette
-  \item[] 001 = Layer 2 first palette
-  \item[] 101 = Layer 2 second palette
-  \item[] 010 = Sprites first palette
-  \item[] 110 = Sprites second palette
-  \item[] 011 = Tilemap first palette
-  \item[] 111 = Tilemap second palette
+  \item 000 = ULA first palette
+  \item 100 = ULA second palette
+  \item 001 = Layer 2 first palette
+  \item 101 = Layer 2 second palette
+  \item 010 = Sprites first palette
+  \item 110 = Sprites second palette
+  \item 011 = Tilemap first palette
+  \item 111 = Tilemap second palette
   \end{itemize}
-\item[] bit 3 = Select Sprites palette (0 = first palette, 1 = second palette)
-\item[] bit 2 = Select Layer 2 palette (0 = first palette, 1 = second palette)
-\item[] bit 1 = Select ULA palette (0 = first palette, 1 = second palette)
-\item[] bit 0 = Enabe ULANext mode if 1. (0 after a reset)
+\item bit 3 = Select Sprites palette (0 = first palette, 1 = second palette)
+\item bit 2 = Select Layer 2 palette (0 = first palette, 1 = second palette)
+\item bit 1 = Select ULA palette (0 = first palette, 1 = second palette)
+\item bit 0 = Enabe ULANext mode if 1. (0 after a reset)
 \end{itemize}
 
-(R/W) \$44 (68) $\Rightarrow$ Palette Value (9 bit colour)\\
+\register{R/W}{44}{Palette Value (9 bit colour)}\\
 Two consecutive writes are needed to write the 9 bit colour
 \begin{itemize}
-\item[] 1st write:
+\item 1st write:
   \begin{itemize}
-  \item[] bits 7-0 = RRRGGGBB
+  \item bits 7-0 = RRRGGGBB
   \end{itemize}
 \item[] 2nd write.
   If writing a L2 palette\\
   \begin{itemize}
-  \item[] bit 7 = 1 for L2 priority colour, 0 for normal\\
+  \item bit 7 = 1 for L2 priority colour, 0 for normal\\
     Priority colour will always be on top even on an SLU priority
     arrangement. If you need the exact same colour on priority and non
     priority locations you will need to program the same colour twice
     changing bit 7 to 0 for the second colour
-  \item[] bits 6-1 = Reserved, must be 0
-  \item[] bit 0 = lsb B
+  \item bits 6-1 = Reserved, must be 0
+  \item bit 0 = lsb B
   \end{itemize}
   If writing another palette
   \begin{itemize}
-  \item[] bits 7-1 = Reserved, must be 0
-  \item[] bit 0 = lsb B
+  \item bits 7-1 = Reserved, must be 0
+  \item bit 0 = lsb B
   \end{itemize}
 \end{itemize}
 After the two consecutives writes the palette index is
 auto-incremented if the auto-increment is enabled by reg \$43.\\
 Reads only return the 2nd byte and do not auto-increment.
 
-(R/W) \$4A (74) $\Rightarrow$ Transparency colour fallback
+\register{R/W}{4A}{Transparency colour fallback}
 \begin{itemize}
-\item[] bits 7-0 = Set the 8 bit colour used if all layers are transparent.
+\item bits 7-0 = Set the 8 bit colour used if all layers are transparent.
 \end{itemize}
 (black on reset = 0)
 
-(R/W) \$4B (75) $\Rightarrow$ Transparency index for sprites
+\register{R/W}{4B}{Transparency index for sprites}
 \begin{itemize}
-\item[] bits 7-0 = Set the index value (\$E3 after reset)
+\item bits 7-0 = Set the index value (\$E3 after reset)
 \end{itemize}
 For 4-bit sprites only the bottom 4-bits are relevant.
 
-(R/W) \$4C (76) $\Rightarrow$ Transparency index for the tilemap
+\register{R/W}{4C}{Transparency index for the tilemap}
 \begin{itemize}
-\item[] bits 7-4 = Reserved, must be 0
-\item[] bits 3-0 = Set the index value (\$F after reset)
+\item bits 7-4 = Reserved, must be 0
+\item bits 3-0 = Set the index value (\$F after reset)
 \end{itemize}
 
-(R/W) \$50 (80) $\Rightarrow$ MMU slot 0
+\register{R/W}{50}{MMU slot 0}
 \begin{itemize}
-\item[] bits 7-0 = Set a Spectrum RAM page at position \$0000 to \$1fff
+\item bits 7-0 = Set a Spectrum RAM page at position \$0000 to \$1fff
 \end{itemize}
 (255 after a reset)\\
 Pages can be from 0 to 223 on a fully expanded Next.\\
 A 255 value causes the ROM to become visible.
 
-(R/W) \$51 (81) $\Rightarrow$ MMU slot 1
+\register{R/W}{51}{MMU slot 1}
 \begin{itemize}
-\item[] bits 7-0 = Set a Spectrum RAM page at position \$2000 to \$3fff
+\item bits 7-0 = Set a Spectrum RAM page at position \$2000 to \$3fff
 \end{itemize}
 (255 after a reset)\\
 Pages can be from 0 to 223 on a full expanded Next.\\
 A 255 value causes the ROM to become visible.
 
-(R/W) \$52 (82) $\Rightarrow$ MMU slot 2
+\register{R/W}{52}{MMU slot 2}
 \begin{itemize}
-\item[] bits 7-0 = Set a Spectrum RAM page at position \$4000 to \$5fff
+\item bits 7-0 = Set a Spectrum RAM page at position \$4000 to \$5fff
 \end{itemize}
 (10 after a reset)\\
 Pages can be from 0 to 223 on a full expanded Next.
 
-(R/W) \$53 (83) $\Rightarrow$ MMU slot 3
+\register{R/W}{53}{MMU slot 3}
 \begin{itemize}
-\item[] bits 7-0 = Set a Spectrum RAM page at position \$6000 to \$7FFF
+\item bits 7-0 = Set a Spectrum RAM page at position \$6000 to \$7FFF
 \end{itemize}
 (Reset to 11 after a reset)\\
 Pages can be from 0 to 223 on a full expanded Next.
 
-(R/W) \$54 (84) $\Rightarrow$ MMU slot 4
+\register{R/W}{54}{MMU slot 4}
 \begin{itemize}
-\item[] bits 7-0 = Set a Spectrum RAM page at position \$8000 to \$9FFF
+\item bits 7-0 = Set a Spectrum RAM page at position \$8000 to \$9FFF
 \end{itemize}
 (4 after a reset)\\
 Pages can be from 0 to 223 on a full expanded Next.
 
-(R/W) \$55 (85) $\Rightarrow$ MMU slot 5
+\register{R/W}{55}{MMU slot 5}
 \begin{itemize}
-\item[] bits 7-0 = Set a Spectrum RAM page at position \$A000 to \$BFFF
+\item bits 7-0 = Set a Spectrum RAM page at position \$A000 to \$BFFF
 \end{itemize}
 (Reset to 5 after a reset)\\
 Pages can be from 0 to 223 on a full expanded Next.
 
-(R/W) \$56 (86) $\Rightarrow$ MMU slot 6
+\register{R/W}{56}{MMU slot 6}
 \begin{itemize}
-\item[] bits 7-0 = Set a Spectrum RAM page at position \$C000 to \$DFFF
+\item bits 7-0 = Set a Spectrum RAM page at position \$C000 to \$DFFF
 \end{itemize}
 (0 after a reset)\\
 Pages can be from 0 to 223 on a full expanded Next.
 
-(R/W) \$57 (87) $\Rightarrow$ MMU slot 7
+\register{R/W}{57}{MMU slot 7}
 \begin{itemize}
-\item[] bits 7-0 = Set a Spectrum RAM page at position \$E000 to \$FFFF
+\item bits 7-0 = Set a Spectrum RAM page at position \$E000 to \$FFFF
 \end{itemize}
 (1 after a reset)\\
 Pages can be from 0 to 223 on a full expanded Next.
@@ -643,22 +707,22 @@ and writes appropriate values to MMU6 and MMU7 to map in the selected
 16k bank.\\
 +3 special modes override the MMUs if used.
 
-(W) \$60 (96) $\Rightarrow$ Copper data
+\register{W}{60}{Copper data}
 \begin{itemize}
-\item[] bits 7-0 = Byte to write to copper instruction memory.
+\item bits 7-0 = Byte to write to copper instruction memory.
 \end{itemize}
 Note that each copper instruction is two bytes long.\\
 After a write, the index is auto-incremented to the next memory position.
 
-(W) \$61 (97) $\Rightarrow$ Copper control LO bit
+\register{W}{61}{Copper control LO bit}
 \begin{itemize}
-\item[] bits 7-0 = Copper instruction memory address LSB.
+\item bits 7-0 = Copper instruction memory address LSB.
 \end{itemize}
 (Index is set to 0 after a reset)
 
-(W) \$62 (98) $\Rightarrow$ Copper control HI bit
+\register{W}{62}{Copper control HI bit}
 \begin{itemize}
-\item[] bits 7-6 = Start control
+\item bits 7-6 = Start control
   \begin{itemize}
   \item[] 00 = Copper fully stopped
   \item[] 01 = Copper start, execute the list from index 0, and loop
@@ -668,57 +732,57 @@ After a write, the index is auto-incremented to the next memory position.
   \item[] 11 = Copper start, execute the list from index 0, and
     restart the list when the raster reaches position (0,0)
   \end{itemize}
-\item[] bits 2-0 = Copper instruction memory address MSB
+\item bits 2-0 = Copper instruction memory address MSB
 \end{itemize}
 
-(R/W) \$68 (104) $\Rightarrow$ ULA Control
+\register{R/W}{68}{ULA Control}
 \begin{itemize}
-\item[] bit 7 = 1 to disable ULA output
-\item[] bit 6 = 0 to select the ULA colour for blending in SLU modes 6
+\item bit 7 = 1 to disable ULA output
+\item bit 6 = 0 to select the ULA colour for blending in SLU modes 6
   \& 7\\
   = 1 to select the ULA/tilemap mix for blending in SLU modes 6 \& 7
-\item[] bits 5-1 = Reserved must be 0
-\item[] bit 0 = 1 to enable stencil mode when both the ULA and tilemap
+\item bits 5-1 = Reserved must be 0
+\item bit 0 = 1 to enable stencil mode when both the ULA and tilemap
   are enabled
 \end{itemize}
 (if either are transparent the result is transparent otherwise the
 result is a logical AND of both colours)
 
-(R/W) \$6A (106) $\Rightarrow$ LoRes Radistan Control (v3.00)
+\register{R/W}{6A}{LoRes Radistan Control (v3.00)}
 \begin{itemize}
-\item[] bits 7-6 = reserved
-\item[] bit 5 = 1 Enable Radistan (16-colour)
-\item[] bit 4 = Half of LoRes area to use for Radistan, xor with bit 0
+\item bits 7-6 = reserved
+\item bit 5 = 1 Enable Radistan (16-colour)
+\item bit 4 = Half of LoRes area to use for Radistan, xor with bit 0
   of port \$ff
 \item bits 3-0 = Radistsan palette offset
 \end{itemize}
 
-(R/W) \$6B (107) $\Rightarrow$ Tilemap Control
+\register{R/W}{6B}{Tilemap Control}
 \begin{itemize}
-\item[] bit 7 = 1 to enable the tilemap
-\item[] bit 6 = 0 for 40x32, 1 for 80x32
-\item[] bit 5 = 1 to eliminate the attribute entry in the tilemap
-\item[] bit 4 = palette select
-\item[] bits 3-2 = Reserved set to 0
-\item[] bit 1 = 1 to activate 512 tile mode
-\item[] bit 0 = 1 to force tilemap on top of ULA
+\item bit 7 = 1 to enable the tilemap
+\item bit 6 = 0 for 40x32, 1 for 80x32
+\item bit 5 = 1 to eliminate the attribute entry in the tilemap
+\item bit 4 = palette select
+\item bits 3-2 = Reserved set to 0
+\item bit 1 = 1 to activate 512 tile mode
+\item bit 0 = 1 to force tilemap on top of ULA
 \end{itemize}
 
-(R/W) \$6C (108) $\Rightarrow$ Default Tilemap Attribute
+\register{R/W}{6C}{Default Tilemap Attribute}
 \begin{itemize}
-\item[] bits 7-4 = Palette Offset
-\item[] bit 3 = X mirror
-\item[] bit 2 = Y mirror
-\item[] bit 1 = Rotate
-\item[] bit 0 = ULA over tilemap
+\item bits 7-4 = Palette Offset
+\item bit 3 = X mirror
+\item bit 2 = Y mirror
+\item bit 1 = Rotate
+\item bit 0 = ULA over tilemap
 \end{itemize}
 (bit 8 of the tile number if 512 tile mode is enabled)\\
 Active tile attribute if bit 5 of nextreg \$6B is set.
 
-(R/W) \$6E (110) $\Rightarrow$ Tilemap Base Address
+\register{R/W}{6E}{Tilemap Base Address}
 \begin{itemize}
-\item[] bits 7-6 = Read back as zero, write values ignored
-\item[] bits 5-0 = MSB of address of the tilemap in Bank 5
+\item bits 7-6 = Read back as zero, write values ignored
+\item bits 5-0 = MSB of address of the tilemap in Bank 5
 \end{itemize}
 The value written is an offset into Bank 5 allowing the tilemap to be
 placed at any multiple of 256 bytes.\\
@@ -727,10 +791,10 @@ permitted.\\
 The value read back should be treated as having a fully significant
 8-bit value.
 
-(R/W) \$6F (111) $\Rightarrow$ Tile Definitions Base Address
+\register{R/W}{6F}{Tile Definitions Base Address}
 \begin{itemize}
-\item[] bits 7-6 = Read back as zero, write values ignored
-\item[] bits 5-0 = MSB of address of tile definitions in Bank 5
+\item bits 7-6 = Read back as zero, write values ignored
+\item bits 5-0 = MSB of address of tile definitions in Bank 5
 \end{itemize}
 The value written is an offset into Bank 5 allowing tile definitions
 to be placed at any multiple of 256 bytes.\\
@@ -739,42 +803,41 @@ permitted.\\
 The value read back should be treated as having a fully significant
 8-bit value.
 
-(W) \$75 (117) $\Rightarrow$ Sprite Attribute 0 with automatic post
+\register{W}{75}{Sprite Attribute 0 with automatic post}
 increment of Sprite Number\\
 See nextreg \$35
 
-(W) \$76 (118) $\Rightarrow$ Sprite Attribute 1 with automatic post
+\register{W}{76}{Sprite Attribute 1 with automatic post}
 increment of Sprite Number\\
 See nextreg \$36
 
-(W) \$77 (119) $\Rightarrow$ Sprite Attribute 2 with automatic post
+\register{W}{77}{Sprite Attribute 2 with automatic post}
 increment of Sprite Number\\
 See nextreg \$37
 
-(W) \$78 (120) $\Rightarrow$ Sprite Attribute 3 with automatic post
+\register{W}{78}{Sprite Attribute 3 with automatic post}
 increment of Sprite Number\\
 See nextreg \$38
 
-(W) \$79 (121) $\Rightarrow$ Sprite Attribute 4 with automatic post
-increment of Sprite Number\\
+\register{W}{79}{Sprite Attribute 4 with automatic post increment of Sprite Number}\\
 See nextreg \$39
 
-(R/W) \$90 (144) $\Rightarrow$ Pi GPIO output enable 0 (3.00)\\
+\register{R/W}{90}{Pi GPIO output enable 0 (3.00)}\\
 Control output enable for Pi GPIO pins 0-7
 
-(R/W) \$91 (145) $\Rightarrow$ Pi GPIO output enable 1 (3.00)\\
+\register{R/W}{91}{Pi GPIO output enable 1 (3.00)}\\
 Control output enable for Pi GPIO pins 8-15
 
-(R/W) \$92 (146) $\Rightarrow$ Pi GPIO output enable 2 (3.00)\\
+\register{R/W}{92}{Pi GPIO output enable 2 (3.00)}\\
 Control output enable for Pi GPIO pins 16-23
 
-(R/W) \$93 (147) $\Rightarrow$ Pi GPIO output enable 3 (3.00)\\
+\register{R/W}{93}{Pi GPIO output enable 3 (3.00)}\\
 Control output enable for Pi GPIO pins 24-27
 
-(R/W) \$98 (152) $\Rightarrow$ Pi GPIO data 0 (3.00)\\
+\register{R/W}{98}{Pi GPIO data 0 (3.00)}\\
 Set value of GPIO pin if enabled Pi GPIO pins 0-7
 
-(R/W) \$99 (153) $\Rightarrow$ Pi GPIO data 1 (3.00)\\
+\register{R/W}{99}{Pi GPIO data 1 (3.00)}\\
 Set value of GPIO pin if enabled Pi GPIO pins 8-15
 
 (R/W) \$9a (154) $\Rightarrow$ Pi GPIO data 2 (3.00)\\
@@ -785,13 +848,33 @@ Set value of GPIO pin if enabled Pi GPIO pins 24-27
 
 (R/W) \$a0 (160) $\Rightarrow$ Pi peripheral enable (3.00)
 \begin{itemize}
-\item[] bits 7-6 = Reserved (00)
-\item[] bit 5 = RXTX (0=Pi hat, 1=Pi)
-\item[] bit 4 = UART (0=14/15 GPIO, 1=14/15 UART)
-\item[] bit 3 = I2C1 (0=2/3 GPIO, 1=2/3 I2C)
-\item[] bits 2-1 = Reserved (00)
-\item[] bit 0 = SPIO (0=7-11 GPIO, 1=7-11 SPI)
+\item bits 7-6 = Reserved (00)
+\item bit 5 = RXTX (0=Pi hat, 1=Pi)
+\item bit 4 = UART (0=14/15 GPIO, 1=14/15 UART)
+\item bit 3 = I2C1 (0=2/3 GPIO, 1=2/3 I2C)
+\item bits 2-1 = Reserved (00)
+\item bit 0 = SPIO (0=7-11 GPIO, 1=7-11 SPI)
 \end{itemize}
-Control Pi GPIO function overlay
+Control Pi GPIO function overlay, 0 on reset
 
-(W) \$FF (255) $\Rightarrow$ Debug LEDs (DE-1, DE-2 am Multicore only)
+(R/W) \$a2 (162) $\Rightarrow$ Pi \iis control (3.00)
+\begin{itemize}
+\item bit 7 = Enable left channel
+\item bit 6 = Enable right channel
+\item bit 5 = In/out
+  \begin{itemize}
+  \item[] 0 = (hats) PCM\_DOUT to pi, PCM\_DIN from pi
+  \item[] 1 = (pi) PCM\_DOUT from pi, PCM\_DIN to pi
+  \end{itemize}
+\item bit 4 = Mute left
+\item bit 3 = Mute right
+\item bit 2 = Slave, use external sck, ws
+\item bit 1 = Ear, connect audio to ear input of port \$fe
+\item bit 0 = Reserved (0)
+\end{itemize}
+Control audio channel between Pi0 and ZX Next, 0 on reset
+
+(R/W) \$a3 (163) $\Rightarrow$ Pi \iis clock divider (3.00)\\
+Audio sample rate is 538461/value, 11 on reset
+
+\register{W}{FF}{Debug LEDs (DE-1, DE-2 am Multicore only)}

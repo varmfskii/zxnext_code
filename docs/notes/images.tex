@@ -9,6 +9,8 @@
 \usepackage[section]{placeins}
 \usepackage{graphicx}
 \usepackage{makeidx}
+\usepackage{xintbinhex}
+\usepackage{xintexpr}
 
 \setlength{\parindent}{0pt} 
 
@@ -19,7 +21,10 @@
 
 \title{ZX Spectrum Next Programming Notes}
 \date{\today}
-\author{Theodore (Alex) Evans}
+\author{Theodore (Alex) Evans}%
+\providecommand{\iis}{ I\textsuperscript{2}S }%
+\providecommand{\register}[3]{(#1) \$#2 (\xintHexToDec{#2}) $\Rightarrow$\  #3}%
+\providecommand{\textoverline}[1]{$\overline{\hbox{#1}}$} 
 
 
 \usepackage{xcolor}
@@ -134,7 +139,7 @@
 \stepcounter{chapter}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table40}%
+\lthtmlfigureA{table62}%
 \begin{table}\centering
   
   \csvautotabular{video/videolayering.csv}
@@ -143,7 +148,7 @@
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline146}%
+\lthtmlinlinemathA{tex2html_wrap_inline168}%
 $\Rightarrow$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -160,7 +165,7 @@ $\Rightarrow$%
 \stepcounter{section}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlfigureA{table89}%
+\lthtmlfigureA{table111}%
 \begin{table}\centering
   
   \csvautotabular{video/flash.csv}
@@ -169,7 +174,7 @@ $\Rightarrow$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table93}%
+\lthtmlfigureA{table115}%
 \begin{table}\centering
   
   \csvautotabular{video/palfmt.csv}
@@ -179,70 +184,70 @@ $\Rightarrow$%
 
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline156}%
+\lthtmlinlinemathA{tex2html_wrap_inline178}%
 $256\times192$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline158}%
+\lthtmlinlinemathA{tex2html_wrap_inline180}%
 $8\times8$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline160}%
+\lthtmlinlinemathA{tex2html_wrap_inline182}%
 $32\times24$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline170}%
+\lthtmlinlinemathA{tex2html_wrap_inline192}%
 $0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline174}%
+\lthtmlinlinemathA{tex2html_wrap_inline196}%
 $0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline176}%
+\lthtmlinlinemathA{tex2html_wrap_inline198}%
 $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline178}%
+\lthtmlinlinemathA{tex2html_wrap_inline200}%
 $1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline182}%
+\lthtmlinlinemathA{tex2html_wrap_inline204}%
 $8\times1$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline184}%
+\lthtmlinlinemathA{tex2html_wrap_inline206}%
 $32\times192$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline192}%
+\lthtmlinlinemathA{tex2html_wrap_inline214}%
 $512\times192$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table107}%
+\lthtmlfigureA{table129}%
 \begin{table}\centering
   
   \csvautotabular{video/hires.csv}
@@ -251,32 +256,32 @@ $512\times192$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline194}%
+\lthtmlinlinemathA{tex2html_wrap_inline216}%
 $64\times32$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline198}%
+\lthtmlinlinemathA{tex2html_wrap_inline220}%
 $64\times24$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline200}%
+\lthtmlinlinemathA{tex2html_wrap_inline222}%
 $C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline202}%
+\lthtmlinlinemathA{tex2html_wrap_inline224}%
 $128\times96$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline204}%
+\lthtmlinlinemathA{tex2html_wrap_inline226}%
 $100xxxxx$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -285,37 +290,37 @@ $100xxxxx$%
 \stepcounter{section}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline446}%
+\lthtmlinlinemathA{tex2html_wrap_inline468}%
 $40\times32$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline448}%
+\lthtmlinlinemathA{tex2html_wrap_inline470}%
 $320\times256$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline450}%
+\lthtmlinlinemathA{tex2html_wrap_inline472}%
 $80\times32$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline452}%
+\lthtmlinlinemathA{tex2html_wrap_inline474}%
 $640\times256$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline456}%
+\lthtmlinlinemathA{tex2html_wrap_inline478}%
 $40\times30$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline458}%
+\lthtmlinlinemathA{tex2html_wrap_inline480}%
 $80\times30$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -330,7 +335,7 @@ $80\times30$%
 \stepcounter{paragraph}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline502}%
+\lthtmlinlinemathA{tex2html_wrap_inline524}%
 $256\times192\times256$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -338,25 +343,25 @@ $256\times192\times256$%
 \stepcounter{subsection}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline729}%
+\lthtmlinlinemathA{tex2html_wrap_inline751}%
 $16\times16$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline731}%
+\lthtmlinlinemathA{tex2html_wrap_inline753}%
 $2\times$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline733}%
+\lthtmlinlinemathA{tex2html_wrap_inline755}%
 $4\times$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline735}%
+\lthtmlinlinemathA{tex2html_wrap_inline757}%
 $8\times$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -368,13 +373,13 @@ $8\times$%
 \stepcounter{subsection}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline757}%
+\lthtmlinlinemathA{tex2html_wrap_inline779}%
 $1\times$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline761}%
+\lthtmlinlinemathA{tex2html_wrap_inline783}%
 $4\times4$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -383,7 +388,7 @@ $4\times4$%
 \stepcounter{subsection}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline823}%
+\lthtmlinlinemathA{tex2html_wrap_inline845}%
 $128\times96\times256$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -396,7 +401,7 @@ $128\times96\times256$%
 \stepcounter{section}
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlfigureA{table1114}%
+\lthtmlfigureA{table1136}%
 \begin{table}\centering
   
   \csvautotabular{zx128mm.csv}
@@ -417,7 +422,7 @@ $128\times96\times256$%
 \stepcounter{section}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table1166}%
+\lthtmlfigureA{table1188}%
 \begin{table}\centering
   
   \csvautotabular{zxndma/registers.csv}
@@ -445,7 +450,7 @@ $128\times96\times256$%
 \stepcounter{paragraph}
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlfigureA{table1309}%
+\lthtmlfigureA{table1331}%
 \begin{table}\centering
   
   \csvautotabular{copper/perline.csv}
@@ -454,7 +459,7 @@ $128\times96\times256$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table1313}%
+\lthtmlfigureA{table1335}%
 \begin{table}\centering
   
   \csvautotabular{copper/persec.csv}
@@ -465,7 +470,7 @@ $128\times96\times256$%
 \stepcounter{paragraph}
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlfigureA{table1319}%
+\lthtmlfigureA{table1341}%
 \begin{table}\centering
   
   \csvautotabular{copper/maxhcmp.csv}
@@ -474,7 +479,7 @@ $128\times96\times256$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table1323}%
+\lthtmlfigureA{table1345}%
 \begin{table}\centering
   
   \csvautotabular{copper/aftermaxcmp.csv}
@@ -483,7 +488,7 @@ $128\times96\times256$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table1327}%
+\lthtmlfigureA{table1349}%
 \begin{table}\centering
   
   \csvautotabular{copper/htime.csv}
@@ -494,7 +499,7 @@ $128\times96\times256$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table1331}%
+\lthtmlfigureA{table1353}%
 \begin{table}\centering\tiny
   
   \csvautotabular{copper/vtime.csv}
@@ -508,19 +513,19 @@ $128\times96\times256$%
 
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline1431}%
+\lthtmlinlinemathA{tex2html_wrap_inline1453}%
 $352\times288$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline1433}%
+\lthtmlinlinemathA{tex2html_wrap_inline1455}%
 $352\times240$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table1336}%
+\lthtmlfigureA{table1358}%
 \begin{table}\centering
   
   \csvautotabular{copper/idealres.csv}
@@ -529,7 +534,7 @@ $352\times240$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table1340}%
+\lthtmlfigureA{table1362}%
 \begin{table}\centering\small
   
   \csvautotabular{copper/idealparam.csv}
@@ -553,7 +558,7 @@ RIGHT: Last pixel of the extended right border area - see notes below**
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table1345}%
+\lthtmlfigureA{table1367}%
 \begin{table}\centering
   
   \csvautotabular{copper/instrbit.csv}
@@ -575,7 +580,7 @@ D   8 bit data
 \stepcounter{paragraph}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table1358}%
+\lthtmlfigureA{table1380}%
 \begin{table}\centering
   
   \csvautotabular{copper/regbit.csv}
@@ -590,7 +595,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table1362}%
+\lthtmlfigureA{table1384}%
 \begin{table}\centering
   
   \csvautotabular{copper/controlmodes.csv}
@@ -611,7 +616,7 @@ C   2 bit control
 \stepcounter{paragraph}
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlfigureA{table1393}%
+\lthtmlfigureA{table1415}%
 \begin{table}\centering
   
   \csvautotabular{copper/videotiming.csv}
@@ -627,7 +632,7 @@ C   2 bit control
 \appendix
 \stepcounter{chapter}
 {\newpage\clearpage
-\lthtmlfigureA{table1867}%
+\lthtmlfigureA{table1889}%
 \begin{table}\centering\tiny
   
   \csvautotabular{ports/ports.csv}
@@ -639,12 +644,24 @@ C   2 bit control
 \stepcounter{section}
 \stepcounter{chapter}
 \stepcounter{section}
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline2631}%
+$\overline{\hbox{RESET}}$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlinlinemathA{tex2html_wrap_inline2721}%
+$^O$%
+\lthtmlindisplaymathZ
+\lthtmlcheckvsize\clearpage}
+
 \stepcounter{section}
 \stepcounter{section}
 \stepcounter{chapter}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table2579}%
+\lthtmlfigureA{table3011}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/00-opcode.csv}
@@ -653,7 +670,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2583}%
+\lthtmlfigureA{table3015}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/20-opcode.csv}
@@ -662,7 +679,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2587}%
+\lthtmlfigureA{table3019}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/40-opcode.csv}
@@ -671,7 +688,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2591}%
+\lthtmlfigureA{table3023}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/60-opcode.csv}
@@ -680,7 +697,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2595}%
+\lthtmlfigureA{table3027}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/80-opcode.csv}
@@ -689,7 +706,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2599}%
+\lthtmlfigureA{table3031}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/a0-opcode.csv}
@@ -698,7 +715,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2603}%
+\lthtmlfigureA{table3035}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/c0-opcode.csv}
@@ -707,7 +724,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2607}%
+\lthtmlfigureA{table3039}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/e0-opcode.csv}
@@ -717,7 +734,7 @@ C   2 bit control
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table2612}%
+\lthtmlfigureA{table3044}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/cb00-opcode.csv}
@@ -726,7 +743,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2616}%
+\lthtmlfigureA{table3048}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/cb20-opcode.csv}
@@ -735,7 +752,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2620}%
+\lthtmlfigureA{table3052}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/cb40-opcode.csv}
@@ -744,7 +761,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2624}%
+\lthtmlfigureA{table3056}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/cb60-opcode.csv}
@@ -753,7 +770,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2628}%
+\lthtmlfigureA{table3060}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/cb80-opcode.csv}
@@ -762,7 +779,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2632}%
+\lthtmlfigureA{table3064}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/cba0-opcode.csv}
@@ -771,7 +788,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2636}%
+\lthtmlfigureA{table3068}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/cbc0-opcode.csv}
@@ -780,7 +797,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2640}%
+\lthtmlfigureA{table3072}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/cbe0-opcode.csv}
@@ -790,7 +807,7 @@ C   2 bit control
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table2645}%
+\lthtmlfigureA{table3077}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/dd00-opcode.csv}
@@ -799,7 +816,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2649}%
+\lthtmlfigureA{table3081}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/dd60-opcode.csv}
@@ -808,7 +825,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2653}%
+\lthtmlfigureA{table3085}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/dd90-opcode.csv}
@@ -818,7 +835,7 @@ C   2 bit control
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table2658}%
+\lthtmlfigureA{table3090}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/ed00-opcode.csv}
@@ -829,7 +846,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2662}%
+\lthtmlfigureA{table3094}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/ed50-opcode.csv}
@@ -838,7 +855,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2666}%
+\lthtmlfigureA{table3098}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/ed90-opcode.csv}
@@ -850,7 +867,7 @@ C   2 bit control
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table2671}%
+\lthtmlfigureA{table3103}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/fd00-opcode.csv}
@@ -859,7 +876,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2675}%
+\lthtmlfigureA{table3107}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/fd60-opcode.csv}
@@ -868,7 +885,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2679}%
+\lthtmlfigureA{table3111}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{opcode/fd90-opcode.csv}
