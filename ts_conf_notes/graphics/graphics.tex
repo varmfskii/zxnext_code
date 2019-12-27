@@ -1,0 +1,157 @@
+\chapter{Graphics}
+Development
+
+[Big-Bang-Television-Static-590x353]Sprites, tiles ... Perhaps this
+would be enough for us ...
+
+But under these layers is the base graphics layer .
+
+Tao says: The graphics layer displays data that resides in memory
+pages.
+
+The first page to display (its address is necessarily a multiple of 8
+for 16 colors, 16 for a 256 color mode, total length - 8/16 pages) is
+indicated by the port VPage (\#01af). The way this memory is mapped is
+set by the VConfig port bits, which sets the resolution and color
+depth.
+
+The memory display window is a block with the dimensions of the
+specified resolution and is displayed by the positions X (0-511) and Y
+(0-511), which are indicated by the pairs of ports GXOffs and
+GYOffs. The window is looped around the edges in the display.
+
+The colors of the display are given by the palette, the number is
+selected by the first notebook of the PalSel register (\#06af).
+
+So, we have a screen with our own internal scrolling.
+
+The output to the screen is a data record in the video memory page at
+the desired address.
+
+Depending on the selected color mode, recording one byte allows you to
+output one (256 colors) or two (16 color mode) dots at a time. In the
+16 color mode, the highest tetrad is responsible for the color number
+in the palette for the left point, the youngest - for the right one.
+
+In 256 color mode - the byte of the dot indicates the color in the
+palette.
+
+What is the choice of resolution?
+\begin{table}
+\begin{tabular}{ll}
+RRES[1:0] & Pixels\\
+00 & 256x192\\
+01 & 320x200\\
+10 & 320x240\\
+11 & 360x288
+\end{tabular}
+\end{table}
+\begin{table}
+\begin{tabular}{ll}
+VM[2:0] & Mode\\
+00 & ZX\\
+01 & 16c\\
+10 & 256c\\
+11 & Text
+\end{tabular}
+\end{table}
+All this is set by the VConfig port bits (\#00af):
+
+VConfig RRES[1:0]               NOGFX   NOTSU   -       -       VM[1:0]\\
+RRES - 7,6 bits - resolution\\
+VM[1:0] 1, 0 bits - color mode
+
+In addition, this port offers us a bit to enable / disable graphics
+display and the bits on / off of the sprite-tile engine.
+
+In the first case - when turning off the graphics, we will see a clean
+screen of the color specified by the border. In the second - sprite
+and tile layers will not be displayed.
+
+Disabling unused layers leads to the release of system resources and
+will allow, for example, to transfer more DMA data per line.
+
+Let's display something on the screen.
+
+The easiest way, I think, is to organize the output of a picture using
+DMA - let the iron work, the processor thinks at this time, and the
+person is resting :)
+
+So, we will display the image in 16 color mode, 256x256 pixels in
+size.
+
+To do this, you must prepare the ports, indicating the desired
+resolution, color gamut, address of the video memory page:
+\begin{verbatim}
+                ld hl,init_ts
+                jp set_ports
+
+Vid_page        equ #40
+
+init_ts         db high VCONFIG,VID_16C+VID_320X240
+                db high VPAGE,Vid_page
+                db high PALSEL,0
+
+        include "tsconfig.asm"
+\end{verbatim}
+Note that the palette for graphics has the number 0. I recall that the
+standard initial palette of the zx spectrum is located in the last,
+15th palette.
+\begin{verbatim}
+                ld hl,pic_copy
+                call set_ports
+                jr $
+screen_page     equ #80 ; page number in which the image is stored for output
+pic_copy
+                db #1a,0
+                db #1b,0
+                db #1c,screen_page
+                db #1d,0
+                db #1e,0
+                db #1f,Vid_page
+                db #26,256/4-1
+                db #28,256-1
+                db #27,DMA_RAM + DMA_DALGN
+                db #ff
+\end{verbatim}
+Everything, the image is on the screen, starting from the 0x0
+coordinate.
+
+It’s very simple to move this image around the screen by setting
+indents by programming ports of offsets for the base graphics layer -
+GXOffs / GYOffs (\#02af-03af/\#04af-05af):
+\begin{verbatim}
+offs1           ld a,0
+                inc a
+                and #7f
+                ld (offs1+1),a
+                ld bc,GXOFFSL
+                out (c),a
+                ld bc,GYOFFSL
+                out (c),a
+                halt
+                jr offs1
+\end{verbatim}
+In this case, the offsets are written for the lower 8 bits, and the
+offset is in the range of 0-127.
+
+[Question-Mark-Dude1-300x300]Questions and Answers
+
+:? Why on the screen after turning on the mode and selecting the video
+page a color NOISE?\\
+! The initial contents of the memory have a random nature, which is
+displayed on the screen. Clean up!
+
+? What is the address of the point y = 1?\\
+! Depending on the selected color mode:\\
+With 16 colors: y = 0: \#c000; y = 1: \#c100\\
+With 256 colors: y = 0: \#c000; y = 1: \#c200
+
+? I do not understand what is displayed!\\
+! The screen start page should be a multiple of 8. Should the palette
+be loaded and selected by the PalSel port
+
+? Only a narrow bar is displayed!\\
+! Depending on the selected mode, up to 262,144 bytes of memory are
+used, which does not fit into 16k at all.  Switch the video page and
+draw on!
