@@ -69,15 +69,21 @@ S\_ALGN & Source Address Alignment\\
 D\_ALGN & Destination Address Alignment\\
 0 & After each burst address keeped as is\\
 1 & After each burst lower bits of address restored to their initial
-values before burst, upper bits increased by 1\\
-&\\
+values before burst, upper bits increased by 1
+\end{tabular}
+\end{table}
+\begin{table}
+\begin{tabular}{lp{4in}}
 A\_SZ & Address Alignment Size\\
 0 & 256 bytes (8 lower address bits) alignment\\
-1 & 512 bytes (9 lower address bits) alignment\\
-&\\
+1 & 512 bytes (9 lower address bits) alignment
+\end{tabular}
+\end{table}
+\begin{table}
+\begin{tabular}{lp{4in}}
 A\_SZ & Blitting Bitness\\
 0 & 4 bits per pixel, transparent color is 0 from 16 (4'b0)\\
-1 & 8 bits per pixel, transparent color is 0 from 256 (8'b0)\\
+1 & 8 bits per pixel, transparent color is 0 from 256 (8'b0)
 \end{tabular}
 \end{table}
 These bits are used to set system actions after copying a single data
