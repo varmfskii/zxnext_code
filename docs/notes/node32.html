@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Layer 2</TITLE>
-<META NAME="description" CONTENT="Layer 2">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Tilemap</TITLE>
+<META NAME="description" CONTENT="Tilemap">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,10 +13,10 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node34.html">
-<LINK REL="previous" HREF="node22.html">
+<LINK REL="next" HREF="node33.html">
+<LINK REL="previous" HREF="node31.html">
 <LINK REL="next" HREF="node33.html">
 </HEAD>
 
@@ -27,64 +27,121 @@
  HREF="node33.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node3.html">
+ HREF="node31.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node31.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html407"
+<A ID="tex2html466"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html409"
-  HREF="node135.html">
+<A ID="tex2html468"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node33.html">Programming</A>
+ HREF="node33.html">Tile Definitions</A>
 <B> Up:</B> <A
- HREF="node3.html">Video</A>
+ HREF="node31.html">Data Structures</A>
 <B> Previous:</B> <A
- HREF="node31.html">Future Direction</A>
- &nbsp; <B>  <A ID="tex2html408"
+ HREF="node31.html">Data Structures</A>
+ &nbsp; <B>  <A ID="tex2html467"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html410"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html469"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00350000000000000000">
-Layer 2</A>
-</H1>
-Layer 2 is a linearly mapped, row-wise, upper left to lower right,
-<!-- MATH
- $256\times192\times256$
- -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img27.svg"
- ALT="$256\times192\times256$"></SPAN> bit-map graphics area.  Both the main version
-(8k pages 16-21/16k banks 8-10) and a shadow version (8k pages
-22-27/16k banks 11-13) are six contiguous 8k pages (three contiguous
-16k blocks) in the extended RAM space indicated by the contents of
-Next registers $12 (18 Layer 2 RAM page, default 8) and $13 (19,
-Layer 2 shadow page, default 11).  The layer 2 pages can be accessed
-either by mapping the pages into normal RAM, or write only access
-using port $123B to fix them in the same space as the ROMs at
-$0000-$3FFF.  The colours come from the indices in the layer 2
-palette.  Layer 2 is drawn according to the values in registers $16
-(22, Layer 2 Offset X, default 0) and $17 (23, Layer 2 Offset Y,
-default 0).
+<H4><A ID="SECTION00342010000000000000">
+Tilemap</A>
+</H4>
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+The first data structure is the tilemap itself which indicates what
+characters occupy each cell on screen. Each tilemap entry is either
+one or two bytes.
 
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html411"
-  HREF="node33.html">Programming</A>
-</UL>
-<!--End of Table of Child-Links-->
-<BR><HR>
+<P>
+If entries are two bytes each, the first byte for each entry is bits
+0-7 of the tile number, while the second byte is an attribute byte
+which is interpreted acctording to the mode set in the tilemap control
+register ($6b). For <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img23.svg"
+ ALT="$40\times32$"></SPAN> resolution, a full size tilemap will
+occupy 2560 bytes, and for <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img25.svg"
+ ALT="$80\times32$"></SPAN> resolution the space taken is
+twice that at 5120 bytes. The tilemap entries are stored in X-major
+order and each two-byte tilemap entry consists of a tile number byte
+(bits 0-7 of the tile number) followed an attribute byte:
+
+<P>
+Tilemap Attribute Byte 4-bit
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 : most significant 4-bits of palette entry</td></tr>
+<tr><td valign="top">&nbsp;bit 3 : x mirror</td></tr>
+<tr><td valign="top">&nbsp;bit 2 : y mirror</td></tr>
+<tr><td valign="top">&nbsp;bit 1 : rotate</td></tr>
+<tr><td valign="top">&nbsp;bit 0 : ULA over tilemap (in 512 tile mode, bit 8 of the tile
+  number)
+</td></tr></table>
+
+<P>
+Tilemap Attribute Byte 1-bit
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-1 : most significan 7-bits of palette entry</td></tr>
+<tr><td valign="top">&nbsp;bit 0 : ULA over tilemap (in 512 tile mode, bit 8 of the tile
+  number)
+</td></tr></table>
+
+<P>
+The character displayed is indicated by the “tile number” which can be
+thought of as an ASCII code. The tile number is normally eight bits
+allowing up to 256 unique tiles to be displayed but this can be
+extended to nine bits for 512 unique tiles if 512 tile mode is enabled
+via the Tilemap Control register ($6b).
+
+<P>
+The other bits are tile attributes that modify how the tile image is
+drawn. Their function is the same as the equivalent sprite attributes
+for sprites. Bits apply rotation then mirroring, and colour can be
+shifted with a palette offset. If 512 tile mode is not enabled, bit 8
+will determine if the tile is above or below the ULA display on a per
+tile basis.
+
+<P>
+When using 1-byte tilemap entries, the map consists of the tile
+numbers for tile in the map with the tilemap attribute byte for every
+tile coming from the default tilemap attribute register ($6c).
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node33.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node31.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node31.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html466"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html468"
+  HREF="node156.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node33.html">Tile Definitions</A>
+<B> Up:</B> <A
+ HREF="node31.html">Data Structures</A>
+<B> Previous:</B> <A
+ HREF="node31.html">Data Structures</A>
+ &nbsp; <B>  <A ID="tex2html467"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html469"
+  HREF="node156.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

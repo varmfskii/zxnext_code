@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>128 Special Paging Mode</TITLE>
-<META NAME="description" CONTENT="128 Special Paging Mode">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>ZX Spectrum 1-bit</TITLE>
+<META NAME="description" CONTENT="ZX Spectrum 1-bit">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,8 +13,9 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node51.html">
 <LINK REL="previous" HREF="node49.html">
 <LINK REL="next" HREF="node51.html">
 </HEAD>
@@ -31,51 +32,50 @@
 <A
  HREF="node49.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html506"
+<A ID="tex2html558"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html508"
-  HREF="node135.html">
+<A ID="tex2html560"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node51.html">ZX Spectrum Next</A>
+ HREF="node51.html">Sampled 8-bit</A>
 <B> Up:</B> <A
- HREF="node49.html">ZX Spectrum 128</A>
+ HREF="node49.html">Audio</A>
 <B> Previous:</B> <A
- HREF="node49.html">ZX Spectrum 128</A>
- &nbsp; <B>  <A ID="tex2html507"
+ HREF="node49.html">Audio</A>
+ &nbsp; <B>  <A ID="tex2html559"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html509"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html561"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00510010000000000000">
-128 Special Paging Mode</A>
-</H4>
+<H1><A ID="SECTION00410000000000000000">
+ZX Spectrum 1-bit</A>
+</H1>
 
 <P>
-"Special paging mode" (also called "AllRam mode" or "CP/M mode") is
-enabled by writing a value with the LSB set to Plus 3 Memory Paging
-Control ($1FFD). Depending on the 3 low bits of this value a memory
-configuration is selected as follows:
+The baseline sound of the ZX Spectrum was produced by toggling the Ear
+bit (bit 4) of $fe (254) The ULA port to produce 1-bit audio.  It is
+enabled by bit 4 of Next register $08 (8).  While this does work on
+the ZX Spectrum Next, there are other much better methods and this is
+only supported for backward compatibility.
 
 <P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="1142"></A>
-<TABLE>
-<CAPTION><STRONG>Table 4.1:</STRONG>
-Special Paging Modes</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img35.svg"
- ALT="\begin{table}\centering
-\csvautotabular{zx128mm.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
+Code:
+<PRE>
+;; enable internal speaker
+ld bc,$243B
+ld a,$08
+out (c),a
+ld bc,$253B
+in a,(c)
+or $10
+out (c),a
+</PRE>
 
 <P>
 <BR><HR>

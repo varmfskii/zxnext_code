@@ -1,0 +1,105 @@
+\section{AY-3-8912}
+
+(R/W) \$00 (0) $\Rightarrow$ Channel A fine tune
+\begin{itemize}
+\item bits 7-0 = Channel A frequency bits 7-0
+\end{itemize}
+
+(R/W) \$01 (1) $\Rightarrow$ Channel A coarse tune
+\begin{itemize}
+\item bits 7-4 = Reserved
+\item bits 4-0 = Channel A frequency bits 11-8
+\end{itemize}
+
+(R/W) \$02 (0) $\Rightarrow$ Channel B fine tune
+\begin{itemize}
+\item bits 7-0 = Channel A frequency bits 7-0
+\end{itemize}
+
+(R/W) \$03 (1) $\Rightarrow$ Channel B coarse tune
+\begin{itemize}
+\item bits 7-4 = Reserved
+\item bits 4-0 = Channel A frequency bits 11-8
+\end{itemize}
+
+(R/W) \$04 (0) $\Rightarrow$ Channel C fine tune
+\begin{itemize}
+\item bits 7-0 = Channel A frequency bits 7-0
+\end{itemize}
+
+(R/W) \$05 (1) $\Rightarrow$ Channel C coarse tune
+\begin{itemize}
+\item bits 7-4 = Reserved
+\item bits 4-0 = Channel A frequency bits 11-8
+\end{itemize}
+
+(R/W) \$06 (6) $\Rightarrow$ Noise period
+\begin{itemize}
+\item bits 7-5 = Reserved
+\item bits 4-0 = Noise period to noise generator
+\end{itemize}
+
+(R/W) \$07 (7) $\Rightarrow$ Mixer control I/O Enable
+\begin{itemize}
+\item[] Active low (0=enable, 1= disable)
+\item bit 7-6: Reserved
+\item bit 5: Channel C noise enable
+\item bit 4: Channel B noise enable
+\item bit 3: Channel A noise enable
+\item bit 2: Channel C tone enable
+\item bit 1: Channel B tone enable
+\item bit 0: Channel A tone enable
+\end{itemize}
+
+(R/W) \$0A (10) $\Rightarrow$ Channel A amplitude
+\begin{itemize}
+\item bits 7-5 = Reserved
+\item bit 4 = Amplitude mode
+  \begin{itemize}
+  \item 0=fixed amplitude
+  \item 1=use envelope generator (bits 0-3 ignored)
+  \end{itemize}
+\item bits 0-3 = value of fixed amplitude
+\end{itemize}
+
+(R/W) \$0B (11) $\Rightarrow$ Channel B amplitude
+\begin{itemize}
+\item[] like channel A amplitude
+\end{itemize}
+
+(R/W) \$0C (12) $\Rightarrow$ Channel C amplitude
+\begin{itemize}
+\item[] like channel A amplitude
+\end{itemize}
+
+(R/W) \$0D (13) $\Rightarrow$ Envelope period fine
+\begin{itemize}
+\item bits 7-0 = Envelop period LSB
+\end{itemize}
+
+(R/W) \$0E (14) $\Rightarrow$ Envelope period coarse
+\begin{itemize}
+\item bits 7-0 = Envelop period MSB
+\end{itemize}
+
+(R/W) \$0F (15) $\Rightarrow$ Envelope shape
+\begin{itemize}
+\item bits 7-4 = Reserved
+\item bit 3 = Continue
+  \begin{itemize}
+  \item 0=drop to amplitude 0 after 1 cycle
+  \item 1=use ‘Hold’ value
+  \end{itemize}
+\item bit 2 = Attack
+  \begin{itemize}
+  \item 0=generator counts down
+  \item 1=generator counts up
+  \end{itemize}
+\item bit 1-0 = Alternate \& Hold
+  \begin{itemize}
+  \item 00=generator resets after each cycle
+  \item 01=hold final value
+  \item 10=generator reverses direction each cycle
+  \item 11=hold initial value
+  \end{itemize}
+\end{itemize}

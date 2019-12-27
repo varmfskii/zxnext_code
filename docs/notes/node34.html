@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Sprites</TITLE>
-<META NAME="description" CONTENT="Sprites">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Memory Organization &amp; Display Layer</TITLE>
+<META NAME="description" CONTENT="Memory Organization &amp; Display Layer">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,9 +13,10 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="previous" HREF="node32.html">
+<LINK REL="next" HREF="node35.html">
+<LINK REL="previous" HREF="node31.html">
 <LINK REL="next" HREF="node35.html">
 </HEAD>
 
@@ -26,162 +27,48 @@
  HREF="node35.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node3.html">
+ HREF="node29.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node33.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html416"
+<A ID="tex2html474"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html418"
-  HREF="node135.html">
+<A ID="tex2html476"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node35.html">Sprite Patterns</A>
+ HREF="node35.html">Combining ULA &amp; Tilemap</A>
 <B> Up:</B> <A
- HREF="node3.html">Video</A>
+ HREF="node29.html">Layer 3 (Tilemap) Mode</A>
 <B> Previous:</B> <A
- HREF="node33.html">Programming</A>
- &nbsp; <B>  <A ID="tex2html417"
+ HREF="node33.html">Tile Definitions</A>
+ &nbsp; <B>  <A ID="tex2html475"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html419"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html477"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00360000000000000000">
-Sprites</A>
-</H1>
+<H2><A ID="SECTION00343000000000000000">
+Memory Organization &amp; Display Layer</A>
+</H2>
+The tilemap is a logical extension of the ULA and its data structures
+are contained in the ULAís 16k bank 5. If both the ULA and tilemap are
+enabled, this means that the tilemapís map and tile definitions should
+be arranged within the 16k to avoid overlap with the display ram used
+by the ULA.
 
 <P>
-February 25, 2019  Victor Trucco
-
-<P>
-The Spectrum Next has a hardware sprite system with the following
-characteristics:
-
-<P>
-
-<UL>
-<LI>Total of 128 sprites
-</LI>
-<LI>Display surface is <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img22.svg"
- ALT="$320\times256$"></SPAN> overlapping the ULA screen by
-  32 pixels on each side
-</LI>
-<LI>Minimum of 100 sprites per scanline*
-</LI>
-<LI>Choice of 512 colours for each pixel
-</LI>
-<LI>Site of each sprite is <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img28.svg"
- ALT="$16\times16$"></SPAN> pixels but sprites can be
-  magnified <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img29.svg"
- ALT="$2\times$"></SPAN>, <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
- ALT="$4\times$"></SPAN> or <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img31.svg"
- ALT="$8\times$"></SPAN> horizontally and
-  vertically
-</LI>
-<LI>Sprites can be mirrored and rotated
-</LI>
-<LI>Sprites can be grouped together to form larger sprites under the
-  control of a single anchor
-</LI>
-<LI>A 16K pattern memory can contain 64 8-bit sprite images or 128
-  4-bit sprite images and combinations in-between
-</LI>
-<LI>A per sprite palette offset allows sprites to share images but
-  colour them differently
-</LI>
-<LI>A nextreg interface allows the copper to move sprites during the
-  video frame
-</LI>
-</UL>
-
-<P>
-*A minimum of 100 <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img28.svg"
- ALT="$16\times16$"></SPAN> sprites is guaranteed to be displayed
-in any scanline. Any additional sprites will not be displayed with the
-hardware ensuring sprites are not partially plotted.
-
-<P>
-The actual limit is determined by how many 28MHz clock cycles there
-are in a scanline. The sprite hardware is able to plot one pixel cycle
-and uses one cycle to qualify each sprite. Since the number of cycles
-there are in a scanline varies with video timing (HDMI, VGA), the
-number of pixels that can be plotted also varies but the minimum will
-be 1600 pixels per line including overhead cycles needed to qualify
-100 sprites. Since sprites magified horizontally involve plotting more
-pixels, <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img29.svg"
- ALT="$2\times$"></SPAN>, <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
- ALT="$4\times$"></SPAN>, and <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img31.svg"
- ALT="$8\times$"></SPAN> sprites will take more
-cycles to plot and the presence of these sprites in a line will reduce
-the total number of sprites that can be plotted.
+The tilemap exists on the same display layer as the ULA. The graphics
+generated by the ULA and tilemap are combined before being forwarded
+to the SLU layer system as layer U.
 
 <P>
 <BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
-
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html420"
-  HREF="node35.html">Sprite Patterns</A>
-<UL>
-<LI><A ID="tex2html421"
-  HREF="node36.html">Pattern Number</A>
-<UL>
-<LI><A ID="tex2html422"
-  HREF="node37.html">8-Bit Sprite Patterns</A>
-<LI><A ID="tex2html423"
-  HREF="node38.html">4-Bit Sprite Patterns</A>
-</UL>
-</UL>
-<BR>
-<LI><A ID="tex2html424"
-  HREF="node39.html">Sprite Palette</A>
-<LI><A ID="tex2html425"
-  HREF="node40.html">Sprite Attributes</A>
-<LI><A ID="tex2html426"
-  HREF="node41.html">Relative Sprites</A>
-<LI><A ID="tex2html427"
-  HREF="node42.html">Programming Sprites</A>
-<LI><A ID="tex2html428"
-  HREF="node43.html">Global Control of Sprites</A>
-</UL>
-<!--End of Table of Child-Links-->
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node35.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node3.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node33.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html416"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html418"
-  HREF="node135.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node35.html">Sprite Patterns</A>
-<B> Up:</B> <A
- HREF="node3.html">Video</A>
-<B> Previous:</B> <A
- HREF="node33.html">Programming</A>
- &nbsp; <B>  <A ID="tex2html417"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html419"
-  HREF="node135.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

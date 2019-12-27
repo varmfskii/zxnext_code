@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Screen</TITLE>
-<META NAME="description" CONTENT="Screen">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>128 Special Paging Mode</TITLE>
+<META NAME="description" CONTENT="128 Special Paging Mode">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,7 +13,7 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="previous" HREF="node55.html">
 <LINK REL="next" HREF="node57.html">
@@ -26,43 +26,58 @@
  HREF="node57.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node51.html">
+ HREF="node55.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node55.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html535"
+<A ID="tex2html592"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html537"
-  HREF="node135.html">
+<A ID="tex2html594"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node57.html">zxnDMA</A>
+ HREF="node57.html">ZX Spectrum Next</A>
 <B> Up:</B> <A
- HREF="node51.html">ZX Spectrum Next</A>
+ HREF="node55.html">ZX Spectrum 128</A>
 <B> Previous:</B> <A
- HREF="node55.html">Layer 2 Switching</A>
- &nbsp; <B>  <A ID="tex2html536"
+ HREF="node55.html">ZX Spectrum 128</A>
+ &nbsp; <B>  <A ID="tex2html593"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html538"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html595"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00520050000000000000">
-Screen</A>
+<H4><A ID="SECTION00510010000000000000">
+128 Special Paging Mode</A>
 </H4>
-16k-Bank 5 is the bank read by the ULA to determine what to show on
-screen. The ULA connects directly to the larger memory space ignoring
-mapping; the screen is always 16k-Bank 5, no matter where in memory it
-is (or if it is switched in at all). Setting bit 3 of Memory Paging
-Control ($7FFD) will have the ULA read from 16k-bank 7 (the "shadow
-screen") instead, which can be used as an alternate screen. Beware
-that this does not map 16k-bank 7 into RAM; to alter 16k-bank 7 it
-must be mapped by other means.
+
+<P>
+&ldquo;Special paging mode&rdquo; (also called &ldquo;AllRam mode&rdquo; or &ldquo;CP/M mode&rdquo;)
+is enabled by writing a value with the LSB set to Plus 3 Memory Paging
+Control ($1FFD). Depending on the 3 low bits of this value a memory
+configuration is selected as follows:
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1155"></A>
+<TABLE>
+<CAPTION><STRONG>Table 4.1:</STRONG>
+Special Paging Modes</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img37.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{memory/zx128mm.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
 <BR><HR>
 
 </BODY>

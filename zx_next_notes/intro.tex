@@ -23,13 +23,16 @@ the original hardware by using special memory chips and clever
 design. Here’s what under the hood of the machine:
 
 \begin{itemize}
-\item Processor: Z80 normal and turbo modes
+\item Processor: Z80n normal and turbo modes
 \item Memory: 1024Kb RAM (expandable to 2048Kb on board)
-\item Video: Hardware sprites, 256 colours mode and more.
+\item Video: Multilayer video implementing classic ZX Spectrum, Timex
+  Hi-Resolution, Timex Hi-Colour, LoRes, Layer 2, and Tilemap video
+  modes with Hardware sprites
 \item Video Output: RGB, VGA, HDMI
 \item Storage: SD Card slot, with DivMMC-compatible protocol
-\item Audio: Turbo Sound Next (3x AY-3-8912 audio chips with stereo
-  output)
+\item Audio: ZX Spectrum 1-bit audio, Turbo Sound Next (3x AY-3-8912
+  audio chips with stereo output), stereo PCM audio, and ability to
+  use Pi accelerator as a sound source
 \item Joystick: DB9 compatible with Cursor, Kempston and Interface 2
   protocols (selectable)
 \item PS/2 port: Mouse with Kempston mode emulation and an external keyboard
@@ -38,7 +41,7 @@ design. Here’s what under the hood of the machine:
 \item Tape support: Mic and Ear ports for tape loading and saving
 \item Expansion: Original external bus expansion port and accelerator
   expansion port
-\item Accelerator board (optional): GPU / 1Ghz CPU / 512Mb RAM
+\item Accelerator board (optional): Pi Zero with GPU / 1Ghz CPU / 512Mb RAM
 \item Network (optional): Wi Fi module
 \item Extras: Real Time Clock (optional), internal speaker (optional)
 \end{itemize}

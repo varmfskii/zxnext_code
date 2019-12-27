@@ -1,0 +1,3418 @@
+/*! normalize.css 2012-03-06T10:21 UTC - http://github.com/necolas/normalize.css */
+
+/* =============================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+/*
+ * Corrects block display not defined in IE6/7/8/9 & FF3
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+	display: block;
+}
+
+/*
+ * Corrects inline-block display not defined in IE6/7/8/9 & FF3
+ */
+
+audio,
+canvas,
+video {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+
+/*
+ * Prevents modern browsers from displaying 'audio' without controls
+ * Remove excess height in iOS5 devices
+ */
+
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+
+/*
+ * Addresses styling for 'hidden' attribute not present in IE7/8/9, FF3, S4
+ * Known issue: no IE6 support
+ */
+
+[hidden] {
+	display: none;
+}
+
+
+/* =============================================================================
+   Base
+   ========================================================================== */
+
+/*
+ * 1. Corrects text resizing oddly in IE6/7 when body font-size is set using em units
+ *    http://clagnut.com/blog/348/#c790
+ * 2. Prevents iOS text size adjust after orientation change, without disabling user zoom
+ *    www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
+ */
+
+html {
+	font-size: 100%; /* 1 */
+	-webkit-text-size-adjust: 100%; /* 2 */
+	-ms-text-size-adjust: 100%; /* 2 */
+}
+
+/*
+ * Addresses font-family inconsistency between 'textarea' and other form elements.
+ */
+
+html,
+button,
+input,
+select,
+textarea {
+	font-family: Verdana, sans-serif;
+}
+
+/*
+ * Addresses margins handled incorrectly in IE6/7
+ */
+
+body {
+	margin: 0;
+}
+
+
+/* =============================================================================
+   Links
+   ========================================================================== */
+
+/*
+ * Addresses outline displayed oddly in Chrome
+ */
+
+a:focus {
+	outline: 0;
+}
+
+/*
+ * Improves readability when focused and also mouse hovered in all browsers
+ * people.opera.com/patrickl/experiments/keyboard/test
+ */
+
+a:hover,
+a:active {
+	outline: 0;
+}
+
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+
+/*
+ * Addresses font sizes and margins set differently in IE6/7
+ * Addresses font sizes within 'section' and 'article' in FF4+, Chrome, S5
+ */
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 13px;
+	line-height: 1.6em;
+	font-weight: normal;
+	margin: 0;
+	font-family: 'PT Sans', Arial, sans-serif;
+}
+
+/*
+ * Addresses styling not present in IE7/8/9, S5, Chrome
+ */
+
+abbr[title] {
+	border-bottom: 1px dotted;
+}
+
+/*
+ * Addresses style set to 'bolder' in FF3+, S4/5, Chrome
+*/
+
+b,
+strong {
+	font-weight: bold;
+}
+
+blockquote {
+	margin: 1em 40px;
+}
+
+/*
+ * Addresses styling not present in S5, Chrome
+ */
+
+dfn {
+	font-style: italic;
+}
+
+/*
+ * Addresses styling not present in IE6/7/8/9
+ */
+
+mark {
+	background: #ff0;
+	color: #000;
+}
+
+/*
+ * Addresses margins set differently in IE6/7
+ */
+
+p,
+pre {
+	margin: 0;
+}
+
+/*
+ * Corrects font family set oddly in IE6, S4/5, Chrome
+ * en.wikipedia.org/wiki/User:Davidgothberg/Test59
+ */
+
+pre,
+code,
+kbd,
+samp {
+	font-family: monospace, serif;
+	_font-family: 'courier new', monospace;
+}
+
+/*
+ * Improves readability of pre-formatted text in all browsers
+ */
+
+pre {
+
+}
+
+/*
+ * 1. Addresses CSS quotes not supported in IE6/7
+ * 2. Addresses quote property not supported in S4
+ */
+
+/* 1 */
+
+q {
+	quotes: none;
+}
+
+/* 2 */
+
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+
+small {
+	font-size: 75%;
+}
+
+/*
+ * Prevents sub and sup affecting line-height in all browsers
+ * gist.github.com/413930
+ */
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+
+/*
+ * Addresses margins set differently in IE6/7
+ */
+
+dl,
+menu,
+ol,
+ul {
+	margin: 0 0;
+}
+
+dd {
+	margin: 0 0 0 0;
+}
+
+/*
+ * Addresses paddings set differently in IE6/7
+ */
+
+menu,
+ol,
+ul {
+	padding: 0 0 0 0;
+}
+
+/*
+ * Corrects list images handled incorrectly in IE7
+ */
+
+ul,
+ol {
+	list-style: none;
+	list-style-image: none;
+}
+
+
+/* =============================================================================
+   Embedded content
+   ========================================================================== */
+
+/*
+ * 1. Removes border when inside 'a' element in IE6/7/8/9, FF3
+ * 2. Improves image quality when scaled in IE7
+ *    code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
+ */
+
+img {
+	border: 0; /* 1 */
+	-ms-interpolation-mode: bicubic; /* 2 */
+}
+
+/*
+ * Corrects overflow displayed oddly in IE9
+ */
+
+svg:not(:root) {
+	overflow: hidden;
+}
+
+
+/* =============================================================================
+   Figures
+   ========================================================================== */
+
+/*
+ * Addresses margin not present in IE6/7/8/9, S5, O11
+ */
+
+figure {
+	margin: 0;
+}
+
+
+/* =============================================================================
+   Forms
+   ========================================================================== */
+
+/*
+ * Corrects margin displayed oddly in IE6/7
+ */
+
+form {
+	margin: 0;
+}
+
+/*
+ * Define consistent border, margin, and padding
+ */
+
+fieldset {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+/*
+ * 1. Corrects color not being inherited in IE6/7/8/9
+ * 2. Corrects text not wrapping in FF3
+ * 3. Corrects alignment displayed oddly in IE6/7
+ */
+
+legend {
+	border: 0; /* 1 */
+	padding: 0;
+	white-space: normal; /* 2 */
+	*margin-left: -7px; /* 3 */
+}
+
+/*
+ * 1. Corrects font size not being inherited in all browsers
+ * 2. Addresses margins set differently in IE6/7, FF3+, S5, Chrome
+ * 3. Improves appearance and consistency in all browsers
+ */
+
+button,
+input,
+select,
+textarea {
+	font-size: 100%; /* 1 */
+	margin: 0; /* 2 */
+	vertical-align: baseline; /* 3 */
+	*vertical-align: middle; /* 3 */
+}
+
+/*
+ * Addresses FF3/4 setting line-height on 'input' using !important in the UA stylesheet
+ */
+
+button,
+input {
+	line-height: normal; /* 1 */
+}
+
+/*
+ * 1. Improves usability and consistency of cursor style between image-type 'input' and others
+ * 2. Corrects inability to style clickable 'input' types in iOS
+ * 3. Removes inner spacing in IE7 without affecting normal text inputs
+ *    Known issue: inner spacing remains in IE6
+ */
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	cursor: pointer; /* 1 */
+	-webkit-appearance: button; /* 2 */
+	*overflow: visible;  /* 3 */
+}
+
+/*
+ * Re-set default cursor for disabled elements
+ */
+
+button[disabled],
+input[disabled] {
+	cursor: default;
+}
+
+/*
+ * 1. Addresses box sizing set to content-box in IE8/9
+ * 2. Removes excess padding in IE8/9
+ * 3. Removes excess padding in IE7
+      Known issue: excess padding remains in IE6
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+	box-sizing: border-box; /* 1 */
+	padding: 0; /* 2 */
+	*height: 13px; /* 3 */
+	*width: 13px; /* 3 */
+}
+
+/*
+ * 1. Addresses appearance set to searchfield in S5, Chrome
+ * 2. Addresses box-sizing set to border-box in S5, Chrome (include -moz to future-proof)
+ */
+
+input[type="search"] {
+	-webkit-appearance: textfield; /* 1 */
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box; /* 2 */
+	box-sizing: content-box;
+}
+
+/*
+ * Removes inner padding and search cancel button in S5, Chrome on OS X
+ */
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+}
+
+/*
+ * Removes inner padding and border in FF3+
+ * www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+/*
+ * 1. Removes default vertical scrollbar in IE6/7/8/9
+ * 2. Improves readability and alignment in all browsers
+ */
+
+textarea {
+	overflow: auto; /* 1 */
+	vertical-align: top; /* 2 */
+}
+
+
+/* =============================================================================
+   Tables
+   ========================================================================== */
+
+/*
+ * Remove most spacing between table cells
+ */
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+iframe { border: none; }
+/* -------------------------------------------------------------------
+	ОСНОВНЫЕ СТИЛИ
+------------------------------------------------------------------- */
+
+body {
+	font-size: 12px;
+	font-family: Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height: 18px;
+	color: #000;
+	background-color: #fbfcfc;
+}
+
+
+
+/* Ссылки
+---------------------------------------------------- */
+a 		{ color: #3f8ad7; }
+a:hover { color: #f00; }
+
+.text a:visited { color: #1D2273; }
+
+a.link-dashed 		{ border-bottom: 1px dashed #5055b2; text-decoration: none; }
+a.link-dashed:hover { border-color: #f00; }
+
+a.link-dotted 		{ text-decoration: none; border-bottom: 1px dotted #5055b2; }
+a.link-dotted:hover { border-color: #f00; }
+
+
+
+/* Заголовки
+---------------------------------------------------- */
+h2.page-header { color: #333; font-size: 27px; line-height: 1em; font-weight: normal; margin-bottom: 20px; }
+h2.page-header span { color: #aaa; }
+h2.page-header i { vertical-align: middle; }
+
+h2.header-table { margin-bottom: 10px; font-size: 22px; font-weight: normal; }
+h2.header-table a { color: #275ec2; }
+h2.header-table span { color: #949aa1; }
+
+
+
+
+
+
+/* Шапка сайта
+---------------------------------------------------- */
+#header .site-name 			{ line-height: 1em; float: left; padding-top: 1px; margin: 0 10px 0 0; }
+#header .site-name a 		{ color: #fff; text-decoration: none; display: table-cell; width: 128px; height: 48px; text-align: center; vertical-align: middle; }
+#header .site-name a:hover 	{ color: #eee; }
+
+#header .new-messages { position: absolute; top: 0; right: 205px; color: #f9de7e; font-size: 11px; margin-right: 11px; margin-top: 18px; line-height: 1em; text-decoration: none; }
+#header .new-messages i { position: relative; top: -1px; }
+.mozilla #header .new-messages i { top: 0; }
+
+#header .dropdown-user { 
+	width: 89px; 
+	height: 51px; 
+	line-height: 47px; 
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding-right: 60px; 
+	padding-left: 54px; 
+	
+	background: #353535;
+	background: -moz-linear-gradient(top,  #353535 0%, #020202 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#353535), color-stop(100%,#020202));
+	background: -webkit-linear-gradient(top,  #353535 0%,#020202 100%);
+	background: -o-linear-gradient(top,  #353535 0%,#020202 100%);
+	background: -ms-linear-gradient(top,  #353535 0%,#020202 100%);
+	background: linear-gradient(top,  #353535 0%,#020202 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#353535', endColorstr='#020202',GradientType=0 );
+}
+#header .dropdown-user.opened 							{ background: #1d1d1d; }
+#header .dropdown-user .dropdown-user-trigger 			{ position: absolute; top: 0; right: 0; width: 36px; height: 51px; border-left: 1px solid #272727; cursor: pointer; }
+#header .dropdown-user .dropdown-user-trigger i 		{ position: absolute; top: 23px; left: 14px; height: 0; width: 0; border: 4px solid transparent; border-top-color: #949aa1; }
+#header .dropdown-user .dropdown-user-trigger:hover,
+#header .dropdown-user.opened .dropdown-user-trigger 	{ background: #093357; }
+#header .dropdown-user .dropdown-user-trigger:hover i,
+#header .dropdown-user.opened .dropdown-user-trigger i	{ border-top-color: #fff; }
+#header .dropdown-user .dropdown-user-shadow			{ height: 51px; width: 51px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) 0 -230px no-repeat; position: absolute; top: 0; right: 36px; }
+#header .dropdown-user.opened .dropdown-user-shadow		{ background-position: 0 -281px; }
+#header .dropdown-user .username 						{ color: #cfcfcf; font-size: 11px; text-decoration: underline; white-space: nowrap; max-width: 89px; overflow: hidden; display: block; }
+#header .dropdown-user .username:hover 					{ color: #aaa; }
+#header .dropdown-user .avatar 							{ position: absolute; top: 11px; left: 13px; width: 30px; height: 30px; }
+
+.dropdown-user-menu										{ position: absolute; background: #1d1d1d; border: none; border-top: 1px solid #000; border-radius: 0 0 10px 10px; -webkit-box-shadow: 0 0 7px rgba(0, 0, 0, .5); box-shadow: 0 0 7px rgba(0, 0, 0, .5); z-index: 30; }
+.dropdown-user-menu li 									{ border-bottom: 1px solid #000; border-top: 1px solid #393939; position: relative; }
+.dropdown-user-menu li:last-child 						{ border-bottom: none; }
+.dropdown-user-menu li:last-child a 					{ border-radius: 0 0 10px 10px; }
+.dropdown-user-menu li.item-stat 						{ padding: 20px 17px; font-size: 11px; background: #191919 url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/dropdown-user-shadow.png) left bottom repeat-x; }
+.dropdown-user-menu li.item-stat .rating 				{ color: #93d3f2; }
+.dropdown-user-menu li.item-stat .rating.negative 		{ color: #d95f5f; }
+.dropdown-user-menu li.item-stat .rating i 				{ position: relative; top: 2px; }
+.dropdown-user-menu li.item-stat .strength 				{ color: #f3d50b; margin-right: 21px; }
+.dropdown-user-menu li.item-stat .arrow 				{ position: relative; top: 3px; }
+.dropdown-user-menu li.item-stat .icon-synio-star-small { position: relative; top: 2px; }
+.dropdown-user-menu li.item-stat .icon-synio-strength 	{ position: relative; top: 1px; }
+.dropdown-user-menu li a 								{ display: block; zoom: 1; *width: 138px; height: 50px; padding: 0 10px 0 55px; line-height: 50px; color: #fff; text-decoration: none; }
+.dropdown-user-menu li a:hover 							{ background: #093357; color: #fff; }
+.dropdown-user-menu li .item-icon 						{ position: absolute; top: 15px; left: 17px; width: 21px; height: 21px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) no-repeat; }
+.dropdown-user-menu li.item-messages .item-icon 		{ background-position: 0 0; }
+.dropdown-user-menu li.item-profile .item-icon 			{ background-position: -23px 0; }
+.dropdown-user-menu li.item-settings .item-icon			{ background-position: -46px 0; }
+.dropdown-user-menu li.item-create .item-icon 			{ background-position: -69px 0; }
+.dropdown-user-menu li.item-signout .item-icon 			{ background-position: -92px 0; }
+.dropdown-user-menu li.item-favourite .item-icon 		{ background-position: -115px 0; }
+.dropdown-user-menu li.item-messages .new 				{ position: absolute; top: 15px; right: 7px; cursor: pointer; color: #fff; border-radius: 15px; border: 2px solid #eabe21; line-height: 1em; padding: 2px 7px 3px; }
+
+#header .auth { position: absolute; top: 0; right: 0; line-height: 49px; font-size: 11px; margin-right: 17px; }
+#header .auth li { float: left; margin-left: 23px; }
+#header .auth li a { color: #cfcfcf; text-decoration: none; }
+#header .auth li a.sign-in { color: #7dc6ff; }
+
+
+
+/* Футер
+---------------------------------------------------- */
+#footer .copyright { float: right; width: 255px; }
+#footer .copyright .design-by { overflow: hidden; line-height: 15px; margin-top: 30px; }
+#footer .copyright .design-by img { float: left; margin-right: 10px; margin-top: 3px; }
+#footer .copyright .design-by div { font-size: 10px; color: #8b9191; margin-top: 1px; }
+#footer a { color: #000; }
+#footer a:hover { color: #333; }
+#footer .footer-list { float: left; width: 138px; padding-right: 20px; }
+#footer .footer-list li { margin-bottom: 3px; }
+#footer .footer-list .footer-list-header { font-size: 12px; font-weight: bold; margin-bottom: 11px; }
+#footer .footer-list a { color: #4c4c4c; }
+
+
+
+/* Навигация
+---------------------------------------------------- */
+#nav .button.button-write { float: right; margin-left: 35px; margin-top: 1px; }
+#nav .search-header { float: right; }
+#nav .search-header .search-header-show { font-size: 11px; margin-top: 4px; }
+#nav .search-header .search-header-show a { color: #878e96; border-color: #878e96; }
+#nav .search-header .search-header-show a:hover { color: #f00; border-color: #f00; }
+#nav .search-header .search-header-form { position: relative; top: 0px; }
+#nav .search-header .search-header-form .input-text { padding: 4px 25px 4px 5px; width: 290px; }
+#nav .search-header .search-header-form .input-submit { position: absolute; top: 5px; right: 5px; width: 16px; height: 16px; border: none; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) -115px -55px no-repeat; }
+
+
+
+/* Stat
+---------------------------------------------------- */
+.stat-performance { width: 910px; margin: 0 auto 20px; padding: 15px 20px; background: #fff; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+.stat-performance table { }
+.stat-performance table td { width: 200px; vertical-align: top; }
+.stat-performance h4 { font-weight: bold; }
+
+
+
+/* Userfeed
+---------------------------------------------------- */
+.userfeed-get-more {display:block; width:90%; margin:0px auto; text-align:center; height:2.5em; padding-top:1em;}
+.userfeed-get-more:hover { background: #f0f7fd;}
+.userfeed_loading {background: #F7F7F7 url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/loader.gif) no-repeat center;}
+
+
+
+/* Stream
+---------------------------------------------------- */
+.stream-get-more {
+	margin-top: 50px;
+	border-radius: 5px;
+	display: block; text-align: center; padding: 12px 0; color: #258fa7; text-decoration: none;
+	background: #eefbfc;
+	background: -moz-linear-gradient(top,  #eefbfc 0%, #d3edf8 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eefbfc), color-stop(100%,#d3edf8));
+	background: -webkit-linear-gradient(top,  #eefbfc 0%,#d3edf8 100%);
+	background: -o-linear-gradient(top,  #eefbfc 0%,#d3edf8 100%);
+	background: -ms-linear-gradient(top,  #eefbfc 0%,#d3edf8 100%);
+	background: linear-gradient(top,  #eefbfc 0%,#d3edf8 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eefbfc', endColorstr='#d3edf8',GradientType=0 );
+}
+.stream-get-more:hover { background: #eefbfc; color: #258fa7; }
+.stream-get-more.loader { background-image: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/loader.gif); background-repeat: no-repeat; background-position: 50% 50%; }
+.stream_loading { background: #f7f7f7 url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/loader.gif) no-repeat center; }
+.stream-comment-preview { position: relative; padding: 5px 10px 6px; background: #fefef1; color: #363636; margin-top: 13px; font-size: 11px; border-radius: 3px; -webkit-box-shadow: 0 2px 4px #e8e8c0 inset; box-shadow: 0 2px 4px #e8e8c0 inset; }
+.stream-comment-preview:after 	{ display: block; content: ""; position: absolute; top: -12px; left: 15px; width: 0; height: 0; border-width: 6px; border-color: transparent transparent #e8e8c0 transparent; border-style: solid; }
+
+.stream-list { margin: 0 0 20px; }
+.stream-list li.stream-item { margin-bottom: 23px; min-height: 48px; _height: 48px; border-bottom: 1px solid #e7ebed; padding: 0 0 20px 60px; position: relative; }
+.stream-list li.stream-item:last-child { border: none; }
+.stream-list li.stream-item .info { color: #b9c2c2; font-size: 11px; line-height: 1em; margin-bottom: 8px; }
+.stream-list li.stream-item .info a { color: #275ec2; }
+.stream-list li.stream-item .info .date { color: #818189; }
+.stream-list li.stream-item .avatar { position: absolute; top: 0; left: 0; }
+.stream-list li.stream-item .user-avatar { margin-left: 3px; }
+.stream-list li.stream-header-date { font-size: 16px; color: #999; font-family: 'PT Sans', sans-serif; margin-top: 50px; margin-bottom: 20px; padding-bottom: 5px; border-bottom: 1px solid #eee; }
+
+
+
+/* Userfields
+---------------------------------------------------- */
+.userfield-list { width: 450px; }
+.userfield-list li { background: #eee; margin-bottom: 1px; padding: 10px 10px; overflow: hidden; zoom: 1; line-height: 12px; color: #777; }
+.userfield-list li .userfield-actions { float: right; }
+.userfield-list li .userfield_admin_name { font-weight: bold; color: #333; }
+
+.userfield-add { text-decoration: none; border-bottom: 1px dashed #70AAE0; }
+.userfield-add:hover { color: #333; border-color: #333; }
+
+
+
+/* Talk
+---------------------------------------------------- */
+.talk-search { padding: 15px; background: #f8fbfe; border-radius: 5px; margin-bottom: 35px; }
+.talk-search header { position: relative; min-height: 27px; }
+.talk-search header .close { position: absolute; top: 3px; right: 0; font-size: 11px; cursor: pointer; }
+.talk-search .talk-search-content { display: none; padding-top: 15px; border-top: 1px solid #fff; }
+.talk-search .talk-search-content p { margin-bottom: 25px; }
+.talk-search.opened header { border-bottom: 1px solid #e8eef5; padding-bottom: 15px; }
+.talk-search.opened .talk-search-content { display: block; }
+
+.talk-search.talk-friends header .close { left: 0; right: auto; }
+.talk-search.talk-friends .friend-list { margin-bottom: 15px; font-weight: bold; }
+.talk-search.talk-friends .friend-list li { margin-bottom: 5px; }
+
+.talk-blacklist-form { padding: 15px; background: #f8fbfe; border-radius: 5px; margin-bottom: 15px; }
+
+
+
+/* Misc
+---------------------------------------------------- */
+.avatar-edit { margin-bottom: 15px; }
+.avatar-edit img { vertical-align: bottom; }
+.avatar-edit label { margin-top: 10px; }
+
+.drafts { float: right; font-size: 11px; color: #275ec2; }
+
+.content-error { padding: 110px 160px; }
+.content-error h2.page-header { font-weight: bold; font-size: 30px; margin-bottom: 35px; }
+.content-error a { color: #727a90; }
+.content-error a:hover { color: #f00; }
+
+.help { 
+	display: none;
+	position: relative; 
+	padding: 10px 7px 13px;
+	background: #fefef1; 
+	color: #363636; 
+	margin-top: 13px; 
+	font-size: 11px; 
+	border-radius: 3px; 
+	-webkit-box-shadow: 0 0 5px #e8e8c0 inset; box-shadow: 0 0 5px #e8e8c0 inset; 
+}
+.help:before 	{ display: block; content: ""; position: absolute; top: -12px; left: 15px; width: 0; height: 0; border-width: 6px; border-color: transparent transparent #F2F2DD transparent; border-style: solid; }
+.help .help-col { float: left; width: 230px; padding: 0 10px; }
+.help .help-col.help-wide { float: none; width: 96%; }
+.help .help-item { margin-bottom: 20px; }
+.help .help-item:last-child { margin-bottom: 0; }
+.help .help-item h4 { font-family: Verdana, sans-serif; font-size: 11px; color: #727a90; font-weight: bold; }
+.help .help-item h4 a { color: #727a90; border-bottom: 1px dotted #727a90; }
+.link-dotted.help-link { font-size: 11px; color: #000; border-color: #000; }
+/* -------------------------------------------------------------------
+// markItUp! Universal MarkUp Engine, JQuery plugin
+// By Jay Salvat - http: //markitup.jaysalvat.com/
+// ------------------------------------------------------------------*/
+.markItUp a: link,
+.markItUp a: visited { color: #000; text-decoration: none; }
+.markItUp  { margin-bottom: 5px; }
+.markItUpContainer { font: 11px Verdana, Arial, Helvetica, sans-serif; }
+.markItUpEditor {
+	font: 12px "Courier New", Courier, monospace;
+	padding: 5px;
+	height: 400px;
+	line-height: 18px;
+	overflow: auto;
+	width: 100%;
+	-moz-box-sizing: border-box; 
+	box-sizing: border-box;
+	border: 1px solid #dfe3e8;
+}
+.markItUpPreviewFrame	{
+	overflow: auto;
+	background-color: #FFF;
+	border: 1px solid #eee;
+	padding: 10px;
+	height: 300px;
+	margin: 5px 0;
+	font: 12px Tahoma, Arial, Helvetica, sans-serif;
+}
+.markItUpFooter { width: 100%; }
+.markItUpResizeHandle {
+	overflow: hidden;
+	height: 8px;
+	background: url(http://hype.retroscene.org/engine/lib/external/jquery/markitup/skins/synio/images/handle.png) 50% 3px no-repeat;
+	cursor: n-resize;
+}
+
+
+/***************************************************************************************/
+/* first row of buttons */
+.markItUpHeader { 
+	background: #fbfcfc;
+	background: -moz-linear-gradient(top,  #fbfcfc 0%, #f0f2f5 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fbfcfc), color-stop(100%,#f0f2f5));
+	background: -webkit-linear-gradient(top,  #fbfcfc 0%,#f0f2f5 100%);
+	background: -o-linear-gradient(top,  #fbfcfc 0%,#f0f2f5 100%);
+	background: -ms-linear-gradient(top,  #fbfcfc 0%,#f0f2f5 100%);
+	background: linear-gradient(top,  #fbfcfc 0%,#f0f2f5 100%);
+	
+	border-radius: 3px 3px 0 0;
+	padding: 7px 10px 5px; 
+	border-top: 1px solid #dfe3e8; 
+	border-left: 1px solid #dfe3e8; 
+	border-right: 1px solid #dfe3e8; 
+}
+.markItUpHeader ul	{
+	overflow: visible;
+	zoom: 1;
+	display: inline-block;
+	*display: inline; /* ie <= 7 */
+}
+.markItUpHeader ul li	{ list-style: none; float: left; position: relative; margin-right: 10px; }
+.markItUpHeader ul li: hover > ul{ display: block; }
+.markItUpHeader ul .markItUpDropMenu {
+	background: transparent url(http://hype.retroscene.org/engine/lib/external/jquery/markitup/skins/synio/images/menu.png) no-repeat 115% 50%;
+	margin-right: 5px;
+}
+.markItUpHeader ul .markItUpDropMenu li {
+	margin-right: 0px;
+}
+/* next rows of buttons */
+.markItUpHeader ul ul {
+	display: none;
+	position: absolute;
+	top: 16px; left: 0px;	
+	background: #eee;
+	border: 1px solid #000;
+}
+.markItUpHeader ul ul li {
+	float: none;
+	border-bottom: 1px solid #000;
+}
+.markItUpHeader ul ul .markItUpDropMenu {
+	background: #eee url(http://hype.retroscene.org/engine/lib/external/jquery/markitup/skins/synio/images/submenu.png) no-repeat 100% 50%;
+}
+.markItUpHeader ul .markItUpSeparator {
+	margin: 0 10px 0 0;
+	width: 0;
+	height: 16px;
+	overflow: hidden;
+	border-left: 1px solid #dfe3e8;
+	border-right: 1px solid #fff;
+}
+.markItUpHeader ul ul .markItUpSeparator {
+	width: auto; height: 1px;
+	margin: 0px;
+}
+/* next rows of buttons */
+.markItUpHeader ul ul ul {
+	position: absolute;
+	top: -1px; left: 150px; 
+}
+.markItUpHeader ul ul ul li {
+	float: none;
+}
+.markItUpHeader ul a {
+	display: block;
+	width: 16px; height: 16px;
+	text-indent: -10000px;
+	background-repeat: no-repeat;
+	margin: 0px;
+}
+.markItUpHeader ul ul a {
+	display: block;
+	padding-left: 0px;
+	text-indent: 0;
+	width: 120px; 
+	padding: 5px 5px 5px 25px;
+	background-position: 2px 50%;
+	color: #000;
+	text-decoration: none;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow:ellipsis;
+}
+.markItUpHeader ul ul a:hover  {
+	background-color: #fff;
+}
+
+
+
+
+
+.markItUpPreviewFrame { }
+.markItUpPreviewFrame p { margin-bottom: 18px; }
+.markItUpPreviewFrame blockquote { background: #fafafa; padding: 10px 15px; color: #555; margin-bottom: 5px; clear: both; }
+.markItUpPreviewFrame pre { background: #fafafa; border: 1px solid #dce6f0; margin-bottom: 10px; overflow: auto; padding: 5px 10px; }
+.markItUpPreviewFrame ul { list-style-type: disc; margin-left: 17px; }
+.markItUpPreviewFrame ol { list-style-type: decimal; margin-left: 22px; }
+.markItUpPreviewFrame img[align="right"] { margin: 4px 0 5px 15px; }
+.markItUpPreviewFrame img[align="left"] { margin: 4px 15px 10px 0; }
+/* -------------------------------------------------------------------
+// markItUp!
+// By Jay Salvat - http://markitup.jaysalvat.com/
+// ------------------------------------------------------------------*/
+.markItUp a { background: url(http://hype.retroscene.org/engine/lib/external/jquery/markitup/sets/synio/images/icons.png) no-repeat; }
+.markItUp .editor-h4 a 			{ background-position: -11px -9px; }
+.markItUp .editor-h5 a 			{ background-position: -39px -9px; }
+.markItUp .editor-h6 a 			{ background-position: -65px -9px; }
+.markItUp .editor-bold a 		{ background-position: -107px -9px; }
+.markItUp .editor-italic a 		{ background-position: -134px -9px; }
+.markItUp .editor-stroke a 		{ background-position: -188px -9px; }
+.markItUp .editor-underline a 	{ background-position: -161px -9px; }
+.markItUp .editor-quote a 		{ background-position: -326px -9px; }
+.markItUp .editor-code a 		{ background-position: -353px -9px; }
+.markItUp .editor-ul a 			{ background-position: -257px -9px; }
+.markItUp .editor-ol a 			{ background-position: -230px -9px; }
+.markItUp .editor-li a 			{ background-position: -550px -9px; }
+
+.markItUp .editor-picture a 	{ background-position: -423px -9px; }
+.markItUp .editor-image a 		{ background-position: -423px -9px; }
+.markItUp .editor-link a 		{ background-position: -299px -9px; }
+
+.markItUp .editor-clean a 		{ background-position: -519px -9px; }
+.markItUp .editor-preview a 	{ background-position: -11px -9px; }
+.markItUp .editor-cut a 		{ background-position: -491px -9px; }
+.markItUp .editor-video a 		{ background-position: -450px -9px; }
+.markItUp .editor-user a 		{ background-position: -380px -9px; }/* Fixes issue here http://code.google.com/p/jcrop/issues/detail?id=1 */
+.jcrop-holder { text-align: left; }
+
+.jcrop-vline, .jcrop-hline
+{
+	font-size: 0px;
+	position: absolute;
+	background: white url(http://hype.retroscene.org/engine/lib/external/jquery/jcrop/Jcrop.gif) top left repeat;
+}
+.jcrop-vline { height: 100%; width: 1px !important; }
+.jcrop-hline { width: 100%; height: 1px !important; }
+.jcrop-vline.right { right: 0px; }
+.jcrop-hline.bottom { bottom: 0px; }
+.jcrop-handle {
+	font-size: 1px;
+	width: 7px !important;
+	height: 7px !important;
+	border: 1px #eee solid;
+	background-color: #333;
+}
+
+.jcrop-tracker { width: 100%; height: 100%; }
+
+.custom .jcrop-vline,
+.custom .jcrop-hline
+{
+	background: yellow;
+}
+.custom .jcrop-handle
+{
+	border-color: black;
+	background-color: #C7BB00;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+.str{color:#080}.kwd{color:#008}.com{color:#800}.typ{color:#606}.lit{color:#066}.pun{color:#660}.pln{color:#000}.tag{color:#008}.atn{color:#606}.atv{color:#080}.dec{color:#606}pre.prettyprint{padding:2px;border:1px solid #888}@media print{.str{color:#060}.kwd{color:#006;font-weight:bold}.com{color:#600;font-style:italic}.typ{color:#404;font-weight:bold}.lit{color:#044}.pun{color:#440}.pln{color:#000}.tag{color:#006;font-weight:bold}.atn{color:#404}.atv{color:#060}}/* --------------------------------------------
+	СЕТКА
+-------------------------------------------- */
+
+#container 			{ margin: 0 auto; margin-bottom: 20px; padding: 0 48px; }
+#header-back 		{ position: absolute; top: 0; left: 0; width: 100%; height: 51px; background: #000000; }
+#header 			{ background-color: #000000; height: 51px; margin: 0 auto; position: relative; padding-right: 270px; }
+#nav 		{ 
+	min-height: 26px;
+	margin-bottom: 32px; 
+	overflow: hidden; 
+	padding: 12px 17px 15px; 
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,.15); box-shadow: 0 0 10px rgba(0,0,0,.15); 
+	border-radius: 0 0 10px 10px;
+	position: relative;
+	
+	background: #fdfdfd;
+	background: -moz-linear-gradient(top,  #fdfdfd 0%, #f6f8f9 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fdfdfd), color-stop(100%,#f6f8f9));
+	background: -webkit-linear-gradient(top,  #fdfdfd 0%,#f6f8f9 100%);
+	background: -o-linear-gradient(top,  #fdfdfd 0%,#f6f8f9 100%);
+	background: -ms-linear-gradient(top,  #fdfdfd 0%,#f6f8f9 100%);
+	background: linear-gradient(top,  #fdfdfd 0%,#f6f8f9 100%);
+}
+#wrapper 	{ overflow: hidden; zoom: 1; padding: 20px 16px 20px 27px; margin-bottom: 60px; background: #fff url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/sidebar-border.png) 100% 0px repeat-y; border-bottom: 1px solid #eee; -webkit-box-shadow: 0 0 5px rgba(0,0,0,.05); box-shadow: 0 0 5px rgba(0,0,0,.05); border-radius: 10px; }
+#content 	{ min-height: 1px; margin-right: 295px; background: #fff; position: relative; }
+#sidebar	{ float: right; width: 240px; }
+#footer 	{ overflow: hidden; zoom: 1; margin-bottom: 20px; padding: 0 0 50px 30px; font-size: 11px; }
+
+
+#wrapper.no-sidebar				{ background-image: none; }
+#wrapper.no-sidebar #content 	{ width: 100%; margin-right: 0; }
+
+#container.toolbar-margin 	{ padding: 0; }
+#container.toolbar-margin #wrapper 	{ margin-right: 48px; }
+/* -------------------------------------------------------------------
+	ОБЩИЕ СТИЛИ
+------------------------------------------------------------------- */
+
+/* Голосование 
+---------------------------------------------------- */
+.vote-topic { height: 24px; border-radius: 15px; overflow: hidden; font-size: 11px; float: left; zoom: 1; }
+.vote-topic .vote-item { 
+	cursor: pointer;
+	overflow: hidden;
+	display: block;
+	float: left;
+	height: 22px;
+	border: 1px solid #dfe3e8; 
+	
+	background: #fbfbfc;
+	background: -moz-linear-gradient(top,  #fbfbfc 0%, #f0f2f5 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fbfbfc), color-stop(100%,#f0f2f5));
+	background: -webkit-linear-gradient(top,  #fbfbfc 0%,#f0f2f5 100%);
+	background: -o-linear-gradient(top,  #fbfbfc 0%,#f0f2f5 100%);
+	background: -ms-linear-gradient(top,  #fbfbfc 0%,#f0f2f5 100%);
+	background: linear-gradient(top,  #fbfbfc 0%,#f0f2f5 100%);
+}
+.vote-topic .vote-item i				{ width: 16px; height: 16px; display: block; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) no-repeat; }
+.vote-topic .vote-item span				{ display: block; border-right: 1px solid #fff; border-top: 1px solid #fefefe; }
+
+.vote-topic .vote-item.vote-up				{ border-radius: 0 15px 15px 0; }
+.vote-topic .vote-item.vote-up i			{ background-position: -83px -23px; }
+.vote-topic .vote-item.vote-up span			{ padding: 2px 7px 3px 4px; border-radius: 0 15px 15px 0; }
+.vote-topic.not-voted .vote-item.vote-up:hover		{ 
+	background: #e4fae2;
+	background: -moz-linear-gradient(top,  #e4fae2 0%, #b0e3ac 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e4fae2), color-stop(100%,#b0e3ac));
+	background: -webkit-linear-gradient(top,  #e4fae2 0%,#b0e3ac 100%);
+	background: -o-linear-gradient(top,  #e4fae2 0%,#b0e3ac 100%);
+	background: -ms-linear-gradient(top,  #e4fae2 0%,#b0e3ac 100%);
+	background: linear-gradient(top,  #e4fae2 0%,#b0e3ac 100%);
+	
+	border-color: #e4fae2 #ccefca #afe3ab;
+}
+.vote-topic.not-voted .vote-item.vote-up:hover i		{ background-position: -83px -39px; }
+.vote-topic.not-voted .vote-item.vote-up:hover span	{ border-color: transparent; }
+
+.vote-topic .vote-item.vote-count 		{ color: #628fa5; line-height: 23px; border-left: transparent; border-right: transparent; }
+.vote-topic .vote-item.vote-count i 	{ background-position: -99px -23px; margin-top: 1px; }
+.vote-topic .vote-item.vote-count span 	{ padding: 1px 4px 5px 5px; }
+.topic .vote-topic.vote-not-self.not-voted.vote-not-expired .vote-item.vote-count:hover		{ 
+	background: #4ec4ff;
+	background: -moz-linear-gradient(top,  #4ec4ff 0%, #22b3fe 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4ec4ff), color-stop(100%,#22b3fe));
+	background: -webkit-linear-gradient(top,  #4ec4ff 0%,#22b3fe 100%);
+	background: -o-linear-gradient(top,  #4ec4ff 0%,#22b3fe 100%);
+	background: -ms-linear-gradient(top,  #4ec4ff 0%,#22b3fe 100%);
+	background: linear-gradient(top,  #4ec4ff 0%,#22b3fe 100%);
+
+	-webkit-box-shadow: 0 -1px 0 rgba(255,255,255,.3) inset; box-shadow: 0 -1px 0 rgba(255,255,255,.3) inset;
+	border-color: #27ace8;
+}
+.vote-topic.not-voted .vote-item.vote-count:hover i		{ background-position: -99px -87px; }
+.vote-topic.not-voted .vote-item.vote-count:hover span	{ border-color: transparent; }
+
+.vote-topic .vote-item.vote-down 		{ border-radius: 15px 0 0 15px; }
+.vote-topic .vote-item.vote-down i		{ background-position: -67px -23px; }
+.vote-topic .vote-item.vote-down span	{ padding: 2px 4px 3px 7px; }
+.vote-topic.not-voted .vote-item.vote-down:hover		{ 
+	background: #ffc8c8;
+	background: -moz-linear-gradient(top,  #ffc8c8 0%, #ff8181 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffc8c8), color-stop(100%,#ff8181));
+	background: -webkit-linear-gradient(top,  #ffc8c8 0%,#ff8181 100%);
+	background: -o-linear-gradient(top,  #ffc8c8 0%,#ff8181 100%);
+	background: -ms-linear-gradient(top,  #ffc8c8 0%,#ff8181 100%);
+	background: linear-gradient(top,  #ffc8c8 0%,#ff8181 100%);
+	
+	border-color: #ffc8c8 #fea8a8 #ff8181;
+}
+.vote-topic.not-voted .vote-item.vote-down:hover i	{ background-position: -67px -55px; }
+.vote-topic.not-voted .vote-item.vote-down:hover span	{ border-color: transparent; }
+
+.vote-topic.voted						{ -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.2) inset; box-shadow: 0 2px 3px rgba(0,0,0,.2) inset; }
+
+.vote-topic.voted-down 								{ padding: 0; }
+.vote-topic.voted-down .vote-item					{ border: none; background: none; }
+.vote-topic.voted-down .vote-item span				{ border: none; }
+.vote-topic.voted-down .vote-item.vote-down 		{ display: none; }
+.vote-topic.voted-down .vote-item.vote-up span 		{ padding: 4px 8px 3px 4px; }
+.vote-topic.voted-down .vote-item.vote-count 		{ color: #da4242; }
+.vote-topic.voted-down .vote-item.vote-count span 	{ padding: 0 3px 0 10px !important; }
+.vote-topic.vote-count-positive.voted-down .vote-item.vote-up i		{ background-position: -67px -39px; }
+.vote-topic.vote-count-negative.voted-down .vote-item.vote-up i		{ background-position: -67px -55px; }
+
+.vote-topic.voted-up 							{ padding: 0; }
+.vote-topic.voted-up .vote-item					{ border: none; background: none; }
+.vote-topic.voted-up .vote-item span			{ border: none; }
+.vote-topic.voted-up .vote-item.vote-down 		{ display: none; }
+.vote-topic.voted-up .vote-item.vote-up span 	{ padding: 4px 8px 3px 4px; }
+.vote-topic.voted-up .vote-item.vote-count 		{ float: left; color: #5fa459; }
+.vote-topic.voted-up .vote-item.vote-count span { padding: 0 3px 0 10px !important; }
+.vote-topic.vote-count-positive.voted-up .vote-item.vote-up i		{ background-position: -83px -39px; }
+.vote-topic.vote-count-negative.voted-up .vote-item.vote-up i		{ background-position: -83px -55px; }
+
+.vote-topic.voted-zero 								{ padding: 0; }
+.vote-topic.voted-zero .vote-item					{ border: none; background: none; }
+.vote-topic.voted-zero .vote-item span				{ border: none; }
+.vote-topic.voted-zero .vote-item.vote-down 		{ display: none; }
+.vote-topic.voted-zero .vote-item.vote-up 			{  }
+.vote-topic.voted-zero .vote-item.vote-up i 		{ width: 16px; background-position: -99px -23px; }
+.vote-topic.voted-zero .vote-item.vote-up span 		{ padding: 4px 8px 3px 4px; }
+.vote-topic.voted-zero .vote-item.vote-count 		{ float: left; color: #5fa459; }
+.vote-topic.voted-zero .vote-item.vote-count span 	{ padding: 0 3px 0 10px !important; }
+.vote-topic.vote-count-positive.voted-zero .vote-item.vote-up i		{ background-position: -99px -39px; }
+.vote-topic.vote-count-negative.voted-zero .vote-item.vote-up i		{ background-position: -99px -55px; }
+
+.vote-topic.vote-count-positive.vote-nobuttons,
+.vote-topic.vote-count-positive	.vote-item.vote-count 	{ -webkit-box-shadow: 0 2px 3px #acd7a7 inset; box-shadow: 0 2px 3px #acd7a7 inset; }
+.vote-topic.vote-count-negative.vote-nobuttons,
+.vote-topic.vote-count-negative	.vote-item.vote-count 	{ -webkit-box-shadow: 0 2px 3px #e95e5e inset; box-shadow: 0 2px 3px #e95e5e inset; }
+.vote-topic.vote-count-zero.vote-nobuttons,
+.vote-topic.vote-count-zero	.vote-item.vote-count 		{ -webkit-box-shadow: 0 2px 3px #b4d5e2 inset; box-shadow: 0 2px 3px #b4d5e2 inset; }
+
+.vote-topic.vote-nobuttons 								{  }
+.vote-topic.vote-nobuttons .vote-item 					{ border: none; }
+.vote-topic.vote-nobuttons .vote-item span 				{ border: none; }
+.vote-topic.vote-nobuttons .vote-item.vote-up,
+.vote-topic.vote-nobuttons .vote-item.vote-down 		{ display: none; }
+.vote-topic.vote-nobuttons .vote-item.vote-count 		{ border-radius: 15px; padding: 0 5px; -webkit-box-shadow: none; box-shadow: none; }
+
+.vote-topic.vote-count-positive .vote-item.vote-count					{ background: #def7dc; color: #5fa459; height: 24px; border: none; }
+.vote-topic.vote-count-positive .vote-item.vote-count span 				{ border: none; padding: 0 7px; }
+.vote-topic.vote-count-positive.voted									{ background: #def7dc; }
+.vote-topic.vote-count-positive.voted .vote-item.vote-count,
+.vote-topic.vote-count-positive.vote-nobuttons .vote-item.vote-count	{ -webkit-box-shadow: none; box-shadow: none; background: none; }
+.vote-topic.vote-count-positive.vote-nobuttons							{ background: #def7dc; }
+
+.vote-topic.vote-count-negative .vote-item.vote-count					{ background: #ff8a8a; color: #da4242; height: 24px; border: none; }
+.vote-topic.vote-count-negative .vote-item.vote-count span 				{ border: none; padding: 0 7px; }
+.vote-topic.vote-count-negative.voted									{ background: #ff8a8a; }
+.vote-topic.vote-count-negative.voted .vote-item.vote-count,
+.vote-topic.vote-count-negative.vote-nobuttons .vote-item.vote-count	{ -webkit-box-shadow: none; box-shadow: none; background: none; }
+.vote-topic.vote-count-negative.vote-nobuttons							{ background: #ff8a8a; }
+
+.vote-topic.vote-count-zero .vote-item.vote-count						{ background: #edf8fd; color: #628fa5; height: 24px; border: none; }
+.vote-topic.vote-count-zero .vote-item.vote-count span 					{ border: none; padding: 0 7px; }
+.vote-topic.vote-count-zero.voted										{ background: #edf8fd; }
+.vote-topic.vote-count-zero.voted .vote-item.vote-count,
+.vote-topic.vote-count-zero.vote-nobuttons .vote-item.vote-count		{ -webkit-box-shadow: none; box-shadow: none; background: none; }
+.vote-topic.vote-count-zero.vote-nobuttons								{ background: #edf8fd; }
+
+
+
+/* Избранное 
+---------------------------------------------------- */
+.favourite 			{ display: inline-block; width: 11px; height: 11px; vertical-align: text-top; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) 0 -37px no-repeat; cursor: pointer; }
+.favourite.active 	{ background-position: 0 -65px; }
+.favourite-count    { margin-left: 0; }
+
+.follow 			{ display: inline-block; width: 17px; height: 17px; vertical-align: text-top; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) 0 -76px no-repeat; cursor: pointer; }
+.follow.active 		{ background-position: -17px -76px; }
+
+
+
+/* Пагинация 
+---------------------------------------------------- */
+.pagination 					{ overflow: hidden; zoom: 1; }
+.pagination ul 					{ overflow: hidden; zoom: 1; line-height: 1em; float: left; margin-top: 5px; }
+.pagination ul li 				{ float: left; margin-right: 5px; }
+.pagination ul li span			{ color: #aaa; }
+.pagination ul li span,
+.pagination ul li a 			{ float: left; padding: 4px 6px;}
+.pagination ul li a:hover 		{  }
+.pagination ul li.active span 	{ color: #333; border: 1px solid #eee; border-radius: 4px; }
+.pagination ul li i 			{ opacity: .5; filter: alpha(opacity=50); }
+.pagination ul li.prev span,
+.pagination ul li.prev a		{ padding-left: 0; }
+.pagination ul li.next			{ margin-right: 50px; }
+
+
+
+/* Actions 
+---------------------------------------------------- */
+.actions 						{ overflow: hidden; zoom: 1; margin-bottom: 10px; font-size: 11px; }
+.actions li 					{ float: left; margin-right: 10px; }
+
+
+
+/* Toolbar 
+---------------------------------------------------- */
+.toolbar 					{ position: fixed; top: 136px; z-index: 20; display: none; }
+.toolbar section 			{ width: 25px; padding: 8px; overflow: hidden; line-height: 14px; background: #fff; -webkit-box-shadow: 0 0 5px rgba(0,0,0,.03); box-shadow: 0 0 5px rgba(0,0,0,.03); margin-bottom: 10px; border-radius: 10px; }
+.toolbar section i			{ display: block; width: 25px; height: 25px; }
+
+/* Admin button */
+.toolbar .toolbar-admin i 			{ background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) -268px -23px no-repeat; }
+.toolbar .toolbar-admin i:hover 	{ background-position: -268px -48px; }
+.toolbar .toolbar-admin i:active 	{ background-position: -268px -73px; }
+
+/* Update comments button */
+.toolbar .toolbar-update {  }
+.toolbar .toolbar-update .update-comments 			{  }
+.toolbar .toolbar-update .update-comments i 		{ background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/update.gif) no-repeat; }
+.toolbar .toolbar-update .update-comments.active i 	{ background-position: -25px 0; }
+
+/* Modified by byuk */
+.toolbar .toolbar-update .new-comments 				{ display: block; background-color: #F7F8FA; border: 1px solid #DFE3E8; border-radius: 5px; margin-top: 15px; padding: 5px 0; font-size: 13px; font-weight: bold; color: #51983c; text-align: center; text-decoration: none; width: 25px; }
+.toolbar .toolbar-update .new-comments:hover 		{ background-color: #2AB6FE; color: #ffffff; }
+
+/* Topic navigation */
+.toolbar .toolbar-topic 								{ width: 19px; padding: 11px; }
+.toolbar .toolbar-topic a.toolbar-topic-prev i 			{ display: block; width: 19px; height: 32px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) -211px -23px no-repeat; }
+.toolbar .toolbar-topic a.toolbar-topic-prev i:hover 	{ background-position: -230px -23px; }
+.toolbar .toolbar-topic a.toolbar-topic-prev i:active 	{ background-position: -249px -23px; }
+.toolbar .toolbar-topic a.toolbar-topic-next i			{ display: block; width: 19px; height: 32px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) -211px -55px no-repeat; }
+.toolbar .toolbar-topic a.toolbar-topic-next i:hover 	{ background-position: -230px -55px; }
+.toolbar .toolbar-topic a.toolbar-topic-next i:active 	{ background-position: -249px -55px; }
+
+/* Scroll up */
+.toolbar .toolbar-scrollup 			{ display: none; }
+.toolbar .toolbar-scrollup i 		{ background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) -294px -23px no-repeat; }
+.toolbar .toolbar-scrollup i:hover 	{ background-position: -294px -48px; }
+.toolbar .toolbar-scrollup i:active { background-position: -294px -73px; }
+
+
+
+/* Список пользователей 
+---------------------------------------------------- */
+.user-list-avatar 			{ overflow: hidden; zoom: 1; }
+.user-list-avatar li 		{ width: 48px; overflow: hidden; float: left; margin-right: 12px; margin-bottom: 12px; text-align: center; font-size: 11px; }
+.user-list-avatar li img	{ margin-bottom: 2px; display: block; }
+
+.user-list-mini li 			{ padding: 0 25px 4px 5px; margin-bottom: 0; position: relative; }
+.user-list-mini li img 		{ width: 17px; height: 17px; position: relative; top: 4px; margin-right: 2px; }
+.user-list-mini li input 	{ position: relative; top: 2px; }
+.user-list-mini li i 		{ position: absolute; top: 4px; right: 5px; cursor: pointer; display: none; }
+.user-list-mini li:hover	{ background: #fcfce9; }
+.user-list-mini li:hover i	{ display: block; }
+
+
+/* Поиск 
+---------------------------------------------------- */
+.search 						{ margin-bottom: 20px; position: relative; }
+.search .input-text 			{ padding-right: 25px; }
+.search .input-submit 			{ border: none; width: 16px; height: 16px; position: absolute; top: 6px; right: 5px; opacity: .7; filter: alpha(opacity=70); }
+.search .input-submit:hover 	{ opacity: 1; filter: alpha(opacity=100); }
+
+.search-item 				{ margin-bottom: 35px; padding: 15px; background: #f8fbfe; }
+.search-item .input-text 	{ width: 100%; padding-right: 5px; }
+.search-item .submit	 	{ width: 16px; height: 16px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) -115px -55px no-repeat; }
+
+.search-item.search-item-abc ul 					{ overflow: hidden; zoom: 1; margin-top: 10px; }
+.search-item.search-item-abc ul li 					{ float: left; }
+.search-item.search-item-abc ul li a 				{ float: left; color: #727a90; text-decoration: none; padding: 1px 5px; border-radius: 3px; }
+.search-item.search-item-abc ul li a span 			{ border-bottom: 1px dotted #727a90; }
+.search-item.search-item-abc ul li a:hover 			{ background: #64ceff; color: #fff; }
+.search-item.search-item-abc ul li a:hover span 	{ border: none; }
+.search-item.search-item-abc ul li.active a 		{ color: #333; }
+.search-item.search-item-abc ul li.active a:hover 	{ color: #333; background: none; }
+.search-item.search-item-abc ul li.active a span 	{ border: none; }
+
+.search-tags 							{ margin-bottom: 15px; }
+
+.search-form-wrapper						{ background: #f9fbfb; padding: 15px; border-radius: 5px; margin-bottom: 15px; }
+.search-input-wrapper						{ position: relative; }
+.search-input-wrapper .input-submit 		{ position: absolute; top: 3px; right: 3px; width: 22px; height: 22px; border: none; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) -319px -24px no-repeat; cursor: pointer; }
+.search-input-wrapper .input-submit:hover 	{ background-position: -341px -24px; }
+.search-input-wrapper .input-submit:active 	{ background-position: -363px -24px; }
+.search-input-wrapper .input-text 			{ padding-right: 25px; }
+
+
+
+/* Облако тегов 
+---------------------------------------------------- */
+.tag-cloud	 				{ text-align: center; width: 100%; }
+.tag-cloud li 				{ display: inline; margin-right: 5px; line-height: 22px; }
+.tag-cloud li a 			{ color: #727a90; }
+.tag-cloud li a:hover 		{ color: #f00; }
+.tag-cloud li .tag-size-1 	{ font-size: 12px; }
+.tag-cloud li .tag-size-2 	{ font-size: 12px; }
+.tag-cloud li .tag-size-3 	{ font-size: 14px; }
+.tag-cloud li .tag-size-4 	{ font-size: 14px; }
+.tag-cloud li .tag-size-5 	{ font-size: 18px; }
+.tag-cloud li .tag-size-6 	{ font-size: 18px; }
+.tag-cloud li .tag-size-7 	{ font-size: 20px; }
+.tag-cloud li .tag-size-8 	{ font-size: 20px; }
+.tag-cloud li .tag-size-9 	{ font-size: 22px; }
+.tag-cloud li .tag-size-10 	{ font-size: 22px; }
+
+
+
+/* Item List 
+---------------------------------------------------- */
+.item-list 					{ border-top: 1px solid #eee; }
+.item-list li 				{ min-height: 51px; padding: 7px 0 10px 58px; border-bottom: 1px solid #eee; position: relative; zoom: 1; }
+.item-list li p 			{ padding-top: 2px; font-size: 11px; }
+.item-list li a 			{ text-decoration: none; }
+.item-list li .avatar 		{ position: absolute; top: 10px; left: 0; margin-right: 10px; }
+.item-list li .author 		{ font-weight: bold; color: #333; }
+.item-list li .blog-name 	{ font-weight: bold; }
+
+
+
+/* Хелперы
+---------------------------------------------------- */
+.mt-10 { margin-bottom: 10px !important; }
+.mt-20 { margin-bottom: 20px !important; }
+
+.mb-10 { margin-bottom: 10px !important; }
+.mb-15 { margin-bottom: 15px !important; }
+.mb-20 { margin-bottom: 20px !important; }
+.mb-30 { margin-bottom: 30px !important; }
+
+.ta-c { text-align: center !important; }
+.ta-r { text-align: right !important; }
+.va-m { vertical-align: middle; }
+.fl-r { float: right !important; }
+.fl-l { float: left !important; }
+
+.clearfix:before,
+.clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix 		{ zoom: 1; }
+
+.wrapper 			{ overflow: hidden; zoom: 1; }
+.wrapper-content 	{ padding: 20px 20px; background: #f8fbfe; }
+.wrapper-content h3 { font-size: 15px; margin-bottom: 10px; font-family: Verdana, sans-serif; }
+.wrapper-content.wrapper-content-dark 	{ padding: 15px 20px; background: #f1f7fd; }
+
+.word-wrap {
+	white-space: -moz-pre-wrap !important;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap; 
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	white-space: normal;
+}
+
+
+
+/* Разное
+---------------------------------------------------- */
+.system-message-error 	{ background: #f0c8c8; color: #b22626; padding: 10px 15px; margin-bottom: 15px; }
+.system-message-notice 	{ background: #dafad8; color: #4bb23b; padding: 10px 15px; margin-bottom: 15px; }
+
+.notice-empty 			{ color: #aaa; }
+
+.loader { background: #fafafa url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/loader.gif) 50% 50% no-repeat; }
+
+.user, .ls-user 				{ font-weight: bold; color: #333; }
+.user:before, .ls-user:before 	{ content: ''; display: inline-block; width: 12px; height: 12px; margin-right: 4px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) -165px -75px no-repeat; vertical-align: middle; position: relative; top: -1px; }
+.user .icon-user 				{ margin-right: 3px; }
+.username.inactive,
+.user.inactive 					{ color: #aaa !important; }
+
+.user-avatar img { width: 16px; height: 16px; vertical-align: middle; margin-right: 1px; }
+.user-avatar a { color: #000; font-size: 11px; }
+.user-avatar.user-avatar-n a { color: #3F8AD7; font-size: 12px; }
+
+.counter.exceeded { color: #f00; }
+
+.page-header-menu { overflow: hidden; zoom: 1; margin-bottom: 10px; }
+.page-header-menu .page-header { float: left; margin-right: 20px; margin-bottom: 10px; }
+.page-header-menu .nav.nav-pills { margin-top: 5px; float: left; }
+
+.blog-list-info { width: 19px; height: 19px; display: inline-block; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) 0 -107px no-repeat; cursor: pointer; }
+.blog-list-info:hover,
+.blog-list-info.active { background-position: -19px -107px; }/* -------------------------------------------------------------------
+	ФОРМАТИРОВАННЫЙ ТЕКСТ
+------------------------------------------------------------------- */
+
+.text { font-size: 13px; line-height: 1.6em; overflow: hidden; zoom: 1; }
+
+.text a	{ text-decoration: underline; }
+
+.text h4 { font-size: 24px; margin-bottom: 7px; font-weight: bold; }
+.text h5 { font-size: 20px; margin-bottom: 7px; font-weight: bold; }
+.text h6 { font-size: 18px; margin-bottom: 7px; font-weight: bold; }
+
+.text p { margin-bottom: 1em; }
+.text abbr[title] { border-bottom: 1px dotted; }
+.text b, .text strong { font-weight: bold; }
+.text blockquote { margin: 0; background: #fbfbfc; color: #555; padding: 10px 15px; clear: both; border-left: 5px solid #EDEDF2; }
+.text dfn { font-style: italic; }
+.text hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+.text ins { background: #ff9; color: #000; text-decoration: none; }
+.text mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+.text pre { margin: 0; padding: 10px 15px; border: none; background: #fafafa; font-size: 12px; line-height: 18px; overflow: auto; width: 100%; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; clear: both; }
+.text q { quotes: none; clear: both; }
+.text q:before, q:after { content: ""; content: none; }
+.text small { font-size: 85%; }
+
+.text sub, .text sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+.text sup { top: -0.5em; }
+.text sub { bottom: -0.25em; }
+
+.text ul, .text ol { margin: 0; padding: 0 0 0 40px; }
+.text ul { list-style-type: disc; }
+.text ol { list-style-type: decimal; }
+.text dd { margin: 0 0 0 40px; }
+
+.text img[align="right"] { margin: 4px 0 5px 15px; }
+.text img[align="left"] { margin: 4px 15px 10px 0; }
+.text img.image-center { display: block; margin: 0 auto; }
+
+.text object,
+.text img { max-width: 100%; vertical-align: top; }
+
+.text .ls-user { color: #3F8AD7; }
+.text .ls-user:visited { color: #3F8AD7; }
+.text .ls-user:hover { color: #f00; }
+/* -------------------------------------------------------------------
+	ФОРМЫ
+------------------------------------------------------------------- */
+
+.input-text {
+	width: 150px;
+	padding: 5px;
+	border: 1px solid #c9c9c9;
+	-webkit-box-shadow: 0 2px 4px rgba(0,0,0,.07) inset; box-shadow: 0 2px 4px rgba(0,0,0,.07) inset;
+	border-radius: 3px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.input-text:focus 	{ border-color: #57BCEB; -webkit-box-shadow: 0 2px 4px rgba(0,0,0,.07) inset, 0 0 3px #00A8FF; box-shadow: 0 2px 4px rgba(0,0,0,.07) inset, 0 0 3px #00A8FF; outline: none; }
+.input-checkbox 	{ position: relative; top: 1px; margin: 0 2px 0 1px; }
+
+.input-width-full 	{ width: 100%; }
+.input-width-50 	{ width: 50px; }
+.input-width-100 	{ width: 100px; }
+.input-width-150 	{ width: 150px; }
+.input-width-200 	{ width: 200px; }
+.input-width-250 	{ width: 250px; }
+.input-width-300 	{ width: 300px; }
+.input-width-400 	{ width: 400px; }
+.input-width-500 	{ width: 500px; }
+
+textarea { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+select 		{ padding: 4px; border: 1px solid #ddd; border-radius: 3px; }
+
+fieldset { margin-bottom: 30px; padding-top: 20px; border-top: 1px solid #eaeaea; }
+fieldset legend { color: #000; font-size: 18px; padding-right: 10px; }
+
+form p { margin-bottom: 20px; }
+form label { display: block; margin-bottom: 3px; }
+form .icon-question-sign { cursor: help; }
+
+.note { display: block; margin-top: 3px; font-size: 11px; line-height: 16px; color: #aaa; }
+.note.note-header { margin-bottom: 20px; }
+
+.captcha-image { vertical-align: top; }
+
+.counter-wrapper { margin-bottom: 15px; position: relative; }
+.counter-wrapper .counter { color: #777; position: absolute; top: 0; right: 0; }
+.counter-wrapper label { margin-right: 50px; }
+
+.poll-create 					{ padding: 15px 20px; margin-bottom: 20px; background: #F1F7FD; }
+
+.question-list 					{ margin-bottom: 15px; }
+.question-list li 				{ margin-bottom: 5px; }
+.question-list li .input-text	{ margin-right: 5px; }
+
+dl.form-item { overflow: hidden; zoom: 1; margin-bottom: 20px; }
+dl.form-item dt { float: left; width: 125px; padding-top: 4px; padding-right: 15px; overflow: hidden; }
+dl.form-item dd { float: left; width: 250px; }
+
+.form-profile { position: relative; }
+.form-profile .avatar-change { position: absolute; top: 20px; right: 20px; font-size: 11px; }
+.form-profile .avatar-change .avatar { width: 80px; border-radius: 5px; margin-bottom: 10px; background: #fff; padding: 5px; -webkit-box-shadow: 0 0 5px rgba(0,0,0,.2); box-shadow: 0 0 5px rgba(0,0,0,.2); }
+.form-profile .avatar-change img { width: 80px; vertical-align: top; }
+.form-profile .avatar-change a { color: #727a90; border-color: #727a90; }
+
+/* Placeholder */
+:-moz-placeholder { color: #aaa; }
+.placeholder { color: #aaa; }
+
+
+.mceEditor { display: block; margin-bottom: 20px; }
+
+
+/* Registration form
+---------------------------------------------------- */
+.registration-form .form-item:last-child 							{ margin-bottom: 0; }
+.registration-form dl.form-item dd									{ position: relative; width: 355px; }
+.registration-form dl.form-item dd .form-item-help 					{ width: 100px; height: 20px; position: absolute; top: 1px; right: 0; }
+.registration-form dl.form-item dd .form-item-help.active 			{ background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/dots.png) 0 12px repeat-x; }
+.registration-form dl.form-item dd .form-item-help i 				{ background-color: #f8fbfe; }
+.registration-form dl.form-item dd .form-item-help i.icon-ok-green 	{ position: absolute; top: 3px; right: 0; }
+
+
+/* Валидатор 
+---------------------------------------------------------------*/
+.validate-error-hide { display: none; }
+.validate-error-show { 	
+	display: block;
+	line-height: 16px;
+	position: relative; 
+	padding: 10px 15px 12px 38px;
+	background: #fefef1 url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/error.png) 15px 12px no-repeat;
+	color: #363636; 
+	margin-top: 13px; 
+	font-size: 12px; 
+	border-radius: 3px; 
+	-webkit-box-shadow: 0 1px 5px #e8e8c0 inset; box-shadow: 0 1px 5px #e8e8c0 inset; 
+}
+.validate-error-show:before 	{ display: block; content: ""; position: absolute; top: -12px; left: 15px; width: 0; height: 0; border-width: 6px; border-color: transparent transparent #F2F2DD transparent; border-style: solid; }
+
+/* -------------------------------------------------------------------
+	
+	КНОПКИ
+	
+	
+	Примеры использования:
+	
+	<button class="button">Preview</button>
+	<a href="#" class="button">Preview</a>
+	
+	<button class="button button-primary">Save</button>
+	
+------------------------------------------------------------------- */
+
+.button {
+	display: inline-block;
+	
+	padding: 3px 10px 6px;
+	*padding: 3px 10px 4px;
+	text-align: center;
+	
+	border: 1px solid #dfe3e8;
+	border-radius: 5px;
+	
+	font-size: 13px;
+	line-height: 15px;
+	
+	color: #434343;
+	
+	background: #fbfcfc;
+	background: -moz-linear-gradient(top,  #fbfcfc 0%, #f0f2f5 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fbfcfc), color-stop(100%,#f0f2f5));
+	background: -webkit-linear-gradient(top,  #fbfcfc 0%,#f0f2f5 100%);
+	background: -o-linear-gradient(top,  #fbfcfc 0%,#f0f2f5 100%);
+	background: -ms-linear-gradient(top,  #fbfcfc 0%,#f0f2f5 100%);
+	background: linear-gradient(top,  #fbfcfc 0%,#f0f2f5 100%);
+
+	font-family: Verdana, sans-serif;
+	cursor: pointer;
+	text-decoration: none;
+	
+	*margin-right: 5px;
+}
+.button:hover { text-decoration: none; background: #f0f2f5; }
+.button:active { 
+	-moz-box-shadow: 	0 0 3px rgba(0, 0, 0, .3) inset; 
+	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .3) inset; 
+	box-shadow: 		0 0 3px rgba(0, 0, 0, .3) inset; 
+}
+.button.fl-r { *margin-right: 0; }
+
+.opera .button { padding-top: 4px; padding-bottom: 5px; }
+
+
+/* Button Primary */
+.button.button-primary { 
+	background: #66cfff;
+	background: -moz-linear-gradient(top,  #66cfff 0%, #2abcfe 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#66cfff), color-stop(100%,#2abcfe));
+	background: -webkit-linear-gradient(top,  #66cfff 0%,#2abcfe 100%);
+	background: -o-linear-gradient(top,  #66cfff 0%,#2abcfe 100%);
+	background: -ms-linear-gradient(top,  #66cfff 0%,#2abcfe 100%);
+	background: linear-gradient(top,  #66cfff 0%,#2abcfe 100%);
+	
+	border: 1px solid #27ace8;
+	
+	color: #fff;
+}
+.button.button-primary:hover { background: #2abcfe; }
+
+
+/* Button Icon (Without text) */
+.button.button-icon 			{ padding: 7px 10px; }
+
+
+/* Button Write */
+.button.button-write { 
+	background: #66cfff;
+	background: -moz-linear-gradient(top,  #66cfff 0%, #2abcfe 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#66cfff), color-stop(100%,#2abcfe));
+	background: -webkit-linear-gradient(top,  #66cfff 0%,#2abcfe 100%);
+	background: -o-linear-gradient(top,  #66cfff 0%,#2abcfe 100%);
+	background: -ms-linear-gradient(top,  #66cfff 0%,#2abcfe 100%);
+	background: linear-gradient(top,  #66cfff 0%,#2abcfe 100%);
+	
+	border: 1px solid #27ace8;
+	
+	padding: 2px 15px 4px;
+	border-radius: 15px;
+	line-height: 17px;
+	
+	color: #fff;
+	font-size: 11px;
+}
+.button.button-write:hover { 
+	background: #4ec4ff;
+	background: -moz-linear-gradient(top,  #4ec4ff 0%, #22b3fe 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4ec4ff), color-stop(100%,#22b3fe));
+	background: -webkit-linear-gradient(top,  #4ec4ff 0%,#22b3fe 100%);
+	background: -o-linear-gradient(top,  #4ec4ff 0%,#22b3fe 100%);
+	background: -ms-linear-gradient(top,  #4ec4ff 0%,#22b3fe 100%);
+	background: linear-gradient(top,  #4ec4ff 0%,#22b3fe 100%);
+
+	-webkit-box-shadow: 0 -1px 0 rgba(255, 255, 255, .5) inset; box-shadow: 0 -1px 0 rgba(255, 255, 255, .5) inset;  
+}
+
+
+/* Button Small */
+.button.button-small { font-size: 11px; padding: 1px 7px 3px; }
+
+
+/* Button Action */
+.button.button-action {
+	border: none;
+	padding: 4px 4px 3px;
+	
+	background: #c8f5ff;
+	background: -moz-linear-gradient(top,  #c8f5ff 0%, #88c4ea 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c8f5ff), color-stop(100%,#88c4ea));
+	background: -webkit-linear-gradient(top,  #c8f5ff 0%,#88c4ea 100%);
+	background: -o-linear-gradient(top,  #c8f5ff 0%,#88c4ea 100%);
+	background: -ms-linear-gradient(top,  #c8f5ff 0%,#88c4ea 100%);
+	background: linear-gradient(top,  #c8f5ff 0%,#88c4ea 100%);
+}
+.button.button-action span { display: none; }
+.button.button-action:hover span { display: inline; padding: 0 5px 0 5px; position: relative; top: -2px; color: #fff; }
+.button.button-action.active, 
+.button.button-action:hover { 
+	border: 1px solid #2770e8;
+	-webkit-box-shadow: 0 -1px 0 #128af3 inset, 0 2px 2px #ddd; box-shadow: 0 -1px 0 #128af3 inset, 0 2px 2px #ddd;
+	color: #fff;
+	padding: 3px 3px 2px;
+
+	background: #228dfa;
+	background: -moz-linear-gradient(top,  #228dfa 0%, #0362eb 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#228dfa), color-stop(100%,#0362eb));
+	background: -webkit-linear-gradient(top,  #228dfa 0%,#0362eb 100%);
+	background: -o-linear-gradient(top,  #228dfa 0%,#0362eb 100%);
+	background: -ms-linear-gradient(top,  #228dfa 0%,#0362eb 100%);
+	background: linear-gradient(top,  #228dfa 0%,#0362eb 100%);
+}
+.button.button-action:hover i { vertical-align: top; position: relative; top: -1px; }
+
+.button.button-action.button-action-add-friend:hover i { background-position: -147px -39px; }
+.button.button-action.button-action-send-message:hover i { background-position: -163px -39px; }
+.button.button-action.button-action-join.active i,
+.button.button-action.button-action-join:hover i { background-position: -179px -39px; }
+
+.button.button-action.button-action-note {
+	background: #ccf4d0;
+	background: -webkit-linear-gradient(top,  #e9fdea 0%,#ccf4d0 100%);
+	background: -moz-linear-gradient(top,  #e9fdea 0%,#ccf4d0 100%);
+	background: -o-linear-gradient(top,  #e9fdea 0%,#ccf4d0 100%);
+	background: -ms-linear-gradient(top,  #e9fdea 0%,#ccf4d0 100%);
+	background: linear-gradient(top,  #e9fdea 0%,#ccf4d0 100%);
+	padding: 6px 6px 6px 7px;
+}
+.button.button-action.button-action-note:hover {
+	background: #4ace56;
+	background: -webkit-linear-gradient(top,  #6ce777 0%,#4ace56 100%);
+	background: -moz-linear-gradient(top,  #6ce777 0%,#4ace56 100%);
+	background: -o-linear-gradient(top,  #6ce777 0%,#4ace56 100%);
+	background: -ms-linear-gradient(top,  #6ce777 0%,#4ace56 100%);
+	background: linear-gradient(top,  #6ce777 0%,#4ace56 100%);
+	border: none;
+	box-shadow: none; -webkit-box-shadow: none;
+	padding: 6px 6px 6px 7px;
+	cursor: default;
+}
+.button.button-action.button-action-note i { display: block; }
+.button.button-action.button-action-note:hover i { top: 0; background-position: -46px -65px; }/* --------------------------------------------
+	НАВИГАЦИЯ
+-------------------------------------------- */
+
+.nav 					{ overflow: hidden; zoom: 1; }
+.nav li 				{ float: left; }
+
+.nav li:last-child 		{  }
+.nav li a:hover 		{  }
+.nav li.active a 		{  }
+
+
+/* Nav Pills */
+.nav.nav-pills 				{ margin-bottom: 15px; font-size: 11px; }
+.nav.nav-pills li 			{ margin-right: 10px; border: 1px solid transparent; line-height: 13px; border-radius: 5px; padding: 3px 6px 4px; }
+.nav.nav-pills li a 		{ display: block; color: #727a90; text-decoration: underline; float: left; }
+.nav.nav-pills li a:hover 	{ color: #333; border-color: #333; }
+.nav.nav-pills li a.new		{ margin-left: 5px; text-decoration: none; }
+.nav.nav-pills li.active 	{ border-color: #ebf0f4; }
+.nav.nav-pills li.active a 	{ color: #628fa5; text-decoration: none; border-color: #ebf0f4; }
+
+.nav.nav-pills.nav-pills-profile 		{ margin-bottom: 30px; }
+
+
+/* Nav Topic Filter */
+.nav.nav-menu 						{ font-size: 11px; border-radius: 13px; border: 1px solid #fff; float: left; position: relative; }
+.nav.nav-menu li 					{ position: relative; height: 22px; padding: 1px 1px 1px 0; -webkit-box-shadow: -1px 0 0 #dfe3e8 inset, 0 1px 0 #dfe3e8 inset, 0 -1px 0 #dfe3e8 inset; box-shadow: -1px 0 0 #dfe3e8 inset, 0 1px 0 #dfe3e8 inset, 0 -1px 0 #dfe3e8 inset; }
+.nav.nav-menu li a { 
+	background: #fbfbfc;
+	background: -moz-linear-gradient(top,  #fbfbfc 0%, #f0f2f5 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fbfbfc), color-stop(100%,#f0f2f5));
+	background: -webkit-linear-gradient(top,  #fbfbfc 0%,#f0f2f5 100%);
+	background: -o-linear-gradient(top,  #fbfbfc 0%,#f0f2f5 100%);
+	background: -ms-linear-gradient(top,  #fbfbfc 0%,#f0f2f5 100%);
+	background: linear-gradient(top,  #fbfbfc 0%,#f0f2f5 100%);
+
+	height: 22px; 
+	line-height: 21px;
+	color: #434343; 
+	padding: 0 13px; 
+	float: left; 
+	text-decoration: none;
+	
+	-webkit-box-shadow: 1px 0 0 #fff inset, 0 1px 0 #fff inset; box-shadow: 1px 0 0 #fff inset, 0 1px 0 #fff inset;
+}
+.nav.nav-menu li:first-child			{ border-top-left-radius: 13px; border-bottom-left-radius: 13px; }
+.nav.nav-menu li:first-child a			{ border-top-left-radius: 13px; border-bottom-left-radius: 13px; padding-left: 15px; -webkit-box-shadow: 1px 0 0 #dfe3e8 inset, 0 1px 0 #fff inset; box-shadow: 1px 0 0 #dfe3e8 inset, 0 1px 0 #fff inset; }
+.nav.nav-menu li:last-child				{ border-top-right-radius: 13px; border-bottom-right-radius: 13px; -webkit-box-shadow: 0 1px 0 #dfe3e8 inset, 0 -1px 0 #dfe3e8 inset; box-shadow: 0 1px 0 #dfe3e8 inset, 0 -1px 0 #dfe3e8 inset; padding-right: 0; }
+.nav.nav-menu li:last-child a			{ border-top-right-radius: 13px; border-bottom-right-radius: 13px; padding-right: 15px; box-shadow: -1px 0 0 #dfe3e8 inset, 0 1px 0 #fff inset; }
+
+.nav.nav-menu li:hover { -webkit-box-shadow: -1px 0 0 #27ace8 inset, 0 1px 0 #27ace8 inset, 0 -1px 0 #27ace8 inset; box-shadow: -1px 0 0 #27ace8 inset, 0 1px 0 #27ace8 inset, 0 -1px 0 #27ace8 inset; }
+.nav.nav-menu li:hover a { 
+	color: #fff;
+	
+	-webkit-box-shadow: 1px 0 0 #27ace8 inset, 0 -1px 0 #55d0ff inset; box-shadow: 1px 0 0 #27ace8 inset, 0 -1px 0 #55d0ff inset;
+	
+	background: #4ec4ff;
+	background: -moz-linear-gradient(top,  #4ec4ff 0%, #22b3fe 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4ec4ff), color-stop(100%,#22b3fe));
+	background: -webkit-linear-gradient(top,  #4ec4ff 0%,#22b3fe 100%);
+	background: -o-linear-gradient(top,  #4ec4ff 0%,#22b3fe 100%);
+	background: -ms-linear-gradient(top,  #4ec4ff 0%,#22b3fe 100%);
+	background: linear-gradient(top,  #4ec4ff 0%,#22b3fe 100%);
+}
+
+.nav.nav-menu li.active 				{ background: #edf8fd; border: none; -webkit-box-shadow: 0 2px 3px #b4d5e2 inset; box-shadow: 0 2px 3px #b4d5e2 inset; }
+.nav.nav-menu li.active a 				{ background: none; color: #628fa5; -webkit-box-shadow: none; box-shadow: none; border: none; }
+
+.nav.nav-menu.nav-filter-sub li a 			{ padding: 5px 10px; font-size: 11px; color: #777; }
+.nav.nav-menu.nav-filter-sub li.active a 	{ color: #fff; }
+
+.nav-menu-wrapper { margin-bottom: 40px; position: relative; }
+
+.oldie .nav.nav-menu { border-color: #dfe3e8; border-right: none; }
+.oldie .nav.nav-menu li { border-right: 1px solid #dfe3e8; }
+.oldie #nav { background: #f6f6f6; }
+
+
+/* Userbar */
+#userbar {
+	border: 1px solid #ddd;
+	border-top: none;
+	border-radius: 0 0 4px 4px;
+	-webkit-box-shadow: 0 0 5px #ddd; box-shadow: 0 0 5px #ddd;
+
+	background: #ffffff;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #f3f3f3 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f3f3f3));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#f3f3f3 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#f3f3f3 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#f3f3f3 100%);
+	background: linear-gradient(top,  #ffffff 0%,#f3f3f3 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f3f3f3',GradientType=0 );
+}
+#userbar .search { float: left; margin: 5px 0 0 6px; *margin: 4px 0 0 4px; }
+
+.nav.nav-userbar 									{ float: right; }
+.nav.nav-userbar li 								{ border-radius: 0 0 0 4px; border-left: 1px solid #eaeaea; }
+.nav.nav-userbar li a 								{ color: #555; }
+.nav.nav-userbar li:first-child a 					{ border-radius: 0 0 0 4px; }
+.nav.nav-userbar li:last-child a 					{ border-radius: 0 0 4px 0; }
+.nav.nav-userbar li.nav-userbar-username a 			{ position: relative; padding-left: 47px; font-weight: bold; color: #333; }
+.nav.nav-userbar li.nav-userbar-username .avatar 	{ position: absolute; top: 7px; left: 15px; }
+.nav.nav-userbar li .new-messages 					{ color: #4AA731; font-weight: bold; }
+
+
+/* Nav Main */
+.nav.nav-main 					{ height: 51px; overflow: hidden; }
+.nav.nav-main li 				{ margin-right: 22px; position: relative; height: 51px; line-height: 49px; }
+.nav.nav-main li:last-child 	{ margin-right: 0; }
+.nav.nav-main li a 				{ color: #cfcfcf; text-decoration: none; }
+.nav.nav-main li a:hover 		{ color: #aaa; }
+.nav.nav-main li i 				{ display: none; position: absolute; bottom: 0; left: 50%; margin-left: -2px; width: 0; height: 0; border: 3px solid transparent; border-bottom-color: #fff; }
+.nav.nav-main li.active i 		{ display: block; }
+.nav.nav-main li.active a 		{ color: #aed6e9; }
+
+.nav.nav-main li.nav-main-more 			{ display: none; }
+.nav.nav-main li.nav-main-more a		{ border: 1px solid #595959; border-radius: 3px; padding: 0 5px 2px; position: relative; padding-right: 15px; }
+.nav.nav-main li.nav-main-more a:before { content: ''; position: absolute; top: 8px; right: 5px; width: 0; height: 0; border: 3px solid #fff; border-color: #fff transparent transparent transparent; }
+
+
+/* Nav Profile */
+.nav.nav-profile 				{ margin-bottom: 15px; }
+.nav.nav-profile li 			{ float: none; font-size: 15px; border-bottom: 1px dotted #dce1e6; padding: 8px 10px 10px 30px; }
+.nav.nav-profile li a 			{ text-decoration: underline; color: #275ec2; }
+.nav.nav-profile li a:hover 	{ color: #f00; }
+.nav.nav-profile li.active a 	{ text-decoration: none; color: #000; }
+
+
+/* Dropdown */
+.nav.nav-pills li.dropdown 			{ position: relative; }
+.nav.nav-pills li.dropdown a 		{ padding-right: 12px; }
+.nav.nav-pills li.dropdown i 		{ position: absolute; top: 4px; right: 3px; cursor: pointer; }
+.nav.nav-pills li.dropdown ul 		{ display: none; position: absolute; }
+.nav.nav-pills li.dropdown.opened a {   }
+
+.dropdown-menu 						{ display: none; padding: 10px 15px 13px; border: 3px solid #edf8fd; border-radius: 10px; -webkit-box-shadow: 0 0 10px rgba(0,0,0,.5); box-shadow: 0 0 10px rgba(0,0,0,.5); position: absolute; top: 32px; overflow: hidden; z-index: 10; background: #fff; min-width: 150px; }
+.dropdown-menu li 					{ line-height: 1em; margin-bottom: 15px; }
+.dropdown-menu li:last-child 		{ margin-bottom: 0; }
+.dropdown-menu li a 				{ display: block; }
+.dropdown-menu li a:hover 			{  }
+.dropdown-menu li.active a 			{ color: #aaa; }
+
+.dropdown-menu.dropdown-nav-main						{ background: #090909; border: 1px solid #333; }
+.dropdown-menu.dropdown-nav-main li a					{ color: #fff; text-decoration: none; }
+.dropdown-menu.dropdown-nav-main li a:hover 			{ color: #ddd; }
+.dropdown-menu.dropdown-nav-main li.active a 			{ color: #555; }
+
+.dropdown-create 		{ margin-right: 120px; line-height: 23px; }
+.dropdown-create a 		{ font-weight: normal; }
+.dropdown-create h2 a 	{ text-transform: lowercase; display: inline-block; }
+
+.dropdown-menu-create 				{ padding: 10px 15px 15px; border: 3px solid #edf8fd; border-radius: 10px; -webkit-box-shadow: 0 0 10px rgba(0,0,0,.5); box-shadow: 0 0 10px rgba(0,0,0,.5); position: absolute; background: #fff; min-width: 150px; z-index: 10; font-family: 'PT Sans', sans-serif; font-size: 27px; text-transform: lowercase; }
+.dropdown-menu-create li 			{ line-height: 1em; margin-bottom: 10px; }
+.dropdown-menu-create li:last-child { margin: 0; }
+.dropdown-menu-create li a 			{ color: #275ec2; text-decoration: none; border-bottom: 1px solid #275ec2; display: inline-block; }
+.dropdown-menu-create li a:hover 	{ color: #f00; border-color: #f00; }
+.dropdown-menu-create li.active a	{ color: #aaa; border-color: #aaa; }
+
+.nav.nav-pills.nav-pills-dropdown { position: absolute; top: 0; right: 0; margin: 0; display: none; }
+.nav.nav-pills.nav-pills-dropdown li { margin: 0; }
+
+
+
+
+
+/* -------------------------------------------------------------------
+
+	ИКОНКИ 
+	
+	Иконки Glyphicons
+	http://glyphicons.com/
+
+	
+	Пример использования:
+	
+	<a href="#"><i class="icon icon-remove"></i> Remove</a>
+
+------------------------------------------------------------------- */
+
+[class^="icon-"],
+[class*=" icon-"]  { 
+	display: inline-block;
+	vertical-align: text-top;
+	width: 14px;
+	height: 14px;
+	line-height: 14px;
+	background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons.png) no-repeat;
+}
+[class^="icon-synio-"],
+[class*=" icon-synio-"]  { 
+	background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) no-repeat;
+}
+
+.icon-white { background-image: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-white.png); }
+
+.icon-glass              { background-position: 0      0; }
+.icon-music              { background-position: -24px  0; }
+.icon-search             { background-position: -48px  0; }
+.icon-envelope           { background-position: -72px  0; }
+.icon-heart              { background-position: -96px  0; }
+.icon-star               { background-position: -120px 0; }
+.icon-star-empty         { background-position: -144px 0; }
+.icon-user               { background-position: -168px 0; }
+.icon-film               { background-position: -192px 0; }
+.icon-th-large           { background-position: -216px 0; }
+.icon-th                 { background-position: -240px 0; }
+.icon-th-list            { background-position: -264px 0; }
+.icon-ok                 { background-position: -288px 0; }
+.icon-remove             { background-position: -312px 0; }
+.icon-zoom-in            { background-position: -336px 0; }
+.icon-zoom-out           { background-position: -360px 0; }
+.icon-off                { background-position: -384px 0; }
+.icon-signal             { background-position: -408px 0; }
+.icon-cog                { background-position: -432px 0; }
+.icon-trash              { background-position: -456px 0; }
+
+.icon-home               { background-position: 0      -24px; }
+.icon-file               { background-position: -24px  -24px; }
+.icon-time               { background-position: -48px  -24px; }
+.icon-road               { background-position: -72px  -24px; }
+.icon-download-alt       { background-position: -96px  -24px; }
+.icon-download           { background-position: -120px -24px; }
+.icon-upload             { background-position: -144px -24px; }
+.icon-inbox              { background-position: -168px -24px; }
+.icon-play-circle        { background-position: -192px -24px; }
+.icon-repeat             { background-position: -216px -24px; }
+.icon-refresh            { background-position: -240px -24px; }
+.icon-list-alt           { background-position: -264px -24px; }
+.icon-lock               { background-position: -287px -24px; }
+.icon-flag               { background-position: -312px -24px; }
+.icon-headphones         { background-position: -336px -24px; }
+.icon-volume-off         { background-position: -360px -24px; }
+.icon-volume-down        { background-position: -384px -24px; }
+.icon-volume-up          { background-position: -408px -24px; }
+.icon-qrcode             { background-position: -432px -24px; }
+.icon-barcode            { background-position: -456px -24px; }
+
+.icon-tag                { background-position: 0      -48px; }
+.icon-tags               { background-position: -25px  -48px; }
+.icon-book               { background-position: -48px  -48px; }
+.icon-bookmark           { background-position: -72px  -48px; }
+.icon-print              { background-position: -96px  -48px; }
+.icon-camera             { background-position: -120px -48px; }
+.icon-font               { background-position: -144px -48px; }
+.icon-bold               { background-position: -167px -48px; }
+.icon-italic             { background-position: -192px -48px; }
+.icon-text-height        { background-position: -216px -48px; }
+.icon-text-width         { background-position: -240px -48px; }
+.icon-align-left         { background-position: -264px -48px; }
+.icon-align-center       { background-position: -288px -48px; }
+.icon-align-right        { background-position: -312px -48px; }
+.icon-align-justify      { background-position: -336px -48px; }
+.icon-list               { background-position: -360px -48px; }
+.icon-indent-left        { background-position: -384px -48px; }
+.icon-indent-right       { background-position: -408px -48px; }
+.icon-facetime-video     { background-position: -432px -48px; }
+.icon-picture            { background-position: -456px -48px; }
+
+.icon-pencil             { background-position: 0      -72px; }
+.icon-map-marker         { background-position: -24px  -72px; }
+.icon-adjust             { background-position: -48px  -72px; }
+.icon-tint               { background-position: -72px  -72px; }
+.icon-edit               { background-position: -96px  -72px; }
+.icon-share              { background-position: -120px -72px; }
+.icon-check              { background-position: -144px -72px; }
+.icon-move               { background-position: -168px -72px; }
+.icon-step-backward      { background-position: -192px -72px; }
+.icon-fast-backward      { background-position: -216px -72px; }
+.icon-backward           { background-position: -240px -72px; }
+.icon-play               { background-position: -264px -72px; }
+.icon-pause              { background-position: -288px -72px; }
+.icon-stop               { background-position: -312px -72px; }
+.icon-forward            { background-position: -336px -72px; }
+.icon-fast-forward       { background-position: -360px -72px; }
+.icon-step-forward       { background-position: -384px -72px; }
+.icon-eject              { background-position: -408px -72px; }
+.icon-chevron-left       { background-position: -432px -72px; }
+.icon-chevron-right      { background-position: -456px -72px; }
+
+.icon-plus-sign          { background-position: 0      -96px; }
+.icon-minus-sign         { background-position: -24px  -96px; }
+.icon-remove-sign        { background-position: -48px  -96px; }
+.icon-ok-sign            { background-position: -72px  -96px; }
+.icon-question-sign      { background-position: -96px  -96px; }
+.icon-info-sign          { background-position: -120px -96px; }
+.icon-screenshot         { background-position: -144px -96px; }
+.icon-remove-circle      { background-position: -168px -96px; }
+.icon-ok-circle          { background-position: -192px -96px; }
+.icon-ban-circle         { background-position: -216px -96px; }
+.icon-arrow-left         { background-position: -240px -96px; }
+.icon-arrow-right        { background-position: -264px -96px; }
+.icon-arrow-up           { background-position: -289px -96px; }
+.icon-arrow-down         { background-position: -312px -96px; }
+.icon-share-alt          { background-position: -336px -96px; }
+.icon-resize-full        { background-position: -360px -96px; }
+.icon-resize-small       { background-position: -384px -96px; }
+.icon-plus               { background-position: -408px -96px; }
+.icon-minus              { background-position: -433px -96px; }
+.icon-asterisk           { background-position: -456px -96px; }
+
+.icon-exclamation-sign   { background-position: 0      -120px; }
+.icon-gift               { background-position: -24px  -120px; }
+.icon-leaf               { background-position: -48px  -120px; }
+.icon-fire               { background-position: -72px  -120px; }
+.icon-eye-open           { background-position: -96px  -120px; }
+.icon-eye-close          { background-position: -120px -120px; }
+.icon-warning-sign       { background-position: -144px -120px; }
+.icon-plane              { background-position: -168px -120px; }
+.icon-calendar           { background-position: -192px -120px; }
+.icon-random             { background-position: -216px -120px; }
+.icon-comment            { background-position: -240px -120px; }
+.icon-magnet             { background-position: -264px -120px; }
+.icon-chevron-up         { background-position: -288px -120px; }
+.icon-chevron-down       { background-position: -313px -119px; }
+.icon-retweet            { background-position: -336px -120px; }
+.icon-shopping-cart      { background-position: -360px -120px; }
+.icon-folder-close       { background-position: -384px -120px; }
+.icon-folder-open        { background-position: -408px -120px; }
+.icon-resize-vertical    { background-position: -432px -119px; }
+.icon-resize-horizontal  { background-position: -456px -118px; }
+
+.icon-contact				{ width: 16px; height: 16px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-contact.png) no-repeat; } 
+.icon-contact-default		{ background-position: 0 0; } 
+.icon-contact-mail			{ background-position: -20px 0; } 
+.icon-contact-icq			{ background-position: -40px 0; } 
+.icon-contact-jabber		{ background-position: -60px 0; } 
+.icon-contact-phone			{ background-position: -80px 0; } 
+.icon-contact-skype			{ background-position: -100px 0; } 
+.icon-contact-vkontakte		{ background-position: -120px 0; } 
+.icon-contact-twitter		{ background-position: -140px 0; } 
+.icon-contact-facebook		{ background-position: -160px 0; } 
+.icon-contact-pouet			{ background-position: -180px 0; } 
+.icon-contact-www			{ background-position: -200px 0; } 
+.icon-contact-zxart			{ background-position: -220px 0; } 
+
+
+
+.icon-ok-green 				{ width: 18px; height: 20px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) -479px -2px no-repeat; }
+.icon-question-sign      	{ width: 23px; height: 23px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) -138px 0 no-repeat; }
+
+
+
+.icon-synio-arrow-up 		{ width: 9px; height: 9px; background-position: -24px -24px; }
+.icon-synio-arrow-down 		{ width: 9px; height: 9px; background-position: -33px -24px; }
+
+.icon-synio-star-green 		{ width: 12px; height: 11px; background-position: 0 -23px; }
+.icon-synio-star-blue 		{ width: 11px; height: 11px; background-position: 0 -37px; }
+.icon-synio-star-white 		{ width: 11px; height: 11px; background-position: 0 -51px; }
+.icon-synio-star-yellow 	{ width: 11px; height: 11px; background-position: 0 -65px; }
+
+.icon-synio-share-blue 		{ width: 11px; height: 11px; background-position: -12px -37px; }
+.icon-synio-share-white 	{ width: 11px; height: 11px; background-position: -12px -51px; }
+
+.icon-synio-rating 			{ width: 11px; height: 11px; background-position: -12px -23px; }
+.icon-synio-arrows 			{ width: 11px; height: 11px; background-position: -22px -65px; }
+
+.icon-synio-comments-green			{ width: 11px; height: 11px; background-position: -46px -23px; }
+.icon-synio-comments-green-filled	{ width: 11px; height: 11px; background-position: -46px -51px; }
+.icon-synio-comments-blue			{ width: 11px; height: 11px; background-position: -46px -37px; }
+.icon-synio-comments-small			{ width: 11px; height: 11px; background-position: -28px -51px; }
+
+.icon-synio-tags					{ width: 15px; height: 11px; background-position: -26px -37px; }
+
+.icon-synio-actions-edit			{ width: 16px; height: 16px; background-position: -115px -23px; }
+.icon-synio-actions-delete			{ width: 16px; height: 16px; background-position: -131px -23px; }
+.icon-synio-actions-draft			{ width: 16px; height: 16px; background-position: -115px -39px; }
+
+.icon-synio-topic-private			{ width: 23px; height: 23px; background-position: -230px 0; }
+.icon-synio-topic-draft				{ width: 23px; height: 23px; background-position: -253px 0; }
+.icon-synio-topic-link				{ width: 23px; height: 23px; background-position: -276px 0; }
+
+.icon-synio-close					{ width: 16px; height: 16px; background-position: -131px -39px; }
+.icon-synio-link					{ width: 11px; height: 11px; background-position: -11px -65px; }
+
+.icon-synio-add-friend				{ width: 16px; height: 16px; background-position: -147px -23px; }
+.icon-synio-send-message			{ width: 16px; height: 16px; background-position: -163px -23px; }
+.icon-synio-new-message				{ width: 16px; height: 16px; background-position: -163px -55px; }
+.icon-synio-join					{ width: 16px; height: 16px; background-position: -179px -23px; }
+.icon-synio-search					{ width: 16px; height: 16px; background-position: -147px -55px; }
+.icon-synio-submit					{ width: 16px; height: 16px; background-position: -115px -55px; }
+
+.icon-synio-arrow-left				{ width: 16px; height: 16px; background-position: -115px -71px; }
+.icon-synio-arrow-right				{ width: 16px; height: 16px; background-position: -131px -71px; }
+
+.icon-synio-remove					{ width: 24px; height: 24px; background-position: -368px 0; vertical-align: middle; position: relative; top: -2px; }
+.icon-synio-remove:hover			{ background-position: -392px 0; }
+
+.icon-synio-vote-info-down			{ width: 16px; height: 16px; background-position: -67px -71px; }
+.icon-synio-vote-info-up			{ width: 16px; height: 16px; background-position: -83px -71px; }
+.icon-synio-vote-info-zero			{ width: 16px; height: 16px; background-position: -99px -71px; }
+.icon-synio-vote-info-view			{ width: 16px; height: 16px; background-position: -179px -39px; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------------------------------------------------
+	ТАБЛИЦЫ
+------------------------------------------------------------------- */
+
+.table 					{ width: 100%; margin-bottom: 15px; border-collapse: separate; }
+.table th 				{ text-align: left; font-weight: normal; border-bottom: 1px solid #c3d4dc; }
+.table td 				{ padding: 13px 10px; }
+.table th,
+.table .cell-tab .cell-tab-inner { padding: 6px 10px 8px; }
+.table tr:hover td		{ background: #f5fdff; }
+.table tr.active td 	{ background: #CBF4BC; }
+.table tbody td			{ border-top: 1px solid #f1f3f5; }
+.table tbody tr:first-child	td	{ border-top: none; }
+
+.table thead a			{ color: #727a90; text-decoration: none; }
+.table thead a span		{ border-bottom: 1px dotted #727a90; }
+.table a.asc,
+.table a.desc			{ color: #000; border-color: #000; }
+.table a.asc:after		{ content: " ↑"; }
+.table a.desc:after		{ content: " ↓"; }
+.table .cell-rating.negative { color: #f00 !important; }
+
+.table .cell-tab { padding: 0; }
+.table .cell-tab .cell-tab-inner { position: relative; top: 1px; display: inline-block; border: 1px solid transparent; border-radius: 3px 3px 0 0; border-bottom: none; }
+.table .cell-tab .cell-tab-inner.active { background: #fff; border-color: #c3d4dc; }
+
+/* Table Blogs */
+.table.table-blogs .cell-info { width: 19px; padding-right: 0; padding-left: 0; }
+.table.table-blogs tbody .cell-info { vertical-align: top; }
+.table.table-blogs tbody .cell-info .blog-list-info { display: block; }
+.table.table-blogs .cell-name { padding-left: 3px; }
+.table.table-blogs .cell-name .avatar 	{ float: left; margin-right: 10px; clear: right; }
+.table.table-blogs .cell-name p		 	{ overflow: hidden; margin-bottom: 5px; }
+.table.table-blogs .cell-name p .blog-name	{ font-size: 16px; color: #275ec2; }
+.table.table-blogs .cell-name p i { vertical-align: middle; position: relative; top: -1px }
+.table.table-blogs tbody .cell-rating 	{ width: 70px; font-weight: bold; font-size: 11px; color: #5fa459; }
+.table.table-blogs .cell-readers 		{ width: 90px; text-align: center; vertical-align: middle; }
+.table.table-blogs tbody .cell-readers 	{ text-align: center; vertical-align: middle; font-size: 11px; }
+.table.table-blogs .cell-join 			{ width: 130px; text-align: center; vertical-align: middle; }
+.table.table-blogs .cell-rating 		{ width: 90px; text-align: center; vertical-align: middle; }
+
+/* Table Plugins */
+.table.table-plugins .cell-checkbox 	{ width: 20px; padding: 12px 0 10px 10px; }
+.table.table-plugins h3 				{ font-weight: bold; font-size: 17px; line-height: 20px; margin-bottom: 5px; }
+
+/* Table Profile Notes */
+.table.table-profile-notes 					{ border-top: 1px solid #eee; }
+.table.table-profile-notes td 				{ vertical-align: top; }
+.table.table-profile-notes .cell-username 	{ width: 20%; font-weight: bold; }
+.table.table-profile-notes .cell-note 		{ width: 50%; }
+.table.table-profile-notes .cell-date 		{ text-align: right; }
+
+/* Table Profile Info */
+.table.table-profile-info 				{ margin-bottom: 40px; }
+.table.table-profile-info td 			{ vertical-align: top; }
+.table.table-profile-info .cell-label 	{ width: 30%; color: #777; }
+
+/* Table Users */
+.table.table-users th 					{  }
+.table.table-users .cell-follow 		{ width: 17px; text-align: center; }
+.table.table-users thead .cell-follow i { position: relative; top: 3px; }
+.table.table-users .cell-name 			{ width: 190px; padding-right: 0; padding-left: 0; }
+.table.table-users .cell-name img 		{ float: left; margin-right: 14px; }
+.table.table-users tbody .cell-name div		{ float: left; width: 125px; }
+.table.table-users .cell-name .name		{ margin-top: 2px; }
+.table.table-users .cell-name .name.no-realname		{ margin-top: 11px; }
+.table.table-users .cell-name .username { width: 125px; position: relative; top: 1px; margin-bottom: 3px; }
+.table.table-users .cell-name .realname { font-size: 11px; }
+.table.table-users tbody .cell-date 	{ font-size: 11px; }
+.table.table-users .cell-rating			{ text-align: center; width: 70px; }
+.table.table-users .cell-skill 			{ text-align: center; width: 70px; }
+.table.table-users .cell-date 			{ text-align: center; width: 130px; }
+.table.table-users tbody .cell-skill 	{ color: #628fa5; font-size: 11px; font-weight: bold; }
+.table.table-users tbody .cell-rating	{ color: #5fa459; font-size: 11px; }
+.table.table-users button				{ float: left; margin-right: 5px; }
+
+/* Table Talk */
+.table.table-talk .cell-checkbox 			{ width: 20px; padding: 15px 0 10px 10px; }
+.table.table-talk thead .cell-checkbox 		{ padding: 10px 0 10px 10px; }
+.table.table-talk .cell-favourite 			{ text-align: center; }
+.table.table-talk tbody .cell-favourite 	{ padding: 17px 0; }
+.table.table-talk .cell-recipients 			{ width: 130px; }
+.table.table-talk tbody .cell-recipients 	{ font-size: 11px; }
+.table.table-talk tbody .cell-recipients a 	{ color: #000; }
+.table.table-talk tbody .cell-date 			{ font-size: 11px; width: 115px; }
+.table.table-talk tbody .cell-title 		{  }
+.table.table-talk tbody .cell-title a 		{ color: #275ec2; }
+.table.table-talk tbody .cell-title a:hover	{ color: #f00; }
+.table.table-talk tbody .cell-title span 	{ color: #628fa5; font-weight: bold; margin-left: 4px; }
+.table.table-talk tbody .cell-title .new 	{ color: #32b319; }
+.table.table-talk tbody .cell-title i 		{ position: relative; left: -3px; }
+.table.table-talk tbody td					{ vertical-align: top; }/* --------------------------------------------
+	ТОПИК
+-------------------------------------------- */
+
+.topic { margin-bottom: 50px; }
+.topic:last-child { margin-bottom: 0; }
+
+/* Header */
+.topic .topic-header 							{ margin-bottom: 20px; }
+.topic .topic-header .topic-title 				{ font-size: 27px; line-height: 1.1em; font-weight: normal; margin: 0 0 10px; }
+.topic .topic-header .topic-title a 			{ text-decoration: underline; color: #275ec2; }
+.topic .topic-header .topic-title a:hover 		{ color: #f00; }
+.topic .topic-header .topic-title i 			{ position: relative; top: 9px; cursor: help; margin-right: 5px; }
+.topic .topic-header .topic-info 				{ margin-bottom: 25px; color: #777; }
+.topic .topic-header .topic-info time 			{ margin-right: 15px; }
+.topic .topic-header .topic-info .topic-blog 	{ font-family: 'PT Sans', sans-serif; font-size: 18px; color: #000; text-decoration: underline; }
+.topic .topic-header .topic-info .topic-blog:hover 	{ color: #666; }
+.topic .topic-header .topic-info .blog-list-info 	{ position: relative; top: 5px; }
+.topic .topic-header .topic-actions 			{ background: #fcfce9; border-radius: 5px; padding: 10px 15px; font-size: 11px; overflow: hidden; }
+.topic .topic-header .topic-actions li 			{ float: left; margin-right: 18px; }
+.topic .topic-header .topic-actions li.draft a	{ color: #27964c; }
+.topic .topic-header .topic-actions li.delete a	{ color: #da4242; }
+.topic .topic-header .topic-actions li i		{ margin-right: 3px; }
+
+/* Content */
+.topic .topic-content 		{ margin-bottom: 15px; }
+.topic .topic-content.text 	{ color: #333; }
+
+/* Tags */
+.topic .topic-footer .topic-tags 						{ margin: 0 0 10px; font-size: 11px; }
+.topic .topic-footer .topic-tags li 					{ display: inline; color: #888; }
+.topic .topic-footer .topic-tags li i					{ position: relative; top: 4px; margin-right: 3px; }
+.topic .topic-footer .topic-tags li a 					{ color: #4c4c4c; text-decoration: underline; }
+.topic .topic-footer .topic-tags li a:hover 			{ text-decoration: none; }
+.topic .topic-footer .topic-tags li a.link-dotted		{ text-decoration: none; color: #7b848d; border-color: #7b848d; }
+.topic .topic-footer .topic-tags li a.link-dotted:hover	{ color: #333; border-color: #333; }
+.topic .topic-footer .topic-tags li.topic-tags-edit 	{ margin-left: 20px; }
+.topic .topic-footer .topic-tags li.topic-tags-user a 	{ color: #139643; }
+
+/* Info */
+.topic .topic-footer .topic-info 		{ overflow: hidden; border-top: 1px solid #e7ebed; padding-top: 8px; font-size: 11px; line-height: 11px; }
+.topic .topic-footer .topic-info li 	{ float: left; margin-right: 10px; border-right: 1px solid #fff; padding: 6px; }
+.topic .topic-footer .topic-info li a 	{ text-decoration: none; }
+
+.topic .topic-footer .topic-info li.topic-info-vote { float: right; padding: 0; margin-right: 0; overflow: hidden; }
+
+.topic .topic-footer .topic-info li.topic-info-author 			{ padding: 4px 0; }
+.topic .topic-footer .topic-info li.topic-info-author a 		{ text-decoration: underline; }
+.topic .topic-footer .topic-info li.topic-info-author a:hover 	{ }
+.topic .topic-footer .topic-info li.topic-info-author a img		{ width: 16px; height: 16px; vertical-align: middle; margin-right: 2px; }
+
+.topic .topic-footer .topic-info li.topic-info-date				{ color: #7b848d; }
+
+.topic .topic-footer .topic-info li.topic-info-share			{ padding: 6px; cursor: pointer; border-radius: 4px; position: relative; }
+.topic .topic-footer .topic-info li.topic-info-share i			{ float: left; }
+.topic .topic-footer .topic-info li.topic-info-share.active,
+.topic .topic-footer .topic-info li.topic-info-share:hover		{ background: #64ceff; }
+.topic .topic-footer .topic-info li.topic-info-share.active i,
+.topic .topic-footer .topic-info li.topic-info-share:hover i	{ background-position: -12px -51px; }
+
+.topic .topic-footer .topic-info li.topic-info-comments a			{ color: #727fa0; float: left; }
+.topic .topic-footer .topic-info li.topic-info-comments a:hover		{ color: #f00; }
+.topic .topic-footer .topic-info li.topic-info-comments a.new 		{ color: #000; }
+.topic .topic-footer .topic-info li.topic-info-comments span 		{ text-decoration: underline; }
+.topic .topic-footer .topic-info li.topic-info-comments span.count 	{ color: #27a736; text-decoration: none; }
+.topic .topic-footer .topic-info li.topic-info-comments i 			{ float: left; margin-right: 7px; }
+
+.topic .topic-footer .topic-info li.topic-info-favourite 			{ padding: 6px; color: #828a93; border-radius: 4px; cursor: pointer; }
+.topic .topic-footer .topic-info li.topic-info-favourite i 			{ float: left; margin-right: 3px; }
+.topic .topic-footer .topic-info li.topic-info-favourite:hover		{ background: #64ceff; color: #fff; }
+.topic .topic-footer .topic-info li.topic-info-favourite:hover i	{ background-position: 0 -51px; }
+
+/* Share */
+.topic .topic-share 				{ display: none; border: 3px solid #edf8fd; padding: 3px 35px 3px 3px; border-radius: 10px; margin-bottom: 10px; position: relative; }
+.topic .topic-share .close			{ content: ''; position: absolute; top: 7px; right: 7px; width: 19px; height: 22px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) -479px -26px no-repeat; cursor: pointer; opacity: .8; }
+.topic .topic-share .close:hover	{ opacity: 1; }
+.topic .topic-share .arrow 			{ position: absolute; border: none; width: 15px; height: 11px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) no-repeat; background-position: -53px -107px; bottom: -11px; }
+
+/* Poll */
+.topic .poll { margin-bottom: 15px; }
+
+.topic .poll .poll-vote { margin-bottom: 20px; margin-left: 0; list-style-type: none;	}
+.topic .poll .poll-vote li { margin-bottom: 10px; }
+.topic .poll .poll-vote li:last-child { margin-bottom: 0; }
+.topic .poll .poll-vote li label { display: inline; }
+.topic .poll .poll-vote li input { position: relative; top: 1px; margin-right: 2px; }
+
+.topic .poll .poll-result { margin-bottom: 10px; list-style-type: none; background: #fff; overflow: hidden; }
+.topic .poll .poll-result li { margin-bottom: 20px; }
+.topic .poll .poll-result li dl { overflow: hidden; zoom: 1; }
+.topic .poll .poll-result li dl dt { float: left; width: 80px; }
+.topic .poll .poll-result li dl dt span { font-size: 11px; color: #aaa; }
+.topic .poll .poll-result li dl dd { float: left; width: 400px; }
+.topic .poll .poll-result li dl dd div { height: 7px; margin-top: 3px; background: #ccc; overflow: hidden; border-radius: 4px; }
+.topic .poll .poll-result li.most dl dd div { background: #1999e2; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/poll-most.png) repeat-x; -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2); box-shadow: 0 1px 2px rgba(0,0,0,.2); }
+.topic .poll .poll-result li.most dl dt { color: #12aaeb; }
+
+.topic .poll .poll-total { position: relative; color: #818189; font-size: 11px; line-height: 16px; padding-left: 80px; margin-bottom: 30px; }
+.topic .poll .poll-total .poll-sort { position: absolute; top: 2px; left: 0; width: 23px; height: 23px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) -161px 0 no-repeat; cursor: pointer; }
+.topic .poll .poll-total .poll-sort.active { background-position: -184px 0; }
+
+/* Topic Photo */
+.topic.topic-type-photoset {  }
+.topic.topic-type-photoset .topic-photo-preview { position: relative; margin-bottom: 15px; cursor: pointer; }
+.topic.topic-type-photoset .topic-photo-preview img { vertical-align: top; }
+.topic.topic-type-photoset .topic-photo-preview .topic-photo-count { display: none; cursor: pointer; position: absolute; top: 5px; right: 5px; background: #000; color: #6bd24b; padding: 4px 7px; background: rgba(0,0,0,.6); }
+.topic.topic-type-photoset .topic-photo-preview .topic-photo-desc { display: none; width: 96%; padding: 7px 2%; position: absolute; bottom: 0; left: 0; background: #000; color: #6bd24b; color: #fff; line-height: 16px; background: rgba(0,0,0,.7); }
+
+.topic.topic-type-photoset .topic-photo-images { padding-top: 10px; margin-bottom: 15px; }
+.topic.topic-type-photoset .topic-photo-images h2 { border-bottom: 1px solid #ccc; padding-bottom: 4px; margin-bottom: 15px; font-size: 25px; }
+.topic.topic-type-photoset .topic-photo-images ul { overflow: hidden; zoom: 1; }
+.topic.topic-type-photoset .topic-photo-images ul li { float: left; margin: 0 9px 9px 0; position: relative; }
+.topic.topic-type-photoset .topic-photo-images ul li .image-number { display: none; position: absolute; top: 5px; right: 5px; background: #000; color: #6bd24b; padding: 1px 6px; font-size: 11px; background: rgba(0,0,0,.6); }
+.topic.topic-type-photoset .topic-photo-images ul li:hover .image-number { display: block; }
+.topic.topic-type-photoset .topic-photo-images ul li img { vertical-align: top; }
+.topic.topic-type-photoset .topic-photo-images .topic-photo-more { display: block; border-top: 1px solid #dbe6f0; text-align: center; padding: 10px 0; margin-bottom: 15px; text-decoration: none; background: #f3f7fa; color: #7b90a5; }
+.topic.topic-type-photoset .topic-photo-images .topic-photo-more:hover { background: #eaf2f8; }
+
+.topic-photo-upload { background: #F1F7FD; padding: 15px 15px 15px; margin-bottom: 20px; }
+.topic-photo-upload h2 { margin-bottom: 15px; }
+.topic-photo-upload ul { overflow: hidden; zoom: 1; }
+.topic-photo-upload ul li { min-height: 100px; _height: 100px; margin-bottom: 10px; padding-left: 110px; position: relative; }
+.topic-photo-upload ul li img { position: absolute; top: 0; left: 0; }
+.topic-photo-upload ul li label { color: #aaa; }
+.topic-photo-upload ul li textarea { border: 1px solid #ddd; width: 350px; height: 60px; padding: 3px; font-size: 12px; font-family: Arial, sans-serif; color: #333; }
+.topic-photo-upload ul li .image-delete { text-decoration: none; margin-right: 15px; }
+.topic-photo-upload ul li .image-delete:hover { color: #f00; }
+.topic-photo-upload ul li.marked-as-preview .mark-as-preview { display: inline; color: #43c70f; font-weight: bold; }
+.topic-photo-upload ul li .mark-as-preview { display: none; text-decoration: none; }
+.topic-photo-upload ul li:hover .mark-as-preview { display: inline; }
+.topic-photo-upload .topic-photo-upload-rules { color: #888; margin-bottom: 15px; }
+.topic-photo-upload .topic-photo-upload-input { margin-bottom: 20px; }
+.topic-photo-upload .topic-photo-upload-input input { margin-top: 3px; }
+
+/* Topic Talk */
+.topic.topic-type-talk header .topic-info 			{ background: #f8fbfe; font-size: 11px; padding: 15px; border-radius: 5px; margin-bottom: 0; }
+
+.topic.topic-type-talk .talk-recipients 			{ padding: 15px; background: #f8fbfe; margin-bottom: 0; border-radius: 0; }
+.topic.topic-type-talk .talk-recipients-header 		{ font-size: 11px; min-height: 0; }
+.topic.topic-type-talk .talk-recipients-content h3 	{ font-size: 16px; font-weight: normal; margin-bottom: 10px; }
+.topic.topic-type-talk .topic-footer .topic-info li.topic-info-favourite i		{ margin-right: 0; }
+
+/* Topic Link */
+.topic.topic-type-link { }
+.topic.topic-type-link .topic-header .topic-title a { color: #27964C; }
+.topic.topic-type-link .topic-url { font-size: 11px; margin-bottom: 30px; padding-top: 10px; }
+.topic.topic-type-link .topic-url a { color: #27964C; }
+.topic.topic-type-link .topic-url a:hover { color: #f00; }
+
+/* Topic Preview */
+.topic-preview { margin-top: 30px; }
+.topic-preview .profile-page-header { border-top: 1px solid #ddd; }
+.topic-preview .topic { margin-bottom: 20px; }
+
+.vote-topic-info li { margin-bottom: 3px; }/* --------------------------------------------
+	КОММЕНТАРИИ
+-------------------------------------------- */
+
+/* Блок с комментариями */
+.comments-header { margin-bottom: 10px; position: relative; }
+.comments-header h3 { font-size: 27px; margin-bottom: 5px; }
+.comments-header .subscribe { position: absolute; top: 15px; right: 0; font-size: 11px; color: #7b848d; }
+.comments-header .subscribe input { top: 2px; }
+
+.comments { margin-bottom: 30px; }
+
+.comment-wrapper { position: relative; }
+.comment-wrapper .comment-wrapper { padding-left: 40px; }
+
+.comment-preview { padding: 5px 10px 6px; margin-bottom: 10px; background: #fafafa; border: 1px solid #eee; border-radius: 3px; font-size: 13px; line-height: 1.6em; }
+
+
+/* Комментарий */
+.comment { min-height: 48px; margin-bottom: 10px; padding: 10px 0 0 40px; position: relative; }
+.comment .deleted { padding: 5px 10px; color: #777; background: #f4f4f4; }
+.comment .comment-avatar { position: absolute; top: 10px; left: 0; width: 30px; height: 30px; }
+.comment .folding { width: 13px; height: 13px; position: absolute; top: 18px; left: -20px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) 0 -94px no-repeat; cursor: pointer; }
+.comment .folding.folded { background-position: -13px -94px; }
+
+
+/* Стили для списка комментариев на странице http://ваш_сайт/comments/ */
+.comments.comment-list .comment { margin-bottom: 50px; padding-left: 0; }
+.comments.comment-list .comment .comment-avatar { position: static; width: 16px; height: 16px; vertical-align: middle; }
+.comments.comment-list .comment .comment-content { margin-bottom: 5px; }
+.comments.comment-list .comment .comment-info li.vote .vote-count { margin-right: 0; }
+.comments.comment-list .comment .comment-content:after { top: -12px; left: 25px; border-color: transparent transparent #e7ebed; }
+.comments.comment-list .comment .comment-content:before { top: -11px; left: 25px; border-color: transparent transparent #fff; }
+.comments.comment-list .comment-path { font-size: 11px; color: #a2b6cd; }
+.comments.comment-list .comment-path .blog-name,
+.comments.comment-list .comment-path .comment-path-comments { color: #000; }
+.comments.comment-list .comment-path .comment-path-topic { color: #275ec2; }
+
+
+
+/* Типы комментариев
+ *
+ * deleted 	- 	удаленный комментарий
+ * self 	- 	ваш комментарий
+ * new 		- 	новый, непрочитанный комментарий
+ * current 	- 	активный комментарий, который выделяется при исползование кнопки обновления в тулбаре
+ *
+ */
+.comment 											{ background: #fff; }
+.comment.comment-deleted 	.comment-content 		{ background: #c5c5c5; border-color: #C8A8A8; }
+.comment.comment-deleted	.comment-content:after 	{ border-color: #C8A8A8 transparent transparent; }
+.comment.comment-deleted 	.comment-content:before { border-color: #c5c5c5 transparent transparent; }
+.comment.comment-self		.comment-content		{ background: #fefef1; border-color: #e6e6bd; }
+.comment.comment-self		.comment-content:after 	{ border-color: #e6e6bd transparent transparent; }
+.comment.comment-self 		.comment-content:before { border-color: #fefef1 transparent transparent; }
+.comment.comment-new 		.comment-content		{ background: #fff; border-color: #dddb5c; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); }
+.comment.comment-new		.comment-content:after 	{ border-color: #dddb5c transparent transparent; }
+.comment.comment-new 		.comment-content:before { border-color: #fff transparent transparent; }
+.comment.comment-current 	.comment-content		{ background: #cdf5a6; border-color: #bae48e; }
+.comment.comment-current	.comment-content:after 	{ border-color: #bae48e transparent transparent; }
+.comment.comment-current 	.comment-content:before { border-color: #cdf5a6 transparent transparent; }
+.comment.comment-bad 		.comment-content		{ opacity: 0.3; filter: alpha(opacity=30); }
+.comment.comment-bad:hover 	.comment-content		{ opacity: 1; filter: alpha(opacity=100); }
+
+.ls-user-role-not-admin .comment.comment-deleted 	{ padding: 10px 15px; min-height: 0; background: #f7f7f7; color: #888; }
+
+
+/* Info Block */
+.comment .comment-info { padding: 0 70px 7px 0; line-height: 12px; position: relative; top: -2px; overflow: hidden; zoom: 1; font-size: 11px; }
+.comment .comment-info li { float: left; height: 18px; padding-top: 3px; margin-right: 13px; }
+.comment .comment-info li a {  }
+.comment .comment-info li a.link-dotted 		{ color: #727a90; text-decoration: none; border-bottom: 1px dotted #727a90; }
+.comment .comment-info li a.link-dotted:hover { color: #f00; border-color: #f00; }
+.comment .comment-info li.comment-author a { font-weight: bold; color: #727fa0; }
+.comment .comment-info li.comment-author.comment-topic-author a { color: #4b5468; }
+.comment .comment-info li.comment-author.comment-topic-author { 
+	background: rgb(254,255,163);
+	background: -moz-linear-gradient(left,  rgba(254,255,163,1) 0%, rgba(255,255,255,1) 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(254,255,163,1)), color-stop(100%,rgba(255,255,255,1)));
+	background: -webkit-linear-gradient(left,  rgba(254,255,163,1) 0%,rgba(255,255,255,1) 100%);
+	background: -o-linear-gradient(left,  rgba(254,255,163,1) 0%,rgba(255,255,255,1) 100%);
+	background: -ms-linear-gradient(left,  rgba(254,255,163,1) 0%,rgba(255,255,255,1) 100%);
+	background: linear-gradient(to right,  rgba(254,255,163,1) 0%,rgba(255,255,255,1) 100%);
+	
+	padding-left: 7px;
+}
+.comment .comment-info li.comment-date { color: #818189; }
+.comment .comment-info li.comment-favourite { position: relative; top: 1px; }
+.comment .comment-info li.comment-link { position: relative; top: 1px; }
+.comment .comment-info li.goto a { color: #a2b6cd; text-decoration: none; }
+.comment .comment-info li .favourite-count { font-size: 10px; color: #a2b6cd; position: relative; top: -2px; }
+
+
+.comment .comment-info li.vote 					{ position: absolute; top: 0; right: 0; margin: 0; }
+.comment .comment-info li.vote .vote-count 		{ float: left; color: #949aa1; font-weight: bold; padding-top: 3px; margin: 0 6px; }
+.comment .comment-info li.vote .vote-down 		{ float: left; width: 20px; height: 20px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) 0 -130px no-repeat; cursor: pointer; }
+.comment .comment-info li.vote .vote-down:hover { background-position: 0 -150px; }
+.comment .comment-info li.vote .vote-up 		{ float: left; width: 20px; height: 20px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) -20px -130px no-repeat; cursor: pointer; }
+.comment .comment-info li.vote .vote-up:hover 	{ background-position: -20px -150px; }
+
+.comment .comment-info li.vote.vote-count-positive .vote-count { color: #51983c; }
+.comment .comment-info li.vote.vote-count-negative .vote-count { color: #da4242; }
+
+.comment .comment-info li.vote.voted-up .vote-down 		{ display: none; }
+.comment .comment-info li.vote.voted-up .vote-up 		{ background-position: -20px -170px; }
+.comment .comment-info li.vote.voted-down .vote-down 	{ background-position: 0 -170px; }
+.comment .comment-info li.vote.voted-down .vote-up 		{ display: none; }
+
+.comment .comment-info li.vote.vote-expired .vote-up,
+.comment .comment-info li.vote.vote-expired .vote-down 	{ display: none; }
+
+
+.comment .comment-info li.goto-comment-child { display: none; }
+
+
+/* Content */
+.comment .comment-content { margin-bottom: 10px; border: 1px solid #e7ebed; padding: 9px 10px 10px; border-radius: 3px; position: relative; }
+.comment .comment-content.text { font-size: 13px; }
+.comment .comment-content.text blockquote { background: #fff; border-color: #ccc; padding: 5px 10px; margin-bottom: 5px; }
+.comment .comment-content:after { display: block; content: ""; position: absolute; bottom: -12px; left: 10px; width: 0; height: 0; border-width: 6px; border-color: #e7ebed transparent transparent; border-style: solid; }
+.comment .comment-content:before { display: block; content: ""; position: absolute; bottom: -11px; left: 10px; width: 0; height: 0; border-width: 6px; border-color: #fff transparent transparent; border-style: solid; z-index: 10; }
+
+
+/* Actions */
+.comment .comment-actions li { display: inline; margin-right: 10px; }
+
+
+/* Форма комментирования */
+.reply-header { font-size: 20px; line-height: 1.3em; margin-bottom: 15px; }
+
+.reply { background: #f8fbfe; padding: 15px; border-radius: 5px; }
+.reply textarea { height: 100px; }
+.reply textarea.loader { background: #f7f7f7 url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/loader.gif) no-repeat center;}
+
+.reply .mceEditor { display: block; margin-bottom: 10px; }
+
+.wall-submit.wall-submit-reply.wall-submit-comment { -webkit-box-shadow: none; box-shadow: none; margin-top: 0; margin-bottom: 50px; }
+.wall-submit.wall-submit-reply.wall-submit-comment:after { display: none; }/* -------------------------------------------------------------------
+	БЛОКИ
+------------------------------------------------------------------- */
+
+.block 					{ padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px dotted #dce1e6; }
+.block:last-child 		{ margin-bottom: 0; border: none; }
+.sidebar-left .block 	{ margin-bottom: 10px; }
+
+.block .block-header 					{ position: relative; margin-bottom: 4px; padding-bottom: 16px; }
+.block .block-header.sep 				{ background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/block-sep.png) 0 100% no-repeat; }
+.block .block-header h3 				{ font-size: 22px; line-height: 1em; font-weight: normal; font-family: 'PT Sans', sans-serif; }
+.block .block-header h3 a 				{ text-decoration: none; color: #333; }
+.block .block-header h3 a.link-dotted 	{ color: #5055B2; }
+.block .block-content 					{  }
+.block footer 							{ margin-top: 15px; font-size: 11px; color: #b9c2c2; }
+.block footer a							{ color: #727a90; }
+
+.block .max-height-200 		{ overflow: auto; max-height: 200px; _height: expression( this.scrollHeight > 200 ? "200px" : "auto" ); position: relative; }
+
+.block .nav.nav-pills				{ margin-bottom: 0; padding-top: 15px; }
+.block .nav.nav-pills a 			{ text-decoration: none; border-bottom: 1px dotted #727a90; }
+.block .nav.nav-pills li.active a 	{ border: none; }
+
+
+/* Block Type - Stream */
+.block .block-update 			{ position: absolute; top: 38px; right: 5px; width: 20px; height: 20px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) 0 -200px no-repeat; cursor: pointer; }
+.block .block-update:hover 		{ background-position: -20px -200px; }
+.block .block-update.active 	{ background-position: -40px -200px; }
+
+.block.block-type-stream .block-content .latest-list { }
+.block.block-type-stream .block-content .latest-list li { margin-bottom: 15px; color: #818189; }
+.block.block-type-stream .block-content .latest-list li.unread .stream-topic { font-weight: bold; }
+.block.block-type-stream .block-content .latest-list p { font-size: 11px; }
+.block.block-type-stream .block-content .latest-list .stream-topic { text-decoration: underline; }
+.block.block-type-stream .block-content .latest-list .stream-blog { color: #4128B1; }
+.block.block-type-stream .block-content .latest-list .stream-blog:hover { color: #f00; }
+.block.block-type-stream .block-content .latest-list .author { color: #4c4c4c; text-decoration: underline; }
+.block.block-type-stream .block-content .latest-list .author:hover { color: #f00; }
+.block.block-type-stream .block-content .latest-list .block-item-comments { font-size: 11px; text-decoration: none; color: #818189; white-space: nowrap; }
+.block.block-type-stream .block-content .latest-list .block-item-comments i { position: relative; top: 3px; margin-right: 2px; }
+.block.block-type-stream span.comments-new  { color: #148c11; }
+
+/* Block Type - Activity Settings */
+.block.block-type-activity p 		{ margin-bottom: 15px; }
+.block.block-type-activity ul li 	{  }
+.block.block-type-activity ul.stream-settings-blogs li 	{ margin-bottom: 3px; }
+.block.block-type-activity .note 	{ display: block; margin-bottom: 15px; color: #aaa; }
+
+
+/* Block Type - Profile */
+.block.block-type-profile 								{ background: none; border: none; padding: 0; }
+.block.block-type-profile .profile-photo-wrapper 		{ position: relative; min-height: 50px; }
+.block.block-type-profile .profile-photo 				{ vertical-align: top; max-width: 240px; }
+.block.block-type-profile .status 						{ position: absolute; top: 10px; left: 0; padding: 0 0 0 10px; font-size: 11px; line-height: 18px; height: 20px; }
+.block.block-type-profile .status:before 				{ content: ''; position: absolute; top: 0; right: -20px; width: 0; height: 0; border-width: 10px; border-style: solid; border-color: #333; border-color: #333 transparent #333 #333; }
+.block.block-type-profile .status.status-online			{ background: #8961e4; color: #fff; }
+.block.block-type-profile .status.status-online:before 	{ border-color: #8961e4 transparent #8961e4 #8961e4; }
+.block.block-type-profile .status.status-offline		{ background: #fff; color: #333; opacity: .5; filter: alpha(opacity=50); }
+.block.block-type-profile .status.status-offline:before { border-color: #fff transparent #fff #fff; }
+.block.block-type-profile .upload-photo 				{ padding: 10px 30px 15px 30px; background: #f8fbfe; font-size: 11px; }
+.block.block-type-profile .upload-photo a 				{ color: #727a90; border-color: #727a90; }
+
+.block.block-type-profile-note	 				{ border: 2px solid #ffe25d; padding: 15px; border-radius: 5px; }
+.block.block-type-profile-note p 				{ margin-bottom: 10px; }
+.block.block-type-profile-note .actions 		{ margin-bottom: 0; font-size: 11px; }
+.block.block-type-profile-note .actions a 		{ color: #275ec2; border-color: #275ec2; }
+.block.block-type-profile-note .actions a:hover { color: #f00; border-color: #f00; }
+
+.block.block-type-profile-nav 					{ padding: 0; background: none; border: none; }
+
+.block.block-type-profile-actions 						{ border: none; }
+.block.block-type-profile-actions .block-content 		{ padding: 0 0 0 30px; }
+.block.block-type-profile-actions ul li					{ margin-bottom: 5px; font-size: 11px; }
+.block.block-type-profile-actions ul li:last-child		{ margin-bottom: 0; }
+.block.block-type-profile-actions ul li a				{ color: #727a90; }
+.block.block-type-profile-actions ul li a:hover			{ color: #f00; }
+.block.block-type-profile-actions ul li a.followed		{ color: #f00; }
+
+
+/* Block Type - Foldable */
+.block.block-type-foldable { background: none; }
+.block.block-type-foldable .block-header { background: none; border: none; padding: 0 0 10px; }
+.block.block-type-foldable .block-content { display: none; background: #fafafa; }
+
+.block.block-type-talk-search { margin-bottom: 10px; }
+.block.block-type-talk-friends { margin-bottom: 10px; }
+
+
+/* Block Type - Blogs */
+.block.block-type-blogs .block-blog-list li { margin-bottom: 10px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/dots.png)  0% 14px repeat-x; position: relative; padding-right: 50px; }
+.block.block-type-blogs .block-blog-list li a { background: #fff; padding-right: 5px; }
+.block.block-type-blogs .block-blog-list li i { background-color: #fff; position: relative; top: -2px; }
+.block.block-type-blogs .block-blog-list li strong { position: absolute; top: 0; right: 0; background: #fff; padding-left: 2px; font-weight: normal; font-size: 11px; }
+
+
+/* Block Type - Blogs */
+.block.block-type-blog {
+	border-radius: 5px;
+	padding: 10px;
+	border-bottom: none;
+	background: #ffffff;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #f9fbfb 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f9fbfb));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#f9fbfb 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#f9fbfb 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#f9fbfb 100%);
+	background: linear-gradient(top,  #ffffff 0%,#f9fbfb 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f9fbfb',GradientType=0 );
+}
+.block.block-type-blog .block-header { margin-bottom: 0; padding: 0 7px 10px; }
+.block.block-type-blog .block-header h3 { font-size: 19px; }
+.block.block-type-blog .block-header h3 a { color: #275ec2; text-decoration: underline; }
+.block.block-type-blog .block-content { padding: 0 7px; }
+.block.block-type-blog footer { font-size: 11px; }
+.block.block-type-blog footer button { }
+.block.block-type-blog footer a { color: #727a90; margin-left: 7px; }
+
+
+/* Block Type - Tags */
+.block.block-type-tags .search-form-wrapper { margin-bottom: 15px; }
+
+/* --------------------------------------------
+	MODALS
+-------------------------------------------- */
+
+.modal {
+    display: none;
+    
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    
+    width: 300px;
+    margin-left: -150px;
+	
+    color: #333;
+    background-color: #fbfcfc;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 0 15px rgba(0,0,0,.5); box-shadow: 0 0 15px rgba(0,0,0,.5);
+	overflow: hidden;
+}
+.modal .close { 
+	position: absolute; 
+	top: 7px; 
+	right: 8px; 
+	width: 16px; 
+	height: 16px; 
+	background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) no-repeat -131px -39px;
+}
+.modal .close:hover { background-position: -131px -55px; }
+.modal .modal-header 		{ padding: 15px 30px 0; }
+.modal .modal-header h3 	{ font-size: 20px; font-weight: bold; margin-right: 20px; }
+.modal .modal-content 		{ padding: 30px 30px; }
+
+.jqmOverlay { background-color: #000; }
+
+* html .modal { position: absolute; top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px'); }
+
+
+
+/* Login */
+.modal.modal-login { width: 450px; margin-left: -225px; top: 50px; }
+.modal.modal-login .nav { margin-bottom: 30px; }
+.modal.modal-login .modal-header { margin-bottom: 0; }
+.modal.modal-login .modal-content { padding-top: 15px; }
+.modal.modal-login .remember-label { font-size: 11px; color: #6c7272; }
+.modal.modal-login .remember-label input { top: 2px; }
+.modal.modal-login .icon-question-sign { position: relative; top: -3px; }
+.modal.modal-login .icon-ok-green { position: relative; top: -1px; }
+.modal.modal-login .js-block-popup-login-content .button { position: relative; top: -1px; margin-left: 1px; }
+.ie .modal.modal-login .js-block-popup-login-content .button { margin-left: 1px; }
+
+
+/* Write */
+.modal.modal-write { width: 620px; margin-left: -310px; top: 70px; background: #e0eff9; }
+.modal.modal-write .modal-content { padding: 20px 10px 20px; *padding: 20px 10px 25px; }
+.modal.modal-write .write-list { *overflow: hidden; *zoom: 1; }
+.modal.modal-write .write-list li { width: 125px; margin: 0 10px 20px; font-size: 19px; font-family: 'PT Sans', sans-serif; text-align: center; overflow: hidden; display: inline-table; *float: left; }
+.modal.modal-write .write-list li a { color: #727a90; }
+.modal.modal-write .write-list li:hover a { color: #275ec2; }
+.modal.modal-write .write-list li .write-item-image { display: block; margin: 0 auto; width: 115px; height: 115px; border-radius: 3px; text-align: center; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/write.png) no-repeat; margin-bottom: 0; }
+.modal.modal-write .write-list li.write-item-type-draft							{ padding-right: 20px; margin-right: 0; border-right: 1px dotted #aac6d9; }
+
+.modal.modal-write .write-list li.write-item-type-topic .write-item-image 		{ background-position: 0 0; }
+.modal.modal-write .write-list li.write-item-type-poll .write-item-image 		{ background-position: -115px 0; }
+.modal.modal-write .write-list li.write-item-type-link .write-item-image 		{ background-position: -230px 0; }
+.modal.modal-write .write-list li.write-item-type-message .write-item-image 	{ background-position: -345px 0; }
+.modal.modal-write .write-list li.write-item-type-blog .write-item-image 		{ background-position: -115px 0; }
+.modal.modal-write .write-list li.write-item-type-draft .write-item-image 		{ background-position: -578px 0; }
+.modal.modal-write .write-list li.write-item-type-topic:hover  .write-item-image		{ background-position: 0 -115px; }
+.modal.modal-write .write-list li.write-item-type-poll:hover  .write-item-image 		{ background-position: -115px -115px; }
+.modal.modal-write .write-list li.write-item-type-link:hover  .write-item-image 		{ background-position: -230px -115px; }
+.modal.modal-write .write-list li.write-item-type-message:hover  .write-item-image 		{ background-position: -345px -115px; }
+.modal.modal-write .write-list li.write-item-type-blog:hover  .write-item-image 		{ background-position: -115px -115px; }
+.modal.modal-write .write-list li.write-item-type-draft:hover  .write-item-image		{ background-position: -578px -115px; }
+
+
+/* Upload Image */
+.modal.modal-image-upload { width: 500px; margin-left: -250px; }
+.modal.modal-upload-photo .image-border, .modal.modal-upload-avatar .image-border { float: left; border-radius: 5px; background: #fff; padding: 5px; margin-bottom: 15px; -webkit-box-shadow: 0 0 5px rgba(0,0,0,.2); box-shadow: 0 0 5px rgba(0,0,0,.2); }
+#avatar-resize-original-img { max-width: 200px; width: 100%; }
+
+
+
+/* --------------------------------------------
+	БЛОГ
+-------------------------------------------- */
+
+.blog-top { position: relative; padding-right: 150px; }
+.blog-top .vote-topic { position: absolute; top: 3px; right: 15px; }
+
+/* Blog Mini */
+.blog-mini { 
+	padding: 15px;
+	margin-bottom: 17px;
+	font-size: 11px;
+	overflow: hidden; zoom: 1;
+	border-radius: 5px;
+
+	background: #ffffff;
+	background: -moz-linear-gradient(top,  #ffffff 0%, #f9fbfb 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f9fbfb));
+	background: -webkit-linear-gradient(top,  #ffffff 0%,#f9fbfb 100%);
+	background: -o-linear-gradient(top,  #ffffff 0%,#f9fbfb 100%);
+	background: -ms-linear-gradient(top,  #ffffff 0%,#f9fbfb 100%);
+	background: linear-gradient(top,  #ffffff 0%,#f9fbfb 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f9fbfb',GradientType=0 );
+}
+.blog-mini button { margin-left: 20px; }
+.blog-mini .fl-r a { margin-left: 14px; color: #727a90; }
+.blog-mini .fl-r a:hover { color: #f00; }
+.blog-mini .fl-r a.link-dotted { border-color: #727a90; }
+.blog-mini .fl-r a.link-dotted:hover { border-color: #f00; }
+
+
+
+.blog { 
+	overflow: hidden;
+	margin-bottom: 17px;
+	background: #f8fbfe;
+	border-radius: 5px;	
+	border-radius: 5px;
+}
+.blog-inner { padding: 20px; }
+
+
+/* Header */
+.blog .blog-header 			{ position: relative; padding: 10px 0 13px 78px; border-bottom: 1px solid #e8eef5; min-height: 16px; }
+.blog .blog-header h2 		{ font-size: 20px; font-weight: bold; line-height: 1em; margin-top: 3px; margin-bottom: 7px; }
+.blog .blog-header h2 i 	{ position: relative; top: 5px; }
+.blog .blog-header .close	{ position: absolute; top: 0; right: 0; font-size: 11px; cursor: pointer; }
+.blog .blog-header .close i	{ margin-left: 5px; }
+.blog .blog-header .close a	{ color: #727a90; border-color: #727a90; }
+.blog .blog-header .close a:hover { color: #f00; border-color: #f00; }
+.blog .blog-header .avatar 	{ position: absolute; top: -10px; left: 7px; width: 39px; height: 39px; }
+
+.blog .blog-header .vote-label	{ text-transform: uppercase; text-align: right; font-size: 11px; color: #aaa; }
+.blog .blog-header .count 		{ font-size: 34px; line-height: 1em; font-weight: bold; text-align: right; }
+
+.blog .blog-header .vote 									{ position: absolute; top: 15px; right: 15px; }
+.blog .blog-header .vote .vote-count 						{ padding-left: 25px; display: block; color: #333; }
+.blog .blog-header .vote .vote-up 							{ position: absolute; top: 22px; left: 0; display: none; }
+.blog .blog-header .vote .vote-down 						{ position: absolute; top: 35px; left: 0; display: none; }
+.blog .blog-header .vote:hover .vote-up,
+.blog .blog-header .vote:hover .vote-down,
+.blog .blog-header .vote.voted .vote-up,
+.blog .blog-header .vote.voted .vote-down 					{ display: inline-block; }
+.blog .blog-header .vote.vote-count-positive .vote-count 	{ color: #5055B2; }
+
+.blog .blog-header .actions { margin-bottom: 0; }
+
+
+/* Content */
+.blog .blog-content { padding: 22px 8px 0; border-top: 1px solid #fff; }
+.blog .blog-content .blog-description { margin-bottom: 50px; }
+.blog .blog-content .user-avatar { margin-right: 10px; }
+
+.blog-info { width: 300px; margin-bottom: 50px; }
+.blog-info li { margin-bottom: 5px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/dots.png)  0% 14px repeat-x; position: relative; padding-right: 50px; }
+.blog-info li span { background: #f8fbfe; padding-right: 2px; }
+.blog-info li strong { width: 150px; position: absolute; top: 0; right: 0; background: #f8fbfe; padding-left: 2px; font-weight: normal; }
+.blog-info li.rating strong { color: #5fa459; }
+
+
+
+/* Footer */
+.blog .blog-footer { padding: 22px 26px; background: #f1f7fd; font-size: 11px; }
+.blog .blog-footer button { margin-right: 10px; }
+.blog .blog-footer a { color: #727a90; }
+.blog .blog-footer .admin { float: right; }
+.blog .blog-footer .admin img { width: 16px; height: 16px; vertical-align: middle; margin-right: 1px; }
+.blog .blog-footer .admin a { color: #4a4a4a; }
+
+
+/* More Button */
+.blog-more 			{ display: block; padding: 10px 0; text-align: center; text-decoration: none; background: #fafafa; }
+.blog-more:hover 	{ background: #eee; }/* --------------------------------------------
+	СТРАНИЦА ПОЛЬЗОВАТЕЛЯ
+-------------------------------------------- */
+
+.profile 				{ min-height: 48px; margin-bottom: 0; padding: 0 0px 20px 0; position: relative; }
+
+.profile .button 		{ float: right; margin-left: 7px; }
+.profile .avatar 		{ position: absolute; top: 0; left: 0; }
+.profile .vote-label	{ text-transform: lowercase; text-align: center; font-size: 10px; color: #aaa; }
+.profile .vote-profile 	{ float: right; margin-left: 10px; }
+.profile .vote-profile .vote-topic	{ float: none; }
+.profile .vote-profile .vote-topic .vote-item.vote-count	{ cursor: text; }
+
+.profile .strength 					{ float: right; margin-left: 18px; }
+.profile .strength .count 			{ font-size: 11px; line-height: 1em; text-align: center; padding: 0 10px; line-height: 23px; color: #628fa5; margin-bottom: 0px; background: #edf8fd; border-radius: 15px; height: 24px; -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.1) inset; box-shadow: 0 2px 3px rgba(0,0,0,.1) inset; }
+
+.profile .user-login 				{ width: 240px; font-size: 27px; line-height: 26px; font-weight: normal; margin-bottom: 5px; }
+.profile .user-login.no-user-name 	{  }
+.profile .user-name 				{ color: #949aa1; font-size: 17px; font-family: 'PT Sans', sans-serif; }
+
+.profile-page-header 				{ font-size: 12px; font-weight: bold; margin-bottom: 20px; background: #f5f5f5; border-top: 1px solid #eee; color: #555; padding: 5px 10px 6px; }
+
+.profile-info-about 		{ padding: 13px 20px 20px 135px; min-height: 100px; background: #fcfce9; border-radius: 5px; margin-bottom: 30px; color: #000; position: relative; }
+.profile-info-about .avatar { position: absolute; top: 20px; left: 20px; border-radius: 5px; background: #fff; padding: 5px; -webkit-box-shadow: 0 0 5px rgba(0,0,0,.2); box-shadow: 0 0 5px rgba(0,0,0,.2); }
+.profile-info-about .avatar img { vertical-align: top; width: 80px; height: 80px; }
+.profile-info-about h3 		{ font-size: 19px; margin-bottom: 5px; }
+.profile-info-about .edit	{ font-size: 11px; }
+
+.profile-left 	{ width: 360px; float: left; margin-right: 40px; }
+.profile-right 	{ width: 185px; float: left; }
+
+.profile-dotted-list { margin-bottom: 50px; }
+.profile-dotted-list li { overflow: hidden; zoom: 1; margin-bottom: 5px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/dots.png)  0% 14px repeat-x; }
+.profile-dotted-list li span { background: #fff; }
+.profile-dotted-list li strong { float: right; width: 190px; font-weight: normal; background: #fff; }
+
+.profile-contact-list { margin-bottom: 50px; }
+.profile-contact-list li { margin-bottom: 5px; padding-left: 21px; position: relative; }
+.profile-contact-list li i { position: absolute; top: 2px; left: 0; }/* --------------------------------------------
+	СТЕНА
+-------------------------------------------- */
+
+.wall-submit 									{ margin-bottom: 30px; background: #f8fbfe; padding: 15px; border-radius: 5px; position: relative; }
+.wall-submit .counter							{ position: absolute; bottom: 18px; right: 15px; color: #818189; }
+.wall-submit .counter.exceeded					{ color: #f00; }
+.wall-submit textarea 							{ margin: 0 0 10px; }
+.wall-submit.wall-submit-reply 					{ margin: 15px 0 2px 0; -webkit-box-shadow: 0 0 7px #E2EAF1 inset; box-shadow: 0 0 7px #E2EAF1 inset; }
+.wall-submit.wall-submit-reply:after 			{ display: block; content: ""; position: absolute; top: -12px; left: 15px; width: 0; height: 0; border-width: 6px; border-color: transparent transparent #eaf1f7 transparent; border-style: solid; }
+.wall-submit.wall-submit-reply .counter			{ display: none; }
+.wall-submit.wall-submit-reply textarea 		{ margin-bottom: 0; height: 28px; *height: 16px; *width: 590px; }
+.wall-submit.wall-submit-reply button 			{ display: none; }
+.wall-submit.wall-submit-reply.active textarea 	{ height: 80px; margin-bottom: 10px; }
+.wall-submit.wall-submit-reply.active button 	{ display: block; }
+.wall-submit.wall-submit-reply.active .counter	{ display: block; }
+.wall-submit p 									{ margin-bottom: 5px; }
+
+.wall-item-wrapper 				{ margin-bottom: 23px; border-bottom: 1px solid #e7ebed; padding: 0 0 20px 55px; position: relative; }
+.wall-item-wrapper:last-child 	{ border-bottom:none; }
+
+.wall-item .avatar 							{ width: 40px; height: 40px; position: absolute; top: 0; left: 0; }
+.wall-item .info 							{ color: #b9c2c2; font-size: 11px; line-height: 1em; margin-bottom: 8px; }
+.wall-item .info a 							{ color: #275ec2; }
+.wall-item .info .date 						{ color: #818189; }
+.wall-item .actions.wall-item-actions 		{ margin-top: 5px; margin-bottom: 0; }
+.wall-item .actions.wall-item-actions a 	{ color: #727a90; border-color: #727a90; }
+
+.wall-item-replies 			{ padding: 4px 5px 2px; background: #fefef1; position: relative; color: #363636; margin-top: 15px; margin-bottom: 5px; font-size: 11px; border-radius: 5px; -webkit-box-shadow: 0 2px 4px #e8e8c0 inset; box-shadow: 0 2px 4px #e8e8c0 inset; }
+.wall-item-replies:after 	{ display: block; content: ""; position: absolute; top: -12px; left: 15px; width: 0; height: 0; border-width: 6px; border-color: transparent transparent #EEEED8 transparent; border-style: solid; }
+
+.wall-item-reply 						{ padding: 4px 0 8px 40px; margin: 0 7px; position: relative; font-size: 11px; border-bottom: 1px solid #ededc9; border-top: 1px solid #fff; }
+.wall-item-reply:first-child 			{ border-top: none; padding-top: 0; margin-top: 3px; }
+.wall-item-reply:first-child .avatar 	{ top: 4px; }
+.wall-item-reply:last-child 			{ border-bottom: none; }
+.wall-item-reply .text					{ font-size: 11px; }
+.wall-item-reply .avatar 				{ position: absolute; top: 8px; left: 0; width: 30px; height: 30px; }
+.wall-item-reply .actions 				{ margin-bottom: 0; }
+.wall-item-reply .actions .date 		{ color: #818189; }
+.wall-item-reply .author 				{ color: #275ec2; font-weight: bold; }
+
+.wall-more 							{  }
+.wall-more:hover 					{ background: #F4F4D9; }
+.wall-more-reply { 
+	display: block; 
+	border-radius: 5px; 
+	text-decoration: none; 
+	text-align: center;
+	padding: 7px 0; 
+	font-size: 11px; 
+	margin-bottom: 10px; 
+	color: #898953;
+	border: 1px solid #eaeac4;
+	-webkit-box-shadow: 0 1px 2px #dbdbba, 0 1px 0 #fff inset; box-shadow: 0 1px 2px #dbdbba, 0 1px 0 #fff inset;
+
+	background: #fffffa;
+	background: -moz-linear-gradient(top,  #fffffa 0%, #fefef1 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fffffa), color-stop(100%,#fefef1));
+	background: -webkit-linear-gradient(top,  #fffffa 0%,#fefef1 100%);
+	background: -o-linear-gradient(top,  #fffffa 0%,#fefef1 100%);
+	background: -ms-linear-gradient(top,  #fffffa 0%,#fefef1 100%);
+	background: linear-gradient(top,  #fffffa 0%,#fefef1 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffffa', endColorstr='#fefef1',GradientType=0 );
+}
+.wall-more-reply:hover 				{ color: #898953; }
+.wall-more.loader 					{ background: #F4F4D9 url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/loader.gif) 50% 50% no-repeat; }
+.wall-more.loader .wall-more-inner 	{ visibility: hidden; }
+
+.wall-note h3 { font-size: 15px; margin-bottom: 20px; font-family: Verdana, sans-serif; }/* --------------------------------------------
+	ВСПЛЫВАЮЩИЕ ПОДСКАЗКИ
+-------------------------------------------- */
+
+.infobox {
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 3500;
+	text-align: left;
+	padding: 15px;
+	min-width: 50px;
+	max-width: 300px;
+	color: #fff;
+	background: rgba(0,0,0,.8);
+	border-radius: 5px;
+}
+
+.infobox .tip-arrow 					{ position: absolute; width: 0; height: 0; border-width: 6px; border-style: solid; border-color: rgba(0,0,0,.8); }
+.infobox .tip-arrow.tip-arrow-top 		{ top: -12px; left: 15px; border-top-color: transparent !important; border-left-color: transparent !important; border-right-color: transparent !important; }
+.infobox .tip-arrow.tip-arrow-bottom 	{ bottom: -12px; left: 15px; border-bottom-color: transparent !important; border-left-color: transparent !important; border-right-color: transparent !important; }
+.infobox .tip-arrow.tip-arrow-right 	{ top: 50%; margin-top: -6px; right: -12px; border-bottom-color: transparent !important; border-top-color: transparent !important; border-right-color: transparent !important; }
+.infobox .tip-arrow.tip-arrow-left 		{ top: 50%; margin-top: -6px; left: -12px; border-bottom-color: transparent !important; border-top-color: transparent !important; border-left-color: transparent !important; }
+
+.infobox a 			{ color: #B4B8ED; }
+.infobox a:hover 	{ color: #999DDB; }
+
+
+/* Default Tip */
+.infobox.infobox-standart 				{ background: rgba(0,0,0,.8); }
+.infobox.infobox-standart .tip-arrow 	{ border-color: rgba(0,0,0,.8); }
+
+/* Yellow */
+.infobox.infobox-yellow 				{ background: #fffea8; color: #3e3e16; border-radius: 10px; padding: 15px 20px; font-size: 11px; line-height: 16px; -webkit-box-shadow: 0 0 15px rgba(0,0,0,.3); box-shadow: 0 0 15px rgba(0,0,0,.3); }
+.infobox.infobox-yellow .tip-arrow 		{ border-color: #fffea8; }
+
+/* Topic */
+.infobox.infobox-topic 					{ font-size: 11px; -webkit-box-shadow: 0 0 10px rgba(0,0,0,.5); box-shadow: 0 0 10px rgba(0,0,0,.5); background: #1d1d1d; border-radius: 10px; }
+.infobox.infobox-topic i 				{ margin-right: 5px; }
+.infobox.infobox-topic .tip-arrow 		{ left: 50%; margin-left: -5px; border-color: #1d1d1d; }
+
+/* Help */
+.infobox.infobox-help 								{ background: #fff; width: 300px; border: 3px solid #edf8fd; color: #000; border-radius: 10px; padding: 25px 30px; font-size: 12px; line-height: 18px; -webkit-box-shadow: 0 0 15px rgba(0,0,0,.3); box-shadow: 0 0 15px rgba(0,0,0,.3); }
+.infobox.infobox-help .tip-arrow 					{ border: none; width: 15px; height: 11px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) no-repeat; }
+.infobox.infobox-help .tip-arrow.tip-arrow-top 		{ background-position: -38px -107px; top: -11px; }
+.infobox.infobox-help .tip-arrow.tip-arrow-bottom 	{ background-position: -53px -107px; bottom: -11px; }
+.infobox.infobox-help a 							{ color: #3f8ad7; }
+.infobox.infobox-help .blog-info 					{ margin-bottom: 30px; }
+.infobox.infobox-help .blog-info li span 			{ background: #fff; }
+.infobox.infobox-help .blog-info li strong 			{ background: #fff; }
+.infobox.infobox-help .infobox-topic 				{ color: #727a90; font-size: 11px; }
+.infobox.infobox-help .infobox-actions 				{ font-size: 11px; }
+
+/* Share */
+.infobox.infobox-share 								{ background: #fff; width: 300px; border: 3px solid #edf8fd; color: #000; border-radius: 10px; padding: 10px 15px; font-size: 12px; line-height: 18px; -webkit-box-shadow: 0 0 15px rgba(0,0,0,.3); box-shadow: 0 0 15px rgba(0,0,0,.3); }
+.infobox.infobox-share .tip-arrow 					{ border: none; width: 15px; height: 11px; background: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/icons-synio.png) no-repeat; }
+.infobox.infobox-share .tip-arrow.tip-arrow-top 	{ background-position: -38px -107px; top: -11px; left: 50%; margin-left: -7px;  }
+.infobox.infobox-share .tip-arrow.tip-arrow-bottom 	{ background-position: -53px -107px; bottom: -11px; left: 50%; margin-left: -7px;  }
+/* --------------------------------------------
+	ВСПЛЫВАЮЩИЕ УВЕДОМЛЕНИЯ
+-------------------------------------------- */
+
+#notifier { 
+	width: 250px; 
+	
+	position: fixed; 
+	top: 10px; 
+	right: 10px; 
+	
+	font-size: 11px;
+	line-height: 16px;
+	z-index: 9999; 
+	
+	/* IE 6 Fix */
+	_position: absolute; 
+	_top: expression( eval(document.documentElement.scrollBottom) + 10 +"px" );
+}
+
+#notifier .n-box { 
+	position: relative; 
+	
+	padding: 15px 20px 16px; 
+	margin-bottom: 10px;
+	
+	color: #fff; 
+	background: #000; 
+	
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,.3); box-shadow: 0 0 5px rgba(0,0,0,.3);
+	opacity: 0.9; filter: alpha(opacity=80);
+	
+	cursor: pointer;
+}
+#notifier .n-box h3 { color: #fff; font-size: 12px; font-weight: bold; margin-bottom: 3px; font-family: Verdana, sans-serif; }
+#notifier .n-box p { margin: 0; }
+
+#notifier .n-box.n-notice { background: #063573; color: #fff; }
+#notifier .n-box.n-error { background: #850505; color: #fff; }/*
+ * jQuery UI CSS Framework 1.8.14
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ */
+
+/* Layout helpers
+----------------------------------*/
+.ui-helper-hidden { display: none; }
+.ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
+.ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+.ui-helper-clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.ui-helper-clearfix { display: inline-block; }
+/* required comment for clearfix to work in Opera \*/
+* html .ui-helper-clearfix { height:1%; }
+.ui-helper-clearfix { display:block; }
+/* end clearfix */
+.ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled { cursor: default !important; }
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+
+/*
+ * jQuery UI CSS Framework 1.8.14
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ *
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Verdana,Arial,sans-serif&fwDefault=normal&fsDefault=1.1em&cornerRadius=4px&bgColorHeader=cccccc&bgTextureHeader=03_highlight_soft.png&bgImgOpacityHeader=75&borderColorHeader=aaaaaa&fcHeader=222222&iconColorHeader=222222&bgColorContent=ffffff&bgTextureContent=01_flat.png&bgImgOpacityContent=75&borderColorContent=aaaaaa&fcContent=222222&iconColorContent=222222&bgColorDefault=e6e6e6&bgTextureDefault=02_glass.png&bgImgOpacityDefault=75&borderColorDefault=d3d3d3&fcDefault=555555&iconColorDefault=888888&bgColorHover=dadada&bgTextureHover=02_glass.png&bgImgOpacityHover=75&borderColorHover=999999&fcHover=212121&iconColorHover=454545&bgColorActive=ffffff&bgTextureActive=02_glass.png&bgImgOpacityActive=65&borderColorActive=aaaaaa&fcActive=212121&iconColorActive=454545&bgColorHighlight=fbf9ee&bgTextureHighlight=02_glass.png&bgImgOpacityHighlight=55&borderColorHighlight=fcefa1&fcHighlight=363636&iconColorHighlight=2e83ff&bgColorError=fef1ec&bgTextureError=02_glass.png&bgImgOpacityError=95&borderColorError=cd0a0a&fcError=cd0a0a&iconColorError=cd0a0a&bgColorOverlay=aaaaaa&bgTextureOverlay=01_flat.png&bgImgOpacityOverlay=0&opacityOverlay=30&bgColorShadow=aaaaaa&bgTextureShadow=01_flat.png&bgImgOpacityShadow=0&opacityShadow=30&thicknessShadow=8px&offsetTopShadow=-8px&offsetLeftShadow=-8px&cornerRadiusShadow=8px
+ */
+
+
+/* Component containers
+----------------------------------*/
+.ui-widget { font-family: Verdana,Arial,sans-serif; font-size: 1.1em; }
+.ui-widget .ui-widget { font-size: 1em; }
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Verdana,Arial,sans-serif; font-size: 1em; }
+.ui-widget-content { border: 1px solid #aaaaaa; background: #ffffff url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x; color: #222222; }
+.ui-widget-content a { color: #222222; }
+.ui-widget-header { border: 1px solid #aaaaaa; background: #cccccc url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-bg_highlight-soft_75_cccccc_1x100.png) 50% 50% repeat-x; color: #222222; font-weight: bold; }
+.ui-widget-header a { color: #222222; }
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #d3d3d3; background: #e6e6e6 url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #555555; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #555555; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #999999; background: #C9EEFF; font-weight: normal; color: #212121; }
+.ui-state-hover a, .ui-state-hover a:hover { color: #212121; text-decoration: none; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #aaaaaa; background: #ffffff url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x; font-weight: normal; color: #212121; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #212121; text-decoration: none; }
+.ui-widget :active { outline: none; }
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #fcefa1; background: #fbf9ee url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-bg_glass_55_fbf9ee_1x400.png) 50% 50% repeat-x; color: #363636; }
+.ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #363636; }
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #fef1ec url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-bg_glass_95_fef1ec_1x400.png) 50% 50% repeat-x; color: #cd0a0a; }
+.ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a { color: #cd0a0a; }
+.ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text { color: #cd0a0a; }
+.ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary { font-weight: bold; }
+.ui-priority-secondary, .ui-widget-content .ui-priority-secondary,  .ui-widget-header .ui-priority-secondary { opacity: .7; filter:Alpha(Opacity=70); font-weight: normal; }
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled { opacity: .35; filter:Alpha(Opacity=35); background-image: none; }
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { width: 16px; height: 16px; background-image: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-icons_222222_256x240.png); }
+.ui-widget-content .ui-icon {background-image: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-icons_222222_256x240.png); }
+.ui-widget-header .ui-icon {background-image: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-icons_222222_256x240.png); }
+.ui-state-default .ui-icon { background-image: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-icons_888888_256x240.png); }
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-icons_454545_256x240.png); }
+.ui-state-active .ui-icon {background-image: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-icons_454545_256x240.png); }
+.ui-state-highlight .ui-icon {background-image: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-icons_2e83ff_256x240.png); }
+.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-icons_cd0a0a_256x240.png); }
+
+/* positioning */
+.ui-icon-carat-1-n { background-position: 0 0; }
+.ui-icon-carat-1-ne { background-position: -16px 0; }
+.ui-icon-carat-1-e { background-position: -32px 0; }
+.ui-icon-carat-1-se { background-position: -48px 0; }
+.ui-icon-carat-1-s { background-position: -64px 0; }
+.ui-icon-carat-1-sw { background-position: -80px 0; }
+.ui-icon-carat-1-w { background-position: -96px 0; }
+.ui-icon-carat-1-nw { background-position: -112px 0; }
+.ui-icon-carat-2-n-s { background-position: -128px 0; }
+.ui-icon-carat-2-e-w { background-position: -144px 0; }
+.ui-icon-triangle-1-n { background-position: 0 -16px; }
+.ui-icon-triangle-1-ne { background-position: -16px -16px; }
+.ui-icon-triangle-1-e { background-position: -32px -16px; }
+.ui-icon-triangle-1-se { background-position: -48px -16px; }
+.ui-icon-triangle-1-s { background-position: -64px -16px; }
+.ui-icon-triangle-1-sw { background-position: -80px -16px; }
+.ui-icon-triangle-1-w { background-position: -96px -16px; }
+.ui-icon-triangle-1-nw { background-position: -112px -16px; }
+.ui-icon-triangle-2-n-s { background-position: -128px -16px; }
+.ui-icon-triangle-2-e-w { background-position: -144px -16px; }
+.ui-icon-arrow-1-n { background-position: 0 -32px; }
+.ui-icon-arrow-1-ne { background-position: -16px -32px; }
+.ui-icon-arrow-1-e { background-position: -32px -32px; }
+.ui-icon-arrow-1-se { background-position: -48px -32px; }
+.ui-icon-arrow-1-s { background-position: -64px -32px; }
+.ui-icon-arrow-1-sw { background-position: -80px -32px; }
+.ui-icon-arrow-1-w { background-position: -96px -32px; }
+.ui-icon-arrow-1-nw { background-position: -112px -32px; }
+.ui-icon-arrow-2-n-s { background-position: -128px -32px; }
+.ui-icon-arrow-2-ne-sw { background-position: -144px -32px; }
+.ui-icon-arrow-2-e-w { background-position: -160px -32px; }
+.ui-icon-arrow-2-se-nw { background-position: -176px -32px; }
+.ui-icon-arrowstop-1-n { background-position: -192px -32px; }
+.ui-icon-arrowstop-1-e { background-position: -208px -32px; }
+.ui-icon-arrowstop-1-s { background-position: -224px -32px; }
+.ui-icon-arrowstop-1-w { background-position: -240px -32px; }
+.ui-icon-arrowthick-1-n { background-position: 0 -48px; }
+.ui-icon-arrowthick-1-ne { background-position: -16px -48px; }
+.ui-icon-arrowthick-1-e { background-position: -32px -48px; }
+.ui-icon-arrowthick-1-se { background-position: -48px -48px; }
+.ui-icon-arrowthick-1-s { background-position: -64px -48px; }
+.ui-icon-arrowthick-1-sw { background-position: -80px -48px; }
+.ui-icon-arrowthick-1-w { background-position: -96px -48px; }
+.ui-icon-arrowthick-1-nw { background-position: -112px -48px; }
+.ui-icon-arrowthick-2-n-s { background-position: -128px -48px; }
+.ui-icon-arrowthick-2-ne-sw { background-position: -144px -48px; }
+.ui-icon-arrowthick-2-e-w { background-position: -160px -48px; }
+.ui-icon-arrowthick-2-se-nw { background-position: -176px -48px; }
+.ui-icon-arrowthickstop-1-n { background-position: -192px -48px; }
+.ui-icon-arrowthickstop-1-e { background-position: -208px -48px; }
+.ui-icon-arrowthickstop-1-s { background-position: -224px -48px; }
+.ui-icon-arrowthickstop-1-w { background-position: -240px -48px; }
+.ui-icon-arrowreturnthick-1-w { background-position: 0 -64px; }
+.ui-icon-arrowreturnthick-1-n { background-position: -16px -64px; }
+.ui-icon-arrowreturnthick-1-e { background-position: -32px -64px; }
+.ui-icon-arrowreturnthick-1-s { background-position: -48px -64px; }
+.ui-icon-arrowreturn-1-w { background-position: -64px -64px; }
+.ui-icon-arrowreturn-1-n { background-position: -80px -64px; }
+.ui-icon-arrowreturn-1-e { background-position: -96px -64px; }
+.ui-icon-arrowreturn-1-s { background-position: -112px -64px; }
+.ui-icon-arrowrefresh-1-w { background-position: -128px -64px; }
+.ui-icon-arrowrefresh-1-n { background-position: -144px -64px; }
+.ui-icon-arrowrefresh-1-e { background-position: -160px -64px; }
+.ui-icon-arrowrefresh-1-s { background-position: -176px -64px; }
+.ui-icon-arrow-4 { background-position: 0 -80px; }
+.ui-icon-arrow-4-diag { background-position: -16px -80px; }
+.ui-icon-extlink { background-position: -32px -80px; }
+.ui-icon-newwin { background-position: -48px -80px; }
+.ui-icon-refresh { background-position: -64px -80px; }
+.ui-icon-shuffle { background-position: -80px -80px; }
+.ui-icon-transfer-e-w { background-position: -96px -80px; }
+.ui-icon-transferthick-e-w { background-position: -112px -80px; }
+.ui-icon-folder-collapsed { background-position: 0 -96px; }
+.ui-icon-folder-open { background-position: -16px -96px; }
+.ui-icon-document { background-position: -32px -96px; }
+.ui-icon-document-b { background-position: -48px -96px; }
+.ui-icon-note { background-position: -64px -96px; }
+.ui-icon-mail-closed { background-position: -80px -96px; }
+.ui-icon-mail-open { background-position: -96px -96px; }
+.ui-icon-suitcase { background-position: -112px -96px; }
+.ui-icon-comment { background-position: -128px -96px; }
+.ui-icon-person { background-position: -144px -96px; }
+.ui-icon-print { background-position: -160px -96px; }
+.ui-icon-trash { background-position: -176px -96px; }
+.ui-icon-locked { background-position: -192px -96px; }
+.ui-icon-unlocked { background-position: -208px -96px; }
+.ui-icon-bookmark { background-position: -224px -96px; }
+.ui-icon-tag { background-position: -240px -96px; }
+.ui-icon-home { background-position: 0 -112px; }
+.ui-icon-flag { background-position: -16px -112px; }
+.ui-icon-calendar { background-position: -32px -112px; }
+.ui-icon-cart { background-position: -48px -112px; }
+.ui-icon-pencil { background-position: -64px -112px; }
+.ui-icon-clock { background-position: -80px -112px; }
+.ui-icon-disk { background-position: -96px -112px; }
+.ui-icon-calculator { background-position: -112px -112px; }
+.ui-icon-zoomin { background-position: -128px -112px; }
+.ui-icon-zoomout { background-position: -144px -112px; }
+.ui-icon-search { background-position: -160px -112px; }
+.ui-icon-wrench { background-position: -176px -112px; }
+.ui-icon-gear { background-position: -192px -112px; }
+.ui-icon-heart { background-position: -208px -112px; }
+.ui-icon-star { background-position: -224px -112px; }
+.ui-icon-link { background-position: -240px -112px; }
+.ui-icon-cancel { background-position: 0 -128px; }
+.ui-icon-plus { background-position: -16px -128px; }
+.ui-icon-plusthick { background-position: -32px -128px; }
+.ui-icon-minus { background-position: -48px -128px; }
+.ui-icon-minusthick { background-position: -64px -128px; }
+.ui-icon-close { background-position: -80px -128px; }
+.ui-icon-closethick { background-position: -96px -128px; }
+.ui-icon-key { background-position: -112px -128px; }
+.ui-icon-lightbulb { background-position: -128px -128px; }
+.ui-icon-scissors { background-position: -144px -128px; }
+.ui-icon-clipboard { background-position: -160px -128px; }
+.ui-icon-copy { background-position: -176px -128px; }
+.ui-icon-contact { background-position: -192px -128px; }
+.ui-icon-image { background-position: -208px -128px; }
+.ui-icon-video { background-position: -224px -128px; }
+.ui-icon-script { background-position: -240px -128px; }
+.ui-icon-alert { background-position: 0 -144px; }
+.ui-icon-info { background-position: -16px -144px; }
+.ui-icon-notice { background-position: -32px -144px; }
+.ui-icon-help { background-position: -48px -144px; }
+.ui-icon-check { background-position: -64px -144px; }
+.ui-icon-bullet { background-position: -80px -144px; }
+.ui-icon-radio-off { background-position: -96px -144px; }
+.ui-icon-radio-on { background-position: -112px -144px; }
+.ui-icon-pin-w { background-position: -128px -144px; }
+.ui-icon-pin-s { background-position: -144px -144px; }
+.ui-icon-play { background-position: 0 -160px; }
+.ui-icon-pause { background-position: -16px -160px; }
+.ui-icon-seek-next { background-position: -32px -160px; }
+.ui-icon-seek-prev { background-position: -48px -160px; }
+.ui-icon-seek-end { background-position: -64px -160px; }
+.ui-icon-seek-start { background-position: -80px -160px; }
+/* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
+.ui-icon-seek-first { background-position: -80px -160px; }
+.ui-icon-stop { background-position: -96px -160px; }
+.ui-icon-eject { background-position: -112px -160px; }
+.ui-icon-volume-off { background-position: -128px -160px; }
+.ui-icon-volume-on { background-position: -144px -160px; }
+.ui-icon-power { background-position: 0 -176px; }
+.ui-icon-signal-diag { background-position: -16px -176px; }
+.ui-icon-signal { background-position: -32px -176px; }
+.ui-icon-battery-0 { background-position: -48px -176px; }
+.ui-icon-battery-1 { background-position: -64px -176px; }
+.ui-icon-battery-2 { background-position: -80px -176px; }
+.ui-icon-battery-3 { background-position: -96px -176px; }
+.ui-icon-circle-plus { background-position: 0 -192px; }
+.ui-icon-circle-minus { background-position: -16px -192px; }
+.ui-icon-circle-close { background-position: -32px -192px; }
+.ui-icon-circle-triangle-e { background-position: -48px -192px; }
+.ui-icon-circle-triangle-s { background-position: -64px -192px; }
+.ui-icon-circle-triangle-w { background-position: -80px -192px; }
+.ui-icon-circle-triangle-n { background-position: -96px -192px; }
+.ui-icon-circle-arrow-e { background-position: -112px -192px; }
+.ui-icon-circle-arrow-s { background-position: -128px -192px; }
+.ui-icon-circle-arrow-w { background-position: -144px -192px; }
+.ui-icon-circle-arrow-n { background-position: -160px -192px; }
+.ui-icon-circle-zoomin { background-position: -176px -192px; }
+.ui-icon-circle-zoomout { background-position: -192px -192px; }
+.ui-icon-circle-check { background-position: -208px -192px; }
+.ui-icon-circlesmall-plus { background-position: 0 -208px; }
+.ui-icon-circlesmall-minus { background-position: -16px -208px; }
+.ui-icon-circlesmall-close { background-position: -32px -208px; }
+.ui-icon-squaresmall-plus { background-position: -48px -208px; }
+.ui-icon-squaresmall-minus { background-position: -64px -208px; }
+.ui-icon-squaresmall-close { background-position: -80px -208px; }
+.ui-icon-grip-dotted-vertical { background-position: 0 -224px; }
+.ui-icon-grip-dotted-horizontal { background-position: -16px -224px; }
+.ui-icon-grip-solid-vertical { background-position: -32px -224px; }
+.ui-icon-grip-solid-horizontal { background-position: -48px -224px; }
+.ui-icon-gripsmall-diagonal-se { background-position: -64px -224px; }
+.ui-icon-grip-diagonal-se { background-position: -80px -224px; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Corner radius */
+
+/* Overlays */
+.ui-widget-overlay { background: #aaaaaa url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); }
+.ui-widget-shadow { margin: -8px 0 0 -8px; padding: 8px; background: #aaaaaa url(http://hype.retroscene.org/templates/skin/synio-hype-mod/css/smoothness/images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -khtml-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }/*
+ * jQuery UI Autocomplete 1.8.14
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Autocomplete#theming
+ */
+.ui-autocomplete { position: absolute; cursor: default; }	
+
+/* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+/*
+ * jQuery UI Menu 1.8.14
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Menu#theming
+ */
+.ui-menu {
+	list-style:none;
+	margin: 0;
+	display:block;
+	float: left;
+}
+.ui-menu .ui-menu {
+	margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	zoom: 1;
+	float: left;
+	clear: left;
+	width: 100%;
+}
+.ui-menu .ui-menu-item a {
+	text-decoration:none;
+	display:block;
+	padding:.2em .4em;
+	line-height:1.4;
+	zoom:1;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
+	margin: -1px;
+}
+/*
+ * jQuery UI Datepicker 1.8.14
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Datepicker#theming
+ */
+.ui-datepicker { width: 17em; padding: .2em .2em 0; display: none; }
+.ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; }
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { position:absolute; top: 2px; width: 1.8em; height: 1.8em; }
+.ui-datepicker .ui-datepicker-prev-hover, .ui-datepicker .ui-datepicker-next-hover { top: 1px; }
+.ui-datepicker .ui-datepicker-prev { left:2px; }
+.ui-datepicker .ui-datepicker-next { right:2px; }
+.ui-datepicker .ui-datepicker-prev-hover { left:1px; }
+.ui-datepicker .ui-datepicker-next-hover { right:1px; }
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span { display: block; position: absolute; left: 50%; margin-left: -8px; top: 50%; margin-top: -8px;  }
+.ui-datepicker .ui-datepicker-title { margin: 0 2.3em; line-height: 1.8em; text-align: center; }
+.ui-datepicker .ui-datepicker-title select { font-size:1em; margin:1px 0; }
+.ui-datepicker select.ui-datepicker-month-year {width: 100%;}
+.ui-datepicker select.ui-datepicker-month, 
+.ui-datepicker select.ui-datepicker-year { width: 49%;}
+.ui-datepicker table {width: 100%; font-size: .9em; border-collapse: collapse; margin:0 0 .4em; }
+.ui-datepicker th { padding: .7em .3em; text-align: center; font-weight: bold; border: 0;  }
+.ui-datepicker td { border: 0; padding: 1px; }
+.ui-datepicker td span, .ui-datepicker td a { display: block; padding: .2em; text-align: right; text-decoration: none; }
+.ui-datepicker .ui-datepicker-buttonpane { background-image: none; margin: .7em 0 0 0; padding:0 .2em; border-left: 0; border-right: 0; border-bottom: 0; }
+.ui-datepicker .ui-datepicker-buttonpane button { float: right; margin: .5em .2em .4em; cursor: pointer; padding: .2em .6em .3em .6em; width:auto; overflow:visible; }
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { float:left; }
+
+/* with multiple calendars */
+.ui-datepicker.ui-datepicker-multi { width:auto; }
+.ui-datepicker-multi .ui-datepicker-group { float:left; }
+.ui-datepicker-multi .ui-datepicker-group table { width:95%; margin:0 auto .4em; }
+.ui-datepicker-multi-2 .ui-datepicker-group { width:50%; }
+.ui-datepicker-multi-3 .ui-datepicker-group { width:33.3%; }
+.ui-datepicker-multi-4 .ui-datepicker-group { width:25%; }
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header { border-left-width:0; }
+.ui-datepicker-multi .ui-datepicker-buttonpane { clear:left; }
+.ui-datepicker-row-break { clear:both; width:100%; font-size:0em; }
+
+/* RTL support */
+.ui-datepicker-rtl { direction: rtl; }
+.ui-datepicker-rtl .ui-datepicker-prev { right: 2px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next { left: 2px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-prev:hover { right: 1px; left: auto; }
+.ui-datepicker-rtl .ui-datepicker-next:hover { left: 1px; right: auto; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane { clear:right; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane button { float: left; }
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current { float:right; }
+.ui-datepicker-rtl .ui-datepicker-group { float:right; }
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header { border-right-width:0; border-left-width:1px; }
+
+/* IE6 IFRAME FIX (taken from datepicker 1.5.3 */
+.ui-datepicker-cover {
+    display: none; /*sorry for IE5*/
+    display/**/: block; /*sorry for IE5*/
+    position: absolute; /*must have*/
+    z-index: -1; /*must have*/
+    filter: mask(); /*must have*/
+    top: -4px; /*must have*/
+    left: -4px; /*must have*/
+    width: 200px; /*must have*/
+    height: 200px; /*must have*/
+}
+
+.ui-autocomplete-loading {
+	background: #fafafa url(http://hype.retroscene.org/templates/skin/synio-hype-mod/images/loader.gif) 50% 50% no-repeat;
+}/* --------------------------------------------
+	СТИЛИ ДЛЯ ПЕЧАТИ
+-------------------------------------------- */
+
+@media print {
+	@page 			{ margin: 0.5cm; }
+
+	* 				{ background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; font-family: Arial, sans-serif !important; }
+	
+	body, .text 	{ font-size: 14pt; }
+	
+	a, a:visited 	{ text-decoration: underline; }
+
+	pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+	thead 			{ display: table-header-group; }
+	tr, img 		{ page-break-inside: avoid; }
+	img 			{ max-width: 100% !important; }
+	
+	h1 				{ font-size: 30pt !important; font-weight: bold !important; }
+	h4 				{ font-size: 26pt !important; }
+	h5 				{ font-size: 23pt !important; }
+	h6 				{ font-size: 20pt !important; }
+	p, h3, h4, h5 	{ orphans: 3; widows: 3; }
+	h3, h4, h5 		{ page-break-after: avoid; }
+	h1 a 			{ text-decoration: none !important; }
+	
+	#header, #userbar, #nav, #sidebar, #footer, #comments, .toolbar, .nav-filter-wrapper, 
+	.topic-footer, .stat-performance, .topic-actions, .reply-header, .nav { display: none !important; }
+	
+	#wrapper { -webkit-box-shadow: none; box-shadow: none; border: 0; padding: 0; }
+	#content { width: 100%; margin: 0; }
+	
+	.topic { margin-bottom: 100px; }
+}.lang-z80, .lang-6502 { background: #272822 !important; padding-top: 0px !important; max-height: 400px; }
+.lang-z80 .str, .lang-6502 .str { color: #E6DB74; }
+.lang-z80 .kwd, .lang-6502 .kwd { color: #FFFFFF; font-weight: bold; }
+.lang-z80 .com, .lang-6502 .com { color: #75715E; font-style: italic; }
+.lang-z80 .typ, .lang-6502 .typ { color: #ffff00; }
+.lang-z80 .lit, .lang-6502 .lit { color: #16e100; }
+.lang-z80 .pun, .lang-6502 .pun { color: #15deaa; font-weight: bold; }
+.lang-z80 .pln, .lang-6502 .pln { color: #ff0088; }
+/* TOP */
+.ignore-profile-whois { font-size: 16px; color: #eee; }
+
+#ignore_setting_form { width: 500px; margin-left: -250px; text-align: left; padding:10px; top: 100px; }
+#ignore_target_form { width: 500px; margin-left: -250px; text-align: left; padding:10px; }
+
+.comment li a.ignore-link-reply	{ color: #727a90; text-decoration: line-through; border-bottom: 1px dotted #727a90; }
+
+.ignore-comment-user { color: #999; }
+
+.ignore-comment { opacity: 0.2; filter: alpha(opacity=20); }
+.ignore-comment:hover { opacity: 1; filter: alpha(opacity=100); }
+
+.ignore-comment .comment-content 		{ border-color: #C8A8A8; }
+.ignore-comment .comment-content:after 	{ display: none; }
+.ignore-comment .comment-content:before { display: none; }
+
+.ignore-comment .comment-ignore-info { padding: 0 70px 0px 0; line-height: 12px; position: relative; top: 0; overflow: hidden; zoom: 1; font-size: 11px; }
+.ignore-comment .comment-ignore-info li { float: left; margin-right: 13px; color: #777; }
+.ignore-comment .comment-ignore-info li a 		{ color: #666; text-decoration: none; border-bottom: 1px dotted #333; }
+.ignore-comment .comment-ignore-info li a:hover { color: #f00; border-color: #f00; }
+.ignore-comment .comment-ignore-info li.vote { position: absolute; top: 0; right: 0; margin: 0; font-weight: bold; }
+.ignore-comment .comment-ignore-info li.item { position: absolute; top: 0; right: 30px; margin: 0; }
+
+.ignore-comment-list { margin-bottom: 10px; border: 1px solid #e7ebed; padding: 9px 10px 10px; border-radius: 3px; position: relative; font-size: 14px; }
+.ignore-comment-list div { position: absolute; right: 0; top: 0; font-size: 11px; padding: 10px; }
+
+.ignore-target-block { margin-bottom: 10px; border: 1px solid #e7ebed; padding: 9px 10px 10px; border-radius: 3px; position: relative; }
+.ignore-target-block p.title { font-size: 14px; }
+.ignore-target-block div { position: absolute; right: 0; top: 0; font-size: 11px; padding: 10px; }

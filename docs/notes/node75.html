@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Introduction</TITLE>
-<META NAME="description" CONTENT="Introduction">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>WR5 – Write Register Group 5</TITLE>
+<META NAME="description" CONTENT="WR5 – Write Register Group 5">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,7 +13,7 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node76.html">
 <LINK REL="previous" HREF="node74.html">
@@ -27,41 +27,53 @@
  HREF="node76.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node74.html">
+ HREF="node69.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node74.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html661"
+<A ID="tex2html698"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html663"
-  HREF="node135.html">
+<A ID="tex2html700"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node76.html">Overview</A>
+ HREF="node76.html">WR6 – Command Register</A>
 <B> Up:</B> <A
- HREF="node74.html">Copper and Display Timing</A>
+ HREF="node69.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node74.html">Copper and Display Timing</A>
- &nbsp; <B>  <A ID="tex2html662"
+ HREF="node74.html">WR4 – Write Register</A>
+ &nbsp; <B>  <A ID="tex2html699"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html664"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html701"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00700010000000000000">
-Introduction</A>
+<H4><A ID="SECTION00660060000000000000">
+WR5 – Write Register Group 5</A>
 </H4>
+<PRE>
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 1   0   |   |   0   0   1   0
+         |   |
+         |   0 = /ce only
+         |   1 = /ce &amp; /wait multiplexed
+         |
+         0 = Stop on end of block
+         1 = Auto restart on end of block
+</PRE>
+The /ce &amp; /wait mode is implemented in the zxnDMA but is not currently
+used. This mode has an external device using the DMA's /ce pin to
+insert wait states during the DMA's transfer.
 
 <P>
-The ZX Spectrum Next includes a co-processor named "COPPER". It
-functions in a similar way to the Copper found in the Commodore Amiga
-Agnus custom chip.  It's role is to free the Z80 of tasks that require
-the writing of hardware registers at precise pixel co-ordinates.
+The auto restart feature causes the DMA to automatically reload its
+source and destination addresses and reset its byte counter to zero to
+repeat the last transfer when a previous one is finished.
 
 <P>
 <BR><HR>

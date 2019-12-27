@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Lo-Resolution Mode</TITLE>
-<META NAME="description" CONTENT="Lo-Resolution Mode">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Palette file format</TITLE>
+<META NAME="description" CONTENT="Palette file format">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,9 +13,8 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node21.html">
 <LINK REL="previous" HREF="node19.html">
 <LINK REL="next" HREF="node21.html">
 </HEAD>
@@ -32,54 +31,104 @@
 <A
  HREF="node19.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html346"
+<A ID="tex2html407"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html348"
-  HREF="node135.html">
+<A ID="tex2html409"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node21.html">Programming</A>
+ HREF="node21.html">ULA Scrolling</A>
 <B> Up:</B> <A
- HREF="node14.html">ULA group</A>
+ HREF="node14.html">ULA+</A>
 <B> Previous:</B> <A
- HREF="node19.html">Timex Hi-Resolution Mode</A>
- &nbsp; <B>  <A ID="tex2html347"
+ HREF="node19.html">Emulation</A>
+ &nbsp; <B>  <A ID="tex2html408"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html349"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html410"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION00336000000000000000">
-Lo-Resolution Mode</A>
-</H2>
-
-<P>
-This is a Spectrum Next specific video mode with a resolution of
-<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img19.svg"
- ALT="$128\times96$"></SPAN> replacing the old Radistan mode.  It allows for
-independent selection from the 256 entries in the ULA palette on a
-pixel by pixel basis. The pixel data is mapped into the bitmap 1 and
-bitmap 2 areas.  It is selected by writing <SPAN CLASS="MATH"><IMG STYLE="height: 1.70ex; vertical-align: -0.11ex; " SRC="img20.svg"
- ALT="$100xxxxx$"></SPAN> to Next register
-$15 (21, the sprites and layers register).  Each byte corresponds to
-a ULA palette entry and bytes are mapped linearly in a row-wise
-fashion.
-
-<P>
-Code:
+<H5><A ID="SECTION00321036000000000000">
+Palette file format</A>
+</H5>
+The palette format doubles as the BASIC patch loader. This enables you
+to edit patches produced by other people.
 <PRE>
-;; enable LoRes mode:
-ld bc,$243B ; next register select port
-ld a,$15
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-or $80
-out (c),a
+; 64 colour palette file format (internal) - version 1.0
+; copyright (c) 2009 Andrew Owen
+;
+; The palette file is stored as a BASIC program with embedded machine code
+
+header:
+
+db 0x00 ; program file
+db 0x14, 0x01, "64colour" ; file name
+dw 0x0097 ; data length
+dw 0x0000 ; autostart line
+dw 0x0097 ; program length
+
+basic:
+
+; 0 RANDOMIZE USR ((PEEK VAL "2
+; 3635"+VAL "256"*PEEK VAL "23636"
+; )+VAL "48"): LOAD "": REM
+
+db 0x00, 0x00, 0x93, 0x00, 0xf9, 0xc0, 0x28, 0x28
+db 0xbe, 0xb0, 0x22, 0x32, 0x33, 0x36, 0x33, 0x35
+db 0x22, 0x2b, 0xb0, 0x22, 0x32, 0x35, 0x36, 0x22
+db 0x2a, 0xbe, 0xb0, 0x22, 0x32, 0x33, 0x36, 0x33
+db 0x36, 0x22, 0x29, 0x2b, 0xb0, 0x22, 0x34, 0x38
+db 0x22, 0x29, 0x3a, 0xef, 0x22, 0x22, 0x3a, 0xea
+
+start:
+
+di ; disable interrupts
+ld hl, 38 ; HL = length of code
+add hl, bc ; BC = entry point (start) from BASIC
+ld bc, 0xbf3b ; register select
+ld a, 64 ; mode group
+out (c), a ;
+ld a, 1 ;
+ld b, 0xff ; choose register port
+out (c), a ; turn palette mode on
+xor a ; first register
+
+setreg:
+
+ld b, 0xbf ; choose register port
+out (c), a ; select register
+ex af, af' ; save current register select
+ld a, (hl) ; get data
+ld b, 0xff ; choose data port
+out (c), a ; set it
+ex af, af' ; restore current register
+inc hl ; advance pointer
+inc a ; increase register
+cp 64 ; are we nearly there yet?
+jr nz, setreg ; repeat until all 64 have been done
+ei ; enable interrupts
+ret ; return
+
+; this is where the actual data is stored. The following is an example palette.
+
+registers:
+
+db 0x00, 0x02, 0x18, 0x1b, 0xc0, 0xc3, 0xd8, 0xdb ; INK
+db 0x00, 0x02, 0x18, 0x1b, 0xc0, 0xc3, 0xd8, 0xdb ; PAPER
+db 0x00, 0x03, 0x1c, 0x1f, 0xe0, 0xe3, 0xfc, 0xff ; +BRIGHT
+db 0x00, 0x03, 0x1c, 0x1f, 0xe0, 0xe3, 0xfc, 0xff ;
+db 0xdb, 0xd8, 0xc3, 0xc0, 0x1b, 0x18, 0x02, 0x00 ; +FLASH
+db 0xdb, 0xd8, 0xc3, 0xc0, 0x1b, 0x18, 0x02, 0x00 ;
+db 0xff, 0xfc, 0xe3, 0xe0, 0x1f, 0x1c, 0x03, 0x00 ; +BRIGHT/
+db 0xff, 0xfc, 0xe3, 0xe0, 0x1f, 0x1c, 0x03, 0x00 ; +FLASH
+
+terminating_byte:
+
+db 0x0d
 </PRE>
 
 <P>

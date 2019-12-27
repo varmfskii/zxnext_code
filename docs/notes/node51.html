@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>ZX Spectrum Next</TITLE>
-<META NAME="description" CONTENT="ZX Spectrum Next">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Sampled 8-bit</TITLE>
+<META NAME="description" CONTENT="Sampled 8-bit">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,9 +13,10 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="previous" HREF="node49.html">
+<LINK REL="next" HREF="node52.html">
+<LINK REL="previous" HREF="node50.html">
 <LINK REL="next" HREF="node52.html">
 </HEAD>
 
@@ -26,66 +27,63 @@
  HREF="node52.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node48.html">
+ HREF="node49.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node50.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html510"
+<A ID="tex2html562"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html512"
-  HREF="node135.html">
+<A ID="tex2html564"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node52.html">Interactions between paging methods</A>
+ HREF="node52.html">Turbosound</A>
 <B> Up:</B> <A
- HREF="node48.html">Memory Management</A>
+ HREF="node49.html">Audio</A>
 <B> Previous:</B> <A
- HREF="node50.html">128 Special Paging Mode</A>
- &nbsp; <B>  <A ID="tex2html511"
+ HREF="node50.html">ZX Spectrum 1-bit</A>
+ &nbsp; <B>  <A ID="tex2html563"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html513"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html565"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00520000000000000000">
-ZX Spectrum Next</A>
+<H1><A ID="SECTION00420000000000000000">
+Sampled 8-bit</A>
 </H1>
-The 8k-bank accessed in an 8k-slot is selected by writing the 8k-bank
-number to the bottom 7 bits of the 8 Next registers from ($50)
-upwards. $50 addresses 8k-slot 0, $51 addresses 8k-slot 1, and so
-on.
 
 <P>
-In addition, in 8k-slots 1 and 2 only, the ROM can be paged in by
-selecting the otherwise non-existent 8k-page $FF. Whether the high or
-the low 8k of the ROM is mapped is determined by which 8k-slot is
-used.
+The ZX Next has four 8-bit D/A audio channels connected to provide
+sampled stereo sound. Channels A and B are the left channels, while C
+and D are the right channels. In order use 8-bit sound, it must first
+be enabled by setting bit 3 on nextreg $08. In order to emulate
+legacy hardware there are a number of ports that can be used to
+control the four channels additionally these are mirrored to three
+nextregs to enable driving audio using the copper.  Channel A is
+mapped to ports $0f, $3f, and $f1; channel B to ports $1f and $f3
+and nextreg $2C; channel C to ports $4f, and $f9 and nextreg $2E;
+and channel D to: $5f and $fb; with port $df connected to both
+channel A and C and nextreg $2D connected to both channel A and D.
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+Code:
+<PRE>
+;; enable SpecDrum/Convox audio
+ld bc,$243B
+ld a,$08
+out (c),a
+ld bc,$253B
+in a,(c)
+or $08
+out (c),a
+</PRE>
 
-<UL CLASS="ChildLinks">
-<LI><UL>
-<LI><UL>
-<LI><A ID="tex2html514"
-  HREF="node52.html">Interactions between paging methods</A>
-<LI><A ID="tex2html515"
-  HREF="node53.html">ROM paging and selection</A>
-<LI><A ID="tex2html516"
-  HREF="node54.html">Paging out ROM</A>
-<LI><A ID="tex2html517"
-  HREF="node55.html">Layer 2 Switching</A>
-<LI><A ID="tex2html518"
-  HREF="node56.html">Screen</A>
-</UL></UL></UL>
-<!--End of Table of Child-Links-->
+<P>
 <BR><HR>
 
 </BODY>

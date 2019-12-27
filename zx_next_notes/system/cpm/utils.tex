@@ -1,0 +1,583 @@
+\subsection{Utilities}
+
+From the Digital Research: CP/M 3 Command Reference Manual 1984
+
+This section documents all standard CP/M+ 3 commands plus those extras
+included with the ZX Spectrum Next CP/M system.
+
+\textbf{COLOURS} (ZX Spectrum Next)
+
+\hangindent=0.7cm Syntax:\\
+COLOURS paper ink \{[SET]\}\\
+COLOURS RGB papervalue inkvalue \{[SET]\}
+
+Terminal colours utility.
+
+Sets the screen colours using standard ZX colours or octal 9-bit RGB
+numbers.
+
+\textbf{COPYSYS}
+
+\hangindent=0.7cm Syntax:\\
+COPYSYS
+
+COPYSYS copies the CP/M Plus system from a CP/M Plus system diskette
+to another diskette.  The new diskette must have the same format as
+the original system diskette.
+
+\textbf{DATE}
+
+\hangindent=0.7cm Syntax:\\
+DATE\\
+DATE C\\
+DATE CONTINUOUS\\
+DATE time-specification\\
+DATE SET\\
+
+The DATE command lets you display and set the date and time of day.
+
+\textbf{DEVICE}
+
+\hangindent=0.7cm Syntax:\\
+DEVICE\\
+DEVICE NAMES\\
+DEVICE VALUES\\
+DEVICE logical-dev \{XON\(|\)NOXON\(|\)baud-rate\},\\
+DEVICE physical-dev \{XON\(|\)NOXON\(|\)baud-rate\}\\
+DEVICE logical-dev=physical-dev \{option\} \{,physical-dev \{option\},...\}\\
+DEVICE logical-dev = NULL\\
+DEVICE CONSOLE \{PAGE\}\\
+DEVICE CONSOLE \{COLUMNS=n, LINES=n\}\\
+
+DEVICE displays current logical device assignments and physical device
+names.
+
+\textbf{DIR} (built-in)
+
+\hangindent=0.7cm Syntax:\\
+DIR\\
+DIR d:\\
+DIR filespec\\
+DIR d: options\\
+DIR filespec,... filespec options
+
+The DIR command displays the names of files catalogued in the
+directory of an online disk that belong to current user number and
+have the Directory (DIR) attribute. DIR accepts the * and ? wildcards
+in the file specification.
+
+The DIR command with options displays the names of files and the
+characteristics associated with the files. DIR is a built-in
+utility. DIR with options is a transient utility and must be loaded
+into memory from the disk.
+
+\textbf{DIRSYS/DIRS} (built-in)
+
+\hangindent=0.7cm Syntax:\\
+DIRSYS\\
+DIRSYS d:\\
+DIRSYS filespec
+
+The DIRSYS command lists the names of files in the current directory
+that have the system (SYS) attribute. DIRSYS accept the * and ?
+wildcards in the file specification. DIRSYS is a built-in utility.
+
+\textbf{DUMP}
+
+\hangindent=0.7cm Syntax:\\
+DUMP filespec
+
+DUMP displays the contents of a file in and ASCII format.
+
+\textbf{ECHO} (ZX Spectrum Next)
+
+\hangindent=0.7cm Syntax:\\
+ECHO string
+
+Echo characters to the terminal
+
+The following special character sequences may be used
+\begin{itemize}
+\item \textbackslash a alert (bell) (ASCII 7)
+\item \textbackslash b backspace (ASCII 8)
+\item \textbackslash e escape (ASCII 27)
+\item \textbackslash n line feed (ASCII 10)
+\item \textbackslash r carriage return (ASCII 13)
+\item \textbackslash l interpret further characters as lower-case
+\item \textbackslash u interpret further characters as upper-case
+\item \textbackslash\textbackslash backslash ('\textbackslash')
+\end{itemize}
+
+Note that CP/M converts all your typed characters to upper-case before
+providing them to ECHO.COM. Therefore you will need to use
+\textbackslash l and \textbackslash u to specify the case of
+characters if it is important (in ESCape sequences, for example).
+
+\textbf{ED}
+
+\hangindent=0.7cm Syntax:\\
+ED\\
+ED input-filespec\\
+ED input-filespec \{d: \(|\) output-filespec\}
+
+Character file editor. To redirect or rename the new version of the
+file specify the destination drive or destination filespec.
+
+\textbf{ERASE/ERA} (built-in)
+
+\hangindent=0.7cm Syntax:\\
+ERASE\\
+ERASE filespec\\
+ERASE filespec [CONFIRM]
+
+The ERASE command removes one or more files from the directory of a
+disk. Wildcard characters are accepted in the filespec. Directory and
+data space are automatically reclaimed for later use by another
+file. The ERASE command can be abbreviated to ERA.
+
+[CONFIRM] option informs the system to prompt for verification before
+erasing each file that matches the filespec. CONFIRM can be
+abbreviated to C.
+
+\textbf{EXIT} (ZX Spectrum Next)
+
+\hangindent=0.7cm Syntax:\\
+EXIT
+
+The EXIT command leaves CP/M (rebooting the ZX Spectrum Next)
+
+\textbf{EXPORT} (ZX Spectrum Next)
+
+\hangindent=0.7cm Syntax:\\
+EXPORT cpm-filespec nextzxos-filespec
+
+NextZXOS file export utility
+
+Export file to a NextZXOS drive.
+
+\textbf{GENCOM}
+
+\hangindent=0.7cm Syntax:\\
+GENCOM COM-Eilespec RSX-filespec... RSX-Eilespec \{[LOADER \(|\)
+  SCB=(Offset,value)]\}\\
+GENCOM RSX-filespec ... RSX-filespec \{[NULL \(|\)
+  SCB=(Offset,value)l\}\\
+GENCOM filename\\
+GENCOM filename [SCB=(offset,value)]
+
+The GENCOM command attaches RSX files to a COM file, or creates a
+dummy COM file containing only RSXS. It can also restore a previously
+GENCOMed file to the original COM file without the header and RSXS,
+add or replace RSXs in already GENCOMed files, and attach header
+records to COM files without RSXS.
+
+\textbf{GENCPM}
+
+\hangindent=0.7cm Syntax:\\
+GENCPM \{AUTO\(|\)AUTO DISPLAY\}
+
+GENCPM creates a memory image CPM3.SYS file, containing the CP/M 3
+BDOS and customized BIOS. The GENCPM utility performs late resolution
+of intermodule references between system modules. GENCPM can accept
+its command input interactively from the console or from a file
+GENCPM.DAT.
+
+In the nonbanked system, GENCPM creates a CPM3.SYS file from the
+BDOS3.SPR and BIOS3.SPR files. In the banked system, GENCPM creates
+the CPM3.SYS file from the RESBDOS3.SPR, the BNKBDOS3.SPR and the
+BNKBIOS3.SPR files. Remember to back up your CPM3.SYS file before
+executing GENCPM, because GENCPM deletes any existing CPM3.SYS file
+before it generates a new system.
+
+\textbf{GET}
+
+\hangindent=0.7cm Syntax:\\
+GET \{CONSOLE INPUT FROM\} FILE filespec options\\
+GET \{CONSOLE INPUT FROM\} CONSOLE
+
+GET directs the system to take console input from a file for the next
+system comand or user program entered at the console.
+
+Console input is taken from a file until the program terminates. If
+the file is exhausted before program input is terminated, the program
+looks for subsequent input from the console. If the program terminates
+before exhausting all its input, the system reverts back to the
+console for console input.
+
+\textbf{HELP}
+
+\hangindent=0.7cm Syntax:\\
+HELP\\
+HELP topic\\
+HELP topic subtopic\\
+HELP topic [NOPAGE]\\
+HELP topic subtopic1...subtopic8\\
+HELP\(>\)topic\\
+HELP\(>\).subtopic
+
+HELP displays a list of topics and provides summarized information for
+CP/M Plus commands.
+
+Typing HELP topic displays information about that topic. Typing HELP
+topic subtopic displays information about that subtopics One or two
+letters is enough to identify the topics. After HELP displays
+information for your topic, it displays the special prompt HELP\(>\)
+on your screen, followed by a list of subtopics.
+
+\begin{itemize}
+\item Enter ? to display list of main topics.
+\item Enter a period and subtopic name to access subtopics.
+\item Enter a period to redisplay what you just read.
+\item Press RETURN to return to the CP/M Plus system prompt.
+\item {[NOPAGE]} option disables the 24 lines per page console display.
+\item Press any key to exit a display and return to the HELP\(>\) prompt.
+\end{itemize}
+
+\textbf{HEXCOM}
+
+\hangindent=0.7cm Syntax:\\
+HEXCOM filename
+
+The HEXCOM Command generates a command file (filetype COM) from a HEX
+input file. it names the output tile with the same filename as the
+input file but with filetype COM. HEXCOM always looks for a file with
+filetype HEX.
+
+\textbf{IMPORT} (ZX Spectrum Next)
+
+\hangindent=0.7cm Syntax:\\
+IMPORT nextzxos-filespec\\
+IMPORT nextzxos-filespec cpm-filespec
+
+NextZXOS file import utility
+
+List or import files from a NextZXOS drive.
+
+\textbf{INITDIR} (Not included)
+
+\hangindent=0.7cm Syntax:\\
+INITDIR d:
+
+The INITDIR command initializes a disk directory to allow date and
+time stamping of files on that disk. INITDIR can also recover
+time/date directory space.
+
+\textbf{NEXTREG} (ZX Spectrum Next)
+
+\hangindent=0.7cm Syntax:\\
+NEXTREG register \{value\}
+
+NextReg Utility
+
+Show or change a NextReg register (use at your own risk!)
+
+\textbf{LIB} (Not included)
+
+\hangindent=0.7cm Syntax:\\
+LIB filespec options\\
+LIB filespec options=filespec \(<\)modifier\(>\) f,filespec\(<\)modifier\(>\)
+
+A library is a file that contains a collection of object modules.
+
+Use the LIB utility to create libraries, and to append, replace,
+select, or delete modules from an existing library. Use LIB to obtain
+information about the contents of library files.  LIB creates and
+maintains library files that contain object modules in Microsoft REL
+file format.  These modules are produced by the Digital Research
+relocatable macro-assembler program, RMAC, or other language
+translator that produces modules in Microsoft REL file format.
+
+You can use LINK-80 to link the object modules contained in a library
+to other object files.  LINK-80 automatically selects from the library
+only those modules needed by the program being linked, and then forms
+an executable file with a filetype of Com.
+
+\textbf{LINK} (Not included)
+
+\hangindent=0.7cm Syntax:\\
+LINK filespec [options]\\
+LINK filespec [options],...filespec [options]\\
+LINK filespec [options]=filespec [options],...\\
+
+LINK combines relocatable object modules such as those produced by
+RMAC and PL/I- 80 into a COM file ready for execution. Relocatable
+files can contain external references and publics.  Relocatable files
+can reference modules in library files. LINK searches the library
+files and includes the referenced modules in the output file. See the
+Programmer's Utilities Guide for the CP/M Family of Operating Systems
+for a complete description of LINK-80.
+
+Use LINK option switches to control execution parameters. Link options
+follow the file specifications and are enclosed within square
+brackets. Multiple switches are separated by commas.
+
+\textbf{MAC} (Not included)
+
+\hangindent=0.7cm Syntax:\\
+MAC filename [\$options]
+
+MAC, the CP/M Plus macro assembler, reads assembly language statements
+from a file of type ASM, assembles the statements, and produces three
+output files with the input filename and filetypes of HEX, PRN, and
+SYM. Filename.HEX contains Intel hexadecimal format object
+code. Filename.PRN contains an annotated source listing that you can
+print or examine at the console. Filename.SYM contains a sorted list
+of symbols defined in the program.
+
+Use options to direct the input and output of MAC. Use a letter with
+the option to indicate the source and destination drives, and console,
+printer, or zero output. Valid drive names are A through 0. X, P, and
+Z specify console, printer, and zero output, respectively.
+
+\textbf{PATCH}
+
+\hangindent=0.7cm Syntax:\\
+PATCH filename.typ n
+
+The PATCH command displays or installs patch number n to the CP/M Plus
+system or command files. The patch number n must be between 1 and 32
+inclusive.
+
+\textbf{PIP}
+
+\hangindent=0.7cm Syntax:\\
+PIP Destination = Source\\
+PIP d:[Gn]=filespec [options]\\
+PIP filespec[Gn]=filespec [options]\\
+PIP filespec[Gn]device=filespec [options] device
+
+The file copy program PIP copies files, combines files, and transfers
+files between disks, printers, consoles, or other devices attached to
+your computer. The first filespec is the destination. The second
+filespec is the source. Use two or more source filespecs separated by
+commas to combine two or more files into one file. [options] is any
+combination of the available options. The [Gn] option in the
+destination filespec tells PIP to copy your file to that user
+number. PIP with no command tail displays an * prompt and awaits your
+series of commands, entered and processed one line at a time. The
+source or destination can optionally be any CP/M Plus logical device.
+
+\textbf{PUT}
+
+\hangindent=0.7cm Syntax:\\
+PUT CONSOLE \{OUTPUT TO\} FILE filespec \{option\}\\
+PUT PRINTER \{OUTPUT TO\} FILE filespec \{option\}\\
+PUT CONSOLE \{OUTPUT TO\} CONSOLE\\
+PUT PRINTER \{OUTPUT TO\} PRINTER
+
+PUT puts console or printer output to a file for the next command
+entered at the console, until the program terminates. Then console
+output reverts to the console. Printer output is directed to a file
+until the program terminates. Then printer output is put back to the
+printer.
+
+PUT with the SYSTEM option directs all subsequent console/printer
+output to the specified file.  This option terminates when you enter
+the PUT CONSOLE or PUT PRINTER command.
+
+\textbf{RENAME/REN} (built-in)
+
+\hangindent=0.7cm Syntax:\\
+RENAME\\
+RENAME new-filespec=old-filespec
+
+RENAME lets you change the name of a file in the directory of a
+disk. To change several filenames in one command use the * or ?
+wildcards in the file specifications. You can abbreviate the RENAME
+command to REN. REN prompts you for input.
+
+\textbf{RMAC} (Not included)
+
+\hangindent=0.7cm Syntax:\\
+RMAC filespec {options}
+
+RMAC, a relocatable macro assembler, assembles ASM files into REL
+files that you can link to create COM files.
+
+RMAC options specify the destination of the output files. Replace d
+with the destination drive letter for the output files.
+
+\textbf{SAVE}
+
+\hangindent=0.7cm Syntax:\\
+SAVE
+
+SAVE copies the contents of memory to a file. To use SAVE, first issue
+the SAVE command, then run your program which reads a file into
+memory. Your program exits to the SAVE utility which prompts you for a
+filespec to which it copies the contents of memory, and the beginning
+and ending address of the memory to be SAVED.
+
+\textbf{SET}
+
+\hangindent=0.7cm Syntax:\\
+SET [options]\\
+SET d: [options]\\
+SET filespec [options]\\
+SET [option = modifier]\\
+SET filespec [option = modifier]
+
+SET initiates password protection and time stamping of files. It also
+sets the file and drive attributes Read/Write, Read/Only, DIR and
+SYS. It lets you label a disk and passord protect the label. To enable
+time stamping of files, you must first run INITDIR to format the disk
+directory.
+
+\textbf{SET Default password operation:}
+
+\hangindent=0.7cm Syntax:\\
+SET [DEFAULT=password]
+
+Instructs the system to use a default password if you do not enter a
+password for a password-protected file.
+
+\textbf{SET Time-stamp operations:}
+
+\hangindent=0.7cm Syntax:\\
+SET {d:} [CREATE=ON\(|\)OFF]\\
+SET {d:} [ACCESS=ON\(|\)OFF]\\
+SET {d:} [UPDATE=ON\(|\)OFF]
+
+The above set commands allw YOU to keep a record of the time and date
+of file creation and update or of the last access update of your
+files.
+
+\textbf{SET Drive operations:}
+
+\hangindent=0.7cm Syntax:\\
+SET {d:} [RO]\\
+SET {d:} [RW]
+
+Adds or removes write protection from a drive.
+
+\textbf{SETDEF}
+
+\hangindent=0.7cm Syntax:\\
+SETDEF\\
+SETDEF [TEMPORARY=d:]\\
+SETDEF d:i,d:i,d:i,d:i\\
+SETDEF [ORDER= (typ1, typn)]\\
+SETDEF [DISPLAY \(|\) NO DISPLAY)\\
+SETDEF [PAGE \(|\) NOPAGE]
+
+SETDEF allows the user to display or define up to four drives for the
+program search order, the drive for temporary files, and the filetype
+search order. The SETDEF definitions affect only the loading of
+programs and/or execution of SUBMIT (SUB) files. SETDEF turns on/off
+the system Display and Console Page modes. When on, the system
+displays the location and name of programs loaded or SUBmit files
+executed, and stops after displaying one full console screen of
+information.
+
+\textbf{SHOW}
+
+\hangindent=0.7cm Syntax:\\
+SHOW\\
+SHOW d:\\
+SHOW d: [SPACE]\\
+SHOW d: [LABEL]\\
+SHOW d: [USERS]\\
+SHOW d: [DIR]\\
+SHOW d: [DRIVE]
+
+The SHOW command displays the following disk drive information:
+\begin{itemize}
+\item access mode and the amount of free disk space
+\item disk label
+\item current user number
+\item number of files for each user number on the disk
+\item number of free directory entries for the disk
+\item drive characteristics
+\end{itemize}
+
+\textbf{SID}
+
+\hangindent=0.7cm Syntax:\\
+SID [pgm-filespec],\{sym-filespec\}
+
+The SID symbolic debugger allows you to monitor and test programs
+developed for the 8080 microprocessor. SID supports real-time
+breakpoints, fully monitored execution, symbolic disassembly,
+assembly, and memory display and fill functions. SID can dynamically
+load SID utility programs to provide traceback and histogram
+facilities.
+
+\textbf{SUBMIT}
+
+\hangindent=0.7cm Syntax:\\
+SUBMIT\\
+SUBMIT filespec\\
+SUBMIT filespec argument ... argument
+
+The SUBMIT command lets you execute a group (batch) of commands from a
+SUBmit file (a file with filetype of SUB).
+
+SUB files:
+
+The SUB file can contain the following types of lines:
+\begin{itemize}
+\item any valid CP/M Plus command
+\item any valid CP/M Plus command with SUBMIT parameters (\$0-\$9)
+\item any data input line
+\item any program input line with parameters (\$0 to \$9)
+\end{itemize}
+
+The command line cannot exceed 135 characters.
+
+\textbf{TERMINFO} (ZX Spectrum Next)
+
+\hangindent=0.7cm Syntax:\\
+TERMINFO
+
+This program provides information on the terminal facilities provided
+by the BIOS on the ZX Spectrum Next.
+
+\textbf{TERMSIZE} (ZX Spectrum Next)
+
+\hangindent=0.7cm Syntax:\\
+TERMSIZE top left height width
+
+Terminal resize utility
+
+Size can be up to 32x80 (defaults to 24x80, suitable for many
+programs). If setting a reduced size, the top and left parameters can
+be used to make the image more centered on your screen.
+
+\textbf{TYPE/TYP} (built-in)
+
+\hangindent=0.7cm Syntax:\\
+TYPE\\
+TYPE filespec\\
+TYPE filespec [PAGE]\\
+TYPE filespec [NOPAGE]
+
+The TYPE command displays the contents of an ASCII character file on
+your screen.
+
+\textbf{UPGRADE} (ZX Spectrum Next)
+
+\hangindent=0.7cm Syntax:\\
+UPGRADE
+
+UPGRADE CP/M from C:/NEXTZXOS/CPMBASE.P3D
+
+\textbf{USER/USE} (built-in)
+
+\hangindent=0.7cm Syntax:\\
+USER\\
+USER n
+
+The USER command sets the current user number. The disk directory can
+be divided into distinct groups according to a User Number. User
+numbers range from 0 through 15.
+
+\textbf{XREF} (Not included)
+
+\hangindent=0.7cm Syntax:\\
+XREF \{d:\} filename \{\$P\}
+
+XREF provides a cross-reference summary of variable usage in a
+program. XREF requires the PRN and SYM files produced by MAC or RMAC
+for input to the program. The SYM and PRN files must have the same
+filename as the filename in the XREF command tail. XREF outputs a file
+of type XRF.

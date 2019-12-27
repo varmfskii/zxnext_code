@@ -1,5 +1,5 @@
 \chapter{Audio}
-\section{Internal Speaker}
+\section{ZX Spectrum 1-bit}
 
 The baseline sound of the ZX Spectrum was produced by toggling the Ear
 bit (bit 4) of \$fe (254) The ULA port to produce 1-bit audio.  It is
@@ -19,11 +19,19 @@ or $10
 out (c),a
 \end{verbatim}
 
-\section{Spectdrum/Convox}
+\section{Sampled 8-bit}
 
-This is 8-bit D/A audio.  It is enabled by setting bit 3 of Next
-register \$08 (8).  After that audio can be controlled by writing
-linear 8-bit unsigned values to port \$df (223).
+The ZX Next has four 8-bit D/A audio channels connected to provide
+sampled stereo sound. Channels A and B are the left channels, while C
+and D are the right channels. In order use 8-bit sound, it must first
+be enabled by setting bit 3 on nextreg \$08. In order to emulate
+legacy hardware there are a number of ports that can be used to
+control the four channels additionally these are mirrored to three
+nextregs to enable driving audio using the copper.  Channel A is
+mapped to ports \$0f, \$3f, and \$f1; channel B to ports \$1f and \$f3
+and nextreg \$2C; channel C to ports \$4f, and \$f9 and nextreg \$2E;
+and channel D to: \$5f and \$fb; with port \$df connected to both
+channel A and C and nextreg \$2D connected to both channel A and D.
 
 Code:
 \begin{verbatim}
@@ -113,3 +121,7 @@ mapping is controlled by bit 5 of Next register 0x08 (8).
   \end{itemize}
 \end{itemize}
 
+\subsection{Pi Audio}
+If connected the Pi Zero is configured to use the ZX Next as a
+soundcard over an $I^2S$ interface making the Raspberry Pi a fully
+configurable audio source for the ZX Spectrum Next.

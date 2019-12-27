@@ -1,0 +1,125 @@
+Tile-sprite configuration (TSconf). Introduction
+
+TS-Conf is a modern extension of the ZX Spectrum, which brings
+long-awaited and features in the form of pixel oriented color,
+hardware sprites, etc.
+
+Graphic subsystem
+
+Tao says: The screen we see is the output window of the resolution
+specified in the system, which displays a block of 512x512 video
+memory pages in the specified mode according to the given output
+coordinates. TSU is a device that collects data from video, tile and
+sprite memory, which processes and presents it at the current position
+of the line drawing in a given resolution / desired mode.
+
+This unit is an extension (add-on) above the standard 6912 byte
+Spectrum screen. More precisely, the 6912 byte mode is part of the
+whole family of system resolutions:
+\begin{itemize}
+\item 256x192
+\item 320x200
+\item 320x240
+\item 360x288
+\end{itemize}
+
+These permissions can be used in different video modes:
+\begin{itemize}
+\item ZX
+\item 16c
+\item 256c
+\item Text
+\end{itemize}
+
+To display the color for a given mode, the first block of the system's
+internal memory is used - the palette memory . This block represents
+512 bytes and stores the full color palette of the system - two-byte
+data of color components for 256 colors.
+
+The full palette is divided into groups of 16 colors (32 bytes) for
+16c mode, which gives us 16 palettes with 16 colors.
+
+The first palette is number 0. 
+
+When you turn on the system, a set of 16 colors for the ZX mode is
+loaded into the general palette, which is located in the last, 15th
+palette.
+
+Each mode sets its own characteristics of displaying color information
+on the screen:
+\begin{itemize}
+\item ZX limits the output to the 16 colors of the standard ZX
+  Spectrum palette;
+\item 16c - in this mode only 16 colors are used - one of the 16
+  available palettes;
+\item 256c - provides the ability to display all the loaded colors in
+  the palette
+\item Text - text mode, allows you to display text in color.
+\end{itemize}
+
+In this case, it was a question of horizontal mobility. Let's talk
+about vertical:
+
+In addition to the listed modes, the system allows the use of layered
+display of graphical information. The standard Spectrum screen is the
+base screen, but it is not the lowest.
+
+So, the location of the layers that form the screen: 
+\begin{itemize}
+\item[] 1. Border. A monochromatic fullscreen layer. Set the color of
+  the border
+\item[] 2. Basic (main) screen. May be included in any of the
+  resolution/mode combinations
+\item[] 3. Accelerated graphics layers displayed in the resolution
+  specified for the base screen in 16 color mode
+  \begin{itemize}
+  \item sprite layer 0 
+  \item tile layer 0 
+  \item sprite layer 1 
+  \item tile layer 1 
+  \item sprite layer 2
+  \end{itemize}
+\end{itemize}
+
+Thus, we have 7 layers that make up a single, visible screen.
+
+All the layers use the colors specified in a common palette of 256
+colors.
+
+The tile and sprite layers only work in 16c mode, the 0th color of
+each palette set is transparent. Thanks to TSU, there is no need to
+save video memory data under tiles and sprites, since the display on
+the screen is literally collected at the output of each line without
+changing the contents of the video memory.
+
+Each graphic element of these two types of layers represents a block
+of at least 8x8 pixels, and for each of them it is necessary to
+specify a palette, any one the available 16.
+
+The tile layer is a map describing the location of the graphic
+elements specified as an image. Thus, the position of the tile on the
+screen directly depends on its position in the map.
+
+Tile patterns: 64x64 tiles (4096 tiles in total), uses up to 4
+palettes from 4 groups of all 16 palettes can be used for one
+layer. For each tile it is possible to set its own (out of these 4)
+palette.
+
+In total, we have two such layers organized in the same way. 
+
+Sprites are graphics, organized like tiles, but having large (multiple
+of 8) sizes - from 8x8 to 64x64 pixels. Sprites also have zero color
+transparency.
+
+A feature of the sprites is that for each sprite, you can specify both
+your its own palette and position to the pixel resolution.
+
+The system uses the second block of internal memory to handle sprites,
+representing the next 512 bytes of memory, which stores "sprite
+handles"- data from 6 bytes, describing each sprite. The maximum
+number of descriptors in this memory is 85 pieces.
+
+In the following articles I will describe in more detail about working
+with the devices listed at the beginning of the article.
+
+PS: for those who do not want to wait and want details

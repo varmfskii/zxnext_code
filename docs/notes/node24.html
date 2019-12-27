@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Data Structures</TITLE>
-<META NAME="description" CONTENT="Data Structures">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Alternate Page Mode</TITLE>
+<META NAME="description" CONTENT="Alternate Page Mode">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,9 +13,9 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node27.html">
+<LINK REL="next" HREF="node25.html">
 <LINK REL="previous" HREF="node23.html">
 <LINK REL="next" HREF="node25.html">
 </HEAD>
@@ -27,49 +27,85 @@
  HREF="node25.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node22.html">
+ HREF="node10.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node23.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html371"
+<A ID="tex2html423"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html373"
-  HREF="node135.html">
+<A ID="tex2html425"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node25.html">Tilemap</A>
+ HREF="node25.html">Timex Hi-Colour Mode</A>
 <B> Up:</B> <A
- HREF="node22.html">Tilemap Mode</A>
+ HREF="node10.html">Layer 1</A>
 <B> Previous:</B> <A
- HREF="node23.html">General Description</A>
- &nbsp; <B>  <A ID="tex2html372"
+ HREF="node23.html">ZX Spectrum Mode</A>
+ &nbsp; <B>  <A ID="tex2html424"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html374"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html426"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION00342000000000000000">
-Data Structures</A>
+<H2><A ID="SECTION00325000000000000000">
+Alternate Page Mode</A>
 </H2>
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+Timex mode 1
 
-<UL CLASS="ChildLinks">
-<LI><UL>
-<LI><A ID="tex2html375"
-  HREF="node25.html">Tilemap</A>
-<LI><A ID="tex2html376"
-  HREF="node26.html">Tile Definitions</A>
-</UL></UL>
-<!--End of Table of Child-Links-->
+<P>
+This mode is the same as ZX Spectrum mode except it is at an alternate
+addresses. Alternate page mode is selected by enabling Timex modes by
+writing 00xxxx1xx to Next register $08 (8, Peripheral 3 setting) then
+writing 1 to the Timex ULA port ($ff).  It is identical to ZX
+Spectrum mode except the pixel are mapped to the bitmap 2 area giving
+use pixel addresses of <!-- MATH
+ $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img11.svg"
+ ALT="$1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN> and
+the attributes to the attribute 2 area with addresses of
+<!-- MATH
+ $1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img12.svg"
+ ALT="$1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>.
+
+<P>
+Code:
+
+<P>
+<PRE>
+;; disable LoRes mode:
+ld bc,$243B ; next register select port
+ld a,$15
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+and $7f
+out (c),a
+;; set Timex mode
+ld bc,$243B ; next register select port
+ld a,$08
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+or $04
+out (c),a
+;; set alternate page mode
+ld c,$ff
+ld a,$01
+out (c),a
+</PRE>
+
+<P>
 <BR><HR>
 
 </BODY>

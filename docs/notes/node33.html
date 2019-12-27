@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Programming</TITLE>
-<META NAME="description" CONTENT="Programming">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Tile Definitions</TITLE>
+<META NAME="description" CONTENT="Tile Definitions">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,7 +13,7 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="previous" HREF="node32.html">
 <LINK REL="next" HREF="node34.html">
@@ -26,130 +26,61 @@
  HREF="node34.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node32.html">
+ HREF="node31.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node32.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html412"
+<A ID="tex2html470"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html414"
-  HREF="node135.html">
+<A ID="tex2html472"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node34.html">Sprites</A>
+ HREF="node34.html">Memory Organization &amp; Display</A>
 <B> Up:</B> <A
- HREF="node32.html">Layer 2</A>
+ HREF="node31.html">Data Structures</A>
 <B> Previous:</B> <A
- HREF="node32.html">Layer 2</A>
- &nbsp; <B>  <A ID="tex2html413"
+ HREF="node32.html">Tilemap</A>
+ &nbsp; <B>  <A ID="tex2html471"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html415"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html473"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION00351000000000000000">
-Programming</A>
-</H2>
+<H4><A ID="SECTION00342020000000000000">
+Tile Definitions</A>
+</H4>
+The second data structure is the tile definitions themselves. To find
+the difinition for a specific tile you would look at (base address) +
+(tile number) * (definition size).
 
 <P>
-Port $123b (4667) Layer 2
-<table width="90%">
-  <tr><td valign="top">&nbsp;bits 6-7: Video RAM bank select
-  </td></tr>
-<tr><td valign="top">&nbsp;bit 3: Shadow layer 2 select
-  </td></tr>
-<tr><td valign="top">&nbsp;bit 1: Layer 2 visible
-  </td></tr>
-<tr><td valign="top">&nbsp;bit 0: Enable layer 2 write paging
-</td></tr></table>
+For 4-bit, 16-colour, tiles, each <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img7.svg"
+ ALT="$8\times8$"></SPAN> tile takes up 32
+bytes. Each pixel uses four bits to select one of 16 colours. A tile
+is defined in X major order with packing in the X direction in the
+same way that 4-bit sprites are defined. The 4-bit colour of each
+pixel is augmented by the 4-bit palette offset from the tilemap in the
+most significant bits to form an 8-bit colour index that is looked up
+in the tilemap palette to determine the final 9-bit colour sent to the
+display. Ane of the 16 colours for each tile is the transparency
+color.
 
 <P>
-For information on controlling the palette see the Palette section.
-
-<P>
-<A NAME="452"></A>
-(R/W) $14 (20) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Global transparency color
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Transparency color value ($E3 after a reset)
-</td></tr></table>
-
-(Note: this value is 8-bit, so the transparency is compared against
-only by the MSB bits of the final 9-bit colour)
-<BR>(Note2: this only affects Layer 2, ULA and LoRes. Sprites use register
-$4B for transparency and tilemap uses nextreg $4C)
-
-<P>
-<A NAME="455"></A>
-(R/W) $16 (22) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Layer2 Offset X
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = X Offset (0-255)(0 after a reset)
-</td></tr></table>
-
-<P>
-(R/W) $17 (23) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Layer2 Offset Y
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Y Offset (0-191)(0 after a reset)
-</td></tr></table>
-
-<P>
-<A NAME="460"></A>
-(R/W) $18 (24) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Clip Window Layer 2
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Coords of the clip window
-  <table width="90%">  <tr><td valign="top">&nbsp;1st write - X1 position
-  </td></tr>
-<tr><td valign="top">&nbsp;2nd write - X2 position
-  </td></tr>
-<tr><td valign="top">&nbsp;3rd write - Y1 position
-  </td></tr>
-<tr><td valign="top">&nbsp;4rd write - Y2 position
-  </td></tr></table>
-</td></tr></table>
-
-Reads do not advance the clip position
-<BR>
-The values are 0,255,0,191 after a Reset
-
-<P>
-(W) $1C (28) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Clip Window control
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Reserved, must be 0</td></tr>
-<tr><td valign="top">&nbsp;bit 3 - reset the tilemap clip index</td></tr>
-<tr><td valign="top">&nbsp;bit 2 - reset the ULA/LoRes clip index.</td></tr>
-<tr><td valign="top">&nbsp;bit 1 - reset the sprite clip index.</td></tr>
-<tr><td valign="top">&nbsp;bit 0 - reset the Layer 2 clip index.
-</td></tr></table>
-
-<P>
-(R) $1C (28) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Clip Window control
-<BR>(may change)
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Tilemap clip index</td></tr>
-<tr><td valign="top">&nbsp;bits 5-4 = Layer 2 clip index</td></tr>
-<tr><td valign="top">&nbsp;bits 3-2 = Sprite clip index</td></tr>
-<tr><td valign="top">&nbsp;bits 1-0 = ULA clip index
-</td></tr></table>
-
-<P>
-(R/W) $12 (18) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Layer 2 RAM bank
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Reserved, must be 0</td></tr>
-<tr><td valign="top">&nbsp;bits 5-0 = RAM bank (point to bank 8 after a Reset, NextZXOS
-  modifies to 9)
-</td></tr></table>
-
-<P>
-(R/W) $13 (19) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Layer 2 RAM shadow bank
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Reserved, must be 0</td></tr>
-<tr><td valign="top">&nbsp;bits 5-0 = RAM bank (point to bank 11 after a Reset, NextZXOS
-  modifies to 12)
-</td></tr></table>
+For 1-bit, 2-colour, tiles, each <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img7.svg"
+ ALT="$8\times8$"></SPAN> tile takes up 8
+bytes. Each pixel uses one bit to select one of two colours. A tile is
+defined in X major order with packing in the X direction. The 1-bit
+colour of each pixel is augmented by the 7-bit palette offset from the
+tilemap in the most significant bits to form an 8-bit colour index
+that is looked up in the tilemap palette to determine the final 9-bit
+colour sent to the display. Transparency for each tile is according to
+the global transparency colour.
 
 <P>
 
@@ -159,28 +90,28 @@ The values are 0,255,0,191 after a Reset
  HREF="node34.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node32.html">
+ HREF="node31.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node32.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html412"
+<A ID="tex2html470"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html414"
-  HREF="node135.html">
+<A ID="tex2html472"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node34.html">Sprites</A>
+ HREF="node34.html">Memory Organization &amp; Display</A>
 <B> Up:</B> <A
- HREF="node32.html">Layer 2</A>
+ HREF="node31.html">Data Structures</A>
 <B> Previous:</B> <A
- HREF="node32.html">Layer 2</A>
- &nbsp; <B>  <A ID="tex2html413"
+ HREF="node32.html">Tilemap</A>
+ &nbsp; <B>  <A ID="tex2html471"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html415"
-  HREF="node135.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html473"
+  HREF="node156.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

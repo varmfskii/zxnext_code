@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Dot Clock</TITLE>
-<META NAME="description" CONTENT="Dot Clock">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Introduction</TITLE>
+<META NAME="description" CONTENT="Introduction">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,7 +13,7 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node82.html">
 <LINK REL="previous" HREF="node80.html">
@@ -27,92 +27,41 @@
  HREF="node82.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node77.html">
+ HREF="node80.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node80.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html692"
+<A ID="tex2html747"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html694"
-  HREF="node135.html">
+<A ID="tex2html749"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node82.html">Coordinates</A>
+ HREF="node82.html">Overview</A>
 <B> Up:</B> <A
- HREF="node77.html">Timing</A>
+ HREF="node80.html">Copper and Display Timing</A>
 <B> Previous:</B> <A
- HREF="node80.html">Resolution</A>
- &nbsp; <B>  <A ID="tex2html693"
+ HREF="node80.html">Copper and Display Timing</A>
+ &nbsp; <B>  <A ID="tex2html748"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html695"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html750"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00710040000000000000">
-Dot Clock</A>
+<H4><A ID="SECTION00700010000000000000">
+Introduction</A>
 </H4>
 
 <P>
-The dot clock on the ZX Spectrum Next runs at 13.5Mhz for HDMI and
-around 14Mhz for VGA. The COPPER clock runs at the same frequency as
-the dot clock. For v3.00 the copper runs at twice the frequency of the
-dot clock.
-
-<P>
-The number of dot clocks per line is calculated by multiplying the
-number of 3.5Mhz Z80 T-states per line by four. Example: 228Ts * 4 =
-912 dot clocks.
-
-<P>
-The number of dot clocks per second is calculated by the following:
-
-<P>
-T-states per line * 4 * line count * refresh rate
-
-<P>
-In standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
- ALT="$256\times192$"></SPAN> resolution the duration of one pixel is two
-dot clocks. In Timex HIRES <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img14.svg"
- ALT="$512\times192$"></SPAN> resolution the duration of
-one pixel is one dot clock.
-
-<P>
-Details of the dot clock counts can be found in tables 5.1 and 5.2.
-
-<P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="1337"></A>
-<TABLE>
-<CAPTION><STRONG>Table 6.1:</STRONG>
-Vertical Line Counts and Dot Clock Combinations</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img37.svg"
- ALT="\begin{table}\centering
-\csvautotabular{copper/perline.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
-
-<P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="1341"></A>
-<TABLE>
-<CAPTION><STRONG>Table 6.2:</STRONG>
-Dot Clocks per Second</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img38.svg"
- ALT="\begin{table}\centering
-\csvautotabular{copper/persec.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
+The ZX Spectrum Next includes a co-processor named &ldquo;COPPER&rdquo;. It
+functions in a similar way to the Copper found in the Commodore Amiga
+Agnus custom chip.  It's role is to free the Z80 of tasks that require
+the writing of hardware registers at precise pixel co-ordinates.
 
 <P>
 <BR><HR>

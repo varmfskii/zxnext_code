@@ -1,0 +1,479 @@
+\subsection{BIOS}
+\subsubsection{System Initialization Functions}
+This section defines the BIOS system initialization routines BOOT,
+WBOOT, DEVTBL, DEVINI, and DRVTBL.
+
+\index{BOOT}
+BIOS Function 0: BOOT
+
+Get Control from Cold Start Loader and Initialize System\\
+Entry Parameters: None\\
+Returned Values: None
+
+The BOOT entry point gets control from the Cold Start Loader in Bank 0
+and is responsible for basic system initialization. Any remaining
+hardware initialization that is not done by the boot ROMS, the Cold
+Boot Loader, or the LDRBIOS should be performed by the BOOT routine.
+
+\index{WBOOT}
+BIOS Function 1: WBOOT
+
+Get Control When a Warm Start Occurs\\
+Entry Parameters: None\\
+Returned Values: None
+
+The WBOOT entry point is entered when a warm start occurs. A warm
+start is performed whenever a user program branches to location 0000H
+or attempts to return to the CCP.
+
+\index{DEVTBL}
+BIOS Function 20: DEVTBL
+
+Return Address of Character I/O Table\\
+Entry Parameters: None\\
+Returned Values: HL=address of Chrtbl
+
+The DEVTBL and DEVINI entry points allow you to support device
+assignment with a flexible, yet completely optional system. It
+replaces the IOBYTE facility of CP/M 2.2.
+
+\index{DEVINI}
+BIOS Function 21: DEVINI
+
+Initialize Character I/O Device\\
+Entry Parameters: C=device number, 0-15\\
+Returned Values: None
+
+The DEVINI routine initializes the physical character device specified
+in register C to the baud rate contained in the appropriate entry of
+the CHRTBL.
+
+\index{DRVTBL}
+BIOS Function 22: DRVTBL
+
+Return Address of Disk Drive Table\\
+Entry Parameters: None\\
+Returned Values:
+\begin{itemize}
+\item[] HL=Address of Drive Table of Disk Parameter Headers (DPH);
+  Hashing can utilized if specified by the DPHs Referenced by this
+  DRVTBL.
+\item[] HL=\$ffff if no Drive Table; GENCPM does not set up buffers.
+  Hashing is supported.
+\item[] HL=\$fffe if no Drive Table; GENCPM does not set up buffers.
+  Hashing is not supported.
+\end{itemize}
+
+The first instruction of this subroutine must be an LXI H,<address>
+where <address> is one of the above returned values. The GENCPM
+utility accesses the address in this instruction to locate the drive
+table and the disk parameter data structures to determine which system
+configuration to use.
+
+\subsubsection{Character I/O Functions}
+This section defines the CP/M 3 character I/O routines CONST, CONIN,
+CONOUT, LIST, AUXOUT, AUXIN, LISTST, CONOST, AUXIST, and AUXOST.  CP/M
+3 assumes all simple character I/O operations are performed in
+eight-bit ASCII, upper and lowercase, with no parity. An ASCII CTRL-Z
+(\$1a) denotes an end-of-file condition for an input device.
+
+In CP/M 3, you can direct each of the five logical character devices
+to any combination of up to twelve physical devices. Each of the five
+logical devices has a 16-bit vector in the System Control Block (SCB)
+. Each bit of the vector represents a physical device where bit 15
+corresponds to device zero, and bit 4 is device eleven. Bits 0 through
+3 are reserved for future system use.
+
+\index{CONST}
+BIOS Function 2: CONST
+
+Sample the Status of the Console Input Device\\
+Entry Parameters: None\\
+Returned value:
+\begin{itemize}
+\item[] A=\$ff if a console character is ready to read
+\item[] A=\$00 if no console character is ready to read
+\end{itemize}
+ 
+Read the status of the currently assigned console device and return
+\$ff in register A if a character is ready to read, and \$ff in
+register A if no console characters are ready.
+
+\index{CONIN}
+BIOS Function 3: CONIN
+
+Read a Character from the Console\\
+Entry Parameters: None\\
+Returned Values: A=Console Character
+
+Read the next console character into register A with no parity. If no
+console character is ready, wait until a character is available before
+returning.
+
+\index{CONOUT}
+BIOS Function 4: CONOUT
+
+Output Character to Console\\
+Entry Parameters: C=Console Character\\
+Returned Values: None
+
+Send the character in register C to the console output device. The
+character is in ASCII with no parity.
+
+\index{LIST}
+BIOS Function 5: LIST
+
+Output Character to List Device\\
+Entry Parameters: C=Character\\
+Returned Values: None
+
+Send the character from register C to the listing device. The
+character is in ASCII with no parity.
+
+\index{AUXOUT}
+BIOS Function 6: AUXOUT
+
+Output a Character to the Auxiliary Output Device\\
+Entry Parameters: C=Character\\
+Returned Values: None
+
+Send the character from register C to the currently assigned AUXOUT
+device. The character is in ASCII with no parity.
+
+\index{AUXIN}
+BIOS Function 7: AUXIN
+
+Read a Character from the Auxiliary Input Device\\
+Entry Parameters: None\\
+Returned Values: A=Character
+
+Read the next character from the currently assigned AUXIN device into
+register A with no parity. A returned ASCII CTRL-Z (\$1a) reports an
+end-of-file.
+
+\index{LISTST}
+BIOS Function 15: LISTST
+
+Return the Ready Status of the List Device\\
+Entry Parameters: None\\
+Returned Values:
+\begin{itemize}
+\item[] A=\$00 if list device is not ready to accept a character
+\item[] A=\$ff if list device is ready to accept a character
+\end{itemize}
+
+\index{CONOST}
+BIOS Function 17: CONOST
+
+Return Output Status of Console\\
+Entry Parameters: None\\
+Returned Values:
+\begin{itemize}
+\item[] A=\$ff if ready
+\item[] A=\$00 if not ready
+\end{itemize}
+
+The CONOST routine checks the status of the console. CONOST returns an
+\$ff if the console is ready to display another character. This entry
+point allows for full polled handshaking communications support.
+
+\index{AUXIST}
+BIOS Function 18: AUXIST
+
+Return Input Status of Auxiliary Port\\
+Entry Parameters: None\\
+Returned Values:
+\begin{itemize}
+\item[] A=\$ff if ready
+\item[] A=\$00 if not ready
+\end{itemize}
+
+The AUXIST routine checks the input status of the auxiliary port. This
+entry point allows full polled handshaking for communications support
+using an auxiliary port.
+
+\index{AUXOST}
+BIOS Function 19: AUXOST
+
+Return Output Status of Auxiliary Port\\
+Entry Parameters: None\\
+Returned Values:
+\begin{itemize}
+\item[] A=\$ff if ready
+\item[] A=\$00 if not ready
+\end{itemize}
+
+The AUXOST routine checks the output status of the auxiliary
+port. This routine allows full polled handshaking for communications
+support using an auxiliary port.
+
+\subsubsection{Disk I/O Functions}
+This section defines the CP/M 3 BIOS disk I/O routines HOME, SELDSK,
+SETTRK, SETSEC, SETDMA, READ, WRITE, SECTRN, MULTIO, and FLUSH.
+
+\index{HOME}
+BIOS Function 8: HOME
+
+Select Track 00 of the Specified Drive\\
+Entry Parameters: None\\
+Returned Values: None
+
+Return the disk head of the currently selected disk to the track 00
+position. Usually, you can translate the HOME call into a call on
+SETTRK with a parameter of 0.
+
+\index{SELDSK}
+BIOS Function 9: SELDSK
+
+Select the Specified Disk Drive\\
+Entry Parameters:
+\begin{itemize}
+\item[] C=Disk Drive (0-15)
+\item[] E=Initial Select Flag
+\end{itemize}
+Returned Values:
+\begin{itemize}
+\item[] HL=Address of Disk Parameter Header (DPH) if drive exists
+\item[] HL=0000H if drive does not exist
+\end{itemize}
+Select the disk drive specified in register C for further operations,
+where register C contains 0 for drive A, 1 for drive B, and so on to
+15 for drive P. On each disk select, SELDSK must return in HL the base
+address of a 25-byte area called the Disk Parameter Header. If there
+is an attempt to select a nonexistent drive, SELDSK returns HL=\$0000
+as an error indicator.  On entry to SELDSK, you can determine if it is
+the first time the specified disk is selected. Bit 0, the least
+significant bit in register E, is set to 0 if the drive has not been
+previously selected. This information is of interest in systems that
+read configuration information from the disk to set up a dynamic disk
+definition table.
+
+\index{SETTRK}
+BIOS Function 10: SETTRK
+
+Set Specified Track Number\\
+Entry Parameters: BC=Track Number\\
+Returned Values: None
+
+Register BC contains the track number for a subsequent disk access on
+the currently selected drive. Normally, the track number is saved
+until the next READ or WRITE occurs.
+
+\index{SETSEC}
+BIOS Function 11: SETSEC
+
+Set Specified Sector Number\\
+Entry Parameters: BC=Sector Number\\
+Returned Values: None
+
+Register BC contains the sector number for the subsequent disk access
+on the currently selected drive. This number is the value returned by
+SECTRN. Usually, you delay actual sector selection until a READ or
+WRITE operation occurs.
+
+\index{SETDMA}
+BIOS Function 12: SETDMA
+
+Set Address for Subsequent Disk I/O\\
+Entry Parameters: BC=Direct Memory Access Address\\
+Returned Values: None
+
+Register BC contains the DMA (Direct Memory Access) address for the
+subsequent READ or WRITE operation. For example, if B = \$00 and C =
+\$80 when the BDOS calls SETDMA, then the subsequent read operation
+reads its data starting at \$80, or the subsequent write operation
+gets its data from 80H, until the next call to SETDMA occurs.
+
+\index{READ}
+BIOS Function 13: READ
+
+Read a Sector from the Specified Drive\\
+Entry Parameters: None\\
+Returned Values:
+\begin{itemize}
+\item[] A=\$00 if no errors occurred
+\item[] A=\$01 if nonrecoverable error condition occurred
+\item[] A=\$ff if media has changed
+\end{itemize}
+Assume the BDOS has selected the drive, set the track, set the sector,
+and specified the DMA address. The READ subroutine attempts to read
+one sector based upon these parameters, then returns one of the error
+codes in register A as described above.
+
+If the value in register A is \$00, then CP/M 3 assumes that the disk
+operation completed properly. If an error occurs, the BIOS should
+attempt several retries to see if the error is recoverable before
+returning the error code.
+
+If an error occurs in a system that supports automatic density
+selection, the system should verify the density of the drive. If the
+density has changed, return a \$ff in the accumulator. This causes the
+BDOS to terminate the current operation and relog in the disk.
+
+\index{WRITE}
+BIOS Function 14: WRITE
+
+Write a Sector to the Specified Disk\\
+Entry Parameters: C=Deblocking Codes\\
+Returned Values:
+\begin{itemize}
+\item[] A=\$00 if no error occurred
+\item[] A=\$01 if physical error occurred
+\item[] A=\$02 if disk is Read-Only
+\item[] A=\$ff if media has changed
+\end{itemize}
+
+Write the data from the currently selected DMA address to the
+currently selected drive, track, and sector. Upon each call to WRITE,
+the BDOS provides the following information in register C:
+\begin{itemize}
+\item[] 0 = deferred write
+\item[] 1 = nondeferred write
+\item[] 2 = deferred write to the first sector of a new data block
+\end{itemize}
+
+This information is provided for those BIOS implementations that do
+blocking/deblocking in the BIOS instead of the BDOS.
+
+\index{SECTRN}
+BIOS Function 16: SECTRN
+
+Translate Sector Number Given Translate Table
+Entry Parameters:
+\begin{itemize}
+\item[] BC=Logical Sector Number
+\item[] DE=Translate Table Address
+\end{itemize}
+Returned Values: HL=Physical Sector Number
+
+SECTRN performs logical sequential sector address to physical sector
+translation to improve the overall response of CP/M 3.
+
+\index{MULTIO}
+BIOS Function 23: MULTIO
+
+Set Count of Consecutive Sectors for READ or WRITE\\
+Entry Parameters: C=Multisector Count\\
+Returned Values: None
+
+To transfer logically consecutive disk sectors to or from contiguous
+memory locations, the BDOS issues a MULTIO call, followed by a series
+of READ or WRITE calls. This allows the BIOS to transfer multiple
+sectors in a single disk operation. The maximum value of the sector
+count is dependent on the physical sector size, ranging from 128 with
+128-byte sectors, to 4 with 4096-byte sectors. Thus, the BIOS can
+transfer up to 16K directly to or from the TPA with a single
+operation.
+
+\index{FLUSH}
+BIOS Function 24: FLUSH
+
+Force Physical Buffer Flushing for User-supported Deblocking\\
+Entry Parameters: None\\
+Returned Values:
+\begin{itemize}
+\item[] A=\$00 if no error occurred
+\item[] A=\$001 if physical error occurred
+\item[] A=\$002 if disk is Read-Only
+\end{itemize}
+
+The flush buffers entry point allows the system to force physical
+sector buffer flushing when your BIOS is performing its own record
+blocking and deblocking.  The BDOS calls the FLUSH routine to ensure
+that no dirty buffers remain in memory.
+
+\subsection{Memory Select and Move Functions}
+This section defines the memory management functions MOVE, XMOVE,
+SELMEM, and SETBNK.
+
+\index{MOVE}
+BIOS Function 25: MOVE
+
+Memory-to-Memory Block Move\\
+Entry Parameters:
+\begin{itemize}
+\item[] HL=Destination address
+\item[] DE=Source address
+\item[] BC=Count
+\end{itemize}
+Returned Values: HL and DE must point to next bytes following move
+operation
+
+The BDOS calls the MOVE routine to perform memory to memory block
+moves to allow use of the Z80 LDIR instruction or special DMA
+hardware, if available. Note that the arguments in HL and DE are
+reversed from the Z8O machine instruction, necessitating the use of
+XCHG instructions on either side of the LDIR. The BDOS uses this
+routine for all large memory copy operations. On return, the HL and DE
+registers are expected to point to the next bytes following the move.
+
+Usually, the BDOS expects MOVE to transfer data within the currently
+selected bank or common memory. However, if the BDOS calls the XMOVE
+entry point before calling MOVE, the MOVE routine must perform an
+interbank transfer.
+
+\index{SELMEM}
+BIOS Function 27: SELMEM
+
+Select Memory Bank\\
+Entry Parameters: A=Memory Bank\\
+Returned Values; None
+
+The SELMEM entry point is only present in banked systems. The banked
+version of the CP/M 3 BDOS calls SELMEM to select the current memory
+bank for further instruction execution or buffer references. You must
+preserve or restore all registers other than the accumulator, A, upon
+exit.
+
+\index{SETBNK}
+BIOS Function 28: SETBNK
+
+Specify Bank for DMA Operation\\
+Entry Parameters: A=Memory Bank\\
+Returned Values: None
+
+SETBNK only occurs in the banked version of CP/M 3. SETBNK specifies
+the bank that the subsequent disk READ or WRITE routine must use for
+memory transfers. The BDOS always makes a call to SETBNK to identify
+the DMA bank before performing a READ or WRITE call. Note that the
+BDOS does not reference banks other than 0 or 1 unless another bank is
+specified by the BANK field of a Data Buffer Control Block (BCB).
+
+\index{XMOVE}
+BIOS Function 29: XMOVE
+
+Set Banks for Following MOVE\\
+Entry Parameters:
+\begin{itemize}
+\item[] B=destination bank
+\item[] C=source bank
+\end{itemize}
+Returned Values: None
+
+XMOVE is provided for banked systems that support memory-to- memory
+DMA transfers over the entire extended address range. Systems with
+this feature can have their data buffers located in an alternate bank
+instead of in common memory, as is usually required. An XMOVE call
+affects only the following MOVE call. All subsequent MOVE calls apply
+to the memory selected by the latest call to SELMEM. After a call to
+the XMOVE function, the following call to the MOVE function is not
+more than 128 bytes of data.
+
+\subsubsection{Clock Support Function}
+This section defines the clock support function TIME.
+
+\index{TIME}
+BIOS Function 26: TIME
+
+Get and Set Time\\
+Entry Parameters: C=Time Get/Set Flag\\
+Returned values: None
+
+The BDOS calls the TIME function to indicate to the BIOS whether it
+has just set the Time and Date fields in the SCB, or whether the BDOS
+is about to get the Time and Date from the SCB. On entry to the TIME
+function, a zero in register C indicates that the BIOS should update
+the Time and Date fields in the SCB. A \$ff in register C indicates
+that the BDOS has just set the Time and Date in the SCB and the BIOS
+should update its clock. Upon exit, you must restore register pairs HL
+and DE to their entry values.

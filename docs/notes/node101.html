@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Raspberry Pi0 Acceleration</TITLE>
-<META NAME="description" CONTENT="Raspberry Pi0 Acceleration">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Configuration</TITLE>
+<META NAME="description" CONTENT="Configuration">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,10 +13,9 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node102.html">
-<LINK REL="previous" HREF="node100.html">
+<LINK REL="previous" HREF="node96.html">
 <LINK REL="next" HREF="node102.html">
 </HEAD>
 
@@ -27,54 +26,67 @@
  HREF="node102.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="000-document.html">
+ HREF="node80.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node100.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html784"
+<A ID="tex2html842"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html786"
-  HREF="node135.html">
+<A ID="tex2html844"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node102.html">Storage</A>
+ HREF="node102.html">Refresh Rate</A>
 <B> Up:</B> <A
- HREF="000-document.html">ZX Spectrum Next Programming</A>
+ HREF="node80.html">Copper and Display Timing</A>
 <B> Previous:</B> <A
- HREF="node100.html">Interrupts</A>
- &nbsp; <B>  <A ID="tex2html785"
+ HREF="node100.html">FRAME</A>
+ &nbsp; <B>  <A ID="tex2html843"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html787"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html845"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00900000000000000000">
-Raspberry Pi0 Acceleration</A>
+<H1><A ID="SECTION00740000000000000000">
+Configuration</A>
 </H1>
-The Spectrum Next is known to have an header (with male pins) which
-can attach a Raspberry Pi Zero.
 
 <P>
-The Raspberry Pi 0 has a Broadcom BCM2835 SoC with an ARMv6 core, a
-Videocore 4 GPU, and its own 512 MB memory and HDMI output. It has its
-own SD card from which it boots. While it can traditionally run Linux,
-it can also be programmed "bare metal" directly in assembly language,
-which may be more likely for this implementation.
+Hardware registers provide timing and configuration data allowing
+software to build and configure COPPER programs that function
+correctly across the various video modes and machine types. It is not
+essential to detect the machine type but it should be noted that
+software should not assume that it is running on a specific machine as
+the COPPER hardware is available across all four machine types.
 
 <P>
-It is not yet known how the Raspberry Pi 0 will interface with the
-Spectrum Next. It was originally used as an HDMI converter, but the
-HDMI functionality was moved onto the main board, makes this
-unnecessary.
+Three registers can be read to determine the machine configuration for
+Ts per line, dot clocks, refresh rate, line count and maximum
+horizontal dot clock/pixel position compare.
 
 <P>
-It is known that the Raspberry Pi versions supporting Wi-Fi will not
-provide that Wi-Fi to the Next.
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html846"
+  HREF="node102.html">Refresh Rate</A>
+<LI><A ID="tex2html847"
+  HREF="node103.html">Video Modes</A>
+<LI><A ID="tex2html848"
+  HREF="node104.html">Machine Type</A>
+<LI><A ID="tex2html849"
+  HREF="node105.html">Summary</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

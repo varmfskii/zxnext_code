@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Resolution</TITLE>
-<META NAME="description" CONTENT="Resolution">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Copper and Display Timing</TITLE>
+<META NAME="description" CONTENT="Copper and Display Timing">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,10 +13,10 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node81.html">
-<LINK REL="previous" HREF="node79.html">
+<LINK REL="next" HREF="node106.html">
+<LINK REL="previous" HREF="node63.html">
 <LINK REL="next" HREF="node81.html">
 </HEAD>
 
@@ -27,66 +27,112 @@
  HREF="node81.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node77.html">
+ HREF="zxnext_notes.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node79.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html688"
+<A ID="tex2html718"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html690"
-  HREF="node135.html">
+<A ID="tex2html720"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node81.html">Dot Clock</A>
+ HREF="node81.html">Introduction</A>
 <B> Up:</B> <A
- HREF="node77.html">Timing</A>
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
- HREF="node79.html">Display</A>
- &nbsp; <B>  <A ID="tex2html689"
+ HREF="node79.html">Programming examples</A>
+ &nbsp; <B>  <A ID="tex2html719"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html691"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html721"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00710030000000000000">
-Resolution</A>
-</H4>
+<H1><A ID="SECTION00700000000000000000">
+Copper and Display Timing</A>
+</H1>
+From: KevB (aka 9bitcolour)
 
 <P>
-There are two main horizontal resolutions: standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
- ALT="$256\times192$"></SPAN> and
-Timex HIRES <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img14.svg"
- ALT="$512\times192$"></SPAN>. Details of LORES <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img19.svg"
- ALT="$128\times96$"></SPAN> are not
-included to simplify this guide.
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<P>
-The frame buffer height is fixed at 192 pixels and surrounded by a
-large border and overscan as well as horizontal and vertical blanking
-periods.
-
-<P>
-There are five vertical line counts: 261, 262, 311, 312, 320. Several
-pixels are hidden in the overscan and blanking periods beyond the
-visible border.
-
-<P>
-The result is <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
- ALT="$256\times192$"></SPAN> and <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img14.svg"
- ALT="$512\times192$"></SPAN> pixel resolutions with
-a large border.
-
-<P>
-The colour of the visible border beyond the frame buffer can be
-manipulated. Visual changes will not show during the overscan and
-blanking periods.
-
-<P>
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html722"
+  HREF="node81.html">Introduction</A>
+<LI><A ID="tex2html723"
+  HREF="node82.html">Overview</A>
+</UL>
+</UL>
+</UL>
+<BR>
+<LI><A ID="tex2html724"
+  HREF="node83.html">Timing</A>
+<UL>
+<LI><A ID="tex2html725"
+  HREF="node84.html">Machines</A>
+<LI><A ID="tex2html726"
+  HREF="node85.html">Display</A>
+<LI><A ID="tex2html727"
+  HREF="node86.html">Resolution</A>
+<LI><A ID="tex2html728"
+  HREF="node87.html">Dot Clock</A>
+<LI><A ID="tex2html729"
+  HREF="node88.html">Coordinates</A>
+<LI><A ID="tex2html730"
+  HREF="node89.html">Compare</A>
+<LI><A ID="tex2html731"
+  HREF="node90.html">Overscan</A>
+</UL>
+<BR>
+<LI><A ID="tex2html732"
+  HREF="node91.html">Instructions</A>
+<UL>
+<LI><A ID="tex2html733"
+  HREF="node92.html">NOOP</A>
+<LI><A ID="tex2html734"
+  HREF="node93.html">MOVE</A>
+<LI><A ID="tex2html735"
+  HREF="node94.html">WAIT</A>
+<LI><A ID="tex2html736"
+  HREF="node95.html">Example</A>
+</UL>
+<BR>
+<LI><A ID="tex2html737"
+  HREF="node96.html">Control</A>
+<UL>
+<LI><A ID="tex2html738"
+  HREF="node97.html">STOP</A>
+<LI><A ID="tex2html739"
+  HREF="node98.html">RESET</A>
+<LI><A ID="tex2html740"
+  HREF="node99.html">START</A>
+<LI><A ID="tex2html741"
+  HREF="node100.html">FRAME</A>
+</UL>
+<BR>
+<LI><A ID="tex2html742"
+  HREF="node101.html">Configuration</A>
+<UL>
+<LI><A ID="tex2html743"
+  HREF="node102.html">Refresh Rate</A>
+<LI><A ID="tex2html744"
+  HREF="node103.html">Video Modes</A>
+<LI><A ID="tex2html745"
+  HREF="node104.html">Machine Type</A>
+<LI><A ID="tex2html746"
+  HREF="node105.html">Summary</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

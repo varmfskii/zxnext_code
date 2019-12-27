@@ -1,0 +1,45 @@
+R,W,16----------------0,Port(hex),Description,Disable
+*,*,XXXX XXXX XXXX XXX0,\$fe,ULA,
+*,*,XXXX XXXX 1111 1111,\$ff,Timex video/floating bus,Nextreg \$08 bit 2
+,*,0XXX XXXX XXXX XX01,\$7ffd,ZX Spectrum 128 memory,Port \$7ffd bit 5
+,*,01XX XXXX XXXX XX01,\$7ffd,ZX Spectrum 128 memory +3 only,Port \$7ffd bit 5
+,*,1101 XXXX XXXX XX01,\$dffd,ZX Spectrum 128 memory (precedence over AY),Port \$7ffd bit 5
+,*,0001 XXXX XXXX XX01,\$1ffd,ZX Spectrum +3 memory,Port \$7ffd bit 5
+*,,0000 XXXX XXXX XX01,,ZX Spectrum +3 floating bus,Port \$7ffd bit 5
+*,*,0010 0100 0011 1011,\$243b,NextREG Register Select,
+*,*,0010 0101 0011 1011,\$253b,NextREG data/value,
+,*,0001 0000 0011 1011,\$103b,i2c SCL (rtc),
+*,*,0001 0001 0011 1011,\$113b,i2c SDA (rtc),
+*,*,0001 0010 0011 1011,\$123b,Layer 2,
+*,*,0001 0011 0011 1011,\$133b,UART tx (esp),
+*,*,0001 0100 0011 1011,\$143b,UART rx (esp),
+*,*,XXXX XXXX 0110 1011,\$6b,zxnDMA,
+*,*,11XX XXXX XXXX X101,\$fffd,AY reg,Nextreg \$06 bit 0
+,*,10XX XXXX XXXX X101,\$bffd,AY dat,Nextreg \$06 bit 0
+,*,XXXX XXXX 0000 1111,\$0f,DAC A,Nextreg \$08 bit 3
+,*,XXXX XXXX 1111 0001,\$f1,DAC A (precedence over XXFD),Nextreg \$08 bit 3
+,*,XXXX XXXX 0011 1111,\$3f,DAC A,Nextreg \$08 bit 3
+,*,XXXX XXXX 1101 1111,\$df,DAC A/C specdrum,Nextreg \$08 bit 3
+,*,XXXX XXXX 0001 1111,\$1f,DAC B,Nextreg \$08 bit 3
+,*,XXXX XXXX 1111 0011,\$f3,DAC B,Nextreg \$08 bit 3
+,*,XXXX XXXX 0100 1111,\$4f,DAC C,Nextreg \$08 bit 3
+,*,XXXX XXXX 1111 1001,\$f9,DAC C (precedence over XXFD),Nextreg \$08 bit 3
+,*,XXXX XXXX 0101 1111,\$5f,DAC D,Nextreg \$08 bit 3
+,*,XXXX XXXX 1111 1011,\$fb,DAC D,Nextreg \$08 bit 3
+,*,XXXX XXXX 1110 0111,\$e7,SPI /CS (sd card/flash/rpi),Nextreg \$09 bit 2
+*,*,XXXX XXXX 1110 1011,\$eb,SPI /DATA,Nextreg \$09 bit 2
+*,*,XXXX XXXX 1110 0011,\$e3,divMMC Control,Nextreg \$09 bit 2
+*,,XXXX 1011 1101 1111,\$fbdf,Kempston mouse x,Nextreg \$09 bit 3
+*,,XXXX 1111 1101 1111,\$ffdf,Kempston mouse y,Nextreg \$09 bit 3
+*,,XXXX 1010 1101 1111,\$fadf,Kempston mouse wheel/buttons,Nextreg \$09 bit 3
+*,,XXXX XXXX 0001 1111,\$1f,Kempston joy 1,Nextreg \$05
+*,,XXXX XXXX 0011 0111,\$37,Kempston joy 2,Nextreg \$05
+*,*,XXXX XXXX 0001 1111,\$1f,Multiface 1 disable,
+*,,XXXX XXXX 1001 1111,\$9f,Multiface 1 enable,
+*,*,XXXX XXXX 0011 1111,\$3f,Multiface 128 disable,
+*,,XXXX XXXX 1011 1111,\$bf,Multiface 128 enable,
+*,*,XXXX XXXX 1011 1111,\$bf,Multiface +3 disable,
+*,,XXXX XXXX 0011 1111,\$3f,Multiface +3 enable,
+*,*,0011 0000 0011 1011,\$303b,Sprite slot/flags,
+,*,XXXX XXXX 0101 0111,\$57,Sprite attributes,
+,*,XXXX XXXX 0101 1011,\$5b,Sprite pattern,

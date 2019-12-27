@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>WR5 – Write Register Group 5</TITLE>
-<META NAME="description" CONTENT="WR5 – Write Register Group 5">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>zxnDMA Registers</TITLE>
+<META NAME="description" CONTENT="zxnDMA Registers">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,9 +13,9 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node70.html">
+<LINK REL="next" HREF="node79.html">
 <LINK REL="previous" HREF="node68.html">
 <LINK REL="next" HREF="node70.html">
 </HEAD>
@@ -32,50 +32,61 @@
 <A
  HREF="node68.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html612"
+<A ID="tex2html665"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html614"
-  HREF="node135.html">
+<A ID="tex2html667"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node70.html">WR6 – Command Register</A>
+ HREF="node70.html">WR0 – Write Register</A>
 <B> Up:</B> <A
- HREF="node63.html">zxnDMA Registers</A>
+ HREF="node63.html">zxnDMA</A>
 <B> Previous:</B> <A
- HREF="node68.html">WR4 – Write Register</A>
- &nbsp; <B>  <A ID="tex2html613"
+ HREF="node68.html">Programming the zxnDMA</A>
+ &nbsp; <B>  <A ID="tex2html666"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html615"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html668"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00660060000000000000">
-WR5 – Write Register Group 5</A>
-</H4>
-<PRE>
-D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
- 1   0   |   |   0   0   1   0
-         |   |
-         |   0 = /ce only
-         |   1 = /ce &amp; /wait multiplexed
-         |
-         0 = Stop on end of block
-         1 = Auto restart on end of block
-</PRE>
-The /ce &amp; /wait mode is implemented in the zxnDMA but is not currently
-used. This mode has an external device using the DMA's /ce pin to
-insert wait states during the DMA's transfer.
+<H1><A ID="SECTION00660000000000000000">
+zxnDMA Registers</A>
+</H1>
+These are described below following the same convention used by Zilog
+for its DMA chip:
 
 <P>
-The auto restart feature causes the DMA to automatically reload its
-source and destination addresses and reset its byte counter to zero to
-repeat the last transfer when a previous one is finished.
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<P>
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html669"
+  HREF="node70.html">WR0 – Write Register Group 0</A>
+<LI><A ID="tex2html670"
+  HREF="node71.html">WR1 – Write Register Group 1</A>
+<LI><A ID="tex2html671"
+  HREF="node72.html">WR2 – Write Register Group 2</A>
+<LI><A ID="tex2html672"
+  HREF="node73.html">WR3 – Write Register Group 3</A>
+<LI><A ID="tex2html673"
+  HREF="node74.html">WR4 – Write Register Group 4</A>
+<LI><A ID="tex2html674"
+  HREF="node75.html">WR5 – Write Register Group 5</A>
+<LI><A ID="tex2html675"
+  HREF="node76.html">WR6 – Command Register</A>
+<LI><A ID="tex2html676"
+  HREF="node77.html">Operating speed</A>
+<LI><A ID="tex2html677"
+  HREF="node78.html">The DMA and Interrupts</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

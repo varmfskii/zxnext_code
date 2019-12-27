@@ -1,0 +1,340 @@
+\chapter{Ports}
+
+February 25, 2019  Phoebus Dokos
+
+\begin{table}[h]\centering\tiny
+  \caption{ZX Spectrum Ports}
+  \csvautotabular{appendices/ports/ports.csv}
+\end{table}
+
+\section{8-bit}
+Port \$0f (15) DAC A\\
+Disable with bit 3 of Nextreg \$08
+
+Port \$1f (31) Kempston Joystick 1\\
+Disable with Nextreg \$05
+\begin{itemize}
+\item[] bit 7-5=Reserved
+\item[] bit 4=Fire
+\item[] bit 3=Up
+\item[] bit 2=Down
+\item[] bit 1=Left
+\item[] bit 0=Right
+\end{itemize}
+
+Port \$1f (31) Mega Drive Joystick 1\\
+Disable with Nextreg \$05
+\begin{itemize}
+\item[] bit 7=''start'' button
+\item[] bit 6=A/X button
+\item[] bit 5=C/Z button
+\item[] bit 4=C/Y button
+\item[] bit 3=Up
+\item[] bit 2=Down
+\item[] bit 1=Left
+\item[] bit 0=Right
+\end{itemize}
+
+Port \$1f (31) DAC B\\
+Disable with bit 3 of Nextreg \$08
+
+Port \$1f (31) Multiface 1 Disable
+
+Port \$37 (55) Kempston Joystick 2\\
+Disable with Nextreg \$05
+\begin{itemize}
+\item[] bit 7-5=Reserved
+\item[] bit 4=Fire
+\item[] bit 3=Up
+\item[] bit 2=Down
+\item[] bit 1=Left
+\item[] bit 0=Right
+\end{itemize}
+
+Port \$37 (55) Mega Drive Joystick 2\\
+Disable with Nextreg \$05
+\begin{itemize}
+\item[] bit 7=''start'' button
+\item[] bit 6=A/X button
+\item[] bit 5=C/Z button
+\item[] bit 4=C/Y button
+\item[] bit 3=Up
+\item[] bit 2=Down
+\item[] bit 1=Left
+\item[] bit 0=Right
+\end{itemize}
+
+Port \$3f (63) DAC A\\
+Disable with bit 3 of Nextreg \$08
+
+Port \$3f (63) Multiface 128 Disable
+
+Port \$3f (63) Multiface +3 Enable
+
+Port \$4f (79) DAC C\\
+Disable with bit 3 of Nextreg \$08
+
+Port \$57 (87) Sprite Attributes
+
+Port \$5b (91) Sprite Pattern
+
+Port \$5f (95) DAC D\\
+Disable with bit 3 of Nextreg \$08
+
+Port \$6b (107) zxnDMA
+
+Port \$9f (159) Multiface 1 Enable
+
+Port \$bf (191) Multiface 128 Enable
+
+Port \$bf (191) Multiface +3 Disable
+
+Port \$df (223) DAC A/C SpecDrum\\
+Disable with bit 3 of Nextreg \$08
+
+Port \$e3 (227) divMMC Control\\
+Disable with bit 2 of Nextreg \$09
+
+Port \$e7 (231) SPI /CS (SD card, flash, rpi)\\
+Disable with bit 2 of Nextreg \$09
+
+Port \$eb (235) SPI /DATA (SD card, flash, rpi)\\
+Disable with bit 2 of Nextreg \$09
+
+Port \$f1 (241) DAC A (precedence over \$xxfd)\\
+Disable with bit 3 of Nextreg \$08
+
+Port \$f3 (243) DAC B\\
+Disable with bit 3 of Nextreg \$08
+
+Port \$f9 (249) DAC C (precedence over \$xxfd)\\
+Disable with bit 3 of Nextreg \$08
+
+Port \$fb (251) DAC D\\
+Disable with bit 3 of Nextreg \$08
+
+Port \$fe (254) ULA
+\begin{itemize}
+  \item[] bits 5-7: unused
+  \item[] bit 4: enable ear output
+  \item[] bit 3: enable mic output
+  \item[] bits 0-2: border colour
+\end{itemize}
+
+Port \$ff (255) Timex Sinclair/floating bus\\
+Disable with bit 2 to Nextreg \$08
+\begin{itemize}
+\item[] bit 7: memory paging (not on Next)
+\item[] bit 6: disables generation of interrupts
+\item[] bits 3-5: set hi-res mode colour combination
+\item[] bits 0-2: screen mode
+  \begin{itemize}
+  \item[] 000=normal ULA mode
+  \item[] 001=alternate ULA address
+  \item[] 010=hi-colour
+  \item[] 110=hi-res
+  \end{itemize}
+\end{itemize}
+
+\section{16-bit}
+Port \$103b (4155) $I^2C$ SCL (rtc, rpi)
+
+Port \$113b (4411) $I^2C$ SDA (rtc, rpi)
+
+Port \$123b (4667) Layer 2
+\begin{itemize}
+\item[] bits 6-7: Video RAM bank select
+  \begin{itemize}
+  \item[] 00=first 16k
+  \item[] 01=middle 16k
+  \item[] 10=last 16k
+  \item[] 11=full 48k (3.00)
+  \end{itemize}
+\item[] bits 4-5: Reserved (00)
+\item[] bit 3: Shadow layer 2 select
+\item[] bit 2: Enable layer 2 read paging (3.00)
+\item[] bit 1: Layer 2 visible
+\item[] bit 0: Enable layer 2 write paging
+\end{itemize}
+
+Port \$133b (4923) UART tx\\
+Read: UART Status\\
+\begin{itemize}
+\item[] bits 7-3: Reserved (0)
+\item[] bit 2: UART full
+\item[] bit 1: UART transmit busy
+\item[] bit 0: UART receive has data
+\end{itemize}
+Write: UART Transmit
+
+Port \$143b (5179) UART rx\\
+Read: UART Receive\\
+Write: UART Prescalar
+\begin{itemize}
+\item[] bit 7:
+  \begin{itemize}
+  \item[] 0=Bits 6-0 of prescalar
+  \item[] 1=Bits 13-7 of prescalar
+  \end{itemize}
+\item[] bits 6-0: Prescalar low bits
+\end{itemize}
+
+Port \$153b (5435) UART control (3.0)
+\begin{itemize}
+\item[] bit 7: Reserved (0)
+\item[] bit 6: UART select
+  \begin{itemize}
+  \item[] 0=ESP
+  \item[] 1=Pi
+  \end{itemize}
+\item[] bit 5: Reserved (0)
+\item[] bit 4: Prescalar valid in this write
+\item[] bit 3: Reserved (0)
+\item[] bits 2-0: Bits 16-14 of prescalar
+\end{itemize}
+
+Port \$243b (9275) Next Register Select\\
+Write-only and is used to set the registry number, listed below.
+
+Port \$253b (9531) Next Register Data/Value\\
+Used to access the registry value, the registry being either only a
+few bits or all bits only read, write or read/write, depending on the
+registry number set.\\
+The nextreg instruction can be used to control Spectrum Next registers
+more directly.
+
+Port \$303b (12347) Sprite Slot/Flags\\
+Write: Sprite Slot Select\\
+select sprite slot for Sprite Attribute and Sprite Pattern ports which
+independently auto-increment\\
+Read: Sprite status
+\begin{itemize}
+\item[] bits 2-7: reserved
+\item[] bit 1: Max sprites per line
+\item[] bit 0: Collision flag
+\end{itemize}
+
+Port \$7ffd (32765) ZX Spectrum 128 Memory\\
+Disable with bit 5 port \$7ffd
+\begin{itemize}
+\item[] bits 6-7: reserved
+\item[] bit 5: Lock memory paging (unlocks only on reset)
+\item[] bit 4: ROM Select (low bit of ROM select for +2/+3)
+\item[] bit 3: Shadow screen toggle
+\item[] bits 0-2: Bank number for slot 4
+\end{itemize}
+
+Port \$7ffe (32766) Keyboard 8 (read only)
+\begin{itemize}
+\item[] bit 0: 'B'
+\item[] bit 1: 'N'
+\item[] bit 2: 'M'
+\item[] bit 3: Symbol Shift
+\item[] bit 4: Space
+\end{itemize}
+
+Port \$bf3b (48955) ULAPlus register port (write only) (3.00)
+
+Port \$bffd (49149) AY (TurboSound Next) Data\\
+Writes to selected register of selected sound chip
+
+Port \$BFFE (49150) Keyboard 7 (read only)
+\begin{itemize}
+\item[] bit 0: 'H'
+\item[] bit 1: 'J'
+\item[] bit 2: 'K'
+\item[] bit 3: 'L'
+\item[] bit 4: Enter
+\end{itemize}
+
+Port \$dffd (57341) ZX Spectrum 128 Memory (precedence over AY)\\
+Disable with bit 5 port \$7ffd\\
+See Port \$7ffd
+
+Port \$dffe (57342) Keyboard 6 (read only)
+\begin{itemize}
+\item[] bit 0: 'Y'
+\item[] bit 1: 'U'
+\item[] bit 2: 'I'
+\item[] bit 3: 'O'
+\item[] bit 4: 'P'
+\end{itemize}
+
+Port \$effe (61438) Keyboard 5 (read only)
+\begin{itemize}
+\item[] bit 0: ‘6’
+\item[] bit 1: ‘7’
+\item[] bit 2: ‘8’
+\item[] bit 3: ‘9’
+\item[] bit 4: ‘0’
+\end{itemize}
+
+Port \$f7fe (63486) Keyboard 4 (read only)
+\begin{itemize}
+\item[] bit 0: ‘5’
+\item[] bit 1: ‘4’
+\item[] bit 2: ‘3’
+\item[] bit 3: ‘2’
+\item[] bit 4: ‘1’
+\end{itemize}
+
+Port \$fadf (64223) Kempston Mouse Wheel/Buttons\\
+Disable with bit 2 of Nextreg \%09
+
+Port \$fbdf (64479) Kempston Mouse X\\
+Disable with bit 2 of Nextreg \$09
+
+Port \$fbfe (64510) Keyboard 3 (read only)
+\begin{itemize}
+\item[] bit 0: ‘T’
+\item[] bit 1: ‘R’
+\item[] bit 2: ‘E’
+\item[] bit 3: ‘W’
+\item[] bit 4: ‘Q’
+\end{itemize}
+
+Port \$fdfe (65022) Keyboard 2 (read only)
+\begin{itemize}
+\item[] bit 0: ‘G’
+\item[] bit 1: ‘F’
+\item[] bit 2: ‘D’
+\item[] bit 3: ‘S’
+\item[] bit 4: ‘A’
+\end{itemize}
+
+Port \$fefe (65278) Keyboard 1 (read only)
+\begin{itemize}
+\item[] bit 0: ‘V’
+\item[] bit 1: ‘C’
+\item[] bit 2: ‘X’
+\item[] bit 3: ‘Z’
+\item[] bit 4: Caps Shift
+\end{itemize}
+
+Port \$fbdf (64479) Kempston Mouse Y\\
+Disable with bit 2 of Nextreg \$09\\
+Kempston Mouse Y coordinate (0-191)
+
+Port \$ff3b (65339) ULAPlus data port (3.00)
+
+Port \$fffd (65533) AY (Turbo Sound Next) Register\\
+Select active sound chip/sound chip register\\
+Select Chip
+\begin{itemize}
+\item[] bit 7: 1=select chip
+\item[] bit 6: Left audio enable
+\item[] bit 5: Right audio enable
+\item[] bits 2-4: reserved=111
+\item[] bits 0-1: Select active chip
+  \begin{itemize}
+  \item[] 01=AY3
+  \item[] 10=AY2
+  \item[] 11=AY1 (default)
+  \end{itemize}
+\end{itemize}
+ Select Register
+\begin{itemize}
+\item[] bit 7: 0=select register
+\item[] bits 4-6: reserved=000
+\item[] bits 0-3: register number
+\end{itemize}

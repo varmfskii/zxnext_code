@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Tile Definitions</TITLE>
-<META NAME="description" CONTENT="Tile Definitions">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Timex Hi-Resolution Mode</TITLE>
+<META NAME="description" CONTENT="Timex Hi-Resolution Mode">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,8 +13,9 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node27.html">
 <LINK REL="previous" HREF="node25.html">
 <LINK REL="next" HREF="node27.html">
 </HEAD>
@@ -26,53 +27,100 @@
  HREF="node27.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node24.html">
+ HREF="node10.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node25.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html381"
+<A ID="tex2html431"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html383"
-  HREF="node135.html">
+<A ID="tex2html433"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node27.html">Memory Organization &amp; Display</A>
+ HREF="node27.html">Lo-Resolution Mode</A>
 <B> Up:</B> <A
- HREF="node24.html">Data Structures</A>
+ HREF="node10.html">Layer 1</A>
 <B> Previous:</B> <A
- HREF="node25.html">Tilemap</A>
- &nbsp; <B>  <A ID="tex2html382"
+ HREF="node25.html">Timex Hi-Colour Mode</A>
+ &nbsp; <B>  <A ID="tex2html432"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html384"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html434"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00342020000000000000">
-Tile Definitions</A>
-</H4>
-The second data structure is the tile definitions themselves.
+<H2><A ID="SECTION00327000000000000000">
+Timex Hi-Resolution Mode</A>
+</H2>
 
 <P>
-Each tile, identified by tile number, is <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img6.svg"
- ALT="$8\times8$"></SPAN> pixels in size
-with each pixel four bits to select one of 16 colours. A tile
-definition occupies 32 bytes and is defined in X major order with
-packing in the X direction in the same way that 4-bit sprites are
-defined. The 4-bit colour of each pixel is augmented by the 4-bit
-palette offset from the tilemap in the most significant bits to form
-an 8-bit colour index that is looked up in the tilemap palette to
-determine the final 9-bit colour sent to the display.
+Timex mode 6
 
 <P>
-Tiles are therefore defined using 16 colours with the tilemap palette
-offset able to act as index into the tilemap palette to vary the
-display colour. One of the 16 colours is defined as transparent in the
-Transparency Index register.
+This is a monochrome <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img15.svg"
+ ALT="$512\times192$"></SPAN> video mode. It is selected by
+writing to the Timex ULA port ($ff with values that also select which
+two colours (or colour entries in ULANext mode) you use.
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="201"></A>
+<TABLE>
+<CAPTION><STRONG>Table 2.4:</STRONG>
+Hi-Resolution Colours</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img16.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{video/hires.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Pixels are mapped into both the bitmap 1 and bitmap 2 areas where
+8-pixel wide character columns alternate between the two bitmap areas.
+The pixels within a byte being rendered left to right lsb to msb as in
+other Spectrum video modes.  The addresses for each row within a
+character are based on a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img17.svg"
+ ALT="$64\times32$"></SPAN> grid of <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img7.svg"
+ ALT="$8\times8$"></SPAN> characters
+which using a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img18.svg"
+ ALT="$64\times24$"></SPAN> R, C, and Y scheme gives us addresses of
+the form <!-- MATH
+ $C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img19.svg"
+ ALT="$C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1$"></SPAN>.
+
+<P>
+Code:
+<PRE>
+;; disable LoRes mode:
+ld bc,$243B ; next register select port
+ld a,$15
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+and $7f
+out (c),a
+;; set Timex mode
+ld bc,$243B ; next register select port
+ld a,$08
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+or $04
+out (c),a
+;; set hi-res mode, black on white
+ld c,$ff
+ld a,$06
+out (c),a
+</PRE>
 
 <P>
 <BR><HR>

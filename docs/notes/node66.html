@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>WR2 – Write Register Group 2</TITLE>
-<META NAME="description" CONTENT="WR2 – Write Register Group 2">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Description</TITLE>
+<META NAME="description" CONTENT="Description">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,7 +13,7 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node67.html">
 <LINK REL="previous" HREF="node65.html">
@@ -32,106 +32,51 @@
 <A
  HREF="node65.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html600"
+<A ID="tex2html653"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html602"
-  HREF="node135.html">
+<A ID="tex2html655"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node67.html">WR3 – Write Register</A>
+ HREF="node67.html">Modes of Operation</A>
 <B> Up:</B> <A
- HREF="node63.html">zxnDMA Registers</A>
+ HREF="node63.html">zxnDMA</A>
 <B> Previous:</B> <A
- HREF="node65.html">WR1 – Write Register</A>
- &nbsp; <B>  <A ID="tex2html601"
+ HREF="node65.html">Accessing the zxnDMA</A>
+ &nbsp; <B>  <A ID="tex2html654"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html603"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html656"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00660030000000000000">
-WR2 – Write Register Group 2</A>
-</H4>
-<PRE>
-D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
- 0   |   |   |   |   0   0   0
-     |   |   |   |
-     |   |   |   0 = Port B is memory
-     |   |   |   1 = Port B is IO
-     |   |   |
-     |   0   0 = Port B address decrements
-     |   0   1 = Port B address increments
-     |   1   0 = Port B address is fixed
-     |   1   1 = Port B address is fixed
-     |
-     V
-D7  D6  D5  D4  D3  D2  D1  D0  PORT B VARIABLE TIMING BYTE
- 0   0   |   0   0   0   |   |
-         |               0   0 = Cycle Length = 4
-         |               0   1 = Cycle Length = 3
-         |               1   0 = Cycle Length = 2
-         |               1   1 = Do not use
-         |
-         V
-D7  D6  D5  D4  D3  D2  D1  D0  ZXN PRESCALAR (FIXED TIME TRANSFER)
-</PRE>
-The ZXN PRESCALAR is a feature of the zxnDMA implementation. If
-non-zero, a delay will be inserted after each byte is transferred such
-that the total time needed for each transfer is determined by the
-prescalar. This works in both the continuous mode and the burst
-mode. If the DMA is operated in burst mode, the DMA will give up any
-waiting time to the CPU so that the CPU can run while the DMA is idle.
+<H1><A ID="SECTION00630000000000000000">
+Description</A>
+</H1>
+The normal Z80 DMA (Z8410) chip is a pipelined device and because of
+that it has numerous off-by-one idiosyncrasies and requirements on the
+order that certain commands should be carried out. These issues are
+not duplicated in the zxnDMA. You can continue to program the zxnDMA
+as if it is were a Z8410 DMA device but it can also be programmed in a
+simpler manner.
 
 <P>
-The rate of transfer is given by the formula "Frate = 875kHz /
-prescalar" or, rearranged, "prescalar = 875kHz / Frate". The formula
-is framed in terms of a sample rate (Frate) but Frate can be inverted
-to set a transfer time for each byte instead. The 875kHz constant is a
-nominal value assuming a 28MHz system clock; the system clock actually
-varies from this depending on the video timing selected by the user
-(HDMI, VGA0-6) so for complete accuracy the constant should be
-prorated according to documentation for nextreg $11.
+The single channel of the zxnDMA chip consists of two ports named A
+and B. Transfers can occur in either direction between ports A and B,
+each port can describe a target in memory or IO, and each can be
+configured to autoincrement, autodecrement or stay fixed after a byte
+is transferred.
 
 <P>
-In a DMA audio setting, selecting a sample rate of 16kHz would mean
-setting the prescalar value to 55. This sample period is constant
-across changes in CPU speed.
+A special feature of the zxnDMA can force each byte transfer to take a
+fixed amount of time so that the zxnDMA can be used to deliver sampled
+audio.
 
 <P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node67.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node63.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node65.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html600"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html602"
-  HREF="node135.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node67.html">WR3 – Write Register</A>
-<B> Up:</B> <A
- HREF="node63.html">zxnDMA Registers</A>
-<B> Previous:</B> <A
- HREF="node65.html">WR1 – Write Register</A>
- &nbsp; <B>  <A ID="tex2html601"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html603"
-  HREF="node135.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<BR><HR>
 
 </BODY>
 </HTML>

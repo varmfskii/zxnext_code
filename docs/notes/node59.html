@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Accessing the zxnDMA</TITLE>
-<META NAME="description" CONTENT="Accessing the zxnDMA">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>ROM paging and selection</TITLE>
+<META NAME="description" CONTENT="ROM paging and selection">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,7 +13,7 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node60.html">
 <LINK REL="previous" HREF="node58.html">
@@ -32,38 +32,42 @@
 <A
  HREF="node58.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html563"
+<A ID="tex2html609"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html565"
-  HREF="node135.html">
+<A ID="tex2html611"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node60.html">Description</A>
+ HREF="node60.html">Paging out ROM</A>
 <B> Up:</B> <A
- HREF="node57.html">zxnDMA</A>
+ HREF="node57.html">ZX Spectrum Next</A>
 <B> Previous:</B> <A
- HREF="node58.html">Overview</A>
- &nbsp; <B>  <A ID="tex2html564"
+ HREF="node58.html">Interactions between paging methods</A>
+ &nbsp; <B>  <A ID="tex2html610"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html566"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html612"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00620000000000000000">
-Accessing the zxnDMA</A>
-</H1>
-The zxnDMA is mapped to a single Read/Write IO Port 0x6B which is the
-same one used by the Datagear but unlike the Datagear it doesn't also
-map itself to a second port 0x0B similar to the MB-02 interface.
+<H4><A ID="SECTION00520020000000000000">
+ROM paging and selection</A>
+</H4>
+$0000-$3fff is usually mapped to ROM. This area can only be fully
+remapped using Next memory management. ROM is not considered one of
+the numbered banks; it is mapped to the two 8k-banks by default, or by
+setting their 8k-bank numbers to 255.
 
 <P>
-<PRE>
-PORT $6b: zxnDMA
-</PRE>
+The 128k Spectrum has 2 ROM pages. Which of these is mapped is
+selected by altering Bit 4 of Memory Paging Control ($7FFD). The
++2a/+3 has 4 ROM pages; the extra bit needed to select between these
+is bit 2 of Plus 3 Memory Paging Control ($1FFD). This maintains
+compatibility with the original machines' ROM paging as long as the
+ROM is not paged out.
 
 <P>
 <BR><HR>

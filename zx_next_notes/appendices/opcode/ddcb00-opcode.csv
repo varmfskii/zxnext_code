@@ -1,0 +1,17 @@
+Opcode,Mnemonic,Sz,T,Opcode,Mnemonic,Sz,T
+{\$DDCB06},rlc (ix+x),4,23,{\$DDCB0E},rrc (ix+x),4,23
+{\$DDCB16},rl (ix+x),4,23,{\$DDCB1E},rr (ix+x),4,23
+{\$DDCB26},sla (ix+x),4,23,{\$DDCB2E},sra (ix+x),4,23
+{\$DDCB36},sll (ix+x),4,23,{\$DDCB3E},srl (ix+x),4,23
+{\$DDCB46},{bit 0,(ix+x)},4,20,{\$DDCB4E},{bit 1,(ix+x)},4,20
+{\$DDCB56},{bit 2,(ix+x)},4,20,{\$DDCB5E},{bit 3,(ix+x)},4,20
+{\$DDCB66},{bit 4,(ix+x)},4,20,{\$DDCB6E},{bit 5,(ix+x)},4,20
+{\$DDCB76},{bit 6,(ix+x)},4,20,{\$DDCB7E},{bit 7,(ix+x)},4,20
+{\$DDCB86},{res 0,(ix+x)},4,23,{\$DDCB8E},{res 1,(ix+x)},4,23
+{\$DDCB96},{res 2,(ix+x)},4,23,{\$DDCB9E},{res 3,(ix+x)},4,23
+{\$DDCBA6},{res 4,(ix+x)},4,23,{\$DDCBAE},{res 5,(ix+x)},4,23
+{\$DDCBB6},{res 6,(ix+x)},4,23,{\$DDCBBE},{res 7,(ix+x)},4,23
+{\$DDCBC6},{set 0,(ix+x)},4,23,{\$DDCBCE},{set 1,(ix+x)},4,23
+{\$DDCBD6},{set 2,(ix+x)},4,23,{\$DDCBDE},{set 3,(ix+x)},4,23
+{\$DDCBE6},{set 4,(ix+x)},4,23,{\$DDCBEE},{set 5,(ix+x)},4,23
+{\$DDCBF6},{set 6,(ix+x)},4,23,{\$DDCBFE},{set 7,(ix+x)},4,23

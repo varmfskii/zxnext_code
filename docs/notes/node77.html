@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Timing</TITLE>
-<META NAME="description" CONTENT="Timing">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Operating speed</TITLE>
+<META NAME="description" CONTENT="Operating speed">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,10 +13,10 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node85.html">
-<LINK REL="previous" HREF="node74.html">
+<LINK REL="next" HREF="node78.html">
+<LINK REL="previous" HREF="node76.html">
 <LINK REL="next" HREF="node78.html">
 </HEAD>
 
@@ -27,73 +27,55 @@
  HREF="node78.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node74.html">
+ HREF="node69.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node76.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html669"
+<A ID="tex2html706"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html671"
-  HREF="node135.html">
+<A ID="tex2html708"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node78.html">Machines</A>
+ HREF="node78.html">The DMA and Interrupts</A>
 <B> Up:</B> <A
- HREF="node74.html">Copper and Display Timing</A>
+ HREF="node69.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node76.html">Overview</A>
- &nbsp; <B>  <A ID="tex2html670"
+ HREF="node76.html">WR6 – Command Register</A>
+ &nbsp; <B>  <A ID="tex2html707"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html672"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html709"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00710000000000000000">
-Timing</A>
-</H1>
+<H4><A ID="SECTION00660080000000000000">
+Operating speed</A>
+</H4>
 
 <P>
-To fully understand the COPPER, you must first understand the display
-timing for each of the machines and video modes found in the ZX
-Spectrum Next.
+The zxnDMA operates at the same speed as the CPU, that is 3.5MHz, 7MHz
+or 14MHz. This is a contended clock that is modified by the ULA and
+the auto-slowdown by Layer2.
 
 <P>
-There are several display timing configurations due to the four
-machine types, two refresh rates, two video systems (VGA/HDMI) and
-Timex HIRES mode.
+Auto-slowdown occurs without user intervention if speed exceeds 7Mhz
+and the active Layer2 display is being generated (higher speed
+operation resumes when the active Layer2 display is not
+generated). Programmers do NOT need to account for speed differences
+regarding DMA transfers as this happens automatically.
 
 <P>
-Details of these timings are outlined in this chapter.
+Because of this, the cycle lengths for Ports A and B can be set to
+their minimum values without ill effects. The cycle lengths specified
+for Ports A and B are intended to selectively slow down read or write
+cycles for hardware that cannot operate at the DMA's full speed.
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
-
-<UL CLASS="ChildLinks">
-<LI><UL>
-<LI><UL>
-<LI><A ID="tex2html673"
-  HREF="node78.html">Machines</A>
-<LI><A ID="tex2html674"
-  HREF="node79.html">Display</A>
-<LI><A ID="tex2html675"
-  HREF="node80.html">Resolution</A>
-<LI><A ID="tex2html676"
-  HREF="node81.html">Dot Clock</A>
-<LI><A ID="tex2html677"
-  HREF="node82.html">Coordinates</A>
-<LI><A ID="tex2html678"
-  HREF="node83.html">Compare</A>
-<LI><A ID="tex2html679"
-  HREF="node84.html">Overscan</A>
-</UL></UL></UL>
-<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

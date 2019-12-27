@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Compare</TITLE>
-<META NAME="description" CONTENT="Compare">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Timing</TITLE>
+<META NAME="description" CONTENT="Timing">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,10 +13,10 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node84.html">
-<LINK REL="previous" HREF="node82.html">
+<LINK REL="next" HREF="node91.html">
+<LINK REL="previous" HREF="node80.html">
 <LINK REL="next" HREF="node84.html">
 </HEAD>
 
@@ -27,184 +27,74 @@
  HREF="node84.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node77.html">
+ HREF="node80.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node82.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html700"
+<A ID="tex2html755"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html702"
-  HREF="node135.html">
+<A ID="tex2html757"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node84.html">Overscan</A>
+ HREF="node84.html">Machines</A>
 <B> Up:</B> <A
- HREF="node77.html">Timing</A>
+ HREF="node80.html">Copper and Display Timing</A>
 <B> Previous:</B> <A
- HREF="node82.html">Coordinates</A>
- &nbsp; <B>  <A ID="tex2html701"
+ HREF="node82.html">Overview</A>
+ &nbsp; <B>  <A ID="tex2html756"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html703"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html758"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00710060000000000000">
-Compare</A>
-</H4>
+<H1><A ID="SECTION00710000000000000000">
+Timing</A>
+</H1>
 
 <P>
-The COPPER uses a 9 bit vertical line compare allowing it to handle
-the various line counts.
+To fully understand the COPPER, you must first understand the display
+timing for each of the machines and video modes found in the ZX
+Spectrum Next.
 
 <P>
-The COPPER horizontal compare is 6 bits meaning that it can wait for
-64 positions across each line. The range of this value is limited by
-the machine timing as that determines the number of dot clocks per
-line.
+There are several display timing configurations due to the four
+machine types, two refresh rates, two video systems (VGA/HDMI) and
+Timex HIRES mode.
 
 <P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="1347"></A>
-<TABLE>
-<CAPTION><STRONG>Table 6.3:</STRONG>
-Maximum Horizontal COPPER Compare</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img39.svg"
- ALT="\begin{table}\centering
-\csvautotabular{copper/maxhcmp.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
+Details of these timings are outlined in this chapter.
 
 <P>
-Each horizontal compare is in steps of 16 dot clocks to cover the full
-range across a raster line.
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<P>
-16 dot clocks = 4 pixels in lo <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img19.svg"
- ALT="$128\times96$"></SPAN> resolution
-
-<P>
-16 dot clocks = 8 pixels in standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
- ALT="$256\times192$"></SPAN> resolution
-
-<P>
-16 dot clocks = 16 pixels in high <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img14.svg"
- ALT="$512\times192$"></SPAN> resolution
-
-<P>
-There is some slack to consider after the maximum horizontal compare
-value. The slack is calculated using the following:
-
-<P>
-dot clocks per line - maximum horizontal compare * 16
-
-<P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="1351"></A>
-<TABLE>
-<CAPTION><STRONG>Table 6.4:</STRONG>
-Slack Dot Clocks After Maximum Compare</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img40.svg"
- ALT="\begin{table}\centering
-\csvautotabular{copper/aftermaxcmp.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
-
-<P>
-Table 5.5 provides details of the horizontal display, left/right
-border, blanking and COPPER dot clock/pixel position compare values:
-
-<P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="1355"></A>
-<TABLE>
-<CAPTION><STRONG>Table 6.5:</STRONG>
-Horizontal Timing</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img41.svg"
- ALT="\begin{table}\centering
-\csvautotabular{copper/htime.csv}
-\par
-\raggedright -- Dot clock compare is out of range.
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
-
-<P>
-Table 5.6 provides a detailed list of vertical display, top/bottom
-border and blanking as well as maximum COPPER line compare. It also
-provides the ULA VBLANK interrupt line number.
-
-<P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="1359"></A>
-<TABLE>
-<CAPTION><STRONG>Table 6.6:</STRONG>
-Vertical Timing</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img42.svg"
- ALT="\begin{table}\centering\tiny
-\csvautotabular{copper/vtime.csv}
-\par
-\raggedright -- Line compare is out of range
-\par
-* ULA VBLANK interrupt.
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
-
-<P>
-Note: The HDMI overscan and blanking period is larger than that of a
-VGA monitor which can auto-adjust alignment. The following data is
-based on visible results from various monitors thus subject to
-refinement.
-
-<P>
-Pixels are visible during DISPLAY/BORDER and hidden during BLANKING.
-
-<P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node84.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node77.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node82.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html700"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html702"
-  HREF="node135.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node84.html">Overscan</A>
-<B> Up:</B> <A
- HREF="node77.html">Timing</A>
-<B> Previous:</B> <A
- HREF="node82.html">Coordinates</A>
- &nbsp; <B>  <A ID="tex2html701"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html703"
-  HREF="node135.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html759"
+  HREF="node84.html">Machines</A>
+<LI><A ID="tex2html760"
+  HREF="node85.html">Display</A>
+<LI><A ID="tex2html761"
+  HREF="node86.html">Resolution</A>
+<LI><A ID="tex2html762"
+  HREF="node87.html">Dot Clock</A>
+<LI><A ID="tex2html763"
+  HREF="node88.html">Coordinates</A>
+<LI><A ID="tex2html764"
+  HREF="node89.html">Compare</A>
+<LI><A ID="tex2html765"
+  HREF="node90.html">Overscan</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
 
 </BODY>
 </HTML>

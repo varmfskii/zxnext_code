@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Control</TITLE>
-<META NAME="description" CONTENT="Control">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Overscan</TITLE>
+<META NAME="description" CONTENT="Overscan">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,10 +13,9 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node95.html">
-<LINK REL="previous" HREF="node85.html">
+<LINK REL="previous" HREF="node89.html">
 <LINK REL="next" HREF="node91.html">
 </HEAD>
 
@@ -27,197 +26,99 @@
  HREF="node91.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node74.html">
+ HREF="node83.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node89.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html732"
+<A ID="tex2html790"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html734"
-  HREF="node135.html">
+<A ID="tex2html792"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node91.html">STOP</A>
+ HREF="node91.html">Instructions</A>
 <B> Up:</B> <A
- HREF="node74.html">Copper and Display Timing</A>
+ HREF="node83.html">Timing</A>
 <B> Previous:</B> <A
- HREF="node89.html">Example</A>
- &nbsp; <B>  <A ID="tex2html733"
+ HREF="node89.html">Compare</A>
+ &nbsp; <B>  <A ID="tex2html791"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html735"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html793"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00730000000000000000">
-Control</A>
-</H1>
+<H4><A ID="SECTION00710070000000000000">
+Overscan</A>
+</H4>
 
 <P>
-The COPPER is controlled by the following three write-only registers:
+The visible area of the display can extend to resolutions exceeding
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
+ ALT="$256\times192$"></SPAN>.
 
 <P>
-<table width="90%"><tr><td valign="top">&nbsp;$60 (96)   Copper data</td></tr>
-<tr><td valign="top">&nbsp;$61 (97)   Copper control LO BYTE</td></tr>
-<tr><td valign="top">&nbsp;$62 (98)   Copper control HI BYTE
-</td></tr></table>
+The 50/60 Hz refresh rate mode dictates the vertical limit.
 
 <P>
-The COPPER instructions are written one BYTE at a time to the program
-RAM using register $60 (Copper data).
+VGA and HDMI differ with VGA providing more visible pixels beyond the
+range of HDMI. Table 5.7 provides ideal
+extended pixel resolutions:
 
 <P>
-An index system is used to select the destination write address within
-the 2K program RAM. Eleven bits are needed to represent the
-index. Registers $61 and $62 hold this 11 bit index.
+Maximum Extended VGA Resolutions
 
 <P>
-The index increments each time one BYTE is written to register
-$60. The index wraps to zero when the last BYTE of program RAM is
-written.
+50Hz = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img45.svg"
+ ALT="$352\times288$"></SPAN> (standard 256 resolution)
 
 <P>
-The instruction data is normally written in big endian format although
-there is no rule stating that partial instruction BYTES cannot be
-written. It is safe to write to the COPPER program RAM while the
-COPPER is executing as long the instruction data written does not
-create a mall formed instruction which comprises of one half of the
-current executing instruction and one half the new instruction - this
-could result in unexpected behaviour.
-
-<P>
-The Z80 and DMA can be used to write the instruction data.
-
-<P>
-Writing to program RAM while the COPPER is running has no impact on
-system performance as the RAM is contention free. COPPER timing is not
-affected by the Z80 or DMA writing to the program RAM. Program RAM is
-write-only.
-
-<P>
-The contents of the 2k program RAM are preserved during a hard/soft reset.
-
-<P>
-Register $61 holds the lower 8 bits of the index. Register $62 holds
-the upper 3 bits of the index as well as two control bits which set
-the COPPER operating mode.
+60Hz = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img46.svg"
+ ALT="$352\times240$"></SPAN> (standard 256 resolution)
 
 <P>
 <BR><P></P>
-<DIV class="CENTER"><A ID="1386"></A>
+<DIV class="CENTER"><A ID="1377"></A>
 <TABLE>
-<CAPTION><STRONG>Table 6.10:</STRONG>
-Register Bit Definitions</CAPTION>
+<CAPTION><STRONG>Table 6.7:</STRONG>
+Ideal Extended Resolutions for Both VGA and HDMI</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img47.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/idealres.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Table 5.8 provides COPPER horizontal position and vertical
+line compare parameters for ideal extended resolutions:
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1381"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.8:</STRONG>
+Ideal Extended Resolution Display Parameters</CAPTION>
 <TR><TD><IMG STYLE=""
  SRC="img48.svg"
- ALT="\begin{table}\centering
-\csvautotabular{copper/regbit.csv}
+ ALT="\begin{table}\centering\small
+\csvautotabular{copper/idealparam.csv}
 \par
-\raggedright D 8 bit data
-\par
-I 11 bit index
-\par
-C 2 bit control
+\ra...
+... The fractional part is specified in dot clocks (NOOP instructions).
 \end{table}"></TD></TR>
 </TABLE>
 </DIV><P></P>
 <BR>
-
-<P>
-The COPPER has an internal 10 bit program counter (PC). Each
-instruction advances the program counter by one after completion. The
-program counter wraps to zero after the last instruction at location
-1023. This causes the copper list to loop.
-
-<P>
-The program counter defaults to zero during a hard/soft reset.
-
-<P>
-The control bits require a change to update the operating mode. This
-feature preserves COPPER operation when setting the program RAM index
-address.
-
-<P>
-The program counter is preserved when stopping the COPPER. Two of the
-four control settings reset the internal PC to zero.
-
-<P>
-Table 5.11 describes the control bits:
-
-<P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="1390"></A>
-<TABLE>
-<CAPTION><STRONG>Table 6.11:</STRONG>
-Control Mode Definitions</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img49.svg"
- ALT="\begin{table}\centering
-\csvautotabular{copper/controlmodes.csv}
-\par
-\ragged...
-...ntrol mode names used in this guide differ from
-the official names.
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
-
-<P>
-Here is a detailed description of the control bits:
 
 <P>
 <BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
-
-<UL CLASS="ChildLinks">
-<LI><UL>
-<LI><UL>
-<LI><A ID="tex2html736"
-  HREF="node91.html">STOP</A>
-<LI><A ID="tex2html737"
-  HREF="node92.html">RESET</A>
-<LI><A ID="tex2html738"
-  HREF="node93.html">START</A>
-<LI><A ID="tex2html739"
-  HREF="node94.html">FRAME</A>
-</UL></UL></UL>
-<!--End of Table of Child-Links-->
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node91.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node74.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node89.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html732"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html734"
-  HREF="node135.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node91.html">STOP</A>
-<B> Up:</B> <A
- HREF="node74.html">Copper and Display Timing</A>
-<B> Previous:</B> <A
- HREF="node89.html">Example</A>
- &nbsp; <B>  <A ID="tex2html733"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html735"
-  HREF="node135.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

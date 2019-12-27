@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>GRB palette entries</TITLE>
-<META NAME="description" CONTENT="GRB palette entries">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Clipping</TITLE>
+<META NAME="description" CONTENT="Clipping">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,9 +13,8 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node10.html">
 <LINK REL="previous" HREF="node8.html">
 <LINK REL="next" HREF="node10.html">
 </HEAD>
@@ -27,55 +26,41 @@
  HREF="node10.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node7.html">
+ HREF="node4.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node8.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html295"
+<A ID="tex2html331"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html297"
-  HREF="node135.html">
+<A ID="tex2html333"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node10.html">Grayscale palette entries</A>
+ HREF="node10.html">Layer 1</A>
 <B> Up:</B> <A
- HREF="node7.html">ULAPlus Colour Palette</A>
+ HREF="node4.html">General Features</A>
 <B> Previous:</B> <A
- HREF="node8.html">I/O ports</A>
- &nbsp; <B>  <A ID="tex2html296"
+ HREF="node8.html">Scrolling</A>
+ &nbsp; <B>  <A ID="tex2html332"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html298"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html334"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H5><A ID="SECTION00320022000000000000">
-GRB palette entries</A>
-</H5>
-
-<P>
-G3R3B2 encoding
-<BR>
-For a device using the GRB colour space the palette entry is
-interpreted as follows
-<table width="90%"><tr><td valign="top">&nbsp;Bits 0-1: Blue intensity.</td></tr>
-<tr><td valign="top">&nbsp;Bits 2-4: Red intensity.</td></tr>
-<tr><td valign="top">&nbsp;Bits 5-7: Green intensity.
-</td></tr></table>
-
-<P>
-This colour space uses a sub-set of 9-bit GRB. The missing lowest blue
-bit is set to OR of the other two blue bits (Bb becomes 000 for 00,
-and Bb1 for anything else). This gives access to a fixed half the
-potential 512 colour palette. The reduces the jump in intensity in the
-lower range in the earlier version of the specification. It also means
-the standard palette can now be represented by the ULAplus palette.
-
-<P>
+<H2><A ID="SECTION00314000000000000000">
+Clipping</A>
+</H2>
+The ZX Spectrum Next has four clipping registers create a window of
+the layer that is visible. Clipping is managed by a set of four
+successive writes to the clipping register applicable for the video
+mode. If a section is masked off by clipping, it is as if the area
+were the transparency colour and the video lyers behind it become
+visible.
 <BR><HR>
 
 </BODY>

@@ -1,0 +1,53 @@
+No.,Function,Input,Output
+0,BOOT,None,None
+1,WBOOT,None,None
+2,CONST,None,A=\$FF if ready
+,,,A=\$00 if not ready
+3,CONIN,None,A=Con Char
+4,CONOUT,C=Con Char,None
+5,LIST,C=Char,None
+6,AUXOUT,C=Char,None
+7,AUXIN,None,A=Char
+8,HOME,None,None
+9,SELDSK,C=Drive 0-15,HL=DPH addr
+,,E=Init Sel Flag,HL=\$0000 if invalid dr.
+10,SETTRK,BC=Track No,None
+11,SETSEC,BC=Sector No,None
+12,SETDMA,BC=.DMA,None
+13,READ,None,A=\$00 if no Err
+,,,A=\$01 if Non-recov Err
+,,,A=\$FF if media changed
+14,WRITE,C=Deblk Code,A=\$00 if no Err
+,,,A=\$01 if Phys Err
+,,,A=\$02 if Dsk is R/O
+,,,A=\$FF if media changed
+15,LISTST None,A=\$00 if not ready
+,,,A=\$FF if ready
+16,SECTRN,BC=Log Sect No,HL=Phys Sect No
+,,DE=Trans Tbl Adr,
+17,CONOST,None,A=\$00 if not ready
+,,,A=\$FF if ready
+18,AUXIST,None,A=\$00 if not ready
+,,,A=\$FF if ready
+19,AUXOST,None,A=\$00 if not ready
+,,,A=\$FF if ready
+20,DEVTBL,None,HL=Chrtbl addr
+21,DEVINI,C=Dev No 0-15,None
+22,DRVTBL,None,HL=Drv Tbl addr
+,,,HL=\$FFFF
+,,,HL=\$FFFE
+23,MULTIO,C=Mult Sec Cnt,None
+24,FLUSH,None,A=\$00 if no err
+,,,A=\$01 if phys err
+,,,A=\$02 if disk R/O
+25,MOVE,HL=Dest Adr,HL & DE point to next
+,,DE=Source Adr bytes,following MOVE
+,,BC=Count,
+26,TIME,C=Get/Set Flag,None
+27,SELMEM,A=Mem Bank,None
+28,SETBNK,A=Mem Bank,None
+29,XMOVE,B=Dest Bank,None
+,,C=Source Bank,
+30,USERF,Reserved,Reserved
+31,RESERV1,Reserved,Reserved
+32,RESERV2,Reserved,Reserved

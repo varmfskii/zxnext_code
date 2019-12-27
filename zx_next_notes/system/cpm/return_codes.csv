@@ -1,0 +1,8 @@
+Code, Meaning
+0000 - FEFF, Successful return
+FF00 - FFFE, Unsuccessful return
+0000, The CCP initializes the Program Return Code to zero unless the program is
+,loaded as the result of program chain.
+FF00 - FFFC, Reserved
+FFFD, The program is terminated because of a fatal BDOS error.
+FFFE, The program is terminated by the BDOS because the user typed a CTRL-C.

@@ -1,0 +1,26 @@
+Location, Contents
+byte 0, The drive field is set to the specified drive. If the
+,drive is not specified\, the default drive code is used. 0 =
+,default\, 1 = A\, 2 = B.
+byte 1-8, The name is set to the specified filename. All letters
+,are converted to upper-case. If the name is not eight characters
+,long\, the remaining bytes in the filename field are padded with
+,blanks.  If the filename has an asterisk\, *\, all remaining bytes
+,in the filename field are filled in with question marks\, ?. An
+,error occurs if the filename is more than eight bytes long.
+byte 9-11, The type is set to the specified filetype. If no
+,filetype is specified\, the type field is initialized to
+,blanks. All letters are converted to upper-case. If the type is
+,not three characters long\, the remaining bytes in the filetype
+,field are padded with blanks.  If an asterisk\, *\, occurs\, all
+,remaining bytes are filled in with question marks\, ?. An error
+,occurs if the type field is more than three bytes long.
+byte 12-15, Filled in with zeros.
+byte 16-23, The password field is set to the specified
+,password. If no password is specified\, it is initialized to
+,blanks. If the password is less than eight characters long\,
+,remaining bytes are padded with blanks. All letters are converted
+,to upper-case. If the password field is more than eight bytes
+,long\, an error occurs. Note that a blank in the first position of
+,the password field implies no password was specified.
+byte 24-31, Reserved for system use.

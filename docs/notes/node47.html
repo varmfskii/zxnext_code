@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Turbosound</TITLE>
-<META NAME="description" CONTENT="Turbosound">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Programming Sprites</TITLE>
+<META NAME="description" CONTENT="Programming Sprites">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,8 +13,9 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node48.html">
 <LINK REL="previous" HREF="node46.html">
 <LINK REL="next" HREF="node48.html">
 </HEAD>
@@ -26,172 +27,221 @@
  HREF="node48.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node44.html">
+ HREF="node39.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node46.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html485"
+<A ID="tex2html542"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html487"
-  HREF="node135.html">
+<A ID="tex2html544"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node48.html">Memory Management</A>
+ HREF="node48.html">Global Control of Sprites</A>
 <B> Up:</B> <A
- HREF="node44.html">Audio</A>
+ HREF="node39.html">Sprites</A>
 <B> Previous:</B> <A
- HREF="node46.html">Spectdrum/Convox</A>
- &nbsp; <B>  <A ID="tex2html486"
+ HREF="node46.html">Relative Sprites</A>
+ &nbsp; <B>  <A ID="tex2html543"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html488"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html545"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00430000000000000000">
-Turbosound</A>
-</H1>
+<H2><A ID="SECTION00355000000000000000">
+Programming Sprites</A>
+</H2>
 
 <P>
-TurboSound consists of the implementation of three AY-3-8912 chips. To
-enable TurboSound set bit 1 of Next Register $08 (8). Once enabled
-the sound chips and registers of the sound chips are selected using
-port $fffd (65533) TurboSound Next Control while the registers are
-accessed using $bffd () Sound Chip Register Access.  To enable access
-to a particular chip write 111111xx to the control register where
-01=AY1, 10=AY2, and 11=AY3.  Access to particular registers of the
-selected chip is selected by writing the register number to the
-control register. You can then access a chip register using the access
-port.
+Sprites are created via three io registers and a nextreg interface.
 
 <P>
-Code:
+Port $303B (W)
 <PRE>
-;; enable TurboSound audio
-ld bc,$243B
-ld a,$08
-out (c),a
-ld bc,$253B
-in a,(c)
-or $02
-out (c),a
+X S S S S S S S
+N6 X N N N N N N
 </PRE>
+A write to this port has two effects.
 
 <P>
-Each of the three AY chips has three channels, A, B, and C whose
-mapping is controlled by bit 5 of Next register 0x08 (8).
+One is it selects one of 128 sprites for writing sprite attributes via
+port $57.
 
 <P>
+The other is it selects one of 128 4-bit patterns in pattern memory
+for writing sprite patterns via port $5B. The N6 bit shown is the
+least significant in the 7-bit pattern number and should always be
+zero when selecting one of 64 8-bit patterns indicated by N.
 
-<UL>
-<LI>(R/W) 0x00 (0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel A fine tune
-</LI>
-<LI>(R/W) 0x01 (1) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel A coarse tune (4 bits)
-</LI>
-<LI>(R/W) 0x02 (2) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel B fine tune
-</LI>
-<LI>(R/W) 0x03 (3) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel B coarse tune (4 bits)
-</LI>
-<LI>(R/W) 0x04 (4) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel C fine tune
-</LI>
-<LI>(R/W) 0x05 (5) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel C coarse tune (4 bits)
-</LI>
-<LI>(R/W) 0x06 (6) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Noise period (5 bits)
-</LI>
-<LI>(R/W) 0x07 (7) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Tone Enable
-  
-<UL>
-<LI>bit 5: Channel C tone enable (0=enable, 1=disable)
-</LI>
-<LI>bit 4: Channel B tone enable (0=enable, 1=disable)
-</LI>
-<LI>bit 3: Channel A tone enable (0=enable, 1=disable)
-</LI>
-<LI>bit 2: Channel C noise enable (0=enable, 1=disable)
-</LI>
-<LI>bit 1: Channel B noise enable (0=enable, 1=disable)
-</LI>
-<LI>bit 0: Channel A noise enable (0=enable, 1=disable)
-  
-</LI>
-</UL>
-</LI>
-<LI>(R/W) 0x08 (8) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel A amplitude
-  
-<UL>
-<LI>bit 4: 0=fixed amplitude, 1=use envelope generator (bits 0-3 ignored)
-</LI>
-<LI>bits 0-3: value of fixed amplitude
-  
-</LI>
-</UL>
-</LI>
-<LI>(R/W) 0x09 (9) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel B amplitude
-  
-<UL>
-<LI>bit 4: 0=fixed amplitude, 1=use envelope generator (bits 0-3 ignored)
-</LI>
-<LI>bits 0-3: value of fixed amplitude
-  
-</LI>
-</UL>
-</LI>
-<LI>(R/W) 0x0A (10) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Channel C amplitude
-  
-<UL>
-<LI>bit 4: 0=fixed amplitude, 1=use envelope generator (bits 0-3 ignored)
-</LI>
-<LI>bits 0-3: value of fixed amplitude
-  
-</LI>
-</UL>
-</LI>
-<LI>(R/W) 0x0B (11) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Envelope period fine
-</LI>
-<LI>(R/W) 0x0C (12) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Envelope period coarse
-</LI>
-<LI>(R/W) 0x0D (13) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Envelope shape
-  
-<UL>
-<LI>bit 3: Continue: 0=drop to amplitude 0 after 1 cycle, 1=use ‘Hold’ value
-</LI>
-<LI>bit 2: Attack: 0=generator counts down, 1=generator counts up
-</LI>
-<LI>bit 1: Alternate:
-    
-<UL>
-<LI>hold=0: 0=generator resets after each cycle, 1=generator
-      reverses direction each cycle
-</LI>
-<LI>hold=1: 0=hold final value, 1=hold initial value
-    
-</LI>
-</UL>
-</LI>
-<LI>bit 0: Hold: 0=cycle continuously, 1=perform one cycle and hold
-  
-</LI>
-</UL>
-</LI>
-</UL>
+<P>
+Port $57 (W)
+
+<P>
+Once a sprite is selected via port $303B, its attributes can be
+written to this port one byte after another. Sprites can have either
+four or five attribute bytes and the internal attribute pointer will
+move onto the next sprite after those four or five attribute bytes are
+written. This means you can select a sprite via port $303B and write
+attributes for as many sequential sprites as desired. The attribute
+pointer will roll over from sprite 127 to sprite 0.
+
+<P>
+Port $5B (W)
+
+<P>
+Once a pattern number is selected via port $303B, the 256-byte or
+128-byte pattern can be written to this port. The internal pattern
+pointer auto-increments after each write so as many sequential
+patterns as desired can be written. The internal pattern pointer will
+roll over from pattern 127 to pattern 0 (4-bit patterns) or from
+pattern 63 to pattern 0 (8-bit patterns) automatically.
+
+<P>
+Port $303B (R)
+
+<P>
+<PRE>
+0 0 0 0 0 0 M C
+</PRE>
+M = 1 if the maximum number of sprites per line was exceeded
+<BR>
+C = 1 if any two displayed sprites collide on screen
+<BR>
+Reading this port automatically resets the M and C bits.
+
+<P>
+Besides the i/o interface, there is a nextreg interface to sprite
+attributes. The nextreg interface allows the copper to manipulate
+sprites and grants the program random access to a sprite’s individual
+attribute bytes.
+
+<P>
+(R/W) $34 (52) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Number
+<BR>
+If the sprite number is in lockstep with io port $303B (nextreg $09
+bit 4 is set)
+<table width="90%"><tr><td valign="top">&nbsp;bits 7 = Pattern address offset (Add 128 to pattern address)</td></tr>
+<tr><td valign="top">&nbsp;bits 6-0 = Sprite number 0-127, Pattern number 0-63
+</td></tr></table>
+
+Selects which sprite has its attributes connected to the following registers.
+
+<P>
+Effectively performs an out to port $303B with the same value
+
+<P>
+Otherwise
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Ignored</td></tr>
+<tr><td valign="top">&nbsp;bits 6-0 = Sprite number 0-127
+</td></tr></table>
+
+Selects which sprite has its attributes connected to the following registers.
+<BR>
+Bit 7 always reads back as zero.
+
+<P>
+This nextreg can operate in two modes.
+
+<P>
+If nextreg $09 bit 4 is set, then this register is kept in lockstep
+with i/o port $303B. A write to this nextreg is equivalent to a write
+to port $303B and vice versa. In this mode, the i/o interface and
+nextreg interface are exactly equivalent.
+
+<P>
+If nextreg $09 bit 4 is reset, then the nextreg interface is
+decoupled from i/o port $303B. This nextreg is used to select a
+particular sprite 0-127 and this is completely independent from the
+sprite selected for the i/o interface. This independence allows the
+copper, for example, to manipulate different sprites than the cpu
+using the i/o interface.
+
+<P>
+(W) $35 (53) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 0
+<BR>(W) $75 (117) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 0 with automatic post
+increment of Sprite Number
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = LSB of X coordinate
+</td></tr></table>
+
+A write to nextreg $75 also increases the selected sprite in nextreg
+$34.
+
+<P>
+(W) $36 (54) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 1
+<BR>(W) $76 (118) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 1 with automatic post
+increment of Sprite Number
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = LSB of Y coordinate
+</td></tr></table>
+
+A write to nextreg $76 also increases the selected sprite in nextreg
+$34.
+
+<P>
+(W) $37 (55) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 2
+<BR>(W) $77 (119) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 2 with automatic post
+increment of Sprite Number
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Palette offset added to top 4 bits of sprite colour
+  index</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = X mirror</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = Y mirror</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Rotate</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = MSB of X coordinate
+</td></tr></table>
+
+A write to nextreg $77 also increases the selected sprite in nextreg
+$34.
+
+<P>
+(W) $38 (56) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 3
+<BR>(W) $78 (120) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 3 with automatic post
+increment of Sprite Number
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Visible flag (1 = displayed)</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = Extended attribute (1 = Sprite Attribute 4 is active)</td></tr>
+<tr><td valign="top">&nbsp;bits 5-0 = Pattern used by sprite (0-63)
+</td></tr></table>
+
+A write to nextreg $78 also increases the selected sprite in nextreg
+$34.
+
+<P>
+(W) $39 (57) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 4
+<BR>(W) $79 (121) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 4 with automatic post
+increment of Sprite Number
+<BR>
+4-bit Sprites
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = H (1 = sprite uses 4-bit patterns)</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = N6 (0 = use the first 128 bytes of the pattern else
+  use the last 128 bytes)</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = 1 if relative sprites are composite, 0 if relative
+  sprites are unified Scaling</td></tr>
+<tr><td valign="top">&nbsp;bits 4-3 = X scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)</td></tr>
+<tr><td valign="top">&nbsp;bits 2-1 = Y scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = MSB of Y coordinate
+</td></tr></table>
+
+A relative mode is enabled if H,N6 = 01. The byte format for relative
+sprites is described above.
+<BR>
+A write to nextreg $79 also increases the selected sprite in nextreg
+$34.
+
+<P>
 
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
@@ -199,28 +249,28 @@ mapping is controlled by bit 5 of Next register 0x08 (8).
  HREF="node48.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node44.html">
+ HREF="node39.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node46.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html485"
+<A ID="tex2html542"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html487"
-  HREF="node135.html">
+<A ID="tex2html544"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node48.html">Memory Management</A>
+ HREF="node48.html">Global Control of Sprites</A>
 <B> Up:</B> <A
- HREF="node44.html">Audio</A>
+ HREF="node39.html">Sprites</A>
 <B> Previous:</B> <A
- HREF="node46.html">Spectdrum/Convox</A>
- &nbsp; <B>  <A ID="tex2html486"
+ HREF="node46.html">Relative Sprites</A>
+ &nbsp; <B>  <A ID="tex2html543"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html488"
-  HREF="node135.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html545"
+  HREF="node156.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

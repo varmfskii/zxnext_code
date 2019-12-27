@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Programming Tilemap mode</TITLE>
-<META NAME="description" CONTENT="Programming Tilemap mode">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Layer 3 (Tilemap) Mode</TITLE>
+<META NAME="description" CONTENT="Layer 3 (Tilemap) Mode">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,8 +13,9 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node39.html">
 <LINK REL="previous" HREF="node28.html">
 <LINK REL="next" HREF="node30.html">
 </HEAD>
@@ -26,223 +27,40 @@
  HREF="node30.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node22.html">
+ HREF="node3.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node28.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html393"
+<A ID="tex2html443"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html395"
-  HREF="node135.html">
+<A ID="tex2html445"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node30.html">Changes Since 2.00.26</A>
+ HREF="node30.html">General Description</A>
 <B> Up:</B> <A
- HREF="node22.html">Tilemap Mode</A>
+ HREF="node3.html">Video</A>
 <B> Previous:</B> <A
- HREF="node28.html">Combining ULA &amp; Tilemap</A>
- &nbsp; <B>  <A ID="tex2html394"
+ HREF="node28.html">Layer 2</A>
+ &nbsp; <B>  <A ID="tex2html444"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html396"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html446"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION00345000000000000000">
-Programming Tilemap mode</A>
-</H2>
+<H1><A ID="SECTION00340000000000000000">
+Layer 3 (Tilemap) Mode</A>
+</H1>
 
 <P>
-(R/W) $6B (107) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Tilemap Control
-<table width="90%"><tr><td valign="top">&nbsp;bit 7    = 1 to enable the tilemap</td></tr>
-<tr><td valign="top">&nbsp;bit 6    = 0 for <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img21.svg"
- ALT="$40\times32$"></SPAN>, 1 for <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img23.svg"
- ALT="$80\times32$"></SPAN></td></tr>
-<tr><td valign="top">&nbsp;bit 5    = 1 to eliminate the attribute entry in the tilemap</td></tr>
-<tr><td valign="top">&nbsp;bit 4    = palette select</td></tr>
-<tr><td valign="top">&nbsp;bits 3-2 = Reserved set to 0</td></tr>
-<tr><td valign="top">&nbsp;bit 1    = 1 to activate 512 tile mode</td></tr>
-<tr><td valign="top">&nbsp;bit 0    = 1 to force tilemap on top of ULA
-</td></tr></table>
-
-<P>
-Bits 7 &amp; 6 enable the tilemap and select resolution. Bit 4 selects one
-of two tilemap palettes used for final colour lookup. Bit 5 changes
-the structure of the tilemap so that it contains only 8-bit tilemap
-entries instead of 16-bit tilemap entries. If 8-bit, the tilemap only
-contains tile numbers and the attributes are instead taken from
-nextreg $6C.
-
-<P>
-Bit 1 activates 512 tile mode. In this mode, the “ULA over tilemap”
-bit in a tile’s attribute is re-purposed as the ninth bit of the tile
-number, allowing up to 512 unique tiles to be displayed. In this mode,
-the ULA is always on top of the tilemap.
-
-<P>
-Bit 0 forces the tilemap to be on top of the ULA. It can be useful in
-512 tile mode to change the relative display order of the ULA and
-tilemap.
-
-<P>
-(R/W) $6C (108) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Default Tilemap Attribute
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Palette Offset</td></tr>
-<tr><td valign="top">&nbsp;bit 3    = X mirror</td></tr>
-<tr><td valign="top">&nbsp;bit 2    = Y mirror</td></tr>
-<tr><td valign="top">&nbsp;bit 1    = Rotate</td></tr>
-<tr><td valign="top">&nbsp;bit 0    = ULA over tilemap
-<BR>  (bit 8 of the tile number if 512 tile mode is enabled)
-</td></tr></table>
-
-<P>
-If bit 5 of nextreg $6B is set, the tilemapís structure is modified
-to contain only 8-bit tile numbers instead of the usual 16-bit tilemap
-entries. In this case, the tile attributes used are taken from this
-register instead.
-
-<P>
-(R/W) $6E (110) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Tilemap Base Address
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Read back as zero, write values ignored</td></tr>
-<tr><td valign="top">&nbsp;bits 5-0 = MSB of address of the tilemap in Bank 5
-</td></tr></table>
-
-<P>
-This register determines the tilemapís base address in bank 5. The
-base address is the MSB of an offset into the 16k bank, allowing the
-tilemap to begin at any multiple of 256 bytes in the bank. Writing a
-physical MSB address in $40-$7f or $c0-$ff, corresponding to
-traditional ULA physical addresses, is permitted. The value read back
-should be treated as a fully significant 8-bit value.
-
-<P>
-The tilemap will be <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img21.svg"
- ALT="$40\times32$"></SPAN> or <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img23.svg"
- ALT="$80\times32$"></SPAN> in size depending on
-the resolution selected in nextreg $6B. Each entry in the tilemap is
-normally two bytes but can be one byte if attributes are eliminated by
-setting bit 5 of nextreg $6B.
-
-<P>
-(R/W) $6F (111) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Tile Definitions Base Address
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Read back as zero, write values ignored</td></tr>
-<tr><td valign="top">&nbsp;bits 5-0 = MSB of address of tile definitions in Bank 5
-</td></tr></table>
-
-<P>
-This register determines the base address of tile definitions in bank
-5. As with nextreg $6E, the base address is the MSB of the an offset
-into the 16k bank, allowing tile definitions to begin at any multiple
-of 256 bytes in the bank. Writing a physical MSB address in $40-$7f
-or $c0-$ff, corresponding to traditional ULA physical addresses, is
-permitted. The value read back should be treated as a fully
-significant 8-bit value.
-
-<P>
-Each tile definition is 32 bytes in size and is located at address:
-<BR>
-Tile Def Base Addr + 32 * (Tile Number)
-
-<P>
-<A NAME="425"></A>
-(R/W) $4C (76) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Transparency index for the tilemap
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Reserved, must be 0</td></tr>
-<tr><td valign="top">&nbsp;bits 3-0 = Set the index value ($F after reset)
-</td></tr></table>
-
-<P>
-Defines the transparent colour index for tiles. The 4-bit pixels of a
-tile definition are compared to this value to determine if they are
-transparent.
-
-<P>
-For palette information see palette section.
-
-<P>
-<A NAME="428"></A>
-(R/W) $1B (27) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Clip Window Tilemap
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Coord. of the clip window
-  <table width="90%">  <tr><td valign="top">&nbsp;1st write = X1 position
-  </td></tr>
-<tr><td valign="top">&nbsp;2nd write = X2 position
-  </td></tr>
-<tr><td valign="top">&nbsp;3rd write = Y1 position
-  </td></tr>
-<tr><td valign="top">&nbsp;4rd write = Y2 position
-  </td></tr></table>
-</td></tr></table>
-
-The values are 0,159,0,255 after a Reset
-<BR>
-Reads do not advance the clip position
-
-<P>
-The tilemap display surface extends 32 pixels around the central
-<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
- ALT="$256\times192$"></SPAN> display. The origin of the clip window is the top left
-corner of this area 32 pixels to the left and 32 pixels above the
-central <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
- ALT="$256\times192$"></SPAN> display. The X coordinates are internally
-doubled to cover the full 320 pixel width of the surface. The clip
-window indicates the portion of the tilemap display that is
-non-transparent and its indicated extent is inclusive; it will extend
-from X1*2 to X2*2+1 horizontally and from Y1 to Y2 vertically.
-
-<P>
-<A NAME="433"></A>
-(R/W) $2F (47) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Tilemap Offset X MSB
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-2 = Reserved, must be 0</td></tr>
-<tr><td valign="top">&nbsp;bits 1-0 = MSB X Offset
-</td></tr></table>
-
-Meaningful Range is 0-319 in 40 char mode, 0-639 in 80 char mode
-
-<P>
-(R/W) $30 (48) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Tilemap Offset X LSB
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = LSB X Offset
-</td></tr></table>
-
-Meaningful range is 0-319 in 40 char mode, 0-639 in 80 char mode
-
-<P>
-(R/W) $31 (49) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> Tilemap Offset Y
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Y Offset (0-191)
-</td></tr></table>
-
-These are scroll registers for scrolling the tilemap area. As with
-other layers, the scroll region wraps.
-
-<P>
-(R/W) $68 (104) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
- ALT="$\Rightarrow$"></SPAN> ULA Control
-<table width="90%"><tr><td valign="top">&nbsp;bit 7    = 1 to disable ULA output</td></tr>
-<tr><td valign="top">&nbsp;bit 6 = 0 to select the ULA colour for blending in SLU modes 6
-  &amp; 7
-<BR>  = 1 to select the ULA/tilemap mix for blending in SLU modes 6 &amp; 7</td></tr>
-<tr><td valign="top">&nbsp;bits 5-1 = Reserved must be 0</td></tr>
-<tr><td valign="top">&nbsp;bit 0 = 1 to enable stencil mode when both the ULA and tilemap
-  are enabled
-<BR>  (if either are transparent the result is transparent otherwise the
-  result is a logical AND of both colours)
-</td></tr></table>
-
-<P>
-Bit 0 can be set to choose stencil mode for the combined output of the
-ULA and tilemap. Bit 6 determines what colour is used in SLU modes 6 &amp;
-7 where the ULA is combined with Layer 2 to generate highlighting
-effects.
+Started with documentation by Phoebus Dokos, February 25,
+2019. Partially rewritten for clarity and to add core 3.00.00
+features.
 
 <P>
 <BR><HR>
@@ -250,43 +68,31 @@ effects.
 <A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
 <UL CLASS="ChildLinks">
-<LI><UL>
-<LI><A ID="tex2html397"
-  HREF="node30.html">Changes Since 2.00.26</A>
-<LI><A ID="tex2html398"
-  HREF="node31.html">Future Direction</A>
+<LI><A ID="tex2html447"
+  HREF="node30.html">General Description</A>
+<LI><A ID="tex2html448"
+  HREF="node31.html">Data Structures</A>
+<UL>
+<LI><A ID="tex2html449"
+  HREF="node32.html">Tilemap</A>
+<LI><A ID="tex2html450"
+  HREF="node33.html">Tile Definitions</A>
+</UL>
+<BR>
+<LI><A ID="tex2html451"
+  HREF="node34.html">Memory Organization &amp; Display Layer</A>
+<LI><A ID="tex2html452"
+  HREF="node35.html">Combining ULA &amp; Tilemap</A>
+<LI><A ID="tex2html453"
+  HREF="node36.html">Programming Tilemap mode</A>
+<UL>
+<LI><A ID="tex2html454"
+  HREF="node37.html">Changes Since 2.00.26</A>
+<LI><A ID="tex2html455"
+  HREF="node38.html">Future Direction</A>
 </UL></UL>
 <!--End of Table of Child-Links-->
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node30.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node22.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node28.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html393"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html395"
-  HREF="node135.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node30.html">Changes Since 2.00.26</A>
-<B> Up:</B> <A
- HREF="node22.html">Tilemap Mode</A>
-<B> Previous:</B> <A
- HREF="node28.html">Combining ULA &amp; Tilemap</A>
- &nbsp; <B>  <A ID="tex2html394"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html396"
-  HREF="node135.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<BR><HR>
 
 </BODY>
 </HTML>

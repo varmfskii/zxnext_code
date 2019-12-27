@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Combining ULA &amp; Tilemap</TITLE>
-<META NAME="description" CONTENT="Combining ULA &amp; Tilemap">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Layer 2</TITLE>
+<META NAME="description" CONTENT="Layer 2">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,10 +13,10 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node29.html">
-<LINK REL="previous" HREF="node27.html">
+<LINK REL="previous" HREF="node10.html">
 <LINK REL="next" HREF="node29.html">
 </HEAD>
 
@@ -27,53 +27,175 @@
  HREF="node29.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node22.html">
+ HREF="node3.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node27.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html389"
+<A ID="tex2html439"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html391"
-  HREF="node135.html">
+<A ID="tex2html441"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node29.html">Programming Tilemap mode</A>
+ HREF="node29.html">Layer 3 (Tilemap) Mode</A>
 <B> Up:</B> <A
- HREF="node22.html">Tilemap Mode</A>
+ HREF="node3.html">Video</A>
 <B> Previous:</B> <A
- HREF="node27.html">Memory Organization &amp; Display</A>
- &nbsp; <B>  <A ID="tex2html390"
+ HREF="node27.html">Lo-Resolution Mode</A>
+ &nbsp; <B>  <A ID="tex2html440"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html392"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html442"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION00344000000000000000">
-Combining ULA &amp; Tilemap</A>
-</H2>
-The combination of the ULA and tilemap is done in one of two modes:
-the standard mode or the stencil mode.
+<H1><A ID="SECTION00330000000000000000">
+Layer 2</A>
+</H1>
+Layer 2 is a linearly mapped, row-wise, upper left to lower right,
+<!-- MATH
+ $256\times192\times256$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img22.svg"
+ ALT="$256\times192\times256$"></SPAN> bit-map graphics area.  Both the main version
+(8k pages 16-21/16k banks 8-10) and a shadow version (8k pages
+22-27/16k banks 11-13) are six contiguous 8k pages (three contiguous
+16k blocks) in the extended RAM space indicated by the contents of
+Next registers $12 (18 Layer 2 RAM page, default 8) and $13 (19,
+Layer 2 shadow page, default 11).  The layer 2 pages can be accessed
+either by mapping the pages into normal RAM, or write only access
+using port $123B to fix them in the same space as the ROMs at
+$0000-$3FFF.  The colours come from the indices in the layer 2
+palette.  Layer 2 is drawn according to the values in registers $16
+(22, Layer 2 Offset X, default 0) and $17 (23, Layer 2 Offset Y,
+default 0).
 
 <P>
-The standard mode uses bit 8 of a tile's tilemap entry to determine if
-a tile is above or below the ULA. The source of the final pixel
-generated is then the topmost non-transparent pixel. If the ULA or
-tilemap is disabled then they are treated as transparent.
+Port $123b (4667) Layer 2
+
+<UL>
+<LI>bits 6-7: Video RAM bank select
+</LI>
+<LI>bit 3: Shadow layer 2 select
+</LI>
+<LI>bit 1: Layer 2 visible
+</LI>
+<LI>bit 0: Enable layer 2 write paging
+</LI>
+</UL>
 
 <P>
-The stencil mode will only be applied if both the ULA and tilemap are
-enabled. In the stencil mode, the final pixel will be transparent if
-either the ULA or tilemap are transparent. Otherwise the final pixel
-is a logical AND of the corresponding colour bits. The stencil mode
-allows one layer to act as a cut-out for the other.
+(R/W) $16 (22) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Layer2 Offset X
+
+<UL>
+<LI>bits 7-0 = X Offset (0-255)(0 after a reset)
+</LI>
+</UL>
 
 <P>
-<BR><HR>
+(R/W) $17 (23) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Layer2 Offset Y
+
+<UL>
+<LI>bits 7-0 = Y Offset (0-191)(0 after a reset)
+</LI>
+</UL>
+
+<P>
+(R/W) $18 (24) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Clip Window Layer 2
+<table width="90%">
+bits 7-0 = Coords of the clip window
+  
+<UL>
+<LI>1st write - X1 position
+</LI>
+<LI>2nd write - X2 position
+</LI>
+<LI>3rd write - Y1 position
+</LI>
+<LI>4rd write - Y2 position
+  
+</LI>
+</UL><tr><td valign="top">&nbsp;Reads do not advance the clip position</td></tr>
+<tr><td valign="top">&nbsp;The values are 0,255,0,191 after a Reset
+</td></tr></table>
+
+<P>
+(W) $1C (28) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Clip Window control
+
+<UL>
+<LI>bits 7-4 = Reserved, must be 0
+</LI>
+<LI>bit 3 - reset the tilemap clip index
+</LI>
+<LI>bit 2 - reset the ULA/LoRes clip index.
+</LI>
+<LI>bit 1 - reset the sprite clip index.
+</LI>
+<LI>bit 0 - reset the Layer 2 clip index.
+</LI>
+</UL>
+
+<P>
+(R/W) $12 (18) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Layer 2 RAM bank
+
+<UL>
+<LI>bits 7-6 = Reserved, must be 0
+</LI>
+<LI>bits 5-0 = RAM bank (point to bank 8 after a Reset, NextZXOS
+  modifies to 9)
+</LI>
+</UL>
+
+<P>
+(R/W) $13 (19) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Layer 2 RAM shadow bank
+
+<UL>
+<LI>bits 7-6 = Reserved, must be 0
+</LI>
+<LI>bits 5-0 = RAM bank (point to bank 11 after a Reset, NextZXOS
+  modifies to 12)
+</LI>
+</UL>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node29.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node27.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html439"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html441"
+  HREF="node156.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node29.html">Layer 3 (Tilemap) Mode</A>
+<B> Up:</B> <A
+ HREF="node3.html">Video</A>
+<B> Previous:</B> <A
+ HREF="node27.html">Lo-Resolution Mode</A>
+ &nbsp; <B>  <A ID="tex2html440"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html442"
+  HREF="node156.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

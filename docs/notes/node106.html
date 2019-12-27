@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>8-bit</TITLE>
-<META NAME="description" CONTENT="8-bit">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Interrupts</TITLE>
+<META NAME="description" CONTENT="Interrupts">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,10 +13,10 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node107.html">
-<LINK REL="previous" HREF="node105.html">
+<LINK REL="previous" HREF="node80.html">
 <LINK REL="next" HREF="node107.html">
 </HEAD>
 
@@ -27,167 +27,93 @@
  HREF="node107.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node105.html">
+ HREF="zxnext_notes.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node105.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html808"
+<A ID="tex2html866"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html810"
-  HREF="node135.html">
+<A ID="tex2html868"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node107.html">16-bit</A>
+ HREF="node107.html">Raspberry Pi0 Acceleration</A>
 <B> Up:</B> <A
- HREF="node105.html">Ports</A>
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
- HREF="node105.html">Ports</A>
- &nbsp; <B>  <A ID="tex2html809"
+ HREF="node105.html">Summary</A>
+ &nbsp; <B>  <A ID="tex2html867"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html811"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html869"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION001110000000000000000">
-8-bit</A>
+<H1><A ID="SECTION00800000000000000000">
+Interrupts</A>
 </H1>
-Port $0f (15) DAC A
-<BR>
-Disable with bit 3 of Nextreg $08
+CPU processing of interrupts is enabled using the EI instruction and
+disabled with the DI instruction. Interrupts can happen at any time
+and should preserve register contents.  If none of your code uses the
+alternate registers the EXX and EX AF,AF’ instructions can make this
+faster and easier. Upon completion of your interrupt routine you
+should call the RTI instruction and re-enable interrupts.
 
 <P>
-Port $1f (31) Kempston Joystick 1
-<BR>
-Disable with Nextreg $05
+IM0 – When an interrupt is received by the CPU it disables interrupts
+and executes the instruction placed on the bus by the interrupting
+device and (no known use on the Next) It is enabled with the IM0
+instruction and enabling interrupts (EI).
 
 <P>
-Port $1f (31) DAC B
-<BR>
-Disable with bit 3 of Nextreg $08
+IM1 – When an interrupt is received, the CPU disables interrupts and
+jumps to an interrupt handler at $0038 (normally in ROM). The ROM
+interrupt handler updates the frame counter and scans the
+keyboard. This is the default interrupt handling method for the ZX
+Spectrum and is probably the method to use if you don’t need the ROMs
+for anything. It is enabled using the IM1 instruction and enabling
+interrupts.
 
 <P>
-Port $1f (31) Multiface 1 Disable
+IM2 – When the CPU receives an interrupt it disables interrupts and
+jumps to an interrupt routine starting at the contents of the jump
+table at I. The start of the interrupt routine is the contents of
+I*$100+bus and I*$100+bus+1. Most devices that can supply interrupts
+on the ZX Spectrum leave the data bus in a floating state.  As a
+result the interpreted state of the data bus while generally $FF is
+not entirely predictable.  The solution to place your interrupt
+routine at an address where the MSB and LSB are the same ($0101,
+$0202, … $FFFF) then place 257 copies of that value in a block
+starting at I*$100 (you can set the value of the I register).
 
 <P>
-Port $37 (55) Kempston Joystick 2
-<BR>
-Disable with Nextreg $05
-
-<P>
-Port $3f (63) DAC A
-<BR>
-Disable with bit 3 of Nextreg $08
-
-<P>
-Port $3f (63) Multiface 128 Disable
-
-<P>
-Port $3f (63) Multiface +3 Enable
-
-<P>
-Port $4f (79) DAC C
-<BR>
-Disable with bit 3 of Nextreg $08
-
-<P>
-Port $57 (87) Sprite Attributes
-
-<P>
-Port $5b (91) Sprite Pattern
-
-<P>
-Port $5f (95) DAC D
-<BR>
-Disable with bit 3 of Nextreg $08
-
-<P>
-Port $6b (107) zxnDMA
-
-<P>
-Port $9f (159) Multiface 1 Enable
-
-<P>
-Port $bf (191) Multiface 128 Enable
-
-<P>
-Port $bf (191) Multiface +3 Disable
-
-<P>
-Port $df (223) DAC A/C SpecDrum
-<BR>
-Disable with bit 3 of Nextreg $08
-
-<P>
-Port $e3 (227) divMMC Control
-<BR>
-Disable with bit 2 of Nextreg $09
-
-<P>
-Port $e7 (231) SPI /CS (SD card, flash, rpi)
-<BR>
-Disable with bit 2 of Nextreg $09
-
-<P>
-Port $eb (235) SPI /DATA (SD card, flash, rpi)
-<BR>
-Disable with bit 2 of Nextreg $09
-
-<P>
-Port $f1 (241) DAC A (precedence over $xxfd)
-<BR>
-Disable with bit 3 of Nextreg $08
-
-<P>
-Port $f3 (243) DAC B
-<BR>
-Disable with bit 3 of Nextreg $08
-
-<P>
-Port $f9 (249) DAC C (precedence over $xxfd)
-<BR>
-Disable with bit 3 of Nextreg $08
-
-<P>
-Port $fb (251) DAC D
-<BR>
-Disable with bit 3 of Nextreg $08
-
-<P>
-Port $fe (254) ULA
-<table width="90%">
-  <tr><td valign="top">&nbsp;bits 5-7: unused
-  </td></tr>
-<tr><td valign="top">&nbsp;bit 4: enable ear output
-  </td></tr>
-<tr><td valign="top">&nbsp;bit 3: enable mic output
-  </td></tr>
-<tr><td valign="top">&nbsp;bits 0-2: border colour
-</td></tr></table>
-
-<P>
-Port $ff (255) Timex Sinclair/floating bus
-<BR>
-Disable with bit 2 to Nextreg $08
-<table width="90%"><tr><td valign="top">&nbsp;bit 7: memory paging (not on Next)</td></tr>
-<tr><td valign="top">&nbsp;bit 6: disables generation of interrupts</td></tr>
-<tr><td valign="top">&nbsp;bits 3-5: set hi-res mode colour combination</td></tr>
-<tr><td valign="top">&nbsp;bits 0-2: screen mode
-  <table width="90%">  <tr><td valign="top">&nbsp;000=normal ULA mode
-  </td></tr>
-<tr><td valign="top">&nbsp;001=alternate ULA address
-  </td></tr>
-<tr><td valign="top">&nbsp;010=hi-colour
-  </td></tr>
-<tr><td valign="top">&nbsp;110=hi-res
-  </td></tr></table>
-</td></tr></table>
-
-<P>
+Code:
+<PRE>
+;; my program
+org $8000
+;; enable interrupt mode im2
+ld i,$fe
+im2
+ei
+;; program body
+;; interrupt routine
+handler:
+;; preserve registers used
+;; handle interrupt
+;; restore registers
+ei
+rti
+;; jump to interrupt routine
+org $fdfd
+jp handler
+;; im2 jump table
+org $fe00 ; not actually legal
+defs $101,$fd
+</PRE>
 
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
@@ -195,28 +121,28 @@ Disable with bit 2 to Nextreg $08
  HREF="node107.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node105.html">
+ HREF="zxnext_notes.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node105.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html808"
+<A ID="tex2html866"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html810"
-  HREF="node135.html">
+<A ID="tex2html868"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node107.html">16-bit</A>
+ HREF="node107.html">Raspberry Pi0 Acceleration</A>
 <B> Up:</B> <A
- HREF="node105.html">Ports</A>
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
- HREF="node105.html">Ports</A>
- &nbsp; <B>  <A ID="tex2html809"
+ HREF="node105.html">Summary</A>
+ &nbsp; <B>  <A ID="tex2html867"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html811"
-  HREF="node135.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html869"
+  HREF="node156.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>$EDxx Block/Port</TITLE>
-<META NAME="description" CONTENT="$EDxx Block/Port">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Clock Support Function</TITLE>
+<META NAME="description" CONTENT="Clock Support Function">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,9 +13,8 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node118.html">
 <LINK REL="previous" HREF="node116.html">
 <LINK REL="next" HREF="node118.html">
 </HEAD>
@@ -27,78 +26,57 @@
  HREF="node118.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node113.html">
+ HREF="node116.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node116.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html863"
+<A ID="tex2html935"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html865"
-  HREF="node135.html">
+<A ID="tex2html937"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node118.html">$FDxx IY</A>
+ HREF="node118.html">NextZXOS</A>
 <B> Up:</B> <A
- HREF="node113.html">Extended Opcodes to Mnemonics</A>
+ HREF="node116.html">Memory Select and Move</A>
 <B> Previous:</B> <A
- HREF="node116.html">$DDxx IX</A>
- &nbsp; <B>  <A ID="tex2html864"
+ HREF="node116.html">Memory Select and Move</A>
+ &nbsp; <B>  <A ID="tex2html936"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html866"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html938"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION001340000000000000000">
-$EDxx Block/Port</A>
-</H1>
-<BR><P></P>
-<DIV class="CENTER"><A ID="4114"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.20:</STRONG>
-$ED00-$ED4F</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img77.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvautotabular{opcode/ed00-opcode.csv}
-\par
-* ZX Spectrum Next extension
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+<H3><A ID="SECTION001014100000000000000">
+Clock Support Function</A>
+</H3>
+This section defines the clock support function TIME.
+
+<P>
+<A NAME="3965"></A>
+BIOS Function 26: TIME
+
+<P>
+Get and Set Time
 <BR>
-<BR><P></P>
-<DIV class="CENTER"><A ID="4118"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.21:</STRONG>
-$ED50-$ED8F</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img78.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvautotabular{opcode/ed50-opcode.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+Entry Parameters: C=Time Get/Set Flag
 <BR>
-<BR><P></P>
-<DIV class="CENTER"><A ID="4122"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.22:</STRONG>
-$ED90-$EDFF</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img79.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvautotabular{opcode/ed90-opcode.csv}
-\par
-* ZX Spectrum Next extension
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
+Returned values: None
+
+<P>
+The BDOS calls the TIME function to indicate to the BIOS whether it
+has just set the Time and Date fields in the SCB, or whether the BDOS
+is about to get the Time and Date from the SCB. On entry to the TIME
+function, a zero in register C indicates that the BIOS should update
+the Time and Date fields in the SCB. A $ff in register C indicates
+that the BDOS has just set the Time and Date in the SCB and the BIOS
+should update its clock. Upon exit, you must restore register pairs HL
+and DE to their entry values.
 <BR><HR>
 
 </BODY>

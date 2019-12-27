@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Refresh Rate</TITLE>
-<META NAME="description" CONTENT="Refresh Rate">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Control</TITLE>
+<META NAME="description" CONTENT="Control">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,10 +13,10 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node97.html">
-<LINK REL="previous" HREF="node95.html">
+<LINK REL="next" HREF="node101.html">
+<LINK REL="previous" HREF="node91.html">
 <LINK REL="next" HREF="node97.html">
 </HEAD>
 
@@ -27,53 +27,197 @@
  HREF="node97.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node95.html">
+ HREF="node80.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node95.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html764"
+<A ID="tex2html818"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html766"
-  HREF="node135.html">
+<A ID="tex2html820"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node97.html">Video Modes</A>
+ HREF="node97.html">STOP</A>
 <B> Up:</B> <A
- HREF="node95.html">Configuration</A>
+ HREF="node80.html">Copper and Display Timing</A>
 <B> Previous:</B> <A
- HREF="node95.html">Configuration</A>
- &nbsp; <B>  <A ID="tex2html765"
+ HREF="node95.html">Example</A>
+ &nbsp; <B>  <A ID="tex2html819"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html767"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html821"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00740010000000000000">
-Refresh Rate</A>
-</H4>
+<H1><A ID="SECTION00730000000000000000">
+Control</A>
+</H1>
 
 <P>
-The refresh rate must be taken into account and can change real-time
-so should be monitored and auto-configured when the COPPER is active
-as the line count will change with the refresh rate. This could lead
-to the COPPER waiting for lines that never occur.
+The COPPER is controlled by the following three write-only registers:
 
 <P>
-Peripheral 1 setting register $05 (5)
-<table width="90%"><tr><td valign="top">&nbsp;bit 2 = 50/60 Hz mode
-  <table width="90%">  <tr><td valign="top">&nbsp;0 = 50Hz
-  </td></tr>
-<tr><td valign="top">&nbsp;1 = 60Hz * Pentagon 60Hz is not supported in VGA mode so always 50Hz
-  </td></tr></table>
+<table width="90%"><tr><td valign="top">&nbsp;$60 (96)   Copper data</td></tr>
+<tr><td valign="top">&nbsp;$61 (97)   Copper control LO BYTE</td></tr>
+<tr><td valign="top">&nbsp;$62 (98)   Copper control HI BYTE
 </td></tr></table>
 
 <P>
+The COPPER instructions are written one BYTE at a time to the program
+RAM using register $60 (Copper data).
+
+<P>
+An index system is used to select the destination write address within
+the 2K program RAM. Eleven bits are needed to represent the
+index. Registers $61 and $62 hold this 11 bit index.
+
+<P>
+The index increments each time one BYTE is written to register
+$60. The index wraps to zero when the last BYTE of program RAM is
+written.
+
+<P>
+The instruction data is normally written in big endian format although
+there is no rule stating that partial instruction BYTES cannot be
+written. It is safe to write to the COPPER program RAM while the
+COPPER is executing as long the instruction data written does not
+create a mall formed instruction which comprises of one half of the
+current executing instruction and one half the new instruction - this
+could result in unexpected behaviour.
+
+<P>
+The Z80 and DMA can be used to write the instruction data.
+
+<P>
+Writing to program RAM while the COPPER is running has no impact on
+system performance as the RAM is contention free. COPPER timing is not
+affected by the Z80 or DMA writing to the program RAM. Program RAM is
+write-only.
+
+<P>
+The contents of the 2k program RAM are preserved during a hard/soft reset.
+
+<P>
+Register $61 holds the lower 8 bits of the index. Register $62 holds
+the upper 3 bits of the index as well as two control bits which set
+the COPPER operating mode.
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1399"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.10:</STRONG>
+Register Bit Definitions</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img50.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/regbit.csv}
+\par
+\raggedright D 8 bit data
+\par
+I 11 bit index
+\par
+C 2 bit control
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+The COPPER has an internal 10 bit program counter (PC). Each
+instruction advances the program counter by one after completion. The
+program counter wraps to zero after the last instruction at location
+1023. This causes the copper list to loop.
+
+<P>
+The program counter defaults to zero during a hard/soft reset.
+
+<P>
+The control bits require a change to update the operating mode. This
+feature preserves COPPER operation when setting the program RAM index
+address.
+
+<P>
+The program counter is preserved when stopping the COPPER. Two of the
+four control settings reset the internal PC to zero.
+
+<P>
+Table 5.11 describes the control bits:
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1403"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.11:</STRONG>
+Control Mode Definitions</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img51.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/controlmodes.csv}
+\par
+\ragged...
+...ntrol mode names used in this guide differ from
+the official names.
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Here is a detailed description of the control bits:
+
+<P>
 <BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html822"
+  HREF="node97.html">STOP</A>
+<LI><A ID="tex2html823"
+  HREF="node98.html">RESET</A>
+<LI><A ID="tex2html824"
+  HREF="node99.html">START</A>
+<LI><A ID="tex2html825"
+  HREF="node100.html">FRAME</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node97.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node80.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node95.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html818"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html820"
+  HREF="node156.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node97.html">STOP</A>
+<B> Up:</B> <A
+ HREF="node80.html">Copper and Display Timing</A>
+<B> Previous:</B> <A
+ HREF="node95.html">Example</A>
+ &nbsp; <B>  <A ID="tex2html819"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html821"
+  HREF="node156.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

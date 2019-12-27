@@ -1,0 +1,301 @@
+\chapter{DMA} 
+Development
+
+[74\_New]Given such a large memory size, a fast data transfer facility
+is needed.
+
+TSconf offers us such a tool that allows you to transfer data in
+memory without the participation of the processor.
+
+
+Tao says: The transfer speed is 7 MHz, copying takes place two bytes
+(16 bits), provided that there is no access to the CPU, video, or a
+TCU during this clock cycle.
+
+On average: 4 bytes - 2 clocks, dma refers to the RAM for 1 beat of 7
+MHz, 16 bits, 2 calls are needed for transfer. We get : DMA speed 7
+MB/s
+
+DMA can copy data from the following sources:
+\begin{table}
+\begin{tabular}{lll}
+Src & Destination & \\
+RAM & RAM & RAM (Src) is copied to RAM (Dst)\\
+BLT & RAM & Pixels from RAM (Src) are copied to RAM (Dst) if they non zero\\
+SPI & RAM & SPI data is copied to RAM (Dst)\\
+RAM & SPI & RAM (Src) is copied to SPI\\
+IDE & RAM & IDE data is copied to RAM (Dst)\\
+RAM & IDE & RAM (Src) is copied to IDE\\
+FILL & RAM & RAM (Dst) is filled with word from RAM (Src)\\
+RAM & CRAM & RAM (Src) is copied to CRAM (Dst)\\
+RAM & SFILE & RAM (Src) is copied to SFILE (Dst)\\
+\end{tabular}
+\end{table}
+What can we use?
+
+Direct copying, copying mode for images with transparency
+(transparency is not copied - overlaying data over), copying from SPI
+devices (for example - sd-card), copying from the hard drive, filling
+the memory with the specified 16 bits (clearing the screen - also fill
+color) copying to the system’s internal memory for the palette and for
+sprites.
+
+Copying is done by filling in the ports of the DMA system:
+\begin{itemize}
+\item source data start address, source data page;
+\item address of the beginning of the receiver, the page for receiving
+  data;
+\item the amount of data transmitted at one time (the length of the
+  burst), the number of such transmission units (burst);
+\item setting the copy mode that starts the transfer
+\end{itemize}
+
+The maximum length for one transmission is 512 bytes (256 times 2
+bytes), the maximum number of transmission blocks is 256. The maximum
+possible ONE data transfer is: 256 * 512 bytes = 131072 bytes for one
+copy.
+
+Naturally, the length can be set different.
+
+Considering the fact that the transmission takes place in 2 bytes (16
+bits), at a minimum we can copy 2 bytes of data, that there are 4
+points in 16c mode (one byte is 2 points), or 2 points in 256 colors
+mode. All addresses of operations are even.
+
+Copy Modes:
+\begin{table}
+\begin{tabular}{lp{4in}}
+S\_ALGN & Source Address Alignment\\
+D\_ALGN & Destination Address Alignment\\
+0 & After each burst address keeped as is\\
+1 & After each burst lower bits of address restored to their initial
+values before burst, upper bits increased by 1
+\end{tabular}
+\end{table}
+\begin{table}
+\begin{tabular}{lp{4in}}
+A\_SZ & Address Alignment Size\\
+0 & 256 bytes (8 lower address bits) alignment\\
+1 & 512 bytes (9 lower address bits) alignment
+\end{tabular}
+\end{table}
+\begin{table}
+\begin{tabular}{lp{4in}}
+A\_SZ & Blitting Bitness\\
+0 & 4 bits per pixel, transparent color is 0 from 16 (4'b0)\\
+1 & 8 bits per pixel, transparent color is 0 from 256 (8'b0)
+\end{tabular}
+\end{table}
+These bits are used to set system actions after copying a single data
+block (burst) of a given length:
+\begin{itemize}
+\item S\_ALGN, D\_ALGN: these bits are responsible for the “alignment”
+  of the source / destination address. In the state 0, the address
+  does not change, in the state 1- the address will be restored to the
+  initial one with an increase in the high address depending on the
+  A\_SZ bit. This mode is useful to us when copying graphics.
+\item A\_SZ - data alignment method: 256/512 bytes after each burst,
+  which is useful for copying 4-bit (16 color) or 8-bit graphics
+\end{itemize}
+For more information about \#27af (DMACtrl launch port):
+
+DMACtrl ~R/W - S\_ALGN D\_ALGN A\_SZ DDEV[2:0]
+
+Here, bit 7 is R / W, the 6th bit is not used, 5 is source alignment,
+4 is receiver alignment, 3 is alignment type (512/256), then 3 bits of
+the device.
+
+Dao says: The address for DMA does not take into account the state of
+the two high-order bits of the 16-bit address.  Accordingly, \#c000 =
+\#0000. You can use both \#c000 and \#0000 for the address - they are
+equivalent.  When copying data, the location in the memory (address)
+for the source / receiver must be a multiple of 2.
+
+So how do you manage all this goodness?
+
+DMA ports must be programmed (\#xxAF): High byte of source port:
+
+\#1Aaf, \#1Baf - address (low DMASAddrL, high DMASAddrH bytes)
+
+\#1Caf - DMASAddrX start page High byte of receiver port
+
+\#1Daf, \#1Eaf - address (low DMADAddrL, older DMADAddrH bytes)
+
+\#1Faf - DMADAddrX start page
+
+Port of one burst transmission length: \#26af, DMALen
+
+Port of transmission burst number: \#28af, DMANum Transmission
+
+control / transmission status port: \#27af, DMACtrl
+
+Send data to this port \#27af (DMACtrl) launches DMA transfer
+
+Examples:
+
+Copy the image of 256x256 pixels in 16c mode to the screen.
+
+The original image is located at \#c000 of the glasspat\_page of the
+page, copied to the address of the \#c000 of the screen page.
+
+Let's get down to business in a smarter way than simply programming
+each port:
+\begin{verbatim}
+ld bc, #1aaf    ; DMASAddrL
+xor a
+out (c),a
+inc b
+out (c),a
+\end{verbatim}
+So, we copy the graphics with alignment (moving to the next line on
+the screen) after each burst.
+
+We note that A\_SZ is turned off, which is necessary for 16 colors:
+\begin{verbatim}
+                ld hl,glasspat_copy
+                call set_ports
+                ret
+
+glasspat_page   equ #22
+Vid_page        equ #80
+
+glasspat_copy   db #1a,0
+                db #1b,0
+                db #1c,glasspat_page
+                db #1d,0
+                db #1e,0
+                db #1f,Vid_page
+                db #26,256/4-1
+                db #28,256-1
+                db #27,DMA_RAM + DMA_DALGN
+                db #ff
+\end{verbatim}
+To do this, use the routine to issue data to the port ( set\_ports ):
+\begin{verbatim}
+set_ports       ld c,#AF
+.m1             ld b,(hl)
+                inc hl
+                inc b
+                jr z,dma_stats
+                outi
+                jr .m1
+
+dma_stats       ld b,high DMASTATUS
+                in a,(c)
+                AND #80
+                jr nz,$-4
+                ret
+\end{verbatim}
+After setting the value for port 27 the transfer starts. We need to
+control the employment of DMA, for this we use reading this same port
+for a busy signal (DMA\_ACT bit). Setting this bit to 0 indicates that
+the transfer is complete.
+
+Cleaning (fill) screen:
+\begin{verbatim}
+                ld bc,PAGE3
+                ld a,Vid_page
+                out (c),a
+                ld hl,0         ;00 - color set in the palette
+                ld (#c000),hl
+                ld hl,fill_screen
+                jp set_ports
+
+fill_screen     defb #1a,0      ;
+                defb #1b,0      ;
+                defb #1c,Vid_page       ;
+                defb #1d,0      ;
+                defb #1e,0      ;
+                defb #1f,Vid_page       ;
+
+                defb #28,200    ;
+                defb #26,#ff    ;
+                defb #27,%00000100    ; DMA_FILL
+                db #ff
+\end{verbatim}
+In this case, we include the video page from the address \#c000 and
+fill it with the color we need (in this case, color No. 00), after
+which we start the fill. Copying occurs from the address 0000
+(remember that the system is on the drum as the state of the older two
+bits and one of the youngest) is filled with a length of 256 * 2, 200
+bursts.
+
+Cleaning the tile layer:
+\begin{verbatim}
+clear_tileset   ld bc,PAGE3
+                ld a,Tile_page
+                out (c),a
+                ld hl,0
+                ld (#c000),hl
+                ld hl,tileset_clr
+                jp set_ports
+tileset_clr
+                defb #1a,0      ;
+                defb #1b,0      ;
+                defb #1c,Tile_page      ;
+                defb #1d,0      ;
+                defb #1e,0      ;
+                defb #1f,Tile_page      ;
+                defb #28,#ff    ;
+                defb #26,#3f    ;
+                defb #27,%00000100
+                db #ff
+\end{verbatim}
+Copying the palette to the palette memory:
+\begin{verbatim}
+                ld hl,pals
+                jp set_ports
+
+pals            db #1a,low pal
+                db #1b,high pal
+                db #1c,2
+                db #1d,0
+                db #1e,0
+                db #1f,0
+                db #26,#10
+                db #28,0
+                db #27,DMA_RAM_CRAM     ; #84 - copy from RAM to CRAM
+                db #ff
+
+                align 2
+pal             incbin "palette.tga.pal"
+\end{verbatim}
+In this case, copy 16 colors (one palette), from the second page to
+the beginning of the palette memory.
+
+[Question-M]Questions
+
+:? Why is there DMA\_DALGN?\\
+! Since the image is 256 pixels wide, after the last 256 points we
+have to place a new piece of data from a new line. This bit will help
+us.
+
+? Why is the DMANum port (\#28af) such a strange value: 256-1?\\
+! Considering that the maximum number of burst is 256, and the minimum
+is 1, it is assumed that the value sent to the port 0 is the number of
+burst 1 piece, and the sent value 255 is respectively 256 bursts.
+
+? Why is the DMALen port (\#26af) given such a strange value: 256 /
+4-1?\\
+! Since we have an image size of 256 points in 16-color mode, we get 2
+points in one byte, and 4 points in two bytes.  Again, the value 0 for
+this port is the minimum length of 2 bytes.
+
+? Is it worth waiting for the end of the transfer in the read loop of
+the DMASTATUS port?\\
+! If you are sure that the shipment will have time to work out before
+the start of a new one - it is not necessary at all. Moreover, it is
+recommended that the waiting cycle be set BEFORE a new DMA
+transaction, so that the z80 continues its computational work while
+the DMA fulfills the task.
+
+? I sent the palette, but it is not really that color at all!\\
+! Check the location of the palette - it should be stored in memory at
+an even address. ALIGN 2 to help you. Or, perhaps, not there copied?
+
+? Picture sent to the screen, and he moved down the lines!\\
+! The size of the picture should be a multiple of 2m bytes - 2 points
+(256 c), 4 points (16 c)
+
+? and DMA when copying the page itself switches?\\
+! Of course! And the source and receiver.

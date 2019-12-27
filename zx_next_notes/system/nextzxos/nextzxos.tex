@@ -1,0 +1,683 @@
+\section{NextZXOS}
+A ZX Spectrum I/O system supported by the ZX Spectrum Next. This
+Documentation is largely from Garry Lancaster's DOCs at
+https://gitlab.com/thesmog358/tbblue/blob/master/docs/nextzxos/NextZXOS\_and\_esxDOS\_APIs.pdf. Before
+making any calls disable writes to Layer 2 in the \$0000-\$3fff area with port \$123b.
+
+\subsection{+3DOS compatible API}
+Generally to make these calls, you need to set up: place ROM 2 at
+\$0000-\$3fff, RAM bank 7 at \$c000-\$ffff, stack below \$bfe0, and
+set up the parameters for the call in the indicated registers. Call
+the function at its address. Then, restore your system to its previous
+configuration. In general the carry bit of F is cleared on error with
+the error code in A. Calls generally affect the contnts of AF, BC, DE,
+HL, and IX leaving AF', BC', DE', HL', IY, and SP intact. To simplify,
+descriptions will assume this is true and only indicate exceptions to
+the rule.
+
+\$0056 \textbf{IDE\_STREAM\_OPEN}
+
+Open stream to a channel
+
+\$0059 \textbf{IDE\_STREAM\_CLOSE}
+
+Close stream and attached channel
+
+\$005c \textbf{IDE\_STREAM\_IN}
+
+Get byte from current stream
+
+\$005f \textbf{IDE\_STREAM\_OUT}
+
+Write byte to current stream
+
+\$0062 \textbf{IDE\_STREAM\_PTR}
+
+Get or set pointer information for current stream
+
+\$00A0 \textbf{IDE\_VERSION}
+
+Get IDEDOS version number
+
+\$00A3 \textbf{IDE\_INTERFACE}
+
+Initialise card interfaces
+\$00A6 \textbf{IDE\_INIT}
+
+Initialise IDEDOS
+
+\$00A9 \textbf{IDE\_DRIVE}
+
+Get unit handle
+
+\$00AC \textbf{IDE\_SECTOR\_READ}
+
+Low-level sector read
+
+\$00AF \textbf{IDE\_SECTOR\_WRITE}
+
+Low-level sector write
+
+\$00B2 \textbf{IDE\_FORMAT}
+
+Format a partition
+
+\$00B5 \textbf{IDE\_PARTITION\_FIND}
+
+Find named partition
+
+\$00B8 \textbf{IDE\_PARTITION\_NEW}
+
+Create partition
+
+\$00BB \textbf{IDE\_PARTITION\_INIT}
+
+Initialise partition
+
+\$00BE \textbf{IDE\_PARTITION\_ERASE}
+
+Delete a partition
+
+\$00C1 \textbf{IDE\_PARTITION\_RENAME}
+
+Rename a partition
+
+\$00C4 \textbf{IDE\_PARTITON\_READ}
+
+Read a partition entry
+
+\$00C7 \textbf{IDE\_PARTITION\_WRITE}
+
+Write a partition entry
+
+\$00CA \textbf{IDE\_PARTITION\_WINFO}
+
+Write type-specific partition information
+
+\$00CD \textbf{IDE\_PARTITION\_OPEN}
+
+Open a partition
+
+\$00D0 \textbf{IDE\_PARTITION\_CLOSE}
+
+Close a partition
+
+\$00D3 \textbf{IDE\_PARTITION\_GETINFO}
+
+Get byte from type-specific partition information
+
+\$00D6 \textbf{IDE\_PARTITION\_SETINFO}
+
+Set byte in type-specific partition information
+
+\index{IDE\_SWAP\_OPEN}
+\$00D9 (217) \textbf{IDE\_SWAP\_OPEN}
+
+Open a swap partition (file)
+
+A swap file will be opened on success. The file must be unfragmented
+or the call will return with error \$4a (rc\_fragmented). Further swap
+related calls will use units related to the selected block size.
+
+Entry:
+\begin{itemize}
+\item[] A bits 0-6 = block size, 1-32 512-byte sectors
+  \begin{itemize}
+  \item[] A bit 7 = 0, open available system swap file
+    (c:/nextzxos/swp-N.p3d) that is large enough.
+  \item[] BC=max block size required
+  \end{itemize}
+  \begin{itemize}
+  \item[] A bit 7 = 1, open indicated swap file
+    (c:/nextzxos/swp-N.p3d) that is large enough.
+  \item[] BC=\$ff terminated pointer to swap file name
+  \end{itemize}
+\end{itemize}
+Exit: IX=swap handle
+
+\$00DC \textbf{IDE\_SWAP\_CLOSE}
+
+Close a swap partition
+
+\$00DF \textbf{IDE\_SWAP\_OUT}
+
+Write block to swap partition
+
+\$00E2 \textbf{IDE\_SWAP\_IN}
+
+Read block from swap partition
+
+\index{IDE\_SWAP\_EX}
+\$00E5 (231) \textbf{IDE\_SWAP\_EX}
+
+Exchange block with swap partition
+
+Deprecated, use IDE\_SWAP\_IN and IDE\_SWAP\_OUT
+
+\$00E8 \textbf{IDE\_SWAP\_POS}
+
+Get current block number in swap partition
+
+\$00EB \textbf{IDE\_SWAP\_MOVE}
+
+Set current block number in swap partition
+
+\$00EE \textbf{IDE\_SWAP\_RESIZE}
+
+Change block size of swap partition
+
+\index{IDE\_DOS\_MAP}
+\$00F1 (241) \textbf{IDE\_DOS\_MAP}
+
+Map drive to partition or physical device
+
+Entry:
+\begin{itemize}
+\item[] A = Unit 0-15 (4=RAMdisk)
+\item[] BC=partition number (A != 4)
+\item[] A = \$ff for filesystem image
+\item[] BC=\$ff terminated image filename
+\item[] L=drive letter A-P
+\end{itemize}
+Exit: IX is preserved
+
+\index{IDE\_DOS\_UNMAP}
+\$00F4 (244) \textbf{IDE\_DOS\_UNMAP}
+
+Unmap drive
+
+Remove mapping from the specified drive
+
+Entry: L=drive letter A-P\\
+Exit: IX is preserved
+
+\index{IDE\_DOS\_MAPPING}
+\$00F7 (247) \textbf{IDE\_DOS\_MAPPING}
+
+Get drive mapping
+
+Entry:
+\begin{itemize}
+\item[] L=drive letter A-P
+\item[] BC=pointer to 18-byte buffer
+\end{itemize}
+Exit:
+\begin{itemize}
+\item[] Zero set: drive not mapped
+\item[] Zero clear:
+  \begin{itemize}
+  \item[] A=Unit 0-15, 4=RAMdisk, \$ff=filesystem image
+  \item[] BC=partition number
+  \item[] buffer contains description or nothing
+  \end{itemize}
+\item[] IX is preserved
+\end{itemize}
+
+\$00FA \textbf{IDE\_DOS\_UNPERMANENT}
+
+Remove permanent drive mapping
+
+\index{IDE\_SNAPLOAD}
+\$00FD (253) \textbf{IDE\_SNAPLOAD}
+
+Load a snapshot
+
+Loads a supported snapshot (currently .Z80, .SNA, .O, or .P). Call
+must be made in layer 0 mode. For .O and .P SP bust be <\$8000.
+
+Entry: HL=\$ff terminated filespec
+Exit: Does not return on success.
+
+\$0100 \textbf{DOS\_INITIALISE}
+
+Initialise +3DOS
+
+\$0103 \textbf{DOS\_VERSION}
+
+Get +3DOS issue and version numbers
+
+\index{DOS\_OPEN}
+\$0106 (262) \textbf{DOS\_OPEN}
+
+Create and/or open a file
+
+Opeens the file corresponding to the filename pointed to by HL.
+
+Entry:
+\begin{itemize}
+\item[] B = File number 0-15
+\item[] C = Access mode required
+  \begin{itemize}
+  \item[] 1 = exclusive-read
+  \item[] 2 = exclusive-write
+  \item[] 3 = exclusive-read/write
+  \item[] 5 = shared-read
+  \end{itemize}
+\item[] D = Create action
+  \begin{itemize}
+  \item[] 0 - Error if file does not exist  
+  \item[] 1 - Create and open new file with header
+  \item[] 2 - Create and open new file without header
+  \end{itemize}
+\item[] E = Open action
+  \begin{itemize}
+  \item[] 0 - Error if file already exist  s
+  \item[] 1 - Open file and read header
+  \item[] 2 - Open file and ignore header
+  \item[] 3 - Erase filename.BAK, rename file to filename.BAK, follow
+    create action
+  \item[] 4 - Erase existing file, follow create action
+  \end{itemize}
+\item[] HL = Address of filename (no wildcards, unless D=0 and E=1 or 2)
+\end{itemize}
+Exit:
+\begin{itemize}
+\item[] New file: Zero set
+\item[] Existing file: Zero clear
+\end{itemize}
+
+\$0109 \textbf{DOS\_CLOSE}
+
+Close a file
+
+\$010C \textbf{DOS\_ABANDON}
+
+Abandon a file
+
+\$010F \textbf{DOS\_REF\_HEAD}
+
+Point at the header data for this file
+
+\$0112 \textbf{DOS\_READ}
+
+Read bytes into memory
+
+\$0115 \textbf{DOS\_WRITE}
+
+Write bytes from memory
+
+\$0118 \textbf{DOS\_BYTE\_READ}
+
+Read a byte
+
+\$011B \textbf{DOS\_BYTE\_WRITE}
+
+Write a byte
+
+\index{DOS\_CATALOG}
+\$011E (286) \textbf{DOS\_CATALOG}
+
+Catalog disk directory
+
+Fills a buffer with part of the directory indicated by the path
+pointed to by HL. If the buffer is filled with zeros, the call places
+the first n entries from the directory into the buffer. If it begins
+with a directory entry, it fills the buffer starting with that
+directory entry. Directory entries are 13 bytes long and consist of an
+8-byte filename, a 3-byte type (extension), and a 2-byte size. Shorter
+filenames and types are padded with spaces. The most significant bit
+of the filename and type may be set to indicicate extra information
+about the file.
+
+Entry:
+\begin{itemize}
+\item[] B = size of buffer in entries
+\item[] C = Filter
+  \begin{itemize}
+  \item[] bit 0: Include system files
+  \item[] bit 1: Set bit 7 of f7 if entry has a valid long file name
+  \item[] bit 2: Include directories, set bit 7 of f8 for directories
+  \item[] bits 3-7: reserved (0) 
+  \end{itemize}
+\item[] DE = Address of buffer
+\item[] HL = Address of directory name (wildcards permitted)
+\end{itemize}
+Exit:
+\begin{itemize}
+\item[] B = number of completed entries, if the size that is passed,
+  there may be more entries
+\item[] HL = Directory handle for long filenames, used by
+  IDE\_GET\_LFN
+\end{itemize}
+
+\index{DOS\_FREE\_SPACE}
+\$0121 (289) \textbf{DOS\_FREE\_SPACE}
+
+Free space on disk
+
+How much free space is on this disk?
+
+Entry: A = Drive, ASCII A-P\\
+Exit:
+\begin{itemize}
+\item[] HL = Free space in kB up to 65535k
+\item[] BCDE = Free space in kB
+\end{itemize}
+
+\$0124 \textbf{DOS\_DELETE}
+
+Delete a file
+
+\$0127 \textbf{DOS\_RENAME}
+
+Rename a file
+
+\$012A \textbf{DOS\_BOOT}
+
+Boot an operating system or other program
+
+\$012D \textbf{DOS\_SET\_DRIVE}
+
+Set/get default drive
+
+\$0130 \textbf{DOS\_SET\_USER}
+
+Set/get default user number
+
+\index{DOS\_GET\_POSITION}
+\$0133 (307) \textbf{DOS\_GET\_POSITION}
+
+Get file pointer for random access
+
+Entry: B = File number\\
+Exit: DEHL = File Pointer
+
+\$0136 \textbf{DOS\_SET\_POSITION}
+
+Set file pointer for random access
+
+\index{DOS\_GET\_EOF}
+\$0139 (313) \textbf{DOS\_GET\_EOF}
+
+Get end of file position for random access
+
+Gets the first position after the last byte written without
+considering soft-EOF. This does not accect the file pointer.
+
+Entry: B = File number\\
+Exit: DEHL = EOF position
+
+\$013C \textbf{DOS\_GET\_1346}
+
+Get memory usage in pages 1\, 3\, 4\, 6
+
+\$013F \textbf{DOS\_SET\_1346}
+
+Re-allocate memory usage in pages 1\, 3\, 4\, 6
+
+\$0142 \textbf{DOS\_FLUSH}
+
+Bring disk up to date
+
+\$0145 \textbf{DOS\_SET\_ACCESS}
+
+Change open file's access mode
+
+\$0148 \textbf{DOS\_SET\_ATTRIBUTES}
+
+Change a file's attributes
+
+\$014B \textbf{DOS\_OPEN\_DRIVE}
+
+Open a drive as a single file
+
+\$014E \textbf{DOS\_SET\_MESSAGE}
+
+Enable/disable error messages
+
+\$0151 \textbf{DOS\_REF\_XDPB}
+
+Point at XDPB for low level disk access
+
+\$0154 \textbf{DOS\_MAP\_B}
+
+Map B: onto unit 0 or 1
+
+\$0157 \textbf{DD\_INTERFACE}
+
+Is the floppy disk driver interface present?
+
+\$015A \textbf{DD\_INIT}
+
+Initialise disk driver
+
+\$015D \textbf{DD\_SETUP}
+
+Specify drive parameters
+
+\$0160 \textbf{DD\_SET\_RETRY}
+
+Set try/retry count
+
+\$0163 \textbf{DD\_READ\_SECTOR}
+
+Read a sector
+
+\$0166 \textbf{DD\_WRITE\_SECTOR}
+
+Write a sector
+
+\$0169 \textbf{DD\_CHECK\_SECTOR}
+
+Check a sector
+
+\$016C \textbf{DD\_FORMAT}
+
+Format a track
+
+\$016F \textbf{DD\_READ\_ID}
+
+Read a sector identifier
+
+\$0172 \textbf{DD\_TEST\_UNSUITABLE}
+
+Test media suitability
+
+\$0175 \textbf{DD\_LOGIN}
+
+Log in disk, initialise XDPB
+
+\$0178 \textbf{DD\_SEL\_FORMAT}
+
+Pre-initialise XDPB for DD FORMAT
+
+\$017B \textbf{DD\_ASK\_1}
+
+Is unit 1 (external drive) present?
+
+\$017E \textbf{DD\_DRIVE\_STATUS}
+
+Fetch drive status
+
+\$0181 \textbf{DD\_EQUIPMENT}
+
+What type of drive?
+
+\$0184 \textbf{DD\_ENCODE}
+
+Set intercept routine for copy protection
+
+\$0187 \textbf{DD\_L\_XDPB}
+
+Initialise an XDPB from a disk specification
+
+\$018A \textbf{DD\_L\_DPB}
+
+Initialise a DPB from a disk specification
+
+\$018D \textbf{DD\_L\_SEEK}
+
+uPD765A seek driver
+
+\$0190 \textbf{DD\_L\_READ}
+
+uPD765A read driver
+
+\$0193 \textbf{DD\_L\_WRITE}
+
+uPD765A write driver
+
+\$0196 \textbf{DD\_L\_ON\_MOTOR}
+
+Motor on, wait for motor-on time
+
+\$0199 \textbf{DD\_L\_T\_OFF\_MOTOR}
+
+Start the motor-off ticker
+
+\$019C \textbf{DD\_L\_OFF\_MOTOR}
+
+Turn the motor off
+
+\$01a2 \textbf{IDE\_IDENTIFY}
+
+Return IDE drive identity information
+
+\$01a5 \textbf{IDE\_PARTITIONS}
+
+Get number of open partitions
+
+\index{IDE\_PATH}
+\$01b1 (433) \textbf{IDE\_PATH}
+
+Create, delete, change or get directory
+
+Read or manipulate the IDE path (directory), does not affect what the
+current default drive is.\\
+rc\_path\_change: change directory\\
+rc\_path\_get: get current directory\\
+rc\_path\_make: create a new directory\\
+rc\_path\_delete: remove a directory
+
+Entry:
+\begin{itemize}
+\item[] A=reason code
+  \begin{itemize}
+  \item[] 0=rc\_path\_change
+  \item[] 1=rc\_path\_get
+  \item[] 2=rc\_path\_make
+  \item[] 3=rc\_path\_delete
+  \end{itemize}
+  \item[] HL=pointer to \$ff terminated filespec or buffer for
+    returned filespec data (256 bytes)
+\end{itemize}
+Exit: IY is affected
+
+\index{IDE\_CAPACITY}
+\$01b4 (436) \textbf{IDE\_CAPACITY}
+
+Get card capacity
+
+Entry: C=unit (0 or 1)\\
+Exit: DEHL=total card capacity in 512-byte sectors
+
+\index{IDE\_GET\_LFN}
+\$01b7 (439) \textbf{IDE\_GET\_LFN}
+
+Get long filename
+
+Obtain a long file name and other file information.
+
+Entry:
+\begin{itemize}
+\item[] HL=address of filespec provided by last DOS\_CATALOG call
+\item[] IX=directory handle provided by last DOS\_CATALOG call
+\item[] DE=address of a file entry filled by the last DOS\_CATALOG call
+\item[] BC=address of a 261-byte buffer to receive the long filename
+\end{itemize}
+Exit:
+\begin{itemize}
+\item[] buffer contains file name
+\item[] BC=date (MS-DOS format)
+\item[] DE=time (MS-DOS format)
+\item[] HLIX=filesize, bytes (for directories 0)
+\end{itemize}
+
+\index{IDE\_BROWSER}
+\$01ba (442) \textbf{IDE\_BROWSER}
+
+File browser
+
+Run the file browser. The filetypes buffer pointed to by HL is a \$ff
+terminated buffer of filetypes. Each filetype consists of a length
+followed by a type description. Types are the file extension, wild
+cards ? and * are permitted, a colon (:) and an optional command to
+execute on the filetype with vertical bar representing the filemane in
+the command. The help text may contain window control codes, but if
+the character size is changed, it must be returned to size 5 at the
+end of the string.
+
+Entry:
+\begin{itemize}
+\item[] IY=\$5c3a (ERR\_NR)
+\item[] HL=address of supported filetypes buffer
+\item[] DE=address of \$ff terminated help text
+\item[] A=browser capability mask
+  \begin{itemize}
+  \item[] bit 0: BROSWERCAPS\_COPY - files may be copied
+  \item[] bit 1: BROSWERCAPS\_RENAME - files/dirs may be renamed
+  \item[] bit 2: BROSWERCAPS\_MKDIR - directories may be created
+  \item[] bit 3: BROSWERCAPS\_ERASE - files/dirs may be deleted
+  \item[] bit 4: BROSWERCAPS\_REMOUNT - SD card may be remounted
+  \item[] bit 5: BROSWERCAPS\_UNMOUNT - drives may be unmounted
+  \item[] bit 6: reserved (0)
+  \item[] bit 7: BROSWERCAPS\_SYSCFG - system use - use browser.cfg
+  \end{itemize}
+\end{itemize}
+Exit:
+\begin{itemize}
+\item[] Zero flag set: file selected (ENTER pressed)
+  \begin{itemize}
+  \item[] HL=address of short \$ff terminated filename in RAM 7
+  \item[] DE=address of long \$ff teminated filename in RAM 7
+  \end{itemize}
+\item[] Zero flag clear: no file selected (SPACE/BREAK pressed)
+\end{itemize}
+
+\index{IDE\_BANK}
+\$01bd (445) \textbf{IDE\_BANK}
+
+Allocate or free 8K pages in ZX or DivMMC memory
+
+\$01c0 \textbf{IDE\_BASIC}
+
+Execute a BASIC command line
+
+\$01c3 \textbf{IDE\_WINDOW\_LINEIN}
+
+Input line from current window stream
+
+\$01c6 \textbf{IDE\_WINDOW\_STRING}
+
+Output string to current window stream
+
+\$01c9 \textbf{IDE\_INTEGER\_VAR}
+
+Get or set NextBASIC integer variable
+
+\$01cc \textbf{IDE\_RTC}
+
+Query the real-time-clock module
+
+\$01cf \textbf{IDE\_DRIVER}
+
+Access the driver API
+
+\$01d2 \textbf{IDE\_MOUNT}
+
+Unmount/remount SD cards
+
+\$01d2 \textbf{IDE\_MOUNT}
+
+Unmount/remount SD cards
+
+\$01d5 \textbf{IDE\_MODE}
+
+Query NextBASIC display mode info, or change mode
+
+\$01d8 \textbf{IDE\_TOKENISER}
+
+Convert BASIC between plain text \& tokenised forms
+
+
+\subsection{esxDOS compatible API}

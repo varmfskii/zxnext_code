@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Timex Hi-Resolution Mode</TITLE>
-<META NAME="description" CONTENT="Timex Hi-Resolution Mode">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Emulation</TITLE>
+<META NAME="description" CONTENT="Emulation">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,7 +13,7 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node20.html">
 <LINK REL="previous" HREF="node18.html">
@@ -32,95 +32,54 @@
 <A
  HREF="node18.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html342"
+<A ID="tex2html403"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html344"
-  HREF="node135.html">
+<A ID="tex2html405"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node20.html">Lo-Resolution Mode</A>
+ HREF="node20.html">Palette file format</A>
 <B> Up:</B> <A
- HREF="node14.html">ULA group</A>
+ HREF="node14.html">ULA+</A>
 <B> Previous:</B> <A
- HREF="node18.html">Timex Hi-Colour Mode</A>
- &nbsp; <B>  <A ID="tex2html343"
+ HREF="node18.html">Limitations</A>
+ &nbsp; <B>  <A ID="tex2html404"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html345"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html406"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION00335000000000000000">
-Timex Hi-Resolution Mode</A>
-</H2>
+<H5><A ID="SECTION00321035000000000000">
+Emulation</A>
+</H5>
+The 64 colour mode lookup table is organized as 4 palettes of 16
+colours.
 
 <P>
-Timex mode 6
+Bits 7 and 6 of each Spectrum attribute byte (normally used for FLASH
+and BRIGHT) will be used as an index value (0-3) to select one of the
+four colour palettes.
 
 <P>
-This is a monochrome <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img14.svg"
- ALT="$512\times192$"></SPAN> video mode. It is selected by
-writing to the Timex ULA port ($ff with values that also select which
-two colours (or colour entries in ULANext mode) you use.
+Each colour palette has 16 entries (8 for INK, 8 for PAPER). Bits 0 to
+2 (INK) and 3 to 5 (PAPER) of the attribute byte will be used as
+indexes to retrieve colour data from the selected palette.
 
 <P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="135"></A>
-<TABLE>
-<CAPTION><STRONG>Table 2.4:</STRONG>
-Hi-Resolution Colours</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img15.svg"
- ALT="\begin{table}\centering
-\csvautotabular{video/hires.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+With the standard Spectrum display, the BORDER colour is the same as
+the PAPER colour in the first CLUT. For example BORDER 0 would set the
+border to the same colour as PAPER 0 (with the BRIGHT and FLASH bits
+not set).
+
+<P>
+The complete index can be calculated as
 <BR>
-
-<P>
-Pixels are mapped into both the bitmap 1 and bitmap 2 areas where
-8-pixel wide character columns alternate between the two bitmap areas.
-The pixels within a byte being rendered left to right lsb to msb as in
-other Spectrum video modes.  The addresses for each row within a
-character are based on a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img16.svg"
- ALT="$64\times32$"></SPAN> grid of <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img6.svg"
- ALT="$8\times8$"></SPAN> characters
-which using a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img17.svg"
- ALT="$64\times24$"></SPAN> R, C, and Y scheme gives us addresses of
-the form <!-- MATH
- $C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1$
- -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img18.svg"
- ALT="$C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1$"></SPAN>.
-
-<P>
-Code:
-<PRE>
-;; disable LoRes mode:
-ld bc,$243B ; next register select port
-ld a,$15
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-and $7f
-out (c),a
-;; set Timex mode
-ld bc,$243B ; next register select port
-ld a,$08
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-or $04
-out (c),a
-;; set hi-res mode, black on white
-ld c,$ff
-ld a,$06
-out (c),a
-</PRE>
+ink_colour = (FLASH * 2 + BRIGHT) * 16 + INK
+paper_colour = (FLASH * 2 + BRIGHT) * 16 + PAPER + 8
 
 <P>
 <BR><HR>

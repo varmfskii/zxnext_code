@@ -174,8 +174,8 @@ prescalar. This works in both the continuous mode and the burst
 mode. If the DMA is operated in burst mode, the DMA will give up any
 waiting time to the CPU so that the CPU can run while the DMA is idle.
 
-The rate of transfer is given by the formula "Frate = 875kHz /
-prescalar" or, rearranged, "prescalar = 875kHz / Frate". The formula
+The rate of transfer is given by the formula ``Frate = 875kHz /
+prescalar'' or, rearranged, ``prescalar = 875kHz / Frate''. The formula
 is framed in terms of a sample rate (Frate) but Frate can be inverted
 to set a transfer time for each byte instead. The 875kHz constant is a
 nominal value assuming a 28MHz system clock; the system clock actually

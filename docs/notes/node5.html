@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Palette</TITLE>
-<META NAME="description" CONTENT="Palette">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Video Layering and Transparency</TITLE>
+<META NAME="description" CONTENT="Video Layering and Transparency">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,9 +13,9 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node14.html">
+<LINK REL="next" HREF="node6.html">
 <LINK REL="previous" HREF="node4.html">
 <LINK REL="next" HREF="node6.html">
 </HEAD>
@@ -27,64 +27,138 @@
  HREF="node6.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node3.html">
+ HREF="node4.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node4.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html265"
+<A ID="tex2html314"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html267"
-  HREF="node135.html">
+<A ID="tex2html316"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node6.html">ULANext Colour Palette</A>
+ HREF="node6.html">Palette</A>
 <B> Up:</B> <A
- HREF="node3.html">Video</A>
+ HREF="node4.html">General Features</A>
 <B> Previous:</B> <A
- HREF="node4.html">Video Layering and Transparency</A>
- &nbsp; <B>  <A ID="tex2html266"
+ HREF="node4.html">General Features</A>
+ &nbsp; <B>  <A ID="tex2html315"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html268"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html317"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00320000000000000000"></A>
-<A NAME="75"></A>
-<BR>
-Palette
-</H1>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+<H2><A ID="SECTION00311000000000000000">
+Video Layering and Transparency</A>
+</H2>
+Video is rendered as three layers which are referred to as ULA (which
+includes the tilemap), layer 2, and sprites.  The ordering of the
+layers is controlled by Next port $15 (21) bits 4-2:
 
-<UL CLASS="ChildLinks">
-<LI><UL>
-<LI><UL>
-<LI><A ID="tex2html269"
-  HREF="node6.html">ULANext Colour Palette</A>
-<LI><A ID="tex2html270"
-  HREF="node7.html">ULAPlus Colour Palette</A>
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="72"></A>
+<TABLE>
+<CAPTION><STRONG>Table 2.1:</STRONG>
+Video Layering</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img1.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{video/videolayering.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+<A NAME="75"></A>
+Transparency for Layer 2, ULA, LoRes, and 1-bit Tilemaps are
+controlled by Next register $14 (20) and defaults to $E3. Sprites
+and 4-bit Tilemaps have their own registers ($4B and $4C
+respectively) for setting their transparency index (not colour). This
+colour ignores the state of the least significant blue bit, so $E3
+equates to both $1C6 and $1C7. For Sprites and Tilemaps transparency
+is determined by colour index. For Sprites this is controlled by
+register $4B (with only the least significant 4-bits being relevant
+for 16-colour Sprites). For Tilemaps, the transparency index is set by
+register $4C. If all layers are transparent, the transparency
+fallback colour is displayed. This is set by register $4A.
+
+<P>
+(R/W) $14 (20) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Global Transparency Colour
+
 <UL>
-<LI><A ID="tex2html271"
-  HREF="node8.html">I/O ports</A>
-<LI><A ID="tex2html272"
-  HREF="node9.html">GRB palette entries</A>
-<LI><A ID="tex2html273"
-  HREF="node10.html">Grayscale palette entries</A>
-<LI><A ID="tex2html274"
-  HREF="node11.html">Limitations</A>
-<LI><A ID="tex2html275"
-  HREF="node12.html">Emulation</A>
-<LI><A ID="tex2html276"
-  HREF="node13.html">Palette file format</A>
-</UL></UL></UL></UL>
-<!--End of Table of Child-Links-->
-<BR><HR>
+<LI>bits 7-0 = 8-bit transparency colour (soft reset = $E3)
+</LI>
+</UL>
+
+<P>
+(R/W) $4A (74) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Fallback colour
+
+<UL>
+<LI>bits 7-0 = 8-bit colour used if all layers are transparent (soft
+  reset = 0)
+</LI>
+</UL>
+
+<P>
+(R/W) $4B (75) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite transparency index
+<table width="90%">
+bits 7-0 = Sprite colour index treated as transparent (soft
+  reset = $E3)<tr><td valign="top">&nbsp;For 4-bit sprites only the bottom 4-bits are used
+</td></tr></table>
+
+<P>
+(R/W) $4C (74) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img2.svg"
+ ALT="$\Rightarrow$"></SPAN> Tilemap transparency index
+
+<UL>
+<LI>bits 7-4 = Reserved, must be 0
+</LI>
+<LI>bits 3-0 = Tilemap colour index treated as transparent (soft
+  reset $f)
+</LI>
+</UL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node4.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html314"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html316"
+  HREF="node156.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node6.html">Palette</A>
+<B> Up:</B> <A
+ HREF="node4.html">General Features</A>
+<B> Previous:</B> <A
+ HREF="node4.html">General Features</A>
+ &nbsp; <B>  <A ID="tex2html315"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html317"
+  HREF="node156.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

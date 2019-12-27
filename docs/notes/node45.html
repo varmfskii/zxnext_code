@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Internal Speaker</TITLE>
-<META NAME="description" CONTENT="Internal Speaker">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Sprite Attributes</TITLE>
+<META NAME="description" CONTENT="Sprite Attributes">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,7 +13,7 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node46.html">
 <LINK REL="previous" HREF="node44.html">
@@ -27,58 +27,242 @@
  HREF="node46.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node44.html">
+ HREF="node39.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node44.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html477"
+<A ID="tex2html534"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html479"
-  HREF="node135.html">
+<A ID="tex2html536"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node46.html">Spectdrum/Convox</A>
+ HREF="node46.html">Relative Sprites</A>
 <B> Up:</B> <A
- HREF="node44.html">Audio</A>
+ HREF="node39.html">Sprites</A>
 <B> Previous:</B> <A
- HREF="node44.html">Audio</A>
- &nbsp; <B>  <A ID="tex2html478"
+ HREF="node44.html">Sprite Palette</A>
+ &nbsp; <B>  <A ID="tex2html535"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html480"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html537"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00410000000000000000">
-Internal Speaker</A>
-</H1>
+<H2><A ID="SECTION00353000000000000000">
+Sprite Attributes</A>
+</H2>
+A sprite’s attributes is a list of properties that determine how and
+where the sprite is drawn.
 
 <P>
-The baseline sound of the ZX Spectrum was produced by toggling the Ear
-bit (bit 4) of $fe (254) The ULA port to produce 1-bit audio.  It is
-enabled by bit 4 of Next register $08 (8).  While this does work on
-the ZX Spectrum Next, there are other much better methods and this is
-only supported for backward compatibility.
+Each sprite is described by either 4 or 5 attribute bytes listed
+below:
 
 <P>
-Code:
+Sprite Attribute 0
 <PRE>
-;; enable internal speaker
-ld bc,$243B
-ld a,$08
-out (c),a
-ld bc,$253B
-in a,(c)
-or $10
-out (c),a
+X X X X X X X X
 </PRE>
+The least significant eight bits of the sprite’s X coordinate. The
+ninth bit is found in sprite attribute 2.
 
 <P>
-<BR><HR>
+Sprite Attribute 1
+<PRE>
+Y Y Y Y Y Y Y Y
+</PRE>
+The least significant eight bits of the sprite’s Y coordinate. The
+ninth bit is optional and is found in attribute 4.
+
+<P>
+Sprite Attribute 2
+<PRE>
+P P P P XM YM R X8/PR
+</PRE>
+P = 4-bit Palette Offset
+<BR>
+XM = 1 to mirror the sprite image horizontally
+<BR>
+YM = 1 to mirror the sprite image vertically
+<BR>
+R = 1 to rotate the sprite image 90 degrees clockwise
+<BR>
+X8 = Ninth bit of the sprite’s X coordinate
+<BR>
+PR = 1 to indicate P is relative to the anchor’s palette offset
+(relative sprites only)
+<BR>
+Rotation is applied before mirroring.
+<BR>
+Relative sprites, described below, replace X8 with PR.
+
+<P>
+
+<DIV class="CENTER"><A ID="703"></A>
+<TABLE>
+<CAPTION class="BOTTOM"><STRONG>Figure 2.2:</STRONG>
+All Rotate and Mirror Flags</CAPTION>
+<TR><TD>
+<DIV class="CENTER">  <IMG STYLE=""
+ SRC="./flags.png"
+ ALT="Image flags">
+  </DIV></TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+Sprite Attribute 3
+<PRE>
+V E N5 N4 N3 N2 N1 N0
+</PRE>
+V = 1 to make the sprite visible
+<BR>
+E = 1 to enable attribute byte 4
+<BR>
+N = Sprite pattern to use 0-63
+<BR>
+If E=0, the sprite is fully described by sprite attributes 0-3. The
+sprite pattern is an 8-bit one identified by pattern N=0-63. The
+sprite is an anchor and cannot be made relative. The sprite is
+displayed as if sprite attribute 4 is zero.
+<BR>
+If E=1, the sprite is further described by sprite attribute 4.
+
+<P>
+Sprite Attribute 4
+<DL class="COMPACT">
+<DT>A.</DT>
+<DD>Extended Anchor Sprite
+<PRE>
+H N6 T X X Y Y Y8
+</PRE>
+H = 1 if the sprite pattern is 4-bit
+<BR>
+N6 = 7th pattern bit if the sprite pattern is 4-bit
+<BR>
+T = 0 if relative sprites are composite type else 1 for unified type
+<BR>
+XX = Magnification in the X direction (00 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img33.svg"
+ ALT="$1\times$"></SPAN>, 01 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
+ ALT="$2\times$"></SPAN>,
+10 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img34.svg"
+ ALT="$4\times4$"></SPAN>, 11 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img32.svg"
+ ALT="$8\times$"></SPAN>)
+<BR>
+YY = Magnification in the Y direction (00 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img33.svg"
+ ALT="$1\times$"></SPAN>, 01 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
+ ALT="$2\times$"></SPAN>,
+10 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img31.svg"
+ ALT="$4\times$"></SPAN>, 11 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img32.svg"
+ ALT="$8\times$"></SPAN>)
+<BR>
+Y8 = Ninth bit of the sprite’s Y coordinate
+<BR>
+H,N6 must not equal 0,1 as this combination is used to indicate a
+relative sprite.
+
+<P>
+</DD>
+<DT>B.</DT>
+<DD>Relative Sprite, Composite Type
+<PRE>
+0 1 N6 X X Y Y PO
+</PRE>
+N6 = 7th pattern bit if the sprite pattern is 4-bit
+<BR>
+XX = Magnification in the X direction (00 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img33.svg"
+ ALT="$1\times$"></SPAN>, 01 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
+ ALT="$2\times$"></SPAN>,
+10 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img31.svg"
+ ALT="$4\times$"></SPAN>, 11 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img32.svg"
+ ALT="$8\times$"></SPAN>)
+<BR>
+YY = Magnification in the Y direction (00 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img33.svg"
+ ALT="$1\times$"></SPAN>, 01 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
+ ALT="$2\times$"></SPAN>,
+10 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img31.svg"
+ ALT="$4\times$"></SPAN>, 11 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img32.svg"
+ ALT="$8\times$"></SPAN>)
+<BR>
+PO = 1 to indicate the sprite pattern number is relative to the
+anchor’s
+
+<P>
+</DD>
+<DT>C.</DT>
+<DD>Relative Sprite, Unified Type
+<PRE>
+0 1 N6 0 0 0 0 PO
+</PRE>
+N6 = 7th pattern bit if the sprite pattern is 4-bit
+<BR>
+PO = 1 to indicate the sprite pattern number is relative to the
+anchor’s
+</DD>
+</DL>
+The display surface for sprites is <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img24.svg"
+ ALT="$320\times256$"></SPAN>. The X coordinate of
+the sprite is nine bits, ranging over 0-511, and the Y coordinate is
+optionally nine bits again ranging over 0-511 or is eight bits ranging
+over 0-255. The full extent 0-511 wraps on both axes, meaning a sprite
+16 pixels wide plotted at X coordinate 511 would see its first pixel
+not displayed (coordinate 511) and the following pixels displayed in
+coordinates 0-14.
+
+<P>
+The full display area is visible in VGA. However, the HDMI display is
+vertically shorter so the top eight pixel rows (Y = 0-7) and the
+bottom eight pixel rows (Y = 248-255) will not be visible on an HDMI
+display.
+
+<P>
+Sprites can be fully described by sprite attributes 0-3 if the E bit
+in sprite attribute 3 is zero. These sprites are compatible with the
+original sprite module from core versions prior to 2.00.26.
+
+<P>
+If the E bit is set then a fifth sprite attribute, sprite attribute 4,
+becomes active. This attribute introduces scaling, 4-bit patterns, and
+relative sprites. Scaling is self-explanatory and 4-bit patterns were
+described in the last section. Relative sprites are described in the
+next section.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node46.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node39.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node44.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html534"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html536"
+  HREF="node156.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node46.html">Relative Sprites</A>
+<B> Up:</B> <A
+ HREF="node39.html">Sprites</A>
+<B> Previous:</B> <A
+ HREF="node44.html">Sprite Palette</A>
+ &nbsp; <B>  <A ID="tex2html535"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html537"
+  HREF="node156.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

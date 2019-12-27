@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Relative Sprites</TITLE>
-<META NAME="description" CONTENT="Relative Sprites">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Pattern Number</TITLE>
+<META NAME="description" CONTENT="Pattern Number">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,9 +13,8 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node42.html">
 <LINK REL="previous" HREF="node40.html">
 <LINK REL="next" HREF="node42.html">
 </HEAD>
@@ -27,181 +26,66 @@
  HREF="node42.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node34.html">
+ HREF="node40.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node40.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html458"
+<A ID="tex2html516"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html460"
-  HREF="node135.html">
+<A ID="tex2html518"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node42.html">Programming Sprites</A>
+ HREF="node42.html">8-Bit Sprite Patterns</A>
 <B> Up:</B> <A
- HREF="node34.html">Sprites</A>
+ HREF="node40.html">Sprite Patterns</A>
 <B> Previous:</B> <A
- HREF="node40.html">Sprite Attributes</A>
- &nbsp; <B>  <A ID="tex2html459"
+ HREF="node40.html">Sprite Patterns</A>
+ &nbsp; <B>  <A ID="tex2html517"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html461"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html519"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION00364000000000000000">
-Relative Sprites</A>
-</H2>
-Normal sprites (sprites that are not relative) are known as anchor
-sprites. As the sprite module draws sprites in the order 0-127 (there
-are 128 sprites), it internally stores characteristics of the last
-anchor sprite seen. If following sprites are relative, they inherit
-some of these characteristics, which allows relative sprites to have,
-among other things, coordinates relative to the anchor. This means
-moving the anchor sprite also causes its relatives to move with it.
+<H4><A ID="SECTION00351010000000000000">
+Pattern Number</A>
+</H4>
+<PRE>
+N5 N4 N3 N2 N1 N0 N6
+</PRE>
+N6, despite the name, is the least significant bit.
 
 <P>
-There are two types of relative sprites supported known as “Composite
-Sprites” and “Unified Sprites”. The type is determined by the anchor
-in the T bit of sprite attribute 4.
+This 7-bit pattern number can identify 128 patterns in the 16k pattern
+memory, each of which are 128 bytes in size. The full 7-bits are
+therefore used for 4-bit sprites.
 
 <P>
-<DL class="COMPACT">
-<DT>A.</DT>
-<DD>Composite Sprites
-<BR>
-The sprite module records the following information from the anchor:
-  
-<UL>
-<LI>Anchor.visible
-</LI>
-<LI>Anchor.Y
-</LI>
-<LI>Anchor.palette_offset
-</LI>
-<LI>Anchor.N (pattern number)
-</LI>
-<LI>Anchor.H (indicates if the sprite uses 4-bit patterns)
-  
-</LI>
+For 8-bit sprites, N6=0 always. The remaining 6 bits can identify 64
+patterns, each of which is 256 bytes in size.
+
+<P>
+The N5:N0,N6 bits are stored in a particular sprite’s attributes to
+identify which image a sprite uses.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html520"
+  HREF="node42.html">8-Bit Sprite Patterns</A>
+<LI><A ID="tex2html521"
+  HREF="node43.html">4-Bit Sprite Patterns</A>
 </UL>
-  These recorded items are not used by composite sprites:
-  
-<UL>
-<LI>Anchor.rotate
-</LI>
-<LI>Anchor.xmirror
-</LI>
-<LI>Anchor.ymirror
-</LI>
-<LI>Anchor.xscale
-</LI>
-<LI>Anchor.yscale
-  
-</LI>
-</UL>
-  The anchor determines if all its relative sprites use 4-bit patterns or not.
-
-<P>
-The visibility of a particular relative sprite is the result of
-  ANDing the anchor’s visibility with the relative sprite’s
-  visibility. In other words, if the anchor is invisible then so are
-  all its relatives.
-
-<P>
-Relative sprites only have 8-bit X and Y coordinates (the ninth bits
-  are taken for other purposes). These are signed offsets from the
-  anchor’s X,Y coordinate. Moving the anchor moves all its relatives
-  along with it.
-
-<P>
-If the relative sprite has its PR bit set in sprite attribute 2,
-  then the anchor’s palette offset is added to the relative sprite’s
-  to determine the active palette offset for the relative
-  sprite. Otherwise the relative sprite uses its own palette offset as
-  usual.
-
-<P>
-If the relative sprite has its PO bit set in sprite attribute 4,
-  then the anchor’s pattern number is added to the relative sprite’s
-  to determine the pattern used for display. Otherwise the relative
-  sprite uses its own pattern number as usual. The intention is to
-  supply a method to easily animate a large sprite by manipulating the
-  pattern number in the anchor.
-
-<P>
-A composite sprite is like a collection of independent sprites tied
-  to an anchor.
-
-<P>
-</DD>
-<DT>B.</DT>
-<DD>Unified Sprites
-
-<P>
-Unified sprites are a further extension of the
-  composite type. The same information is recorded from the anchor and
-  the same behaviour as described under composite sprites applies.
-
-<P>
-The difference is the collection of anchor and relatives is treated
-  as if it were a single <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img28.svg"
- ALT="$16\times16$"></SPAN> sprite. The anchor’s rotation,
-  mirror, and scaling bits apply to all its relatives. Rotating the
-  anchor causes all the relatives to rotate around the
-  anchor. Mirroring the anchor causes the relatives to mirror around
-  the anchor. The sprite hardware will automatically adjust X,Y coords
-  and rotation, scaling and mirror bits of all relatives according to
-  settings in the anchor.
-
-<P>
-Unified sprites should be defined as if all its parts are
-  <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img28.svg"
- ALT="$16\times16$"></SPAN> in size with the anchor controlling the look of the
-  whole.
-
-<P>
-A unified sprite is like a big version of an individual <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img28.svg"
- ALT="$16\times16$"></SPAN>
-  sprite controlled by the anchor.
-</DD>
-</DL>
-
-<P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node42.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node34.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node40.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html458"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html460"
-  HREF="node135.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node42.html">Programming Sprites</A>
-<B> Up:</B> <A
- HREF="node34.html">Sprites</A>
-<B> Previous:</B> <A
- HREF="node40.html">Sprite Attributes</A>
- &nbsp; <B>  <A ID="tex2html459"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html461"
-  HREF="node135.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<!--End of Table of Child-Links-->
+<BR><HR>
 
 </BODY>
 </HTML>

@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>MOVE</TITLE>
-<META NAME="description" CONTENT="MOVE">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>Dot Clock</TITLE>
+<META NAME="description" CONTENT="Dot Clock">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,7 +13,7 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node88.html">
 <LINK REL="previous" HREF="node86.html">
@@ -27,49 +27,92 @@
  HREF="node88.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node85.html">
+ HREF="node83.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node86.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html720"
+<A ID="tex2html778"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html722"
-  HREF="node135.html">
+<A ID="tex2html780"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node88.html">WAIT</A>
+ HREF="node88.html">Coordinates</A>
 <B> Up:</B> <A
- HREF="node85.html">Instructions</A>
+ HREF="node83.html">Timing</A>
 <B> Previous:</B> <A
- HREF="node86.html">NOOP</A>
- &nbsp; <B>  <A ID="tex2html721"
+ HREF="node86.html">Resolution</A>
+ &nbsp; <B>  <A ID="tex2html779"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html723"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html781"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00720020000000000000">
-MOVE</A>
+<H4><A ID="SECTION00710040000000000000">
+Dot Clock</A>
 </H4>
 
 <P>
-MOVE executes in two dot clocks. It moves 8 bits of data into any of
-the Next hardware registers in the range $00 (0) .. $7F (127).
+The dot clock on the ZX Spectrum Next runs at 13.5Mhz for HDMI and
+around 14Mhz for VGA. The COPPER clock runs at the same frequency as
+the dot clock. For v3.00 the copper runs at twice the frequency of the
+dot clock.
 
 <P>
-The WORD value $0000 is reserved for the NOOP instruction so no
-register access is carried out for that special case. Register $00 is
-read-only so not affected by the restriction of not being able to
-write zero to it.
+The number of dot clocks per line is calculated by multiplying the
+number of 3.5Mhz Z80 T-states per line by four. Example: 228Ts * 4 =
+912 dot clocks.
 
 <P>
-This instruction can perform 7 million register writes per second for
-VGA and 6.75 million register writes per second for HDMI.
+The number of dot clocks per second is calculated by the following:
+
+<P>
+T-states per line * 4 * line count * refresh rate
+
+<P>
+In standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
+ ALT="$256\times192$"></SPAN> resolution the duration of one pixel is two
+dot clocks. In Timex HIRES <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img15.svg"
+ ALT="$512\times192$"></SPAN> resolution the duration of
+one pixel is one dot clock.
+
+<P>
+Details of the dot clock counts can be found in tables 5.1 and 5.2.
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1350"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.1:</STRONG>
+Vertical Line Counts and Dot Clock Combinations</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img39.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/perline.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1354"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.2:</STRONG>
+Dot Clocks per Second</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img40.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/persec.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
 
 <P>
 <BR><HR>

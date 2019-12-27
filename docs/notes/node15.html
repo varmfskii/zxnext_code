@@ -3,9 +3,9 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Colour Attributes</TITLE>
-<META NAME="description" CONTENT="Colour Attributes">
-<META NAME="keywords" CONTENT="000-document">
+<TITLE>I/O ports</TITLE>
+<META NAME="description" CONTENT="I/O ports">
+<META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
 
@@ -13,7 +13,7 @@
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
 <META NAME="Generator" CONTENT="LaTeX2HTML v2019">
 
-<LINK REL="STYLESHEET" HREF="000-document.css">
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node16.html">
 <LINK REL="previous" HREF="node14.html">
@@ -32,83 +32,153 @@
 <A
  HREF="node14.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html326"
+<A ID="tex2html387"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html328"
-  HREF="node135.html">
+<A ID="tex2html389"
+  HREF="node156.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node16.html">ZX Spectrum Mode</A>
+ HREF="node16.html">GRB palette entries</A>
 <B> Up:</B> <A
- HREF="node14.html">ULA group</A>
+ HREF="node14.html">ULA+</A>
 <B> Previous:</B> <A
- HREF="node14.html">ULA group</A>
- &nbsp; <B>  <A ID="tex2html327"
+ HREF="node14.html">ULA+</A>
+ &nbsp; <B>  <A ID="tex2html388"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html329"
-  HREF="node135.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html390"
+  HREF="node156.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION00331000000000000000">
-Colour Attributes</A>
-</H2>
-The ZX Spectrum Next has two major modes for colour attributes
-allowing a total of nine ways to map the palette to the original ZX
-Spectrum attributes. One with flashing enabled and eight with flashing
-disabled. This mapping is controlled by Next registers $42 (66,
-palette format) and $43 (67, palette control).  Palette control
-switches between flashing enabled (0, default) and flashing disabled
-(1)
+<H5><A ID="SECTION00321031000000000000">
+I/O ports</A>
+</H5>
+ULAplus is controlled by two ports.
 
 <P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="117"></A>
-<TABLE>
-<CAPTION><STRONG>Table 2.2:</STRONG>
-Flashing Enabled</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img3.svg"
- ALT="\begin{table}\centering
-\csvautotabular{video/flash.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+$BF3B is the register port (write only)
+
+<P>
+The byte output will be interpreted as follows:
+<table width="90%">
+Bits 7-6: Select the register group. Two groups are currently available:
+  
+<UL>
+<LI>00=palette group
 <BR>
-
-<P>
-Flashing Enabled is similar to the original Spectrum colour
-attributes. INKs are mapped to indices 0-7, Bright INKS to indices
-8-15, PAPERs to indices 16-23 and Bright PAPERs to indices 24-31.
-
-<P>
-The ULA next modes use a varying number of bits from the attribute
-byte to determine the ink colour as the palette index from the
-appropriate bits (all others being zero) and the paper colours coming
-from the indicated value+128 with palette format 255 being a special
-case where all the bits determine the ink colour while the paper is
-always palette index 128. The ULA always takes border colour from paper.
-
-<P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="121"></A>
-<TABLE>
-<CAPTION><STRONG>Table 2.3:</STRONG>
-ULA Next</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img4.svg"
- ALT="\begin{table}\centering
-\csvautotabular{video/palfmt.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+When this group is selected, the sub-group determines the entry in the
+    palette table (0-63).
+</LI>
+<LI>01=mode group
 <BR>
+The sub-group is (optionally) used to mirror the video functionality
+    of Timex port $FF as follows:
+  
+</LI>
+</UL>
+Bits 5-0: Select the register sub-group<tr><td valign="top">&nbsp;Mode group
+Bits 5-3: Sets the screen colour in hi-res mode.
+  
+<UL>
+<LI>000=Black on White
+</LI>
+<LI>001=Blue on Yellow
+</LI>
+<LI>010=Red on Cyan
+</LI>
+<LI>011=Magenta on Green
+</LI>
+<LI>100=Green on Magenta
+</LI>
+<LI>101=Cyan on Red
+</LI>
+<LI>110=Yellow on Blue
+</LI>
+<LI>111=White on Black
+  
+</LI>
+</UL>
+Bits 2-0: Screen mode.
+  
+<UL>
+<LI>000=screen 0 (bank 5)
+</LI>
+<LI>001=screen 1 (bank 5)
+</LI>
+<LI>010=hi-colour (bank 5)
+</LI>
+<LI>100=screen 0 (bank 7)
+</LI>
+<LI>101=screen 1 (bank 7)
+</LI>
+<LI>110=hi-colour (bank 7)
+</LI>
+<LI>110=hi-res (bank 5)
+</LI>
+<LI>111=hi-res (bank 7)
+  
+</LI>
+</UL></td></tr></table>
 
 <P>
-<BR><HR>
+$FF3B is the data port (read/write)
+
+<P>
+When the palette group is selected, the byte written will describe the
+color.
+
+<P>
+When the mode group is selected, the byte output will be interpreted
+as follows:
+
+<UL>
+<LI>Bit 0: ULAplus palette on (1) / off (0)
+</LI>
+<LI>Bit 1: (optional) grayscale: on (1) / off (0) (same as turing
+  the color off on the television)
+</LI>
+</UL>
+
+<P>
+Implementations that support the Timex video modes use the $FF
+register as the primary means to set the video mode, as per the Timex
+machines. It is left to the individual implementations to determine if
+reading the port returns the previous write or the floating bus.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node16.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node14.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node14.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html387"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html389"
+  HREF="node156.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node16.html">GRB palette entries</A>
+<B> Up:</B> <A
+ HREF="node14.html">ULA+</A>
+<B> Previous:</B> <A
+ HREF="node14.html">ULA+</A>
+ &nbsp; <B>  <A ID="tex2html388"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html390"
+  HREF="node156.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

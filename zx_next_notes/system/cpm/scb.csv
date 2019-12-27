@@ -1,0 +1,41 @@
+Offset-7, Description
+00 - 04, Reserved For System Use
+05, BDOS version number
+06 - 09, User Flags
+0A - 0F, Reserved For System Use
+10 - 11, Program Error return code
+12 - 19, Reserved For System Use
+1A, Console Width (columns)
+1B, Console Column Position
+1C, Console Page Length
+1D - 21, Reserved For System Use
+22 - 23, CONIN Redirection flag
+24 - 25, CONOUT Redirection flag
+26 - 27, AUXIN Redirection flag
+28 - 29 AUXOUT Redirection flag
+2A - 2B, LSTOUT Redirection flag
+2C, Page Mode
+2D, Reserved For System Use
+2E, CTRL-H Active
+2F, Rubout Active
+30 - 32, Reserved For System Use
+33 - 34, Console Mode
+35 - 36, Reserved For System Use
+37, Output Delimiter
+38 List Output Flag
+39 - 3B, Reserved For System Use
+3C - 3D, Current DMA Address
+3E, Current Disk
+3F - 43, Reserved For System Use
+44, Current User Number
+45 - 49, Reserved For System Use
+4A, BDOS Multi-Sector Count
+4B, BDOS Error Mode
+4C - 4F, Drive Search Chain (DISKS A:\,E:\,F:)
+50, Temporary File Drive
+51, Error Disk
+52 - 56, Reserved For System Use
+57, BDOS flags
+58 - 5C, Date Stamp
+5D - 5E, Common Memory Base Address
+5F - 63, Reserved For System Use

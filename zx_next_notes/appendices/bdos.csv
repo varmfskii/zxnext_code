@@ -1,0 +1,87 @@
+ Function,Function Name,Input Parameters,Returned Values
+ 0,System Reset,none,none
+ 1,Console Input,none,A = Char
+ 2,Console Output,E = char,A = 00H
+ 3,Auxiliary Input,none,A = char
+ 4,Auxiliary Output,E = char,A = 00H
+ 5,List Output,E = char,A = 00H
+ 6,Direct Console I/O,E = 0FFH/,A = char/status
+ 7,Auxiliary Input,none,A = 00/0FFH Status
+ 8,Auxiliary Output,none,A = 00/0FFH Status
+ 9,Print String,DE = .String,A = 00H
+ 10,Read Console Buffer DE = .Buffer0 Characters in buffer
+ 11,Get Console Status none A = 00/01
+ 12,Return Version Number none HL = Version (0031H)
+ 13,Reset Disk System none A = 00H
+ 14,Select Disk E = Disk A = Err Flag Number
+ 15,Open File DE = FCB A = Dir Code
+ 16,Close File DE = FCB A = Dir Code
+ 17,Search for First DE = FCB A = Dir Code
+ 18,Search for Next none A = Dir Code
+ 19,Delete File DE = FCB A = Dir Code
+ 20,Read Sequential DE = FCB A = Err Code
+ 21,Write Sequential DE = FCB A = Err Code
+ 22,Make File DE = FCB A = Dir Code
+ 23,Rename File DE = FCB A = Dir Code
+ 24,Return Login Vector none HL = Login Vector
+ 25,Return Current Disk none A = Cur Disk#
+ 26,Set DMA Address DE = . DMA A = 00H
+ 27,Get Addr(Alloc) none HL = Alloc
+ 28,Write Protect Disk none A = 00H
+ 29,Get R/O Vector none HL = R/0 Vector
+ 30,Set File Attributes DE = .FCB A = Dir Code
+ 31,Get Addr(DPB) none HL = DPB
+ 32,Get User Code,E = 0FFH,A = Curr user number
+ 32,Set User Code,E = user number,A = 00H
+ 33,Read Random DE = .FCB A = Err Code
+ 34,Write Random DE = .FCB A = Err Code
+ 35,Compute File Size DE = .FCB r0, rl, r2
+ A = Err Flag
+ 36,Set Random Record DE = .FCB r0, rl, r2
+ 37,Reset Drive DE = Drive A = 00H
+ Vector
+ 38,Access Drive none A = 00H
+ 39,Free Drive none A = 00H
+ 40,Write Random with DE = .FCB A = Err Code
+ Zero Fill
+ 41,Test and Write Record DE = FCB A = 0FFH
+ 42,Lock Record DE = ..FCB A = 00H
+ 43,Unlock Record DE = .FCB A = 00H
+ 44,Set Multi-sector Count E = # Sectors A = Return Code
+ 45,Set BDOS Error Mode E = BDOS Err A = 00H
+ Mode
+ 46,Get Disk Free Space E = Drive Number of Free Sectors
+ number A = Err Flag
+ 47,Chain to Program E = Chain Flag A = 00H
+ 48,Flush Buffers E = Purge Flag A = Err Flag
+ 49,Get/Set System DE = .SCB PB A = Returned Byte
+ Control Block HL = Returned Word
+ 50,Direct BIOS Calls DE = .BIOS PB BIOS Return
+ 59,Load Overlay DE = .FCB A = Err Code
+ 60,Call Resident System DE = .RSX PB A = Err Code
+ Extension
+ Note: . indicates the address of
+ 98,Free Blocks none A = Err Flag
+ 99,Truncate File DE = .FCB A = Dir Code
+ 100,Set Directory Label DE = .FCB A = Dir Code
+ 101,Return Directory E = Drive A = Dir label data byte
+ Label Data
+ 102,Read File Date Stamps DE = .FCB A = Dir Code
+ and Password Mode
+ 103,Write File XFCB DE = .FCB A = Dir Code
+ 104,Set Date and Time DE = .DAT A = 00H
+ 105,Get Date and Time DE = .DAT Date and Time
+ A = seconds
+ 106,Set Default Password DE = Password A = 00H
+ 107,Return Serial Number DE = .Serial Serial Number
+ field
+ 108,Get/Set Program DE = 0FFFFH/ HL Program Ret Code
+ Return Code Code none
+ 109,Get/Set Console Mode DE = 0FFFFH/ HL = ConsoleMode
+ Mode none
+ 110,Get/Set Output DE = 0FFFFH/ A = OutputDelimiter
+ Delimiter E = Delimiter none
+ 111,Print Block DE = .CCB A = 00H
+ 112,List Block DE = .CCB A = 00H
+ 152,Parse Filename DE = .PFCB See definition
+ Note: . indicates the address of
