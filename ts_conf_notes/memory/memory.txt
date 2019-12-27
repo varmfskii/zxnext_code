@@ -1,0 +1,403 @@
+ 
+
+  • To come in
+  • check in
+  • Password recovery
+
+[                    ]
+
+[                    ] To come in
+
+[*] Remember me 
+[                    ]
+
+Get link to change password
+[hypespace]
+
+  • Topics
+  • Blogs
+  • People
+  • Activity
+  • The calendar
+  • FAQ
+  • still
+
+  • To register
+  • To come in
+
+  • Everything
+  • Collective
+  • Personal
+
+To find
+[                    ] []
+Development
+
+20 readers
+57 topics
+RSS feed
+
+news
+
+  • Calendar for 2019
+
+    Blastoff December 31, 2018, 16:00 2
+
+  • 3aRulem №24
+
+    Blastoff December 8, 2018 21:11 0
+
+  • 3aRulem # 24
+
+    Blastoff November 10, 2018 09:53 eleven
+
+  • Retro DG Mag Contest
+
+    mr_r0ckers October 26, 2018, 14:21 one
+
+  • Demoscene - art in numbers
+
+    nyuk October 23, 2018 12:50 one
+
+All News · RSS
+
+Live
+
+  • Comments
+  • Publications
+
+  • Comments
+      □ Comments
+      □ Publications
+
+  • [avatar_mal]
+
+    aa-dav July 22, 2019 07:15
+
+    8/16-bit dream computer (Simpleton processor) 3
+  • [avatar_mal]
+
+    Winny July 6, 2019 11:40
+
+    Era is leaving 18
+  • [avatar_24x]
+
+    tae1980 July 2, 2019 08:40
+
+    ZX-Art 06.2019: maps and geocoding eight
+  • [avatar_24x]
+
+    pixelrat June 21, 2019 09:45
+
+    chipwiki: pixel art ten
+  • [avatar_24x]
+
+    moroz1999 June 20, 2019 12:18
+
+    ZX-Art 05.2019: Pouet, Simple HTML, cache 9
+  • [avatar_24x]
+
+    sq June 15, 2019 21:08
+
+    We write video from the emulator. How? 41
+  • [avatar_24x]
+
+    Shiru June 14, 2019 11:51
+
+    EVALUA - VST for mathematicians 6
+  • [avatar_24x]
+
+    Vbi June 1, 2019 11:46
+
+    Game Boy Architecture Overview (+ Color) four
+
+Entire broadcast · RSS
+% logo-img%
+% title%
+
+% date%
+
+[events-ico] events
+
+[INS::INS]
+
+Hyperadio
+
+                                 [hyperadio-]
+                                 [hyperadio-]
+                         voxel \ triumph - cross fire
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                             listeners: 1 (4 peak)
+                                 M3U XSPF VCLT
+
+Best month
+
+  • moroz1999 June 30, 2019 10:10
+
+    Blog them. moroz1999 → ZX-Art 06.2019: maps and geocoding eight
+  • aa-dav July 20, 2019 09:48
+
+    Blog them. aa-dav → 8/16-bit dream computer (Simpleton processor) 3
+
+Tags
+
+  • All tags
+
+[                    ]
+  • 14days
+  • Parulem
+  • 3bm
+  • 8bit
+  • artfield
+  • ay
+  • basic
+  • beeper
+  • c64
+  • Captain Drexx
+  • cc
+  • chaos constructions
+  • chiptune
+  • coding
+  • compo
+  • csp
+  • demo
+  • demoparty
+  • demoscene
+  • design
+  • development
+  • dihalt
+  • famicom
+  • faq
+  • game
+  • Game Boy Advance
+  • GBA
+  • gfx
+  • graphics
+  • hype
+  • making of
+  • multimatograf
+  • music
+  • musicdisk
+  • nes
+  • NOT Soft
+  • party
+  • Podcast
+  • realtime
+  • review
+  • scene
+  • ts docs
+  • TS-Config
+  • verve
+  • video
+  • vortex tracker
+  • Weekly game club
+  • z80
+  • zx spectrum
+  • Zxtune
+  • video chip
+  • graphics
+  • demo
+  • demoscene
+  • wild ad
+  • Behind rulem
+  • games
+  • Coding
+  • contests
+  • music
+  • music for man
+  • overview
+  • party
+  • transfer
+  • programming
+  • Lesson
+  • 2015
+  • 2016
+  • 2017
+  • 2018
+
+Blogs
+
+  • Top
+
+  • Development 16.72
+  • News 13.65
+  • Sound 7.52
+  • VERVE 7.47
+  • Events 6.45
+  • Graphics 6.45
+  • Pixel Talks 5.61
+  • Demo 5.31
+
+All blogs
+
+TSconf: Memory
+
+Development  
+[454102]Consider the memory location in the system.
+
+ZX Evolution has 4MB of memory.
+The organization of this memory is similar to zx spectrum 128 - paging is used.
+Transcribed into pages of memory, we have 256 pages of 16 kb each.
+
+The above picture describes how the memory of the Spectrum is organized. A
+similar system is used in TSconf, but somewhat expanded - we are able to place
+pages not only from the address # c000:
+
+Page0 (порт #10af) - адрес #0000
+Page1 (порт #11af) - адрес #4000
+Page2 (порт #12af) - адрес #8000
+Page3 (порт #13af) - адрес #c000
+
+
+Writing to the port switches the page in the window we need.
+
+To use the paging system from address # 0000, you need to use the MemConfig
+port (# 21af):
+
+    Port MemConfig, # 21af:
+    MemConfig LCK128 [1: 0] - - W0_RAM! W0_MAP W0_WE ROM128
+    bits 7.6 - LCK128 - memory mode: 00-512k, 01 - 128k, 10 - Auto, 11 - 1024
+    k. The default is data from the BIOS.
+    bit 3 - W0_RAM, 2 - W0_MAP, 1 - W0_WE, bit 0 - ROM128 (the same as bit 4 in
+    # 7FFD)
+
+    W0_RAM 0 - ROM / 1 - RAM
+    ! W0_MAP 0 - mapped / 1 - Page0
+    W0_WE 0 - WP / 1 - WE (for ROM and RAM)
+
+With its help, it is possible to switch the 0th memory window to read / write
+mode (the usual state is read only, there is the specter ROM), and to enable
+mapping - the ability to place other pages of memory, not just the standard
+page 0.
+
+In window # 0000 you can enable RAM instead of ROM with optional prohibition of
+recording in this window.
+W0_RAM = 0 - enabled ROM
+W0_RAM = 1 - enabled RAM
+
+Bit W0_WE allows writing for RAM and programming (WE signal for ROM):
+
+W0_WE = 0
+W0_RAM = 0 - ROM firmware is disabled
+W0_RAM = 1 - writing to RAM at # 0000-3FFF not allowed
+W0_WE = 1
+W0_RAM = 0 - ROM firmware is allowed
+W0_RAM = 1 - writing to RAM at # 0000-3FFF is allowed
+
+Bit W0_MAPsets the page selection method for window # 0000.
+
+W0_MAP = 0 - the page number is selected depending on the current ZX mode
+(Basic 48, Basic 128, TR-DOS).
+Page layout: 0 - system, 1 - TR-DOS, 2 - Basic 128, 3 - Basic 48.
+However, the register Page0 selects a bank of 4 pages to be used:
+
+W0_RAM = 0 - for window # 0000 is selected ROM
+Page0 = 0bxxx000xx - pages 0-3 are used,
+Page0 = 0bxxx001xx - pages 4-7 are used,
+...
+Page0 = 0bxxx111xx - pages 28-31 are used.
+
+W0_RAM = 1 - RAM is selected for the window # 0000 - this mode can be used to
+debug the firmware without reprogramming the ROM or testing non-standard
+pzushek.
+Page0 = 0b000000xx - pages 0-3 are used,
+Page0 = 0b000001xx - pages 4-7 are used,
+...
+Page0 = 0b111111xx - pages 252-255 are used.
+
+W0_MAP = 1 - the page number is taken directly from the register Page0 - linear
+mode
+W0_RAM = 0 - pages
+0-31 ROM W0_RAM = 1 - pages 0-255 RAM
+
+Example:
+Turn on page # 80 from address # 8000
+
+                ld a,#80
+                ld bc,PAGE2
+                out (c),a
+
+
+
+Enable the ability to work in page 0
+
+                ld bc,MemConfig
+                ld a,%00001110
+                out (c),a
+
+
+Voila, write, post with 0000.
+
+  • 
+  • TS-Config
+  • , memory
+  • , Ts the docs
+
+Share ...       
+
+  • avatar Vbi
+  • April 14, 2015, 11:20
+  • 
+  • 
+  • 
+    +11
+      □ 12
+      □ one
+      □ 0
+
+2 comments
+
+avatar
+Does this only concern tsconf or the whole evo as a whole?
+
+  • Nuts_
+  • April 14, 2015, 19:40
+  • 
+    +1
+  •  
+  • ↓
+
+avatar
+Only tskonf. The architecture of the Eva is mostly due to the configuration in
+the FPSA.
+
+  • tsl
+  • April 14, 2015, 19:43
+  • 
+    +1
+  •  
+  • ↑
+  • ↓
+
+Only registered and authorized users can leave comments.
+
+  • You can
+  • To register
+  • To come in
+
+  • Sections
+  • Topics
+  • Blogs
+  • People
+  • Activity
+  • mobile version
+
+  • The calendar
+  • 2015
+  • 2016
+  • 2017
+  • 2018
+
+© Powered by LiveStreet CMS
+xeoart Design by xeoart
+2012
+ 
+
+Google Translate
+
+Original text
+
+Contribute a better translation
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Share with friends
+In contact withClassmatesTwitterFacebookMy worldLivejournalGoogle Plus Yandex

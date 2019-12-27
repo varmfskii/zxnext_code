@@ -1,0 +1,382 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Interrupts</TITLE>
+<META NAME="description" CONTENT="Interrupts">
+<META NAME="keywords" CONTENT="ts_conf_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="ts_conf_notes.css">
+
+<LINK REL="next" HREF="node7.html">
+<LINK REL="previous" HREF="node5.html">
+<LINK REL="next" HREF="node7.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="ts_conf_notes.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html43"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html45"
+  HREF="node9.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node7.html">List of Figures</A>
+<B> Up:</B> <A
+ HREF="ts_conf_notes.html">TS (Tile &amp; Sprite)</A>
+<B> Previous:</B> <A
+ HREF="node5.html">DMA</A>
+ &nbsp; <B>  <A ID="tex2html44"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html46"
+  HREF="node9.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A ID="SECTION00500000000000000000">
+Interrupts</A>
+</H1>
+Development
+
+<P>
+[14_1] TSconf has an extended system of interrupts that can be
+triggered if there are such states as: beam arrival at a given screen
+position, beam arrival at the beginning of a line, line display on the
+screen, completion of data transfer.
+
+<P>
+Tao says: The system has three types of masked interrupts that can be
+called at an address that has a high byte — the address in register I,
+and the youngest — its type:
+
+<OL>
+<LI>#FF - frame
+</LI>
+<LI>#FD - lowercase (Line)
+</LI>
+<LI>#FB - DMA.
+</LI>
+</OL>
+The processing of these interrupts can be switched by the INTMask port
+(#2A af), changing the state of the bits:
+
+<P>
+0 - Frame, 1 - Line, 2 - DMA, which leads to an on / off call to
+handlers.
+
+<P>
+State of bits: 0 - disabled / 1 - enabled.
+
+<P>
+In the case of the arrival of several events at the same time, the
+interrupt with the lower number will be processed first.
+
+<P>
+How can we manage these capabilities? Consider in order:
+
+<P>
+Frame A
+
+<P>
+frame interrupt in the standard Spectrum comes at the very beginning
+of the screen drawing. For TSconf, this parameter can be set using
+three ports:
+
+<UL>
+<LI>VSINT: the high and low bytes of these two ports (VSINTH -
+  #24af, VSINTL - #23af) allow you to specify the vertical position
+  of the beam, which allows us to specify the entire area of the
+  screen lines: 0 - 319;
+</LI>
+<LI>HSINT: port indicating the horizontal position of the beam
+  (position in the line): 0–223 in 3.5 MHz cycles,
+</LI>
+</UL>
+If the position of the beam coincides, a frame interrupt handler will
+be called. If you specify values outside the specified range, the
+interrupt will not be generated.
+
+<P>
+So let's give an example in which the frame interrupt handler #BE will
+be installed:
+<PRE>
+im2_init
+                xor a
+                ld bc,HSINT
+                out (c),a
+                ld bc,VSINTL
+                out (c),a
+                ld bc,VSINTH
+                out (c),a
+
+                ld a,#be
+                ld i,a
+                ld hl,int
+                ld (#beff),hl
+                im 2
+                ret
+</PRE>
+In this case, the positions for calling the frame interrupt handler
+were set to 0 (upper left corner of the screen, leftmost position).
+When the ray of the screen rendering arrives at this position, the
+transition will be made to the personnel interrupt handler code by the
+int tag.
+
+<P>
+In this case, this handler will be called with a frame pulse frequency
+of 50 Hz.
+
+<P>
+And if we need more?
+
+<P>
+Consider the situation when we need to call the personnel handler at
+the beginning of the screen, and at the beginning of the line at
+number 128.
+
+<P>
+Why? So that the upper part of the screen was colored red!
+
+<P>
+To do this, we will need to specify when we need to call the handler
+in each next time. In the handler, the position of the screen 0 (the
+first line of the screen) will indicate in which place of the screen
+the following personnel interruption will be triggered:
+<PRE>
+int
+                push af
+                push bc
+                push hl
+                ld a,128
+                ld bc,VSINTL
+                out (c),a
+                xor a
+                ld bc,VSINTH
+                out (c),a
+                ld hl,int128
+                ld (#beff),hl
+                ld a,#f2
+                ld bc,BORDER
+                out (c),a
+                pop hl
+                pop bc
+                pop af
+                ei
+                ret
+</PRE>
+Here we indicate that the next personnel interrupt should be called in
+the vertical position of the beam on line 128, and the handler will be
+the int128 subroutine. Set the red color from the standard zx spectrum
+palette (palette #0f, color 2 - for the border color, simply specify
+the desired color from the entire 256-cell palette).
+
+<P>
+When the beam hits the beginning of line 128, the subroutine int128 is
+called:
+<PRE>
+int128
+                push af
+                push bc
+                push hl
+                xor a
+                ld bc,VSINTL
+                out (c),a
+                ld bc,VSINTH
+                out (c),a
+                ld hl,int
+                ld (#beff),hl
+                ld a,#f0
+                ld bc,BORDER
+                out (c),a
+                pop hl
+                pop bc
+                pop af
+                ei
+                ret
+</PRE>
+in which we indicated that the next personnel interruption will be
+processed by the int subroutine at the beam position 0, and set the
+border color to 0 of the standard palette.
+
+<P>
+We note that the HSINT horizontal position port does not change now
+and is set to 0, therefore the call to the handlers is always at the
+beginning of the line. I suggest you play with it yourself :)
+
+<P>
+Great, we can already get to the right place on the screen. But what
+if you need a certain subroutine to execute EVERY line?  To do this,
+we have a tool in the form of a string interrupt.
+
+<P>
+Line interrupts
+
+<P>
+This type of interrupt will call its handler when the beam is at
+position 0 of each line of the screen (whether it is visible or not on
+the screen is not important for the system).
+
+<P>
+To use it, you must do the following:
+
+<UL>
+<LI>set the address of the line interrupt handler
+</LI>
+<LI>allow INTMASK port processing (#2Aaf)
+</LI>
+</UL>
+So, turn on the bits of the INTMASK port, which allow processing of
+both personnel and line interrupts, set the address of the handler:
+<PRE>
+                ld      hl,line_proc
+                ld      (#befd),hl
+
+                ld      bc,INTMASK
+                ld      a,%00000011
+                out     (c),a
+</PRE>
+We note to ourselves that both personnel and line interrupts are now
+allowed.  The first handler will be processed with a smaller number -
+i.e. first personnel, then lower case.
+
+<P>
+Change the task. Let each line on the border be visible strip of a
+different color.
+
+<P>
+Disable the frame handler, leaving only the lowercase one:
+<PRE>
+                ld      hl,line_proc
+                ld      (#befd),hl
+
+                ld      bc,INTMASK
+                ld      a,%00000010
+                out     (c),a
+</PRE>
+Add a line interrupt handler:
+<PRE>
+line_proc
+                exx
+                ex af, af'
+lp1             ld a,#ff
+                inc a
+                ld (lp1+1),a
+                or #f0
+                ld bc,BORDER
+                out (c),a
+                ex af, af'
+                exx
+                ei
+                ret
+</PRE>
+Since this handler will be called very often, it is worth minimizing
+the processor clock used by switching to an alternate set of
+registers. Then we increase the color number counter in the palette
+and send it to the system (border port #0Faf).
+
+<P>
+The peculiarity of these interrupt systems is that using the HALT
+“stop the processor” command so familiar to us will only wait for the
+next personnel / line interrupt, that is, for the first example,
+drawing a full screen takes 2 HALTs and 320 HALT for a lowercase :)
+
+<P>
+DMA
+
+<P>
+Handler to complete the transfer will be called after the transfer is
+completed. Your KO ;)
+
+<P>
+Turn on its processing and specify the address of the handler. As
+usual:
+<PRE>
+                ld      hl,dma_proc
+                ld      (#befb),hl
+
+                ld      bc,INTMASK
+                ld      a,%00000100
+                out     (c),a
+</PRE>
+Note that in this case, we have completely disabled frame and line
+interrupts, and their handlers will NOT be called.
+
+<P>
+[Question-Mark-Dude1-300x300]Questions and Answers
+
+<P>
+:? Cho music when lowercase spoils?
+<BR>! Alas, the standard pt3 player uses the stack in operation, and when
+calling the line processor, the data at the address in the SP is
+replaced with its call address. And spoil the muse data.
+
+<P>
+Accordingly, we cause the player to turn off the lowercase ones (for
+example, outside the screen, set up personnel), or use the psg player.
+... or playing a non-stackable player.
+
+<P>
+? And how do you play with fullscreen effects?
+<BR>! 1) Heh, lowercase interrupts are called every line. Accordingly, we
+obtain a lower frequency frequency of 15625 hertz, and each line is
+thrown into the audio coking port. Naman? And do not forget the
+previous question
+<BR>
+2) The case, if only the 15625 sound, and the personnel interruption
+is long enough, then allow (nested) interrupts in the personnel
+handler. Plus, you can move the personnel int (for example) to the
+middle of the line, so that they would not come at the same time as
+the lower case.
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="ts_conf_notes.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html43"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html45"
+  HREF="node9.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node7.html">List of Figures</A>
+<B> Up:</B> <A
+ HREF="ts_conf_notes.html">TS (Tile &amp; Sprite)</A>
+<B> Previous:</B> <A
+ HREF="node5.html">DMA</A>
+ &nbsp; <B>  <A ID="tex2html44"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html46"
+  HREF="node9.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>
