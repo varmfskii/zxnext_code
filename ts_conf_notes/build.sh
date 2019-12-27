@@ -1,6 +1,6 @@
 #!/bin/bash
-pdflatex 000-document.tex
-pdflatex 000-document.tex
-makeindex 000-document.idx
-pdflatex 000-document.tex
-latex2html 000-document.tex
+pdflatex ts_conf_notes.tex
+pdflatex ts_conf_notes.tex
+makeindex ts_conf_notes.idx
+pdflatex ts_conf_notes.tex
+latex2html ts_conf_notes.tex
