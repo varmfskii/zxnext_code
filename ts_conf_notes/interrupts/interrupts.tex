@@ -1,278 +1,52 @@
- 
-
-  • To come in
-  • check in
-  • Password recovery
-
-[                    ]
-
-[                    ] To come in
-
-[*] Remember me 
-[                    ]
-
-Get link to change password
-[strings]
-
-  • Topics
-  • Blogs
-  • People
-  • Activity
-  • The calendar
-  • FAQ
-  • still
-
-  • To register
-  • To come in
-
-  • Everything
-  • Collective
-  • Personal
-
-To find
-[                    ] []
+\chapter{Interrupts}
 Development
 
-20 readers
-57 topics
-RSS feed
+[14\_1] TSconf has an extended system of interrupts that can be
+triggered if there are such states as: beam arrival at a given screen
+position, beam arrival at the beginning of a line, line display on the
+screen, completion of data transfer.
 
-news
+Tao says: The system has three types of masked interrupts that can be
+called at an address that has a high byte — the address in register I,
+and the youngest — its type:
+\begin{enumerate}
+\item \#FF - frame
+\item \#FD - lowercase (Line)
+\item \#FB - DMA.
+\end{enumerate}
+The processing of these interrupts can be switched by the INTMask port
+(\#2A af), changing the state of the bits:
 
-  • Calendar for 2019
+0 - Frame, 1 - Line, 2 - DMA, which leads to an on / off call to
+handlers.
 
-    Blastoff December 31, 2018, 16:00 2
+State of bits: 0 - disabled / 1 - enabled.
 
-  • 3aRulem №24
-
-    Blastoff December 8, 2018 21:11 0
-
-  • 3aRulem # 24
-
-    Blastoff November 10, 2018 09:53 eleven
-
-  • Retro DG Mag Contest
-
-    mr_r0ckers October 26, 2018, 14:21 one
-
-  • Demoscene - art in numbers
-
-    nyuk October 23, 2018 12:50 one
-
-All News · RSS
-
-Live
-
-  • Comments
-  • Publications
-
-  • Comments
-      □ Comments
-      □ Publications
-
-  • [avatar_mal]
-
-    aa-dav July 22, 2019 07:15
-
-    8/16-bit dream computer (Simpleton processor) 3
-  • [avatar_mal]
-
-    Winny July 6, 2019 11:40
-
-    Era is leaving 18
-  • [avatar_24x]
-
-    tae1980 July 2, 2019 08:40
-
-    ZX-Art 06.2019: maps and geocoding eight
-  • [avatar_24x]
-
-    pixelrat June 21, 2019 09:45
-
-    chipwiki: pixel art ten
-  • [avatar_24x]
-
-    moroz1999 June 20, 2019 12:18
-
-    ZX-Art 05.2019: Pouet, Simple HTML, cache 9
-  • [avatar_24x]
-
-    sq June 15, 2019 21:08
-
-    We write video from the emulator. How? 41
-  • [avatar_24x]
-
-    Shiru June 14, 2019 11:51
-
-    EVALUA - VST for mathematicians 6
-  • [avatar_24x]
-
-    Vbi June 1, 2019 11:46
-
-    Game Boy Architecture Overview (+ Color) four
-
-Entire broadcast · RSS
-% logo-img%
-% title%
-
-% date%
-
-[events-ico] events
-
-[INS::INS]
-
-Hyperadio
-
-                                 [hyperadio-]
-                                 [hyperadio-]
-                              reed - flamethrower
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-                             listeners: 1 (4 peak)
-                                 M3U XSPF VCLT
-
-Best month
-
-  • moroz1999 June 30, 2019 10:10
-
-    Blog them. moroz1999 → ZX-Art 06.2019: maps and geocoding eight
-  • aa-dav July 20, 2019 09:48
-
-    Blog them. aa-dav → 8/16-bit dream computer (Simpleton processor) 3
-
-Tags
-
-  • All tags
-
-[                    ]
-  • 14days
-  • Parulem
-  • 3bm
-  • 8bit
-  • artfield
-  • ay
-  • basic
-  • beeper
-  • c64
-  • Captain Drexx
-  • cc
-  • chaos constructions
-  • chiptune
-  • coding
-  • compo
-  • csp
-  • demo
-  • demoparty
-  • demoscene
-  • design
-  • development
-  • dihalt
-  • famicom
-  • faq
-  • game
-  • Game Boy Advance
-  • GBA
-  • gfx
-  • graphics
-  • hype
-  • making of
-  • multimatograf
-  • music
-  • musicdisk
-  • nes
-  • NOT Soft
-  • party
-  • Podcast
-  • realtime
-  • review
-  • scene
-  • ts docs
-  • TS-Config
-  • verve
-  • video
-  • vortex tracker
-  • Weekly game club
-  • z80
-  • zx spectrum
-  • Zxtune
-  • video chip
-  • graphics
-  • demo
-  • demoscene
-  • wild ad
-  • Behind rulem
-  • games
-  • Coding
-  • contests
-  • music
-  • music for man
-  • overview
-  • party
-  • transfer
-  • programming
-  • Lesson
-  • 2015
-  • 2016
-  • 2017
-  • 2018
-
-Blogs
-
-  • Top
-
-  • Development 16.72
-  • News 13.65
-  • Sound 7.52
-  • VERVE 7.47
-  • Events 6.45
-  • Graphics 6.45
-  • Pixel Talks 5.61
-  • Demo 5.31
-
-All blogs
-
-TSconf: ints
-
-Development  
-[14_1]
-TSconf has an extended system of interrupts that can be triggered if there are
-such states as: beam arrival at a given screen position, beam arrival at the
-beginning of a line, line display on the screen, completion of data transfer.
-
-
-    Tao says: The system has three types of masked interrupts that can be
-    called at an address that has a high byte — the address in register I, and
-    the youngest — its type:
-     1. #FF - frame
-     2. #FD - lowercase (Line)
-     3. #FB - DMA.
-    The processing of these interrupts can be switched by the INTMask port (#
-    2A af), changing the state of the bits:
-    0 - Frame, 1 - Line, 2 - DMA, which leads to an on / off call to handlers.
-    State of bits: 0 - disabled / 1 - enabled.
-    In the case of the arrival of several events at the same time, the
-    interrupt with the lower number will be processed first.
-
-
+In the case of the arrival of several events at the same time, the
+interrupt with the lower number will be processed first.
 
 How can we manage these capabilities? Consider in order:
 
 Frame A
-frame interrupt in the standard Spectrum comes at the very beginning of the
-screen drawing. For TSconf, this parameter can be set using three ports:
 
-  • VSINT: the high and low bytes of these two ports (VSINTH - # 24af, VSINTL -
-    # 23af) allow you to specify the vertical position of the beam, which
-    allows us to specify the entire area of ​​the screen lines: 0 - 319;
-  • HSINT: port indicating the horizontal position of the beam (position in the
-    line): 0–223 in 3.5 MHz cycles,
+frame interrupt in the standard Spectrum comes at the very beginning
+of the screen drawing. For TSconf, this parameter can be set using
+three ports:
+\begin{itemize}
+\item VSINT: the high and low bytes of these two ports (VSINTH -
+  \#24af, VSINTL - \#23af) allow you to specify the vertical position
+  of the beam, which allows us to specify the entire area of the
+  screen lines: 0 - 319;
+\item HSINT: port indicating the horizontal position of the beam
+  (position in the line): 0–223 in 3.5 MHz cycles,
+\end{itemize}
+If the position of the beam coincides, a frame interrupt handler will
+be called. If you specify values outside the specified range, the
+interrupt will not be generated.
 
-If the position of the beam coincides, a frame interrupt handler will be
-called. If you specify values ​​outside the specified range, the interrupt will
-not be generated.
-
-So let's give an example in which the frame interrupt handler #BE will be
-installed:
-
+So let's give an example in which the frame interrupt handler \#BE will
+be installed:
+\begin{verbatim}
 im2_init
                 xor a
                 ld bc,HSINT
@@ -288,24 +62,29 @@ im2_init
                 ld (#beff),hl
                 im 2
                 ret
+\end{verbatim}
+In this case, the positions for calling the frame interrupt handler
+were set to 0 (upper left corner of the screen, leftmost position).
+When the ray of the screen rendering arrives at this position, the
+transition will be made to the personnel interrupt handler code by the
+int tag.
 
-
-In this case, the positions for calling the frame interrupt handler were set to
-0 (upper left corner of the screen, leftmost position).
-When the ray of the screen rendering arrives at this position, the transition
-will be made to the personnel interrupt handler code by the int tag.
-In this case, this handler will be called with a frame pulse frequency of 50
-Hz.
+In this case, this handler will be called with a frame pulse frequency
+of 50 Hz.
 
 And if we need more?
-Consider the situation when we need to call the personnel handler at the
-beginning of the screen, and at the beginning of the line at number 128.
-Why? So that the upper part of the screen was colored red!
-To do this, we will need to specify when we need to call the handler in each
-next time. In the handler, the position of the screen 0 (the first line of the
-screen) will indicate in which place of the screen the following personnel
-interruption will be triggered:
 
+Consider the situation when we need to call the personnel handler at
+the beginning of the screen, and at the beginning of the line at
+number 128.
+
+Why? So that the upper part of the screen was colored red!
+
+To do this, we will need to specify when we need to call the handler
+in each next time. In the handler, the position of the screen 0 (the
+first line of the screen) will indicate in which place of the screen
+the following personnel interruption will be triggered:
+\begin{verbatim}
 int
                 push af
                 push bc
@@ -326,16 +105,16 @@ int
                 pop af
                 ei
                 ret
+\end{verbatim}
+Here we indicate that the next personnel interrupt should be called in
+the vertical position of the beam on line 128, and the handler will be
+the int128 subroutine. Set the red color from the standard zx spectrum
+palette (palette \#0f, color 2 - for the border color, simply specify
+the desired color from the entire 256-cell palette).
 
-
-Here we indicate that the next personnel interrupt should be called in the
-vertical position of the beam on line 128, and the handler will be the int128
-subroutine. Set the red color from the standard zx spectrum palette (palette #
-0f, color 2 - for the border color, simply specify the desired color from the
-entire 256-cell palette).
-
-When the beam hits the beginning of line 128, the subroutine int128 is called:
-
+When the beam hits the beginning of line 128, the subroutine int128 is
+called:
+\begin{verbatim}
 int128
                 push af
                 push bc
@@ -355,61 +134,58 @@ int128
                 pop af
                 ei
                 ret
+\end{verbatim}
+in which we indicated that the next personnel interruption will be
+processed by the int subroutine at the beam position 0, and set the
+border color to 0 of the standard palette.
 
+We note that the HSINT horizontal position port does not change now
+and is set to 0, therefore the call to the handlers is always at the
+beginning of the line. I suggest you play with it yourself :)
 
-in which we indicated that the next personnel interruption will be processed by
-the int subroutine at the beam position 0, and set the border color to 0 of the
-standard palette.
-
-We note that the HSINT horizontal position port does not change now and is set
-to 0, therefore the call to the handlers is always at the beginning of the
-line. I suggest you play with it yourself :)
-
-Great, we can already get to the right place on the screen. But what if you
-need a certain subroutine to execute EVERY line?
-To do this, we have a tool in the form of a string interrupt.
+Great, we can already get to the right place on the screen. But what
+if you need a certain subroutine to execute EVERY line?  To do this,
+we have a tool in the form of a string interrupt.
 
 Line interrupts
-This type of interrupt will call its handler when the beam is at position 0 of
-each line of the screen (whether it is visible or not on the screen is not
-important for the system).
+
+This type of interrupt will call its handler when the beam is at
+position 0 of each line of the screen (whether it is visible or not on
+the screen is not important for the system).
 
 To use it, you must do the following:
-
-  • set the address of the line interrupt handler
-  • allow INTMASK port processing (# 2Aaf)
-
-
-So, turn on the bits of the INTMASK port, which allow processing of both
-personnel and line interrupts, set the address of the handler:
-
+\begin{itemize}
+\item set the address of the line interrupt handler
+\item allow INTMASK port processing (\#2Aaf)
+\end{itemize}
+So, turn on the bits of the INTMASK port, which allow processing of
+both personnel and line interrupts, set the address of the handler:
+\begin{verbatim}
                 ld      hl,line_proc
                 ld      (#befd),hl
 
                 ld      bc,INTMASK
                 ld      a,%00000011
                 out     (c),a
+\end{verbatim}
+We note to ourselves that both personnel and line interrupts are now
+allowed.  The first handler will be processed with a smaller number -
+i.e. first personnel, then lower case.
 
+Change the task. Let each line on the border be visible strip of a
+different color.
 
-We note to ourselves that both personnel and line interrupts are now allowed.
-The first handler will be processed with a smaller number - i.e. first
-personnel, then lower case.
-
-Change the task. Let each line on the border be visible strip of a different
-color.
 Disable the frame handler, leaving only the lowercase one:
-
+\begin{verbatim}
                 ld      hl,line_proc
                 ld      (#befd),hl
 
                 ld      bc,INTMASK
                 ld      a,%00000010
                 out     (c),a
-
-
-
+\end{verbatim}
 Add a line interrupt handler:
-
+\begin{verbatim}
 line_proc
                 exx
                 ex af, af'
@@ -423,155 +199,53 @@ lp1             ld a,#ff
                 exx
                 ei
                 ret
+\end{verbatim}
+Since this handler will be called very often, it is worth minimizing
+the processor clock used by switching to an alternate set of
+registers. Then we increase the color number counter in the palette
+and send it to the system (border port \#0Faf).
 
-
-Since this handler will be called very often, it is worth minimizing the
-processor clock used by switching to an alternate set of registers. Then we
-increase the color number counter in the palette and send it to the system
-(border port # 0Faf).
-
-The peculiarity of these interrupt systems is that using the HALT “stop the
-processor” command so familiar to us will only wait for the next personnel /
-line interrupt, that is, for the first example, drawing a full screen takes 2
-HALTs and 320 HALT for a lowercase :)
+The peculiarity of these interrupt systems is that using the HALT
+“stop the processor” command so familiar to us will only wait for the
+next personnel / line interrupt, that is, for the first example,
+drawing a full screen takes 2 HALTs and 320 HALT for a lowercase :)
 
 DMA
+
 Handler to complete the transfer will be called after the transfer is
 completed. Your KO ;)
-Turn on its processing and specify the address of the handler. As usual:
 
+Turn on its processing and specify the address of the handler. As
+usual:
+\begin{verbatim}
                 ld      hl,dma_proc
                 ld      (#befb),hl
 
                 ld      bc,INTMASK
                 ld      a,%00000100
                 out     (c),a
-
-
-Note that in this case, we have completely disabled frame and line interrupts,
-and their handlers will NOT be called.
+\end{verbatim}
+Note that in this case, we have completely disabled frame and line
+interrupts, and their handlers will NOT be called.
 
 [Question-Mark-Dude1-300x300]Questions and Answers
-:? Cho music when lowercase spoils?
-! Alas, the standard pt3 player uses the stack in operation, and when calling
-the line processor, the data at the address in the SP is replaced with its call
-address. And spoil the muse data.
-Accordingly, we cause the player to turn off the lowercase ones (for example,
-outside the screen, set up personnel), or use the psg player.
+
+:? Cho music when lowercase spoils?\\
+! Alas, the standard pt3 player uses the stack in operation, and when
+calling the line processor, the data at the address in the SP is
+replaced with its call address. And spoil the muse data.
+
+Accordingly, we cause the player to turn off the lowercase ones (for
+example, outside the screen, set up personnel), or use the psg player.
 ... or playing a non-stackable player.
 
-? And how do you play with fullscreen effects?
-! 1) Heh, lowercase interrupts are called every line. Accordingly, we obtain a
-lower frequency frequency of 15625 hertz, and each line is thrown into the
-audio coking port. Naman? And do not forget the previous question ^^^
-2) The case, if only the 15625 sound, and the personnel interruption is long
-enough, then allow (nested) interrupts in the personnel handler. Plus, you can
-move the personnel int (for example) to the middle of the line, so that they
-would not come at the same time as the lower case.
-Literature:
-FAQ
-
-  • 
-  • TS-Config
-  • , INTs
-  • , Ts the docs
-
-Share ...       
-
-  • avatar Vbi
-  • May 8, 2015, 13:18
-  • 
-  • 
-  • 
-    +12
-      □ 12
-      □ 0
-      □ 0
-
-2 comments
-
-avatar
-Oh, it turns out there is a one-shot on the right line :)
-
-  • wbcbz7
-  • May 8, 2015, 18:43
-  • 
-    0
-  •  
-  • ↓
-
-avatar
-Добавлю два нюанса.
-
-Порядок событий, связанных с приходом сигнала прерывания выглядит так:
-0. включение триггера соответствующим источником, при этом на процессор
-выставляется !INT (при наличие хотя бы одного активного триггера)
-1. процессор выполняет последний машцикл инструкции, цепляет инт
-2. процессор генерирует цикл подтверждения им2
-3. логика контроллера определяет, какой вектор выставить на шину данных (в
-зависимости от включенных триггеров и их приоритетов)
-4. проц цепляет вектор, читает из памяти адрес, летит на ISR
-5. контроллер выключает тот триггер, вектор которого обработан; если остались
-другие триггеры либо успели прийти новые события, инт не убирается
-6. процессор заканчивает обработку ISR командами EI:RET, при этом новый инт
-(если сигнал активен) обработается на последнем машцикле RET, с п.1.
-
-Нюанс первый.
-Имеем следующие события:
-— установился триггер источника с приоритетом 2,
-— прошло 3 такта,
-— установился триггер источника с приоритетом 0,
-— прошло 2 такта,
-— процессор распознал инт и запросил вектор.
-Вопрос: какой вектор обработается?
-Ответ: источника с приоритетом 0. Несмотря на то, что по тактам событие
-источника 2 пришло раньше.
-Глубокая мораль: приоритеты обрабатываются не по факту прихода, а по факту
-наличия на момент подтверждения цикла им2.
-
-Нюанс второй.
-If during the active trigger to extinguish the corresponding bit in the
-register of masks, then this source will not only not be processed, but the
-trigger will be reset. This is necessary for two things: so that the “hanging”
-raw ints do not remain after turning off the mask bits and so that you can
-steer the resolutions of lower priorities from the highest ones.
-
-  • tsl
-  • May 12, 2015, 18:42
-  • 
-    +4
-  •  
-  • ↓
-
-Only registered and authorized users can leave comments.
-
-  • You can
-  • To register
-  • To come in
-
-  • Sections
-  • Topics
-  • Blogs
-  • People
-  • Activity
-  • mobile version
-
-  • The calendar
-  • 2015
-  • 2016
-  • 2017
-  • 2018
-
-© Powered by LiveStreet CMS
-xeoart Design by xeoart
-2012
- 
-
-Google Translate
-
-Original text
-
-Contribute a better translation
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Share with friends
-In contact withClassmatesTwitterFacebookMy worldLivejournalGoogle Plus Yandex
+? And how do you play with fullscreen effects?\\
+! 1) Heh, lowercase interrupts are called every line. Accordingly, we
+obtain a lower frequency frequency of 15625 hertz, and each line is
+thrown into the audio coking port. Naman? And do not forget the
+previous question\\
+2) The case, if only the 15625 sound, and the personnel interruption
+is long enough, then allow (nested) interrupts in the personnel
+handler. Plus, you can move the personnel int (for example) to the
+middle of the line, so that they would not come at the same time as
+the lower case.
