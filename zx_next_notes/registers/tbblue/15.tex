@@ -1,0 +1,21 @@
+\register{R/W}{15}{Sprite and Layer System Setup}
+\begin{itemize}
+\item bit 7 = LoRes mode (0 on reset)
+\item bit 6 = Sprite priority (1 = sprite 0 on top, 0 = sprite 127 on
+  top) (0 on reset)
+\item bit 5 = Enable sprite clipping in over border mode (0 on reset)
+\item bits 4-2 = set layers priorities (000 on reset)
+  \begin{itemize}
+  \item 000 - S L U
+  \item 001 - L S U
+  \item 010 - S U L
+  \item 011 - L U S
+  \item 100 - U S L
+  \item 101 - U L S
+  \item 110 - S(U+L) ULA and Layer 2 combined, colours clamped to 7
+  \item 111 - S(U+L-5) ULA and Layer 2 combined, colours clamped to [0,7]
+  \end{itemize}
+\item bit 1 = Enable Sprites Over border (0 on reset)
+\item bit 0 = Enable Sprites (0 on reset)
+\end{itemize}
+

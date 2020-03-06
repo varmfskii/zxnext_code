@@ -1,0 +1,15 @@
+\register{R/W}{A0}{Pi Peripheral Enable}
+\begin{itemize}
+\item bits 7-6 = Reserved, must be 0
+\item bit 5 = Enable UART on GPIO 14, 15 (0 on reset)*
+\item bit 4 = Communication Type (0 on reset)
+  \begin{itemize}
+  \item 0 = Rx to GPIO 15, Tx to GPIO 14 (Pi)
+  \item 1 = Rx to GPIO 14, Tx to GPIO 15 (Pi Hats)
+  \end{itemize}
+\item bit 3 = Enable \iic on GPIO 2, 3 (0 on reset)*
+\item bits 2-1 = Reserved, must be 0
+\item bit 0 = Enable SPI on GPIO 7, 8, 9, 10, 11 (0 on reset)*
+\end{itemize}
+*Overrides GPIO Enables
+

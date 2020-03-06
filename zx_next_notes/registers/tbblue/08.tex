@@ -1,0 +1,14 @@
+\register{R/W}{08}{Peripheral 3 Settings}
+\begin{itemize}
+\item bit 7 = 128K Banking Unlock (inverse of port \$7FFD, bit 5) (0
+  on reset)
+\item bit 6 = Disable RAM and Port Contention (0 on reset)
+\item bit 5 = PSG Stereo Mode Control (0 = ABC, 1 = ACB) (0 on hard
+  reset)
+\item bit 4 = Enable internal speaker (1 on hard reset)
+\item bit 3 = Enable DACs (0 on hard reset)
+\item bit 2 = Enable read of port \$FF (Timex) (0 on hard reset)
+\item bit 1 = Enable Multiple PSGs (0 on hard reset)
+\item bit 0 = Enable Issue 2 Keyboard
+\end{itemize}
+

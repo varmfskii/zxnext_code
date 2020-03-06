@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Sprites</TITLE>
+<META NAME="description" CONTENT="Sprites">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="previous" HREF="node36.html">
+<LINK REL="next" HREF="node47.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node47.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node45.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html549"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html551"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node47.html">Sprite Patterns</A>
+<B> Up:</B> <A
+ HREF="node3.html">Video</A>
+<B> Previous:</B> <A
+ HREF="node45.html">Future Direction</A>
+ &nbsp; <B>  <A ID="tex2html550"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html552"
+  HREF="node162.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A ID="SECTION00350000000000000000">
+Sprites</A>
+</H1>
+
+<P>
+February 25, 2019  Victor Trucco
+
+<P>
+The Spectrum Next has a hardware sprite system with the following
+characteristics:
+
+<P>
+
+<UL>
+<LI>Total of 128 sprites
+</LI>
+<LI>Display surface is <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img2.svg"
+ ALT="$320\times 256$"></SPAN> overlapping the ULA screen by
+  32 pixels on each side
+</LI>
+<LI>Minimum of 100 sprites per scanline*
+</LI>
+<LI>Choice of 512 colours for each pixel
+</LI>
+<LI>Site of each sprite is <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
+ ALT="$16\times16$"></SPAN> pixels but sprites can be
+  magnified <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img31.svg"
+ ALT="$2\times$"></SPAN>, <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img32.svg"
+ ALT="$4\times$"></SPAN> or <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img33.svg"
+ ALT="$8\times$"></SPAN> horizontally and
+  vertically
+</LI>
+<LI>Sprites can be mirrored and rotated
+</LI>
+<LI>Sprites can be grouped together to form larger sprites under the
+  control of a single anchor
+</LI>
+<LI>A 16K pattern memory can contain 64 8-bit sprite images or 128
+  4-bit sprite images and combinations in-between
+</LI>
+<LI>A per sprite palette offset allows sprites to share images but
+  colour them differently
+</LI>
+<LI>A nextreg interface allows the copper to move sprites during the
+  video frame
+</LI>
+</UL>
+
+<P>
+*A minimum of 100 <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
+ ALT="$16\times16$"></SPAN> sprites is guaranteed to be displayed
+in any scanline. Any additional sprites will not be displayed with the
+hardware ensuring sprites are not partially plotted.
+
+<P>
+The actual limit is determined by how many 28MHz clock cycles there
+are in a scanline. The sprite hardware is able to plot one pixel cycle
+and uses one cycle to qualify each sprite. Since the number of cycles
+there are in a scanline varies with video timing (HDMI, VGA), the
+number of pixels that can be plotted also varies but the minimum will
+be 1600 pixels per line including overhead cycles needed to qualify
+100 sprites. Since sprites magified horizontally involve plotting more
+pixels, <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img31.svg"
+ ALT="$2\times$"></SPAN>, <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img32.svg"
+ ALT="$4\times$"></SPAN>, and <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img33.svg"
+ ALT="$8\times$"></SPAN> sprites will take more
+cycles to plot and the presence of these sprites in a line will reduce
+the total number of sprites that can be plotted.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html553"
+  HREF="node47.html">Sprite Patterns</A>
+<UL>
+<LI><A ID="tex2html554"
+  HREF="node48.html">Pattern Number</A>
+<UL>
+<LI><A ID="tex2html555"
+  HREF="node49.html">8-Bit Sprite Patterns</A>
+<LI><A ID="tex2html556"
+  HREF="node50.html">4-Bit Sprite Patterns</A>
+</UL>
+</UL>
+<BR>
+<LI><A ID="tex2html557"
+  HREF="node51.html">Sprite Palette</A>
+<LI><A ID="tex2html558"
+  HREF="node52.html">Sprite Attributes</A>
+<LI><A ID="tex2html559"
+  HREF="node53.html">Relative Sprites</A>
+<LI><A ID="tex2html560"
+  HREF="node54.html">Programming Sprites</A>
+<LI><A ID="tex2html561"
+  HREF="node55.html">Global Control of Sprites</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node47.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node45.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html549"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html551"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node47.html">Sprite Patterns</A>
+<B> Up:</B> <A
+ HREF="node3.html">Video</A>
+<B> Previous:</B> <A
+ HREF="node45.html">Future Direction</A>
+ &nbsp; <B>  <A ID="tex2html550"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html552"
+  HREF="node162.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -1,0 +1,13 @@
+\register{R/W}{1A}{Layer 0 (ULA/LoRes) Clip Window Definition}
+\begin{itemize}
+\item bits 7-0 = Coord. of the clip window
+  \begin{itemize}
+  \item[] 1st write = X1 position
+  \item[] 2nd write = X2 position
+  \item[] 3rd write = Y1 position
+  \item[] 4rd write = Y2 position
+  \end{itemize}
+\end{itemize}
+The values are 0,255,0,191 after a Reset\\
+Reads do not advance the clip position
+

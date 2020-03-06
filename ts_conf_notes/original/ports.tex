@@ -1,0 +1,292 @@
+% This file was converted from HTML to LaTeX with
+% gnuhtml2latex program
+% (c) Tomasz Wegrzanowski <maniek@beer.com> 1999
+% (c) Gunnar Wolf <gwolf@gwolf.org> 2005-2010
+% Version : 0.4.
+\documentclass{article}
+\begin{document}
+\section*{TSconf: Ports}
+
+Development
+
+In this section, I would like to describe all the port groups involved
+in the management of the TSconf system.
+
+This section describes the general purpose of ports. The complete dock
+for the ports lies here .
+
+So, the system ports can be divided into the following groups:
+
+\begin{itemize}
+\item control ports for code execution by the processor. This includes
+  such ports as: SysConfig, CacheConfig
+\item memory management ports: MemConfig, Page0 - Page3, FMAddr
+\item TSU graphics page ports: VPage, T0GPage, T1GPage, TMPage, SGPage
+\item Graphics / Color Management ports: VConfig, PalSel, Border
+\item display control ports: TSConfig, GXOffs / GYOffs, T0XOffs /
+  T0YOffs, T1XOffs / T1YOffs
+\item DMA management ports: DMASAddr, DMADAddr, DMALen, DMANum,
+  DMACtrl
+\item ports of management of arrival INT: INTMask, HSINT, VSINT
+\item Virtual FDD Management Port: FDDVirt
+\end{itemize}
+
+\begin{quotation}
+  \textbf{Tao says:} Configuration management occurs through the
+  programming of ports. The system ports can also be programmed by
+  writing data to FMaps from address \#0400.
+
+  There are two types of ports according to the way data is specified:
+  changing individual significant bits, or specifying 8-bit values.
+
+  Data for some devices is collected from a pair of ports, in the
+  names of which the letters H (high byne) \& L (low byte) appear.
+\end{quotation}
+
+So, consider in order:
+
+\begin{quotation}
+\textbf{Management ports for code execution by the
+  processor. \emph{SysConfig, CacheConfig}}
+\end{quotation}
+The \textbf{SysConfig} port \emph{(\#20af) is} designed to control the
+speed of the z80, allowing you to turn on the processor at speeds of
+3.5, 7.0 and 14.0 MHz, and also allows you to enable the internal
+cache of the system.
+
+Cache usage can be controlled by the \textbf{CacheConfig} port
+\emph{(\#2baf)} , which allows you to enable cache usage for all
+memory windows: EN\_C000 EN\_8000 EN\_4000 EN\_0000
+
+\begin{quotation}
+  \textbf{System Cache Usage}
+\end{quotation}
+\textbf{The cache} saves processor access to RAM. With each reading,
+the bytes read from the RAM and the adjacent bytes are copied into the
+cache, and all the following references will be read from it. The
+performance gain is achieved by the absence of processor braking,
+which occurs when accessing physical. RAM, as well as saving RAM
+cycles, which are available for other devices.
+
+\emph{Example 1 (adjacent addresses):}
+
+- 0x8000 address is read, RAM is accessed, data from 0x8000 and 0x8001
+
+is cached - address is 0x8001, cache is accessed
+
+\emph{Example 2 (non-adjacent addresses):}
+
+- address is read 0x8001, RAM is accessed, cache data from addresses
+0x8000 and 0x8001
+
+- address 0x8002 is read, access to RAM, data from addresses 0x8002
+and 0x8003 get to the cache
+
+\textbf{The cache size is 512 bytes} , but the data memory is located
+in such a way that it coincides with the lower nine bits of the
+processor address. Therefore, successive accesses to data located at
+addresses whose lower 9 bits match will cause a conflict and overrun
+of previous data from the cache. Such a cache is called a direct
+mapping cache and is most easily implemented for FPGA.
+
+\emph{Example 1 (conflicting addresses):}
+
+- 0x8000 address is read, RAM is accessed, data from 0x8000 and 0x8001
+
+is cached - address is 0x8200, address is to RAM, data from 0x8200 and
+0x8201 addresses are in the cache (data from 0x8000 and 0x8001
+addresses are lost)
+
+\emph{Example 2 (non-conflicting addresses):}
+
+- read the address 0x8000, an appeal to the RAM, the cache get data
+from 0x8000 addresses and 0h8001
+
+- read address 0h8100, appeal to the RAM, the cache get data from
+addresses 0h8100 and 0h8101 (data address 0x8000 and 0h8001 saved)
+
+From this we can conclude that for more rational use of the cache, it
+is advisable to place the code on "non-intersecting" addresses. For
+example, if the use of a string inta is required. This is not very
+convenient, but they resorted to other tricks on other platforms.
+
+\emph{The cache takes into account page addressing} , so the data at
+0xC000 on page 0 and the data at 0xC000 on page 1 will be different.
+
+\emph{Example}
+
+- page 0 is turned on, the address is 0xС000, the address to the RAM
+is read, data from the addresses 0xC000 and 0xC001 are in the cache
+
+- page 1 is turned on, the address is 0xС000, the address to the RAM
+is read, data from the addresses 0xC000 and 0xC001
+
+is recalculated - page 1 is turned on, the address is 0xС001, the
+address to the cache is read
+
+\begin{quotation}
+  \textbf{Ports of memory management. \emph{MemConfig, Page0 - Page3,
+      FMAddr}}
+\end{quotation}
+Port \emph{\#21af} - MemConfig is described here .
+
+Ports \textbf{Page0 - Page3 }\emph{(\#10af - \#13af)} are designed to
+display pages in the specified RAM address windows: \#0000, \#4000,
+\#8000, \#c000, which covers the entire address space of the memory.
+
+The \textbf{FMAddr} port \emph{(\#15af) is} designed to control the
+reflection of the system's internal memory in the memory available to
+the processor for recording.
+
+We have the ability to enable this window at multiple \#1000
+addresses.
+
+The following data is stored in the internal memory of the system: a
+palette is stored at relative addresses 0-511 , and sprites handles
+are stored at addresses 512-1023, and from the address \#400 there is
+a port mapping block. Writing to these addresses leads to programming
+of system ports, like direct writing to a port.
+
+\begin{quotation}
+  \textbf{Ports of TSU graphics pages. \emph{VPage, T0GPage, T1GPage,
+      TMPage, SGPage}}
+\end{quotation}
+These ports are designed to specify the pages used by the TSU
+(tile-sprite engine that displays everything on the screen) to display
+the video, as well as graphics of tile layers and sprites.
+
+The \textbf{VPage} port \emph{(\#01af)} indicates to the system,
+starting from which page a consecutive set of memory pages will be
+used as video pages .
+
+Ports \textbf{T0GPage } \emph{(\#17af)} , \textbf{T1GPage} (\#18af),
+\textbf{SGPage} (\#19af) point to the pages that contain the prepared
+tile graphics for output. \textbf{TMPage}
+
+port \emph{(\#16af)} points to the page used as a tile map.\textbf{}
+\emph{}
+
+\begin{quotation}
+  \textbf{Ports control graphics modes / color. \emph{VConfig, PalSel,
+      Border}}
+\end{quotation}
+The \textbf{VConfig} port \emph{(\#00af) is} intended for the
+following tasks: setting the resolution and video mode, as well as
+controlling the display of the TSU and graphics layer.
+
+The \textbf{PalSel} port \emph{(\#07af) is} used to select a palette
+that will be used in the main graphic screen, and also allows you to
+specify the upper two bits of the palette number for tile
+layers. Combining the two high bits of PalSel for the tiles, and the
+selected lower two bits of the palette in the tile descriptor, we get
+the number of the specific tile palette.
+
+Port \textbf{Border } \emph{(\#0faf)} indicates the color of the
+border in the current system palette.
+
+\begin{quotation}
+  \textbf{Display control ports. \emph{TSConfig, GXOffs / GYOffs,
+      T0XOffs / T0YOffs, T1XOffs / T1YOffs}}
+\end{quotation}
+The \textbf{TSConfig} port \emph{(\#06af) is} intended for TSU and
+allows you to enable / disable the display of sprites, tile layers by
+setting the S\_EN, T1\_EN, T0\_EN bits to 1. Bits T0Z\_EN and T1Z\_EN
+are designed to enable the display of tiles number 0. The
+
+set of ports \textbf{X\_Offs is} used to control the window display
+the specified resolution for the corresponding port layer - a graphic
+screen or tile layers.
+
+Since the video memory field (and the display of tiles) is 512 pixels
+wide and looped, we use two ports (major and minor) to control the
+display window in order to specify 9 data bits, which allow to specify
+all available positions 0-511.
+
+Example: T0XOffsL - low 8 bits, T0XOffsH - high bit.
+
+Ports of the position of the window are a pair for X and a pair for Y:
+
+Graphics: \emph{\#02af} - GXOffsL, \emph{\#03af} - GXOffsH;
+\emph{\#04af} - GYOffsL, \emph{\#05af} - GYOffsH.
+
+Tile layer 0: \emph{\#40af} - T0XOffsL, \emph{\#41af} - T0XOffsH;
+\emph{\#42af} - T0YOffsL, \emph{\#43af} - T0YOffsH.
+
+Tile layer 1: \emph{\#44af} - T1XOffsL, \emph{\#45af} - T1XOffsH;
+\emph{\#46af} - T1YOffsL, \emph{\#47af} - T1YOffsH.
+
+\begin{quotation}
+  \textbf{DMA management ports. \emph{DMASAddr, DMADAddr, DMALen,
+      DMANum, DMACtrl}}
+\end{quotation}
+Ports indicate the address of the source, the receiver, their pages,
+the length of the transmitted data and the number of such
+transactions, as well as the transmission control port.
+
+These ports are sensibly described in the relevant article of the DMA
+
+DMASAddrL \emph{(\#1aaf)} , DMASAddrH \emph{(\#1baf)} , DMASAddrX
+\emph{(\#1caf)}
+
+DMADAddrL \emph{(\#1daf)} , DMADAddrH \emph{(\#1eaf)} , DMADAddrX
+\emph{(\#1faf)}
+
+DMALen \emph{(\#26af)} , DMANum \emph{(\#28af)}
+
+DMACtrl / DMAStatus \emph{(\#27af)} - management port, intended both
+for recording and for reading DMA status.
+
+\begin{quotation}
+  \textbf{Ports control ports INT. \emph{INTMask, HSINT, VSINT}}
+\end{quotation}
+The \textbf{INTMask} port \emph{(\#2aaf)} allows you to control
+interrupt handlers.
+
+The \textbf{HSINT} port \emph{(\#22af)} indicates the horizontal point
+of arrival of the interrupt, and the VSINT port pair is the high
+VSINTH \emph{(\#24af)} (the low bit is significant) and the low VSINTL
+\emph{(\#23a4)} (8). bit) - vertical position (string).
+
+More about intah - here
+
+\begin{quotation}
+  \textbf{Virtual drive management. \emph{Fddvirt}}
+\end{quotation}
+The \textbf{FDDVirt} port \emph{(\#29af)} uses 4 low-order bits, each
+of which indicates all available A-D drives.
+
+The drive operates under these conditions:
+
+- the desired drive bit = 1.
+
+- sootv. flop in FF port [1: 0]
+
+- enabled trdos
+
+- any betadisc port was accessed
+
+This turns on pagi 255 at 0-3ffff
+
+any call to any betadisc port causes pag 255 to be turned off
+
+\begin{quotation}
+  PS: When you start all this barrel organ, \textbf{you need to
+    initialize ALL registers that are related to the subject} - this
+  applies to all ports.
+
+  Because it is not known what is set in the ports at the moment.
+\end{quotation}
+
+\textbf{Questions }
+
+\emph{:? Where to find port numbers? }
+
+! In the Directory. I deliberately in the article did not place the
+addresses of the ports, use the \emph{intuitive} eksel.
+
+\emph{? Is there a mapping in the emulsion? }
+
+! And dumb for now. We are waiting, sir.
+
+Literature: Handbook , FAQ , Doc from EARL: TS configuration
+\end{document}

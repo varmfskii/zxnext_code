@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>ULA Next</TITLE>
+<META NAME="description" CONTENT="ULA Next">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node14.html">
+<LINK REL="previous" HREF="node12.html">
+<LINK REL="next" HREF="node14.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node14.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node11.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node12.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html387"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html389"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node14.html">ULA+</A>
+<B> Up:</B> <A
+ HREF="node11.html">Colour Attributes</A>
+<B> Previous:</B> <A
+ HREF="node12.html">ULA Colour</A>
+ &nbsp; <B>  <A ID="tex2html388"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html390"
+  HREF="node162.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H4><A ID="SECTION00321020000000000000">
+ULA Next</A>
+</H4>
+The ULA next modes use a varying number of bits from the attribute
+byte to determine the ink colours as the palette index from the
+appropriate bits (all others being zero) and the paper colours coming
+from the indicated value+128 with palette format 255 being a special
+case where all the bits determine the ink colour while the paper is
+always palette index 128. The ULA always takes border colour from
+paper. ULA next is enabled using bit 0 of nextreg $43 (palette
+control) and controlled with nextreg $42 (ULA Next attribute byte
+format)
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="206"></A>
+<TABLE>
+<CAPTION><STRONG>Table 2.2:</STRONG>
+ULA Next</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img9.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{video/palfmt.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

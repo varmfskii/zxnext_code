@@ -5,36 +5,93 @@ From the Digital Research: CP/M 3 Command Reference Manual 1984
 This section documents all standard CP/M+ 3 commands plus those extras
 included with the ZX Spectrum Next CP/M system.
 
-\textbf{COLOURS} (ZX Spectrum Next)
+{\Large\textbf{COLOURS}}
 
-\hangindent=0.7cm Syntax:\\
-COLOURS paper ink \{[SET]\}\\
-COLOURS RGB papervalue inkvalue \{[SET]\}
+\begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
+\textbf{COLOURS [RGB] \textit{paper} \textit{ink}}
+\end{labeledpar}
 
-Terminal colours utility.
+\textbf{Function:} Sets the screen colours
 
-Sets the screen colours using standard ZX colours or octal 9-bit RGB
-numbers.
+\textbf{Parameters:}
+\begin{labeledpar}{Parameters}{\textit{paper}}
+  Paper (background) colour
+\end{labeledpar}
+\begin{labeledpar}{Parameters:}{\textit{ink}}
+  Ink (foreground) colour
+\end{labeledpar}
 
+\textbf{Options:}
+\begin{labeledpar}{Parameters:}{RGB}
+  Causes ink and paper colours to be interpreted as 9-bit octal RGB numbers
+\end{labeledpar}
+
+\textbf{Notes:} Sets the screen colours using standard ZX colours
+or octal 9-bit RGB numbers.
+
+\textbf{Examples:}
+
+colours 1 6
+
+colours rgb 000 750
+
+{\Large\textbf{COPYSYS}}
+
+\begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
 \textbf{COPYSYS}
+\end{labeledpar}
 
-\hangindent=0.7cm Syntax:\\
-COPYSYS
+\textbf{Function:} Copy CP/M system
 
-COPYSYS copies the CP/M Plus system from a CP/M Plus system diskette
-to another diskette.  The new diskette must have the same format as
-the original system diskette.
+\textbf{Notes:} COPYSYS copies the CP/M Plus system from a CP/M Plus
+system diskette to another diskette.  The new diskette must have the
+same format as the original system diskette.
 
-\textbf{DATE}
+{\Large\textbf{DATE}}
 
-\hangindent=0.7cm Syntax:\\
-DATE\\
-DATE C\\
-DATE CONTINUOUS\\
-DATE time-specification\\
-DATE SET\\
+\begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
+\textbf{DATE}\\
+\textbf{DATE C}\\
+\textbf{DATE CONTINUOUS}\\
+\textbf{DATE \textit{time-specification}}\\
+\textbf{DATE SET}
+\end{labeledpar}
 
-The DATE command lets you display and set the date and time of day.
+\textbf{Function:} The DATE command lets you display and set the date
+and time of day.
+
+\textbf{Parameters:}
+\begin{labeledpar}{Parameters}{\textit{time-specification}}
+  Time/date in the format MM/DD/YY HH:MM:SS
+\end{labeledpar}
+
+\textbf{Options:}
+\begin{labeledpar}{Parameters:}{C}
+  Continuously show the date and time until a key is pressed
+\end{labeledpar}
+\begin{labeledpar}{Parameters:}{CONTINUOUS}
+  Continuously show the date and time until a key is pressed
+\end{labeledpar}
+\begin{labeledpar}{Parameters:}{SET}
+  Prompt the user for the current date and time
+\end{labeledpar}
+
+\textbf{Notes:} The DATE command is a transient utility that lets you
+display and set the date and time of day.  When you start CP/M 3, the
+date and time are set to the creation date of your CP/M 3 system. Use
+DATE to change this initial value to the current date and time.
+
+\textbf{Examples:}
+
+DATE
+
+DATE C
+
+DATE CONTINUOUS
+
+DATE 08/13/82 09:15:37
+
+DATE SET
 
 \textbf{DEVICE}
 

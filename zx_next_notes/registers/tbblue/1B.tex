@@ -1,0 +1,14 @@
+\register{R/W}{1B}{Layer 3 (Tilemap) Clip Window Definition}
+\begin{itemize}
+\item bits 7-0 = Coord. of the clip window
+  \begin{itemize}
+  \item[] 1st write = X1 position
+  \item[] 2nd write = X2 position
+  \item[] 3rd write = Y1 position
+  \item[] 4rd write = Y2 position
+  \end{itemize}
+\end{itemize}
+The values are 0,159,0,255 after a Reset\\
+Reads do not advance the clip position\\
+The X coords are internally doubled.
+

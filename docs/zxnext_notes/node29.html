@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Configuration</TITLE>
+<META NAME="description" CONTENT="Configuration">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node34.html">
+<LINK REL="previous" HREF="node28.html">
+<LINK REL="next" HREF="node30.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node30.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node28.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node28.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html464"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html466"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node30.html">Layer 2 , Write</A>
+<B> Up:</B> <A
+ HREF="node28.html">Layer 2</A>
+<B> Previous:</B> <A
+ HREF="node28.html">Layer 2</A>
+ &nbsp; <B>  <A ID="tex2html465"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html467"
+  HREF="node162.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A ID="SECTION00331000000000000000">
+Configuration</A>
+</H2>
+Layer 2 is enabled using port $123B or register $69. The mode is
+selected using register $70. How layer 2 memory is overlaid on main
+memory is controled by port $123B and register $70. The location in
+memory is controlled by register $12 with a shadow area pointed to by
+register $13 for double buffering. Finally port $123B is used to
+select either the main RAM area or the shadow RAM area for rendering
+the layer.
+
+<P>
+Port $123B (123B) Layer 2
+<BR>
+Bit 4 = 0
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Video RAM bank select
+  <table width="90%">  <tr><td valign="top">&nbsp;00 = first 16k
+  </td></tr>
+<tr><td valign="top">&nbsp;01 = second 16k
+  </td></tr>
+<tr><td valign="top">&nbsp;10 = third 16k
+  </td></tr>
+<tr><td valign="top">&nbsp;11 = first 48k
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = Reserved, must be 0</td></tr>
+<tr><td valign="top">&nbsp;bit 4 = 0</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Shadow layer 2 select</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = Enable layer 2 read paging</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Layer 2 visible (mirrored in register $69)</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Enable layer 2 write paging
+</td></tr></table>
+
+Bit 4 = 1
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-5 = Reserved, must be 0</td></tr>
+<tr><td valign="top">&nbsp;bit 4 = 1</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Reserved, must be 0</td></tr>
+<tr><td valign="top">&nbsp;bit 2-0 = 16k bank relative offset
+</td></tr></table>
+
+Register (R/W) $12 (12) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Layer 2 Active RAM bank
+
+<UL>
+<LI>bits 7-6 = Reserved, must be 0
+</LI>
+<LI>bits 5-0 = RAM bank (point to bank 8 after a Reset, NextZXOS
+  modifies to 9)
+</LI>
+</UL>
+Register (R/W) $13 (13) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Layer 2 Shadow RAM bank
+
+<UL>
+<LI>bits 7-6 = Reserved, must be 0
+</LI>
+<LI>bits 5-0 = RAM bank (point to bank 11 after a Reset, NextZXOS
+  modifies to 12)
+</LI>
+</UL>
+Register (R/W) $69 (69) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Display Control 1
+
+<UL>
+<LI>bit 7 = Layer 2 Enable (Port $123B bit 1 alias)
+</LI>
+<LI>bit 6 = ULA Shadow display enable (Port $7FFD bit 3 alias)
+</LI>
+<LI>bits 5-0 = Timex alias (Port $FF alias)
+</LI>
+</UL>
+Register (R/W) $70 (70) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Layer 2 Control
+
+<UL>
+<LI>bits 7-6 = Reserved, must be 0
+</LI>
+<LI>bits 5-4 = Resolution (00 on soft reset)
+  
+<UL>
+<LI>00 = <!-- MATH
+ $256\times192\times256$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img4.svg"
+ ALT="$256\times192\times256$"></SPAN>
+</LI>
+<LI>01 = <!-- MATH
+ $320\times256\times256$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
+ ALT="$320\times256\times256$"></SPAN>
+</LI>
+<LI>10 = <!-- MATH
+ $640\times256\times16$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img25.svg"
+ ALT="$640\times256\times16$"></SPAN>
+</LI>
+<LI>11 = Do not use
+  
+</LI>
+</UL>
+</LI>
+<LI>bits 3-0 = Palette offset ($0 on soft reset)
+</LI>
+</UL>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><A ID="tex2html468"
+  HREF="node30.html">Layer 2 <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
+ ALT="$256\times 192$"></SPAN>, Write only overlaid on ROM</A>
+<LI><A ID="tex2html469"
+  HREF="node31.html">Layer 2 <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
+ ALT="$256\times 192$"></SPAN> resolution</A>
+<LI><A ID="tex2html470"
+  HREF="node32.html">Layer 2 <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img2.svg"
+ ALT="$320\times 256$"></SPAN> resolution</A>
+<LI><A ID="tex2html471"
+  HREF="node33.html">Layer 2 <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img3.svg"
+ ALT="$640\times 256$"></SPAN> resolution</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node30.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node28.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node28.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html464"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html466"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node30.html">Layer 2 , Write</A>
+<B> Up:</B> <A
+ HREF="node28.html">Layer 2</A>
+<B> Previous:</B> <A
+ HREF="node28.html">Layer 2</A>
+ &nbsp; <B>  <A ID="tex2html465"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html467"
+  HREF="node162.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -7,6 +7,7 @@
 \usepackage{makeidx}
 \usepackage{xintbinhex}
 %\usepackage{xintexpr}
+\usepackage{hang}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
 \setlist{nosep}
@@ -18,7 +19,8 @@
 % custom sequences for consistency
 \newcommand{\iis}{ I\textsuperscript{2}S }
 \newcommand{\iic}{ I\textsuperscript{2}C }
-\newcommand{\register}[3]{(#1) \$#2 (\xintHexToDec{#2}) $\Rightarrow$ #3}
+\newcommand{\register}[3]{Register (#1) \$#2 (\xintHexToDec{#2}) $\Rightarrow$ #3}
+\newcommand{\port}[2]{Port \$#1 (\xintHexToDec{#1}) #2}
 \newcommand{\textoverline}[1]{$\overline{\hbox{#1}}$}
 \begin{document}
 \frontmatter
@@ -28,7 +30,7 @@
 \input{intro.tex}
 \include{video/video}
 \include{audio/audio}
-\include{memory/memory_management}
+\include{memory/memory}
 \include{zxndma/zxndma}
 \include{copper/copper}
 \include{interrupts}
@@ -39,7 +41,6 @@
 \include{appendices/registers/registers}
 \include{appendices/opcode/opcode-mnemonic}
 \include{appendices/instructions}
-\include{appendices/memory_map}
 \include{appendices/file_formats}
 \include{appendices/call_tables}
 \listoffigures

@@ -1,0 +1,14 @@
+\register{R/W}{42}{ULANext Attribute Byte Format}
+\begin{itemize}
+\item bits 7-0 = Attribute byte's INK representation mask (7 on reset)
+\end{itemize}
+The mask can only indicate a solid sequence of bits on the right side
+of the attribute byte (1, 3, 7, 15, 31, 63, 127 or 255).
+
+INKs are mapped to base index 0 in the palette and PAPERs and border
+are mapped to base index 128 in the palette.
+
+The 255 value enables the full ink colour mode making all the palette
+entries INK. PAPER and border both take on the fallback colour
+(nextreg \$4A) in this mode.
+

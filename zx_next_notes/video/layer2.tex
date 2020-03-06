@@ -1,68 +1,140 @@
 \section{Layer 2}
 Layer 2 is a linearly mapped, row-wise, upper left to lower right,
-$256\times192\times256$ bit-map graphics area.  Both the main version
-(8k pages 16-21/16k banks 8-10) and a shadow version (8k pages
-22-27/16k banks 11-13) are six contiguous 8k pages (three contiguous
-16k blocks) in the extended RAM space indicated by the contents of
-Next registers \$12 (18 Layer 2 RAM page, default 8) and \$13 (19,
-Layer 2 shadow page, default 11).  The layer 2 pages can be accessed
-either by mapping the pages into normal RAM, or write only access
-using port \$123B to fix them in the same space as the ROMs at
-\$0000-\$3FFF.  The colours come from the indices in the layer 2
-palette.  Layer 2 is drawn according to the values in registers \$16
-(22, Layer 2 Offset X, default 0) and \$17 (23, Layer 2 Offset Y,
-default 0).
+bit-map graphics area.  It supports modes with $256\times192\times256$
+resolution at global coordinates (32, 32) to (287, 223),
+$320\times256\times256$ resolution at global coordinates (0, 0) to
+(318, 255), and $640\times256\times16$ resolution at global
+coordinates (0, 0) to (319, 255) with half width pixels. It can be
+mapped starting at any 16k memory blocks. The $256\times192\times256$
+mode requires 3 consecutive blocks (48k) while the others use 5
+consecutive blocks (80k).
 
-Port \$123b (4667) Layer 2
-\begin{itemize}
-  \item bits 6-7: Video RAM bank select
-  \item bit 3: Shadow layer 2 select
-  \item bit 1: Layer 2 visible
-  \item bit 0: Enable layer 2 write paging
-\end{itemize}
+\subsection{Configuration}
+Layer 2 is enabled using port \$123B or register \$69. The mode is
+selected using register \$70. How layer 2 memory is overlaid on main
+memory is controled by port \$123B and register \$70. The location in
+memory is controlled by register \$12 with a shadow area pointed to by
+register \$13 for double buffering. Finally port \$123B is used to
+select either the main RAM area or the shadow RAM area for rendering
+the layer.
 
-(R/W) \$16 (22) $\Rightarrow$ Layer2 Offset X
-\begin{itemize}
-\item bits 7-0 = X Offset (0-255)(0 after a reset)
-\end{itemize}
+\input{ports/123B.tex}
+\input{registers/tbblue/12.tex}
+\input{registers/tbblue/13.tex}
+\input{registers/tbblue/69.tex}
+\input{registers/tbblue/70.tex}
 
-(R/W) \$17 (23) $\Rightarrow$ Layer2 Offset Y
-\begin{itemize}
-\item bits 7-0 = Y Offset (0-191)(0 after a reset)
-\end{itemize}
+\paragraph{Layer 2 $256\times192$, Write only overlaid on ROM}
+\begin{verbatim}
+p_layer2: defl $123b
+start:
+  ld bc,p_layer2
+  ld a,$03       ; enable, wo, 1st 16k
+  out (c),a
+  call wrtpage
+  ld bc,p_layer2
+  ld a,$43       ; enable, wo, 2nd 16k
+  out (c),a
+  call wrtpage
+  ld bc,p_layer2
+  ld a,$83       ; enable, wo, 3rd 16k
+  out (c),a
+  call wrtpage
+  ret
+wrtpage:  
+  ld hl,$0000
+  ld bc,$0040    ; 40*256 writes
+loop:
+  ld (hl),b
+  inc hl
+  djnz loop
+  dec c
+  jr nz,loop
+\end{verbatim}
 
-(R/W) \$18 (24) $\Rightarrow$ Clip Window Layer 2
-\begin{itemize}
-\item bits 7-0 = Coords of the clip window
-  \begin{itemize}
-  \item 1st write - X1 position
-  \item 2nd write - X2 position
-  \item 3rd write - Y1 position
-  \item 4rd write - Y2 position
-  \end{itemize}
-\item[] Reads do not advance the clip position
-\item[] The values are 0,255,0,191 after a Reset
-\end{itemize}
+\paragraph{Layer 2 $256\times192$ resolution}
+\begin{verbatim}
+r_mmu_7:  defl $57
+r_disp1:  defl $69
+r_layer2: defl $70
+start:
+  nextreg r_disp1,$80  ; enable layer 2
+  nextreg r_layer2,$00 ; 256x192x256
+  ld a,$12             ; page 18=bank 9
+loop1:
+  nextreg r_mmu_7,a    ; map page into slot 7
+  ld bc,$0020          ; 20*256 = 8k
+  ld hl,$E000          ; address of slot 7
+loop2:
+  ld (hl),b
+  inc hl
+  djnz loop2
+  dec c
+  jp NZ,loop2
+  inc a
+  cp $18               ; stop at page 24
+  jp NZ,loop1
+\end{verbatim}
 
-(W) \$1C (28) $\Rightarrow$ Clip Window control
-\begin{itemize}
-\item bits 7-4 = Reserved, must be 0
-\item bit 3 - reset the tilemap clip index
-\item bit 2 - reset the ULA/LoRes clip index.
-\item bit 1 - reset the sprite clip index.
-\item bit 0 - reset the Layer 2 clip index.
-\end{itemize}
+\paragraph{Layer 2 $320\times256$ resolution}
+\begin{verbatim}
+r_mmu_7:  defl $57
+r_disp1:  defl $69
+r_layer2: defl $70
+start:
+  nextreg r_disp1,$80  ; enable layer 2
+  nextreg r_layer2,$10 ; 320x256x256
+  ld a,$12             ; page 18=bank 9
+loop1:
+  nextreg r_mmu_7,a    ; map page into slot 7
+  ld bc,$0020          ; 20*256 = 8k
+  ld hl,$E000          ; start of slot 7
+loop2:
+  ld (hl),b
+  inc hl
+  djnz loop2
+  dec c
+  jp NZ,loop2
+  inc a
+  cp $1C               ; stop at page 28
+  jp NZ,loop1
+\end{verbatim}
 
-(R/W) \$12 (18) $\Rightarrow$ Layer 2 RAM bank
-\begin{itemize}
-\item bits 7-6 = Reserved, must be 0
-\item bits 5-0 = RAM bank (point to bank 8 after a Reset, NextZXOS
-  modifies to 9)
-\end{itemize}
+\paragraph{Layer 2 $640\times256$ resolution}
+\begin{verbatim}
+r_mmu_7:  defl $57
+r_disp1:  defl $69
+r_layer2:  defl $70
+start:
+  nextreg r_disp1, $80   ; enable layer 2
+  nextreg r_layer2, $20  ; 640x256x16
+  ld a, $12    ; page 18=bank 9
+loop1:
+  nextreg r_mmu_7, a  ; map page into slot 7
+  ld bc, $0020    ; 20*256 = 8k
+  ld hl, $E000    ; start address for slot 7
+loop2:
+  ld (hl), b
+  inc hl
+  djnz loop2
+  dec c
+  jp NZ, loop2
+  inc a
+  cp $1C      ; stop at page 28
+  jp NZ, loop1
+\end{verbatim}
 
-(R/W) \$13 (19) $\Rightarrow$ Layer 2 RAM shadow bank
-\begin{itemize}
-\item bits 7-6 = Reserved, must be 0
-\item bits 5-0 = RAM bank (point to bank 11 after a Reset, NextZXOS
-  modifies to 12)
-\end{itemize}
+\subsection{Scrolling}
+Scrolling Layer 2 is controlled by registers \$16 and \$17. (Is there
+a third scrolling register for layer 2?)
+
+\input{registers/tbblue/16.tex}
+\input{registers/tbblue/17.tex}
+
+\subsection{Clipping}
+The Clip area for is based on the local coordinate system for the mode
+in question and is set using register \$18 with the option of
+selection which write in active using register \$1C.
+
+\input{registers/tbblue/18.tex}
+\input{registers/tbblue/1C.tex}

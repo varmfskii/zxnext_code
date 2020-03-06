@@ -1,0 +1,14 @@
+\port{20AF}{System Config}\\
+SysConfig
+\begin{itemize}
+\item bits 7-3 = reserved, must be 0
+\item bit 2 = Cache enable (CACHE\_EN)
+\item bits 1-0 = Clock Speed (ZCLK)
+  \begin{itemize}
+  \item 00 = 3.5 MHz
+  \item 01 = 7 MHz
+  \item 10 = 14 MHz
+  \item 00 = reserved
+  \end{itemize}
+\end{itemize}
+

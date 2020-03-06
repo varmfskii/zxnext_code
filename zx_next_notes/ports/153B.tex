@@ -1,0 +1,14 @@
+\port{153B}{UART control}
+\begin{itemize}
+\item[] bit 7 = Reserved (0)
+\item[] bit 6 = UART select
+  \begin{itemize}
+  \item[] 0 = ESP
+  \item[] 1 = Pi
+  \end{itemize}
+\item[] bit 5 = Reserved (0)
+\item[] bit 4 = Prescalar valid in this write
+\item[] bit 3 = Reserved (0)
+\item[] bits 2-0 = Bits 16-14 of prescalar
+\end{itemize}
+

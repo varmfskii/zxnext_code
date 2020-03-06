@@ -1,0 +1,30 @@
+\register{R/W}{0D}{Envelope shape}
+\begin{itemize}
+\item bit 3 = Continue
+  \begin{itemize}
+  \item 0 = drop to amplitude 0 after 1 cycle
+  \item 1 = use ‘Hold’ value
+  \end{itemize}
+\item bit 2 = Attack
+  \begin{itemize}
+  \item 0 = generator counts down
+  \item 1 = generator counts up
+  \end{itemize}
+\item bit 1 = Alternate\\
+  hold = 0
+  \begin{itemize}
+  \item 0 = generator resets after each cycle
+  \item 1=generator reverses direction each cycle
+  \end{itemize}
+  hold=1
+  \begin{itemize}
+  \item 0 = hold final value
+  \item 1 = hold initial value
+  \end{itemize}
+\item bit 0 = Hold
+  \begin{itemize}
+  \item 0 = cycle continuously
+  \item 1 = perform one cycle and hold
+  \end{itemize}
+\end{itemize}
+

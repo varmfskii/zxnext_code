@@ -1,0 +1,21 @@
+\register{R/W}{07}{Turbo mode}\\
+Read
+\begin{itemize}
+\item bits 7-6 = Reserved
+\item bits 5-4 = Current Actual CPU Speed
+\item bits 3-2 = Reserved
+\item bits 1-0 = Current Selected CPU Speed (00 on reset)
+\end{itemize}
+Write
+\begin{itemize}
+\item bits 7-2 = Reserved, must be 0
+\item bits 1-0 = Select CPU Speed
+\end{itemize}
+CPU Speeds
+\begin{itemize}
+\item 00 = 3.5MHz
+\item 01 = 7MHz
+\item 10 = 14MHz
+\item 11 = 28MHz
+\end{itemize}
+

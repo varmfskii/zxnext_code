@@ -1,0 +1,189 @@
+% This file was converted from HTML to LaTeX with
+% gnuhtml2latex program
+% (c) Tomasz Wegrzanowski <maniek@beer.com> 1999
+% (c) Gunnar Wolf <gwolf@gwolf.org> 2005-2010
+% Version : 0.4.
+\documentclass{article}
+\begin{document}
+\section*{TSconf: Utils}
+Development
+
+\textbf{TSconf Developer Tools}
+
+\begin{itemize}
+\item ASM includes
+\item Graphic conversion, graphics editor
+\item Spg builder
+\end{itemize}
+\section*{TSconf: Ports}
+Development
+
+In this section, I would like to describe all the port groups involved
+in the management of the TSconf system.
+
+This section describes the general purpose of ports. The complete dock
+for the ports lies here .
+
+So, the system ports can be divided into the following groups:
+\begin{itemize}
+\item control ports for code execution by the processor. This includes
+  such ports as: SysConfig, CacheConfig
+\item memory management ports: MemConfig, Page0 - Page3, FMAddr
+\item TSU graphics page ports: VPage, T0GPage, T1GPage, TMPage, SGPage
+\item Graphics / Color Management ports: VConfig, PalSel, Border
+\item display control ports: TSConfig, GXOffs / GYOffs, T0XOffs /
+  T0YOffs, T1XOffs / T1YOffs
+\item DMA management ports: DMASAddr, DMADAddr, DMALen, DMANum,
+  DMACtrl
+\item ports of management of arrival INT: INTMask, HSINT, VSINT
+\item Virtual FDD Management Port: FDDVirt
+\end{itemize}
+\section*{TSconf: ints}
+Development
+
+TSconf has an extended system of interrupts that can be triggered if
+there are such states as: beam arrival at a given screen position,
+beam arrival at the beginning of a line, line display on the screen,
+completion of data transfer.
+
+\begin{quotation}
+  Tao says: The system has three types of masked interrupts that can
+  be called at an address that has a high byte — the address in
+  register I, and the youngest — its type:
+  \begin{enumerate}
+  \item \#FF - frame
+  \item \#FD - lowercase (Line)
+  \item \#FB - DMA.
+  \end{enumerate}
+  The processing of these interrupts can be switched by the INTMask
+  port (\# \textbf{2A} af), changing the state of the bits:
+
+  0 - Frame, 1 - Line, 2 - DMA, which leads to an on / off call to
+  handlers. State of bits: 0 - disabled / 1 - enabled.
+
+  In the case of the arrival of several events at the same time, the
+  interrupt with the lower number will be processed first.
+\end{quotation}
+\section*{TSconf: Gfx layer}
+Development
+
+Sprites, tiles ... Perhaps this would be enough for us ...
+
+But under these layers is the \textbf{base graphics layer} .
+
+\begin{quotation}
+  Tao says: The graphics layer displays data that resides in memory
+  pages. The first page to display (its address is necessarily a
+  multiple of 8 for 16 colors, 16 for a 256 color mode, total length -
+  8/16 pages) is indicated by the port VPage (\# 01af). The way this
+  memory is mapped is set by the VConfig port bits, which sets the
+  resolution and color depth.
+
+  The memory display window is a block with the dimensions of the
+  specified resolution and is displayed by the positions X (0-511)
+  and Y (0-511), which are indicated by the pairs of ports GXOffs
+  and GYOffs. The window is looped around the edges in the display.
+
+  The colors of the display are given by the palette, the number is
+  selected by the first notebook of the PalSel register (\# 06af).
+\end{quotation}
+
+So, we have a screen with our own internal scrolling.
+\section*{TSconf: Memory}
+Development
+
+\textbf{Consider the memory location in the system. }
+
+ZX Evolution has 4MB of memory.
+
+The organization of this memory is similar to zx spectrum 128 -
+paging is used.
+
+Transcribed into pages of memory, we have 256 pages of 16 kb each.
+\section*{TSconf: DMA}
+Development
+
+Given such a large memory size, a fast data transfer facility is
+needed.
+
+TSconf offers us such a tool that allows you to transfer data in
+memory without the participation of the processor.
+
+\begin{quotation}
+  \textbf{Tao says:} The transfer speed is 7 MHz, copying takes place
+  two bytes (16 bits), provided that there is no access to the CPU,
+  video, or a TCU during this clock cycle.
+
+  On average: 4 bytes - 2 clocks, dma refers to the RAM for 1 beat
+  of 7 MHz, 16 bits, 2 calls are needed for transfer. We get
+
+  : DMA speed 7 MB / s
+\end{quotation}
+DMA can copy data from the following sources:
+\section*{TSconf: Tiles}
+Development
+
+Yes, Multimatograf close, you need to push!
+
+So, tiles.
+
+To build tiles, we need to do the following:
+
+- prepare graphics \emph{(place it on the page for tile graphics)}
+
+- build a tile map \emph{(with placement on the map page)}
+
+- program ports \emph{(specify which pages are used for graphics, for
+  a map, and enable the display layer) }
+\section*{Tao konfy}
+
+Development
+
+\textbf{Tile-sprite configuration (TSconf). Introduction}
+
+In my opinion, TSconf is a very modern add-on over the beloved ZX
+Spectrum, which brings long-awaited and necessary elements in the
+form of color to a point, hardware sprites, and so on. This will be
+discussed in this article.
+
+Tile-sprite configuration (TSconf) can be divided into the following
+logical groups:
+\begin{enumerate}
+\item Graphic accelerator
+  \begin{itemize}
+  \item Use of tiles
+  \item Output and control of sprites
+  \end{itemize}
+\item Memory manager
+\item Direct memory access unit (DMA)
+\item Interrupt system
+\item Cache
+\item Ports management
+\end{enumerate}
+Let us gradually consider all these points in order.
+\section*{TSconf: Sprites}
+Development
+
+But why not pile over the sprite graphics, eh?
+
+They have a distort.
+\begin{quotation}
+  Tao says: Sprite is a graphic tile with a size from 8 to 64 points,
+  which can be displayed in coordinates 0-511 in X and Y, with the
+  possibility of reflecting the display vertically / horizontally, and
+  having transparency.
+
+  A total of 85 sprites are available for one sprite layer.
+\end{quotation}
+
+\emph{In general, working out sprites is as follows:}
+\begin{itemize}
+\item The sprite needs to be placed in memory in exactly the same way
+  as for tiles (or on the screen in 16 color mode).
+\item The sprite palette must also be loaded into the overall palette
+  of the system.
+\item After that - we load the description of the sprite into the
+  system and turn on the display.
+\end{itemize}
+Sprite becomes visible.
+\end{document}

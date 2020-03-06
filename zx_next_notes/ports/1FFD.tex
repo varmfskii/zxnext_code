@@ -1,0 +1,19 @@
+\port{1FFD}{Plus 3 Memory Paging Control}
+\begin{itemize}
+\item[] bits 7-3 = Unused, nust be 0
+\item[] bit 2 = High bit of ROM selection (low bit is in Port \$7FFD)
+  \begin{itemize}
+  \item[] 00 = ROM0 = 128k editor and menu system
+  \item[] 01 = ROM1 = 128k syntax checker
+  \item[] 10 = ROM2 = +3DOS
+  \item[] 11 = ROM3 = 48k BASIC
+  \end{itemize}
+\item[] bit 1 = Special mode: Low bit of memory configuration number
+\item[] bit 0 = Paging mode
+  \begin{itemize}
+  \item[] 0 = Normal
+  \item[] 1 = Special
+  \end{itemize}
+\end{itemize}
+You should echo writes to \$5B67
+

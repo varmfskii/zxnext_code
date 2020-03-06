@@ -1,0 +1,9 @@
+\register{R/W}{41}{8-bit Palette Data}
+\begin{itemize}
+\item bits 7-0 = Colour Entry in RRRGGGBB format
+\end{itemize}
+The lower blue bit of the 9-bit internal colour will be the logical or
+of bits 0 and 1 of the 8-bit entry. After each write, the palette
+index auto-increments if aut-increment has been enabled (NextReg \$43
+bit 7), Reads do not auto-increment.
+

@@ -1,0 +1,25 @@
+\port{FF}{Timex Sinclair/Floating Bus}
+\begin{itemize}
+\item[] bit 7 = memory paging (not on ZX Next)
+\item[] bit 6 = Disable generation of interrupts
+\item[] bit 5-3 = Hi-res mode color combination
+  \begin{itemize}
+  \item[] 000 = Black on white (indexes 0, 135)
+  \item[] 001 = Blue on Yellow (indexes 1, 134)
+  \item[] 010 = Green on Magenta (indexes 2, 133)
+  \item[] 011 = Cyan on Red (indexes 3, 132)
+  \item[] 100 = Red on Cyan (indexes 4, 131)
+  \item[] 101 = Magenta on Green (indexes 5, 130)
+  \item[] 110 = Yellow on Blue (indexes 6, 129)
+  \item[] 111 = White on Black (indexes 7, 128)
+  \end{itemize}
+\item[] bit 2-0 = ULA Mode
+  \begin{itemize}
+  \item[] 000 = Normal ULA address
+  \item[] 001 = Alternate ULA address
+  \item[] 010 = Hi-color mode 
+  \item[] 110 = Hi-res mode
+  \end{itemize}
+\end{itemize}
+Disable with bit 2 of Nextreg \$08
+

@@ -1,0 +1,13 @@
+\section{ZX Spectrum Next Registers}
+February 25, 2019  Phoebus Dokos
+
+TBBlue stores configuration state in a field of registers. These
+registers are accessible via two I/O ports or via the special nextreg
+instructions.
+
+Port \$243B (9275) is used to set the register number, listed below.
+
+Port \$253B (9531) is used to access the register value.
+
+Some registers are accessible only during the initialization process.
+

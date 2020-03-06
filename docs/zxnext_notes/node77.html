@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Modes of Operation</TITLE>
+<META NAME="description" CONTENT="Modes of Operation">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node78.html">
+<LINK REL="previous" HREF="node76.html">
+<LINK REL="next" HREF="node78.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node78.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node73.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node76.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html732"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html734"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node78.html">Programming the zxnDMA</A>
+<B> Up:</B> <A
+ HREF="node73.html">zxnDMA</A>
+<B> Previous:</B> <A
+ HREF="node76.html">Description</A>
+ &nbsp; <B>  <A ID="tex2html733"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html735"
+  HREF="node162.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A ID="SECTION00640000000000000000">
+Modes of Operation</A>
+</H1>
+The zxnDMA can operate in a z80-dma compatibility mode.
+
+<P>
+The z80-dma compatibility mode is selected by setting bit 6 of nextreg
+$06. In this mode, all transfers involve length+1 bytes which is the
+same behaviour as the z80-dma chip. In zxn-dma mode, the transfer
+length is exactly the number of bytes programmed. This mode is mainly
+present to accommodate existing spectrum software that uses the
+z80-dma and for cp/m programs that may have a z80-dma option.
+
+<P>
+The zxnDMA can also operate in either burst or continuous modes.
+
+<P>
+Continuous mode means the DMA chip runs to completion without allowing
+the CPU to run. When the CPU starts the DMA, the DMA operation will
+complete before the CPU executes its next instruction.
+
+<P>
+Burst mode nominally means the DMA lets the CPU run if either port is
+not ready. This condition can't happen in the zxnDMA chip except when
+operated in the special fixed time transfer mode. In this mode, the
+zxnDMA will let the CPU run while it waits for the fixed time to
+expire between bytes transferred.
+
+<P>
+Note that there is no byte transfer mode as in the Z80 DMA.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

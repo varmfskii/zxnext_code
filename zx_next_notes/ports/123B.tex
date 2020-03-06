@@ -1,0 +1,25 @@
+\port{123B}{Layer 2}\\
+Bit 4 = 0
+\begin{itemize}
+\item[] bits 7-6 = Video RAM bank select
+  \begin{itemize}
+  \item[] 00 = first 16k
+  \item[] 01 = second 16k
+  \item[] 10 = third 16k
+  \item[] 11 = first 48k
+  \end{itemize}
+\item[] bit 5 = Reserved, must be 0
+\item[] bit 4 = 0
+\item[] bit 3 = Shadow layer 2 select
+\item[] bit 2 = Enable layer 2 read paging
+\item[] bit 1 = Layer 2 visible (mirrored in register \$69)
+\item[] bit 0 = Enable layer 2 write paging
+\end{itemize}
+Bit 4 = 1
+\begin{itemize}
+\item[] bits 7-5 = Reserved, must be 0
+\item[] bit 4 = 1
+\item[] bit 3 = Reserved, must be 0
+\item[] bit 2-0 = 16k bank relative offset
+\end{itemize}
+

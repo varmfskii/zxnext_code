@@ -1,0 +1,9 @@
+\register{W}{60}{Copper Data 8-bit Write}
+\begin{itemize}
+\item bits 7-0 = Byte to write to copper instruction memory
+\end{itemize}
+Note that each copper instruction is two bytes long, after a write,
+the coppen address is auto-incremented to the next memory position.
+
+After a write, the index is auto-incremented to the next memory position.
+

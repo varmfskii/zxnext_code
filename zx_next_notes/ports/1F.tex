@@ -1,0 +1,18 @@
+\port{1F}{Kempston/Mega Drive Joystick 1/DAC B}\\
+Read
+\begin{itemize}
+\item[] bit 7 = ''start'' button
+\item[] bit 6 = A/X button
+\item[] bit 5 = C/Z button
+\item[] bit 4 = Fire/C/Y button
+\item[] bit 3 = Up
+\item[] bit 2 = Down
+\item[] bit 1 = Left
+\item[] bit 0 = Right
+\end{itemize}
+Disable with Nextreg \$05\\
+Write
+\begin{itemize}
+\item[] bits 7-0 = DAC Value
+\end{itemize}
+Disable with bit 3 of Nextreg \$08

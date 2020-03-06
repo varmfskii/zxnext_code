@@ -1,0 +1,16 @@
+\register{R/W}{8C}{Alternate ROM}\\
+Immediate
+\begin{itemize}
+\item bit 7 = Alt ROM Enable (0 on hard reset)
+\item bit 6 = Alt ROM visible ONLY during writes (0 on hard reset)
+\item bit 5 = Reserved, must be 0
+\item bit 4 = 48k ROM Lock (0 on hard reset)
+\end{itemize}
+After Soft Reset (copied into bits 7-4)
+\begin{itemize}
+\item bit 3 = Alt ROM Enable (0 on hard reset)
+\item bit 2 = Alt ROM visible ONLY during writes (0 on hard reset)
+\item bit 1 = Reserved, must be 0
+\item bit 0 = 48k ROM Lock (0 on hard reset)
+\end{itemize}
+

@@ -1,0 +1,17 @@
+\register{R/W}{1C}{Clip Window Control}\\
+Read
+\begin{itemize}
+\item bits 7-6 = Layer 3 Clip Index
+\item bits 5-4 = Layer 0/1 Clip Index
+\item bits 3-2 = Sprite clip index
+\item bits 1-0 = Layer 2 Clip Index
+\end{itemize}
+Write
+\begin{itemize}
+\item bits 7-4 = Reserved, must be 0
+\item bit 3 - reset Layer 3 clip index
+\item bit 2 - reset Layer 0/1 clip index
+\item bit 1 - reset sprite clip index.
+\item bit 0 - reset Layer 2 clip index.
+\end{itemize}
+

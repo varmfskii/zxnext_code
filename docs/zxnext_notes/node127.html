@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Clock Support Function</TITLE>
+<META NAME="description" CONTENT="Clock Support Function">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="previous" HREF="node126.html">
+<LINK REL="next" HREF="node128.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node128.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node126.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node126.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html1010"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html1012"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node128.html">NextZXOS</A>
+<B> Up:</B> <A
+ HREF="node126.html">Memory Select and Move</A>
+<B> Previous:</B> <A
+ HREF="node126.html">Memory Select and Move</A>
+ &nbsp; <B>  <A ID="tex2html1011"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1013"
+  HREF="node162.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H3><A ID="SECTION001014100000000000000">
+Clock Support Function</A>
+</H3>
+This section defines the clock support function TIME.
+
+<P>
+<A NAME="4574"></A>
+BIOS Function 26: TIME
+
+<P>
+Get and Set Time
+<BR>
+Entry Parameters: C=Time Get/Set Flag
+<BR>
+Returned values: None
+
+<P>
+The BDOS calls the TIME function to indicate to the BIOS whether it
+has just set the Time and Date fields in the SCB, or whether the BDOS
+is about to get the Time and Date from the SCB. On entry to the TIME
+function, a zero in register C indicates that the BIOS should update
+the Time and Date fields in the SCB. A $ff in register C indicates
+that the BDOS has just set the Time and Date in the SCB and the BIOS
+should update its clock. Upon exit, you must restore register pairs HL
+and DE to their entry values.
+<BR><HR>
+
+</BODY>
+</HTML>

@@ -1,0 +1,15 @@
+\register{R/W}{34}{Sprite Number}\\
+Lockstep (NextReg \$09 bit 4 set)
+\begin{itemize}
+\item bit 7 = Pattern address offset (Add 128 to pattern address)
+\item bits 6-0 = Sprite number 0-127, Pattern number 0-63
+\item[] effectively performs an out to port \$303B
+\end{itemize}
+No Lockstep (NextReg \$09 bit 4 clear)
+\begin{itemize}
+\item bit 7 = Reserved, must be 0
+\item bits 6-0 = Sprite number 0-127
+\end{itemize}
+This register selects which sprite has its attributes connected to the
+sprite attribute registers
+

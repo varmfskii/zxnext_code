@@ -1,0 +1,8 @@
+\register{W}{04}{Configuration Mapping}
+\begin{itemize}
+\item bits 7-5 = Reserved, must be 0
+\item bits 4-0 = 16k SRAM bank mapping* (\$00 on hard reset)
+\item[] *Maps a 16k SRAM bank over the bottom 16k. Applies only in
+  config mode when the bootrom is disabled
+\end{itemize}
+

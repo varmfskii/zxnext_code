@@ -1,0 +1,15 @@
+\register{W}{62}{Copper Control}
+\begin{itemize}
+\item bits 7-6 = Start Control
+  \begin{itemize}
+  \item[] 00 = Copper fully stopped
+  \item[] 01 = Copper start, execute the list from index 0, and loop
+    to the start
+  \item[] 10 = Copper start, execute the list from last point, and
+    loop to the start
+  \item[] 11 = Copper start, execute the list from index 0, and
+    restart the list when the raster reaches position (0,0)
+  \end{itemize}
+\item bits 2-0 = Copper instruction memory address (MSB) (0 on reset)
+\end{itemize}
+

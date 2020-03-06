@@ -1,0 +1,19 @@
+\register{R/W}{40}{Palette Index Select}
+\begin{itemize}
+\item bits 7-0 = Palette Index Number
+\end{itemize}
+Selects the palette index to change the associated colour
+
+For ULA only, INKs are mapped to indices 0 through 7, BRIGHT INKs to
+indices 8 through 15, PAPERs to indices 16 through 23 and BRIGHT
+PAPERs to indices 24 through 31.  In EnhancedULA mode, INKs come from
+a subset of indices from 0 through 127 and PAPERs from a subset of
+indices from 128 through 255.
+
+The number of active indices depends on the number of attribute bits
+assigned to INK and PAPER out of the attribute byte.
+
+In ULAplus mode, the last 64 entries (indices 192 to 255) hold the
+ULAplus palette.  The ULA always takes border colour from PAPER for
+standard ULA and Enhanced ULA
+

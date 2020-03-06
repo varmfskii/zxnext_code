@@ -1,0 +1,12 @@
+\port{143B}{UART rx}\\
+Read: UART Receive\\
+Write: UART Prescalar
+\begin{itemize}
+\item[] bit 7 = select prescalar part
+  \begin{itemize}
+  \item[] 0 = Bits 6-0 of prescalar
+  \item[] 1 = Bits 13-7 of prescalar
+  \end{itemize}
+\item[] bits 6-0 = Prescalar bits
+\end{itemize}
+

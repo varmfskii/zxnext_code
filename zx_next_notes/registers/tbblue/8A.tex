@@ -1,0 +1,9 @@
+\register{R/W}{8A}{Expansion Bus I/O Propagate Control}
+\begin{itemize}
+\item bits 7-4 = Reserved, must be 0
+\item bit 3 = Propagate port \$1FFD I/O Cycles (0 on hard reset)
+\item bit 2 = Propagate port \$DFFD I/O Cycles (0 on hard reset)
+\item bit 1 = Propagate port \$7FFD I/O Cycles (0 on hard reset)
+\item bit 0 = Propagate port \$FE I/O Cycles (1 on hard reset)
+\end{itemize}
+

@@ -238,60 +238,47 @@ terminating_byte:
 db 0x0d 
 \end{verbatim}
 
-\subsection{ULA Scrolling}
-The ULA group has two sets of scrolling registers. One for the the
-legacy modes (ZX Spectrum, Alternate Page, Timex Hi-Resoulution, and
-Timex Hi-colour) and a second set for the two ZX Spextrum Next
-specific LoRes modes. The Registers for the legacy modes are nextreg
-\$26 (ULA X Scroll) and \$27 (ULA Y Scroll). Timex Hi-resolution
-scrolls as if it was a $256\times192$ pixel screen mode.
+\subsection{Layer 1 Scrolling}
+Layer 1 has two sets of scrolling registers. One for the the legacy
+modes (ZX Spectrum, Alternate Page, Timex Hi-Resoulution, and Timex
+Hi-colour) and a second set for the two ZX Spextrum Next specific
+LoRes modes.  All modes scroll as if they were $256\times192$ screens
+located at global coordinates (32, 32) to (287, 223), The registers
+for the legacy modes are \$26 and \$27 and the registers for the LoRes
+modes are \$32 and \$33.
 
-(R/W) \$26 (38) $\Rightarrow$ ULA X Scroll
-\begin{itemize}
-\item bits 7-0 = X Offset (0-255) (soft reset = 0)
-\end{itemize}
+\input{registers/tbblue/26.tex}
+\input{registers/tbblue/27.tex}
+\input{registers/tbblue/32.tex}
+\input{registers/tbblue/33.tex}
 
-(R/W) \$27 (39) $\Rightarrow$ ULA Y Scroll
-\begin{itemize}
-\item bits 7-0 = Y Offset (0-191) (soft reset = 0)
-\end{itemize}
+\subsection{Layer 1 Clipping}
+All of the modes in the Layer 1 share a single clipping register,
+\$1A. The clip index may alternately be set using register \$1C. This
+is expecially useful for reading the current clipping coordinates as
+reads on the clipping register do not change the index. Note that
+clipping coordinates are based on a full display area for the mode of
+$256\times192$ resolution even though not all modes have that
+resolution.
 
-\subsection{ULA Clipping}
-All of the modes in the ULA group share a single clipping register,
-nextreg \$1A (Clip Window ULA). The clip index may alternately be set
-using nextreg \$1C. This is expecially useful for reading the current
-clipping coordinates as reads on the clipping register do not change
-the index. Note that clipping coordinates are based on a full display
-area for the mode of $256\times192$ even though not all ULA group
-modes have that resolution.
-
-(R/W) \$1A (26) $\Rightarrow$ Clip Window ULA (and LoRes $\star$)
-\begin{itemize}
-\item bits 7-0 = Clip window coordinate (inclusive)
-\begin{itemize}
-\item 1st write = X1 position (soft reset = 0)
-\item 2nd write = X2 position (soft reset = 255)
-\item 3rd write = Y1 position (soft reset = 0)
-\item 4rd write = Y2 position (soft reset = 191)
-\end{itemize}
-\item[] Reads do not advance the clip position
-\item[] $\star$ LoRes may get a separate clip window in the future
-\end{itemize}
+\input{registers/tbblue/1A.tex}
+\input{registers/tbblue/1C.tex}
 
 \subsection{ZX Spectrum Mode}
 
 Timex mode 0
 
 This is the default ULA mode and has its origins in the original ZX
-Spectrum. It uses $256\times192$ pixels with $8\times8$ colour
-attribute areas mapped into a $32\times24$ grid. If Timex modes are
-not enabled, this and the LoRes mode are the only ones available, so
-you would switch back to this mode by writing 000xxxxx to Next
-register \$15 (21, the sprites and layers register). If another Timex
-mode is enabled, then this is mode 0 so you would write 0 to port \$ff
-to enable it. This is a $256\times192$ video mode. The bitmap 1 area
-is used for selection between ink and paper colours with one bit per
-pixel and the attribute 1 area for colour attributes.
+Spectrum. It uses $256\times192$ pixels located at global coordinates
+(32, 32) to (287, 223) with $8\times8$ colour attribute areas mapped
+into a $32\times24$ grid. If Timex modes are not enabled, this and the
+LoRes mode are the only ones available, so you would switch back to
+this mode by writing 000xxxxx to Next register \$15 (21, the sprites
+and layers register). If another Timex mode is enabled, then this is
+mode 0 so you would write 0 to port \$ff to enable it. This is a
+$256\times192$ video mode. The bitmap 1 area is used for selection
+between ink and paper colours with one bit per pixel and the attribute
+1 area for colour attributes.
 
 The easiest way to visualize the mapping of this mode is to think of
 the $256\times192$ area as being divided into a $32\times24$ grid of
@@ -363,10 +350,11 @@ out (c),a
 
 Timex mode 2
 
-This mode is a $256\times192$ video mode with $8\times1$ colour
-attribute mapping on a $32\times192$ grid. It is selected by writing 2
-to the Timex ULA port (\$ff).  Pixel mapping in this mode is the same
-as in ZX Spectrum mode using the bitmap 1 area based on
+This mode is a $256\times192$ video mode located at global coordinates
+(32, 32) to (287, 223) with $8\times1$ colour attribute mapping on a
+$32\times192$ grid. It is selected by writing 2 to the Timex ULA port
+(\$ff).  Pixel mapping in this mode is the same as in ZX Spectrum mode
+using the bitmap 1 area based on
 $0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$.  The colour attributes use
 the bitmap 2 area with $8\times1$ colour attribute areas corresponding
 to the addresses $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$.
@@ -399,9 +387,11 @@ out (c),a
 
 Timex mode 6
 
-This is a monochrome $512\times192$ video mode. It is selected by
-writing to the Timex ULA port (\$ff with values that also select which
-two colours (or colour entries in ULANext mode) you use.
+This is a monochrome $512\times192$ video mode located at global
+coordinates (32, 32) to (287, 223) with each pixel being half
+width. It is selected by writing to the Timex ULA port (\$ff with
+values that also select which two colours (or colour entries in
+ULANext mode) you use.
 
 \begin{table}[h]\centering
   \caption{Hi-Resolution Colours}
@@ -442,62 +432,23 @@ out (c),a
 
 \subsection{Lo-Resolution Mode}
 This is a Spectrum Next specific video mode with a resolution of
-$128\times96$ replacing the old Radistan mode.  It can either allow
-for 16 colours, in which case it uses either the bitmap 1 area or the
-bitmap 2 area, or 256 colours using both bitmap 1 and bitmap 2. The
-colour of each pixel can be selected independently with data ordered
-linearly in a row major fashion. In the case of 16 colour mode, the
-nybbles describing the colours are X major (MSN LSN). Scrolling is by
-half pixels and uses different registers (\$32 and \$33) from the rest
-of the ULA group modes. LoRes mode is enabled by writing $100xxxxx$ to
-Next register \$15 (the sprites and layers register) with Next
-register \$6A used to decide whether it is 16 or 256 colours.
+$128\times96$ located at global coordinates (32, 32) to (287, 223)
+with each pixel being double height and double width replacing the old
+Radistan mode.  It can either allow for 16 colours, in which case it
+uses either the bitmap 1 area or the bitmap 2 area, or 256 colours
+using both bitmap 1 and bitmap 2. The colour of each pixel can be
+selected independently with data ordered linearly in a row major
+fashion. In the case of 16 colour mode, the nybbles describing the
+colours are X major (MSN LSN). Scrolling is by half pixels and uses
+different registers (\$32 and \$33) from the rest of the ULA group
+modes. LoRes mode is enabled by writing $100xxxxx$ to Next register
+\$15 (the sprites and layers register) with Next register \$6A used to
+decide whether it is 16 or 256 colours.
 
-R/W) \$15 (21) $\Rightarrow$ Sprite and Layers System
-\begin{itemize}
-\item bit 7 = Enable lores mode (soft reset = 0)
-\item bit 6 = Sprite priority (1 = sprite 0 on top, 0 = sprite 127
-  on top) (soft reset = 0)
-\item bit 5 = Enable sprite clipping in over border mode (soft reset = 0)
-\item bits 4-2 = Set layer priority (eg SLU = sprites over layer 2
-  over ula) (soft reset = 000)
-  \begin{itemize}
-  \item 000 - S L U
-  \item 001 - L S U
-  \item 010 - S U L
-  \item 011 - L U S
-  \item 100 - U S L
-  \item 101 - U L S
-  \item 110 - S(U+L) ULA and Layer 2 combined, colours clamped to 7
-  \item 111 - S(U+L-5) ULA and Layer 2 combined, colours clamped to
-    [0,7]
-  \end{itemize}
-\item bit 1 = Enable sprites over border (soft reset = 0)
-\item bit 0 = Enable sprites (soft reset = 0)
-\end{itemize}
-
-(R/W) \$32 (50) $\Rightarrow$ LoRes X Scroll
-\begin{itemize}
-\item bits 7-0 = X Offset (0-255) (soft reset = 0)
-\item[] LoRes scrolls in ``half-pixels'' at the same resolution and
-  smoothness as Layer 2.
-\end{itemize}
-
-(R/W) \$33 (51) $\Rightarrow$ LoRes Y Scroll
-\begin{itemize}
-\item bits 7-0 = Y Offset (0-191) (soft reset = 0)
-\item[] LoRes scrolls in ``half-pixels'' at the same resolution and
-  smoothness as Layer 2.
-\end{itemize}
-
-(R/W) \$6A (106) $\Rightarrow$ LoRes Control
-\begin{itemize}
-\item bits 7-6 = reserved
-\item bit 5 = 1 Enable Radistan (16-colour)
-\item bit 4 = Half of LoRes area to use for Radistan, xor with bit 0
-  of port \$ff
-\item bits 3-0 = Radistan palette offset
-\end{itemize}
+\input{registers/tbblue/15.tex}
+\input{registers/tbblue/32.tex}
+\input{registers/tbblue/33.tex}
+\input{registers/tbblue/6A.tex}
 
 Code: 256 colour
 \begin{verbatim}

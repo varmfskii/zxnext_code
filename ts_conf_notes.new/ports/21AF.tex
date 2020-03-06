@@ -1,0 +1,17 @@
+\port{21AF}{Memory Config}\\
+MemConfig
+\begin{itemize}
+\item bits 7-6 = Memory slot 3 mapping (LCK128)
+  \begin{itemize}
+  \item 00 = 512k (Port \$7FFD uses extended bank numbers, bits 7-6)
+  \item 01 = 128k
+  \item 10 = Auto (!a[13])
+  \item 11 = 1024k (Port \$7FFD uses extended bank numbers, bits 7-5)
+  \end{itemize}
+\item bits 5-4 = reserved, must be 0
+\item bit 3 = Set slot 0 as RAM (W0\_RAM)
+\item bit 2 = Disable mapping slot 0 (!W0\_MAP)
+\item bit 1 = Write enable slot 0 (W0\_WE)
+\item bit 0 = Mirror bit 4 of \$7FFD (ROM128)
+\end{itemize}
+

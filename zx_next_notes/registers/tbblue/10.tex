@@ -1,0 +1,15 @@
+\register{R/W}{10}{Core Boot}\\
+Read
+\begin{itemize}
+\item bits 7-2 = Reserved
+\item bit 1 = Drive button pressed
+\item bit 0 = NMI button pressed
+\end{itemize}
+Write
+\begin{itemize}
+\item bit 7 = Reboot FPGA using selected core (0 on reset)
+\item bits 6-5 = Reserved, must be 0
+\item bits 4-0 = Core ID
+\item[] Core ID with bits 4-0 can only be set in configuration mode
+\end{itemize}
+

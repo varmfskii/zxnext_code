@@ -1,0 +1,3434 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>BDOS</TITLE>
+<META NAME="description" CONTENT="BDOS">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node122.html">
+<LINK REL="previous" HREF="node120.html">
+<LINK REL="next" HREF="node122.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node122.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node119.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node120.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html982"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html984"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node122.html">BIOS</A>
+<B> Up:</B> <A
+ HREF="node119.html">CP/M</A>
+<B> Previous:</B> <A
+ HREF="node120.html">Utilities</A>
+ &nbsp; <B>  <A ID="tex2html983"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html985"
+  HREF="node162.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A ID="SECTION001012000000000000000">
+BDOS</A>
+</H2>
+From the CP/M 3 Programmers' Guide 1984
+
+<P>
+This section documents all BDOS system calls to include the parameters
+that must be passes to them and the values that are returned to the
+calling program.
+
+<P>
+<A NAME="3036"></A>
+BDOS function 0: <SPAN  CLASS="textbf">SYSTEM RESET</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $00
+</td></tr></table>
+
+<P>
+The System Reset function terminates the calling program and returns
+control to the CCP via a warm start sequence. Calling this function
+has the same effect as a jump to location $0000 of Page Zero.
+
+<P>
+Note that the disk subsystem is not reset by System Reset under CP/M
+3. The calling program can pass a return code to the CCP by calling
+Function 108, Get/Set Program Return Code, prior to making a System
+Reset call or jumping to location $0000.
+
+<P>
+<A NAME="3040"></A>
+BDOS function 1: <SPAN  CLASS="textbf">CONSOLE INPUT</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $01
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: ASCII Character
+</td></tr></table>
+
+<P>
+The Console Input function reads the next character from the logical
+console, CONIN:, to register A. Graphic characters, along with
+carriage return, line-feed, and backspace, CTRL-H, are echoed to the
+console. Tab characters, CTR-L-1, are expanded in columns of 8
+characters. CTRL-S, CTRL-Q, and CTRL-P are normally intercepted as
+described below. All other non-graphic characters are returned in
+register A but are not echoed to the console.
+
+<P>
+When the Console Mode is in the default state Function 1 intercepts
+the stop scroll, CTRL-S, start scroll, CTRL-Q, and start/stop printer
+echo, CTRL-P, characters. Any characters that are typed following a
+CTRL-S and preceding a CTRL-Q are also intercepted. However, if
+start/stop scroll has been disabled by the Console Mode, the CTRL-S,
+CTRL-Q, and CTRL-P characters are not intercepted. Instead, they are
+returned in register A, but are not echoed to the console.
+
+<P>
+If printer echo has been invoked, all characters that are echoed to
+the console are also sent to the list device, LST:.  Function 1 does
+not return control to the calling program until a non-intercepted
+character is typed, thus suspending execution if a character is not
+ready.
+
+<P>
+<A NAME="3046"></A>
+BDOS function 2: <SPAN  CLASS="textbf">CONSOLE OUTPUT</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $02</td></tr>
+<tr><td valign="top">&nbsp;E: ASCII Character
+</td></tr></table>
+
+<P>
+The Console Output function sends the ASCII character from register E
+to the logical console device, CONOUT:. When the Console Mode is in
+the default state (see Section 2.2.1), Function 2 expands tab
+characters, CTRL-1, in columns of 8 characters, checks for stop
+scroll, CTRL-S, start scroll, CTRL-Q, and echoes characters to the
+logical list device, LST:, if printer echo, CTRL-P, has been invoked.
+
+<P>
+<A NAME="3050"></A>
+BDOS function 3: <SPAN  CLASS="textbf">AUXILIARY INPUT</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $03
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: ASCII Character
+</td></tr></table>
+
+<P>
+The Auxiliary Input function reads the next character from the logical
+auxiliary input device, AUXIN:, into register A. Control does not
+return to the calling program 'I the character is read.  unti
+
+<P>
+<A NAME="3056"></A>
+BDOS function 4: <SPAN  CLASS="textbf">AUXILIARY OUTPUT</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $04</td></tr>
+<tr><td valign="top">&nbsp;E: ASCII Character
+</td></tr></table>
+
+<P>
+The Auxiliary Output function sends the ASCII character from register
+E to the logical auxiliary output device, AUXOUT:.
+
+<P>
+<A NAME="3060"></A>
+BDOS function 5: <SPAN  CLASS="textbf">LIST OUTPUT</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $05</td></tr>
+<tr><td valign="top">&nbsp;E: ASCII Character
+</td></tr></table>
+
+<P>
+The List Output function sends the ASCII character in register E to
+the logical list device, LST:.
+
+<P>
+<A NAME="3064"></A>
+BDOS function 6: <SPAN  CLASS="textbf">DIRECT CONSOLE I/O</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $06</td></tr>
+<tr><td valign="top">&nbsp;E: function/data (see description)
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: char/status/no value (see description)
+</td></tr></table>
+
+<P>
+CP/M 3 supports direct I/O to the logical console, CONIN:, for those
+specialized applications where unadorned console input and output is
+required. Use Direct Console I/O carefully because it bypasses all the
+normal control character functions.  Programs that perform direct I/O
+through the BIOS under previous releases of CP/M should be changed to
+use direct I/O so that they can be fully supported under future
+releases of MP/M and CP/M.
+
+<P>
+A program calls Function 6 by passing one of four different values in
+register E.
+
+<P>
+
+<UL>
+<LI>$FF Console input/status command returns an input character; if
+  no character is ready, a value of zero is returned.
+</LI>
+<LI>$FE Console status command (On return, register A contains 00
+  if no character is ready; otherwise it contains $FF.)
+</LI>
+<LI>$FD Console input command, returns an input character; this
+  function will suspend the calling process until a character is
+  ready.
+</LI>
+<LI>ASCII Function 6 assumes that register E contains a valid ASCII
+  chararacter and sends it to the console.
+</LI>
+</UL>
+
+<P>
+<A NAME="3072"></A>
+BDOS function 7: <SPAN  CLASS="textbf">AUXILIARY INPUT STATUS</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $07
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Auxiliary Input Status
+</td></tr></table>
+
+<P>
+The Auxiliary Input Status function returns the value $FF in register
+A if a character is ready for input from the logical auxiliary input
+device, AUXIN:. If no character is ready for input, the value $00 is
+returned.
+
+<P>
+<A NAME="3078"></A>
+BDOS function 8: <SPAN  CLASS="textbf">AUXILIARY OUTPUT STATUS</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $08
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Auxiliary Output Status
+</td></tr></table>
+
+<P>
+The Auxiliary Output Status function returns the value $FF in
+register A if the logical auxiliary output device, AUXOUT:, is ready
+to accept a character for output.  If the device is not ready for
+output, the value $00 is returned.
+
+<P>
+<A NAME="3084"></A>
+BDOS function 9: <SPAN  CLASS="textbf">PRINT STRING</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $09</td></tr>
+<tr><td valign="top">&nbsp;DE: String Address
+</td></tr></table>
+
+<P>
+The Print String function sends the character string addressed by
+register pair DE to the logical console, CONOUT:, until it encounters
+a delimiter in the string. Usually the delimiter is a dollar sign, $,
+but it can be changed to any other value by Function 110, Get/Set
+Output Delimiter. If the Console Mode is in the default state,
+Function 9 expands tab characters, CTRL-I, in columns of 8
+characters. It also checks for stop scroll, CTRL-S, start scroll,
+CTRL-Q, and echoes to the logical list device, LST:, if printer echo,
+CTRL-P, has been invoked.
+
+<P>
+<A NAME="3088"></A>
+BDOS function 10: <SPAN  CLASS="textbf">READ CONSOLE BUFFER</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $0A</td></tr>
+<tr><td valign="top">&nbsp;DE: Buffer Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;Console Characters in Buffer
+</td></tr></table>
+
+<P>
+The Read Console Buffer function reads a line of edited console input
+from the logical console, CONIN:, to a buffer that register pair DE
+addresses. It terminates input and returns to the calling program when
+it encounters a return, CTRL-M, or a line feed, CTRL-J,
+character. Function 10 also discards all input characters after the
+input buffer is filled. In addition, it outputs a bell character,
+CTRL-G, to the console when it discards a character to signal the user
+that the buffer is full. The input buffer addressed by DE has the
+following format:
+
+<P>
+where mx is the maximum number of characters which the buffer holds,
+and nc is the number of characters placed in the buffer. The
+characters entered by the operator follow the nc value. The value mx
+must be set prior to making a Function 10 call and may range in value
+from 1 to 255. Setting mx to zero is equivalent to setting mx to
+one. The value nc is returned to the calling program and may range
+from zero to mx. If nc &lt; mx, then uninitialized positions follow the
+last character, denoted by ??  in the figure. Note that a terminating
+return or line feed character is not placed in the buffer and not
+included in the count nc.
+
+<P>
+If register pair DE is set to zero, Function 10 assumes that an
+initialized input buffer is located at the current DMA address (see
+Function 26, Set DMA Address).  This allows a program to put a string
+on the screen for the user to edit. To initialize the input buffer,
+set characters c1 through cn to the initial value followed by a binary
+zero terminator.
+
+<P>
+When a program calls Function 10 with an initialized buffer, Function
+10 operates as if the user had typed in the string. When Function 10
+encounters the binary zero terminator, it accepts input from the
+console. At this point, the user can edit the initialized string or
+accept it as it is by pressing the RETURN key. However, if the
+initialized string contains a return, CTRL-M, or a linefeed, CTRL-J,
+character, Function 10 returns to the calling program without giving
+the user the opportunity to edit the string.
+
+<P>
+The level of console editing supported by Function 10 differs for the
+banked and nonbanked versions of CP/M 3. Refer to the CPIM Plus (CPIM
+Version 3) Operating System User's Guide for a detailed description of
+console editing. In the nonbanked version, Function 10 recognizes the
+following edit control characters.
+
+<P>
+Nonbanked CP/M 3
+
+<UL>
+<LI>rub/del Removes and echoes the last character; GENCPM can change
+  this function to CTRL-H
+</LI>
+<LI>CTRL-C Reboots when at the beginning of line; the Console Mode
+  can disable this function
+</LI>
+<LI>CTRL-E Causes physical end of line
+</LI>
+<LI>CTRL-H Backspaces one character position; GENCPM can change this
+  function to rub/del
+</LI>
+<LI>CTRL-J (Line-feed) terminates input line
+</LI>
+<LI>CTRL-M (Return) terminates input line
+</LI>
+<LI>CTRL-P Echoes console output to the list device
+</LI>
+<LI>CTRL-R Retypes the current line after new line
+</LI>
+<LI>CTRL-U Removes current line after new line
+</LI>
+<LI>CTRL-X Backspaces to beginning of current line
+</LI>
+</UL>
+
+<P>
+The banked version of CP/M 3 expands upon the editing provided in the
+non-banked version. The functionality of the two versions is similar
+when the cursor is positioned at the end of the line. However, in the
+banked version, the user can move the cursor anywhere in the current
+line, insert characters, delete characters, and perform other editing
+functions. In addition, the banked version saves the previous command
+line; it can be recalled when the current line is empty. In the banked
+version, Function 10 recognizes the following edit control characters.
+
+<P>
+Banked CP/M 3
+
+<UL>
+<LI>rub/del Removes and echoes the last character if at the end of
+  the line; otherwise deletes the character to the left of the current
+  cursor position; GENCPM can change this function to CTRL-H.
+</LI>
+<LI>CTRL-A Moves cursor one character to the left.
+</LI>
+<LI>CTRL-B Moves cursor to the beginning of the line when not at the
+  beginning; otherwise moves cursor to the end of the line.
+</LI>
+<LI>CTRL-C Reboots when at the beginning of line; the Console Mode
+  can disable this function.
+</LI>
+<LI>CTRL-E Causes physical end-of-line; if the cursor is positioned
+  in the middle of a line, the characters at and to the right of the
+  cursor are displayed on the next line.
+</LI>
+<LI>CTRL-F Moves cursor one character to the right.
+</LI>
+<LI>CTRL-G Deletes the character at the current cursor position when
+  in the middle of the line; has no effect when the cursor is at the
+  end of the line.
+</LI>
+<LI>CTRL-H Backspaces one character position when positioned at the
+  end of the line,; otherwise deletes the character to the left of the
+  cursor; GENCPM can change this function to rub/del.
+</LI>
+<LI>CTRL-J (Line-feed) terminates input; the cursor can be
+  positioned anywhere in the line; the entire input line is
+  accepted; sets the previous line buffer to the input line.
+</LI>
+<LI>CTRL-K Deletes all characters to the right of the cursor along
+  with the character at the cursor.
+</LI>
+<LI>CTRL-M (Return) terminates input; the cursor can be positioned
+  anywhere in the line; the entire input line is accepted; sets the
+  previous line buffer to the input line.
+</LI>
+<LI>CTRL-P Echoes console output to the list device.
+</LI>
+<LI>CTRL-R Retypes the characters to the left of the cursor on the
+  new line.
+</LI>
+<LI>CTRL-U Updates the previous line buffer to contain the
+  characters to the left of the cursor; deletes current line, and
+  advances to new line.
+</LI>
+<LI>CTRL-W Recalls previous line if current line is empty; otherwise
+  moves cursor to end-of-line.
+</LI>
+<LI>CTRL-X Deletes all characters to the left of the cursor.
+</LI>
+</UL>
+
+<P>
+For banked systems, Function 10 uses the console width field defined
+in the System Control Block. If the console width is exceeded when the
+cursor is positioned at the end of the line, Function 10 automatically
+advances to the next line. The beginning of the line can be edited by
+entering a CTRL-R.
+
+<P>
+When a character is typed while the cursor is positioned in the middle
+of the line, the typed character is inserted into the line. Characters
+at and to the right of the cursor are shifted to the right. If the
+console width is exceeded, the characters disappear off the right of
+the screen. However, these characters are not lost. They reappear if
+characters are deleted out of the line, or if a CTRL-E is typed.
+
+<P>
+<A NAME="3098"></A>
+BDOS function 11: <SPAN  CLASS="textbf">GET CONSOLE STATUS</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $0B
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Console Status
+</td></tr></table>
+
+<P>
+The Get Console Status function checks to see if a character has been
+typed at the logical console, CONIN:. If the Console Mode is in the
+default state, Function 11 returns the value $01 in register A when a
+character is ready. If a character is not ready, it returns a value of
+$00.
+
+<P>
+If the Console Mode is in CTRL-C Only Status mode, Function 11 returns
+the value $01 in register A only if a CTRL-C has been typed at the
+console.
+
+<P>
+<A NAME="3104"></A>
+BDOS function 12: <SPAN  CLASS="textbf">RETURN VERSION NUMBER</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $0C
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;HL: Version Number
+</td></tr></table>
+
+<P>
+The Return Version Number function provides information that allows
+version independent programming. It returns a two-byte value in
+register pair HL: H contains $00 for CP/M and L contains $31, the
+BDOS file system version number.  Function 12 is useful for writing
+applications programs that must run on multiple versions of CP/M and
+MP/M.
+
+<P>
+<A NAME="3110"></A>
+BDOS function 13: <SPAN  CLASS="textbf">RESET DISK SYSTEM</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $0D
+</td></tr></table>
+
+<P>
+The Reset Disk System function restores the file system to a reset
+state where all the disk drives are set to read-write (see Functions
+28 and 29), the default disk is set to drive A, and the default DMA
+address is reset to $0080. This function can be used, for example, by
+an application program that requires disk changes during
+operation. Function 37, Reset Drive, can also be used for this
+purpose.
+
+<P>
+<A NAME="3114"></A>
+BDOS function 14: <SPAN  CLASS="textbf">SELECT DISK</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $0E</td></tr>
+<tr><td valign="top">&nbsp;E: Selected Disk
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Error Flag</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+The Select Disk function designates the disk drive named in register E
+as the default disk for subsequent BDOS file operations. Register E is
+set to 0 for drive A, 1 for drive B, and so on through 15 for drive P
+in a full 16-drive system. In addition, Function 14 logs in the
+designated drive if it is currently in the reset state. Logging-in a
+drive activates the drive's directory until the next disk system reset
+or drive reset operation.
+
+<P>
+FCBs that specify drive code zero (dr = $00) automatically reference
+the currently selected default drive. FCBs with drive code values
+between 1 and 16, however, gnore the selected default drive and
+directly reference drives A through P.
+
+<P>
+Upon return, register A contains a zero if the select operation was
+successful. If a physical error was encountered, the select function
+performs different actions depending on the BDOS error mode (see
+Function 45). If the BDOS error mode is in the default mode, a message
+identifying the error is displayed at the console, and the calling
+program is terminated. Otherwise, the select function returns to the
+calling program with register A set to $FF and register H set to one
+of the following
+
+<P>
+physical error codes:
+
+<UL>
+<LI>01 Disk I/O Error
+</LI>
+<LI>04 Invalid drive
+</LI>
+</UL>
+
+<P>
+<A NAME="3122"></A>
+BDOS function 15: <SPAN  CLASS="textbf">OPEN FILE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $0F</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Directory Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical or Extended Error
+</td></tr></table>
+
+<P>
+The Open File function activates the FCB for a file that exists in the
+disk directory under the currently active user number or user
+zero. The calling program passes the address of the FCB in register
+pair DE, with byte 0 of the FCB specifying the drive, bytes 1 through
+11 specifying the filename and filetype, and byte 12 specifying the
+extent. Usually, byte 12 of the FCB is initialized to zero.
+
+<P>
+If the file is password protected in Read mode, the correct password
+must be placed in the first eight bytes of the current DMA, or have
+been previously established as the default password (see Function
+106). If the current record field of the FCB, cr, is set to $FF,
+Function 15 returns the byte count of the last record of the file in
+the cr field. You can set the last record byte count for a file with
+Function 30, Set File Attributes. Note that the current record field
+of the FCB, cr, must be zeroed by the calling program before beginning
+read or write operations if the file is to be accessed sequentially
+from the first record.
+
+<P>
+If the current user is non-zero, and the file to be opened does not
+exist under the current user number, the open function searches user
+zero for the file. If the file exists under user zero, and has the
+system attribute, t2', set, the file is opened under user zero. Write
+operations are not supported for a file that is opened under user zero
+in this manner.
+
+<P>
+If the open operation is successful, the user's FCB is activated for
+read and write operations. The relevant directory information is
+copied from the matching directory FCB into bytes d0 through dn of the
+FCB. If the file is opened under user zero when the current user
+number is not zero, interface attribute f8' is set to one in the user's
+FCB. In addition, if the referenced file is password protected in
+Write mode, and the correct password was not passed in the DMA, or did
+not match the default password, interface attribute f7' is set to
+one. Write operations are not supported for an activated FCB if
+interface attribute f7' or f8' is true.
+
+<P>
+When the open operation is successful, the open function also makes an
+Access date and time stamp for the opened file when the following
+conditions are satisfied: the referenced drive has a directory label
+that requests Access date and time stamping, and the FCB extent number
+field is zero.
+
+<P>
+Upon return, the Open File function returns a directory code in
+register A with the value $00 if the open was successful, or $FF,
+255 decimal, if the file was not found.  Register H is set to zero in
+both of these cases. If a physical or extended error was encountered,
+the Open File function performs different actions depending on the
+BDOS error mode (see Function 45). If the BDOS error mode is in the
+default mode, a message identifying the error is displayed at the
+console and the program is terminated. Otherwise, the Open File
+function returns to the calling program with register A set to $FF,
+and register H set to one of the following physical or extended error
+codes:
+
+<P>
+
+<UL>
+<LI>01 : Disk I/O Error
+</LI>
+<LI>04 : Invalid drive error
+</LI>
+<LI>07 : File password error
+</LI>
+<LI>09 : ? in the FCB filename or filetype field
+</LI>
+</UL>
+
+<P>
+<A NAME="3130"></A>
+BDOS function 16: <SPAN  CLASS="textbf">CLOSE FILE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $10</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Directory Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical or Extended Error
+</td></tr></table>
+
+<P>
+The Close File function performs the inverse of the Open File
+function. The calling program passes the address of an FCB in register
+pair DE. The referenced FCB must have been previously activated by a
+successful Open or Make function call (see Functions 15 and
+22). Interface attribute f5' specifies how the file is to be closed as
+shown below:
+
+<P>
+
+<UL>
+<LI>f5' = 0 - Permanent close (default mode)
+</LI>
+<LI>f5' = 1 - Partial close
+</LI>
+</UL>
+
+<P>
+A permanent close operation indicates that the program has completed
+file operations on the file. A partial close operation updates the
+directory, but indicates that the file is to be maintained in the open
+state.
+
+<P>
+If the referenced FCB contains new information because of write
+operations to the FCB, the close function permanently records the new
+information in the referenced disk directory. Note that the FCB does
+not contain new information, and the directory update step is
+bypassed if only read or update operations have been made to the
+referenced FCB.
+
+<P>
+Upon return, the close function returns a directory code in register A
+with the value $00 if the close was successful&#8222; or $FF, 255
+Decimal, if the file was not found.  Register H is set to zero in both
+of these cases. If a physical or extended error is encountered, the
+close function performs different actions depending on the BDOS error
+mode (see Function 45). If the BDOS error mode is in the default mode,
+a message identifying the error is displayed at the console, and the
+calling program is terminated. Otherwise, the close function returns
+to the calling program with register A set to $FF and register H set
+to one of the following physical error codes:
+
+<P>
+
+<UL>
+<LI>01 Disk I/O error
+</LI>
+<LI>02 Read/only disk
+</LI>
+<LI>04 Invalid drive error
+</LI>
+</UL>
+
+<P>
+<A NAME="3140"></A>
+BDOS function 17: <SPAN  CLASS="textbf">SEARCH FOR FIRST</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $11</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;</td></tr>
+<tr><td valign="top">&nbsp;A: Directory Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+The Search For First function scans the directory for a match with the
+FCB addressed by register pair DE. Two types of searches can be
+performed. For standard searches, the calling program initializes
+bytes 0 through 12 of the referenced FCB, with byte 0 specifying the
+drive directory to be searched, bytes 1 through 11 specifying the file
+or files to be searched for&#8222; and byte 12 specifying the
+extent. Usually byte 12 is set to zero. An ASCII question mark, 63
+decimal, 3F hex, in any of the bytes 1 through 12 matches all entries
+on the directory in the corresponding position. This facility, called
+ambiguous reference, can be used to search for multiple files on the
+directory. When called in the standard mode, the Search function scans
+for the first file entry in the specified directory that matches the
+FCB, and belongs to the current user number.
+
+<P>
+The Search For First function also initializes the Search For Next
+function. After the Search function has located the first directory
+entry matching the referenced FCB, the Search For Next function can be
+called repeatedly to locate all remaining matching entries. In terms
+of execution sequence, however, the Search For Next call must either
+follow a Search For First or Search For Next call with no other
+intervening BDOS disk-related function calls.
+
+<P>
+If byte 0 of the referenced FCB is set to a question mark, the Search
+function ignores the remainder of the referenced FCB, and locates the
+first directory entry residing on the current default drive. All
+remaining directory entries can be located by making multiple Search
+For Next calls. This type of search operation is not usually made by
+application programs, but it does provide complete flexibility to scan
+all current directory values. Note that this type of search operation
+must be performed to access a drive's directory label.
+
+<P>
+Upon return, the Search function returns a Directory Code in register
+A with the value 0 to 3 if the search is successful, or $FF, 255
+Decimal, if a matching directory entry is not found. Register H is set
+to zero in both of these cases. For successful searches, the current
+DMA is also filled with the directory record containing the matching
+entry, and the relative starting position is A * 32 (that is, rotate
+the A register left 5 bits, or ADD A five times). Although it is not
+usually required for application programs, the directory information
+can be extracted from the buffer at this position.
+
+<P>
+If the directory has been initialized for date and time stamping by
+INITDIR, then an SFCB resides in every fourth directory entry, and
+successful Directory Codes are restricted to the values 0 to 2. For
+successful searches, if the matching directory record is an extent
+zero entry, and if an SFCB resides at offset 96 within the current
+DMA, contents of (DMA Address + 96) = $21, the SFCB contains the date
+and time stamp information, and password mode for the file. This
+information is located at the relative starting position of 97 + (A *
+10) within the current DMA in the following format:
+
+<P>
+
+<UL>
+<LI>0 - 3 Create or Access Date and Time Stamp Field
+</LI>
+<LI>4 - 7 Update Date and Time Stamp Field
+</LI>
+<LI>8 : Password Mode Field
+</LI>
+</UL>
+
+<P>
+If a physical error is encountered, the Search function performs
+different actions depending on the BDOS error mode (see Function
+45). If the BDOS error mode is in the default mode, a message
+identifying the error is displayed at the console, and the calling
+program is terminated. Otherwise, the Search function returns to the
+calling program with register A set to $FF, and register H set to
+one of the following physical error codes:
+
+<P>
+
+<UL>
+<LI>01 Disk I/O error
+</LI>
+<LI>04 Invalid drive error
+</LI>
+</UL>
+
+<P>
+<A NAME="3150"></A>
+BDOS function 18: <SPAN  CLASS="textbf">SEARCH FOR NEXT</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $12
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Directory Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+The Search For Next function is identical to the Search For First
+function, except that the directory scan continues from the last entry
+that was matched. Function 18 returns a Directory code in register A,
+analogous to Function 17.
+
+<P>
+Note: in execution sequence, a Function 18 call must follow either a
+Function 17 or another Function 18 call with no other intervening BDOS
+disk-related function calls.
+
+<P>
+<A NAME="3156"></A>
+BDOS function 19: <SPAN  CLASS="textbf">DELETE FILE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $13</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Directory Code</td></tr>
+<tr><td valign="top">&nbsp;H: Extended or Physical Error
+</td></tr></table>
+
+<P>
+The Delete File function removes files or XFCBs that match the FCB
+addressed in register pair DE. The filename and filetype can contain
+ambiguous references, that is, question marks in bytes f1' through t3',
+but the dr byte cannot be ambiguous, as it can in the Search and
+Search Next functions. Interface attribute f5' specifies the type of
+delete operation that is performed.
+
+<P>
+
+<UL>
+<LI>f5' = 0 - Standard Delete (default mode)
+</LI>
+<LI>f5' = 1 - Delete only XFCBs
+</LI>
+</UL>
+
+<P>
+If any of the files that the referenced FCB specify are password
+protected, the correct password must be placed in the first eight
+bytes of the current DMA buffer, or have been previously established
+as the default password (see Function 106).
+
+<P>
+For standard delete operations, the Delete function removes all
+directory entries belonging to files that match the referenced
+FCB. All disk directory and data space owned by the deleted files is
+returned to free space, and becomes available for allocation to other
+files. Directory XFCBs that were owned by the deleted files are also
+removed from the directory. If interface attribute f5' of the FCB is
+set to 1, Function 19 deletes only the directory XFCBs that match the
+referenced FCB.
+
+<P>
+Note: if any of the files that match the input FCB specification fall
+the password check, or are Read-Only, then the Delete function does
+not delete any files or XFCBS.  This applies to both types of delete
+operations.
+
+<P>
+In nonbanked systems, file passwords and XFCBs are not
+supported. Thus, if the Delete function is called with interface
+attribute f5' set to true, the Delete function performs no action but
+returns with register A set to zero.
+
+<P>
+Upon return, the Delete function returns a Directory Code in register
+A with the value 0 if the delete is successful, or $FF, 255 Decimal,
+if no file that matches the referenced FCB is found. Register H is set
+to zero in both of these cases. If a physical, or extended error is
+encountered, the Delete function performs different actions depending
+on the BDOS error mode (see Function 45). If the BDOS error mode is
+the default mode, a message identifying the error is displayed at the
+console and the calling program is terminated. Otherwise, the Delete
+function returns to the calling program with register A set to $FF
+and register H set to one of the following physical or extended error
+codes:
+
+<P>
+
+<UL>
+<LI>01 : Disk I/O error
+</LI>
+<LI>02 : Read-Only disk
+</LI>
+<LI>03 : Read-Only file
+</LI>
+<LI>04 : Invalid drive error
+</LI>
+<LI>07 : File password error
+</LI>
+</UL>
+
+<P>
+<A NAME="3166"></A>
+BDOS function 20: <SPAN  CLASS="textbf">READ SEQUENTIAL</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $14</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Error Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+The Read Sequential function reads the next 1 to 128 128-byte records
+from a file into memory beginning at the current DMA address. The BDOS
+Multi-Sector Count (see Function 44) determines the number of records
+to be read. The default is one record. The FCB addressed by register
+pair DE must have been previously activated by an Open or Make
+function call.
+
+<P>
+Function 20 reads each record from byte cr of the extent, then
+automatically increments the cr field to the next record position. If
+the cr field overflows, then the function automatically opens the next
+logical extent and resets the cr field to 0 in preparation for the
+next read operation. The calling program must set the cr field to 0
+following the Open call if the intent is to read sequentially from the
+beginning of the file.  Upon return, the Read Sequential function sets
+register A to zero if the read operation is successful. Otherwise,
+register A contains an error code identifying the error as shown
+below:
+
+<P>
+
+<UL>
+<LI>01 Reading unwritten data (end-of-file)
+</LI>
+<LI>09 Invalid FCB
+</LI>
+<LI>10 Media change occurred
+</LI>
+<LI>255 Physical Error; refer to register H
+</LI>
+</UL>
+
+<P>
+Error Code 01 is returned if no data exists at the next record
+position of the file.  Usually, the no data situation is encountered
+at the end of a file. However, it can also occur if an attempt is made
+to read a data block that has not been previously written, or an
+extent which has not been created. These situations are usually
+restricted to files created or appended with the BDOS random write
+functions (see Functions 34 and 40).
+
+<P>
+Error Code 09 is returned if the FCB is invalidated by a previous BDOS
+close call that returns an error.
+
+<P>
+Error Code 10 is returned if a media change occurs on the drive after
+the referenced FCB is activated by a BDOS Open, or Make Call.
+
+<P>
+Error Code 255 is returned if a physical error is encountered and the
+BDOS error mode is Return Error mode, or Return and Display Error mode
+(see Function 45). If the error mode is the default mode, a message
+identifying the physical error is displayed at the console, and the
+calling program is terminated. When a physical error is returned to
+the calling program, register H contains one of the following error
+codes:
+
+<P>
+
+<UL>
+<LI>01 Disk I/O error
+</LI>
+<LI>04 Invalid drive error
+</LI>
+</UL>
+
+<P>
+On all error returns except for physical error returns, A = 255,
+Function 20 sets register H to the number of records successfully read
+before the error is encountered.  This value can range from 0 to 127
+depending on the current BDOS Multi-Sector Count. It is always set to
+zero when the Multi-Sector Count is equal to one.
+
+<P>
+<A NAME="3176"></A>
+BDOS function 21: <SPAN  CLASS="textbf">WRITE SEQUENTIAL</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $15</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Error Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+The Write Sequential function writes 1 to 128 128-byte data records,
+beginning at the current DMA address into the file named by the FCB
+addressed in register pair DE. The BDOS Multi-Sector Count (see
+Function 44) determines the number of 128 byte records that are
+written. The default is one record. The referenced FCB must have been
+previously activated by a BDOS Open or Make function call.
+
+<P>
+Function 21 places the record into the file at the position indicated
+by the cr byte of the FCB, and then automatically increments the cr
+byte to the next record position. If the cr field overflows, the
+function automatically opens, or creates the next logical extent, and
+resets the cr field to 0 in preparation for the next write operation.
+If Function 21 is used to write to an existing file, then the newly
+written records overlay those already existing in the file. The
+calling program must set the cr field to 0 following an Open or Make
+call if the intent is to write sequentially from the beginning of the
+file.
+
+<P>
+Function 21 makes an Update date and time for the file if the
+following conditions are satisfied: the referenced drive has a
+directory label that requests date and time stamping, and the file has
+not already been stamped for update by a previous Make or Write
+function call.
+
+<P>
+Upon return, the Write Sequential function sets register A to zero if
+the write operation is successful. Otherwise, register A contains an
+error code identifying the error as shown below:
+
+<P>
+
+<UL>
+<LI>01 No available directory space
+</LI>
+<LI>02 No available data block
+</LI>
+<LI>09 Invalid FCB
+</LI>
+<LI>10 Media change occurred
+</LI>
+<LI>255 Physical Error : refer to register H
+</LI>
+</UL>
+
+<P>
+Error Code 01 is returned when the write function attempts to create a
+new extent that requires a new directory entry, and no available
+directory entries exist on the selected disk drive.
+
+<P>
+Error Code 02 is returned when the write command attempts to allocate
+a new data block to the file, and no unallocated data blocks exist on
+the selected disk drive.
+
+<P>
+Error Code 09 is returned if the FCB is invalidated by a previous BDOS
+close call that returns an error.
+
+<P>
+Error Code 10 is returned if a media change occurs on the drive after
+the referenced FCB is activated by a BDOS Open or Make call.
+
+<P>
+Error Code 255 is returned if a physical error is encountered and the
+BDOS error mode is Return Error mode, or Return and Display Error mode
+(see Function 45). If the error mode is the default mode, a message
+identifying the physical error is displayed at the console, and the
+calling program is terminated. When a physical error is returned to
+the calling program, register H contains one of the following error
+codes:
+
+<P>
+
+<UL>
+<LI>01 Disk I/O error
+</LI>
+<LI>02 Read-Only disk
+</LI>
+<LI>03 Read-Only file or File open from user 0 when the current user
+  number is non-zero or File password protected in Write mode
+</LI>
+<LI>04 Invalid drive error
+</LI>
+</UL>
+
+<P>
+On all error returns, except for physical error returns, A = 255,
+Function 21 sets register H to the number of records successfully
+written before the error was encountered. This value can range from 0
+to 127 depending on the current BDOS Multi-Sector Count. It is always
+set to zero when the Multi-Sector Count is set to one.
+
+<P>
+<A NAME="3186"></A>
+BDOS function 22: <SPAN  CLASS="textbf">MAKE FILE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $16</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Directory Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical or Extended Error
+</td></tr></table>
+
+<P>
+The Make File function creates a new directory entry for a file under
+the current user number. It also creates an XFCB for the file if the
+referenced drive has a directory label that enables password
+protection on the drive, and the calling program assigns a password to
+the file.
+
+<P>
+The calling program passes the address of the FCB in register pair DE,
+with byte 0 of the FCB specifying the drive, bytes 1 through 11
+specifying the filename and filctype, and byte 12 set to the extent
+number. Usually, byte 12 is set to zero. Byte 32 of the FCB, the cr
+field, must be initialized to zero, before or after the Make call, if
+the intent is to write sequentially from the beginning of the file.
+
+<P>
+Interface attribute f6' specifies whether a password is to be assigned
+to the created file.
+
+<P>
+
+<UL>
+<LI>f6' = 0 - Do not assign password (default)
+</LI>
+<LI>f6' = 1 - Assign password to created file
+</LI>
+</UL>
+
+<P>
+When attribute f6' is set to 1, the calling program must place the
+password in the first 8 bytes of the current DMA buffer, and set byte
+9 of the DMA buffer to the password mode (see Function 102). Note that
+the Make function only interrogates interface attribute f6' if
+passwords are activated on the referenced drive. In nonbanked systems,
+file passwords are not supported, and attribute f6' is never
+interrogated.
+
+<P>
+The Make function returns with an error if the referenced FCB names a
+file that currently exists in the directory under the current user
+number.
+
+<P>
+If the Make function is successful, it activates the referenced FCB
+for file operations by opening the FCB, and initializes both the
+directory entry and the referenced FCB to an empty file. It also
+initializes all file attributes to zero. In addition, Function 22
+makes a Creation date and time stamp for the file if the following
+conditions are satisfied: the referenced drive has a directory label
+that requests Creation date and time stamping and the FCB extent
+number field is equal to zero. Function 22 also makes an Update stamp
+if the directory label requests update stamping and the FCB extent
+field is equal to zero.
+
+<P>
+If the referenced drive contains a directory label that enables
+password protection, and if interface attribute f6' has been set to 1,
+the Make function creates an XFCB for the file. In addition, Function
+22 also assigns the password, and password mode placed in the first
+nine bytes of the DMA, to the XFCB.
+
+<P>
+Upon return, the Make function returns a directory code in register A
+with the value 0 if the make operation is successful, or $FF, 255
+decimal, if no directory space is available. Register H is set to zero
+in both of these cases. If a physical or extended error is
+encountered, the Make function performs different actions depending on
+the BDOS error mode (see Function 45). If the BDOS error mode is the
+default mode, a message identifying the error is displayed at the
+console, and the calling program is terminated. Otherwise, the Make
+function returns to the calling program with register A set to $FF,
+and register H set to one of the following physical or extended error
+codes:
+
+<P>
+
+<UL>
+<LI>01 : Disk I/O error
+</LI>
+<LI>02 : Read-Only disk
+</LI>
+<LI>04 : Invalid drive error
+</LI>
+<LI>08 : File already exists
+</LI>
+<LI>09 : ? in filename or filetype field
+</LI>
+</UL>
+
+<P>
+<A NAME="3196"></A>
+BDOS function 23: <SPAN  CLASS="textbf">RENAME FILE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $17</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Directory Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical or Extended Error
+</td></tr></table>
+
+<P>
+The Rename function uses the FCB, addressed by register pair DE, to
+change all directory entries of the file specified by the filename in
+the first 16 bytes of the FCB to the filename in the second 16
+bytes. If the file specified by the first filename is password
+protected, the correct password must be placed in the first eight
+bytes of the current DMA buffer, or have been previously established
+as the default password (see Function 106). The calling program must
+also ensure that the filenames specified in the FCB are valid and
+unambiguous, and that the new filename does not already exist on the
+drive. Function 23 uses the dr code at byte 0 of the FCB to select the
+drive. The drive code at byte 16 of the FCB is ignored.
+
+<P>
+Upon return, the Rename function returns a Directory Code in register
+A with the value 0 if the rename is successful, or $0FF, 255 Decimal,
+if the file named by the first filename in the FCB is not
+found. Register H is set to zero in both of these cases.  If a
+physical or extended error is encountered, the Rename function
+performs different actions depending on the BDOS error mode (see
+Function 45). If the BDOS error mode is the default mode, a message
+identifying the error is displayed at the console and the program is
+terminated. Otherwise, the Rename function returns to the calling
+program with register A set to $0FF and register H set to one of the
+following physical or extended error codes:
+
+<P>
+
+<UL>
+<LI>01 Disk I/O error
+</LI>
+<LI>02 Read-Only disk
+</LI>
+<LI>03 Read-Only file
+</LI>
+<LI>04 Invalid drive error
+</LI>
+<LI>07 File password error
+</LI>
+<LI>08 File already exists
+</LI>
+<LI>09 ? in filename or filetype field
+</LI>
+</UL>
+
+<P>
+<A NAME="3204"></A>
+BDOS function 24: <SPAN  CLASS="textbf">RETURN LOGIN VECTOR</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $18
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;HL: Login Vector
+</td></tr></table>
+
+<P>
+Function 24 returns the login vector in register pair HL. The login
+vector is a 16-bit value with the least significant bit of L
+corresponding to drive A, and the highorder bit of H corresponding to
+the 16th drive, labelled P. A 0 bit indicates that the drive is not
+on-line, while a 1 bit indicates the drive is active. A drive is made
+active by either an explicit BDOS Select Disk call, number 14, or an
+implicit selection when a BDOS file operation specifies a non-zero dr
+byte in the FCB. Function 24 maintains compatibilty with earlier
+releases since registers A and L contain the same values upon return.
+
+<P>
+<A NAME="3210"></A>
+BDOS function 25: <SPAN  CLASS="textbf">RETURN CURRENT DISK</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $19
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Current Disk
+</td></tr></table>
+
+<P>
+Function 25 returns the currently selected default disk number in
+register A. The disk numbers range from 0 through 15 corresponding to
+drives A through P.
+
+<P>
+<A NAME="3216"></A>
+BDOS function 26: <SPAN  CLASS="textbf">SET DMA ADDRESS</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $1A</td></tr>
+<tr><td valign="top">&nbsp;DE: DMA Address
+</td></tr></table>
+
+<P>
+DMA is an acronym for Direct Memory Address, which is often used in
+connection with disk controllers that directly access the memory of
+the computer to transfer data to and from the disk subsystem. Under
+CP/M 3, the current DMA is usually defined as the buffer in memory
+where a record resides before a disk write, and after a disk read
+operation. If the BDOS Multi-Sector Count is equal to one (see
+Function 44), the size of the buffer is 128 bytes. However, if the
+BDOS Multi-Sector Count is greater than one, the size of the buffer
+must equal N * 128, where N equals the Multi-Sector Count.
+
+<P>
+Some BDOS functions also use the current DMA to pass parameters, and
+to return values. For example, BDOS functions that check and assign
+file passwords require that the password be placed in the current
+DMA. As another example, Function 46, Get Disk Free Space, returns its
+results in the first 3 bytes of the current DMA. When the current DMA
+is used in this context, the size of the buffer in memory is
+determined by the specific requirements of the called function.
+
+<P>
+When a transient program is initiated by the CCP, its DMA address is
+set to $0080. The BDOS Reset Disk System function, Function 13, also
+sets the DMA address to $0080. The Set DMA function can change this
+default value to another memory address. The DMA address is set to the
+value passed in the register pair DE.  The DMA address remains at this
+value until it is changed by another Set DMA Address, or Reset Disk
+System call.
+
+<P>
+<A NAME="3220"></A>
+BDOS function 27: <SPAN  CLASS="textbf">GET ADDR(ALLOC)</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $1B
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;HL: ALLOC Address
+</td></tr></table>
+
+<P>
+CP/M 3 maintains an allocation vector in main memory for each active
+disk drive.  Some programs use the information provided by the
+allocation vector to determine the amount of free data space on a
+drive. Note, however, that the allocation information might be
+inaccurate if the drive has been marked Read-Only.
+
+<P>
+Function 27 returns in register pair HL, the base address of the
+allocation vector for the currently selected drive. If a physical
+error is encountered when the BDOS error mode is one of the return
+modes (see Function 45), Function 27 returns the value $FFFF in the
+register pair HL.
+
+<P>
+In banked CP/M 3 systems, the allocation vector can be placed in bank
+zero. In this case, a transient program cannot access the allocation
+vector. However, the BDOS function, Get Disk Free Space (Function 46),
+can be used to directly return the number of free 128-byte records on
+a drive. The CP/M 3 utilities that display a drive's free space, DIR
+and SHOW, use Function 46 for that purpose.
+
+<P>
+<A NAME="3226"></A>
+BDOS function 28: <SPAN  CLASS="textbf">WRITE PROTECT DISK</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $1C
+</td></tr></table>
+
+<P>
+The Write Protect Disk function provides temporary write protection
+for the currently selected disk by marking the drive as Read-Only, No
+program can write to a disk that is in the Read-Only state. A drive
+reset operation must be performed for a Read-Only drive to restore it
+to the Read-Write state (see Functions 13 and 37).
+
+<P>
+<A NAME="3230"></A>
+BDOS function 29: <SPAN  CLASS="textbf">GET READ-ONLY VECTOR</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: l$D
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;HL: R/O Vector Value
+</td></tr></table>
+
+<P>
+Function 29 returns a bit vector in register pair HL that indicates
+which drives have the temporary Read-Only bit set. The Read-Only bit
+can be set only by a BDOS Write Protect Disk call.
+
+<P>
+The format of the bit vector is analogous to that of the login vector
+returned by Function 24. The least significant bit corresponds to
+drive A, while the most significant bit corresponds to drive P.
+
+<P>
+<A NAME="3236"></A>
+BDOS function 30: <SPAN  CLASS="textbf">SET FILE ATTRIBUTES</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $1E</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Directory Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical or Extended error
+</td></tr></table>
+
+<P>
+By calling the Set File Attributes function, a program can modify a
+file's attributes and set its last record byte count. Other BDOS
+functions can be called to interrogate these file parameters, but only
+Function 30 can change them. The file attributes that can be set or
+reset by Function 30 are fl' through f4', Read-Only, t1', System, t2',
+and Archive, t3'. The register pair DE addresses an FCB containing a
+filename with the appropriate attributes set or reset. The calling
+program must ensure that it does not specify an ambiguous filename. In
+addition, if the specified file is password totected, the correct
+password must be placed in the first eight bytes of the current DMA
+buffer or have been previously established as the default password
+(see Function 106).
+
+<P>
+Interface attribute f6' specifies whether the last record byte count
+of the specified file is to be set:
+
+<P>
+
+<UL>
+<LI>f6' = 0 - Do not set byte count (default mode)
+</LI>
+<LI>f6' = 1 - Set byte count
+</LI>
+</UL>
+
+<P>
+If interface attribute f6' is set, the calling program must set the cr
+field of the referenced FCB to the byte count value. A program can
+access a file's byte count value with the BDOS Open, Search, or Search
+Next functions.
+
+<P>
+Function 30 searches the referenced directory for entries belonging to
+the current user number that matches the FCB specified name and type
+fields. The function then updates the directory to contain the
+selected indicators, and if interface attribute f6' is set, the
+specified byte count value. Note that the last record byte count is
+maintained in byte 13 of a file's directory FCBS.
+
+<P>
+File attributes t1', t2', and t3' are defined by CP/M 3. (They are
+described in Section 2.3.4.) Attributes fl' through f4' are not
+presently used, but can be useful for application programs, because
+they are not involved in the matching program used by the BDOS during
+Open File and Close File operations. Indicators f5' through f8' are
+reserved for use as interface attributes.
+
+<P>
+Upon return, Function 30 returns a Directory Code in register A with
+the value 0 if the function is successful, or $FF, 255 Decimal, if
+the file specified by the referenced FCB is not found. Register H is
+set to zero in both of these cases. If a physical or extended error is
+encountered', the Set File Attributes function performs different
+actions depending on the BDOS error mode (see Function 45). If the
+BDOS error mode is the default mode, a message identifying the error
+is displayed at the console, and the program is terminated. Otherwise,
+Function 30 returns to the calling program with reg'ls-Ler A set to
+$FF, and register H set to one of the following physical or extended
+error codes:
+
+<P>
+
+<UL>
+<LI>01 Disk I/O error
+</LI>
+<LI>02 Read-Only disk
+</LI>
+<LI>04 Select error
+</LI>
+<LI>07 File password error
+</LI>
+<LI>09 ? in filename or filetype field
+</LI>
+</UL>
+
+<P>
+<A NAME="3246"></A>
+BDOS function 31: <SPAN  CLASS="textbf">GET ADDR(DPB PARMS)</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $1F
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;HL: DPB Address
+</td></tr></table>
+
+<P>
+Function 31 returns in register pair HL the address of the
+BIOS-resident Disk Parameter Block, DPB, for the currently selected
+drive. (Refer to the CP/M Plus (CP/M Version 3) Operating System
+System Guide for the format of the DPB). The calling program can use
+this address to extract the disk parameter values.
+
+<P>
+If a physical error is encountered when the BDOS error mode is one of
+the return modes (see Function 45), Function 31 returns the value
+$FFFF in the register pair HL.
+
+<P>
+<A NAME="3252"></A>
+<A NAME="3253"></A>
+BDOS function 32: <SPAN  CLASS="textbf">SET/GET USER CODE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $20
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;E: $FF (get) or User Code (set)</td></tr>
+<tr><td valign="top">&nbsp;A: Current Code or (no value)
+</td></tr></table>
+
+<P>
+A program can change, or interrogate the currently active user number
+by calling Function 32. If register E = $FF, then the value of the
+current user number is returned in register A, where the value is in
+the range of 0 to 15. If register E is not $FF, then the current user
+number is changed to the value of E, modulo 16.
+
+<P>
+<A NAME="3259"></A>
+BDOS function 33: <SPAN  CLASS="textbf">READ RANDOM</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $21</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Error Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+The Read Random function is similar to the Read Sequential function
+except that the read operation takes place at a particular random
+record number, selected by the 24-bit value constructed from the three
+byte, r0, r1, r2, field beginning at position 33 of the FCB. Note that
+the sequence of 24 bits is stored with the least significant byte
+first, rO, the middle byte next, rl, and the high byte last, r2. The
+random record number can range from 0 to 262,143. This corresponds to
+a maximum value of 3 in byte r2.
+
+<P>
+To read a file with Function 33, the calling program must first open
+the base extent, extent 0. This ensures that the FCB is properly
+initialized for subsequent random access operations. The base extent
+may or may not contain any allocated data. Function 33 reads the
+record specified by the random record field into the current DMA
+address. The function automatically sets the logical extent and
+current record values, but unlike the Read Sequential function, it
+does not advance the current record number. Thus, a subsequent Read
+Random call rereads the same record. After a random read operation, a
+file can be accessed sequentially, starting from the current randomly
+accessed position. However, the last randomly accessed record is
+reread or rewritten when switching from random to sequential mode.
+
+<P>
+If the BDOS Multi-Sector Count is greater than one (see Function 44),
+the Read Random function reads multiple consecutive records into
+memory beginning at the current DMA. The rO, rl, and r2 field of the
+FCB is automatically incremented to read each record. However, the
+FCBs random record number is restored to the first record's value upon
+return to the calling program.
+
+<P>
+Upon return, the Read Random function sets register A to zero if the
+read operation was successful. Otherwise, register A contains one of
+the following error codes:
+
+<P>
+
+<UL>
+<LI>01 Reading unwritten data (end-of-file)
+</LI>
+<LI>03 Cannot close current extent
+</LI>
+<LI>04 Seek to unwritten extent
+</LI>
+<LI>06 Random record number out of range
+</LI>
+<LI>10 Media change occurred
+</LI>
+<LI>255 Physical Error : refer to register H
+</LI>
+</UL>
+
+<P>
+Error Code 01 is returned if no data exists at the next record
+position of the file.  Usually, the no data situation is encountered
+at the end of a file. However, it can also occur if an attempt is made
+to read a data block that has not been previously written.
+
+<P>
+Error Code 03 is returned when the Read Random function cannot close
+the current extent prior to moving to a new extent.
+
+<P>
+Error Code 04 is returned when a read random operation accesses an
+extent that has not been created.
+
+<P>
+Error Code 06 is returned when byte 35, r2, of the referenced FCB is
+greater than 3.
+
+<P>
+Error Code 10 is returned if a media change occurs on the drive after
+the referenced FCB is activated by a BDOS Open or Make Call.
+
+<P>
+Error Code 255 is returned if a physical error is encountered, and the
+BDOS error mode is one of the return modes (see Function 45). If the
+error mode is the default mode, a message identifying the physical
+error is displayed at the console, and the calling program is
+terminated. When a physical error is returned to the calling program,
+register H contains one of the following error codes:
+
+<P>
+
+<UL>
+<LI>01 Disk I/O error
+</LI>
+<LI>04 Invalid drive error
+</LI>
+</UL>
+
+<P>
+On all error returns except for physical errors, A = 255, the Read
+Random function sets register H to the number of records successfully
+read before the error is encountered. This value can range from 0 to
+127 depending on the current BDOS Multi-Sector Count. It is always set
+to zero when the Multi-Sector Count is equal to one.
+
+<P>
+<A NAME="3269"></A>
+BDOS function 34: <SPAN  CLASS="textbf">WRITE RANDOM</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $22</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Error Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+The Write Random function is analogous to the Read Random function,
+except that data is written to the disk from the current DMA
+address. If the disk extent or data block where the data is to be
+written is not already allocated, the BDOS automatically performs the
+allocation before the write operation continues.
+
+<P>
+To write to a file using the Write Random function, the calling
+program must first open the base extent, extent 0. This ensures that
+the FCB is properly initialized for subsequent random access
+operations. If the file is empty, the calling program must create the
+base extent with the Make File function before calling Function
+34. The base extent might or might not contain any allocated data, but
+it does record the file in the directory, so that the file can be
+displayed by the DIR utility.
+
+<P>
+The Write Random function sets the logical extent and current record
+positions to correspond with the random record being written, but does
+not change the random record number. Thus, sequential read or write
+operations can follow a random write, with the current record being
+reread or rewritten as the calling program switches from random to
+sequential mode.
+
+<P>
+Function 34 makes an Update date and time stamp for the file if the
+following conditions are satisfied: the referenced drive has a
+directory label that requests Update date and time stamping if the
+file has not already been stamped for update by a previous BDOS Make
+or Write call.
+
+<P>
+If the BDOS Multi-Sector Count is greater than one (see Function 44),
+the Write Random function reads multiple consecutive records into
+memory beginning at the current DMA. The rO, rl, and r2 field of the
+FCB is automatically incremented to write each record. However, the
+FCB's random record number is restored to the first record's value
+when it returns to the calling program. Upon return, the Write Random
+function sets register A to zero if the write operation is
+successful. Otherwise, register A contains one of the following error
+codes:
+
+<P>
+
+<UL>
+<LI>02 No available data block
+</LI>
+<LI>03 Cannot Close current extent
+</LI>
+<LI>05 No available directory space
+</LI>
+<LI>06 Random record number out of range
+</LI>
+<LI>10 Media change occurred
+</LI>
+<LI>255 Physical Error : refer to register H
+</LI>
+</UL>
+
+<P>
+Error Code 02 is returned when the write command attempts to allocate
+a new data block to the file and no unallocated data blocks exist on
+the selected disk drive.
+
+<P>
+Error Code 03 is returned when the Write Random function cannot close
+the current extent prior to moving to a new extent.
+
+<P>
+Error Code 05 is returned when the write function attempts to create a
+new extent that requires a new directory entry and no available
+directory entries exist on the selected disk drive.
+
+<P>
+Error Code 06 is returned when byte 35, r2, of the referenced FCB is
+greater than 3.
+
+<P>
+Error Code 10 is returned if a media change occurs on the drive after
+the referenced FCB is activated by a BDOS Open or Make Call.
+
+<P>
+Error Code 255 is returned if a physical error is encountered and the
+BDOS error mode is one of the return modes (see Function 45). If the
+error mode is the default mode, a message identifying the physical
+error is displayed at the console, and the calling program is
+terminated. When a physical error is returned to the calling program,
+it is identified by register H as shown below:
+
+<P>
+
+<UL>
+<LI>01 Disk I/O error
+</LI>
+<LI>02 Read-Only disk
+
+<P>
+</LI>
+<LI>03 Read-Only file or File open from user 0 when the current user
+  number is nonzero or File password protected in Write mode
+
+<P>
+</LI>
+<LI>04 Invalid drive error
+</LI>
+</UL>
+
+<P>
+On all error returns, except for physical errors, A = 255, the Write
+Random function sets register H to the number of records successfully
+written before the error is encountered. This value can range from 0
+to 127 depending on the current BDOS Multi-Sector Count. It is always
+set to zero when the Multi-Sector Count is equal to one.
+
+<P>
+<A NAME="3279"></A>
+BDOS function 35: <SPAN  CLASS="textbf">COMPUTE FILE SIZE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $23</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Error Flag</td></tr>
+<tr><td valign="top">&nbsp;H: Physical or Extended error</td></tr>
+<tr><td valign="top">&nbsp;Random Record Field Set
+</td></tr></table>
+
+<P>
+The Compute File Size function determines the virtual file size, which
+is, in effect, the address of the record immediately following the end
+of the file. The virtual size of a file corresponds to the physical
+size if the file is written sequentially. If the file is written in
+random mode, gaps might exist in the allocation, and the file might
+contain fewer records than the indicated size. For example, if a
+single record with record number 262,143, the CP/M 3 maximum is
+written to a file using the Write Random function, then the virtual
+size of the file is 262,144 records even though only 1 data block 'is
+actually allocated.
+
+<P>
+To compute file size, the calling program passes in register pair DE
+the address of an FCB in random mode format, bytes rO, rl and r2
+present. Note that the FCB must contain an unambiguous filename and
+filetype. Function 35 sets the random record field of the FCB to the
+random record number + 1 of the last record in the file. If the r2
+byte is set to 04, then the file contains the maximum record count
+262,144.
+
+<P>
+A program can append data to the end of an existing file by calling
+Function 35 to set the random record position to the end of file, and
+then performing a sequence of random writes starting at the preset
+record address.
+
+<P>
+Note: the BDOS does not require that the file be open to use Function
+35. However, if the file has been written to, it must be closed before
+calling Function 35. Otherwise, an incorrect file size might be
+returned.
+
+<P>
+Upon return, Function 35 returns a zero in register A if the file
+specified by the referenced FCB is found, or an $FF in register A if
+the file is not found. Register H is set to zero in both of these
+cases. If a physical error is encountered, Function 35 performs
+different actions depending on the BDOS error mode (see Function 45).
+If the BDOS error mode is the default mode, a message identifying the
+error is displayed at the console and the program is
+terminated. Otherwise, Function 35 returns to the calling program with
+register A set to $FF, and register H set to one of the following
+physical errors:
+
+<P>
+
+<UL>
+<LI>01 Disk I/O error
+</LI>
+<LI>04 Invalid drive error
+</LI>
+</UL>
+
+<P>
+<A NAME="3287"></A>
+BDOS function 36: <SPAN  CLASS="textbf">SET RANDOM RECORD</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $24</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;Random Record Field Set
+</td></tr></table>
+
+<P>
+The Set Random Record function returns the random record number of the
+next record to be accessed from a file that has been read or written
+sequentially to a particular point. This value is returned in the
+random record field, bytes rO, rl, and r2, of the FCB addressed by the
+register pair DE. Function 36 can be useful in two ways,
+
+<P>
+First, it is often necessary to initially read and scan a sequential
+file to extract the positions of various key fields. As each key is
+encountered, Function 36 is called to compute the random record
+position for the data corresponding to this key. If the data unit size
+is 128 bytes, the resulting record number minus one is placed into a
+table with the key for later retrieval. After scanning the entire file
+and tabularizing the keys and their record numbers, you can move
+directly to a particular record by performing a random read using the
+corresponding random record number that you saved earlier. The scheme
+is easily generalized when variable record lengths are involved,
+because the program need only store the buffer-relative byte position
+along with the key and record number to find the exact starting
+position of the keyed data at a later time.
+
+<P>
+A second use of Function 36 occurs when switching from a sequential
+read or write over to random read or write. A file is sequentially
+accessed to a particular point in the file, then Function 36 is called
+to set the record number, and subsequent random read and write
+operations continue from the next record in the file.
+
+<P>
+<A NAME="3293"></A>
+BDOS function 37: <SPAN  CLASS="textbf">RESET DRIVE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $25</td></tr>
+<tr><td valign="top">&nbsp;DE: Drive Vector
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: $00
+</td></tr></table>
+
+<P>
+The Reset Drive function programmatically restores specified drives to
+the reset state. A reset drive is not logged-in and is in Read-Write
+status. The passed parameter in register pair DE is a 16-bit vector of
+drives to be reset, where the least significant bit corresponds to the
+first drive A, and the high-order bit corresponds to the sixteenth
+drive, labelled P. Bit values of 1 indicate that the specified drive
+is to be reset.
+
+<P>
+<A NAME="3299"></A>
+BDOS function 38: <SPAN  CLASS="textbf">ACCESS DRIVE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $26
+</td></tr></table>
+
+<P>
+This is an MP/M function that is not supported under CP/M 3. If
+called, the file system returns a zero In register A indicating that
+the access request is successful.
+
+<P>
+<A NAME="3303"></A>
+BDOS function 39: <SPAN  CLASS="textbf">FREE DRIVE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $27
+</td></tr></table>
+
+<P>
+This is an MP/M function that is not supported under CP/M 3. If
+called, the file system returns a zero In register A indicating that
+the free request is successful.
+
+<P>
+<A NAME="3307"></A>
+BDOS function 40: <SPAN  CLASS="textbf">WRITE RANDOM WITH ZERO FILL</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $28</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Error Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+The Write Random With Zero Fill function is identical to the Write
+Random function (Function 34) with the exception that a previously
+unallocated data block is filled with zeros before the record is
+written. If this function has been used to create a file, records
+accessed by a read random operation that contain all zeros identify
+unwritten random record numbers. Unwritten random records in allocated
+data blocks of files created using the Write Random function (Function
+34) contain uninitialized data.
+
+<P>
+<A NAME="3313"></A>
+BDOS function 41: <SPAN  CLASS="textbf">TEST AND WRITE RECORD</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $29</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Error Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+The Test and Write Record function is an MP/M function that is not
+supported under CP/M 3. If called, Function 41 returns with register A
+set to $FF and register H set to zero.
+
+<P>
+<A NAME="3319"></A>
+BDOS function 42: <SPAN  CLASS="textbf">LOCK RECORD</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $2A</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: $00
+</td></tr></table>
+
+<P>
+The Lock Record function is an MP/M II function that is supported
+under CP/M 3 only to provide compatibility between CP/M 3 and MP/M. It
+is intended for use in situations where more than one running program
+has Read-Write access to a common file. Because CP/M 3 is a
+single-user operating system in which only one program can run at a
+time, this situation cannot occur. Thus, under CP/M 3, Function 42
+performs no action except to return the value $00 in register A
+indicating that the record lock operation is successful.
+
+<P>
+<A NAME="3325"></A>
+BDOS function 43: <SPAN  CLASS="textbf">UNLOCK RECORD</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $2B</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: $00
+</td></tr></table>
+
+<P>
+The Unlock Record function is an MP/M II function that is supported
+under CP/M 3 only to provide compatibility between CP/M 3 and MP/M. It
+is intended for use in situations where more than one running program
+has Read-Write access to a common file. Because CP/M 3 is a
+single-user operating system in which only one program can run at a
+time, this situation cannot occur. Thus, under CP/M 3, Function 43
+performs no action except to return the value $00 in register A
+indicating that the record unlock operation is successful.
+
+<P>
+<A NAME="3331"></A>
+BDOS function 44: <SPAN  CLASS="textbf">SET MULTI-SECTOR COUNT</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $2C</td></tr>
+<tr><td valign="top">&nbsp;E: Number of Sectors
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Return Code
+</td></tr></table>
+
+<P>
+The Set Multi-Sector Count function provides logical record blocking
+under CP/M 3. It enables a program to read and write from 1 to 128
+records of 128 bytes at a time during subsequent BDOS Read and Write
+functions.
+
+<P>
+Function 44 sets the Multi-Sector Count value for the calling program
+to the value passed in register E. Once set, the specified
+Multi-Sector Count remains in effect until the calling program makes
+another Set Multi-Sector Count function call and changes the
+value. Note that the CCP sets the Multi-Sector Count to one when it
+initiates a transient program.
+
+<P>
+The Multi-Sector Count affects BDOS error reporting for the BDOS Read
+and Write functions. If an error interrupts these functions when the
+Multi-Sector is greater than one, they return the number of records
+successfully read or written in register H for all errors except for
+physical errors (A = 255).
+
+<P>
+Upon return, register A is set to zero if the specified value is in
+the range of 1 to 128. Otherwise, register A is set to $FF.
+
+<P>
+<A NAME="3337"></A>
+BDOS function 45: <SPAN  CLASS="textbf">SET BDOS ERROR MODE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $2D</td></tr>
+<tr><td valign="top">&nbsp;E: BDOS Error Mode
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;None
+</td></tr></table>
+
+<P>
+Function 45 sets the BDOS error mode for the calling program to the
+mode specified in register E. If register E is set to $FF, 255
+decimal, the error mode is set to Return Error mode. If register E is
+set to $FE, 254 decimal, the error mode is set to Return and Display
+mode. If register E is set to any other value, the error mode is set
+to the default mode.
+
+<P>
+The SET BDOS Error Mode function determines how physical and extended
+errors (see Section 2.2.13) are handled for a program. The Error Mode
+can exist in three modes: the default mode, Return Error mode, and
+Return and Display Error mode.  In the default mode, the BDOS displays
+a system message at the console that identifies the error and
+terminates the calling program. In the return modes, the BDOS sets
+register A to $FF, 255 decimal, places an error code that identifies
+the physical or extended error in register H and returns to the
+calling program. In Return and Display mode, the BDOS displays the
+system message before returning to the calling program. No system
+messages are displayed, however, when the BDOS is in Return Error
+mode.
+
+<P>
+<A NAME="3343"></A>
+BDOS function 46: <SPAN  CLASS="textbf">GET DISK FREE SPACE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $2E</td></tr>
+<tr><td valign="top">&nbsp;E: Drive
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;First 3 bytes of current DMA buffer</td></tr>
+<tr><td valign="top">&nbsp;A: Error Flag</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+The Get Disk Free Space function determines the number of free
+sectors, 128 byte records, on the specified drive. The calling program
+passes the drive number in register E, with 0 for drive A, 1 for B,
+and so on, through 15 for drive P in a full 16drive system. Function
+46 returns a binary number in the first 3 bytes of the current DMA
+buffer. This number is returned in the following format:
+
+<P>
+fso fsl fs2
+
+<P>
+Disk Free Space Field Format
+
+<P>
+fso = low byte
+<BR>
+fsl = middle byte
+<BR>
+fs2 = high byte
+<BR>
+<P>
+Note that the returned free space value might be inaccurate if the
+drive has been marked Read-Only.
+
+<P>
+Upon return, register A is set to zero if the function is
+successful. However, if the BDOS Error Mode is one of the return modes
+(see Function 45), and a physical error is encountered, register A is
+set to $FF, 255 decimal, and register H is set to one of the
+following values:
+
+<P>
+
+<UL>
+<LI>01 - Disk I/O error
+</LI>
+<LI>04 - Invalid drive error
+</LI>
+</UL>
+
+<P>
+<A NAME="3351"></A>
+BDOS function 47: <SPAN  CLASS="textbf">CHAIN TO PROGRAM</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $2F</td></tr>
+<tr><td valign="top">&nbsp;E: Chain Flag
+</td></tr></table>
+
+<P>
+The Chain To Program function provides a means of chaining from one
+program to the next without operator intervention. The calling program
+must place a command line terminated by a null byte, OOH, in the
+default DMA buffer. If register E is set to $FF, the CCP initializes
+the default drive and user number to the current program values when
+it passes control to the specified transient program. Otherwise, these
+parameters are set to the default CCP values. Note that Function 108,
+Get/Set Program Return Code, can be used to pass a two byte value to
+the chained program.
+
+<P>
+Function 47 does not return any values to the calling program and any
+encountered errors are handled by the CCP.
+
+<P>
+<A NAME="3355"></A>
+BDOS function 48: <SPAN  CLASS="textbf">FLUSH BUFFERS</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $30
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Error Flag</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+ E: Purge Flag
+
+<P>
+The Flush Buffers function forces the write of any write-pending
+records contained in internal blocking/deblocking buffers. If register
+E is set to $FF, this function also purges all active data
+buffers. Programs that provide write with read verify support need to
+purge internal buffers to ensure that verifying reads actually access
+the disk instead of returning data that is resident in internal data
+buffers. The CP/M 3 PIP utility is an example of such a program.
+
+<P>
+Upon return, register A is set to zero if the flush operation is
+successful. If a physical error is encountered, the Flush Buffers
+function performs different actions depending on the BDOS error mode
+(see Function 45). If the BDOS error mode is in the default mode&#8222; a
+message identifying the error is displayed at the console and the
+calling program is terminated. Otherwise, the Flush Buffers function
+returns to the calling program with register A set to $FF and
+register H set to the following physical error code:
+
+<P>
+
+<UL>
+<LI>0 1 Disk I/O error
+</LI>
+<LI>02 Read/only disk
+</LI>
+<LI>04 Invalid drive error
+</LI>
+</UL>
+
+<P>
+<A NAME="3363"></A>
+<A NAME="3364"></A>
+BDOS function 49: <SPAN  CLASS="textbf">GET/SET SYSTEM CONTROL BLOCK</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $31</td></tr>
+<tr><td valign="top">&nbsp;DE: SCB PB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Returned Byte</td></tr>
+<tr><td valign="top">&nbsp;HL: Returned Word
+</td></tr></table>
+
+<P>
+Function 49 allows access to parameters located in the CP/M 3 System
+Control Block (SCB). The SCB is a 100-byte data structure residing
+within the BDOS that contains flags and data used by the BDOS, CCP and
+other system components. Note that Function 49 is a CP/M 3 specific
+function. Programs intended for both MP/M 11 and CP/M 3 should either
+avoid the use of this function or isolate calls to this function in
+CP/M 3 version-dependent sections.
+
+<P>
+To use Function 49, the calling program passes the address of a data
+structure called the SCB parameter block in register pair DE. This
+data structure identifies the byte or word of the SCB to be updated or
+returned. The SCB parameter block is defined as:
+
+<P>
+<PRE>
+SCBPB: DB OFFSET ; Offset within SCB
+       DB SET ; 0FFH if setting a byte
+       ; 0FEH if setting a word
+       ; 001H - 0FDH are reserved
+       ; 000H if a get operation
+       DW VALUE ; Byte or word value to be set
+</PRE>
+
+<P>
+The OFFSET parameter identifies the offset of the field within the SCB
+to be updated or accessed. The SET parameter determines whether
+Function 49 is to set a byte or word value in the SCB or if it is to
+return a byte from the SCB. The VALUE parameter is used only in set
+calls. In addition, only the first byte of VALUE is referenced in set
+byte calls.
+
+<P>
+Use caution when you set SCB fields. Some of these parameters reflect
+the current state of the operating system. If they are set to invalid
+values, software errors can result. In general, do not use Function 49
+to set a system parameter if another BDOS function can achieve the
+same result. For example, Function 49 can be called to update the
+Current DMA Address field within the SCB. This is not equivalent to
+making a Function 26, Set DMA Address call, and updating the SCB
+Current DMA field in this way would result in system errors. However,
+you can use Function 49 to return the Current DMA address. The System
+Control Block is summarized in <A HREF="#table:91">9.1</A>.
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="table:91"></A><A ID="3374"></A>
+<TABLE>
+<CAPTION><STRONG>Table 9.1:</STRONG>
+System Control Block</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img68.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{system/cpm/scb.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+If Function 49 is called with the OFFSET parameter of the SCB
+parameter block greater than $63, the function performs no action but
+returns with registers A and HL set to zero.
+
+<P>
+<A NAME="3378"></A>
+BDOS function 50: <SPAN  CLASS="textbf">DIRECT BIOS CALLS</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $32</td></tr>
+<tr><td valign="top">&nbsp;DE: BIOS PB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;BIOS RETURN
+</td></tr></table>
+
+<P>
+Function 50 provides a direct BIOS call through the BDOS to the
+BIOS. The calling program passes the address of a data structure
+called the BIOS Parameter Block (BIOSPB) in register pair DE. The
+BIOSPB contains the BIOS function number and register contents as
+shown below:
+
+<P>
+<PRE>
+BIOSPB: db FUNC ; BIOS function no.
+        db AREG ; A register contents
+        dw BCREG ; BC register contents
+        dw DEREG ; DE register contents
+        dw HLREG ; HL register contents
+</PRE>
+
+<P>
+System Reset (Function 0) is equivalent to Function 50 with a BIOS
+function number of 1.
+
+<P>
+Note that the register pair BIOSPB fields (BCREG, DEREG, HLREG) arc
+defined in low byte, high byte order. For example, in the BCREG field,
+the first byte contains the C register value, the second byte contains
+the B register value.  Under CP/M 3, direct BIOS calls via the BIOS
+jump vector are only supported for the BIOS Console I/O and List
+functions. You must use Function 50 to call any other
+
+<P>
+BIOS functions. In addition, Function 50 intercepts BIOS Function 27
+(Select Memory) calls and returns with register A set to zero. Refer
+to the CPIM Plus (CP/M Version 3) Operating System System Guide for
+the definition of the BIOS functions and their register passing and
+return conventions.
+
+<P>
+<A NAME="3386"></A>
+BDOS function 59: <SPAN  CLASS="textbf">LOAD OVERLAY</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $3B</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Error Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+Only transient programs with an RSX header can use the Load Overlay
+function because BDOS Function 59 is supported by the LOADER
+module. The calling program must have a header to force the LOADER to
+remain resident after the program is loaded (see Section 1.3).
+
+<P>
+Function 59 loads either an absolute or relocatable
+module. Relocatable modules are identified by a filetype of
+PRL. Function 59 does not call the loaded module.
+
+<P>
+The referenced FCB must be successfully opened before Function 59 is
+called. The load address is specified in the first two random record
+bytes of the FCB, rO and rl.  The LOADER returns an error if the load
+address is less than $100, or if performing the requested load
+operation would overlay the LOADER, or any other Resident System
+Extensions that have been previously loaded.
+
+<P>
+When loading relocatable files, the LOADER requires enough room at the
+load address for the complete PRL file including the header and bit
+map (see Appendix B).  Otherwise an error is returned. Function 59
+also returns an error on PRL file load requests if the specified load
+address is not on a page boundary.
+
+<P>
+Upon return, Function 59 sets register A to zero if the load operation
+is successful.  If the LOADER RSX is not resident in memory because
+the calling program did not have a RSX header, the BDOS returns with
+register A set to $FF and register H set to zero. If the LOADER
+detects an invalid load address, or if insufficient memory is
+available to load the overlay, Function 59 returns with register A set
+to $FE. All other error returns are consistent with the error codes
+returned by BDOS Function 20, Read Sequential.
+
+<P>
+<A NAME="3392"></A>
+BDOS function 60: <SPAN  CLASS="textbf">CALL RESIDENT SYSTEM EXTENSION</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $3C</td></tr>
+<tr><td valign="top">&nbsp;DE: RSX PB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Error Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+Function 60 is a special BDOS function that you use when you call
+Resident System Extensions. The RSX subfunction is specified in a
+structure called the RSX Parameter Block, defined as follows:
+
+<P>
+<PRE>
+RSXPB: db FUNC ; RSX Function number
+       db NUMPARMS ; Number of word Parameters
+       dw PARMETER1 ; Parameter I
+       dw PARMETER2 ; Parameter 2
+       . . .
+       dw PARMETERN ; Parameter n
+</PRE>
+
+<P>
+RSX modules filter all BDOS calls and capture RSX function calls that
+they can handle. If there is no RSX module present in memory that can
+handle a specific RSX function call, the call is not trapped, and the
+BDOS returns $FF in registers A and L. RSX function numbers from 0 to
+127 are available for CP/M 3 compatible software use. RSX function
+numbers 128 to 255 are reserved for system use.
+
+<P>
+<A NAME="3400"></A>
+BDOS function 98: <SPAN  CLASS="textbf">FREE BLOCKS</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $62
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Error Flag</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+The Free Blocks function scans all the currently logged-in drives, and
+for each drive returns to free space all temporarily-allocated data
+blocks. A temporarily-allocated data block is a block that has been
+allocated to a file by a BDOS write operation but has not been
+permanently recorded in the directory by a BDOS close operation. The
+CCP calls Function 98 when it receives control following a system warm
+start. Be sure to close your file, particularly any file you have
+written to, prior to calling Function 98.
+
+<P>
+In the nonbanked version of CP/M 3, Function 98 frees only temporarily
+allocated blocks for systems that request double allocation vectors in
+GENCPM.
+
+<P>
+Upon return, register A is set to zero if Function 98 is
+successful. If a physical error is encountered, the Free Blocks
+function performs different actions depending on the BDOS error mode
+(see Function 45). If the BDOS error mode is in the default mode, a
+message identifying the error is displayed at the console and the
+calling program is terminated. Otherwise, the Free Blocks function
+returns to the calling program with register A set to $FF and
+register H set to the following physical error code:
+
+<P>
+
+<UL>
+<LI>04 : Invalid drive error
+</LI>
+</UL>
+
+<P>
+<A NAME="3408"></A>
+BDOS function 99: <SPAN  CLASS="textbf">TRUNCATE FILE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $63</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Directory Code</td></tr>
+<tr><td valign="top">&nbsp;H: Extended or Physical Error
+</td></tr></table>
+
+<P>
+The Truncate File function sets the last record of a file to the
+random record number contained in the referenced FCB. The calling
+program passes the address of the FCB in register pair DE, with byte 0
+of the FCB specifying the drive, bytes 1 through 11 specifying the
+filename and filetype, and bytes 33 through 35, rO, rl, and r2,
+specifying the last record number of the file. The last record number
+is a 24 bit value, stored with the least significant byte first, rO,
+the middle byte next, rl, and the high byte last, r2. This value can
+range from 0 to 262,143, which corresponds to a maximum value of 3 in
+byte r2.
+
+<P>
+If the file specified by the referenced FCB is password protected, the
+correct password must be placed in the first eight bytes of the
+current DMA buffer, or have been previously established as the default
+password (see Function 106).
+
+<P>
+Function 99 requires that the file specified by the FCB not be open,
+particularly if the file has been written to. In addition, any
+activated FCBs naming the file are not valid after Function 99 is
+called. Close your file before calling Function 99, and then reopen it
+after the call to continue processing on the file.
+
+<P>
+Function 99 also requires that the random record number field of the
+referenced FCB specify a value less than the current file size. In
+addition, if the file is sparse, the random record field must specify
+a record in a region of the file where data exists.
+
+<P>
+Upon return, the Truncate function returns a Directory Code in
+register A with the value 0 if the Truncate function is successful, or
+$FF, 255 decimal, if the file is not found or the record number is
+invalid. Register H is set to zero in both of these cases. If a
+physical or extended error is encountered, the Truncate function
+performs different actions depending on the BDOS error mode (see
+Function 45). If the BDOS error mode is in the default mode, a message
+identifying the error is displayed at the console and the program is
+terminated. Otherwise, the Truncate function returns to the calling
+program with register A set to $FF and register H set to one of the
+following physical or extended error codes:
+
+<P>
+
+<UL>
+<LI>01 Disk I/O error
+</LI>
+<LI>02 Read-Only disk
+</LI>
+<LI>03 Read-Only file
+</LI>
+<LI>04 Invalid drive error
+</LI>
+<LI>07 File password error
+</LI>
+<LI>09 ? in filename or filetype field
+</LI>
+</UL>
+
+<P>
+<A NAME="3416"></A>
+BDOS function 100: <SPAN  CLASS="textbf">SET DIRECTORY LABEL</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $64</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Directory Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical or Extended Error
+</td></tr></table>
+
+<P>
+The Set Directory Label function creates a directory label, or updates
+the existing directory label for the specified drive. The calling
+program passes in register pair DE the address of an FCB containing
+the name, type, and extent fields to be assigned to the directory
+label. The name and type fields of the referenced FCB are not used to
+locate the directory label in the directory; they are simply copied
+into the updated or created directory label. The extent field of the
+FCB, byte 12, contains the user's specificat-on of the directory label
+data byte. The definition of the directory label data byte is:
+
+<P>
+<table width="90%"><tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;7 - Require passwords for password-protected files (Not
+  supported in nonbanked CP/M 3 systems)</td></tr>
+<tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;6 - Perform access date and time stamping</td></tr>
+<tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;5 - Perform update date and time stamping</td></tr>
+<tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;4 - Perform create date and time stamping</td></tr>
+<tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;0 - Assign a new password to the directory label
+</td></tr></table>
+
+<P>
+If the current directory label is password protected, the correct
+password must be placed in the first eight bytes of the current DMA,
+or have been previously established as the default password (see
+Function 106). If bit 0, the low-order bit, of byte 12 of the FCB is
+set to 1, it indicates that a new password for the directory label has
+been placed in the second eight bytes of the current DMA.
+
+<P>
+Note that Function 100 is implemented as an RSX, DIRLBL.RSX, in
+nonbanked CP/M 3 systems. If Function 100 is called in nonbanked
+systems when the DIRLBL.RSX is not resident an error code of $0FF is
+returned.
+
+<P>
+Function 100 also requires that the referenced directory contain SFCBs
+to activate date and time stamping on the drive. If an attempt is made
+to activate date and time stamping when no SFCBs exist, Function 100
+returns an error code of $FF in register A and performs no
+action. The CP/M 3 INITDIR utility initializes a directory for date
+and time stamping by placing an SFCB record in every fourth entry of
+the directory.
+
+<P>
+Function 100 returns a Directory Code in register A with the value 0
+if the directory label create or update is successful, or $FF, 255
+decimal, if no space exists in the referenced directory to create a
+directory label, or if date and time stamping was requested and the
+referenced directory did not contain SFCBS. Register H is set to zero
+in both of these cases. If a physical error or extended error is
+encountered, Function 100 performs different actions depending on the
+BDOS error mode (see Function 45). If the BDOS error mode is the
+default mode, a message identifying the error is displayed at the
+console and the calling program is terminated. Otherwise, Function 100
+returns to the calling program with register A set to $FF and
+register H set to one of the following physical or extended error
+codes:
+
+<P>
+
+<UL>
+<LI>01 Disk I/O error
+</LI>
+<LI>02 Read-Only disk
+</LI>
+<LI>04 Invalid drive error
+</LI>
+<LI>07 File password error
+</LI>
+</UL>
+
+<P>
+<A NAME="3426"></A>
+BDOS function 101: <SPAN  CLASS="textbf">RETURN DIRECTORY LABEL DATA</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $65</td></tr>
+<tr><td valign="top">&nbsp;E: Drive
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Directory Label Data Byte</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+The Return Directory Label Data function returns the data byte of the
+directory label for the specified drive. The calling program passes
+the drive number in register E with 0 for drive A, 1 for drive B, and
+so on through 15 for drive P in a full sixteen drive system. The
+format of the directory label data byte is shown below:
+
+<P>
+<table width="90%"><tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;7 - Require passwords for password protected files</td></tr>
+<tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;6 - Perform access date and time stamping</td></tr>
+<tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;5 - Perform update date and time stamping</td></tr>
+<tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;4 - Perform create date and time stamping</td></tr>
+<tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;0 - Directory label exists on drive
+</td></tr></table>
+
+<P>
+Function 101 returns the directory label data byte to the calling
+program in register A. Register A equal to zero indicates that no
+directory label exists on the specified drive. If a physical error is
+encountered by Function 101 when the BDOS Error mode is in one of the
+return modes (see Function 45), this function returns with register A
+set to $FF, 25S decimal, and register H set to one of the following:
+
+<P>
+
+<UL>
+<LI>01 Disk I/O error
+</LI>
+<LI>04 Invalid drive error
+</LI>
+</UL>
+
+<P>
+<A NAME="3436"></A>
+BDOS function 102: <SPAN  CLASS="textbf">READ FILE DATE STAMPS AND PASSWORD MODE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $66</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Directory Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+Function 102 returns the date and time stamp information and password
+mode for the specified file in byte 12 and bytes 24 through 32 of the
+specified FCB. The calling program passes in register pair DE, the
+address of an FCB in which the drive, filename, and filetype fields
+have been defined.
+
+<P>
+If Function 102 is successful, it sets the following fields in the
+referenced FCB:
+
+<P>
+<table width="90%"><tr><td valign="top">&nbsp;byte 12 : Password mode field
+<table width="90%"><tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;7 - Read mode</td></tr>
+<tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;6 - Write mode</td></tr>
+<tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;4 - Delete mode
+</td></tr></table>
+</td></tr></table>
+
+<P>
+Byte 12 equal to zero indicates the file has not been assigned a
+password. In nonbanked systems, byte 12 is always set to zero.
+
+<P>
+<table width="90%"><tr><td valign="top">&nbsp;byte 24 - 27 Create or Access time stamp field</td></tr>
+<tr><td valign="top">&nbsp;byte 28 - 31 Update time stamp field
+</td></tr></table>
+
+<P>
+The date stamp fields are set to binary zeros if a stamp has not been
+made. The format of the time stamp fields is the same as the format of
+the date and time structure described in Function 104.
+
+<P>
+Upon return, Function 102 returns a Directory Code in register A with
+the value zero if the function is successful, or $FF, 255 decimal, if
+the specified file is not found. Register H is set to zero in both of
+these cases. If a physical or extended error is encountered, Function
+102 performs different actions depending on the BDOS error mode (see
+Function 45). If the BDOS error mode is in the default mode, a message
+identifying the error is displayed at the console and the calling
+program is terminated. Otherwise, Function 102 returns to the calling
+program with register A set to $FF and register H set to one of the
+following physical or extended error codes:
+
+<P>
+
+<UL>
+<LI>01 Disk I/O error
+</LI>
+<LI>04 Invalid drive error
+</LI>
+<LI>09 ? in filename or filetype field
+</LI>
+</UL>
+
+<P>
+<A NAME="3450"></A>
+BDOS function 103: <SPAN  CLASS="textbf">WRITE FILE XFCB</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $67</td></tr>
+<tr><td valign="top">&nbsp;DE: FCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Directory Code</td></tr>
+<tr><td valign="top">&nbsp;H: Physical Error
+</td></tr></table>
+
+<P>
+The Write File XFCB function creates a new XFCB or updates the
+existing XFCB for the specified file. The calling program passes in
+register pair DE the address of an FCB in which the drive, name, type,
+and extent fields have been defined. The extent field specifies the
+password mode and whether a new password is to be assigned to the
+file. The format of the extent byte is shown below:
+
+<P>
+FCB byte 12 (ex) : XFCB password mode
+<table width="90%"><tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;7 - Read mode</td></tr>
+<tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;6 - Write mode</td></tr>
+<tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;5 - Delete mode</td></tr>
+<tr><td align="right" valign="top">bit</td><td valign="top">&nbsp;0 - Assign new password to the file
+</td></tr></table>
+
+<P>
+If the specified file is currently password protected, the correct
+password must reside in the first eight bytes of the current DMA, or
+have been previously established as the default password (see Function
+106). If bit 0 is set to 1, the new password must reside in the second
+eight bytes of the current DMA.
+
+<P>
+Upon return, Function 103 returns a Directory Code in register A with
+the value zero if the XFCB create or update is successful, or $FF,
+255 decimal, if no directory label exists on the specified drive, or
+the file named in the FCB is not found, or no space exists in the
+directory to create an XFCB. Function 103 also returns with $FF in
+register A if passwords are not enabled by the referenced directory's
+label. On nonbanked systems, this function always returns with
+register A = $FF because passwords are not supported. Register H is
+set to zero in all of these cases. If a physical or extended error is
+encountered, Function 103 performs different actions depending on the
+BDOS error mode (see Function 45). If the BDOS error mode is the
+default mode, a message identifying the error is displayed at the
+console and the calling program is terminated. Otherwise, Function 103
+returns to the calling program with register A set to $FF and
+register H set to one of the following physical or extended error
+codes:
+
+<P>
+
+<UL>
+<LI>01 Disk I/O error
+</LI>
+<LI>02 Read-Only disk
+</LI>
+<LI>04 Invalid drive error
+</LI>
+<LI>07 File password error
+</LI>
+<LI>09 ? in filename or filetype field
+</LI>
+</UL>
+
+<P>
+<A NAME="3460"></A>
+BDOS function 104: <SPAN  CLASS="textbf">SET DATE AND TIME</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $68</td></tr>
+<tr><td valign="top">&nbsp;DE: DAT Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;none
+</td></tr></table>
+
+<P>
+The Set Date and Time function sets the system internal date and
+time. The calling program passes the address of a 4-byte structure
+containing the date and time specification in the register pair
+DE. The format of the date and time (DAT) data structure is:
+
+<P>
+<table width="90%"><tr><td align="right" valign="top">byte</td><td valign="top">&nbsp;0 - 1 Date field</td></tr>
+<tr><td align="right" valign="top">byte</td><td valign="top">&nbsp;2 Hour field</td></tr>
+<tr><td align="right" valign="top">byte</td><td valign="top">&nbsp;3 Minute field
+</td></tr></table>
+
+<P>
+The date is represented as a 16-bit integer with day 1 corresponding
+to January 1, 1978. The time is represented as two bytes: hours and
+minutes are stored as two BCD digits.
+
+<P>
+This function also sets the seconds field of the system date and time
+to zero.
+
+<P>
+<A NAME="3468"></A>
+BDOS function 105: <SPAN  CLASS="textbf">GET DATE AND TIME</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $69</td></tr>
+<tr><td valign="top">&nbsp;DE: DAT Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: seconds</td></tr>
+<tr><td valign="top">&nbsp;DAT set
+</td></tr></table>
+
+<P>
+The Get Date and Time function obtains the system internal date and
+time. The calling program passes in register pair DE, the address of a
+4-byte data structure which receives the date and time values. The
+format of the date and time, DAT, data structure is the same as the
+format described in Function 104. Function 105 also returns the
+seconds field of the system date and time in register A as a two digit
+BCD value.
+
+<P>
+<A NAME="3474"></A>
+BDOS function 106: <SPAN  CLASS="textbf">SET DEFAULT PASSWORD</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $6A</td></tr>
+<tr><td valign="top">&nbsp;DE: Password Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;none
+</td></tr></table>
+
+<P>
+The Set Default Password function allows a program to specify a
+password value before a file protected by the password is
+accessed. When the file system accesses a password-protected file, it
+checks the current DMA, and the default password for the correct
+value. If either value matches the file's password, full access to the
+file is allowed. Note that this function performs no action in
+nonbanked CP/M 3 systems because file passwords are not supported.
+
+<P>
+To make a Function 106 call, the calling program sets register pair DE
+to the address of an 8-byte field containing the password.
+
+<P>
+<A NAME="3480"></A>
+BDOS function 107: <SPAN  CLASS="textbf">RETURN SERIAL NUMBER</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $6B</td></tr>
+<tr><td valign="top">&nbsp;DE: Serial Number Field
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;Serial number field set
+</td></tr></table>
+
+<P>
+Function 107 returns the CP/M 3 serial number to the 6-byte field
+addressed by register pair DE.
+
+<P>
+<A NAME="3486"></A>
+<A NAME="3487"></A>
+BDOS function 108: <SPAN  CLASS="textbf">GET/SET PROGRAM RETURN CODE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $6C</td></tr>
+<tr><td valign="top">&nbsp;DE: $0FFFF (Get) or Program Return Code (Set)
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;HL: Program Return Code or (no value)
+</td></tr></table>
+
+<P>
+CP/M 3 allows programs to set a return code before terminating. This
+provides a mechanism for programs to pass an error code or value to a
+following job step in batch environments. For example, Program Return
+Codes are used by the CCP in CP/M 3's conditional command line batch
+facility. Conditional command lines are command lines that begin with
+a colon, :. The execution of a conditional command depends on the
+successful execution of the preceding command. The CCP tests the
+return code of a terminating program to determine whether it
+successfully completed or terminated in error. Program return codes
+can also be used by programs to pass an error code or value to a
+chained program (see Function 47, Chain To Program).
+
+<P>
+A program can set or interrogate the Program Return Code by calling
+Function 108. If re 'ster pair DE = $FFFF, then the current Program
+Return Code is returned in register pair HL. Otherwise, Function 108
+sets the Program Return Code to the 'value contained in register pair
+DE. Program Return Codes are defined in <A HREF="#table:92">9.2</A>
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="table:92"></A><A ID="3495"></A>
+<TABLE>
+<CAPTION><STRONG>Table 9.2:</STRONG>
+Program Return Codes</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img69.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{system/cpm/return_codes.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+<A NAME="3499"></A>
+<A NAME="3500"></A>
+BDOS function 109: <SPAN  CLASS="textbf">GET/SET CONSOLE MODE</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $6D</td></tr>
+<tr><td valign="top">&nbsp;DE: $FFFF (Get) or Console Mode (Set)
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;HL: Console Mode or (no value)
+</td></tr></table>
+
+<P>
+A program can set or interrogate the Console Mode by calling Function
+109. If register pair DE = $FFFF, then the current Console Mode is
+returned in register HL. Otherwise, Function 109 sets the Console Mode
+to the value contained in register pair DE.
+
+<P>
+The Console Mode is a 16-bit system parameter that determines the
+action of certain BDOS Console I/O functions. The definition of the
+Console Mode is:
+
+<P>
+<table width="90%"><tr><td align="right" valign="top">bit 0</td><td valign="top">&nbsp;= 1 - CTRL-C only status for Function 1 1.
+<BR>  = 0 - Normal status for Function 1 1.</td></tr>
+<tr><td align="right" valign="top">bit 1</td><td valign="top">&nbsp;= 1- Disable stop scroll, CTRL-S, start scroll, CTRL-Q,
+  support.
+<BR>  = 0-Enable stop scroll, start scroll support.</td></tr>
+<tr><td align="right" valign="top">bit 2</td><td valign="top">&nbsp;= 1- Raw console output mode. Disables tab expansion for
+  Functions 2, 9 and 111. Also disables printer echo, CTIRL-P,
+  support.
+<BR>  = 0 - Normal console output mode.</td></tr>
+<tr><td align="right" valign="top">bit 3</td><td valign="top">&nbsp;= 1 - Disable CTRL-C program termination
+<BR>  = 0 - Enable CTRL-C program termination</td></tr>
+<tr><td align="right" valign="top">bits 8,9</td><td valign="top">&nbsp;-Console status mode for RSXs that perform console
+  input redirection from a file. These bits determine how the RSX
+  responds to console status requests.
+  <table width="90%">  <tr><td valign="top">&nbsp;bit 8 = 0, bit 9 = 0 - conditional status
+  </td></tr>
+<tr><td valign="top">&nbsp;bit 8 = 0, bit 9 = 1 - false status
+  </td></tr>
+<tr><td valign="top">&nbsp;bit 8 = 1, bit 9 = 0 - true status
+  </td></tr>
+<tr><td valign="top">&nbsp;bit 8 = 1, bit 9 = 1 - bypass redirection
+  </td></tr></table>
+</td></tr></table>
+
+<P>
+Note that the Console Mode bits are numbered from right to left.
+
+<P>
+The CCP initializes the Console Mode to zero when it loads a program
+unless the program has an RSX that overrides the default value. Refer
+to Section 2.2.1 for detailed information on Console Mode.
+
+<P>
+<A NAME="3510"></A>
+<A NAME="3511"></A>
+BDOS function 110: <SPAN  CLASS="textbf">GET/SET OUTPUT DELIMITER</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $6E</td></tr>
+<tr><td valign="top">&nbsp;DE: $FFFF (Get) or</td></tr>
+<tr><td valign="top">&nbsp;E: Output Delimiter (Set)
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;A: Output Delimiter or (no value)
+</td></tr></table>
+
+<P>
+A program can set or interrogate the current Output Delimiter by
+calling Function 110. If register pair DE = $FFFF, then the current
+Output Delimiter is returned in register A. Otherwise, Function 110
+sets the Output Delimiter to the value contained in register E.
+
+<P>
+Function 110 sets the string delimiter for Function 9, Print
+String. The default delimiter value is a dollar sign, $. The CCP
+restores the Output Delimiter to the default value when a transient
+program is loaded.
+
+<P>
+<A NAME="3517"></A>
+BDOS function 111: <SPAN  CLASS="textbf">PRINT BLOCK</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $6F</td></tr>
+<tr><td valign="top">&nbsp;DE: CCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;none
+</td></tr></table>
+
+<P>
+The Print Block function sends the character string located by the
+Character Control Block, CCB, addressed in register pair DE, to the
+logical console, CONOUT:. If the Console Mode is in the default state
+(see Section 2.2.1), Function 111 expands tab characters, CTRL-I, in
+columns of eight characters. It also checks for stop scroll, CTRL-S,
+start scroll, CTRL-Q, and echoes to the logical list device, LST:, if
+printer echo, CTRL-P, has been invoked.
+
+<P>
+The CCB format is:
+<table width="90%"><tr><td align="right" valign="top">byte</td><td valign="top">&nbsp;0 - 1 Address of character string (word value)</td></tr>
+<tr><td align="right" valign="top">byte</td><td valign="top">&nbsp;2 - 3 Length of character string (word value)
+</td></tr></table>
+
+<P>
+<A NAME="3525"></A>
+BDOS function 112: <SPAN  CLASS="textbf">LIST BLOCK</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $70</td></tr>
+<tr><td valign="top">&nbsp;DE: CCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;none
+</td></tr></table>
+
+<P>
+The List Block function sends the character string located by the
+Character Control Block, CCB, addressed in register pair DE, to the
+logical list device, LST:.
+
+<P>
+The CCB format is:
+<table width="90%"><tr><td align="right" valign="top">byte</td><td valign="top">&nbsp;0 - 1 Address of character string (word value)</td></tr>
+<tr><td align="right" valign="top">byte</td><td valign="top">&nbsp;2 - 3 Length of character string (word value)
+</td></tr></table>
+
+<P>
+<A NAME="3533"></A>
+BDOS function 152: <SPAN  CLASS="textbf">PARSE FILENAME</SPAN>
+
+<P>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C: $98</td></tr>
+<tr><td valign="top">&nbsp;DE: PFCB Address
+</td></tr></table>
+
+<P>
+Returned Value:
+<table width="90%"><tr><td valign="top">&nbsp;HL: Return code</td></tr>
+<tr><td valign="top">&nbsp;Parsed file control block
+</td></tr></table>
+
+<P>
+The Parse Filename function parses an ASCII file specification and
+prepares a File Control Block, FCB. The calling program passes the
+address of a data structure called the Parse Filename Control Block,
+PFCB, in register pair DE. The PFCB contains the address of the input
+ASCII filename string followed by the address of the target FCB as
+shown below:
+
+<P>
+<PRE>
+ PFCB: DW INPUT ; Address of input ASCII string
+       DW FCB ; Address of target FCB
+</PRE>
+
+<P>
+The maximum length of the input ASCII string to be parsed is 128
+bytes. The target FCB must be 36 bytes in length.
+
+<P>
+Function 152 assumes the input string contains file specifications in
+the following form:
+
+<P>
+{d:}filename{.typ}{;password}
+
+<P>
+where items enclosed in curly brackets are optional. Function 152 also
+accepts isolated drive specifications d: in the input string. When it
+encounters one, it sets the filename, filetype, and password fields in
+the FCB to blank.
+
+<P>
+The Parse Filename function parses the first file specification it
+finds in the input string. The function first eliminates leading
+blanks and tabs. The function then assumes that the file specification
+ends on the first delimiter it encounters that is out of context with
+the specific field it is parsing. For instance, if it finds a colon,
+and it is not the second character of the file specification, the
+colon delimits the entire file specification.
+
+<P>
+Function 152 recognizes the following characters as detimiters:
+
+<P>
+<table width="90%"><tr><td valign="top">&nbsp;space</td></tr>
+<tr><td valign="top">&nbsp;tab</td></tr>
+<tr><td valign="top">&nbsp;return</td></tr>
+<tr><td valign="top">&nbsp;nut]</td></tr>
+<tr><td valign="top">&nbsp;; (semicolon) - except before password field</td></tr>
+<tr><td valign="top">&nbsp;= (equal)</td></tr>
+<tr><td valign="top">&nbsp;<SPAN CLASS="MATH"><IMG STYLE="height: 1.55ex; vertical-align: -0.20ex; " SRC="img67.svg"
+ ALT="\(&lt;\)"></SPAN> (less than)</td></tr>
+<tr><td valign="top">&nbsp;<SPAN CLASS="MATH"><IMG STYLE="height: 1.55ex; vertical-align: -0.20ex; " SRC="img66.svg"
+ ALT="\(&gt;\)"></SPAN> (greater than)</td></tr>
+<tr><td valign="top">&nbsp;. (period) - except after filename and before filetype</td></tr>
+<tr><td valign="top">&nbsp;: (colon) - except before filename and after drive</td></tr>
+<tr><td valign="top">&nbsp;, (comma)</td></tr>
+<tr><td valign="top">&nbsp;<SPAN CLASS="MATH"><IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img65.svg"
+ ALT="\(\vert\)"></SPAN> (vertical bar)</td></tr>
+<tr><td valign="top">&nbsp;[ (left square bracket)</td></tr>
+<tr><td valign="top">&nbsp;] (right square bracket)
+</td></tr></table>
+
+<P>
+If Function 152 encounters a non-graphic character in the range 1
+through 31 not listed above, it treats the character as an error. The
+Parse Filename function initializes the specified FCB shown in
+<A HREF="#table:93">9.3</A>.
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="table:93"></A><A ID="3545"></A>
+<TABLE>
+<CAPTION><STRONG>Table 9.3:</STRONG>
+FCB Format</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img70.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{system/cpm/fcb.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+If an error occurs, Function 152 returns an $FFFF in register pair
+HL.
+
+<P>
+On a successful parse, the Parse Filename function checks the next
+item in the input string. It skips over trailing blanks and tabs and
+looks at the next character. If the character is a null or carriage
+return, it returns a 0 indicating the end of the input string. If the
+character is a delimiter, it returns the address of the delimiter. If
+the character is not a delimiter, it returns the address of the first
+trailing blank or tab.
+
+<P>
+If the first non-blank or non-tab character in the input string is a
+null, 0, or carriage return, the Parse Filename function returns a
+zero indicating the end of string.
+
+<P>
+If the Parse Filename function is to be used to parse a subsequent
+file specification in the input string, the returned address must be
+advanced over the delimiter before placing it in the PFCB.
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node122.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node119.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node120.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html982"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html984"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node122.html">BIOS</A>
+<B> Up:</B> <A
+ HREF="node119.html">CP/M</A>
+<B> Previous:</B> <A
+ HREF="node120.html">Utilities</A>
+ &nbsp; <B>  <A ID="tex2html983"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html985"
+  HREF="node162.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

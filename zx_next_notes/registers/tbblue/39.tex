@@ -1,0 +1,27 @@
+\register{W}{39}{Sprite Attribute 4}\\
+Normal Sprites
+\begin{itemize}
+\item bit 7 = 4-bit pattern switch (0 = 8-bit sprite, 1 = 4-bit sprite)
+\item bit 6 = Pattern number bit-7 for 4-bit, 0 for 8-bit
+\item bit 5 = Type of attached relative sprites (0 = Composite, 1 =
+  Unified)
+\item bits 4-3 = X scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+\item bits 2-1 = Y scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+\item bit 0 = MSB of Y coordinate
+\end{itemize}
+Relative, Composite Sprites
+\begin{itemize}
+\item bit 7-6 = 01
+\item bit 5 = Pattern number bit-7 for 4-bit, 0 for 8-bit
+\item bits 4-3 = X scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+\item bits 2-1 = Y scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+\item bit 0 = Pattern number is relative to anchor
+\end{itemize}
+Relative, Unified Sprites
+\begin{itemize}
+\item bit 7-6 = 01
+\item bit 5 = Pattern number bit-7 for 4-bit, 0 for 8-bit
+\item bits 4-1 = 0000
+\item bit 0 = Pattern number is relative to anchor
+\end{itemize}
+

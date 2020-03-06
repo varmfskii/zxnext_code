@@ -1,0 +1,21 @@
+\register{R/W}{A2}{Pi \iis Audio Control}
+\begin{itemize}
+\item bits 7-6 = \iis State (\$00 on reset)
+  \begin{itemize}
+  \item 00 = \iis Disabled
+  \item 01 = \iis is mono, source R
+  \item 10 = \iis is mono, source L
+  \item 11 = \iis is stereo
+  \end{itemize}
+\item bit 5 = Reserved, must be 0
+\item bit 4 = Audio Flow Direction (0 on reset)
+  \begin{itemize}
+  \item 0 = PCM\_DOUT to Pi, PCM\_DIN from Pi (Hats)
+  \item 1 = PCM\_DOUT from Pi, PCM\_DIN to Pi (Pi)
+  \end{itemize}
+\item bit 3 = Mute left (0 on reset)
+\item bit 2 = Mute right (0 on reset)
+\item bit 1 = Slave (PCM\_CLK, PCM\_FS external) (0 on reset)
+\item bit 0 = Direct \iis audio to EAR on port \$FE
+\end{itemize}
+

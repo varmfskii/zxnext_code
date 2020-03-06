@@ -1,0 +1,23 @@
+\register{R/W}{43}{Palette Control}
+\begin{itemize}
+\item bit 7 = Disable palette write auto-increment.
+\item bits 6-4 = Select palette for reading or writing:
+  \begin{itemize}
+  \item 000 = ULA first palette
+  \item 100 = ULA second palette
+  \item 001 = Layer 2 first palette
+  \item 101 = Layer 2 second palette
+  \item 010 = Sprite first palette
+  \item 110 = Sprite second palette
+  \item 011 = Layer 3 first palette
+  \item 111 = Layer 3 second palette
+  \end{itemize}
+\item bit 3 = Select Sprite palette (0 = first palette, 1 = second
+  palette)
+\item bit 2 = Select Layer 2 palette (0 = first palette, 1 = second
+  palette)
+\item bit 1 = Select ULA palette (0 = first palette, 1 = second
+  palette)
+\item bit 0 = Enable EnhancedULA mode if 1. (0 after a reset)
+\end{itemize}
+

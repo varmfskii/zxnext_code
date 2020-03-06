@@ -1,0 +1,410 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Programming Sprites</TITLE>
+<META NAME="description" CONTENT="Programming Sprites">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node55.html">
+<LINK REL="previous" HREF="node53.html">
+<LINK REL="next" HREF="node55.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node55.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node46.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node53.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html595"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html597"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node55.html">Global Control of Sprites</A>
+<B> Up:</B> <A
+ HREF="node46.html">Sprites</A>
+<B> Previous:</B> <A
+ HREF="node53.html">Relative Sprites</A>
+ &nbsp; <B>  <A ID="tex2html596"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html598"
+  HREF="node162.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A ID="SECTION00355000000000000000">
+Programming Sprites</A>
+</H2>
+
+<P>
+Sprites are created via three io registers and a nextreg interface.
+
+<P>
+Port $303B (303B) Sprite Slot/Flags
+<BR>
+Write: Sprite Slot Select
+<BR>
+select sprite slot for Sprite Attribute and Sprite Pattern ports which
+independently auto-increment
+<BR>
+Read: Sprite status
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-2 = reserved</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Max sprites per line</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Collision flag
+</td></tr></table>
+
+<PRE>
+X S S S S S S S
+N6 X N N N N N N
+</PRE>
+A write to this port has two effects.
+
+<P>
+One is it selects one of 128 sprites for writing sprite attributes via
+port $57.
+
+<P>
+The other is it selects one of 128 4-bit patterns in pattern memory
+for writing sprite patterns via port $5B. The N6 bit shown is the
+least significant in the 7-bit pattern number and should always be
+zero when selecting one of 64 8-bit patterns indicated by N.
+
+<P>
+Port $57 (57) Sprite Attributes
+<BR>
+Byte 1
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = LSB of X coordinate (bit 8 is in byte 3)
+</td></tr></table>
+
+Byte 2
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = LSB of Y coordinate (bit 8 is in byte 5)
+</td></tr></table>
+
+Byte 3
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Palette Offset</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Enable X Mirror</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = Enable Y Mirror</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Enable Roration</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = By Sprite Type
+  <table width="90%">  <tr><td valign="top">&nbsp;Anchor = MSB of X coordinate
+  </td></tr>
+<tr><td valign="top">&nbsp;Relative = Enable relative palette offset
+  </td></tr></table>
+</td></tr></table>
+
+Byte 4
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Enable visibility</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = Enable Byte 5</td></tr>
+<tr><td valign="top">&nbsp;bit 5-0 = Pattern Index (&ldquo;name&rdquo;)
+</td></tr></table>
+
+Byte 5 (optional)
+<BR>
+Anchor
+<table width="90%"><tr><td valign="top">&nbsp;bit 7-6 = type and pattern
+  <table width="90%">  <tr><td valign="top">&nbsp;00 = 8-bit color
+  </td></tr>
+<tr><td valign="top">&nbsp;01 = relative
+  </td></tr>
+<tr><td valign="top">&nbsp;10 = 4-bit color, lower half of pattern (bytes 0-127)
+  </td></tr>
+<tr><td valign="top">&nbsp;11 = 4-bit color, upper half of pattern (byets 128-255)
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = Attached relative sprite type
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = composite
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = big sprite
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 4-3 = X-axis scale factor
+  <table width="90%">  <tr><td valign="top">&nbsp;00 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img34.svg"
+ ALT="$1\times$"></SPAN>
+  </td></tr>
+<tr><td valign="top">&nbsp;01 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img31.svg"
+ ALT="$2\times$"></SPAN> 
+  </td></tr>
+<tr><td valign="top">&nbsp;10 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img32.svg"
+ ALT="$4\times$"></SPAN> 
+  </td></tr>
+<tr><td valign="top">&nbsp;11 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img33.svg"
+ ALT="$8\times$"></SPAN></td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 2-1 = Y-axis scale factor</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = MSB of Y coordinate
+</td></tr></table>
+
+Composite Relative
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = 01</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = N6
+<BR>
+8-bit
+  <table width="90%">  <tr><td valign="top">&nbsp;Reserved, must be 0
+  </td></tr></table>
+
+  4-bit
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = lower half of pattern (bytes 0-127)
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = upper half of pattern (bytes 128-255)
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 4-3 = X-axis scale factor</td></tr>
+<tr><td valign="top">&nbsp;bit 2-1 = Y-axis scale factor</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Enable relative pattern offset
+</td></tr></table>
+
+Big-sprite Relative
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = 01</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = N6
+<BR>
+8-bit
+  <table width="90%">  <tr><td valign="top">&nbsp;Reserved, must be 0
+  </td></tr></table>
+
+  4-bit
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = lower half of pattern (bytes 0-127)
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = upper half of pattern (bytes 128-255)
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 4-1 = Reserved, must be 0</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Enable relative pattern offset
+</td></tr></table>
+
+
+<P>
+Once a sprite is selected via port $303B, its attributes can be
+written to this port one byte after another. Sprites can have either
+four or five attribute bytes and the internal attribute pointer will
+move onto the next sprite after those four or five attribute bytes are
+written. This means you can select a sprite via port $303B and write
+attributes for as many sequential sprites as desired. The attribute
+pointer will roll over from sprite 127 to sprite 0.
+
+<P>
+Port $5B (5B) Sprite Pattern
+<BR>
+Load data into sprite pattern memory auto-incrementing. Port $303B
+can be used to set the starting sprite pattern number.
+
+<P>
+Once a pattern number is selected via port $303B, the 256-byte or
+128-byte pattern can be written to this port. The internal pattern
+pointer auto-increments after each write so as many sequential
+patterns as desired can be written. The internal pattern pointer will
+roll over from pattern 127 to pattern 0 (4-bit patterns) or from
+pattern 63 to pattern 0 (8-bit patterns) automatically.
+
+<P>
+Port $303B (R)
+
+<P>
+<PRE>
+0 0 0 0 0 0 M C
+</PRE>
+M = 1 if the maximum number of sprites per line was exceeded
+<BR>
+C = 1 if any two displayed sprites collide on screen
+<BR>
+Reading this port automatically resets the M and C bits.
+
+<P>
+Besides the i/o interface, there is a nextreg interface to sprite
+attributes. The nextreg interface allows the copper to manipulate
+sprites and grants the program random access to a sprite’s individual
+attribute bytes.
+
+<P>
+Register (R/W) $34 (34) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Number
+<BR>
+Lockstep (NextReg $09 bit 4 set)
+<table width="90%">
+bit 7 = Pattern address offset (Add 128 to pattern address)
+bits 6-0 = Sprite number 0-127, Pattern number 0-63<tr><td valign="top">&nbsp;effectively performs an out to port $303B
+</td></tr></table>
+
+No Lockstep (NextReg $09 bit 4 clear)
+
+<UL>
+<LI>bit 7 = Reserved, must be 0
+</LI>
+<LI>bits 6-0 = Sprite number 0-127
+</LI>
+</UL>
+This register selects which sprite has its attributes connected to the
+sprite attribute registers
+Register (W) $35 (35) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 0
+
+<UL>
+<LI>bits 7-0 = Sprite X coordinate LSB (MSB in NextReg $37)
+</LI>
+</UL>
+Register (W) $75 (75) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 0 (Auto-incrementing)
+<BR>
+See nextreg $35
+Register (W) $36 (36) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 1
+
+<UL>
+<LI>bits 7-0 = Sprite Y coordinate LSB (MSB in NextReg $39)
+</LI>
+</UL>
+Register (W) $76 (76) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 1 (Auto-incrementing)
+<BR>
+See nextreg $36
+Register (W) $37 (37) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 2
+
+<UL>
+<LI>bits 7-4 = 4-bit Palette offset
+</LI>
+<LI>bit 3 = Enable horizontal mirror (reverse)
+</LI>
+<LI>bit 2 = Enable vertical mirror (reverse)
+</LI>
+<LI>bit 1 = Enable 90<SPAN CLASS="MATH"><IMG STYLE="height: 2.21ex; vertical-align: -0.11ex; " SRC="img36.svg"
+ ALT="$^O$"></SPAN> Clockwise Rotation
+</LI>
+</UL>
+Normal Sprites
+
+<UL>
+<LI>bit 0 = X coordinate MSB
+</LI>
+</UL>
+Relative Sprites
+
+<UL>
+<LI>bit 0 = Palette offset is relative to anchor sprite
+</LI>
+</UL>
+Rotation is applied before mirroring
+Register (W) $77 (77) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 2 (Auto-incrementing)
+<BR>
+See nextreg $37
+Register (W) $38 (38) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 3
+
+<UL>
+<LI>bit 7 = Enable Visiblity
+</LI>
+<LI>bit 6 = Enable Attribute 4 (0 = Attribute 4 effectively $00)
+</LI>
+<LI>bits 5-0 = Sprite Pattern Number
+</LI>
+</UL>
+Register (W) $78 (78) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 3 (Auto-incrementing)
+<BR>
+See nextreg $38
+Register (W) $39 (39) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 4
+<BR>
+Normal Sprites
+
+<UL>
+<LI>bit 7 = 4-bit pattern switch (0 = 8-bit sprite, 1 = 4-bit sprite)
+</LI>
+<LI>bit 6 = Pattern number bit-7 for 4-bit, 0 for 8-bit
+</LI>
+<LI>bit 5 = Type of attached relative sprites (0 = Composite, 1 =
+  Unified)
+</LI>
+<LI>bits 4-3 = X scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+</LI>
+<LI>bits 2-1 = Y scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+</LI>
+<LI>bit 0 = MSB of Y coordinate
+</LI>
+</UL>
+Relative, Composite Sprites
+
+<UL>
+<LI>bit 7-6 = 01
+</LI>
+<LI>bit 5 = Pattern number bit-7 for 4-bit, 0 for 8-bit
+</LI>
+<LI>bits 4-3 = X scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+</LI>
+<LI>bits 2-1 = Y scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+</LI>
+<LI>bit 0 = Pattern number is relative to anchor
+</LI>
+</UL>
+Relative, Unified Sprites
+
+<UL>
+<LI>bit 7-6 = 01
+</LI>
+<LI>bit 5 = Pattern number bit-7 for 4-bit, 0 for 8-bit
+</LI>
+<LI>bits 4-1 = 0000
+</LI>
+<LI>bit 0 = Pattern number is relative to anchor
+</LI>
+</UL>
+Register (W) $79 (79) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Sprite Attribute 4 (Auto-incrementing)
+<BR>
+See nextreg $39
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node55.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node46.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node53.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html595"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html597"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node55.html">Global Control of Sprites</A>
+<B> Up:</B> <A
+ HREF="node46.html">Sprites</A>
+<B> Previous:</B> <A
+ HREF="node53.html">Relative Sprites</A>
+ &nbsp; <B>  <A ID="tex2html596"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html598"
+  HREF="node162.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

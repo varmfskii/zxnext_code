@@ -1,0 +1,86 @@
+\port{57}{Sprite Attributes}\\
+Byte 1
+\begin{itemize}
+\item[] bits 7-0 = LSB of X coordinate (bit 8 is in byte 3)
+\end{itemize}
+Byte 2
+\begin{itemize}
+\item[] bits 7-0 = LSB of Y coordinate (bit 8 is in byte 5)
+\end{itemize}
+Byte 3
+\begin{itemize}
+\item[] bits 7-4 = Palette Offset
+\item[] bit 3 = Enable X Mirror
+\item[] bit 2 = Enable Y Mirror
+\item[] bit 1 = Enable Roration
+\item[] bit 0 = By Sprite Type
+  \begin{itemize}
+  \item[] Anchor = MSB of X coordinate
+  \item[] Relative = Enable relative palette offset
+  \end{itemize}    
+\end{itemize}
+Byte 4
+\begin{itemize}
+\item[] bit 7 = Enable visibility
+\item[] bit 6 = Enable Byte 5
+\item[] bit 5-0 = Pattern Index (``name'')
+\end{itemize}
+Byte 5 (optional)\\
+Anchor
+\begin{itemize}
+\item[] bit 7-6 = type and pattern
+  \begin{itemize}
+  \item[] 00 = 8-bit color
+  \item[] 01 = relative
+  \item[] 10 = 4-bit color, lower half of pattern (bytes 0-127)
+  \item[] 11 = 4-bit color, upper half of pattern (byets 128-255)
+  \end{itemize}
+\item[] bit 5 = Attached relative sprite type
+  \begin{itemize}
+  \item[] 0 = composite
+  \item[] 1 = big sprite
+  \end{itemize}
+\item[] bit 4-3 = X-axis scale factor
+  \begin{itemize}
+  \item[] 00 = $1\times$
+  \item[] 01 = $2\times$ 
+  \item[] 10 = $4\times$ 
+  \item[] 11 = $8\times$ 
+  \end{itemize}
+\item[] bit 2-1 = Y-axis scale factor
+\item[] bit 0 = MSB of Y coordinate
+\end{itemize}
+Composite Relative
+\begin{itemize}
+\item[] bits 7-6 = 01
+\item[] bit 5 = N6\\
+  8-bit
+  \begin{itemize}
+  \item[] Reserved, must be 0
+  \end{itemize}
+  4-bit
+  \begin{itemize}
+  \item[] 0 = lower half of pattern (bytes 0-127)
+  \item[] 1 = upper half of pattern (bytes 128-255)
+  \end{itemize}
+\item[] bit 4-3 = X-axis scale factor
+\item[] bit 2-1 = Y-axis scale factor
+\item[] bit 0 = Enable relative pattern offset
+\end{itemize}
+Big-sprite Relative
+\begin{itemize}
+\item[] bits 7-6 = 01
+\item[] bit 5 = N6\\
+  8-bit
+  \begin{itemize}
+  \item[] Reserved, must be 0
+  \end{itemize}
+  4-bit
+  \begin{itemize}
+  \item[] 0 = lower half of pattern (bytes 0-127)
+  \item[] 1 = upper half of pattern (bytes 128-255)
+  \end{itemize}
+\item[] bit 4-1 = Reserved, must be 0
+\item[] bit 0 = Enable relative pattern offset
+\end{itemize}
+

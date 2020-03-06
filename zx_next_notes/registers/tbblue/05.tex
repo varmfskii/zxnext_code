@@ -1,0 +1,20 @@
+\register{R/W}{05}{Peripheral 1 Settings}
+\begin{itemize}
+\item bits 7-6 = joystick 1 mode (MSB)
+\item bits 5-4 = joystick 2 mode (MSB)
+\item bit 3 = joystick 1 mode (LSB)
+\item bit 2 = 50/60 Hz mode (0 = 50Hz, 1 = 60Hz)
+\item bit 1 = joystick 2 mode (LSB)
+\item bit 0 = Enable Scandoubler
+\end{itemize}
+Joystick modes
+\begin{itemize}
+\item 000 = Sinclair 2 (67890)
+\item 001 = Kempston 2 (port \$37)
+\item 010 = Kempston 1 (port \$1F)
+\item 011 = Megadrive 1 (port \$1F)
+\item 100 = Cursor
+\item 101 = Megadrive 2 (port \$37)
+\item 110 = Simclair 1 (12345)
+\end{itemize}
+

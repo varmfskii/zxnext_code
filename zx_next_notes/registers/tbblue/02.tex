@@ -1,0 +1,16 @@
+\register{R/W}{02}{Reset}\\
+Read
+\begin{itemize}
+\item bit 7 = Expansion bus \textoverline{RESET} Asserted
+\item bits 6-2 = Reserved
+\item bit 1 = Last reset was Hard reset
+\item bit 0 = Last reset was Soft reset
+\end{itemize}
+Write
+\begin{itemize}
+\item bit 7 = Generate/Release Expansion bus \textoverline{RESET}
+\item bits 6-2 = Reserved, must be 0
+\item bit 1 = generate Hard reset
+\item bit 0 = generate Soft reset
+\end{itemize}
+

@@ -497,14 +497,7 @@ so should be monitored and auto-configured when the COPPER is active
 as the line count will change with the refresh rate. This could lead
 to the COPPER waiting for lines that never occur.
 
-Peripheral 1 setting register \$05 (5)
-\begin{itemize}
-\item[] bit 2 = 50/60 Hz mode
-  \begin{itemize}
-  \item[] 0 = 50Hz
-  \item[] 1 = 60Hz * Pentagon 60Hz is not supported in VGA mode so always 50Hz
-  \end{itemize}
-\end{itemize}
+\input{registers/tbblue/05.tex}
 
 \paragraph{Video Modes}
 
@@ -548,23 +541,9 @@ should be run in VGA mode for maximum compatibility.
 Video timing also affects audio output as the sample rate can vary
 depending on the output timing method.
 
-The following undocumented register allows software to read the video
-timing mode:
+The following register allows software to read the video timing mode:
 
-Video timing register \$11 (17)
-\begin{itemize}
-\item[] bits 2-0 = Timing:
-  \begin{itemize}
-  \item[] 000 = Mode 0 (VGA)
-  \item[] 001 = Mode 1 (VGA)
-  \item[] 010 = Mode 2 (VGA)
-  \item[] 011 = Mode 3 (VGA)
-  \item[] 100 = Mode 4 (VGA)
-  \item[] 101 = Mode 5 (VGA)
-  \item[] 110 = Mode 6 (VGA)
-  \item[] 111 = Mode 7 (HDMI) * Timing is forced to 216Ts 50Hz / 214.5Ts 60Hz
-  \end{itemize}
-\end{itemize}
+\input{registers/tbblue/11.tex}
 
 \paragraph{Machine Type}
 
@@ -581,57 +560,7 @@ The following list shows the various parameters that can be gained
 from reading the machine register combined with the refresh register
 and video mode bits:
 
-Machine type register \$03 (3)
-\begin{itemize}
-\item[] bits 6-4 = Timing:
-
-  VGA 50Hz
-  \begin{itemize}
-  \item[] 000 = 224.0Ts per line (312 lines) (DC=896) (H=54) (48k)
-  \item[] 001 = 224.0Ts per line (312 lines) (DC=896) (H=54) (48k)
-  \item[] 010 = 228.0Ts per line (311 lines) (DC=912) (H=55) (128k)
-  \item[] 011 = 228.0Ts per line (311 lines) (DC=912) (H=55) (128k)
-  \item[] 100 = 224.0Ts per line (320 lines) (DC=896) (H=54) (Pentagon)
-  \item[] 101 = RESERVED
-  \item[] 110 = RESERVED
-  \item[] 111 = RESERVED
-  \end{itemize}
-    VGA 60Hz
-  \begin{itemize}
-  \item[] 000 = 224.0Ts per line (262 lines) (DC=896) (H=54) (48k)
-  \item[] 001 = 224.0Ts per line (262 lines) (DC=896) (H=54) (48k)
-  \item[] 010 = 228.0Ts per line (261 lines) (DC=912) (H=55) (128k)
-  \item[] 011 = 228.0Ts per line (261 lines) (DC=912) (H=55) (128k)
-  \item[] 100 = 224.0Ts per line (320 lines) (DC=896) (H=54) (Pentagon)*
-  \item[] 101 = RESERVED
-  \item[] 110 = RESERVED
-  \item[] 111 = RESERVED
-  \end{itemize}
-    HDMI 50Hz
-  \begin{itemize}
-  \item[] 000 = 216.0Ts per line (312 lines) (DC=864) (H=52) (48k)
-  \item[] 001 = 216.0Ts per line (312 lines) (DC=864) (H=52) (48k)
-  \item[] 010 = 216.0Ts per line (312 lines) (DC=864) (H=52) (128k)
-  \item[] 011 = 216.0Ts per line (312 lines) (DC=864) (H=52) (128k)
-  \item[] 100 = 216.0Ts per line (312 lines) (DC=864) (H=52) (Pentagon)
-  \item[] 101 = RESERVED
-  \item[] 110 = RESERVED
-  \item[] 111 = RESERVED
-  \end{itemize}
-    HDMI 60Hz
-  \begin{itemize}
-  \item[] 000 = 214.5Ts per line (262 lines) (DC=858) (H=52) (48k)
-  \item[] 001 = 214.5Ts per line (262 lines) (DC=858) (H=52) (48k)
-  \item[] 010 = 214.5Ts per line (262 lines) (DC=858) (H=52) (128k)
-  \item[] 011 = 214.5Ts per line (262 lines) (DC=858) (H=52) (128k)
-  \item[] 100 = 214.5Ts per line (262 lines) (DC=858) (H=52) (Pentagon)
-  \item[] 101 = RESERVED
-  \item[] 110 = RESERVED
-  \item[] 111 = RESERVED
-  \end{itemize}
-\end{itemize}
-
-* Pentagon 60Hz is not supported in VGA mode so always 50Hz
+\input{registers/tbblue/03.tex}
       
 \paragraph{Summary}
 

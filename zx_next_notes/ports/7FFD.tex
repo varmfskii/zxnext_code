@@ -1,0 +1,16 @@
+\port{7FFD}{Memory Paging Control}
+\begin{itemize}
+\item[] bits 6-7 = reserved
+\item[] bit 5 = Lock memory paging
+\item[] bit 4 = low bit of ROM Select (high bit is in Port \$1FFD) 
+  \begin{itemize}
+  \item[] 00 = ROM0 = 128k editor and menu system
+  \item[] 01 = ROM1 = 128k syntax checker
+  \item[] 10 = ROM2 = +3DOS
+  \item[] 11 = ROM3 = 48k BASIC
+  \end{itemize}
+\item[] bit 3 = Shadow screen toggle
+\item[] bits 2-0 = LSB of Bank number for slot 4 (MSB is in Port \$DFFD)
+\end{itemize}
+Disable with bit 5 port \$7FFD
+

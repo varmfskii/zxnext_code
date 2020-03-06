@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Machine Type</TITLE>
+<META NAME="description" CONTENT="Machine Type">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node115.html">
+<LINK REL="previous" HREF="node113.html">
+<LINK REL="next" HREF="node115.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node115.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node111.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node113.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html933"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html935"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node115.html">Summary</A>
+<B> Up:</B> <A
+ HREF="node111.html">Configuration</A>
+<B> Previous:</B> <A
+ HREF="node113.html">Video Modes</A>
+ &nbsp; <B>  <A ID="tex2html934"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html936"
+  HREF="node162.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H4><A ID="SECTION00740030000000000000">
+Machine Type</A>
+</H4>
+
+<P>
+The machine type register can be used to provide the number of Ts per
+line, line count, dot clock and maximum horizontal COPPER wait.
+
+<P>
+The dot clock (DC) is the number of Ts per line * 4.
+
+<P>
+The maximum horizontal COPPER wait (H) is in multiples of 16 clocks.
+
+<P>
+Video mode 7 (HMDI) overrides the timing.
+
+<P>
+The following list shows the various parameters that can be gained
+from reading the machine register combined with the refresh register
+and video mode bits:
+
+<P>
+Register (R/W) $03 (03) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Machine Type
+<BR>
+A write to this register disables the boot rom in config mode
+<BR>
+bits 2-0 select machine type when in config mode
+<table width="90%">
+bit 7 = (W) Display Timing change enable (allow changes to
+  bits 6-4) (0 on hard reset)
+bits 6-4 = Display Timing
+bit 3 = Display Timing user lock control
+  <tr><td valign="top">&nbsp;Read
+  
+<UL>
+<LI>0 = No user lock on display timing
+</LI>
+<LI>1 = User lock on display timing
+  
+</LI>
+</UL>
+  </td></tr>
+<tr><td valign="top">&nbsp;Write
+  
+<UL>
+<LI>1 = Apply user lock on display timing (0 on hard reset)
+  
+</LI>
+</UL>
+bits 2-1 = Machine Type</td></tr>
+<tr><td valign="top">&nbsp;Machine Types/Display Timings
+  
+<UL>
+<LI>000 or 001 = ZX 48K
+</LI>
+<LI>010 = ZX 128K/+2 (Grey)
+</LI>
+<LI>011 = ZX +2A-B/+3e/Next Native
+</LI>
+<LI>100 = Pentagon 128K
+  
+</LI>
+</UL></td></tr></table>
+
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node115.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node111.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node113.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html933"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html935"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node115.html">Summary</A>
+<B> Up:</B> <A
+ HREF="node111.html">Configuration</A>
+<B> Previous:</B> <A
+ HREF="node113.html">Video Modes</A>
+ &nbsp; <B>  <A ID="tex2html934"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html936"
+  HREF="node162.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

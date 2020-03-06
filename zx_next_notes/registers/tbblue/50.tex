@@ -1,0 +1,8 @@
+\register{R/W}{50}{MMU Slot 0 Control}
+\begin{itemize}
+\item bits 7-0 = 8k RAM page at position \$0000 to \$1FFF (\$ff on
+  reset)
+\end{itemize}
+Pages can be from 0 to 223 on a fully expanded Next.\\
+A 255 value causes the ROM to become visible.
+

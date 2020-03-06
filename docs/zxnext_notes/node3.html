@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Video</TITLE>
+<META NAME="description" CONTENT="Video">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node56.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="next" HREF="node4.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="zxnext_notes.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html271"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html273"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node4.html">General Features</A>
+<B> Up:</B> <A
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
+<B> Previous:</B> <A
+ HREF="node2.html">Introduction</A>
+ &nbsp; <B>  <A ID="tex2html272"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html274"
+  HREF="node162.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A ID="SECTION00300000000000000000">
+Video</A>
+</H1>
+
+<P>
+ZX Spectrum Next video splits the display types into four categories
+(layer 1 (ULA/Timex/LoRes), layer 2, layer 3 (tilemap) and sprites)
+which have their own sets of controls for colour palettes, clipping,
+and scrolling. Some aspects of ULA and tilemap are tied together, but
+all the rest operate in a largely independent manner using a layering
+system. The ULA category has a number of separate video modes that it
+can use. One of these (LoRes) is incompatible with using tilemaps.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html275"
+  HREF="node4.html">General Features</A>
+<UL>
+<LI><A ID="tex2html276"
+  HREF="node5.html">Video Layering and Transparency</A>
+<LI><A ID="tex2html277"
+  HREF="node6.html">Palette</A>
+<UL>
+<LI><A ID="tex2html278"
+  HREF="node7.html">Next Colour Palettes</A>
+</UL>
+<LI><A ID="tex2html279"
+  HREF="node8.html">Scrolling</A>
+<LI><A ID="tex2html280"
+  HREF="node9.html">Clipping</A>
+</UL>
+<BR>
+<LI><A ID="tex2html281"
+  HREF="node10.html">Layer 1</A>
+<UL>
+<LI><A ID="tex2html282"
+  HREF="node11.html">Colour Attributes</A>
+<UL>
+<LI><A ID="tex2html283"
+  HREF="node12.html">ULA Colour</A>
+<LI><A ID="tex2html284"
+  HREF="node13.html">ULA Next</A>
+<LI><A ID="tex2html285"
+  HREF="node14.html">ULA+</A>
+</UL>
+<LI><A ID="tex2html286"
+  HREF="node21.html">Layer 1 Scrolling</A>
+<LI><A ID="tex2html287"
+  HREF="node22.html">Layer 1 Clipping</A>
+<LI><A ID="tex2html288"
+  HREF="node23.html">ZX Spectrum Mode</A>
+<LI><A ID="tex2html289"
+  HREF="node24.html">Alternate Page Mode</A>
+<LI><A ID="tex2html290"
+  HREF="node25.html">Timex Hi-Colour Mode</A>
+<LI><A ID="tex2html291"
+  HREF="node26.html">Timex Hi-Resolution Mode</A>
+<LI><A ID="tex2html292"
+  HREF="node27.html">Lo-Resolution Mode</A>
+</UL>
+<BR>
+<LI><A ID="tex2html293"
+  HREF="node28.html">Layer 2</A>
+<UL>
+<LI><A ID="tex2html294"
+  HREF="node29.html">Configuration</A>
+<UL>
+<LI><A ID="tex2html295"
+  HREF="node30.html">Layer 2 <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
+ ALT="$256\times 192$"></SPAN>, Write only overlaid on ROM</A>
+<LI><A ID="tex2html296"
+  HREF="node31.html">Layer 2 <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
+ ALT="$256\times 192$"></SPAN> resolution</A>
+<LI><A ID="tex2html297"
+  HREF="node32.html">Layer 2 <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img2.svg"
+ ALT="$320\times 256$"></SPAN> resolution</A>
+<LI><A ID="tex2html298"
+  HREF="node33.html">Layer 2 <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img3.svg"
+ ALT="$640\times 256$"></SPAN> resolution</A>
+</UL>
+<LI><A ID="tex2html299"
+  HREF="node34.html">Scrolling</A>
+<LI><A ID="tex2html300"
+  HREF="node35.html">Clipping</A>
+</UL>
+<BR>
+<LI><A ID="tex2html301"
+  HREF="node36.html">Layer 3 (Tilemap) Mode</A>
+<UL>
+<LI><A ID="tex2html302"
+  HREF="node37.html">General Description</A>
+<LI><A ID="tex2html303"
+  HREF="node38.html">Data Structures</A>
+<UL>
+<LI><A ID="tex2html304"
+  HREF="node39.html">Tilemap</A>
+<LI><A ID="tex2html305"
+  HREF="node40.html">Tile Definitions</A>
+</UL>
+<LI><A ID="tex2html306"
+  HREF="node41.html">Memory Organization &amp; Display Layer</A>
+<LI><A ID="tex2html307"
+  HREF="node42.html">Combining ULA &amp; Tilemap</A>
+<LI><A ID="tex2html308"
+  HREF="node43.html">Programming Tilemap mode</A>
+<UL>
+<LI><A ID="tex2html309"
+  HREF="node44.html">Changes Since 2.00.26</A>
+<LI><A ID="tex2html310"
+  HREF="node45.html">Future Direction</A>
+</UL>
+</UL>
+<BR>
+<LI><A ID="tex2html311"
+  HREF="node46.html">Sprites</A>
+<UL>
+<LI><A ID="tex2html312"
+  HREF="node47.html">Sprite Patterns</A>
+<UL>
+<LI><A ID="tex2html313"
+  HREF="node48.html">Pattern Number</A>
+</UL>
+<LI><A ID="tex2html314"
+  HREF="node51.html">Sprite Palette</A>
+<LI><A ID="tex2html315"
+  HREF="node52.html">Sprite Attributes</A>
+<LI><A ID="tex2html316"
+  HREF="node53.html">Relative Sprites</A>
+<LI><A ID="tex2html317"
+  HREF="node54.html">Programming Sprites</A>
+<LI><A ID="tex2html318"
+  HREF="node55.html">Global Control of Sprites</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+
+</BODY>
+</HTML>

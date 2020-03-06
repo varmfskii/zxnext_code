@@ -1,0 +1,41 @@
+\port{00AF}{Video Config/Status}\\
+Write - VConfig
+\begin{itemize}
+\item bits 7-6 = Screen Resolution (RRES)
+  \begin{itemize}
+  \item 00 = $256\times192$
+  \item 01 = $320\times200$
+  \item 10 = $320\times240$
+  \item 11 = $360\times288$
+  \end{itemize}
+\item bit 5 = Disable Plain Graphics (NOGFX)
+\item bit 4 = Disable TSU Graphics (NOTSU)
+\item bit 3 = Graphics Over TSU (GFXOVR)*
+\item bit 2 = FT812 Enabled (FT\_EN)**
+\item bits 1-0 = Video Mode (VM)
+  \begin{itemize}
+  \item 00 = ZX
+  \item 01 = 16c
+  \item 10 = 256c
+  \item 11 = Text
+  \end{itemize}
+\end{itemize}
+Read - Status
+\begin{itemize}
+\item bit 7 = Reserved
+\item bit 6 = PWR\_UP
+\item bit 5 = FDRVER
+\item bits 4-3 = Reserved
+\item bits 2-0 = VDAC Version
+  \begin{itemize}
+  \item 000 = 2-bit VDAC+PWM levels 0-24
+  \item 001 = 3-bit VDAC
+  \item 010 = 4-bit VDAC
+  \item 011 = 5-bit VDAC
+  \item 100-110 = Reserved
+  \item 111 = VDAC2 (FT812)
+  \end{itemize}
+\end{itemize}
+* VDAC only
+** VDAC2 only
+

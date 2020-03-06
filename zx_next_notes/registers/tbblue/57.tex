@@ -1,0 +1,13 @@
+\register{R/W}{57}{MMU Slot 7 Control}
+\begin{itemize}
+\item bits 7-0 = 8k RAM page at position \$E000 to \$FFFF (\$01 on
+  reset)
+\end{itemize}
+Pages can be from 0 to 223 on a fully expanded Next.
+
+Writing to ports \$1FFD, \$7FFD and \$DFFD writes \$FF to MMU0 and
+MMU1 and writes appropriate values to MMU6 and MMU7 to map in the
+selected 16k bank.
+
++3 special modes override the MMUs if used.
+

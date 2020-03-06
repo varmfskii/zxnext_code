@@ -409,7 +409,7 @@ in the T bit of sprite attribute 4.
 
 Sprites are created via three io registers and a nextreg interface.
 
-Port \$303B (W)
+\input{ports/303B.tex}
 \begin{verbatim}
 X S S S S S S S
 N6 X N N N N N N
@@ -424,7 +424,7 @@ for writing sprite patterns via port \$5B. The N6 bit shown is the
 least significant in the 7-bit pattern number and should always be
 zero when selecting one of 64 8-bit patterns indicated by N.
 
-Port \$57 (W)
+\input{ports/57.tex}
 
 Once a sprite is selected via port \$303B, its attributes can be
 written to this port one byte after another. Sprites can have either
@@ -434,7 +434,7 @@ written. This means you can select a sprite via port \$303B and write
 attributes for as many sequential sprites as desired. The attribute
 pointer will roll over from sprite 127 to sprite 0.
 
-Port \$5B (W)
+\input{ports/5B.tex}
 
 Once a pattern number is selected via port \$303B, the 256-byte or
 128-byte pattern can be written to this port. The internal pattern
@@ -457,155 +457,24 @@ attributes. The nextreg interface allows the copper to manipulate
 sprites and grants the program random access to a sprite’s individual
 attribute bytes.
 
-(R/W) \$34 (52) $\Rightarrow$ Sprite Number\\
-If the sprite number is in lockstep with io port \$303B (nextreg \$09
-bit 4 is set)
-\begin{itemize}
-\item[] bits 7 = Pattern address offset (Add 128 to pattern address)
-\item[] bits 6-0 = Sprite number 0-127, Pattern number 0-63
-\end{itemize}
-Selects which sprite has its attributes connected to the following registers.
-
-Effectively performs an out to port \$303B with the same value
-
-Otherwise
-\begin{itemize}
-\item[] bit 7 = Ignored
-\item[] bits 6-0 = Sprite number 0-127
-\end{itemize}
-Selects which sprite has its attributes connected to the following registers.\\
-Bit 7 always reads back as zero.
-
-This nextreg can operate in two modes.
-
-If nextreg \$09 bit 4 is set, then this register is kept in lockstep
-with i/o port \$303B. A write to this nextreg is equivalent to a write
-to port \$303B and vice versa. In this mode, the i/o interface and
-nextreg interface are exactly equivalent.
-
-If nextreg \$09 bit 4 is reset, then the nextreg interface is
-decoupled from i/o port \$303B. This nextreg is used to select a
-particular sprite 0-127 and this is completely independent from the
-sprite selected for the i/o interface. This independence allows the
-copper, for example, to manipulate different sprites than the cpu
-using the i/o interface.
-
-(W) \$35 (53) $\Rightarrow$ Sprite Attribute 0\\
-(W) \$75 (117) $\Rightarrow$ Sprite Attribute 0 with automatic post
-increment of Sprite Number
-\begin{itemize}
-\item[] bits 7-0 = LSB of X coordinate
-\end{itemize}
-A write to nextreg \$75 also increases the selected sprite in nextreg
-\$34.
-
-(W) \$36 (54) $\Rightarrow$ Sprite Attribute 1\\
-(W) \$76 (118) $\Rightarrow$ Sprite Attribute 1 with automatic post
-increment of Sprite Number
-\begin{itemize}
-\item[] bits 7-0 = LSB of Y coordinate
-\end{itemize}
-A write to nextreg \$76 also increases the selected sprite in nextreg
-\$34.
-
-(W) \$37 (55) $\Rightarrow$ Sprite Attribute 2\\
-(W) \$77 (119) $\Rightarrow$ Sprite Attribute 2 with automatic post
-increment of Sprite Number
-\begin{itemize}
-\item[] bits 7-4 = Palette offset added to top 4 bits of sprite colour
-  index
-\item[] bit 3 = X mirror
-\item[] bit 2 = Y mirror
-\item[] bit 1 = Rotate
-\item[] bit 0 = MSB of X coordinate
-\end{itemize}
-A write to nextreg \$77 also increases the selected sprite in nextreg
-\$34.
-
-(W) \$38 (56) $\Rightarrow$ Sprite Attribute 3\\
-(W) \$78 (120) $\Rightarrow$ Sprite Attribute 3 with automatic post
-increment of Sprite Number
-\begin{itemize}
-\item[] bit 7 = Visible flag (1 = displayed)
-\item[] bit 6 = Extended attribute (1 = Sprite Attribute 4 is active)
-\item[] bits 5-0 = Pattern used by sprite (0-63)
-\end{itemize}
-A write to nextreg \$78 also increases the selected sprite in nextreg
-\$34.
-
-(W) \$39 (57) $\Rightarrow$ Sprite Attribute 4\\
-(W) \$79 (121) $\Rightarrow$ Sprite Attribute 4 with automatic post
-increment of Sprite Number\\
-4-bit Sprites
-\begin{itemize}
-\item[] bit 7 = H (1 = sprite uses 4-bit patterns)
-\item[] bit 6 = N6 (0 = use the first 128 bytes of the pattern else
-  use the last 128 bytes)
-\item[] bit 5 = 1 if relative sprites are composite, 0 if relative
-  sprites are unified Scaling
-\item[] bits 4-3 = X scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
-\item[] bits 2-1 = Y scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
-\item[] bit 0 = MSB of Y coordinate
-\end{itemize}
-A relative mode is enabled if H,N6 = 01. The byte format for relative
-sprites is described above.\\
-A write to nextreg \$79 also increases the selected sprite in nextreg
-\$34.
+\input{registers/tbblue/34.tex}
+\input{registers/tbblue/35.tex}
+\input{registers/tbblue/75.tex}
+\input{registers/tbblue/36.tex}
+\input{registers/tbblue/76.tex}
+\input{registers/tbblue/37.tex}
+\input{registers/tbblue/77.tex}
+\input{registers/tbblue/38.tex}
+\input{registers/tbblue/78.tex}
+\input{registers/tbblue/39.tex}
+\input{registers/tbblue/79.tex}
 
 \subsection{Global Control of Sprites}
 
 The following nextreg are also of interest for sprites.
 
-(R/W) \$09 (09) $\Rightarrow$ Peripheral 4 setting:
-\begin{itemize}
-\item[] bit 7 = Mono setting for AY 2 (1 = mono, 0 default)
-\item[] bit 6 = Mono setting for AY 1 (1 = mono, 0 default)
-\item[] bit 5 = Mono setting for AY 0 (1 = mono, 0 default)
-\item[] bit 4 = Sprite id lockstep (1 = Nextreg \$34 and IO Port
-  \$303B are in lockstep, 0 default)
-\item[] bit 3 = Disables Kempston port (\$DF) if set
-\item[] bit 2 = Disables divMMC ports (\$E3, \$E7, \$EB) if set
-\item[] bits 1-0 = scanlines (0 after a PoR or Hard-reset)
-  \begin{itemize}
-  \item[] 00 = scanlines off
-  \item[] 01 = scanlines 75\%
-  \item[] 10 = scanlines 50\%
-  \item[] 11 = scanlines 25\%
-  \end{itemize}
-\end{itemize}
-Bit 4 determines if the i/o interface and nextreg interface operate in lockstep.
-
-(R/W) \$15 (21) $\Rightarrow$ Sprite and Layers system
-\begin{itemize}
-\item[] bit 7 = LoRes mode, $128\times96\times256$ colours (1 =
-  enabled)
-\item[] bit 6 = Sprite priority (1 = sprite 0 on top, 0 = sprite 127
-  on top)
-\item[] bit 5 = Enable sprite clipping in over border mode (1 =
-  enabled)
-\item[] bits 4-2 = set layers priorities:\\
-Reset default is 000, sprites over the Layer 2, over the ULA graphics
-\begin{itemize}
-\item[] 000 – S L U
-\item[] 001 – L S U
-\item[] 010 – S U L
-\item[] 011 – L U S
-\item[] 100 – U S L
-\item[] 101 – U L S
-\item[] 110 – S(U+L) ULA and Layer 2 combined, colours clamped to 7
-\item[] 111 – S(U+L-5) ULA and Layer 2 combined, colours clamped to
-  [0,7]
-\end{itemize}
-\item[] bit 1 = Over border (1 = yes)(Back to 0 after a reset)
-\item[] bit 0 = Sprites visible (1 = visible)(Back to 0 after a reset)
-\end{itemize}
-Bit 0 must be set for sprites to be visible.\\
-Bit 1 set allows sprites to be visible in the border area. When this
-bit is reset, sprites will not display outside the $256\times192$ area
-of the ULA display.\\
-Bit 5 set enables clipping when sprites are visible in the border
-area. If reset, no clipping is applied and sprites will be visible in
-the full $320\times256$ space.
+\input{registers/tbblue/09.tex}
+\input{registers/tbblue/15.tex}
 
 The sprite module draws sprites in the order 0-127 in each
 scanline. Bit 6 determines whether sprite 0 is topmost or sprite 127
@@ -615,18 +484,7 @@ Bits 4:2 determine layer priority and how sprites overlay or are
 obscured by other layers.
 
 \index{clip window}
-(R/W) \$19 (25) $\Rightarrow$ Clip Window Sprites
-\begin{itemize}
-\item[] bits 7-0 = Cood. of the clip window
-  \begin{itemize}
-  \item[] 1st write – X1 position
-  \item[] 2nd write – X2 position
-  \item[] 3rd write – Y1 position
-  \item[] 4rd write – Y2 position
-  \end{itemize}
-\end{itemize}
-The values are 0,255,0,191 after a Reset\\
-Reads do not advance the clip position
+\input{registers/tbblue/19.tex}
 
 When the clip window is enabled for sprites in “over border” mode, the
 X coords are internally doubled and the clip window origin is moved to
@@ -642,22 +500,7 @@ pixels above the ULA screen origin.
 Regardless, sprite position is always in sprite coordinates with 32,32
 corresponding to the top left corner of the ULA screen.
 
-(W) \$1C (28) $\Rightarrow$ Clip Window control
-\begin{itemize}
-\item[] bits 7-4 = Reserved, must be 0
-\item[] bit 3 – reset the tilemap clip index
-\item[] bit 2 – reset the ULA/LoRes clip index.
-\item[] bit 1 – reset the sprite clip index.
-\item[] bit 0 – reset the Layer 2 clip index.
-\end{itemize}
-Can be used to reset nextreg \$19.
-
-See palette section on sprite palettes
+\input{registers/tbblue/1C.tex}
 
 \index{transparency}
-(R/W) \$4B (75) $\Rightarrow$ Transparency index for sprites
-\begin{itemize}
-\item[] bits 7-0 = Set the index value (\$E3 after reset)
-\end{itemize}
-For 4-bit sprites only the bottom 4-bits are relevant.\\
-Determines the transparent colour index used for sprites.
+\input{registers/tbblue/4B.tex}

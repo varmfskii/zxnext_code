@@ -1,0 +1,20 @@
+\register{R/W}{09}{Peripheral 4 setting:}
+\begin{itemize}
+\item bit 7 = PSG 2 Mono Enable (0 on hard reset)
+\item bit 6 = PSG 1 Mono Enable (0 on hard reset)
+\item bit 5 = PSG 0 Mono Enable (0 on hard reset)
+\item bit 4 = Sprite ID lockstep enable (1 = Nextreg \$34 and IO Port
+  \$303B are in lockstep, 0 on reset)
+\item bit 3 = divMMC mapRAM bit Control (reset bit 7 of port \$E3)
+\item bit 2 = HDMI audio mute (0 on hard reset)
+\item bits 1-0 = scanlines
+  \begin{itemize}
+  \item 00 = scanlines off
+  \item 01 = scanlines 75\%
+  \item 10 = scanlines 50\%
+  \item 11 = scanlines 25\%
+  \end{itemize}
+\item[] In Sprite lockstep, NextREG \$34 and Port \$303B are in
+  lockstep
+\end{itemize}
+

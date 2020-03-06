@@ -1,0 +1,9 @@
+\register{R/W}{14}{Global transparency color}
+\begin{itemize}
+\item bits 7-0 = Transparency color value (\$E3 after a reset)
+\end{itemize}
+(Note: this value is 8-bit, so the transparency is compared against
+only by the MSB bits of the final 9-bit colour)\\
+(Note2: this only affects Layer 2, ULA and LoRes. Sprites use register
+\$4B for transparency and tilemap uses nextreg \$4C)
+

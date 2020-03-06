@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Paging out ROM</TITLE>
+<META NAME="description" CONTENT="Paging out ROM">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="previous" HREF="node67.html">
+<LINK REL="next" HREF="node69.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node69.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node64.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node67.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html678"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html680"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node69.html">Interactions between paging methods</A>
+<B> Up:</B> <A
+ HREF="node64.html">ZX Spectrum 128</A>
+<B> Previous:</B> <A
+ HREF="node67.html">ROM paging and selection</A>
+ &nbsp; <B>  <A ID="tex2html679"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html681"
+  HREF="node162.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H4><A ID="SECTION00512040000000000000">
+Paging out ROM</A>
+</H4>
+
+<P>
+ROM can be paged out by enabling AllRam mode, or by using Next memory
+management. Beware that some programs may assume that they can find
+ROM service routines at fixed addresses between $0000-$3fff. More
+importantly, if the default interrupt mode (IM 1) is set, the Z80 will
+jump the program counter to $0038 every frame expecting to find an
+interrupt handler there. If it does not, pain and suffering will
+likely result. DI is your friend. On the plus side, this does allow
+you to write your own interrupt handler without the nuisance of using
+IM 2.
+
+<P>
+Port $1FFD (1FFD) Plus 3 Memory Paging Control
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-3 = Unused, nust be 0</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = High bit of ROM selection (low bit is in Port $7FFD)
+  <table width="90%">  <tr><td valign="top">&nbsp;00 = ROM0 = 128k editor and menu system
+  </td></tr>
+<tr><td valign="top">&nbsp;01 = ROM1 = 128k syntax checker
+  </td></tr>
+<tr><td valign="top">&nbsp;10 = ROM2 = +3DOS
+  </td></tr>
+<tr><td valign="top">&nbsp;11 = ROM3 = 48k BASIC
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Special mode: Low bit of memory configuration number</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Paging mode
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = Normal
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = Special
+  </td></tr></table>
+</td></tr></table>
+
+You should echo writes to $5B67
+Port $7FFD (7FFD) Memory Paging Control
+<table width="90%"><tr><td valign="top">&nbsp;bits 6-7 = reserved</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = Lock memory paging</td></tr>
+<tr><td valign="top">&nbsp;bit 4 = low bit of ROM Select (high bit is in Port $1FFD) 
+  <table width="90%">  <tr><td valign="top">&nbsp;00 = ROM0 = 128k editor and menu system
+  </td></tr>
+<tr><td valign="top">&nbsp;01 = ROM1 = 128k syntax checker
+  </td></tr>
+<tr><td valign="top">&nbsp;10 = ROM2 = +3DOS
+  </td></tr>
+<tr><td valign="top">&nbsp;11 = ROM3 = 48k BASIC
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Shadow screen toggle</td></tr>
+<tr><td valign="top">&nbsp;bits 2-0 = LSB of Bank number for slot 4 (MSB is in Port $DFFD)
+</td></tr></table>
+
+Disable with bit 5 port $7FFD
+Port $DFFD (DFFD) Next Memory Bank Select
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Reserved, must be 0</td></tr>
+<tr><td valign="top">&nbsp;bits 3-0 = MSB of bank number for slot 4 (LSB is in Port $7FFD)
+</td></tr></table>
+
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node69.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node64.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node67.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html678"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html680"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node69.html">Interactions between paging methods</A>
+<B> Up:</B> <A
+ HREF="node64.html">ZX Spectrum 128</A>
+<B> Previous:</B> <A
+ HREF="node67.html">ROM paging and selection</A>
+ &nbsp; <B>  <A ID="tex2html679"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html681"
+  HREF="node162.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

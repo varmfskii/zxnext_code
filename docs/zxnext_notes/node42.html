@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Combining ULA &amp; Tilemap</TITLE>
+<META NAME="description" CONTENT="Combining ULA &amp; Tilemap">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node43.html">
+<LINK REL="previous" HREF="node41.html">
+<LINK REL="next" HREF="node43.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node43.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node36.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node41.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html531"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html533"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node43.html">Programming Tilemap mode</A>
+<B> Up:</B> <A
+ HREF="node36.html">Layer 3 (Tilemap) Mode</A>
+<B> Previous:</B> <A
+ HREF="node41.html">Memory Organization &amp; Display</A>
+ &nbsp; <B>  <A ID="tex2html532"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html534"
+  HREF="node162.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A ID="SECTION00344000000000000000">
+Combining ULA &amp; Tilemap</A>
+</H2>
+The combination of the ULA and tilemap is done in one of two modes:
+the standard mode or the stencil mode.
+
+<P>
+The standard mode uses bit 8 of a tile's tilemap entry to determine if
+a tile is above or below the ULA. The source of the final pixel
+generated is then the topmost non-transparent pixel. If the ULA or
+tilemap is disabled then they are treated as transparent.
+
+<P>
+The stencil mode will only be applied if both the ULA and tilemap are
+enabled. In the stencil mode, the final pixel will be transparent if
+either the ULA or tilemap are transparent. Otherwise the final pixel
+is a logical AND of the corresponding colour bits. The stencil mode
+allows one layer to act as a cut-out for the other.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

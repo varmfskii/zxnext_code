@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Relative Sprites</TITLE>
+<META NAME="description" CONTENT="Relative Sprites">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node54.html">
+<LINK REL="previous" HREF="node52.html">
+<LINK REL="next" HREF="node54.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node54.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node46.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node52.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html591"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html593"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node54.html">Programming Sprites</A>
+<B> Up:</B> <A
+ HREF="node46.html">Sprites</A>
+<B> Previous:</B> <A
+ HREF="node52.html">Sprite Attributes</A>
+ &nbsp; <B>  <A ID="tex2html592"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html594"
+  HREF="node162.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A ID="SECTION00354000000000000000">
+Relative Sprites</A>
+</H2>
+Normal sprites (sprites that are not relative) are known as anchor
+sprites. As the sprite module draws sprites in the order 0-127 (there
+are 128 sprites), it internally stores characteristics of the last
+anchor sprite seen. If following sprites are relative, they inherit
+some of these characteristics, which allows relative sprites to have,
+among other things, coordinates relative to the anchor. This means
+moving the anchor sprite also causes its relatives to move with it.
+
+<P>
+There are two types of relative sprites supported known as “Composite
+Sprites” and “Unified Sprites”. The type is determined by the anchor
+in the T bit of sprite attribute 4.
+
+<P>
+<DL class="COMPACT">
+<DT>A.</DT>
+<DD>Composite Sprites
+<BR>
+The sprite module records the following information from the anchor:
+  
+<UL>
+<LI>Anchor.visible
+</LI>
+<LI>Anchor.Y
+</LI>
+<LI>Anchor.palette_offset
+</LI>
+<LI>Anchor.N (pattern number)
+</LI>
+<LI>Anchor.H (indicates if the sprite uses 4-bit patterns)
+  
+</LI>
+</UL>
+  These recorded items are not used by composite sprites:
+  
+<UL>
+<LI>Anchor.rotate
+</LI>
+<LI>Anchor.xmirror
+</LI>
+<LI>Anchor.ymirror
+</LI>
+<LI>Anchor.xscale
+</LI>
+<LI>Anchor.yscale
+  
+</LI>
+</UL>
+  The anchor determines if all its relative sprites use 4-bit patterns or not.
+
+<P>
+The visibility of a particular relative sprite is the result of
+  ANDing the anchor’s visibility with the relative sprite’s
+  visibility. In other words, if the anchor is invisible then so are
+  all its relatives.
+
+<P>
+Relative sprites only have 8-bit X and Y coordinates (the ninth bits
+  are taken for other purposes). These are signed offsets from the
+  anchor’s X,Y coordinate. Moving the anchor moves all its relatives
+  along with it.
+
+<P>
+If the relative sprite has its PR bit set in sprite attribute 2,
+  then the anchor’s palette offset is added to the relative sprite’s
+  to determine the active palette offset for the relative
+  sprite. Otherwise the relative sprite uses its own palette offset as
+  usual.
+
+<P>
+If the relative sprite has its PO bit set in sprite attribute 4,
+  then the anchor’s pattern number is added to the relative sprite’s
+  to determine the pattern used for display. Otherwise the relative
+  sprite uses its own pattern number as usual. The intention is to
+  supply a method to easily animate a large sprite by manipulating the
+  pattern number in the anchor.
+
+<P>
+A composite sprite is like a collection of independent sprites tied
+  to an anchor.
+
+<P>
+</DD>
+<DT>B.</DT>
+<DD>Unified Sprites
+
+<P>
+Unified sprites are a further extension of the
+  composite type. The same information is recorded from the anchor and
+  the same behaviour as described under composite sprites applies.
+
+<P>
+The difference is the collection of anchor and relatives is treated
+  as if it were a single <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
+ ALT="$16\times16$"></SPAN> sprite. The anchor’s rotation,
+  mirror, and scaling bits apply to all its relatives. Rotating the
+  anchor causes all the relatives to rotate around the
+  anchor. Mirroring the anchor causes the relatives to mirror around
+  the anchor. The sprite hardware will automatically adjust X,Y coords
+  and rotation, scaling and mirror bits of all relatives according to
+  settings in the anchor.
+
+<P>
+Unified sprites should be defined as if all its parts are
+  <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
+ ALT="$16\times16$"></SPAN> in size with the anchor controlling the look of the
+  whole.
+
+<P>
+A unified sprite is like a big version of an individual <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
+ ALT="$16\times16$"></SPAN>
+  sprite controlled by the anchor.
+</DD>
+</DL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node54.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node46.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node52.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html591"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html593"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node54.html">Programming Sprites</A>
+<B> Up:</B> <A
+ HREF="node46.html">Sprites</A>
+<B> Previous:</B> <A
+ HREF="node52.html">Sprite Attributes</A>
+ &nbsp; <B>  <A ID="tex2html592"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html594"
+  HREF="node162.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

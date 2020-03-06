@@ -1,0 +1,18 @@
+\register{R/W}{11}{Video Timing (writable in config mode only)}
+\begin{itemize}
+\item bits 7-3 = Reserved, must be 0
+\item bits 2-0 = Mode (VGA = 0..6, HDMI = 7)
+  \begin{itemize}
+  \item 000 = Base VGA timing, clk28 = 28000000
+  \item 001 = VGA setting 1, clk28 = 28571429
+  \item 010 = VGA setting 2, clk28 = 29464286
+  \item 011 = VGA setting 3, clk28 = 30000000
+  \item 100 = VGA setting 4, clk28 = 31000000
+  \item 101 = VGA setting 5, clk28 = 32000000
+  \item 110 = VGA setting 6, clk28 = 33000000
+  \item 111 = HDMI, clk28 = 27000000
+  \end{itemize}
+\item[] 50/60Hz selection depends on bit 2 of register \$05
+\item[] Only writable in config mode
+\end{itemize}
+

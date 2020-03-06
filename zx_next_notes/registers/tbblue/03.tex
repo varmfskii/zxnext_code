@@ -1,0 +1,27 @@
+\register{R/W}{03}{Machine Type}\\
+A write to this register disables the boot rom in config mode\\
+bits 2-0 select machine type when in config mode
+\begin{itemize}
+\item bit 7 = (W) Display Timing change enable (allow changes to
+  bits 6-4) (0 on hard reset)
+\item bits 6-4 = Display Timing
+\item bit 3 = Display Timing user lock control
+  \item[] Read
+  \begin{itemize}
+  \item 0 = No user lock on display timing
+  \item 1 = User lock on display timing
+  \end{itemize}
+  \item[] Write
+  \begin{itemize}
+  \item 1 = Apply user lock on display timing (0 on hard reset)
+  \end{itemize}
+\item bits 2-1 = Machine Type
+\item[] Machine Types/Display Timings
+  \begin{itemize}
+  \item 000 or 001 = ZX 48K
+  \item 010 = ZX 128K/+2 (Grey)
+  \item 011 = ZX +2A-B/+3e/Next Native
+  \item 100 = Pentagon 128K
+  \end{itemize}
+\end{itemize}
+

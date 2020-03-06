@@ -1,0 +1,30 @@
+\register{R/W}{44}{9-bit Palette Data}\\
+Non Level 2
+\begin{itemize}
+\item[] 1st write
+\item bits 7-0 = MSB (RRRGGGBB)
+\item[] 2nd write
+\item bits 7-1 = Reserved, must be 0
+\item bit 0 = LSB (B)
+\end{itemize}
+Level 2
+\begin{itemize}
+\item[] 1st write
+\item bits 7-0 = MSB (RRRGGGBB)
+\item[] 2nd write
+\item bit 7 = Priority
+\item bits 6-1 = Reserved, must be 0
+\item bit 0 = LSB (B)
+\end{itemize}
+9-bit Palette Data is entered in two consecutive writes; the second
+write autoincrements the palette index if auto-increment is enabled in
+NextREG \$43 bit 7
+
+If writing an L2 palette, the second write's D7 holds the L2 priority
+bit which if set (1) brings the colour defined at that index on top of
+all other layers. If you also need the same colour in regular priority
+(for example: for enviromental masking) you will have to set it up
+again, this time with no priority.
+
+Reads return the second byte and do not autoincrement.
+

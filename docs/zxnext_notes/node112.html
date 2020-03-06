@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
+<HTML lang="EN">
+<HEAD>
+<TITLE>Refresh Rate</TITLE>
+<META NAME="description" CONTENT="Refresh Rate">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node113.html">
+<LINK REL="previous" HREF="node111.html">
+<LINK REL="next" HREF="node113.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node113.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node111.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node111.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html925"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html927"
+  HREF="node162.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node113.html">Video Modes</A>
+<B> Up:</B> <A
+ HREF="node111.html">Configuration</A>
+<B> Previous:</B> <A
+ HREF="node111.html">Configuration</A>
+ &nbsp; <B>  <A ID="tex2html926"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html928"
+  HREF="node162.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H4><A ID="SECTION00740010000000000000">
+Refresh Rate</A>
+</H4>
+
+<P>
+The refresh rate must be taken into account and can change real-time
+so should be monitored and auto-configured when the COPPER is active
+as the line count will change with the refresh rate. This could lead
+to the COPPER waiting for lines that never occur.
+
+<P>
+Register (R/W) $05 (05) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Peripheral 1 Settings
+
+<UL>
+<LI>bits 7-6 = joystick 1 mode (MSB)
+</LI>
+<LI>bits 5-4 = joystick 2 mode (MSB)
+</LI>
+<LI>bit 3 = joystick 1 mode (LSB)
+</LI>
+<LI>bit 2 = 50/60 Hz mode (0 = 50Hz, 1 = 60Hz)
+</LI>
+<LI>bit 1 = joystick 2 mode (LSB)
+</LI>
+<LI>bit 0 = Enable Scandoubler
+</LI>
+</UL>
+Joystick modes
+
+<UL>
+<LI>000 = Sinclair 2 (67890)
+</LI>
+<LI>001 = Kempston 2 (port $37)
+</LI>
+<LI>010 = Kempston 1 (port $1F)
+</LI>
+<LI>011 = Megadrive 1 (port $1F)
+</LI>
+<LI>100 = Cursor
+</LI>
+<LI>101 = Megadrive 2 (port $37)
+</LI>
+<LI>110 = Simclair 1 (12345)
+</LI>
+</UL>
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

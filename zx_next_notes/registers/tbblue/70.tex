@@ -1,0 +1,13 @@
+\register{R/W}{70}{Layer 2 Control}
+\begin{itemize}
+\item bits 7-6 = Reserved, must be 0
+\item bits 5-4 = Resolution (00 on soft reset)
+  \begin{itemize}
+  \item 00 = $256\times192\times256$
+  \item 01 = $320\times256\times256$
+  \item 10 = $640\times256\times16$
+  \item 11 = Do not use
+  \end{itemize}
+\item bits 3-0 = Palette offset (\$0 on soft reset)
+\end{itemize}
+

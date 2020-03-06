@@ -1,0 +1,11 @@
+\register{R/W}{6C}{Default Layer 3 Attribute}*
+\begin{itemize}
+\item bits 7-4 = Palette Offset (\$00 on reset)
+\item bit 3 = X mirror (0 on reset)
+\item bit 2 = Y mirror (0 on reset)
+\item bit 1 = Rotate (0 on reset)
+\item bit 0 = Bit 8 of the tile number (512 tile mode) (0 on reset)
+\item bit 0 = ULA over tilemap (256 tile mode) (0 on reset)
+\end{itemize}
+*Active tile attribute if bit 5 of nextreg \$6B is set.
+

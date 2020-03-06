@@ -1,0 +1,16 @@
+\register{R/W}{6B}{Layer 3 (Tilemap) Control}
+\begin{itemize}
+\item bit 7 = Layer 3 Enable (0 on reset)
+\item bit 6 = Layer 3 Size control (0 on reset)
+  \begin{itemize}
+  \item 0 = 40x32
+  \item 1 = 80x32
+  \end{itemize}
+\item bit 5 = Disable Arrtibute Entry (0 on reset)
+\item bit 4 = palette select (0 on reset)
+\item bit 3 = Enable Text mode (1-bit tilemap) (0 on reset)
+\item bit 2 = Reserved, must be 0
+\item bit 1 = Activate 512 tile mode (0 on reset)
+\item bit 0 = Enable Layer 3 on top of ULA (0 on reset)
+\end{itemize}
+

@@ -1,0 +1,10 @@
+\register{R/W}{6A}{Layer 1,0 (LoRes) Control}
+\begin{itemize}
+\item bits 7-6 = reserved, must be 0
+\item bit 5 = Enable Radistan (16-colour) (0 on reset)
+\item bit 4 = Radistan DFILE switch (xor with bit 0 of port \$ff) (0
+  on reset)
+\item bits 3-0 = Radistsan palette offset (0 on reset)
+\item bits 1-0 = ULAplus palette offset (0 on reset)
+\end{itemize}
+

@@ -1,0 +1,22 @@
+\port{FFFD}{Turbo Sound Next Control}\\
+Select Chip
+\begin{itemize}
+\item[] bit 7 = 1
+\item[] bit 6 = Enable left
+\item[] bit 5 = Enable Right
+\item[] bits 4-2 = Reserved, must be 1
+\item[] bits 1-0 = AY chip select
+  \begin{itemize}
+  \item[] 00 = Unused
+  \item[] 01 = AY 3
+  \item[] 10 = AY 2
+  \item[] 11 = AY 1
+  \end{itemize}
+\end{itemize}
+Select Register
+\begin{itemize}
+\item[] bit 7 = 0
+\item[] bits 6-4 = Reserved, must be 000
+\item[] bits 3-0 = Register Number
+\end{itemize}
+

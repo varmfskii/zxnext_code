@@ -1,0 +1,17 @@
+\register{R/W}{81}{Expansion Bus Control}
+\begin{itemize}
+\item bit 7 = (R) Expansion bus \textoverline{ROMCS} asserted
+\item bits 6-5 = Reserved, must be 0
+\item bit 4 = (W) Propagate max CPU clock at all times (0 on hard
+  reset)
+\item bits 3-2 = Reserved, must be 0
+\item bits 1-0 = Max CPU Speed when Expansion Bus is enabled (\$00 on
+  hard reset, currently fixed at \$00)
+  \begin{itemize}
+  \item 00 = 3.5 MHz
+  \item 01 = 7 MHz
+  \item 10 = 14 MHz
+  \item 11 = 28 MHz
+  \end{itemize}
+\end{itemize}
+
