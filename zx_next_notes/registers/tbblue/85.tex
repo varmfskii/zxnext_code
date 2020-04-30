@@ -1,6 +1,8 @@
 \register{R/W}{85}{Internal Port decoding control 4/4}
 \begin{itemize}
-\item bits 7-1 = Reserved
+\item bit 7 = Enable configuration of port decoding on soft reset (3.01.01)
+\item bits 6-2 = Reserved
+\item bit 1 = Enable DMA port \$0B (3.01.02)
 \item bit 0 = Enable ULAplus (Ports \$BF3B, \$FF3B) (1 on reset)
 \end{itemize}
 

@@ -32,11 +32,11 @@
 <A
  HREF="node132.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1038"
+<A ID="tex2html1098"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1040"
-  HREF="node162.html">
+<A ID="tex2html1100"
+  HREF="node177.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -45,10 +45,10 @@
  HREF="node132.html">Ports</A>
 <B> Previous:</B> <A
  HREF="node132.html">Ports</A>
- &nbsp; <B>  <A ID="tex2html1039"
+ &nbsp; <B>  <A ID="tex2html1099"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1041"
-  HREF="node162.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1101"
+  HREF="node177.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
@@ -56,7 +56,9 @@
 <H1><A ID="SECTION001110000000000000000">
 8-bit</A>
 </H1>
-Port $0B (0B) MB02 DMA Control
+Port $6B (6B) DMA Control (Z80 Mode, 3.01.02)
+
+<P>
 Port $0F (0F) DAC A
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
 </td></tr></table>
@@ -83,6 +85,8 @@ Write
 
 Disable with bit 3 of Nextreg $08
 Port $37 (37) Kempston/Mega Drive Joystick 2
+<BR>
+Read
 <table width="90%"><tr><td valign="top">&nbsp;bit 7 = &rdquo;start&rdquo; button</td></tr>
 <tr><td valign="top">&nbsp;bit 6 = A/X button</td></tr>
 <tr><td valign="top">&nbsp;bit 5 = C/Z button</td></tr>
@@ -94,6 +98,51 @@ Port $37 (37) Kempston/Mega Drive Joystick 2
 </td></tr></table>
 
 Disable with Nextreg $05
+<BR>
+Write ($00 on reset, 3.01.04)
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Select I/O Mode
+  <table width="90%">  <tr><td valign="top">&nbsp;00 = Bit Bang
+  </td></tr>
+<tr><td valign="top">&nbsp;01 = Clock
+  </td></tr>
+<tr><td valign="top">&nbsp;10 = UART
+  </td></tr>
+<tr><td valign="top">&nbsp;11 = Reserved (don't use)
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = Reserved, must be 0</td></tr>
+<tr><td valign="top">&nbsp;bit 4 = Select Joystick Port for Read
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = Left
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = Right
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bits 3-1 = Reserved, must be $00</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Pin 7 state (both ports)
+  
+<UL>
+<LI>Bit Bang - bit 0 on pin 7
+</LI>
+<LI>Clock - clock on pin 7
+<BR>
+0 = Slow clock (Fsys/2048 = 12.672 kHz)
+<BR>
+1 = Fast clock (Fsys/8 = 3.5 MHz)
+</LI>
+<LI>UART - Pin 7 = TX, Pin 9 = RX
+    0 = ESP
+<BR>
+1 = Pi
+  
+</LI>
+</UL></td></tr></table>
+
+** A Runt clock may appear in the first cycle
+<BR>
+The I/O mode should be set by writing this port first followed by
+enabling io mo de on the joysticks with a write to nextreg 0x05.
+
+<P>
 Port $3F (3F) DAC A
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
 </td></tr></table>
@@ -214,7 +263,7 @@ Port $5F (5F) DAC D
 </td></tr></table>
 
 Disable with bit 3 of Nextreg $08
-Port $6B (6B) Datagear DMA Control
+Port $6B (6B) DMA Control (Next Mode, 3.01.02)
 
 <P>
 Port $DF (DF) DAC A/C, SpecDrum
@@ -313,11 +362,11 @@ Disable with bit 2 of Nextreg $08
 <A
  HREF="node132.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1038"
+<A ID="tex2html1098"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1040"
-  HREF="node162.html">
+<A ID="tex2html1100"
+  HREF="node177.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -326,10 +375,10 @@ Disable with bit 2 of Nextreg $08
  HREF="node132.html">Ports</A>
 <B> Previous:</B> <A
  HREF="node132.html">Ports</A>
- &nbsp; <B>  <A ID="tex2html1039"
+ &nbsp; <B>  <A ID="tex2html1099"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1041"
-  HREF="node162.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html1101"
+  HREF="node177.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

@@ -32,11 +32,11 @@
 <A
  HREF="node111.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html925"
+<A ID="tex2html985"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html927"
-  HREF="node162.html">
+<A ID="tex2html987"
+  HREF="node177.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -45,10 +45,10 @@
  HREF="node111.html">Configuration</A>
 <B> Previous:</B> <A
  HREF="node111.html">Configuration</A>
- &nbsp; <B>  <A ID="tex2html926"
+ &nbsp; <B>  <A ID="tex2html986"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html928"
-  HREF="node162.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html988"
+  HREF="node177.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
@@ -96,12 +96,50 @@ Joystick modes
 </LI>
 <LI>101 = Megadrive 2 (port $37)
 </LI>
-<LI>110 = Simclair 1 (12345)
+<LI>110 = Sinclair 1 (12345)
+</LI>
+<LI>111 = I/O Mode
+Both joysticks are places in I/O Mode if either is set to I/O
+Mode. The underlying joystick type is not changed and reads of this
+register will continue to return the last joystick type. Ehether the
+joystick is in io mode or not is invisible but this state can be
+cleared either through reset or by re-writing the gegister with
+joystick type not equal to 111. Recovery time for a normal joystick
+read after leaving I/O Mode is at most 64 scan lines.
 </LI>
 </UL>
 
 <P>
-<BR><HR>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node113.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node111.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node111.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html985"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html987"
+  HREF="node177.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node113.html">Video Modes</A>
+<B> Up:</B> <A
+ HREF="node111.html">Configuration</A>
+<B> Previous:</B> <A
+ HREF="node111.html">Configuration</A>
+ &nbsp; <B>  <A ID="tex2html986"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html988"
+  HREF="node177.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

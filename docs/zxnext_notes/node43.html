@@ -31,11 +31,11 @@
 <A
  HREF="node42.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html535"
+<A ID="tex2html595"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html537"
-  HREF="node162.html">
+<A ID="tex2html597"
+  HREF="node177.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -44,10 +44,10 @@
  HREF="node36.html">Layer 3 (Tilemap) Mode</A>
 <B> Previous:</B> <A
  HREF="node42.html">Combining ULA &amp; Tilemap</A>
- &nbsp; <B>  <A ID="tex2html536"
+ &nbsp; <B>  <A ID="tex2html596"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html538"
-  HREF="node162.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html598"
+  HREF="node177.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
@@ -312,22 +312,25 @@ Register (R/W) $68 (68) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
  ALT="$\Rightarrow$"></SPAN> ULA Control
 <table width="90%">
 bit 7 = Disable ULA output (0 on reset)
-bit 6 = Color blending control for layering modes 6 &amp; 7
-  [S(L+U)] (0 on reset)
-  
+bit 6-5 = Color blending control for layering modes 6 &amp; 7
+
 <UL>
-<LI>0 = Layer 0
+<LI>00 = ULA as blend colour
 </LI>
-<LI>1 = Layer 0+3
-  
+<LI>01 = No blending
+</LI>
+<LI>10 = ULA/Tilemap mix result as blend colour
+</LI>
+<LI>11 = Tilemap as blend colour
 </LI>
 </UL>
-bits 5-4 = Reserved must be 0
+bit 4 = Cancel entries in 8x5 matrix for extended keys (3.01.04)
 bit 3 = Enable ULAplus (0 on reset)
 bit 2 = Enable ULA half pixel scroll (0 on reset)<tr><td valign="top">&nbsp;may change
+bit 1 = Reserved (must be 0)
 bit 0 = Enable stencil mode (0 on reset)</td></tr>
 <tr><td valign="top">&nbsp;When ULA and Layer 3 are enabled, if either are transparent,
-  the resulr is transparent, otherwise the result is the logical AND
+  the result is transparent, otherwise the result is the logical AND
   of both colours.
 </td></tr></table>
 
@@ -345,9 +348,9 @@ effects.
 
 <UL CLASS="ChildLinks">
 <LI><UL>
-<LI><A ID="tex2html539"
+<LI><A ID="tex2html599"
   HREF="node44.html">Changes Since 2.00.26</A>
-<LI><A ID="tex2html540"
+<LI><A ID="tex2html600"
   HREF="node45.html">Future Direction</A>
 </UL></UL>
 <!--End of Table of Child-Links-->
@@ -363,11 +366,11 @@ effects.
 <A
  HREF="node42.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html535"
+<A ID="tex2html595"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html537"
-  HREF="node162.html">
+<A ID="tex2html597"
+  HREF="node177.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -376,10 +379,10 @@ effects.
  HREF="node36.html">Layer 3 (Tilemap) Mode</A>
 <B> Previous:</B> <A
  HREF="node42.html">Combining ULA &amp; Tilemap</A>
- &nbsp; <B>  <A ID="tex2html536"
+ &nbsp; <B>  <A ID="tex2html596"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html538"
-  HREF="node162.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html598"
+  HREF="node177.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

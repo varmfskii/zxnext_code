@@ -1,4 +1,5 @@
-\port{37}{Kempston/Mega Drive Joystick 2}
+\port{37}{Kempston/Mega Drive Joystick 2}\\
+Read
 \begin{itemize}
 \item[] bit 7 = ''start'' button
 \item[] bit 6 = A/X button
@@ -9,4 +10,36 @@
 \item[] bit 1 = Left
 \item[] bit 0 = Right
 \end{itemize}
-Disable with Nextreg \$05
+Disable with Nextreg \$05\\
+Write (\$00 on reset, 3.01.04)
+\begin{itemize}
+\item[] bits 7-6 = Select I/O Mode
+  \begin{itemize}
+  \item[] 00 = Bit Bang
+  \item[] 01 = Clock
+  \item[] 10 = UART
+  \item[] 11 = Reserved (don't use)
+  \end{itemize}
+\item[] bit 5 = Reserved, must be 0
+\item[] bit 4 = Select Joystick Port for Read
+  \begin{itemize}
+  \item[] 0 = Left
+  \item[] 1 = Right
+  \end{itemize}
+\item[] bits 3-1 = Reserved, must be \$00
+\item[] bit 0 = Pin 7 state (both ports)
+  \begin{itemize}
+  \item Bit Bang - bit 0 on pin 7
+  \item Clock - clock on pin 7\\
+    0 = Slow clock (Fsys/2048 = 12.672 kHz)\\
+    1 = Fast clock (Fsys/8 = 3.5 MHz)
+  \item UART - Pin 7 = TX, Pin 9 = RX
+    0 = ESP\\
+    1 = Pi
+  \end{itemize}
+\end{itemize}
+** A Runt clock may appear in the first cycle\\
+The I/O mode should be set by writing this port first followed by
+enabling io mo de on the joysticks with a write to nextreg 0x05.
+
+

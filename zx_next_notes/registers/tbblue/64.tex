@@ -1,0 +1,14 @@
+\register{R/W}{64}{Vertical Line Count Offset (3.01.05)}
+\begin{itemize}
+\item bits 7-0 = Offset added to the vertical line counter
+\item[] affects copper, line interrupt and active line
+  count.\\
+  Normally the ula's pixel row 0 aligns with vertical line count 0.
+  With a non-zero offset, the ula's pixel row 0 will align with the
+  vertical line offset.\\
+  Eg, if the offset is 32 then vertical line 32 will correspond to
+  the first pixel row in the ula and vertical line 0 will align with
+  the first pixel row of the tilemap and sprites.
+\end{itemize}
+* Since a change in offset takes effect when the ula reaches row 0,
+the change can take up to one frame to occur.

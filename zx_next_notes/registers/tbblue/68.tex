@@ -1,19 +1,21 @@
 \register{R/W}{68}{ULA Control}
 \begin{itemize}
 \item bit 7 = Disable ULA output (0 on reset)
-\item bit 6 = Color blending control for layering modes 6 \& 7
-  [S(L+U)] (0 on reset)
-  \begin{itemize}
-  \item 0 = Layer 0
-  \item 1 = Layer 0+3
-  \end{itemize}
-\item bits 5-4 = Reserved must be 0
+\item bit 6-5 = Color blending control for layering modes 6 \& 7
+\begin{itemize}
+\item 00 = ULA as blend colour
+\item 01 = No blending
+\item 10 = ULA/Tilemap mix result as blend colour
+\item 11 = Tilemap as blend colour
+\end{itemize}
+\item bit 4 = Cancel entries in 8x5 matrix for extended keys (3.01.04)
 \item bit 3 = Enable ULAplus (0 on reset)
 \item bit 2 = Enable ULA half pixel scroll (0 on reset)
 \item[] may change
+\item bit 1 = Reserved (must be 0)
 \item bit 0 = Enable stencil mode (0 on reset)
 \item[] When ULA and Layer 3 are enabled, if either are transparent,
-  the resulr is transparent, otherwise the result is the logical AND
+  the result is transparent, otherwise the result is the logical AND
   of both colours.
 \end{itemize}
 

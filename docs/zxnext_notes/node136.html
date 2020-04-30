@@ -32,11 +32,11 @@
 <A
  HREF="node135.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1053"
+<A ID="tex2html1113"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1055"
-  HREF="node162.html">
+<A ID="tex2html1115"
+  HREF="node177.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -45,10 +45,10 @@
  HREF="node135.html">Registers</A>
 <B> Previous:</B> <A
  HREF="node135.html">Registers</A>
- &nbsp; <B>  <A ID="tex2html1054"
+ &nbsp; <B>  <A ID="tex2html1114"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1056"
-  HREF="node162.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1116"
+  HREF="node177.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
@@ -89,6 +89,8 @@ Register (R) $00 (00) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 <LI>00001010 = ZX Spectrum Next*
 </LI>
 <LI>00001011 = Multicore
+</LI>
+<LI>11101010 = ZX Spectrum Next on ZX-DOS fpga platform *
 </LI>
 <LI>11111010 = ZX Spectrum Next Anti-brick*
 </LI>
@@ -219,7 +221,16 @@ Joystick modes
 </LI>
 <LI>101 = Megadrive 2 (port $37)
 </LI>
-<LI>110 = Simclair 1 (12345)
+<LI>110 = Sinclair 1 (12345)
+</LI>
+<LI>111 = I/O Mode
+Both joysticks are places in I/O Mode if either is set to I/O
+Mode. The underlying joystick type is not changed and reads of this
+register will continue to return the last joystick type. Ehether the
+joystick is in io mode or not is invisible but this state can be
+cleared either through reset or by re-writing the gegister with
+joystick type not equal to 111. Recovery time for a normal joystick
+read after leaving I/O Mode is at most 64 scan lines.
 </LI>
 </UL>
 Register (R/W) $06 (06) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
@@ -228,7 +239,8 @@ Register (R/W) $06 (06) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <UL>
 <LI>bit 7 = F8 CPU Speed Hotkey Enable (1 on reset)
 </LI>
-<LI>bit 6 = DMA mode (0 = zxnDMA, 1 = Z80DMA) (0 on hard reset)
+<LI>bit 6 = Enable classic audio mode (beep and tape to internal speaker,
+  other audio to ear and HDMI, 3.01.02)
 </LI>
 <LI>bit 5 = F3 50Hz/60Hz Hotkey Enable (1 on reset)
 </LI>
@@ -314,11 +326,11 @@ bits 1-0 = scanlines
 <UL>
 <LI>00 = scanlines off
 </LI>
-<LI>01 = scanlines 75%
+<LI>01 = scanlines 12.5%
 </LI>
-<LI>10 = scanlines 50%
+<LI>10 = scanlines 25%
 </LI>
-<LI>11 = scanlines 25%
+<LI>11 = scanlines 50%
   
 </LI>
 </UL><tr><td valign="top">&nbsp;In Sprite lockstep, NextREG $34 and Port $303B are in
@@ -1164,26 +1176,46 @@ memory position.
 <P>
 After a write to an odd address, the all 16-bits are written to copper
 memory at once.
+Register (R/W) $64 (64) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Vertical Line Count Offset (3.01.05)
+<table width="90%">
+bits 7-0 = Offset added to the vertical line counter<tr><td valign="top">&nbsp;affects copper, line interrupt and active line
+  count.
+<BR>
+Normally the ula's pixel row 0 aligns with vertical line count 0.
+  With a non-zero offset, the ula's pixel row 0 will align with the
+  vertical line offset.
+<BR>
+Eg, if the offset is 32 then vertical line 32 will correspond to
+  the first pixel row in the ula and vertical line 0 will align with
+  the first pixel row of the tilemap and sprites.
+</td></tr></table>
+
+* Since a change in offset takes effect when the ula reaches row 0,
+the change can take up to one frame to occur.
 Register (R/W) $68 (68) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> ULA Control
 <table width="90%">
 bit 7 = Disable ULA output (0 on reset)
-bit 6 = Color blending control for layering modes 6 &amp; 7
-  [S(L+U)] (0 on reset)
-  
+bit 6-5 = Color blending control for layering modes 6 &amp; 7
+
 <UL>
-<LI>0 = Layer 0
+<LI>00 = ULA as blend colour
 </LI>
-<LI>1 = Layer 0+3
-  
+<LI>01 = No blending
+</LI>
+<LI>10 = ULA/Tilemap mix result as blend colour
+</LI>
+<LI>11 = Tilemap as blend colour
 </LI>
 </UL>
-bits 5-4 = Reserved must be 0
+bit 4 = Cancel entries in 8x5 matrix for extended keys (3.01.04)
 bit 3 = Enable ULAplus (0 on reset)
 bit 2 = Enable ULA half pixel scroll (0 on reset)<tr><td valign="top">&nbsp;may change
+bit 1 = Reserved (must be 0)
 bit 0 = Enable stencil mode (0 on reset)</td></tr>
 <tr><td valign="top">&nbsp;When ULA and Layer 3 are enabled, if either are transparent,
-  the resulr is transparent, otherwise the result is the logical AND
+  the result is transparent, otherwise the result is the logical AND
   of both colours.
 </td></tr></table>
 
@@ -1380,7 +1412,8 @@ Immediate
 <UL>
 <LI>bit 7 = Expansion Bus Enable (0 on hard reset)
 </LI>
-<LI>bit 6 = reserved, must be 0
+<LI>bit 6 = Enable ROMCS ROM replacement from divmmc banks 14/15
+  (experimental, 3.01.03)
 </LI>
 <LI>bit 5 = I/O cycle Disable/Ignore <!-- MATH
  $\overline{\hbox{IORQULA}}$
@@ -1402,7 +1435,8 @@ After Soft Reset (Copied into bits 7-4)
 <UL>
 <LI>bit 3 = Expansion Bus Enable (0 on hard reset)
 </LI>
-<LI>bit 2 = reserved, must be 0
+<LI>bit 2 = Enable ROMCS ROM replacement from divmmc banks 14/15
+  (experimental, 3.01.03)
 </LI>
 <LI>bit 1 = I/O cycle Disable/Ignore <!-- MATH
  $\overline{\hbox{IORQULA}}$
@@ -1523,7 +1557,11 @@ Register (R/W) $85 (85) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
  ALT="$\Rightarrow$"></SPAN> Internal Port decoding control 4/4
 
 <UL>
-<LI>bits 7-1 = Reserved
+<LI>bit 7 = Enable configuration of port decoding on soft reset (3.01.01)
+</LI>
+<LI>bits 6-2 = Reserved
+</LI>
+<LI>bit 1 = Enable DMA port $0B (3.01.02)
 </LI>
 <LI>bit 0 = Enable ULAplus (Ports $BF3B, $FF3B) (1 on reset)
 </LI>
@@ -1599,7 +1637,11 @@ Register (R/W) $89 (89) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
  ALT="$\Rightarrow$"></SPAN> Expansion Port decoding control 4/4
 
 <UL>
-<LI>bits 7-1 = Reserved
+<LI>bit 7 = Enable configuration of port decoding on soft reset (3.01.01)
+</LI>
+<LI>bits 6-2 = Reserved
+</LI>
+<LI>bit 1 = Enable DMA port $0B (3.01.02)
 </LI>
 <LI>bit 0 = Enable ULAplus (Ports $BF3B, $FF3B) (1 on reset)
 </LI>
@@ -1619,7 +1661,9 @@ Register (R/W) $8A (8A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
  ALT="$\Rightarrow$"></SPAN> Expansion Bus I/O Propagate Control
 
 <UL>
-<LI>bits 7-4 = Reserved, must be 0
+<LI>bits 7-3 = Reserved, must be 0
+</LI>
+<LI>bit 4 = Propagate port $FF I/O Cycles (0 on hard reset, 3.01.02)
 </LI>
 <LI>bit 3 = Propagate port $1FFD I/O Cycles (0 on hard reset)
 </LI>
@@ -1627,7 +1671,8 @@ Register (R/W) $8A (8A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </LI>
 <LI>bit 1 = Propagate port $7FFD I/O Cycles (0 on hard reset)
 </LI>
-<LI>bit 0 = Propagate port $FE I/O Cycles (1 on hard reset)
+<LI>bit 0 = Propagate port $FE I/O Cycles (1 on hard reset, 3.01.03:
+  0 on hard reset)
 </LI>
 </UL>
 Register (R/W) $8C (8C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
@@ -1657,6 +1702,25 @@ After Soft Reset (copied into bits 7-4)
 <LI>bit 0 = 48k ROM Lock (0 on hard reset)
 </LI>
 </UL>
+Register (R/W) $8E (8E) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Legacy Memory Paging Control (3.01.01)
+<table width="90%">
+bit 7 = Bank number bit 3
+bit 6-4 = Bank number bits 2-0
+bit 3 = Enable change ram page (read as 1)
+bit 2 = Paging mode
+
+<UL>
+<LI>0 = Normal paging mode
+</LI>
+<LI>1 = Special paging mode (lot bit of memory configuration)
+</LI>
+</UL><tr><td valign="top">&nbsp;Normal Paging Mode
+bits 1-0 = ROM selection</td></tr>
+<tr><td valign="top">&nbsp;Special (all RAM) Paging Mode
+bits 1-0 = RAM configuration selection
+</td></tr></table>
+
 Register (R/W) $90 (90) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 1/4
 
@@ -1873,13 +1937,13 @@ Register (R/W) $A2 (A2) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </LI>
 <LI>bit 2 = Mute right (0 on reset)
 </LI>
-<LI>bit 1 = Slave (PCM_CLK, PCM_FS external) (0 on reset)
+<LI>bit 1 = Reserved must be 1 (3.01.05)
 </LI>
-<LI>bit 0 = Direct  I<SUP>2</SUP>S audio to EAR on port $FE
+<LI>bit 0 = Direct  I<SUP>2</SUP>S audio to EAR on port $FE (0 on reset)
 </LI>
 </UL>
 Register (R/W) $A3 (A3) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Pi  I<SUP>2</SUP>S Clock Divide (Master Mode)
+ ALT="$\Rightarrow$"></SPAN> Pi  I<SUP>2</SUP>S Clock Divide (Master Mode) (removed in 3.01.05)
 
 <UL>
 <LI>bits 7-0 = Clock divide value ($0B on reset)
@@ -1889,11 +1953,56 @@ Register (R/W) $A3 (A3) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
  $\hbox{Divider}=\frac{538461}{\hbox{Rate}}-1$
  -->
 <SPAN CLASS="MATH"><IMG STYLE="height: 3.34ex; vertical-align: -1.24ex; " SRC="img77.svg"
- ALT="$\hbox{Divider}=\frac{538461}{\hbox{Rate}}-1$"></SPAN> or <!-- MATH
+ ALT="$\hbox{Divider}=\frac{538461}{\hbox{Rate}}-1$"></SPAN> or
+<!-- MATH
  $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE="height: 3.54ex; vertical-align: -1.44ex; " SRC="img78.svg"
  ALT="$\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$"></SPAN>
+Register (R) $B0 (B0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Extended Keys 0 (3.01.05)
+
+<UL>
+<LI>bit 7 = 1 if ; pressed
+</LI>
+<LI>bit 6 = 1 if pressed
+</LI>
+<LI>bit 5 = 1 if , pressed
+</LI>
+<LI>bit 4 = 1 if . pressed
+</LI>
+<LI>bit 3 = 1 if UP pressed
+</LI>
+<LI>bit 2 = 1 if DOWN pressed
+</LI>
+<LI>bit 1 = 1 if LEFT pressed
+</LI>
+<LI>bit 0 = 1 if RIGHT pressed
+</LI>
+</UL>
+Register (R) $B1 (B1) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Extended Keys 1 (3.01.05)
+
+<UL>
+<LI>bit 7 = 1 if DELETE pressed
+</LI>
+<LI>bit 6 = 1 if EDIT pressed
+</LI>
+<LI>bit 5 = 1 if BREAK pressed
+</LI>
+<LI>bit 4 = 1 if INV VIDEO pressed
+</LI>
+<LI>bit 3 = 1 if TRUE VIDEO pressed
+</LI>
+<LI>bit 2 = 1 if GRAPH pressed
+</LI>
+<LI>bit 1 = 1 if CAPS LOCK pressed
+</LI>
+<LI>bit 0 = 1 if EXTEND pressed
+</LI>
+</UL>
+Register (W) $FF (FF) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Debug LEDs (DE-1, DE-2 am Multicore only)
 
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
@@ -1906,11 +2015,11 @@ Register (R/W) $A3 (A3) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <A
  HREF="node135.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1053"
+<A ID="tex2html1113"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1055"
-  HREF="node162.html">
+<A ID="tex2html1115"
+  HREF="node177.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -1919,10 +2028,10 @@ Register (R/W) $A3 (A3) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
  HREF="node135.html">Registers</A>
 <B> Previous:</B> <A
  HREF="node135.html">Registers</A>
- &nbsp; <B>  <A ID="tex2html1054"
+ &nbsp; <B>  <A ID="tex2html1114"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1056"
-  HREF="node162.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html1116"
+  HREF="node177.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

@@ -1,0 +1,21 @@
+{Mnemonic},{Opcode},{Sz},{T},{Mnemonic},{Opcode},{Sz},{T}
+{res 4,(hl)},{\$CBA6},{2},{15},{res 6,(ix+x)},{\$DDCBB6},{4},{23}
+{res 4,(ix+x)},{\$DDCBA6},{4},{23},{res 6,(iy+x)},{\$FDCBB6},{4},{23}
+{res 4,(iy+x)},{\$FDCBA6},{4},{23},{res 6,a},{\$CBB7},{2},{8}
+{res 4,a},{\$CBA7},{2},{8},{res 6,b},{\$CBB0},{2},{8}
+{res 4,b},{\$CBA0},{2},{8},{res 6,c},{\$CBB1},{2},{8}
+{res 4,c},{\$CBA1},{2},{8},{res 6,d},{\$CBB2},{2},{8}
+{res 4,d},{\$CBA2},{2},{8},{res 6,e},{\$CBB3},{2},{8}
+{res 4,e},{\$CBA3},{2},{8},{res 6,h},{\$CBB4},{2},{8}
+{res 4,h},{\$CBA4},{2},{8},{res 6,l},{\$CBB5},{2},{8}
+{res 4,l},{\$CBA5},{2},{8},{res 7,(hl)},{\$CBBE},{2},{15}
+{res 5,(hl)},{\$CBAE},{2},{15},{res 7,(ix+x)},{\$DDCBBE},{4},{23}
+{res 5,(ix+x)},{\$DDCBAE},{4},{23},{res 7,(iy+x)},{\$FDCBBE},{4},{23}
+{res 5,(iy+x)},{\$FDCBAE},{4},{23},{res 7,a},{\$CBBF},{2},{8}
+{res 5,a},{\$CBAF},{2},{8},{res 7,b},{\$CBB8},{2},{8}
+{res 5,b},{\$CBA8},{2},{8},{res 7,c},{\$CBB9},{2},{8}
+{res 5,c},{\$CBA9},{2},{8},{res 7,d},{\$CBBA},{2},{8}
+{res 5,d},{\$CBAA},{2},{8},{res 7,e},{\$CBBB},{2},{8}
+{res 5,e},{\$CBAB},{2},{8},{res 7,h},{\$CBBC},{2},{8}
+{res 5,h},{\$CBAC},{2},{8},{res 7,l},{\$CBBD},{2},{8}
+{res 5,l},{\$CBAD},{2},{8},{},{},{},{}

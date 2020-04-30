@@ -1,0 +1,15 @@
+\register{R/W}{8E}{Legacy Memory Paging Control (3.01.01)}
+\begin{itemize}
+\item bit 7 = Bank number bit 3
+\item bit 6-4 = Bank number bits 2-0
+\item bit 3 = Enable change ram page (read as 1)
+\item bit 2 = Paging mode
+\begin{itemize}
+\item 0 = Normal paging mode
+\item 1 = Special paging mode (lot bit of memory configuration)
+\end{itemize}
+\item[] Normal Paging Mode
+\item bits 1-0 = ROM selection
+\item[] Special (all RAM) Paging Mode
+\item bits 1-0 = RAM configuration selection
+\end{itemize}

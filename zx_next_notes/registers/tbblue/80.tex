@@ -2,7 +2,8 @@
 Immediate
 \begin{itemize}
 \item bit 7 = Expansion Bus Enable (0 on hard reset)
-\item bit 6 = reserved, must be 0
+\item bit 6 = Enable ROMCS ROM replacement from divmmc banks 14/15
+  (experimental, 3.01.03)
 \item bit 5 = I/O cycle Disable/Ignore \textoverline{IORQULA} (0 on
   hard reset)
 \item bit 4 = Memory cycle Disable/Ignore \textoverline{ROMCS} (0 on
@@ -11,7 +12,8 @@ Immediate
 After Soft Reset (Copied into bits 7-4)
 \begin{itemize}
 \item bit 3 = Expansion Bus Enable (0 on hard reset)
-\item bit 2 = reserved, must be 0
+\item bit 2 = Enable ROMCS ROM replacement from divmmc banks 14/15
+  (experimental, 3.01.03)
 \item bit 1 = I/O cycle Disable/Ignore \textoverline{IORQULA} (0 on
   hard reset)
 \item bit 0 = Memory cycle Disable/Ignore \textoverline{ROMCS} (0 on

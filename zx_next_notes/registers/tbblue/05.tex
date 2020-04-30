@@ -15,6 +15,14 @@ Joystick modes
 \item 011 = Megadrive 1 (port \$1F)
 \item 100 = Cursor
 \item 101 = Megadrive 2 (port \$37)
-\item 110 = Simclair 1 (12345)
+\item 110 = Sinclair 1 (12345)
+\item 111 = I/O Mode
+Both joysticks are places in I/O Mode if either is set to I/O
+Mode. The underlying joystick type is not changed and reads of this
+register will continue to return the last joystick type. Ehether the
+joystick is in io mode or not is invisible but this state can be
+cleared either through reset or by re-writing the gegister with
+joystick type not equal to 111. Recovery time for a normal joystick
+read after leaving I/O Mode is at most 64 scan lines.
 \end{itemize}
 

@@ -264,6 +264,216 @@ $cached_env_img{$key} = q|<IMG STYLE=""
 Time/date in the format MM/DD/YY HH:MM:SS
 \end{labeledpar}">|; 
 
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashaci-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img106.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/aci-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashadd-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img107.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/add-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashadi-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img108.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/adi-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashbit0-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img109.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/bit0-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashbit4-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img110.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/bit4-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashbrlc-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img111.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/brlc-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashcp-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img112.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/cp-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashdcx-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img113.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/dcx-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashin-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img114.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/in-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashjc-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img115.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/jc-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld0-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img116.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/ld0-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld1-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img117.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/ld1-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld2-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img118.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/ld2-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld3-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img119.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/ld3-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld4-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img120.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/ld4-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld5-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img121.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/ld5-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashlda-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img122.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/lda-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashmov0-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img123.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/mov0-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashmov1-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img124.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/mov1-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashmul-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img125.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/mul-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashout-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img126.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/out-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashres0-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img127.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/res0-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashres4-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img128.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/res4-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashret-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img129.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/ret-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashrr-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img130.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/rr-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashsbb-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img131.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/sbb-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashset0-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img132.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/set0-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashset4-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img133.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/set4-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashsetae-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img134.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/setae-mnemonics.csv}
+\end{table}">|; 
+
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashsub-mnemonics.csv}{table};LFS=11;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img135.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvautotabular{appendices/mnemonic/sub-mnemonics.csv}
+\end{table}">|; 
+
 $key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslash00-opcode.csv}{table};LFS=11;AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
  SRC="|."$dir".q|img79.svg"

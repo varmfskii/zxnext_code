@@ -1,0 +1,21 @@
+{Mnemonic},{Opcode},{Sz},{T},{Mnemonic},{Opcode},{Sz},{T}
+{set 0,(hl)},{\$CBC6},{2},{15},{set 2,(ix+x)},{\$DDCBD6},{4},{23}
+{set 0,(ix+x)},{\$DDCBC6},{4},{23},{set 2,(iy+x)},{\$FDCBD6},{4},{23}
+{set 0,(iy+x)},{\$FDCBC6},{4},{23},{set 2,a},{\$CBD7},{2},{8}
+{set 0,a},{\$CBC7},{2},{8},{set 2,b},{\$CBD0},{2},{8}
+{set 0,b},{\$CBC0},{2},{8},{set 2,c},{\$CBD1},{2},{8}
+{set 0,c},{\$CBC1},{2},{8},{set 2,d},{\$CBD2},{2},{8}
+{set 0,d},{\$CBC2},{2},{8},{set 2,e},{\$CBD3},{2},{8}
+{set 0,e},{\$CBC3},{2},{8},{set 2,h},{\$CBD4},{2},{8}
+{set 0,h},{\$CBC4},{2},{8},{set 2,l},{\$CBD5},{2},{8}
+{set 0,l},{\$CBC5},{2},{8},{set 3,(hl)},{\$CBDE},{2},{15}
+{set 1,(hl)},{\$CBCE},{2},{15},{set 3,(ix+x)},{\$DDCBDE},{4},{23}
+{set 1,(ix+x)},{\$DDCBCE},{4},{23},{set 3,(iy+x)},{\$FDCBDE},{4},{23}
+{set 1,(iy+x)},{\$FDCBCE},{4},{23},{set 3,a},{\$CBDF},{2},{8}
+{set 1,a},{\$CBCF},{2},{8},{set 3,b},{\$CBD8},{2},{8}
+{set 1,b},{\$CBC8},{2},{8},{set 3,c},{\$CBD9},{2},{8}
+{set 1,c},{\$CBC9},{2},{8},{set 3,d},{\$CBDA},{2},{8}
+{set 1,d},{\$CBCA},{2},{8},{set 3,e},{\$CBDB},{2},{8}
+{set 1,e},{\$CBCB},{2},{8},{set 3,h},{\$CBDC},{2},{8}
+{set 1,h},{\$CBCC},{2},{8},{set 3,l},{\$CBDD},{2},{8}
+{set 1,l},{\$CBCD},{2},{8},{},{},{},{}
