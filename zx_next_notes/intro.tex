@@ -1,4 +1,5 @@
 \chapter{Introduction}
+\begin{multicols}{2}
 The ZX Spectrum Next is an extension of the original ZX Spectrum
 implemented in FPGA which implements many of the common additions to
 the system includin the characteristics of all of the original ZX
@@ -8,14 +9,14 @@ of characteristics to modernize the design.
 This document is an attempt to consolidate the programming interface
 for the ZX Spectrum Next into a single location. This document started
 when much of the documentation on the ZX Spectrum Next site
-(https://www.specnext.com/) was out of date and/or difficult to figure
+(\url{https://www.specnext.com/}) was out of date and/or difficult to figure
 out. The way to figure out how things actually worked was to either
 dig through the forums and ask questions or find someones code that
 implemented a particular bit of functionality and reverse engineer
 it. The situation has greatly improved and this document may even be
 redundant at this point.
 
-Description from http://www.specnext.com/about/:
+Description from \url{http://www.specnext.com/about/}:
 
 The Spectrum Next is fully implemented with FPGA technology, ensuring
 it can be upgraded and enhanced while remaining truly compatible with
@@ -25,24 +26,22 @@ design. Here’s what under the hood of the machine:
 \begin{itemize}
 \item Processor: Z80n normal and turbo modes
 \item Memory: 1024Kb RAM (expandable to 2048Kb on board)
-\item Video: Multilayer video implementing classic ZX Spectrum, Timex
-  Hi-Resolution, Timex Hi-Colour, LoRes, Layer 2, and Tilemap video
-  modes with Hardware sprites
+\item Video: Hardware sprites, 256 colours and more
 \item Video Output: RGB, VGA, HDMI
 \item Storage: SD Card slot, with DivMMC-compatible protocol
-\item Audio: ZX Spectrum 1-bit audio, Turbo Sound Next (3x AY-3-8912
-  audio chips with stereo output), stereo PCM audio, and ability to
-  use Pi accelerator as a sound source
+\item Audio: Turbo Sound Next (3x AY-8912 audio chips with stereo
+  output)
 \item Joystick: DB9 compatible with Cursor, Kempston and Interface 2
   protocols (selectable)
-\item PS/2 port: Mouse with Kempston mode emulation and an external keyboard
+\item PS/2 port: Mouse with Kempston mode emulation and an external
+  keyboard
 \item Special: Multiface functionality for memory access, savegames,
   cheats etc.
 \item Tape support: Mic and Ear ports for tape loading and saving
 \item Expansion: Original external bus expansion port and accelerator
   expansion port
-\item Accelerator board (optional): Pi Zero with GPU / 1Ghz CPU / 512Mb RAM
+\item Accelerator board (optional): GPU / 1Ghz CPU / 512Mb RAM
 \item Network (optional): Wi Fi module
 \item Extras: Real Time Clock (optional), internal speaker (optional)
 \end{itemize}
-
+\end{multicols}

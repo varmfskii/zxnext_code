@@ -22,12 +22,12 @@ attribute bytes; and an emulation of ULA+.
 In ULA colour INKs are mapped to indices 0-7, Bright INKS to indices
 8-15, PAPERs to indices 16-23 and Bright PAPERs to indices 24-31. This
 is the default state for interpreting ULA palettes.
-
+\sinset
 \begin{table}[h]\centering
   \caption{ULA Colour}
   \csvautotabular{video/flash.csv}
 \end{table}
-
+\einset
 \paragraph{ULA Next}
 The ULA next modes use a varying number of bits from the attribute
 byte to determine the ink colours as the palette index from the
@@ -38,12 +38,12 @@ always palette index 128. The ULA always takes border colour from
 paper. ULA next is enabled using bit 0 of nextreg \$43 (palette
 control) and controlled with nextreg \$42 (ULA Next attribute byte
 format)
-
+\sinset
 \begin{table}[h]\centering
   \caption{ULA Next}
   \csvautotabular{video/palfmt.csv}
 \end{table}
-
+\einset
 \paragraph{ULA+}
 The ZX Next emulates ULAPlus using the last 64 (192-255) entries of
 the ULA palette. ULA+ is controlled using two ports: \$BF3B (register
@@ -164,6 +164,7 @@ paper\_colour = (FLASH * 2 + BRIGHT) * 16 + PAPER + 8
 \subparagraph{Palette file format}
 The palette format doubles as the BASIC patch loader. This enables you
 to edit patches produced by other people.
+\sinset
 \begin{verbatim}
 ; 64 colour palette file format (internal) - version 1.0
 ; copyright (c) 2009 Andrew Owen
@@ -237,7 +238,7 @@ terminating_byte:
 
 db 0x0d 
 \end{verbatim}
-
+\einset
 \subsection{Layer 1 Scrolling}
 Layer 1 has two sets of scrolling registers. One for the the legacy
 modes (ZX Spectrum, Alternate Page, Timex Hi-Resoulution, and Timex
@@ -291,22 +292,24 @@ its own colour attribute where the address for an attribute cell is
 $0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$ in other words mapped lineally
 column-wise starting at the beginning of the attribute 1 area.
 
+\sinset
 Code:
 \begin{verbatim}
-  ;; from any other Timex mode:
-  ld a,$00
-  ld c,$ff
-  out (c),a
+;; from any other Timex mode:
+ld a,$00
+ld c,$ff
+out (c),a
 
-  ;; from LoRes mode:
-  ld bc,$243B ; next register select port
-  ld a,$15
-  out (c),a
-  ld bc,$253B ; next register r/w port
-  in a,(c)
-  and $7f
-  out (c),a
+;; from LoRes mode:
+ld bc,$243B ; next register select port
+ld a,$15
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+and $7f
+out (c),a
 \end{verbatim}
+\einset
 
 \subsection{Alternate Page Mode}
 
@@ -321,6 +324,7 @@ use pixel addresses of $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$ and
 the attributes to the attribute 2 area with addresses of
 $1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$.
 
+\sinset
 Code:
 
 \begin{verbatim}
@@ -345,6 +349,7 @@ ld c,$ff
 ld a,$01
 out (c),a
 \end{verbatim}
+\einset
 
 \subsection{Timex Hi-Colour Mode}
 
@@ -359,6 +364,7 @@ $0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$.  The colour attributes use
 the bitmap 2 area with $8\times1$ colour attribute areas corresponding
 to the addresses $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$.
 
+\sinset
 Code:
 \begin{verbatim}
 ;; disable LoRes mode:
@@ -382,6 +388,7 @@ ld c,$ff
 ld a,$02
 out (c),a
 \end{verbatim}
+\einset
 
 \subsection{Timex Hi-Resolution Mode}
 
@@ -393,11 +400,13 @@ width. It is selected by writing to the Timex ULA port (\$ff with
 values that also select which two colours (or colour entries in
 ULANext mode) you use.
 
+\sinset
 \begin{table}[h]\centering
   \caption{Hi-Resolution Colours}
   \csvautotabular{video/hires.csv}
 \end{table}
-  
+\einset
+
 Pixels are mapped into both the bitmap 1 and bitmap 2 areas where
 8-pixel wide character columns alternate between the two bitmap areas.
 The pixels within a byte being rendered left to right lsb to msb as in
@@ -406,6 +415,7 @@ character are based on a $64\times32$ grid of $8\times8$ characters
 which using a $64\times24$ R, C, and Y scheme gives us addresses of
 the form $C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1$.
 
+\sinset
 Code:
 \begin{verbatim}
 ;; disable LoRes mode:
@@ -429,6 +439,7 @@ ld c,$ff
 ld a,$06
 out (c),a
 \end{verbatim}
+\einset
 
 \subsection{Lo-Resolution Mode}
 This is a Spectrum Next specific video mode with a resolution of
@@ -450,6 +461,7 @@ decide whether it is 16 or 256 colours.
 \input{registers/tbblue/33.tex}
 \input{registers/tbblue/6A.tex}
 
+\sinset
 Code: 256 colour
 \begin{verbatim}
 ;; enable LoRes mode:
@@ -471,3 +483,5 @@ nextreg $15,$80
 ;; 16-colour mode
 nextreg $6A,$10
 \end{verbatim}
+\einset
+

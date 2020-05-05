@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.3.31)  30 APR 2020 12:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.3.31)  5 MAY 2020 11:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -8,8 +8,8 @@ LaTeX2e <2019-10-01> patch level 1
 
 (/usr/share/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2019/08/27 v1.4j Standard LaTeX document class
-(/usr/share/texmf-dist/tex/latex/base/bk11.clo
-File: bk11.clo 2019/08/27 v1.4j Standard LaTeX file (size option)
+(/usr/share/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2019/08/27 v1.4j Standard LaTeX file (size option)
 )
 \c@part=\count80
 \c@chapter=\count81
@@ -123,6 +123,84 @@ Package: hang 2017/02/18 v2.1 Hanging paragraphs and list items
 \hangingindent=\skip44
 \hangingleftmargin=\skip45
 \labeledleftmargin=\skip46
+) (/usr/share/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2018/04/16 v5.8 Page Geometry
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+) (/usr/share/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+) (/usr/share/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count103
+\Gm@cntv=\count104
+\c@Gm@tempcnt=\count105
+\Gm@bindingoffset=\dimen121
+\Gm@wd@mp=\dimen122
+\Gm@odd@mp=\dimen123
+\Gm@even@mp=\dimen124
+\Gm@layoutwidth=\dimen125
+\Gm@layoutheight=\dimen126
+\Gm@layouthoffset=\dimen127
+\Gm@layoutvoffset=\dimen128
+\Gm@dimlist=\toks21
+) (/usr/share/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (/usr/share/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2019/03/01 v1.8w multicolumn formatting (FMi)
+\c@tracingmulticols=\count106
+\mult@box=\box29
+\multicol@leftmargin=\dimen129
+\c@unbalance=\count107
+\c@collectmore=\count108
+\doublecol@number=\count109
+\multicoltolerance=\count110
+\multicolpretolerance=\count111
+\full@width=\dimen130
+\page@free=\dimen131
+\premulticols=\dimen132
+\postmulticols=\dimen133
+\multicolsep=\skip47
+\multicolbaselineskip=\skip48
+\partial@page=\box30
+\last@line=\box31
+\maxbalancingoverflow=\dimen134
+\mult@rightbox=\box32
+\mult@grightbox=\box33
+\mult@gfirstbox=\box34
+\mult@firstbox=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\@tempa=\box51
+\@tempa=\box52
+\c@minrows=\count112
+\c@columnbadness=\count113
+\c@finalcolumnbadness=\count114
+\last@try=\dimen135
+\multicolovershoot=\dimen136
+\multicolundershoot=\dimen137
+\mult@nat@firstbox=\box53
+\colbreak@box=\box54
+\mc@col@check@num=\count115
+) (/usr/share/texmf-dist/tex/latex/changepage/changepage.sty
+Package: changepage 2009/10/20 v1.0c check page and change page layout
+\c@cp@cntr=\count116
+\cp@tempcnt=\count117
 )
 \@indexfile=\write4
 \openout4 = `images.idx'.
@@ -145,75 +223,71 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 ) (/usr/share/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2018/08/11 v1.3c Input encoding file
-\inpenc@prehook=\toks21
-\inpenc@posthook=\toks22
+\inpenc@prehook=\toks22
+\inpenc@posthook=\toks23
 )
-\sizebox=\box29
+\sizebox=\box55
 \lthtmlwrite=\write5
 (/usr/share/texmf-dist/tex/latex/preview/preview.sty
 Package: preview 2017/04/24 11.91 (AUCTeX/preview-latex)
 (/usr/share/texmf-dist/tex/generic/luatex85/luatex85.sty
 Package: luatex85 2016/06/15 v1.4 pdftex aliases for luatex
 ) (/usr/share/texmf-dist/tex/latex/preview/prtightpage.def
-\PreviewBorder=\dimen121
+\PreviewBorder=\dimen138
 )
-\pr@snippet=\count103
-\pr@box=\box30
-\pr@output=\toks23
+\pr@snippet=\count118
+\pr@box=\box56
+\pr@output=\toks24
 )
-\lthtmlPageBox=\box31
-\lthtmlCropMarkHeight=\dimen122
-\lthtmlCropMarkDepth=\dimen123
+\lthtmlPageBox=\box57
+\lthtmlCropMarkHeight=\dimen139
+\lthtmlCropMarkDepth=\dimen140
 ! Too many }'s.
-l.87 ...preview}\copy\lthtmlPageBox\end{preview}}}
+l.93 ...preview}\copy\lthtmlPageBox\end{preview}}}
                                                   %
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-(./images.aux (/home/alex/retro/zx/zxnext/code/zx_next_notes/video/video.aux) (
-/home/alex/retro/zx/zxnext/code/zx_next_notes/audio/audio.aux) (/home/alex/retr
-o/zx/zxnext/code/zx_next_notes/memory/memory.aux) (/home/alex/retro/zx/zxnext/c
-ode/zx_next_notes/zxndma/zxndma.aux) (/home/alex/retro/zx/zxnext/code/zx_next_n
-otes/copper/copper.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/interrup
-ts.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/pi0.aux) (/home/alex/ret
-ro/zx/zxnext/code/zx_next_notes/system/system.aux) (/home/alex/retro/zx/zxnext/
-code/zx_next_notes/appendices/ports/ports.aux)
-(/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/registers/registers.a
-ux)
-(/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/opcode/opcode-mnemoni
-c.aux)
-(/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/mnemonic/mnemonic-opc
-ode.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/file_formats
-.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/call_tables.aux
-))
+(./images.aux (/home/alex/retro/zx/code/zx_next_notes/video/video.aux) (/home/a
+lex/retro/zx/code/zx_next_notes/audio/audio.aux) (/home/alex/retro/zx/code/zx_n
+ext_notes/memory/memory.aux) (/home/alex/retro/zx/code/zx_next_notes/zxndma/zxn
+dma.aux) (/home/alex/retro/zx/code/zx_next_notes/copper/copper.aux) (/home/alex
+/retro/zx/code/zx_next_notes/interrupts.aux) (/home/alex/retro/zx/code/zx_next_
+notes/pi0.aux) (/home/alex/retro/zx/code/zx_next_notes/system/system.aux) (/hom
+e/alex/retro/zx/code/zx_next_notes/appendices/ports/ports.aux) (/home/alex/retr
+o/zx/code/zx_next_notes/appendices/registers/registers.aux) (/home/alex/retro/z
+x/code/zx_next_notes/appendices/opcode/opcode-mnemonic.aux)
+(/home/alex/retro/zx/code/zx_next_notes/appendices/mnemonic/mnemonic-opcode.aux
+) (/home/alex/retro/zx/code/zx_next_notes/appendices/file_formats.aux) (/home/a
+lex/retro/zx/code/zx_next_notes/appendices/call_tables.aux))
 \openout1 = `images.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 118.
-LaTeX Font Info:    ... okay on input line 118.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 118.
-LaTeX Font Info:    ... okay on input line 118.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 118.
-LaTeX Font Info:    ... okay on input line 118.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 118.
-LaTeX Font Info:    ... okay on input line 118.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 118.
-LaTeX Font Info:    ... okay on input line 118.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 118.
-LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 124.
+LaTeX Font Info:    ... okay on input line 124.
 ABD: EveryShipout initializing macros (/usr/share/texmf-dist/tex/context/base/m
 kii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count104
-\scratchdimen=\dimen124
-\scratchbox=\box32
-\nofMPsegments=\count105
-\nofMParguments=\count106
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count107
-\MPscratchDim=\dimen125
-\MPnumerator=\count108
-\makeMPintoPDFobject=\count109
-\everyMPtoPDFconversion=\toks25
+\scratchcounter=\count119
+\scratchdimen=\dimen141
+\scratchbox=\box58
+\nofMPsegments=\count120
+\nofMParguments=\count121
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count122
+\MPscratchDim=\dimen142
+\MPnumerator=\count123
+\makeMPintoPDFobject=\count124
+\everyMPtoPDFconversion=\toks26
 ) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 (/usr/share/texmf-dist/tex/generic/oberdiek/infwarerr.sty
@@ -236,9 +310,6 @@ Package ifluatex Info: LuaTeX not detected.
 )))) (/usr/share/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2019/07/25 v0.30 Utility functions of pdfTeX for LuaTeX (HO
 )
-(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
-)
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
@@ -254,12 +325,46 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Preview: Fontsize 10.95pt
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=349.0pt
+* \textheight=675.72495pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=0.0pt
+* \headheight=0.0pt
+* \headsep=0.0pt
+* \topskip=0.00003pt
+* \footskip=0.0pt
+* \marginparwidth=125.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Preview: Fontsize 10pt
 Preview: PDFoutput 1
 
 latex2htmlLength hsize=349.0pt
 
-latex2htmlLength vsize=624.73698pt
+latex2htmlLength vsize=675.72495pt
 
 latex2htmlLength hoffset=0.0pt
 
@@ -275,754 +380,2115 @@ latex2htmlLength headsep=0.0pt
 
 latex2htmlLength parskip=6.0pt
 
-latex2htmlLength oddsidemargin=29.0pt
+latex2htmlLength oddsidemargin=0.0pt
 
-latex2htmlLength evensidemargin=80.0pt
+latex2htmlLength evensidemargin=0.0pt
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 143.
+(Font)              <7> on input line 149.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 143.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 143.
+(Font)              <5> on input line 149.
 
-:tex2html_wrap_inline7920:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline8081:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline7920:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline8081:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 Preview: Tightpage -32891 -32891 32891 32891
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
-:tex2html_wrap_inline7926:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline8087:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline7926:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline8087:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [2]
 
-:tex2html_wrap_inline7929:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline8090:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline7929:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline8090:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [3]
 
-:tex2html_wrap_inline77:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline103:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline77:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline103:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [4]
 
-:tex2html_wrap_inline79:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline105:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline79:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline105:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [5]
 
-:tex2html_wrap_inline81:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline107:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline81:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline107:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [6]
 
-:tex2html_wrap_inline100:lthtmlCropMarkHeight:=10.01727pt
+:tex2html_wrap_inline126:lthtmlCropMarkHeight:=9.66875pt
 
-:tex2html_wrap_inline100:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline126:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [7]
 
-:table200:lthtmlCropMarkHeight:=34.39996pt
+:adjustwidth258:lthtmlCropMarkHeight:=60.14442pt
 
-:table200:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:adjustwidth258:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [8]
 
-:table205:lthtmlCropMarkHeight:=129.5999pt
+:adjustwidth265:lthtmlCropMarkHeight:=144.14442pt
 
-:table205:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:adjustwidth265:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [9]
+Runaway argument?
+ 
+! Paragraph ended before \@xverbatim was complete.
+<to be read again> 
+                   \par 
+l.311 \lthtmlfigureZ
+                    
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
 
-:tex2html_wrap_inline371:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline371:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+Overfull \hbox (25.44795pt too wide) in paragraph at lines 311--311
+ []\OT1/cmtt/m/n/10 ; 64 colour palette file format (internal) - version 1.0 ; 
+copyright
+ []
+
+
+Overfull \hbox (35.94786pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 (c) 2009 Andrew Owen ; ; The palette file is stored as a BASI
+C program
+ []
+
+
+Overfull \hbox (35.94786pt too wide) in paragraph at lines 311--311
+ []\OT1/cmtt/m/n/10 db 0x00 ; program file db 0x14, 0x01, "64colour" ; file nam
+e dw 0x0097
+ []
+
+
+Overfull \hbox (20.198pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 ; data length dw 0x0000 ; autostart line dw 0x0097 ; program 
+length
+ []
+
+
+Overfull \hbox (14.94804pt too wide) in paragraph at lines 311--311
+ []\OT1/cmtt/m/n/10 ; 0 RANDOMIZE USR ((PEEK VAL "2 ; 3635"+VAL "256"*PEEK VAL 
+"23636"
+ []
+
+
+Overfull \hbox (4.44814pt too wide) in paragraph at lines 311--311
+ []\OT1/cmtt/m/n/10 db 0x00, 0x00, 0x93, 0x00, 0xf9, 0xc0, 0x28, 0x28 db 0xbe, 
+0xb0,
+ []
+
+
+Overfull \hbox (20.198pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 0x22, 0x32, 0x33, 0x36, 0x33, 0x35 db 0x22, 0x2b, 0xb0, 0x22,
+ 0x32,
+ []
+
+
+Overfull \hbox (14.94804pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 0x35, 0x36, 0x22 db 0x2a, 0xbe, 0xb0, 0x22, 0x32, 0x33, 0x36,
+ 0x33
+ []
+
+
+Overfull \hbox (4.44814pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 db 0x36, 0x22, 0x29, 0x2b, 0xb0, 0x22, 0x34, 0x38 db 0x22, 0x
+29,
+ []
+
+
+Overfull \hbox (14.94804pt too wide) in paragraph at lines 311--311
+ []\OT1/cmtt/m/n/10 di ; disable interrupts ld hl, 38 ; HL = length of code add
+ hl, bc
+ []
+
+
+Overfull \hbox (30.6979pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 ; BC = entry point (start) from BASIC ld bc, 0xbf3b ; registe
+r select
+ []
+
+
+Overfull \hbox (4.44814pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 ld a, 64 ; mode group out (c), a ; ld a, 1 ; ld b, 0xff ; cho
+ose
+ []
+
+
+Overfull \hbox (35.94786pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 register port out (c), a ; turn palette mode on xor a ; first
+ register
+ []
+
+
+Overfull \hbox (9.69809pt too wide) in paragraph at lines 311--311
+ []\OT1/cmtt/m/n/10 ld b, 0xbf ; choose register port out (c), a ; select regis
+ter ex
+ []
+
+
+Overfull \hbox (14.94804pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 af, af' ; save current register select ld a, (hl) ; get data 
+ld b,
+ []
+
+
+Overfull \hbox (4.44814pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 0xff ; choose data port out (c), a ; set it ex af, af' ; rest
+ore
+ []
+
+
+Overfull \hbox (20.198pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 current register inc hl ; advance pointer inc a ; increase re
+gister
+ []
+
+
+Overfull \hbox (9.69809pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 cp 64 ; are we nearly there yet? jr nz, setreg ; repeat until
+ all
+ []
+
+
+Overfull \hbox (35.94786pt too wide) in paragraph at lines 311--311
+ []\OT1/cmtt/m/n/10 ; this is where the actual data is stored. The following is
+ an example
+ []
+
+
+Overfull \hbox (4.44814pt too wide) in paragraph at lines 311--311
+ []\OT1/cmtt/m/n/10 db 0x00, 0x02, 0x18, 0x1b, 0xc0, 0xc3, 0xd8, 0xdb ; INK db 
+0x00,
+ []
+
+
+Overfull \hbox (30.6979pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 0x02, 0x18, 0x1b, 0xc0, 0xc3, 0xd8, 0xdb ; PAPER db 0x00, 0x0
+3, 0x1c,
+ []
+
+
+Overfull \hbox (9.69809pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 0x1f, 0xe0, 0xe3, 0xfc, 0xff ; +BRIGHT db 0x00, 0x03, 0x1c, 0
+x1f,
+ []
+
+
+Overfull \hbox (30.6979pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 0xe0, 0xe3, 0xfc, 0xff ; db 0xdb, 0xd8, 0xc3, 0xc0, 0x1b, 0x1
+8, 0x02,
+ []
+
+
+Overfull \hbox (9.69809pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 0x00 ; +FLASH db 0xdb, 0xd8, 0xc3, 0xc0, 0x1b, 0x18, 0x02, 0x
+00 ;
+ []
+
+
+Overfull \hbox (30.6979pt too wide) in paragraph at lines 311--311
+ \OT1/cmtt/m/n/10 db 0xff, 0xfc, 0xe3, 0xe0, 0x1f, 0x1c, 0x03, 0x00 ; +BRIGHT/ 
+db 0xff,
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.311 \lthtmlfigureZ
+                    
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.311 \lthtmlfigureZ
+                    
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+:adjustwidth272:lthtmlCropMarkHeight:=490.94444pt
+
+:adjustwidth272:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [10]
 
-:tex2html_wrap_inline373:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline443:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline373:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline443:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [11]
 
-:tex2html_wrap_inline383:lthtmlCropMarkHeight:=13.48248pt
+:tex2html_wrap_inline445:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline383:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
+:tex2html_wrap_inline445:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [12]
 
-:tex2html_wrap_inline387:lthtmlCropMarkHeight:=13.48248pt
+:tex2html_wrap_inline455:lthtmlCropMarkHeight:=12.83331pt
 
-:tex2html_wrap_inline387:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
+:tex2html_wrap_inline455:lthtmlCropMarkDepth:=1.49998pt:1ex:=4.30554pt
 [13]
 
-:tex2html_wrap_inline389:lthtmlCropMarkHeight:=13.48248pt
+:tex2html_wrap_inline459:lthtmlCropMarkHeight:=12.83331pt
 
-:tex2html_wrap_inline389:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
+:tex2html_wrap_inline459:lthtmlCropMarkDepth:=1.49998pt:1ex:=4.30554pt
 [14]
+Runaway argument?
+ 
+! Paragraph ended before \@xverbatim was complete.
+<to be read again> 
+                   \par 
+l.362 \lthtmlfigureZ
+                    
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
 
-:tex2html_wrap_inline391:lthtmlCropMarkHeight:=13.48248pt
 
-:tex2html_wrap_inline391:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
+Overfull \hbox (11.07642pt too wide) in paragraph at lines 362--362
+ []\OT1/cmtt/m/n/10 ;; from LoRes mode: ld bc,$\OT1/cmr/m/n/10 243\OML/cmm/m/it
+/10 B\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 nextregisterselectportlda;$\OT1/cmtt/m/
+n/10 15 out (c),a
+ []
+
+
+:adjustwidth405:lthtmlCropMarkHeight:=81.44444pt
+
+:adjustwidth405:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [15]
 
-:tex2html_wrap_inline395:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline461:lthtmlCropMarkHeight:=12.83331pt
 
-:tex2html_wrap_inline395:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline461:lthtmlCropMarkDepth:=1.49998pt:1ex:=4.30554pt
 [16]
 
-:tex2html_wrap_inline397:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline463:lthtmlCropMarkHeight:=12.83331pt
 
-:tex2html_wrap_inline397:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline463:lthtmlCropMarkDepth:=1.49998pt:1ex:=4.30554pt
 [17]
+Runaway argument?
+ 
+! Paragraph ended before \@xverbatim was complete.
+<to be read again> 
+                   \par 
+l.407 \lthtmlfigureZ
+                    
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
 
-:tex2html_wrap_inline405:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline405:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+Overfull \hbox (26.82628pt too wide) in paragraph at lines 407--407
+ []\OT1/cmtt/m/n/10 ;; disable LoRes mode: ld bc,$\OT1/cmr/m/n/10 243\OML/cmm/m
+/it/10 B\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 nextregisterselectportlda;$\OT1/cmtt
+/m/n/10 15 out (c),a
+ []
+
+
+Overfull \hbox (24.002pt too wide) in paragraph at lines 407--407
+ \OT1/cmtt/m/n/10 ld bc,$\OT1/cmr/m/n/10 253\OML/cmm/m/it/10 B\OT1/cmr/m/n/10 ;
+ \OML/cmm/m/it/10 nextregisterr=wportina; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\O
+T1/cmr/m/n/10 )\OML/cmm/m/it/10 and$\OT1/cmtt/m/n/10 7f out (c),a ;; set Timex 
+mode
+ []
+
+
+Overfull \hbox (113.023pt too wide) in paragraph at lines 407--407
+ \OT1/cmtt/m/n/10 ld bc,$\OT1/cmr/m/n/10 243\OML/cmm/m/it/10 B\OT1/cmr/m/n/10 ;
+ \OML/cmm/m/it/10 nextregisterselectportlda;$\OT1/cmtt/m/n/10 08 out (c),a ld b
+c,$\OT1/cmr/m/n/10 253\OML/cmm/m/it/10 B\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 next
+registerr=wportina; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 )\OML/cm
+m/m/it/10 or$\OT1/cmtt/m/n/10 04
+ []
+
+
+:adjustwidth412:lthtmlCropMarkHeight:=97.16667pt
+
+:adjustwidth412:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [18]
 
-:table359:lthtmlCropMarkHeight:=129.5999pt
+:tex2html_wrap_inline467:lthtmlCropMarkHeight:=12.44444pt
 
-:table359:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline467:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [19]
 
-:tex2html_wrap_inline407:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline469:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline407:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline469:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [20]
+Runaway argument?
+ 
+! Paragraph ended before \@xverbatim was complete.
+<to be read again> 
+                   \par 
+l.451 \lthtmlfigureZ
+                    
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
 
-:tex2html_wrap_inline411:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline411:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+Overfull \hbox (26.82628pt too wide) in paragraph at lines 451--451
+ []\OT1/cmtt/m/n/10 ;; disable LoRes mode: ld bc,$\OT1/cmr/m/n/10 243\OML/cmm/m
+/it/10 B\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 nextregisterselectportlda;$\OT1/cmtt
+/m/n/10 15 out (c),a
+ []
+
+
+Overfull \hbox (24.002pt too wide) in paragraph at lines 451--451
+ \OT1/cmtt/m/n/10 ld bc,$\OT1/cmr/m/n/10 253\OML/cmm/m/it/10 B\OT1/cmr/m/n/10 ;
+ \OML/cmm/m/it/10 nextregisterr=wportina; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\O
+T1/cmr/m/n/10 )\OML/cmm/m/it/10 and$\OT1/cmtt/m/n/10 7f out (c),a ;; set Timex 
+mode
+ []
+
+
+Overfull \hbox (113.023pt too wide) in paragraph at lines 451--451
+ \OT1/cmtt/m/n/10 ld bc,$\OT1/cmr/m/n/10 243\OML/cmm/m/it/10 B\OT1/cmr/m/n/10 ;
+ \OML/cmm/m/it/10 nextregisterselectportlda;$\OT1/cmtt/m/n/10 08 out (c),a ld b
+c,$\OT1/cmr/m/n/10 253\OML/cmm/m/it/10 B\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 next
+registerr=wportina; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 )\OML/cm
+m/m/it/10 or$\OT1/cmtt/m/n/10 04
+ []
+
+
+:adjustwidth419:lthtmlCropMarkHeight:=92.88889pt
+
+:adjustwidth419:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [21]
 
-:tex2html_wrap_inline413:lthtmlCropMarkHeight:=13.48248pt
+:tex2html_wrap_inline477:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline413:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
+:tex2html_wrap_inline477:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [22]
 
-:tex2html_wrap_inline415:lthtmlCropMarkHeight:=13.05666pt
+:adjustwidth426:lthtmlCropMarkHeight:=144.14442pt
 
-:tex2html_wrap_inline415:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:adjustwidth426:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [23]
 
-:tex2html_wrap_inline417:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline479:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline417:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline479:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [24]
 
-:tex2html_wrap_inline515:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline483:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline515:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline483:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [25]
 
-:tex2html_wrap_inline660:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline485:lthtmlCropMarkHeight:=12.83331pt
 
-:tex2html_wrap_inline660:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline485:lthtmlCropMarkDepth:=1.49998pt:1ex:=4.30554pt
 [26]
+Runaway argument?
+ 
+! Paragraph ended before \@xverbatim was complete.
+<to be read again> 
+                   \par 
+l.520 \lthtmlfigureZ
+                    
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
 
-:tex2html_wrap_inline664:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline664:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+Overfull \hbox (26.82628pt too wide) in paragraph at lines 520--520
+ []\OT1/cmtt/m/n/10 ;; disable LoRes mode: ld bc,$\OT1/cmr/m/n/10 243\OML/cmm/m
+/it/10 B\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 nextregisterselectportlda;$\OT1/cmtt
+/m/n/10 15 out (c),a
+ []
+
+
+Overfull \hbox (24.002pt too wide) in paragraph at lines 520--520
+ \OT1/cmtt/m/n/10 ld bc,$\OT1/cmr/m/n/10 253\OML/cmm/m/it/10 B\OT1/cmr/m/n/10 ;
+ \OML/cmm/m/it/10 nextregisterr=wportina; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\O
+T1/cmr/m/n/10 )\OML/cmm/m/it/10 and$\OT1/cmtt/m/n/10 7f out (c),a ;; set Timex 
+mode
+ []
+
+
+Overfull \hbox (113.023pt too wide) in paragraph at lines 520--520
+ \OT1/cmtt/m/n/10 ld bc,$\OT1/cmr/m/n/10 243\OML/cmm/m/it/10 B\OT1/cmr/m/n/10 ;
+ \OML/cmm/m/it/10 nextregisterselectportlda;$\OT1/cmtt/m/n/10 08 out (c),a ld b
+c,$\OT1/cmr/m/n/10 253\OML/cmm/m/it/10 B\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 next
+registerr=wportina; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 )\OML/cm
+m/m/it/10 or$\OT1/cmtt/m/n/10 04
+ []
+
+
+Overfull \hbox (22.34186pt too wide) in paragraph at lines 520--520
+ \OT1/cmtt/m/n/10 out (c),a ;; set hi-res mode, black on white ld c,$\OML/cmm/m
+/it/10 fflda;$\OT1/cmtt/m/n/10 06 out (c),a[] 
+ []
+
+
+:adjustwidth433:lthtmlCropMarkHeight:=92.88889pt
+
+:adjustwidth433:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [27]
 
-:tex2html_wrap_inline670:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline487:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline670:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline487:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [28]
 
-:tex2html_wrap_inline672:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline489:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline672:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline489:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [29]
+Runaway argument?
+ 
+! Paragraph ended before \@xverbatim was complete.
+<to be read again> 
+                   \par 
+l.563 \lthtmlfigureZ
+                    
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
 
-:tex2html_wrap_inline951:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline951:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+Overfull \hbox (139.35323pt too wide) in paragraph at lines 563--563
+ []\OT1/cmtt/m/n/10 ;; enable LoRes mode: nextreg $\OT1/cmr/m/n/10 15\OML/cmm/m
+/it/10 ;$\OT1/cmtt/m/n/10 80 ;; 256-colour mode ld bc,$\OT1/cmr/m/n/10 243\OML/
+cmm/m/it/10 B\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 nextregisterselectportlda;$\OT1
+/cmtt/m/n/10 6A
+ []
+
+
+Overfull \hbox (18.75204pt too wide) in paragraph at lines 563--563
+ \OT1/cmtt/m/n/10 out (c),a ld bc,$\OT1/cmr/m/n/10 253\OML/cmm/m/it/10 B\OT1/cm
+r/m/n/10 ; \OML/cmm/m/it/10 nextregisterr=wportina; \OT1/cmr/m/n/10 (\OML/cmm/m
+/it/10 c\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 and$\OT1/cmtt/m/n/10 EF ; lores radis
+tan
+ []
+
+Runaway argument?
+ 
+! Paragraph ended before \@xverbatim was complete.
+<to be read again> 
+                   \par 
+l.563 \lthtmlfigureZ
+                    
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+Overfull \hbox (16.7539pt too wide) in paragraph at lines 563--563
+ []\OT1/cmtt/m/n/10 ;; enable LoRes mode: nextreg $\OT1/cmr/m/n/10 15\OML/cmm/m
+/it/10 ;$\OT1/cmtt/m/n/10 80 ;; 16-colour mode nextreg $\OT1/cmr/m/n/10 6\OML/c
+mm/m/it/10 A;$\OT1/cmtt/m/n/10 10[] 
+ []
+
+
+:adjustwidth576:lthtmlCropMarkHeight:=133.16667pt
+
+:adjustwidth576:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [30]
 
-:tex2html_wrap_inline953:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline596:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline953:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline596:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [31]
 
-:tex2html_wrap_inline955:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline740:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline955:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline740:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [32]
 
-:tex2html_wrap_inline957:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline744:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline957:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline744:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [33]
 
-:tex2html_wrap_inline979:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline750:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline979:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline750:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [34]
 
-:tex2html_wrap_inline983:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline752:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline983:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline752:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [35]
 
-:tex2html_wrap_inline1280:lthtmlCropMarkHeight:=15.44032pt
+:tex2html_wrap_inline1045:lthtmlCropMarkHeight:=12.44444pt
 
-:tex2html_wrap_inline1280:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline1045:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [36]
 
-:table1612:lthtmlCropMarkHeight:=75.19994pt
+:tex2html_wrap_inline1047:lthtmlCropMarkHeight:=12.44444pt
 
-:table1612:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline1047:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [37]
-Overfull \hbox (157.3037pt too wide) in paragraph at lines 457--457
- [][] 
- []
 
+:tex2html_wrap_inline1049:lthtmlCropMarkHeight:=12.44444pt
 
-:table1696:lthtmlCropMarkHeight:=102.39992pt
-
-:table1696:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline1049:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [38]
 
-:table1839:lthtmlCropMarkHeight:=115.99991pt
+:tex2html_wrap_inline1051:lthtmlCropMarkHeight:=12.44444pt
 
-:table1839:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline1051:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [39]
+<video/sprite_1.png, id=132, 95.6072pt x 95.6072pt>
+File: video/sprite_1.png Graphic file (type png)
+<use video/sprite_1.png>
+Package pdftex.def Info: video/sprite_1.png  used on input line 683.
+(pdftex.def)             Requested size: 95.60695pt x 95.60695pt.
+Runaway argument?
+ 
+! Paragraph ended before \@xverbatim was complete.
+<to be read again> 
+                   \par 
+l.683 \lthtmlfigureZ
+                    
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
 
-:table1843:lthtmlCropMarkHeight:=115.99991pt
 
-:table1843:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[40]
+Overfull \hbox (9.69809pt too wide) in paragraph at lines 683--683
+ []\OT1/cmtt/m/n/10 04040404040404E3E3E3E3E3E3E3E3E3 04FFFFFFFFFF04E3E3E3E3E3E3
+E3E3E3
+ []
 
-:table1849:lthtmlCropMarkHeight:=75.19994pt
 
-:table1849:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+Overfull \hbox (9.69809pt too wide) in paragraph at lines 683--683
+ \OT1/cmtt/m/n/10 04FFFBFBFBFF04E3E3E3E3E3E3E3E3E3 04FFFBF5F5FBFF04E3E3E3E3E3E3
+E3E3
+ []
+
+
+Overfull \hbox (9.69809pt too wide) in paragraph at lines 683--683
+ \OT1/cmtt/m/n/10 04FFFBF5A8A8FBFF04E3E3E3E3E3E3E3 04FFFFFBA844A8FBFF04E3E3E3E3
+E3E3
+ []
+
+
+Overfull \hbox (9.69809pt too wide) in paragraph at lines 683--683
+ \OT1/cmtt/m/n/10 040404FFFBA844A8FBFF04E3E3E3E3E3 E3E3E304FFFBA84444FBFF04E304
+E3E3
+ []
+
+
+Overfull \hbox (9.69809pt too wide) in paragraph at lines 683--683
+ \OT1/cmtt/m/n/10 E3E3E3E304FFFB444444FBFF044D04E3 E3E3E3E3E304FFFB44444444FA4D
+04E3
+ []
+
+
+Overfull \hbox (9.69809pt too wide) in paragraph at lines 683--683
+ \OT1/cmtt/m/n/10 E3E3E3E3E3E304FFFB44FFF54404E3E3 E3E3E3E3E3E3E304FF44F5A804E3
+E3E3
+ []
+
+
+Overfull \hbox (9.69809pt too wide) in paragraph at lines 683--683
+ \OT1/cmtt/m/n/10 E3E3E3E3E3E3E3E304FA4404A804E3E3 E3E3E3E3E3E3E3044D4D04E304F5
+04E3
+ []
+
+
+Overfull \hbox (9.69809pt too wide) in paragraph at lines 683--683
+ \OT1/cmtt/m/n/10 E3E3E3E3E3E3E3E30404E3E3E304FA04 E3E3E3E3E3E3E3E3E3E3E3E3E3E3
+0404[] 
+ []
+
+
+:adjustwidth1030:lthtmlCropMarkHeight:=365.55139pt
+
+:adjustwidth1030:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+[40 </home/alex/retro/zx/code/zx_next_notes/video/sprite_1.png>]
+Runaway argument?
+ 
+! Paragraph ended before \@xverbatim was complete.
+<to be read again> 
+                   \par 
+l.719 \lthtmlfigureZ
+                    
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+
+Overfull \hbox (20.198pt too wide) in paragraph at lines 719--719
+ []\OT1/cmtt/m/n/10 4444444333333333 4FFFFF4333333333 4FBBBF4333333333 4FB55BF4
+33333333
+ []
+
+
+Overfull \hbox (20.198pt too wide) in paragraph at lines 719--719
+ \OT1/cmtt/m/n/10 4FB588BF43333333 4FFB848BF4333333 444FB848BF433333 3334FB844B
+F43433
+ []
+
+
+Overfull \hbox (20.198pt too wide) in paragraph at lines 719--719
+ \OT1/cmtt/m/n/10 33334FB444BF4D43 333334FB4444AD43 3333334FB4F54433 33333334F4
+584333
+ []
+
+
+Overfull \hbox (20.198pt too wide) in paragraph at lines 719--719
+ \OT1/cmtt/m/n/10 333333334A448433 33333334DD434543 33333333443334A4 3333333333
+333344[] 
+ []
+
+
+:adjustwidth1037:lthtmlCropMarkHeight:=168.94444pt
+
+:adjustwidth1037:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [41]
 
-:table1853:lthtmlCropMarkHeight:=75.19994pt
+:tex2html_wrap_inline1073:lthtmlCropMarkHeight:=12.44444pt
 
-:table1853:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline1073:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [42]
-Overfull \hbox (36.52087pt too wide) in paragraph at lines 525--525
- [][] 
- []
 
+:tex2html_wrap_inline1077:lthtmlCropMarkHeight:=12.44444pt
 
-:table1857:lthtmlCropMarkHeight:=140.33322pt
-
-:table1857:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline1077:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [43]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 538.
 
-Overfull \hbox (11.31319pt too wide) in paragraph at lines 538--538
- [][] 
- []
+:tex2html_wrap_inline1376:lthtmlCropMarkHeight:=14.41226pt
 
-
-:table1861:lthtmlCropMarkHeight:=167.53333pt
-
-:table1861:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline1376:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [44]
+Runaway argument?
+ 
+! Paragraph ended before \@xverbatim was complete.
+<to be read again> 
+                   \par 
+l.763 \lthtmlfigureZ
+                    
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
 
-:tex2html_wrap_inline1936:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline1936:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+Overfull \hbox (55.49115pt too wide) in paragraph at lines 763--763
+ []\OT1/cmtt/m/n/10 ;; enable internal speaker ld bc,$\OT1/cmr/m/n/10 243\OML/c
+mm/m/it/10 Blda;$\OT1/cmtt/m/n/10 08 out (c),a ld bc,$\OT1/cmr/m/n/10 253\OML/c
+mm/m/it/10 Bina; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 )\OML/cmm/m
+/it/10 or$\OT1/cmtt/m/n/10 10
+ []
+
+
+:adjustwidth1505:lthtmlCropMarkHeight:=68.33331pt
+
+:adjustwidth1505:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [45]
+Runaway argument?
+ 
+! Paragraph ended before \@xverbatim was complete.
+<to be read again> 
+                   \par 
+l.783 \lthtmlfigureZ
+                    
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
 
-:tex2html_wrap_inline1938:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline1938:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+Overfull \hbox (81.74092pt too wide) in paragraph at lines 783--783
+ []\OT1/cmtt/m/n/10 ;; enable SpecDrum/Convox audio ld bc,$\OT1/cmr/m/n/10 243\
+OML/cmm/m/it/10 Blda;$\OT1/cmtt/m/n/10 08 out (c),a ld bc,$\OT1/cmr/m/n/10 253\
+OML/cmm/m/it/10 Bina; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 )\OML/
+cmm/m/it/10 or$\OT1/cmtt/m/n/10 08
+ []
+
+
+:adjustwidth1512:lthtmlCropMarkHeight:=68.33331pt
+
+:adjustwidth1512:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [46]
+Runaway argument?
+ 
+! Paragraph ended before \@xverbatim was complete.
+<to be read again> 
+                   \par 
+l.803 \lthtmlfigureZ
+                    
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
 
-:table1866:lthtmlCropMarkHeight:=47.99995pt
 
-:table1866:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+Overfull \hbox (55.49115pt too wide) in paragraph at lines 803--803
+ []\OT1/cmtt/m/n/10 ;; enable TurboSound audio ld bc,$\OT1/cmr/m/n/10 243\OML/c
+mm/m/it/10 Blda;$\OT1/cmtt/m/n/10 08 out (c),a ld bc,$\OT1/cmr/m/n/10 253\OML/c
+mm/m/it/10 Bina; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 )\OML/cmm/m
+/it/10 or$\OT1/cmtt/m/n/10 02
+ []
+
+
+:adjustwidth1519:lthtmlCropMarkHeight:=68.33331pt
+
+:adjustwidth1519:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [47]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 583.
 
-Overfull \hbox (33.41745pt too wide) in paragraph at lines 583--583
- [][] 
- []
+:table1733:lthtmlCropMarkHeight:=67.19998pt
 
-
-:table1870:lthtmlCropMarkHeight:=234.19998pt
-
-:table1870:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1733:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [48]
-
-:table1875:lthtmlCropMarkHeight:=111.00412pt
-
-:table1875:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[49]
-Overfull \hbox (11.48543pt too wide) in paragraph at lines 621--621
+Overfull \hbox (117.54253pt too wide) in paragraph at lines 844--844
  [][] 
  []
 
 
-:table1888:lthtmlCropMarkHeight:=97.40411pt
+:adjustwidth1871:lthtmlCropMarkHeight:=122.08887pt
 
-:table1888:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:adjustwidth1871:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+[49]
+Runaway argument?
+ 
+! Paragraph ended before \@xverbatim was complete.
+<to be read again> 
+                   \par 
+l.1165 \lthtmlfigureZ
+                     
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Double subscript.
+<argument> ... DMA_RESET equ $c3 DMA_RESET_PORT_A_
+                                                  TIMING equ $c7 DMA_RESET_P...
+l.1165 \lthtmlfigureZ
+                     
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Double subscript.
+<argument> ...T_A_TIMING equ $c7 DMA_RESET_PORT_B_
+                                                  TIMING equ $cb DMA_LOAD eq...
+l.1165 \lthtmlfigureZ
+                     
+I treat `x_1_2' essentially like `x_1{}_2'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (105.19745pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/10 ;----------------------------------------------------------
+--------------------
+ []
+
+
+Overfull \hbox (210.19653pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 device zxspectrum48 ;----------------------------------------
+--------------------------------------
+ []
+
+
+Overfull \hbox (194.44667pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 ; DEFINE testing ;-------------------------------------------
+-----------------------------------
+ []
+
+
+Overfull \hbox (215.44649pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 ; DMA (Register 6) ; ;---------------------------------------
+---------------------------------------
+ []
+
+
+Overfull \hbox (252.19617pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 ;zxnDMA programming example ;--------------------------------
+----------------------------------------------
+ []
+
+
+Overfull \hbox (189.19672pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 ;(c) Jim Bagley ;--------------------------------------------
+----------------------------------
+ []
+
+
+Overfull \hbox (90.2377pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 DMA$[]\OML/cmm/m/it/10 ESETequ$\OT1/cmtt/m/n/10 c3 DMA$[]\OML
+/cmm/m/it/10 ESET[]ORT[][]IMINGequ$\OT1/cmtt/m/n/10 c7 DMA$[]\OML/cmm/m/it/10 E
+SET[]ORT[][]IMINGequ$\OT1/cmtt/m/n/10 cb
+ []
+
+
+Overfull \hbox (42.0904pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 DMA$[]\OML/cmm/m/it/10 OADequ$\OT1/cmtt/m/n/10 cf ; DMA$[]\OM
+L/cmm/m/it/10 ONTINUEequ$\OT1/cmtt/m/n/10 d3 DMA$[]\OML/cmm/m/it/10 ISABLE[]NTE
+RUPTSequ$\OT1/cmtt/m/n/10 af
+ []
+
+
+Overfull \hbox (40.69333pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 DMA$[]\OML/cmm/m/it/10 NABLE[]NTERUPTSequ$\OT1/cmtt/m/n/10 ab
+ DMA$[]\OML/cmm/m/it/10 ESET[]ISABLE[]NTERUPTSequ$\OT1/cmtt/m/n/10 a3
+ []
+
+
+Overfull \hbox (148.98125pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 DMA$[]\OML/cmm/m/it/10 NABLE[]FTER[]ETIequ$\OT1/cmtt/m/n/10 b
+7 DMA$[]\OML/cmm/m/it/10 EAD[]TATUS[]YTEequ$\OT1/cmtt/m/n/10 bf DMA$[]\OML/cmm/
+m/it/10 EINIT[]TATUS[]YTEequ$\OT1/cmtt/m/n/10 8b
+ []
+
+
+Overfull \hbox (77.69237pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 DMA$[]\OML/cmm/m/it/10 TART[]EAD[]EQUENCEequ$\OT1/cmtt/m/n/10
+ a7 DMA$[]\OML/cmm/m/it/10 ORCE[]EADYequ$\OT1/cmtt/m/n/10 b3 DMA$[]\OML/cmm/m/i
+t/10 ISABLEequ$\OT1/cmtt/m/n/10 83
+ []
+
+
+Overfull \hbox (275.63585pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 DMA$[]\OML/cmm/m/it/10 NABLEequ$\OT1/cmtt/m/n/10 87 DMA$[]\OM
+L/cmm/m/it/10 RITE[]EGISTER[]OMMANDequ$\OT1/cmtt/m/n/10 bb DMA$[]\OML/cmm/m/it/
+10 URSTequDMA[]ONTINUOUSequZXN[]MA[]ORTequ$\OT1/cmtt/m/n/10 6b
+ []
+
+
+Overfull \hbox (121.06459pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 SPRITE$[]\OML/cmm/m/it/10 TATUS[]LOT[]ELECTequ$\OT1/cmtt/m/n/
+10 303B SPRITE$[]\OML/cmm/m/it/10 MAGE[]ORTequ$\OT1/cmtt/m/n/10 5b SPRITE$[]\OM
+L/cmm/m/it/10 NFO[]ORTequ$\OT1/cmtt/m/n/10 57
+ []
+
+
+Overfull \hbox (105.19745pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 ;------------------------------------------------------------
+------------------
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (978.82272pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/10 start ld hl,$\OT1/cmr/m/n/10 0000\OML/cmm/m/it/10 ldde;$\OT
+1/cmtt/m/n/10 4000 ld bc,$\OT1/cmr/m/n/10 800\OML/cmm/m/it/10 callTransferDMA\O
+T1/cmr/m/n/10 ; \OML/cmm/m/it/10 copysomerandomdatatothescreenpointing\OT1/cmr/
+m/n/10 ; \OML/cmm/m/it/10 toROMfornow; forthepurposeofshowing\OT1/cmr/m/n/10 ; 
+\OML/cmm/m/it/10 howtodoaDMAcopy:lda; \OT1/cmr/m/n/10 0; \OML/cmm/m/it/10 sprit
+eimagenumberwewanttoupdateldbc; SPRITE[]TATUS[]LOT[]ELECTout\OT1/cmr/m/n/10 (\O
+ML/cmm/m/it/10 c\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; a\OT1/cmr/m/n/10 ; \OML/cmm
+/m/it/10 setthespriteimagenumberldbc; \OT1/cmr/m/n/10 1 \OMS/cmsy/m/n/10 ^^C
+ []
+
+
+Overfull \hbox (110.81537pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmr/m/n/10 256; \OML/cmm/m/it/10 numbertotransfer\OT1/cmr/m/n/10 (1)\OML/
+cmm/m/it/10 ldhl; testsprite\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 fromcallTransfer
+DMASprite\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 transfertospriteram[]$ 
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (5.44832pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/10 nextreg 21,1 ; turn sprite on. for more info on this check 
+;
+ []
+
+
+Overfull \hbox (0.19836pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 out https://www.specnext.com/tbblue-io-port-system/ ld de,0
+ []
+
+
+Overfull \hbox (0.19836pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 ld (xpos),de ; set initial X position ( doesn't need it for
+ []
+
+
+Overfull \hbox (15.94823pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 ; this demo, but if you run the .loop again it ; will continu
+e
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (462.68031pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/10 .loop ld a,0 ; sprite number we want to position ld bc,SPRI
+TE$[]\OML/cmm/m/it/10 TATUS[]LOT[]ELECTout\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\O
+T1/cmr/m/n/10 )\OML/cmm/m/it/10 ; aldde; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 xpos
+\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ldhl; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ypos\
+OT1/cmr/m/n/10 ); \OML/cmm/m/it/10 ignoresHsodoingthisratherthan\OT1/cmr/m/n/10
+ ; \OML/cmm/m/it/10 lda; \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ypos\OT1/cmr/m/n/10 
+) :
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (210.40068pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/10 ld de,(xpos) inc de ld (xpos),de ld a,d cp $\OT1/cmr/m/n/10
+ 01\OML/cmm/m/it/10 jrnz; :loop\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 ifhighbyteofx
+posisnot\OT1/cmr/m/n/10 1(\OML/cmm/m/it/10 rightof\OT1/cmr/m/n/10 ; \OML/cmm/m/
+it/10 screen\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 lda; ecp$\OT1/cmtt/m/n/10 20+1
+ []
+
+
+Overfull \hbox (17.6595pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 jr nz,.loop ; if low byte is not $\OT1/cmr/m/n/10 21\OML/cmm/
+m/it/10 justofftherightof\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 thescreen;$\OT1/cmt
+t/m/n/10 20
+ []
+
+
+Overfull \hbox (21.19818pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 is off screen but as the ; INC DE is just above and not updat
+ed
+ []
+
+
+Overfull \hbox (33.94348pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 sprite ; after it, it needs to be $\OT1/cmr/m/n/10 21\OML/cmm
+/m/it/10 xoraret\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 returnbacktobasicwithOK[]$ 
+ []
+
+
+Overfull \hbox (15.94823pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/10 xpos dw 0 ; x position ypos db 0 ; y position ; these next 
+two
+ []
+
+
+Overfull \hbox (26.44814pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 BITS and IMAGE are swapped ; as bits needs to go into B regis
+ter
+ []
+
+
+Overfull \hbox (6.43222pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 image ; db 0+$\OT1/cmr/m/n/10 80; \OML/cmm/m/it/10 useimage\O
+T1/cmr/m/n/10 0(\OML/cmm/m/it/10 fortheimagewe\OT1/cmr/m/n/10 ; \OML/cmm/m/it/1
+0 transfered\OT1/cmr/m/n/10 )+$\OT1/cmtt/m/n/10 80 to set
+ []
+
+
+Overfull \hbox (21.19818pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 the sprite to active bits db 0 ; not flipped or palette shift
+ed
+ []
+
+
+Overfull \hbox (10.69827pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/10 testsprite db c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,
+c1
+ []
+
+
+Overfull \hbox (220.69644pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 db c1,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c1 db c1,c2,c
+3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c2,c1
+ []
+
+
+Overfull \hbox (220.69644pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 db c1,c2,c3,c4,c4,c4,c4,c4,c4,c4,c4,c4,c4,c3,c2,c1 db c1,c2,c
+3,c4,c5,c5,c5,c5,c5,c5,c5,c5,c4,c3,c2,c1
+ []
+
+
+Overfull \hbox (220.69644pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 db c1,c2,c3,c4,c5,c6,c6,c6,c6,c6,c6,c5,c4,c3,c2,c1 db c1,c2,c
+3,c4,c5,c6,c7,c7,c7,c7,c6,c5,c4,c3,c2,c1
+ []
+
+
+Overfull \hbox (220.69644pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 db c1,c2,c3,c4,c5,c6,c7,c8,c8,c7,c6,c5,c4,c3,c2,c1 db c1,c2,c
+3,c4,c5,c6,c7,c8,c8,c7,c6,c5,c4,c3,c2,c1
+ []
+
+
+Overfull \hbox (220.69644pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 db c1,c2,c3,c4,c5,c6,c7,c7,c7,c7,c6,c5,c4,c3,c2,c1 db c1,c2,c
+3,c4,c5,c6,c6,c6,c6,c6,c6,c5,c4,c3,c2,c1
+ []
+
+
+Overfull \hbox (220.69644pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 db c1,c2,c3,c4,c5,c5,c5,c5,c5,c5,c5,c5,c4,c3,c2,c1 db c1,c2,c
+3,c4,c4,c4,c4,c4,c4,c4,c4,c4,c4,c3,c2,c1
+ []
+
+
+Overfull \hbox (220.69644pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 db c1,c2,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c2,c1 db c1,c2,c
+2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c1
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (0.19836pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/10 ;------------------------------------------------- ; de = X
+
+ []
+
+
+Overfull \hbox (377.43881pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 ; l = Y ; b = bits ; c = sprite image SetSprite push bc ld bc
+,SPRITE$[]\OML/cmm/m/it/10 NFO[]ORTout\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\OT1/c
+mr/m/n/10 )\OML/cmm/m/it/10 ; e\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 Xposout\OT1/c
+mr/m/n/10 (\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; l\OT1/cmr/m/n/
+10 ; \OML/cmm/m/it/10 Ypospophllda; dand\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 orhou
+t\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; alda; l
+ \OT1/cmr/m/n/10 :
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (36.94804pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/10 ;-------------------------------- ; hl = source ; de = dest
+ination
+ []
+
+
+Overfull \hbox (0.19836pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 ; bc = length ;-------------------------------- TransferDMA
+ []
+
+
+Overfull \hbox (47.44795pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 di ld (DMASource),hl ld (DMADest),de ld (DMALength),bc ld hl,
+DMACode
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (254.73181pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/10 DMACode db DMA$[]\OML/cmm/m/it/10 ISABLEdb\OT1/cmr/m/n/10 ;
+ +\OML/cmm/m/it/10 blocklengthDMASourcedw\OT1/cmr/m/n/10 0; \OML/cmm/m/it/10 R\
+OT1/cmr/m/n/10 0 \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 PortA; Startaddress\OT1/
+cmr/m/n/10 ; (\OML/cmm/m/it/10 sourceaddress\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 D
+MALengthdw\OT1/cmr/m/n/10 0; \OML/cmm/m/it/10 R\OT1/cmr/m/n/10 0 \OMS/cmsy/m/n/
+10 ^^@
+ []
+
+
+Overfull \hbox (151.04802pt too wide) in paragraph at lines 1165--1165
+ \OML/cmm/m/it/10 Blocklength\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 lengthinbytes\OT
+1/cmr/m/n/10 )\OML/cmm/m/it/10 db\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 memory; bit
+maskdbdb\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 memory; bitmaskdbdbDMA[]ONTINUOUS\OT
+1/cmr/m/n/10 ; \OML/cmm/m/it/10 R\OT1/cmr/m/n/10 4 \OMS/cmsy/m/n/10 ^^@
+ []
+
+
+Overfull \hbox (55.79245pt too wide) in paragraph at lines 1165--1165
+ \OML/cmm/m/it/10 Continuousmode\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 usethisforblo
+ck\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 transfer\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 
+; writedestadressDMADestdw\OT1/cmr/m/n/10 0; \OML/cmm/m/it/10 R\OT1/cmr/m/n/10 
+4 \OMS/cmsy/m/n/10 ^^@
+ []
+
+
+Overfull \hbox (99.85602pt too wide) in paragraph at lines 1165--1165
+ \OML/cmm/m/it/10 Destaddress\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 destinationaddre
+ss\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 db\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 LOWdbD
+MA[]OAD\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 R\OT1/cmr/m/n/10 6 \OMS/cmsy/m/n/10 ^
+^@ \OML/cmm/m/it/10 LoaddbDMA[]NABLE\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 R\OT1/cm
+r/m/n/10 6 \OMS/cmsy/m/n/10 ^^@
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (105.19745pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/10 ;----------------------------------------------------------
+--------------------
+ []
+
+
+Overfull \hbox (188.39195pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 ; hl = source ; bc = length ; set port to write to with TBBLU
+E$[]\OML/cmm/m/it/10 EGISTER[]ELECT\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 priortoca
+ll\OT1/cmr/m/n/10 ; \OMS/cmsy/m/n/10 ^^@ ^^@
+ []
+
+
+Overfull \hbox (286.20369pt too wide) in paragraph at lines 1165--1165
+ \OML/cmm/m/it/10 TransferDMAPortdild\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 DMASourc
+eP\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; hlld\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 DMA
+LengthP\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; bcldhl; DMACodePldb; DMACode[]enPldc
+; ZXN[]MA[]ORTotireiret[]$ 
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (453.16676pt too wide) in paragraph at lines 1165--1165
+ \OML/cmm/m/it/10 PortA; Startaddress\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 sourcead
+dress\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 DMALengthPdw\OT1/cmr/m/n/10 0; \OML/cmm/
+m/it/10 R\OT1/cmr/m/n/10 0 \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 Blocklength\OT
+1/cmr/m/n/10 (\OML/cmm/m/it/10 lengthinbytes\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d
+b\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 memory; bitmaskdbdb\OT1/cmr/m/n/10 ; \OML/c
+mm/m/it/10 memory; bitmaskdbdb\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 transfer\OT1/c
+mr/m/n/10 )\OML/cmm/m/it/10 ; writedestadressdw$\OT1/cmtt/m/n/10 253b
+ []
+
+
+Overfull \hbox (34.03958pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 ; R4-Dest address (destination address) db ; LOW db DMA$[]\OM
+L/cmm/m/it/10 OAD\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 R\OT1/cmr/m/n/10 6 \OMS/cms
+y/m/n/10 ^^@
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (234.10422pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/10 DMACode$[]\OML/cmm/m/it/10 enPequ$\OT1/cmtt/m/n/10 -DMACode
+P ;----------------------------------------------------------------------------
+--
+ []
+
+
+Overfull \hbox (252.19617pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 ; hl = source ; bc = length ;--------------------------------
+----------------------------------------------
+ []
+
+
+Overfull \hbox (10.69827pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 TransferDMASprite di ld (DMASourceS),hl ld (DMALengthS),bc ld
+
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (565.54161pt too wide) in paragraph at lines 1165--1165
+ \OML/cmm/m/it/10 PortA; Startaddress\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 sourcead
+dress\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 DMALengthSdw\OT1/cmr/m/n/10 0; \OML/cmm/
+m/it/10 R\OT1/cmr/m/n/10 0 \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 Blocklength\OT
+1/cmr/m/n/10 (\OML/cmm/m/it/10 lengthinbytes\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d
+b\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 memory; bitmaskdbdb\OT1/cmr/m/n/10 ; \OML/c
+mm/m/it/10 memory; bitmaskdbdb\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 transfer\OT1/c
+mr/m/n/10 )\OML/cmm/m/it/10 ; writedestadressdwSPRITE[]MAGE[]ORT\OT1/cmr/m/n/10
+ ; \OML/cmm/m/it/10 R\OT1/cmr/m/n/10 4 \OMS/cmsy/m/n/10 ^^@
+ []
+
+
+Overfull \hbox (99.85602pt too wide) in paragraph at lines 1165--1165
+ \OML/cmm/m/it/10 Destaddress\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 destinationaddre
+ss\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 db\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 LOWdbD
+MA[]OAD\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 R\OT1/cmr/m/n/10 6 \OMS/cmsy/m/n/10 ^
+^@ \OML/cmm/m/it/10 LoaddbDMA[]NABLE\OT1/cmr/m/n/10 ; \OML/cmm/m/it/10 R\OT1/cm
+r/m/n/10 6 \OMS/cmsy/m/n/10 ^^@
+ []
+
+
+Overfull \hbox (303.89694pt too wide) in paragraph at lines 1165--1165
+ \OML/cmm/m/it/10 EnableDMADMACode[]enSequ$\OT1/cmtt/m/n/10 -DMACodeS ;--------
+----------------------------------------------------------------------
+ []
+
+
+Overfull \hbox (315.19562pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 ; de = dest, a = fill value, bc = lenth ;--------------------
+----------------------------------------------------------
+ []
+
+
+Overfull \hbox (21.19818pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 DMAFill di ld (FillValue),a ld (DMACDest),de ld (DMACLength),
+bc
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1165 \lthtmlfigureZ
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (482.97592pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/10 FillValue db 22 DMACCode db DMA$[]\OML/cmm/m/it/10 ISABLEdb
+DMACSourcedwFillValueDMACLengthdw\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 dbDMACDestdw
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 dbDMA[]OAD; DMA[]NABLEDMACCode[]enequ$\OT1/cm
+tt/m/n/10 -DMACCode
+ []
+
+
+Overfull \hbox (105.19745pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/10 ;----------------------------------------------------------
+--------------------
+ []
+
+
+Overfull \hbox (178.69681pt too wide) in paragraph at lines 1165--1165
+ \OT1/cmtt/m/n/10 ; End of file ;----------------------------------------------
+--------------------------------
+ []
+
+
+Overfull \hbox (131.44722pt too wide) in paragraph at lines 1165--1165
+ []\OT1/cmtt/m/n/10 IFDEF testing savesna "dmatest.sna",start ELSE fin savebin 
+"DMATEST",start,fin-start
+ []
+
+
+:adjustwidth1885:lthtmlCropMarkHeight:=1084.94444pt
+
+:adjustwidth1885:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [50]
 
-:table1892:lthtmlCropMarkHeight:=84.41245pt
+:table2005:lthtmlCropMarkHeight:=103.19998pt
 
-:table1892:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2005:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [51]
-Overfull \hbox (132.6706pt too wide) in paragraph at lines 651--651
- [][] 
- []
 
+:table2009:lthtmlCropMarkHeight:=103.19998pt
 
-:table2366:lthtmlCropMarkHeight:=319.99977pt
-
-:table2366:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2009:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [52]
 
-:tex2html_wrap_inline2423:lthtmlCropMarkHeight:=15.12923pt
+:table2015:lthtmlCropMarkHeight:=67.19998pt
 
-:tex2html_wrap_inline2423:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2015:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [53]
 
-:tex2html_wrap_inline2425:lthtmlCropMarkHeight:=15.12923pt
+:table2019:lthtmlCropMarkHeight:=67.19998pt
 
-:tex2html_wrap_inline2425:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2019:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [54]
+Overfull \hbox (10.36179pt too wide) in paragraph at lines 1222--1222
+ [][] 
+ []
 
-:labeledpar2523:lthtmlCropMarkHeight:=22.94998pt
 
-:labeledpar2523:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2023:lthtmlCropMarkHeight:=125.08887pt
+
+:table2023:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [55]
 
-:labeledpar2531:lthtmlCropMarkHeight:=22.94998pt
+:table2027:lthtmlCropMarkHeight:=144.64441pt
 
-:labeledpar2531:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2027:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [56]
 
-:labeledpar2535:lthtmlCropMarkHeight:=22.94998pt
+:tex2html_wrap_inline2102:lthtmlCropMarkHeight:=12.44444pt
 
-:labeledpar2535:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2102:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [57]
 
-:labeledpar2540:lthtmlCropMarkHeight:=33.20416pt
+:tex2html_wrap_inline2104:lthtmlCropMarkHeight:=12.44444pt
 
-:labeledpar2540:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2104:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.30554pt
 [58]
 
-:labeledpar2547:lthtmlCropMarkHeight:=21.64207pt
+:table2032:lthtmlCropMarkHeight:=43.19998pt
 
-:labeledpar2547:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2032:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [59]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 1280.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 1280.
 
-:labeledpar2555:lthtmlCropMarkHeight:=73.91293pt
+Overfull \hbox (13.73174pt too wide) in paragraph at lines 1280--1280
+ [][] 
+ []
 
-:labeledpar2555:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+
+:table2036:lthtmlCropMarkHeight:=215.19998pt
+
+:table2036:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [60]
 
-:labeledpar2566:lthtmlCropMarkHeight:=22.94998pt
+:table2041:lthtmlCropMarkHeight:=99.14442pt
 
-:labeledpar2566:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2041:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [61]
 
-:labeledpar2571:lthtmlCropMarkHeight:=21.73332pt
+:table2054:lthtmlCropMarkHeight:=87.14442pt
 
-:labeledpar2571:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2054:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [62]
 
-:labeledpar2575:lthtmlCropMarkHeight:=35.33333pt
+:table2058:lthtmlCropMarkHeight:=65.64442pt
 
-:labeledpar2575:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2058:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [63]
+Overfull \hbox (102.33412pt too wide) in paragraph at lines 1348--1348
+ [][] 
+ []
 
-:labeledpar2579:lthtmlCropMarkHeight:=21.73332pt
 
-:labeledpar2579:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2532:lthtmlCropMarkHeight:=283.19998pt
+
+:table2532:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [64]
 
-:tex2html_wrap_inline2651:lthtmlCropMarkHeight:=14.2125pt
+:tex2html_wrap_inline2589:lthtmlCropMarkHeight:=14.14003pt
 
-:tex2html_wrap_inline2651:lthtmlCropMarkDepth:=2.73749pt:1ex:=4.71457pt
+:tex2html_wrap_inline2589:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [65]
 
-:tex2html_wrap_inline2659:lthtmlCropMarkHeight:=11.9031pt
+:tex2html_wrap_inline2591:lthtmlCropMarkHeight:=14.14003pt
 
-:tex2html_wrap_inline2659:lthtmlCropMarkDepth:=0.42812pt:1ex:=4.71457pt
+:tex2html_wrap_inline2591:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [66]
 
-:tex2html_wrap_inline2663:lthtmlCropMarkHeight:=11.9031pt
+:labeledpar2689:lthtmlCropMarkHeight:=22.0pt
 
-:tex2html_wrap_inline2663:lthtmlCropMarkDepth:=0.42812pt:1ex:=4.71457pt
+:labeledpar2689:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [67]
 
-:table3373:lthtmlCropMarkHeight:=537.59962pt
+:labeledpar2697:lthtmlCropMarkHeight:=22.0pt
 
-:table3373:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2697:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [68]
-Overfull \hbox (109.80673pt too wide) in paragraph at lines 789--789
- [][] 
- []
 
+:labeledpar2701:lthtmlCropMarkHeight:=22.0pt
 
-:table3494:lthtmlCropMarkHeight:=115.99991pt
-
-:table3494:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2701:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [69]
-Overfull \hbox (40.63914pt too wide) in paragraph at lines 798--798
- [][] 
- []
 
+:labeledpar2706:lthtmlCropMarkHeight:=30.94444pt
 
-:table3544:lthtmlCropMarkHeight:=360.79974pt
-
-:table3544:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2706:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [70]
-Overfull \hbox (71.23457pt too wide) in paragraph at lines 819--819
- [][] 
- []
 
+:labeledpar2713:lthtmlCropMarkHeight:=20.80556pt
 
-:table5423:lthtmlCropMarkHeight:=343.19998pt
-
-:table5423:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2713:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [71]
 
-:tex2html_wrap_inline5549:lthtmlCropMarkHeight:=15.48238pt
+:labeledpar2721:lthtmlCropMarkHeight:=66.86111pt
 
-:tex2html_wrap_inline5549:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2721:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [72]
 
-:tex2html_wrap_inline5558:lthtmlCropMarkHeight:=15.48238pt
+:labeledpar2732:lthtmlCropMarkHeight:=22.0pt
 
-:tex2html_wrap_inline5558:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2732:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [73]
 
-:tex2html_wrap_inline5777:lthtmlCropMarkHeight:=15.48238pt
+:labeledpar2737:lthtmlCropMarkHeight:=20.88889pt
 
-:tex2html_wrap_inline5777:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2737:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [74]
 
-:tex2html_wrap_inline6543:lthtmlCropMarkHeight:=15.48238pt
+:labeledpar2741:lthtmlCropMarkHeight:=20.88889pt
 
-:tex2html_wrap_inline6543:lthtmlCropMarkDepth:=2.12917pt:1ex:=4.71457pt
+:labeledpar2741:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [75]
 
-:tex2html_wrap_inline6545:lthtmlCropMarkHeight:=15.48238pt
+:labeledpar2745:lthtmlCropMarkHeight:=20.88889pt
 
-:tex2html_wrap_inline6545:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2745:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [76]
 
-:tex2html_wrap_inline6776:lthtmlCropMarkHeight:=15.46692pt
+:tex2html_wrap_inline2817:lthtmlCropMarkHeight:=13.5pt
 
-:tex2html_wrap_inline6776:lthtmlCropMarkDepth:=5.34497pt:1ex:=4.71457pt
+:tex2html_wrap_inline2817:lthtmlCropMarkDepth:=2.5pt:1ex:=4.30554pt
 [77]
 
-:tex2html_wrap_inline6778:lthtmlCropMarkHeight:=15.46692pt
+:tex2html_wrap_inline2825:lthtmlCropMarkHeight:=11.39098pt
 
-:tex2html_wrap_inline6778:lthtmlCropMarkDepth:=6.30002pt:1ex:=4.71457pt
+:tex2html_wrap_inline2825:lthtmlCropMarkDepth:=0.39098pt:1ex:=4.30554pt
 [78]
 
-:table6899:lthtmlCropMarkHeight:=168.69972pt
+:tex2html_wrap_inline2829:lthtmlCropMarkHeight:=11.39098pt
 
-:table6899:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2829:lthtmlCropMarkDepth:=0.39098pt:1ex:=4.30554pt
 [79]
 
-:table6903:lthtmlCropMarkHeight:=168.69972pt
+:table3539:lthtmlCropMarkHeight:=475.19998pt
 
-:table6903:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table3539:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [80]
+Overfull \hbox (72.08403pt too wide) in paragraph at lines 1486--1486
+ [][] 
+ []
 
-:table6907:lthtmlCropMarkHeight:=168.69972pt
 
-:table6907:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table3660:lthtmlCropMarkHeight:=103.19998pt
+
+:table3660:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [81]
+Overfull \hbox (8.91728pt too wide) in paragraph at lines 1495--1495
+ [][] 
+ []
 
-:table6911:lthtmlCropMarkHeight:=168.69972pt
 
-:table6911:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table3710:lthtmlCropMarkHeight:=319.19998pt
+
+:table3710:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [82]
+Overfull \hbox (44.95615pt too wide) in paragraph at lines 1516--1516
+ [][] 
+ []
 
-:table6915:lthtmlCropMarkHeight:=168.69972pt
 
-:table6915:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table5589:lthtmlCropMarkHeight:=295.19998pt
+
+:table5589:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [83]
 
-:table6919:lthtmlCropMarkHeight:=168.69972pt
+:tex2html_wrap_inline5715:lthtmlCropMarkHeight:=14.8332pt
 
-:table6919:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline5715:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [84]
 
-:table6923:lthtmlCropMarkHeight:=168.69972pt
+:tex2html_wrap_inline5724:lthtmlCropMarkHeight:=14.8332pt
 
-:table6923:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline5724:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [85]
 
-:table6927:lthtmlCropMarkHeight:=168.69972pt
+:tex2html_wrap_inline5943:lthtmlCropMarkHeight:=14.8332pt
 
-:table6927:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline5943:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [86]
 
-:table6932:lthtmlCropMarkHeight:=168.69972pt
+:tex2html_wrap_inline6709:lthtmlCropMarkHeight:=14.8332pt
 
-:table6932:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline6709:lthtmlCropMarkDepth:=1.94444pt:1ex:=4.30554pt
 [87]
 
-:table6936:lthtmlCropMarkHeight:=168.69972pt
+:tex2html_wrap_inline6711:lthtmlCropMarkHeight:=14.8332pt
 
-:table6936:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline6711:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [88]
 
-:table6940:lthtmlCropMarkHeight:=168.69972pt
+:tex2html_wrap_inline6942:lthtmlCropMarkHeight:=14.44843pt
 
-:table6940:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline6942:lthtmlCropMarkDepth:=4.93329pt:1ex:=4.30554pt
 [89]
 
-:table6944:lthtmlCropMarkHeight:=168.69972pt
+:tex2html_wrap_inline6944:lthtmlCropMarkHeight:=14.44843pt
 
-:table6944:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline6944:lthtmlCropMarkDepth:=5.87776pt:1ex:=4.30554pt
 [90]
 
-:table6948:lthtmlCropMarkHeight:=168.69972pt
+:table7065:lthtmlCropMarkHeight:=143.19998pt
 
-:table6948:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7065:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [91]
 
-:table6952:lthtmlCropMarkHeight:=168.69972pt
+:table7069:lthtmlCropMarkHeight:=143.19998pt
 
-:table6952:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7069:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [92]
 
-:table6956:lthtmlCropMarkHeight:=168.69972pt
+:table7073:lthtmlCropMarkHeight:=143.19998pt
 
-:table6956:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7073:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [93]
 
-:table6960:lthtmlCropMarkHeight:=168.69972pt
+:table7077:lthtmlCropMarkHeight:=143.19998pt
 
-:table6960:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7077:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [94]
 
-:table6965:lthtmlCropMarkHeight:=159.19974pt
+:table7081:lthtmlCropMarkHeight:=143.19998pt
 
-:table6965:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7081:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [95]
 
-:table6969:lthtmlCropMarkHeight:=168.69972pt
+:table7085:lthtmlCropMarkHeight:=143.19998pt
 
-:table6969:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7085:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [96]
 
-:table6973:lthtmlCropMarkHeight:=130.69978pt
+:table7089:lthtmlCropMarkHeight:=143.19998pt
 
-:table6973:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7089:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [97]
 
-:table6978:lthtmlCropMarkHeight:=167.7553pt
+:table7093:lthtmlCropMarkHeight:=143.19998pt
 
-:table6978:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7093:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [98]
 
-:table6982:lthtmlCropMarkHeight:=168.69972pt
+:table7098:lthtmlCropMarkHeight:=143.19998pt
 
-:table6982:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7098:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [99]
 
-:table6986:lthtmlCropMarkHeight:=167.7553pt
+:table7102:lthtmlCropMarkHeight:=143.19998pt
 
-:table6986:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7102:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [100]
 
-:table6991:lthtmlCropMarkHeight:=159.19974pt
+:table7106:lthtmlCropMarkHeight:=143.19998pt
 
-:table6991:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7106:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [101]
 
-:table6995:lthtmlCropMarkHeight:=168.69972pt
+:table7110:lthtmlCropMarkHeight:=143.19998pt
 
-:table6995:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7110:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [102]
 
-:table6999:lthtmlCropMarkHeight:=130.69978pt
+:table7114:lthtmlCropMarkHeight:=143.19998pt
 
-:table6999:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7114:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [103]
 
-:table7004:lthtmlCropMarkHeight:=168.69972pt
+:table7118:lthtmlCropMarkHeight:=143.19998pt
 
-:table7004:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7118:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [104]
 
-:table7009:lthtmlCropMarkHeight:=168.69972pt
+:table7122:lthtmlCropMarkHeight:=143.19998pt
 
-:table7009:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7122:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [105]
 
-:table7180:lthtmlCropMarkHeight:=149.69975pt
+:table7126:lthtmlCropMarkHeight:=143.19998pt
 
-:table7180:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7126:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [106]
 
-:table7184:lthtmlCropMarkHeight:=187.69969pt
+:table7131:lthtmlCropMarkHeight:=135.19998pt
 
-:table7184:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7131:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [107]
 
-:table7188:lthtmlCropMarkHeight:=140.19977pt
+:table7135:lthtmlCropMarkHeight:=143.19998pt
 
-:table7188:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7135:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [108]
 
-:table7192:lthtmlCropMarkHeight:=206.69966pt
+:table7139:lthtmlCropMarkHeight:=111.19998pt
 
-:table7192:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7139:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [109]
 
-:table7196:lthtmlCropMarkHeight:=206.69966pt
+:table7144:lthtmlCropMarkHeight:=142.81108pt
 
-:table7196:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7144:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [110]
 
-:table7200:lthtmlCropMarkHeight:=159.19974pt
+:table7148:lthtmlCropMarkHeight:=143.19998pt
 
-:table7200:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7148:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [111]
 
-:table7204:lthtmlCropMarkHeight:=197.19968pt
+:table7152:lthtmlCropMarkHeight:=142.81108pt
 
-:table7204:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7152:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [112]
 
-:table7208:lthtmlCropMarkHeight:=206.69966pt
+:table7157:lthtmlCropMarkHeight:=135.19998pt
 
-:table7208:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7157:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [113]
 
-:table7212:lthtmlCropMarkHeight:=225.69963pt
+:table7161:lthtmlCropMarkHeight:=143.19998pt
 
-:table7212:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7161:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [114]
 
-:table7216:lthtmlCropMarkHeight:=149.69975pt
+:table7165:lthtmlCropMarkHeight:=111.19998pt
 
-:table7216:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7165:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [115]
 
-:table7220:lthtmlCropMarkHeight:=140.19977pt
+:table7170:lthtmlCropMarkHeight:=143.19998pt
 
-:table7220:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7170:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [116]
 
-:table7224:lthtmlCropMarkHeight:=140.19977pt
+:table7175:lthtmlCropMarkHeight:=143.19998pt
 
-:table7224:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7175:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [117]
 
-:table7228:lthtmlCropMarkHeight:=168.69972pt
+:table7346:lthtmlCropMarkHeight:=127.19998pt
 
-:table7228:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7346:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [118]
 
-:table7232:lthtmlCropMarkHeight:=168.69972pt
+:table7350:lthtmlCropMarkHeight:=159.19998pt
 
-:table7232:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7350:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [119]
 
-:table7236:lthtmlCropMarkHeight:=178.1997pt
+:table7354:lthtmlCropMarkHeight:=119.19998pt
 
-:table7236:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7354:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [120]
 
-:table7240:lthtmlCropMarkHeight:=178.1997pt
+:table7358:lthtmlCropMarkHeight:=175.19998pt
 
-:table7240:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7358:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [121]
 
-:table7244:lthtmlCropMarkHeight:=111.69981pt
+:table7362:lthtmlCropMarkHeight:=175.19998pt
 
-:table7244:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7362:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [122]
 
-:table7248:lthtmlCropMarkHeight:=168.69972pt
+:table7366:lthtmlCropMarkHeight:=135.19998pt
 
-:table7248:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7366:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [123]
 
-:table7252:lthtmlCropMarkHeight:=168.69972pt
+:table7370:lthtmlCropMarkHeight:=167.19998pt
 
-:table7252:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7370:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [124]
 
-:table7256:lthtmlCropMarkHeight:=206.69966pt
+:table7374:lthtmlCropMarkHeight:=175.19998pt
 
-:table7256:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7374:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [125]
 
-:table7260:lthtmlCropMarkHeight:=206.69966pt
+:table7378:lthtmlCropMarkHeight:=191.19998pt
 
-:table7260:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7378:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [126]
 
-:table7264:lthtmlCropMarkHeight:=206.69966pt
+:table7382:lthtmlCropMarkHeight:=127.19998pt
 
-:table7264:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7382:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [127]
 
-:table7268:lthtmlCropMarkHeight:=206.69966pt
+:table7386:lthtmlCropMarkHeight:=119.19998pt
 
-:table7268:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7386:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [128]
 
-:table7272:lthtmlCropMarkHeight:=216.19965pt
+:table7390:lthtmlCropMarkHeight:=119.19998pt
 
-:table7272:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7390:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [129]
 
-:table7276:lthtmlCropMarkHeight:=216.19965pt
+:table7394:lthtmlCropMarkHeight:=143.19998pt
 
-:table7276:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7394:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [130]
 
-:table7280:lthtmlCropMarkHeight:=159.19974pt
+:table7398:lthtmlCropMarkHeight:=143.19998pt
 
-:table7280:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7398:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [131]
 
-:table7284:lthtmlCropMarkHeight:=206.69966pt
+:table7402:lthtmlCropMarkHeight:=151.19998pt
 
-:table7284:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7402:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [132]
 
-:table7288:lthtmlCropMarkHeight:=206.69966pt
+:table7406:lthtmlCropMarkHeight:=151.19998pt
 
-:table7288:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7406:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [133]
 
-:table7292:lthtmlCropMarkHeight:=244.6996pt
+:table7410:lthtmlCropMarkHeight:=95.19998pt
 
-:table7292:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7410:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
 [134]
 
-:table7296:lthtmlCropMarkHeight:=235.19962pt
+:table7414:lthtmlCropMarkHeight:=143.19998pt
 
-:table7296:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[135] (./images.aux) ) 
+:table7414:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+[135]
+
+:table7418:lthtmlCropMarkHeight:=143.19998pt
+
+:table7418:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+[136]
+
+:table7422:lthtmlCropMarkHeight:=175.19998pt
+
+:table7422:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+[137]
+
+:table7426:lthtmlCropMarkHeight:=175.19998pt
+
+:table7426:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+[138]
+
+:table7430:lthtmlCropMarkHeight:=175.19998pt
+
+:table7430:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+[139]
+
+:table7434:lthtmlCropMarkHeight:=175.19998pt
+
+:table7434:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+[140]
+
+:table7438:lthtmlCropMarkHeight:=183.19998pt
+
+:table7438:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+[141]
+
+:table7442:lthtmlCropMarkHeight:=183.19998pt
+
+:table7442:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+[142]
+
+:table7446:lthtmlCropMarkHeight:=135.19998pt
+
+:table7446:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+[143]
+
+:table7450:lthtmlCropMarkHeight:=175.19998pt
+
+:table7450:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+[144]
+
+:table7454:lthtmlCropMarkHeight:=175.19998pt
+
+:table7454:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+[145]
+
+:table7458:lthtmlCropMarkHeight:=207.19998pt
+
+:table7458:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+[146]
+
+:table7462:lthtmlCropMarkHeight:=199.19998pt
+
+:table7462:lthtmlCropMarkDepth:=0.0pt:1ex:=4.30554pt
+[147] (./images.aux) ) 
 Here is how much of TeX's memory you used:
- 4882 strings out of 492167
- 84152 string characters out of 6131558
- 188195 words of memory out of 5000000
- 9017 multiletter control sequences out of 15000+600000
- 7392 words of font info for 26 fonts, out of 8000000 for 9000
+ 5624 strings out of 492167
+ 94508 string characters out of 6131558
+ 222794 words of memory out of 5000000
+ 9734 multiletter control sequences out of 15000+600000
+ 6644 words of font info for 24 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 46i,10n,49p,795b,383s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,10n,49p,795b,419s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
 x10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></us
 r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type
+dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
-/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on images.pdf (135 pages, 266531 bytes).
+ts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><
+/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmtt10.pfb>
+Output written on images.pdf (147 pages, 328906 bytes).
 PDF statistics:
- 476 PDF objects out of 1000 (max. 8388607)
- 326 compressed objects within 4 object streams
+ 524 PDF objects out of 1000 (max. 8388607)
+ 359 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

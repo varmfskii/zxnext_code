@@ -1,4 +1,4 @@
-\documentclass[11pt]{book}
+\documentclass[10pt]{book}
 \usepackage{csvsimple}
 \usepackage{booktabs}
 \usepackage[shortlabels]{enumitem}
@@ -8,6 +8,10 @@
 \usepackage{xintbinhex}
 %\usepackage{xintexpr}
 \usepackage{hang}
+\usepackage[margin=1.0in]{geometry}
+\usepackage[hyphens]{url}
+\usepackage{multicol}
+\usepackage{changepage}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
 \setlist{nosep}
@@ -22,6 +26,8 @@
 \newcommand{\register}[3]{Register (#1) \$#2 (\xintHexToDec{#2}) $\Rightarrow$ #3}
 \newcommand{\port}[2]{Port \$#1 (\xintHexToDec{#1}) #2}
 \newcommand{\textoverline}[1]{$\overline{\hbox{#1}}$}
+\newcommand{\sinset}{\end{multicols}\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}}
+\newcommand{\einset}{\end{adjustwidth}\begin{multicols}{2}}
 \begin{document}
 \frontmatter
 \maketitle

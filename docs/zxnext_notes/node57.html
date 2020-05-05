@@ -32,10 +32,10 @@
 <A
  HREF="node56.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html671"
+<A ID="tex2html668"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html673"
+<A ID="tex2html670"
   HREF="node177.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
@@ -45,9 +45,9 @@
  HREF="node56.html">Audio</A>
 <B> Previous:</B> <A
  HREF="node56.html">Audio</A>
- &nbsp; <B>  <A ID="tex2html672"
+ &nbsp; <B>  <A ID="tex2html669"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html674"
+ &nbsp; <B>  <A ID="tex2html671"
   HREF="node177.html">Index</A></B> 
 <BR>
 <BR></DIV>
@@ -56,8 +56,6 @@
 <H1><A ID="SECTION00410000000000000000">
 ZX Spectrum 1-bit</A>
 </H1>
-
-<P>
 The baseline sound of the ZX Spectrum was produced by toggling the Ear
 bit (bit 4) of $fe (254) The ULA port to produce 1-bit audio.  It is
 enabled by bit 4 of Next register $08 (8).  While this does work on
@@ -65,18 +63,20 @@ the ZX Spectrum Next, there are other much better methods and this is
 only supported for backward compatibility.
 
 <P>
+<BR>
+<IMG STYLE=""
+ SRC="img45.svg"
+ ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
 Code:
-<PRE>
-;; enable internal speaker
-ld bc,$243B
-ld a,$08
+\begin{verbatim};; e...
+...
 out (c),a
 ld bc,$253B
 in a,(c)
 or $10
-out (c),a
-</PRE>
-
+out (c),a\end{verbatim}
+\end{adjustwidth}">
+<BR>
 <P>
 <BR><HR>
 

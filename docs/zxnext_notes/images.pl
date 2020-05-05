@@ -2,239 +2,422 @@
 # Associate images original text with physical files.
 
 
-$key = q/(<);MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.55ex; vertical-align: -0.20ex; " SRC="|."$dir".q|img67.svg"
+$key = q/(<);MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.57ex; vertical-align: -0.21ex; " SRC="|."$dir".q|img79.svg"
  ALT="\(&lt;\)">|; 
 
-$key = q/(>);MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.55ex; vertical-align: -0.20ex; " SRC="|."$dir".q|img66.svg"
+$key = q/(>);MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.57ex; vertical-align: -0.21ex; " SRC="|."$dir".q|img78.svg"
  ALT="\(&gt;\)">|; 
 
-$key = q/(|);MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="|."$dir".q|img65.svg"
+$key = q/(|);MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 2.55ex; vertical-align: -0.70ex; " SRC="|."$dir".q|img77.svg"
  ALT="\(\vert\)">|; 
 
-$key = q/0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="|."$dir".q|img13.svg"
+$key = q/0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 2.16ex; vertical-align: -0.46ex; " SRC="|."$dir".q|img14.svg"
  ALT="$0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$">|; 
 
-$key = q/0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="|."$dir".q|img12.svg"
+$key = q/0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 2.16ex; vertical-align: -0.46ex; " SRC="|."$dir".q|img13.svg"
  ALT="$0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$">|; 
 
-$key = q/100xxxxx;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.70ex; vertical-align: -0.11ex; " SRC="|."$dir".q|img24.svg"
+$key = q/100xxxxx;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.72ex; vertical-align: -0.12ex; " SRC="|."$dir".q|img29.svg"
  ALT="$100xxxxx$">|; 
 
-$key = q/1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="|."$dir".q|img15.svg"
+$key = q/1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 2.16ex; vertical-align: -0.46ex; " SRC="|."$dir".q|img17.svg"
  ALT="$1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$">|; 
 
-$key = q/128times96;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img23.svg"
+$key = q/128times96;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img28.svg"
  ALT="$128\times96$">|; 
 
-$key = q/16times16;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img30.svg"
+$key = q/16times16;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img36.svg"
  ALT="$16\times16$">|; 
 
-$key = q/1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="|."$dir".q|img14.svg"
+$key = q/1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 2.16ex; vertical-align: -0.46ex; " SRC="|."$dir".q|img16.svg"
  ALT="$1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$">|; 
 
-$key = q/1times;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img34.svg"
+$key = q/1times;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img42.svg"
  ALT="$1\times$">|; 
 
-$key = q/256times192;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img1.svg"
+$key = q/256times192;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img1.svg"
  ALT="$256\times 192$">|; 
 
-$key = q/256times192times256;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img4.svg"
+$key = q/256times192times256;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img4.svg"
  ALT="$256\times192\times256$">|; 
 
-$key = q/2times;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img31.svg"
+$key = q/2times;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img37.svg"
  ALT="$2\times$">|; 
 
-$key = q/320times256;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img2.svg"
+$key = q/320times256;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img2.svg"
  ALT="$320\times 256$">|; 
 
-$key = q/320times256times256;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img5.svg"
+$key = q/320times256times256;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img5.svg"
  ALT="$320\times256\times256$">|; 
 
-$key = q/32times192;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img17.svg"
+$key = q/32times192;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img20.svg"
  ALT="$32\times192$">|; 
 
-$key = q/32times24;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img11.svg"
+$key = q/32times24;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img12.svg"
  ALT="$32\times24$">|; 
 
-$key = q/352times240;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img46.svg"
+$key = q/352times240;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img58.svg"
  ALT="$352\times240$">|; 
 
-$key = q/352times288;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img45.svg"
+$key = q/352times288;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img57.svg"
  ALT="$352\times288$">|; 
 
-$key = q/40times30;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img28.svg"
+$key = q/40times30;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img34.svg"
  ALT="$40\times30$">|; 
 
-$key = q/40times32;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img26.svg"
+$key = q/40times32;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img32.svg"
  ALT="$40\times32$">|; 
 
-$key = q/4times4;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img35.svg"
+$key = q/4times4;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img43.svg"
  ALT="$4\times4$">|; 
 
-$key = q/4times;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img32.svg"
+$key = q/4times;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img38.svg"
  ALT="$4\times$">|; 
 
-$key = q/512times192;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img18.svg"
+$key = q/512times192;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img22.svg"
  ALT="$512\times192$">|; 
 
-$key = q/640times256;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img3.svg"
+$key = q/640times256;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img3.svg"
  ALT="$640\times 256$">|; 
 
-$key = q/640times256times16;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img25.svg"
+$key = q/640times256times16;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img31.svg"
  ALT="$640\times256\times16$">|; 
 
-$key = q/640times256times6;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img6.svg"
+$key = q/640times256times6;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img6.svg"
  ALT="$640\times256\times6$">|; 
 
-$key = q/64times24;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img21.svg"
+$key = q/64times24;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img25.svg"
  ALT="$64\times24$">|; 
 
-$key = q/64times32;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img20.svg"
+$key = q/64times32;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img24.svg"
  ALT="$64\times32$">|; 
 
-$key = q/80times30;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img29.svg"
+$key = q/80times30;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img35.svg"
  ALT="$80\times30$">|; 
 
-$key = q/80times32;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img27.svg"
+$key = q/80times32;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img33.svg"
  ALT="$80\times32$">|; 
 
-$key = q/8times1;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img16.svg"
+$key = q/8times1;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img19.svg"
  ALT="$8\times1$">|; 
 
-$key = q/8times8;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img10.svg"
+$key = q/8times8;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img11.svg"
  ALT="$8\times8$">|; 
 
-$key = q/8times;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="|."$dir".q|img33.svg"
+$key = q/8times;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="|."$dir".q|img39.svg"
  ALT="$8\times$">|; 
 
-$key = q/C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="|."$dir".q|img22.svg"
+$key = q/C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 2.16ex; vertical-align: -0.46ex; " SRC="|."$dir".q|img26.svg"
  ALT="$C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1$">|; 
 
-$key = q/I^2C;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="|."$dir".q|img54.svg"
+$key = q/I^2C;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="|."$dir".q|img66.svg"
  ALT="$I^2C$">|; 
 
-$key = q/I^2S;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="|."$dir".q|img53.svg"
+$key = q/I^2S;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="|."$dir".q|img65.svg"
  ALT="$I^2S$">|; 
 
-$key = q/Rightarrow;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="|."$dir".q|img7.svg"
+$key = q/Rightarrow;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="|."$dir".q|img7.svg"
  ALT="$\Rightarrow$">|; 
 
-$key = q/^O;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 2.21ex; vertical-align: -0.11ex; " SRC="|."$dir".q|img36.svg"
+$key = q/^O;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 2.18ex; vertical-align: -0.12ex; " SRC="|."$dir".q|img44.svg"
  ALT="$^O$">|; 
 
-$key = q/hbox{Divider}=frac{538461}{hbox{Rate}}-1;MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 3.34ex; vertical-align: -1.24ex; " SRC="|."$dir".q|img77.svg"
+$key = q/hbox{Divider}=frac{538461}{hbox{Rate}}-1;MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 3.33ex; vertical-align: -1.26ex; " SRC="|."$dir".q|img89.svg"
  ALT="$\hbox{Divider}=\frac{538461}{\hbox{Rate}}-1$">|; 
 
-$key = q/hbox{Rate}=frac{538461}{hbox{Divider}+1};MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 3.54ex; vertical-align: -1.44ex; " SRC="|."$dir".q|img78.svg"
+$key = q/hbox{Rate}=frac{538461}{hbox{Divider}+1};MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 3.55ex; vertical-align: -1.48ex; " SRC="|."$dir".q|img90.svg"
  ALT="$\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$">|; 
 
-$key = q/overline{hbox{CS}};MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="|."$dir".q|img72.svg"
+$key = q/overline{hbox{CS}};MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 2.28ex; vertical-align: -0.12ex; " SRC="|."$dir".q|img84.svg"
  ALT="$\overline{\hbox{CS}}$">|; 
 
-$key = q/overline{hbox{DATA}};MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="|."$dir".q|img73.svg"
+$key = q/overline{hbox{DATA}};MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 2.28ex; vertical-align: -0.12ex; " SRC="|."$dir".q|img85.svg"
  ALT="$\overline{\hbox{DATA}}$">|; 
 
-$key = q/overline{hbox{IORQULA}};MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 2.67ex; vertical-align: -0.56ex; " SRC="|."$dir".q|img75.svg"
+$key = q/overline{hbox{IORQULA}};MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 2.73ex; vertical-align: -0.57ex; " SRC="|."$dir".q|img87.svg"
  ALT="$\overline{\hbox{IORQULA}}$">|; 
 
-$key = q/overline{hbox{RESET}};MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="|."$dir".q|img74.svg"
+$key = q/overline{hbox{RESET}};MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 2.28ex; vertical-align: -0.12ex; " SRC="|."$dir".q|img86.svg"
  ALT="$\overline{\hbox{RESET}}$">|; 
 
-$key = q/overline{hbox{ROMCS}};MSF=1.6;LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="|."$dir".q|img76.svg"
+$key = q/overline{hbox{ROMCS}};MSF=1.6;AAT/;
+$cached_env_img{$key} = q|<IMG STYLE="height: 2.28ex; vertical-align: -0.12ex; " SRC="|."$dir".q|img88.svg"
  ALT="$\overline{\hbox{ROMCS}}$">|; 
 
-$key = q/{labeledpar}{Parameters:}{CONTINUOUS}Continuouslyshowthedateandtimeuntilakeyispressed{labeledpar};LFS=11;AAT/;
+$key = q/{adjustwidth}%latex2htmlidmarker1030{0.05textwidth}{0.05textwidth}Asanexampleofadinpatternmemoryinlefttoright,toptobottomorder.{adjustwidth};MSF=1.6;FSF=1.6;AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img63.svg"
+ SRC="|."$dir".q|img40.svg"
+ ALT="\begin{adjustwidth}
+% latex2html id marker 1030
+{0.05\textwidth}{0.05\textwidth}...
+...tored in pattern memory in left to right,
+top to bottom order.
+\end{adjustwidth}">|; 
+
+$key = q/{adjustwidth}%latex2htmlidmarker1871{0.05textwidth}{0.05textwidth}table{[h]{centzxnDMARegisters}{csvautotabular{zxndmaslashregisters.csv}table{{adjustwidth};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img49.svg"
+ ALT="\begin{adjustwidth}
+% latex2html id marker 1871
+{0.05\textwidth}{0.05\textwidth}...
+...A Registers}
+\csvautotabular{zxndma/registers.csv}
+\end{table}\end{adjustwidth}">|; 
+
+$key = q/{adjustwidth}%latex2htmlidmarker258{0.05textwidth}{0.05textwidth}table{[h]{centeg{{caption{ULAColour}{csvautotabular{videoslashflash.csv}table{{adjustwidth};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img8.svg"
+ ALT="\begin{adjustwidth}
+% latex2html id marker 258
+{0.05\textwidth}{0.05\textwidth}
+...
+...ption{ULA Colour}
+\csvautotabular{video/flash.csv}
+\end{table}\end{adjustwidth}">|; 
+
+$key = q/{adjustwidth}%latex2htmlidmarker265{0.05textwidth}{0.05textwidth}table{[h]{centeng{{caption{ULANext}{csvautotabular{videoslashpalfmt.csv}table{{adjustwidth};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img9.svg"
+ ALT="\begin{adjustwidth}
+% latex2html id marker 265
+{0.05\textwidth}{0.05\textwidth}
+...
+...aption{ULA Next}
+\csvautotabular{video/palfmt.csv}
+\end{table}\end{adjustwidth}">|; 
+
+$key = q/{adjustwidth}%latex2htmlidmarker426{0.05textwidth}{0.05textwidth}table{[h]{centeHi-ResolutionColours}{csvautotabular{videoslashhires.csv}table{{adjustwidth};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img23.svg"
+ ALT="\begin{adjustwidth}
+% latex2html id marker 426
+{0.05\textwidth}{0.05\textwidth}
+...
+...solution Colours}
+\csvautotabular{video/hires.csv}
+\end{table}\end{adjustwidth}">|; 
+
+$key = q/{adjustwidth}{0.05textwidth}{0.05textwidth}Asanexamplewewillusethesamespriteimagyteswouldbestoredinpatternmemoryinlefttoright,toptobottomorder.{adjustwidth};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img41.svg"
+ ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
+As an example we will use th...
+...tored in pattern memory in left to right,
+top to bottom order.
+\end{adjustwidth}">|; 
+
+$key = q/{adjustwidth}{0.05textwidth}{0.05textwidth}Code:256colourpreform{<verbatim_mark>rm{{par{Code:16colourpreform{<verbatim_mark>verbatim11#preform{{adjustwidth};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img30.svg"
+ ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
+Code: 256 colour
+\begin{verb...
+...extreg $15,$80
+;; 16-colour mode
+nextreg $6A,$10\end{verbatim}
+\end{adjustwidth}">|; 
+
+$key = q/{adjustwidth}{0.05textwidth}{0.05textwidth}Code:preform{<verbatim_mark>verbatim33#preform{{adjustwidth};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img45.svg"
+ ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
+Code:
+\begin{verbatim};; e...
+...
+out (c),a
+ld bc,$253B
+in a,(c)
+or $10
+out (c),a\end{verbatim}
+\end{adjustwidth}">|; 
+
+$key = q/{adjustwidth}{0.05textwidth}{0.05textwidth}Code:preform{<verbatim_mark>verbatim34#preform{{adjustwidth};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img46.svg"
+ ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
+Code:
+\begin{verbatim};; e...
+...
+out (c),a
+ld bc,$253B
+in a,(c)
+or $08
+out (c),a\end{verbatim}
+\end{adjustwidth}">|; 
+
+$key = q/{adjustwidth}{0.05textwidth}{0.05textwidth}Code:preform{<verbatim_mark>verbatim35#preform{{adjustwidth};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img47.svg"
+ ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
+Code:
+\begin{verbatim};; e...
+...
+out (c),a
+ld bc,$253B
+in a,(c)
+or $02
+out (c),a\end{verbatim}
+\end{adjustwidth}">|; 
+
+$key = q/{adjustwidth}{0.05textwidth}{0.05textwidth}Code:preform{<verbatim_mark>verbatim5#preform{{adjustwidth};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img15.svg"
+ ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
+Code:
+\begin{verbatim};; f...
+...ext register r/w port
+in a,(c)
+and $7f
+out (c),a\end{verbatim}
+\end{adjustwidth}">|; 
+
+$key = q/{adjustwidth}{0.05textwidth}{0.05textwidth}Code:preform{<verbatim_mark>verbatim7#preform{{adjustwidth};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img21.svg"
+ ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
+Code:
+\begin{verbatim};; d...
+...; set hi-colour mode
+ld c,$ff
+ld a,$02
+out (c),a\end{verbatim}
+\end{adjustwidth}">|; 
+
+$key = q/{adjustwidth}{0.05textwidth}{0.05textwidth}Code:preform{<verbatim_mark>verbatim8#preform{{adjustwidth};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img27.svg"
+ ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
+Code:
+\begin{verbatim};; d...
+...mode, black on white
+ld c,$ff
+ld a,$06
+out (c),a\end{verbatim}
+\end{adjustwidth}">|; 
+
+$key = q/{adjustwidth}{0.05textwidth}{0.05textwidth}Code:{par{preform{<verbatim_mark>verbatim6#preform{{adjustwidth};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img18.svg"
+ ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
+Code:
+\par
+\begin{verbatim}
+...
+... alternate page mode
+ld c,$ff
+ld a,$01
+out (c),a\end{verbatim}
+\end{adjustwidth}">|; 
+
+$key = q/{adjustwidth}{0.05textwidth}{0.05textwidth}enumerate{itemAssembly{par{Shortexampcreen.{par{preform{<verbatim_mark>verbatim80#preform{enumerate{{adjustwidth};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img50.svg"
+ ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
+\begin{enumerate}
+\item Asse...
+...''DMATEST'',start,fin-start
+ENDIF\end{verbatim}
+\end{enumerate}\end{adjustwidth}">|; 
+
+$key = q/{adjustwidth}{0.05textwidth}{0.05textwidth}preform{<verbatim_mark>verbatim4#preform{{adjustwidth};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img10.svg"
+ ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
+\begin{verbatim}; 64 colou...
+... 0x03, 0x00 ; +FLASHterminating_byte:db 0x0d\end{verbatim}
+\end{adjustwidth}">|; 
+
+$key = q/{labeledpar}{Parameters:}{CONTINUOUS}Continuouslyshowthedateandtimeuntilakeyispressed{labeledpar};AAT/;
+$cached_env_img{$key} = q|<IMG STYLE=""
+ SRC="|."$dir".q|img75.svg"
  ALT="\begin{labeledpar}{Parameters:}{CONTINUOUS}
 Continuously show the date and time until a key is pressed
 \end{labeledpar}">|; 
 
-$key = q/{labeledpar}{Parameters:}{C}Continuouslyshowthedateandtimeuntilakeyispressed{labeledpar};LFS=11;AAT/;
+$key = q/{labeledpar}{Parameters:}{C}Continuouslyshowthedateandtimeuntilakeyispressed{labeledpar};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img62.svg"
+ SRC="|."$dir".q|img74.svg"
  ALT="\begin{labeledpar}{Parameters:}{C}
 Continuously show the date and time until a key is pressed
 \end{labeledpar}">|; 
 
-$key = q/{labeledpar}{Parameters:}{RGB}Causesinkandpapercolourstobeinterpretedas9-bitoctalRGBnumbers{labeledpar};LFS=11;AAT/;
+$key = q/{labeledpar}{Parameters:}{RGB}Causesinkandpapercolourstobeinterpretedas9-bitoctalRGBnumbers{labeledpar};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img58.svg"
+ SRC="|."$dir".q|img70.svg"
  ALT="\begin{labeledpar}{Parameters:}{RGB}
 Causes ink and paper colours to be interpreted as 9-bit octal RGB numbers
 \end{labeledpar}">|; 
 
-$key = q/{labeledpar}{Parameters:}{SET}Prompttheuserforthecurrentdateandtime{labeledpar};LFS=11;AAT/;
+$key = q/{labeledpar}{Parameters:}{SET}Prompttheuserforthecurrentdateandtime{labeledpar};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img64.svg"
+ SRC="|."$dir".q|img76.svg"
  ALT="\begin{labeledpar}{Parameters:}{SET}
 Prompt the user for the current date and time
 \end{labeledpar}">|; 
 
-$key = q/{labeledpar}{Parameters:}{textbf{Syntax:}}textbf{COLOURS[RGB]textit{paper}textit{ink}}{labeledpar};LFS=11;AAT/;
+$key = q/{labeledpar}{Parameters:}{textbf{Syntax:}}textbf{COLOURS[RGB]textit{paper}textit{ink}}{labeledpar};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img55.svg"
+ SRC="|."$dir".q|img67.svg"
  ALT="\begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
 \textbf{COLOURS [RGB] \textit{paper} \textit{ink}}
 \end{labeledpar}">|; 
 
-$key = q/{labeledpar}{Parameters:}{textbf{Syntax:}}textbf{COPYSYS}{labeledpar};LFS=11;AAT/;
+$key = q/{labeledpar}{Parameters:}{textbf{Syntax:}}textbf{COPYSYS}{labeledpar};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img59.svg"
+ SRC="|."$dir".q|img71.svg"
  ALT="\begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
 \textbf{COPYSYS}
 \end{labeledpar}">|; 
 
-$key = q/{labeledpar}{Parameters:}{textbf{Syntax:}}textbf{DATE}textbf{DATEC}textbf{DATECOOUS}textbf{DATEtextit{time-specification}}textbf{DATESET}{labeledpar};LFS=11;AAT/;
+$key = q/{labeledpar}{Parameters:}{textbf{Syntax:}}textbf{DATE}textbf{DATEC}textbf{DATECONTINUOUS}textbf{DATEtextit{time-specification}}textbf{DATESET}{labeledpar};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img60.svg"
+ SRC="|."$dir".q|img72.svg"
  ALT="\begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
 \textbf{DATE}\\\\
 \textbf{DATE ...
@@ -243,433 +426,433 @@ $cached_env_img{$key} = q|<IMG STYLE=""
 \textbf{DATE SET}
 \end{labeledpar}">|; 
 
-$key = q/{labeledpar}{Parameters:}{textit{ink}}Ink(foreground)colour{labeledpar};LFS=11;AAT/;
+$key = q/{labeledpar}{Parameters:}{textit{ink}}Ink(foreground)colour{labeledpar};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img57.svg"
+ SRC="|."$dir".q|img69.svg"
  ALT="\begin{labeledpar}{Parameters:}{\textit{ink}}
 Ink (foreground) colour
 \end{labeledpar}">|; 
 
-$key = q/{labeledpar}{Parameters}{textit{paper}}Paper(background)colour{labeledpar};LFS=11;AAT/;
+$key = q/{labeledpar}{Parameters}{textit{paper}}Paper(background)colour{labeledpar};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img56.svg"
+ SRC="|."$dir".q|img68.svg"
  ALT="\begin{labeledpar}{Parameters}{\textit{paper}}
 Paper (background) colour
 \end{labeledpar}">|; 
 
-$key = q/{labeledpar}{Parameters}{textit{time-specification}}TimeslashdateintheformatMMslashDDslashYYHH:MM:SS{labeledpar};LFS=11;AAT/;
+$key = q/{labeledpar}{Parameters}{textit{time-specification}}TimeslashdateintheformatMMslashDDslashYYHH:MM:SS{labeledpar};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img61.svg"
+ SRC="|."$dir".q|img73.svg"
  ALT="\begin{labeledpar}{Parameters}{\textit{time-specification}}
 Time/date in the format MM/DD/YY HH:MM:SS
 \end{labeledpar}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashaci-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashaci-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img106.svg"
+ SRC="|."$dir".q|img118.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/aci-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashadd-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashadd-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img107.svg"
+ SRC="|."$dir".q|img119.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/add-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashadi-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashadi-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img108.svg"
+ SRC="|."$dir".q|img120.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/adi-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashbit0-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashbit0-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img109.svg"
+ SRC="|."$dir".q|img121.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/bit0-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashbit4-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashbit4-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img110.svg"
+ SRC="|."$dir".q|img122.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/bit4-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashbrlc-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashbrlc-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img111.svg"
+ SRC="|."$dir".q|img123.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/brlc-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashcp-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashcp-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img112.svg"
+ SRC="|."$dir".q|img124.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/cp-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashdcx-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashdcx-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img113.svg"
+ SRC="|."$dir".q|img125.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/dcx-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashin-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashin-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img114.svg"
+ SRC="|."$dir".q|img126.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/in-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashjc-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashjc-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img115.svg"
+ SRC="|."$dir".q|img127.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/jc-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld0-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld0-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img116.svg"
+ SRC="|."$dir".q|img128.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/ld0-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld1-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld1-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img117.svg"
+ SRC="|."$dir".q|img129.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/ld1-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld2-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld2-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img118.svg"
+ SRC="|."$dir".q|img130.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/ld2-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld3-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld3-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img119.svg"
+ SRC="|."$dir".q|img131.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/ld3-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld4-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld4-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img120.svg"
+ SRC="|."$dir".q|img132.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/ld4-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld5-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashld5-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img121.svg"
+ SRC="|."$dir".q|img133.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/ld5-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashlda-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashlda-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img122.svg"
+ SRC="|."$dir".q|img134.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/lda-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashmov0-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashmov0-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img123.svg"
+ SRC="|."$dir".q|img135.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/mov0-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashmov1-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashmov1-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img124.svg"
+ SRC="|."$dir".q|img136.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/mov1-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashmul-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashmul-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img125.svg"
+ SRC="|."$dir".q|img137.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/mul-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashout-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashout-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img126.svg"
+ SRC="|."$dir".q|img138.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/out-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashres0-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashres0-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img127.svg"
+ SRC="|."$dir".q|img139.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/res0-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashres4-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashres4-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img128.svg"
+ SRC="|."$dir".q|img140.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/res4-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashret-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashret-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img129.svg"
+ SRC="|."$dir".q|img141.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/ret-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashrr-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashrr-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img130.svg"
+ SRC="|."$dir".q|img142.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/rr-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashsbb-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashsbb-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img131.svg"
+ SRC="|."$dir".q|img143.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/sbb-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashset0-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashset0-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img132.svg"
+ SRC="|."$dir".q|img144.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/set0-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashset4-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashset4-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img133.svg"
+ SRC="|."$dir".q|img145.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/set4-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashsetae-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashsetae-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img134.svg"
+ SRC="|."$dir".q|img146.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/setae-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashsub-mnemonics.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashmnemonicslashsub-mnemonics.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img135.svg"
+ SRC="|."$dir".q|img147.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/mnemonic/sub-mnemonics.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslash00-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslash00-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img79.svg"
+ SRC="|."$dir".q|img91.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/00-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslash20-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslash20-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img80.svg"
+ SRC="|."$dir".q|img92.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/20-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslash40-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslash40-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img81.svg"
+ SRC="|."$dir".q|img93.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/40-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslash60-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslash60-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img82.svg"
+ SRC="|."$dir".q|img94.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/60-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslash80-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslash80-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img83.svg"
+ SRC="|."$dir".q|img95.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/80-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslasha0-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslasha0-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img84.svg"
+ SRC="|."$dir".q|img96.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/a0-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashc0-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashc0-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img85.svg"
+ SRC="|."$dir".q|img97.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/c0-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcb00-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcb00-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img87.svg"
+ SRC="|."$dir".q|img99.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/cb00-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcb20-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcb20-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img88.svg"
+ SRC="|."$dir".q|img100.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/cb20-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcb40-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcb40-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img89.svg"
+ SRC="|."$dir".q|img101.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/cb40-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcb60-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcb60-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img90.svg"
+ SRC="|."$dir".q|img102.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/cb60-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcb80-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcb80-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img91.svg"
+ SRC="|."$dir".q|img103.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/cb80-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcba0-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcba0-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img92.svg"
+ SRC="|."$dir".q|img104.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/cba0-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcbc0-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcbc0-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img93.svg"
+ SRC="|."$dir".q|img105.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/cbc0-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcbe0-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashcbe0-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img94.svg"
+ SRC="|."$dir".q|img106.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/cbe0-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashdd00-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashdd00-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img95.svg"
+ SRC="|."$dir".q|img107.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/dd00-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashdd60-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashdd60-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img96.svg"
+ SRC="|."$dir".q|img108.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/dd60-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashdd90-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashdd90-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img97.svg"
+ SRC="|."$dir".q|img109.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/dd90-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashddcb00-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashddcb00-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img104.svg"
+ SRC="|."$dir".q|img116.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/ddcb00-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashe0-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashe0-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img86.svg"
+ SRC="|."$dir".q|img98.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/e0-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashed00-opcode.csv}{par{*ZXSpectrumNextextension{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashed00-opcode.csv}{par{*ZXSpectrumNextextension{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img98.svg"
+ SRC="|."$dir".q|img110.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/ed00-opcode.csv}
 \par
 * ZX Spectrum Next extension
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashed50-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashed50-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img99.svg"
+ SRC="|."$dir".q|img111.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/ed50-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashed90-opcode.csv}{par{*ZXSpectrumNextextension{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashed90-opcode.csv}{par{*ZXSpectrumNextextension{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img100.svg"
+ SRC="|."$dir".q|img112.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/ed90-opcode.csv}
 \par
 * ZX Spectrum Next extension
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashfd00-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashfd00-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img101.svg"
+ SRC="|."$dir".q|img113.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/fd00-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashfd60-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashfd60-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img102.svg"
+ SRC="|."$dir".q|img114.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/fd60-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashfd90-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashfd90-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img103.svg"
+ SRC="|."$dir".q|img115.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/fd90-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashfdcb00-opcode.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{scriptsize{{{csvautotabular{appendicesslashopcodeslashfdcb00-opcode.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img105.svg"
+ SRC="|."$dir".q|img117.svg"
  ALT="\begin{table}\centering\scriptsize
 \csvautotabular{appendices/opcode/fdcb00-opcode.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{small{{{csvautotabular{copperslashidealparam.csv}{par{{raggedr{**Thefractionalpartisspecifiedindotclocks(NOOPinstructions).{table};LFS=11;AAT/;
+$key = q/{table}{centering{{small{{{csvautotabular{copperslashidealparam.csv}{par{{ragged.9).{par{**Thefractionalpartisspecifiedindotclocks(NOOPinstructions).{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img48.svg"
+ SRC="|."$dir".q|img60.svg"
  ALT="\begin{table}\centering\small
 \csvautotabular{copper/idealparam.csv}
 \par
@@ -677,16 +860,16 @@ $cached_env_img{$key} = q|<IMG STYLE=""
 ... The fractional part is specified in dot clocks (NOOP instructions).
 \end{table}">|; 
 
-$key = q/{table}{centering{{tiny{{{csvautotabular{appendicesslashportsslashports.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{tiny{{{csvautotabular{appendicesslashportsslashports.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img71.svg"
+ SRC="|."$dir".q|img83.svg"
  ALT="\begin{table}\centering\tiny
 \csvautotabular{appendices/ports/ports.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{tiny{{{csvautotabular{copperslashvtime.csv}{par{{raggedright{--Linecompareisoutofrange{par{*ULAVBLANKinterrupt.{table};LFS=11;AAT/;
+$key = q/{table}{centering{{tiny{{{csvautotabular{copperslashvtime.csv}{par{{raggedright{--Linecompareisoutofrange{par{*ULAVBLANKinterrupt.{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img44.svg"
+ SRC="|."$dir".q|img56.svg"
  ALT="\begin{table}\centering\tiny
 \csvautotabular{copper/vtime.csv}
 \par
@@ -695,16 +878,16 @@ $cached_env_img{$key} = q|<IMG STYLE=""
 * ULA VBLANK interrupt.
 \end{table}">|; 
 
-$key = q/{table}{centering{{{csvautotabular{copperslashaftermaxcmp.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{{csvautotabular{copperslashaftermaxcmp.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img42.svg"
+ SRC="|."$dir".q|img54.svg"
  ALT="\begin{table}\centering
 \csvautotabular{copper/aftermaxcmp.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{{csvautotabular{copperslashcontrolmodes.csv}{par{{raggedright*Thecontrolmodenamesusedinthisguidedifferfromtheofficialnames.{table};LFS=11;AAT/;
+$key = q/{table}{centering{{{csvautotabular{copperslashcontrolmodes.csv}{par{{raggedright{*Thecontrolmodenamesusedinthisguidedifferfromtheofficialnames.{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img51.svg"
+ SRC="|."$dir".q|img63.svg"
  ALT="\begin{table}\centering
 \csvautotabular{copper/controlmodes.csv}
 \par
@@ -713,25 +896,25 @@ $cached_env_img{$key} = q|<IMG STYLE=""
 the official names.
 \end{table}">|; 
 
-$key = q/{table}{centering{{{csvautotabular{copperslashhtime.csv}{par{{raggedright{--Dotclockcompareisoutofrange.{table};LFS=11;AAT/;
+$key = q/{table}{centering{{{csvautotabular{copperslashhtime.csv}{par{{raggedright{--Dotclockcompareisoutofrange.{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img43.svg"
+ SRC="|."$dir".q|img55.svg"
  ALT="\begin{table}\centering
 \csvautotabular{copper/htime.csv}
 \par
 \raggedright - Dot clock compare is out of range.
 \end{table}">|; 
 
-$key = q/{table}{centering{{{csvautotabular{copperslashidealres.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{{csvautotabular{copperslashidealres.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img47.svg"
+ SRC="|."$dir".q|img59.svg"
  ALT="\begin{table}\centering
 \csvautotabular{copper/idealres.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{{csvautotabular{copperslashinstrbit.csv}{par{{raggedright{H6bticallinecompare{par{R7bitNextregister0x00..0x7F{par{D8bitdata{table};LFS=11;AAT/;
+$key = q/{table}{centering{{{csvautotabular{copperslashinstrbit.csv}{par{{raggedright{H6b9bitverticallinecompare{par{R7bitNextregister0x00..0x7F{par{D8bitdata{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img49.svg"
+ SRC="|."$dir".q|img61.svg"
  ALT="\begin{table}\centering
 \csvautotabular{copper/instrbit.csv}
 \par
@@ -743,30 +926,30 @@ R 7 bit Next register 0x00..0x7F
 D 8 bit data
 \end{table}">|; 
 
-$key = q/{table}{centering{{{csvautotabular{copperslashmaxhcmp.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{{csvautotabular{copperslashmaxhcmp.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img41.svg"
+ SRC="|."$dir".q|img53.svg"
  ALT="\begin{table}\centering
 \csvautotabular{copper/maxhcmp.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{{csvautotabular{copperslashperline.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{{csvautotabular{copperslashperline.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img39.svg"
+ SRC="|."$dir".q|img51.svg"
  ALT="\begin{table}\centering
 \csvautotabular{copper/perline.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{{csvautotabular{copperslashpersec.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{{csvautotabular{copperslashpersec.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img40.svg"
+ SRC="|."$dir".q|img52.svg"
  ALT="\begin{table}\centering
 \csvautotabular{copper/persec.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{{csvautotabular{copperslashregbit.csv}{par{{raggedright{D8bitdata{par{I11bitindex{par{C2bitcontrol{table};LFS=11;AAT/;
+$key = q/{table}{centering{{{csvautotabular{copperslashregbit.csv}{par{{raggedright{D8bitdata{par{I11bitindex{par{C2bitcontrol{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img50.svg"
+ SRC="|."$dir".q|img62.svg"
  ALT="\begin{table}\centering
 \csvautotabular{copper/regbit.csv}
 \par
@@ -777,67 +960,39 @@ I 11 bit index
 C 2 bit control
 \end{table}">|; 
 
-$key = q/{table}{centering{{{csvautotabular{copperslashvideotiming.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{{csvautotabular{copperslashvideotiming.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img52.svg"
+ SRC="|."$dir".q|img64.svg"
  ALT="\begin{table}\centering
 \csvautotabular{copper/videotiming.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{{csvautotabular{memoryslashzx128mm.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{{csvautotabular{memoryslashzx128mm.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img37.svg"
+ SRC="|."$dir".q|img48.svg"
  ALT="\begin{table}\centering
 \csvautotabular{memory/zx128mm.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{{csvautotabular{systemslashcpmslashfcb.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{{csvautotabular{systemslashcpmslashfcb.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img70.svg"
+ SRC="|."$dir".q|img82.svg"
  ALT="\begin{table}\centering
 \csvautotabular{system/cpm/fcb.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{{csvautotabular{systemslashcpmslashreturn_codes.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{{csvautotabular{systemslashcpmslashreturn_codes.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img69.svg"
+ SRC="|."$dir".q|img81.svg"
  ALT="\begin{table}\centering
 \csvautotabular{system/cpm/return_codes.csv}
 \end{table}">|; 
 
-$key = q/{table}{centering{{{csvautotabular{systemslashcpmslashscb.csv}{table};LFS=11;AAT/;
+$key = q/{table}{centering{{{csvautotabular{systemslashcpmslashscb.csv}{table};AAT/;
 $cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img68.svg"
+ SRC="|."$dir".q|img80.svg"
  ALT="\begin{table}\centering
 \csvautotabular{system/cpm/scb.csv}
-\end{table}">|; 
-
-$key = q/{table}{centering{{{csvautotabular{videoslashflash.csv}{table};LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img8.svg"
- ALT="\begin{table}\centering
-\csvautotabular{video/flash.csv}
-\end{table}">|; 
-
-$key = q/{table}{centering{{{csvautotabular{videoslashhires.csv}{table};LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img19.svg"
- ALT="\begin{table}\centering
-\csvautotabular{video/hires.csv}
-\end{table}">|; 
-
-$key = q/{table}{centering{{{csvautotabular{videoslashpalfmt.csv}{table};LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img9.svg"
- ALT="\begin{table}\centering
-\csvautotabular{video/palfmt.csv}
-\end{table}">|; 
-
-$key = q/{table}{centering{{{csvautotabular{zxndmaslashregisters.csv}{table};LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE=""
- SRC="|."$dir".q|img38.svg"
- ALT="\begin{table}\centering
-\csvautotabular{zxndma/registers.csv}
 \end{table}">|; 
 
 1;

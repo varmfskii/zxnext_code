@@ -1,4 +1,5 @@
 \chapter{zxnDMA}
+\begin{multicols}{2}
  February 25, 2019  Phoebus Dokos  Off  Hardware, Resources,
 
 The ZX Spectrum Next DMA (zxnDMA)
@@ -13,13 +14,13 @@ compatibles. It also adds a burst mode capability that can deliver
 audio at programmable sample rates to the DAC device.
 
 \section{Accessing the zxnDMA}
-The zxnDMA is mapped to a single Read/Write IO Port 0x6B which is the
-same one used by the Datagear but unlike the Datagear it doesn't also
-map itself to a second port 0x0B similar to the MB-02 interface.
+The zxnDMA is mapped to two Read/Write IO Ports 0x0B and 0x6B which
+are the same ones used by the Datagear but unlike the Datagear, the
+port at 0x6B runs in zxnDMA mode while the second, port 0x0B, is
+similar to the MB-02 interface and runs in compatibility mode.
 
-\begin{verbatim}
-PORT $6b: zxnDMA
-\end{verbatim}
+\input{ports/0B.tex}
+\input{ports/6B.tex}
 
 \section{Description}
 The normal Z80 DMA (Z8410) chip is a pipelined device and because of
@@ -81,12 +82,15 @@ zxnDMA again expects a regular register write selecting WR0-WR6.
 The table X.Y describes the registers and the bitmask required to
 select them on the zxnDMA.
 
+\sinset
 \begin{table}[h]\centering
   \caption{zxnDMA Registers}
   \csvautotabular{zxndma/registers.csv}
 \end{table}
+\einset
 
 \section{zxnDMA Registers}
+\sinset
 These are described below following the same convention used by Zilog
 for its DMA chip:
 
@@ -111,6 +115,7 @@ D7  D6  D5  D4  D3  D2  D1  D0  BLOCK LENGTH (LOW BYTE)
      V
 D7  D6  D5  D4  D3  D2  D1  D0  BLOCK LENGTH (HIGH BYTE)
 \end{verbatim}
+
 Several registers are accessible from WR0. The first write to WR0 is
 to the base register byte. Bits D6:D3 are optionally set to indicate
 that associated registers in this group will be written next. The
@@ -139,6 +144,7 @@ D7  D6  D5  D4  D3  D2  D1  D0  PORT A VARIABLE TIMING BYTE
                          1   0 = Cycle Length = 2
                          1   1 = Do not use
 \end{verbatim}
+
 The cycle length is the number of cycles used in a read or write
  operation. The first cycle asserts signals and the last cycle
  releases them. There is no half cycle timing for the control signals.
@@ -167,6 +173,7 @@ D7  D6  D5  D4  D3  D2  D1  D0  PORT B VARIABLE TIMING BYTE
          V
 D7  D6  D5  D4  D3  D2  D1  D0  ZXN PRESCALAR (FIXED TIME TRANSFER)
 \end{verbatim}
+
 The ZXN PRESCALAR is a feature of the zxnDMA implementation. If
 non-zero, a delay will be inserted after each byte is transferred such
 that the total time needed for each transfer is determined by the
@@ -194,6 +201,7 @@ D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
      |
      1 = DMA Enable
 \end{verbatim}
+
 The Z80 DMA defines more fields but they are ignored by the zxnDMA.
 
 The two other registers defined by the Z80 DMA in this group on D4 and
@@ -218,6 +226,7 @@ D7  D6  D5  D4  D3  D2  D1  D0  PORT B STARTING ADDRESS (LOW BYTE)
                  V
 D7  D6  D5  D4  D3  D2  D1  D0  PORT B STARTING ADDRESS (HIGH BYTE)
 \end{verbatim}
+
 The Z80 DMA defines three more registers in this group through D4 that
 define interrupt behaviour. Interrups and pulse generation are not
 implemented in the zxnDMA nor are these registers available for
@@ -308,6 +317,7 @@ E is set to 0 if the total block length has been transferred
 at least once.
 
 T is set to 1 if at least one byte has been transferred.
+\einset
 
 \paragraph{Operating speed}
 
@@ -352,12 +362,14 @@ sending a LOAD command followed by an ENABLE\_DMA command to WR6. Once
 more familiar with the DMA, you will discover that the amount of
 information sent can be reduced to what changes between transfers.
 
+\sinset
 \begin{enumerate}
 \item Assembly
 
   Short example program to DMA memory to the screen then DMA a sprite
   image from memory to sprite RAM, and then showing said sprite scroll
   across the screen.
+
 \begin{verbatim}
 ;------------------------------------------------------------------------------
 device zxspectrum48
@@ -653,3 +665,5 @@ savebin "DMATEST",start,fin-start
 ENDIF
 \end{verbatim}
 \end{enumerate}
+\einset
+\end{multicols}

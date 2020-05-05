@@ -32,10 +32,10 @@
 <A
  HREF="node74.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html784"
+<A ID="tex2html781"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html786"
+<A ID="tex2html783"
   HREF="node177.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
@@ -45,9 +45,9 @@
  HREF="node73.html">zxnDMA</A>
 <B> Previous:</B> <A
  HREF="node74.html">Overview</A>
- &nbsp; <B>  <A ID="tex2html785"
+ &nbsp; <B>  <A ID="tex2html782"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html787"
+ &nbsp; <B>  <A ID="tex2html784"
   HREF="node177.html">Index</A></B> 
 <BR>
 <BR></DIV>
@@ -56,14 +56,18 @@
 <H1><A ID="SECTION00620000000000000000">
 Accessing the zxnDMA</A>
 </H1>
-The zxnDMA is mapped to a single Read/Write IO Port 0x6B which is the
-same one used by the Datagear but unlike the Datagear it doesn't also
-map itself to a second port 0x0B similar to the MB-02 interface.
+The zxnDMA is mapped to two Read/Write IO Ports 0x0B and 0x6B which
+are the same ones used by the Datagear but unlike the Datagear, the
+port at 0x6B runs in zxnDMA mode while the second, port 0x0B, is
+similar to the MB-02 interface and runs in compatibility mode.
 
 <P>
-<PRE>
-PORT $6b: zxnDMA
-</PRE>
+Port $0B (0B) DMA Control (Z80 Mode, 3.01.02)
+
+<P>
+Port $6B (6B) DMA Control (Next Mode, 3.01.02)
+
+<P>
 
 <P>
 <BR><HR>

@@ -31,10 +31,10 @@
 <A
  HREF="node58.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html679"
+<A ID="tex2html676"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html681"
+<A ID="tex2html678"
   HREF="node177.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
@@ -44,9 +44,9 @@
  HREF="node56.html">Audio</A>
 <B> Previous:</B> <A
  HREF="node58.html">Sampled 8-bit</A>
- &nbsp; <B>  <A ID="tex2html680"
+ &nbsp; <B>  <A ID="tex2html677"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html682"
+ &nbsp; <B>  <A ID="tex2html679"
   HREF="node177.html">Index</A></B> 
 <BR>
 <BR></DIV>
@@ -69,38 +69,40 @@ control register. You can then access a chip register using the access
 port.
 
 <P>
+<BR>
+<IMG STYLE=""
+ SRC="img47.svg"
+ ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
 Code:
-<PRE>
-;; enable TurboSound audio
-ld bc,$243B
-ld a,$08
+\begin{verbatim};; e...
+...
 out (c),a
 ld bc,$253B
 in a,(c)
 or $02
-out (c),a
-</PRE>
-
+out (c),a\end{verbatim}
+\end{adjustwidth}">
+<BR>
 <P>
 Each of the three AY chips has three channels, A, B, and C whose
 mapping is controlled by bit 5 of Next register 0x08 (8).
 
 <P>
-Register (R/W) $00 (00) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $00 (00) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel A fine tune
-Register (R/W) $01 (01) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $01 (01) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel A coarse tune (4 bits)
-Register (R/W) $02 (02) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $02 (02) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel B fine tune
-Register (R/W) $03 (03) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $03 (03) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel B coarse tune (4 bits)
-Register (R/W) $04 (04) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $04 (04) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel C fine tune
-Register (R/W) $05 (05) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $05 (05) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel C coarse tune (4 bits)
-Register (R/W) $06 (06) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $06 (06) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Noise period (5 bits)
-Register (R/W) $07 (07) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $07 (07) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Tone Enable
 
 <UL>
@@ -117,7 +119,7 @@ Register (R/W) $07 (07) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>bit 0 = Channel A noise enable (0=enable, 1=disable)
 </LI>
 </UL>
-Register (R/W) $08 (08) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $08 (08) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel A amplitude
 
 <UL>
@@ -134,7 +136,7 @@ Register (R/W) $08 (08) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>bits 3-0 = value of fixed amplitude
 </LI>
 </UL>
-Register (R/W) $09 (09) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $09 (09) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel B amplitude
 
 <UL>
@@ -151,7 +153,7 @@ Register (R/W) $09 (09) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>bits 3-0 = value of fixed amplitude
 </LI>
 </UL>
-Register (R/W) $0A (0A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $0A (0A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel C amplitude
 
 <UL>
@@ -168,11 +170,11 @@ Register (R/W) $0A (0A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>bits 3-0 = value of fixed amplitude
 </LI>
 </UL>
-Register (R/W) $0B (0B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $0B (0B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Envelope period fine
-Register (R/W) $0C (0C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $0C (0C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Envelope period coarse
-Register (R/W) $0D (0D) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $0D (0D) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Envelope shape
 
 <UL>
@@ -235,7 +237,7 @@ hold = 0
 <A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
 <UL CLASS="ChildLinks">
-<LI><A ID="tex2html683"
+<LI><A ID="tex2html680"
   HREF="node60.html">Pi Audio</A>
 </UL>
 <!--End of Table of Child-Links-->
@@ -251,10 +253,10 @@ hold = 0
 <A
  HREF="node58.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html679"
+<A ID="tex2html676"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html681"
+<A ID="tex2html678"
   HREF="node177.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
@@ -264,9 +266,9 @@ hold = 0
  HREF="node56.html">Audio</A>
 <B> Previous:</B> <A
  HREF="node58.html">Sampled 8-bit</A>
- &nbsp; <B>  <A ID="tex2html680"
+ &nbsp; <B>  <A ID="tex2html677"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html682"
+ &nbsp; <B>  <A ID="tex2html679"
   HREF="node177.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 

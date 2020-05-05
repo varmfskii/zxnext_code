@@ -31,10 +31,10 @@
 <A
  HREF="node49.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html639"
+<A ID="tex2html636"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html641"
+<A ID="tex2html638"
   HREF="node177.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
@@ -44,9 +44,9 @@
  HREF="node48.html">Pattern Number</A>
 <B> Previous:</B> <A
  HREF="node49.html">8-Bit Sprite Patterns</A>
- &nbsp; <B>  <A ID="tex2html640"
+ &nbsp; <B>  <A ID="tex2html637"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html642"
+ &nbsp; <B>  <A ID="tex2html639"
   HREF="node177.html">Index</A></B> 
 <BR>
 <BR></DIV>
@@ -57,7 +57,7 @@
 </H5>
 
 <P>
-The <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
+The <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img36.svg"
  ALT="$16\times16$"></SPAN> pixel image uses 4-bits for each pixel so that each
 pixel can be one of 16 colours. One colour indicates transparency and
 this is programmed into the lower 4-bits of the Sprite Transparency
@@ -71,37 +71,15 @@ byte. The leftmost pixel is stored in the upper 4-bits and the
 rightmost pixel is stored in the lower 4-bits.
 
 <P>
-As an example we will use the same sprite image as was given in the
-8-bit pattern example. Here only the lower 4 bits of each pixel is
-retained to confine each pixel’s color to 4-bits:
-
-<P>
-<PRE>
-4444444333333333
-4FFFFF4333333333
-4FBBBF4333333333
-4FB55BF433333333
-4FB588BF43333333
-4FFB848BF4333333
-444FB848BF433333
-3334FB844BF43433
-33334FB444BF4D43
-333334FB4444AD43
-3333334FB4F54433
-33333334F4584333
-333333334A448433
-33333334DD434543
-33333333443334A4
-3333333333333344
-</PRE>
-
-<P>
-$3 is used as the transparent index.
-
-<P>
-These 128 bytes would be stored in pattern memory in left to right,
+<BR>
+<IMG STYLE=""
+ SRC="img41.svg"
+ ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
+As an example we will use th...
+...tored in pattern memory in left to right,
 top to bottom order.
-
+\end{adjustwidth}">
+<BR>
 <P>
 The actual colour that will appear on screen will depend on the
 palette, described below. The default palette will not likely generate

@@ -32,10 +32,10 @@
 <A
  HREF="node116.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1005"
+<A ID="tex2html1002"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1007"
+<A ID="tex2html1004"
   HREF="node177.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
@@ -45,9 +45,9 @@
  HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
  HREF="node116.html">Interrupts</A>
- &nbsp; <B>  <A ID="tex2html1006"
+ &nbsp; <B>  <A ID="tex2html1003"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1008"
+ &nbsp; <B>  <A ID="tex2html1005"
   HREF="node177.html">Index</A></B> 
 <BR>
 <BR></DIV>
@@ -68,7 +68,7 @@ even another accelerator that uses the Raspberry Pi style (40 pin)
 expansion bus.  Chief concers when doing this is that you have a
 console presented on the UART that defaults to 115,200 bps, you don't
 need to login, the machine is configured with a driver to treat the
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="img65.svg"
  ALT="$I^2S$"></SPAN> interface as a sound card, and the presence of the nextpi
 scripts.
 
@@ -95,18 +95,18 @@ Next or the state drive by some other peripherial attached to the bus
 (normally the Raspberry Pi Zero).
 
 <P>
-Standardized I/O access with the Pi Zero can use the <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img54.svg"
+Standardized I/O access with the Pi Zero can use the <SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="img66.svg"
  ALT="$I^2C$"></SPAN>, SPI, or
 UART interfaces and is configured using nextreg $a0. Any enabled port
 will disable low level (write) access to the corresponding GPIO
 pins.
 
 <P>
-The <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img54.svg"
+The <SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="img66.svg"
  ALT="$I^2C$"></SPAN> interface is controlled using ports $103b (SCL) and $113b
-(SDA). This is the same <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img54.svg"
+(SDA). This is the same <SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="img66.svg"
  ALT="$I^2C$"></SPAN> interface that is used for the optional
-Real Time Clock. Interfacing with the Pi Zero over <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img54.svg"
+Real Time Clock. Interfacing with the Pi Zero over <SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="img66.svg"
  ALT="$I^2C$"></SPAN> is
 complicated by the fact that it is a master/slave interface, but both
 the ZX Spectrum Next and Pi Zero are configured to be bus masters.
@@ -149,7 +149,7 @@ the serial console on the Pi Zero over the UART.
 </PRE>
 
 <P>
-The <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+The <SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="img65.svg"
  ALT="$I^2S$"></SPAN> sound interface between the ZX Spectrum Next and the Pi Zero
 is controlled by nextregs $a2 and $a3. Normally, one would control
 the Pi through some other channel such as the UART recieve audio from
@@ -157,7 +157,7 @@ the Pi to either use as a fulloy programmable sound card or to allow
 loading of tape files on the ZX Spectrum Next.
 
 <P>
-(R/W) $90 (144) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+(R/W) $90 (144) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> PI GPIO Output Enable 0
 <table width="90%">
 bit 7 = Pi GPIO 7
@@ -171,7 +171,7 @@ bit 0 = Pi GPIO 0 (cannot be enabled)<tr><td valign="top">&nbsp;$00 on soft rese
 </td></tr></table>
 
 <P>
-(R/W) $91 (145) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+(R/W) $91 (145) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> PI GPIO Output Enable 1
 <table width="90%">
 bit 7 = Pi GPIO 15
@@ -185,7 +185,7 @@ bit 0 = Pi GPIO 8<tr><td valign="top">&nbsp;$00 on soft reset
 </td></tr></table>
 
 <P>
-(R/W) $92 (146) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+(R/W) $92 (146) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> PI GPIO Output Enable 2
 <table width="90%">
 bit 7 = Pi GPIO 23
@@ -199,7 +199,7 @@ bit 0 = Pi GPIO 16<tr><td valign="top">&nbsp;$00 on soft reset
 </td></tr></table>
 
 <P>
-(R/W) $93 (147) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+(R/W) $93 (147) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> PI GPIO Output Enable 3
 <table width="90%">
 bits 7-4 = Reserved, must be 0
@@ -210,7 +210,7 @@ bit 0 = Pi GPIO 24<tr><td valign="top">&nbsp;$00 on soft reset
 </td></tr></table>
 
 <P>
-(R/W) $98 (152) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+(R/W) $98 (152) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> PI GPIO 0
 <table width="90%">
 bit 7 = Pi GPIO 7
@@ -224,7 +224,7 @@ bit 0 = Pi GPIO 0 (read only)<tr><td valign="top">&nbsp;$ff on soft reset
 </td></tr></table>
 
 <P>
-(R/W) $99 (153) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+(R/W) $99 (153) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> PI GPIO 1
 <table width="90%">
 bit 7 = Pi GPIO 15
@@ -238,7 +238,7 @@ bit 0 = Pi GPIO 8<tr><td valign="top">&nbsp;$01 on soft reset
 </td></tr></table>
 
 <P>
-(R/W) $9A (154) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+(R/W) $9A (154) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> PI GPIO 2
 <table width="90%">
 bit 7 = Pi GPIO 23
@@ -252,7 +252,7 @@ bit 0 = Pi GPIO 16<tr><td valign="top">&nbsp;$00 on soft reset
 </td></tr></table>
 
 <P>
-(R/W) $9B (155) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+(R/W) $9B (155) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> PI GPIO 3
 <table width="90%">
 bits 7-4 = Reserved, must be 0
@@ -263,7 +263,7 @@ bit 0 = Pi GPIO 24<tr><td valign="top">&nbsp;$00 on soft reset
 </td></tr></table>
 
 <P>
-(R/W) $A0 (160) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+(R/W) $A0 (160) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> PI Peripheral Enable
 
 <UL>
@@ -276,7 +276,7 @@ bit 0 = Pi GPIO 24<tr><td valign="top">&nbsp;$00 on soft reset
   with pi hats) (soft reset = 0) = 1 to connect Rx to GPIO 14, Tx to
   GPIO 15 (for comm with pi)
 </LI>
-<LI>bit 3 = Enable <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img54.svg"
+<LI>bit 3 = Enable <SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="img66.svg"
  ALT="$I^2C$"></SPAN> on GPIO 2,3 (override gpio) (soft reset =
   0)
 </LI>
@@ -288,25 +288,25 @@ bit 0 = Pi GPIO 24<tr><td valign="top">&nbsp;$00 on soft reset
 </UL>
 
 <P>
-(R/W) $A2 (162) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> PI <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+(R/W) $A2 (162) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> PI <SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="img65.svg"
  ALT="$I^2S$"></SPAN> Audio Control
 
 <UL>
-<LI>bits 7-6 = <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+<LI>bits 7-6 = <SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="img65.svg"
  ALT="$I^2S$"></SPAN> enable (soft reset = 00)
   
 <UL>
-<LI>00 = <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+<LI>00 = <SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="img65.svg"
  ALT="$I^2S$"></SPAN> off
 </LI>
-<LI>01 = <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+<LI>01 = <SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="img65.svg"
  ALT="$I^2S$"></SPAN> is mono source right
 </LI>
-<LI>10 = <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+<LI>10 = <SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="img65.svg"
  ALT="$I^2S$"></SPAN> is mono source left
 </LI>
-<LI>11 = <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+<LI>11 = <SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="img65.svg"
  ALT="$I^2S$"></SPAN> is stereo
   
 </LI>
@@ -324,14 +324,14 @@ bit 0 = Pi GPIO 24<tr><td valign="top">&nbsp;$00 on soft reset
 <LI>bit 1 = Slave mode (PCM_CLK, PCM_FS supplied externally)
   (soft reset = 0)
 </LI>
-<LI>bit 0 = Direct <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+<LI>bit 0 = Direct <SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="img65.svg"
  ALT="$I^2S$"></SPAN> audio to EAR on port $FE (soft reset = 0)
 </LI>
 </UL>
 
 <P>
-(R/W) $A3 (163) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> PI <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+(R/W) $A3 (163) <SPAN CLASS="MATH"><IMG STYLE="height: 1.08ex; vertical-align: -0.12ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> PI <SPAN CLASS="MATH"><IMG STYLE="height: 2.12ex; vertical-align: -0.12ex; " SRC="img65.svg"
  ALT="$I^2S$"></SPAN> Clock Divide (Master Mode)
 <table width="90%">
 bits 7-0 = Clock divide sets sample rate when in master mode
@@ -350,10 +350,10 @@ bits 7-0 = Clock divide sets sample rate when in master mode
 <A
  HREF="node116.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1005"
+<A ID="tex2html1002"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1007"
+<A ID="tex2html1004"
   HREF="node177.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
@@ -363,9 +363,9 @@ bits 7-0 = Clock divide sets sample rate when in master mode
  HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
  HREF="node116.html">Interrupts</A>
- &nbsp; <B>  <A ID="tex2html1006"
+ &nbsp; <B>  <A ID="tex2html1003"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1008"
+ &nbsp; <B>  <A ID="tex2html1005"
   HREF="node177.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 

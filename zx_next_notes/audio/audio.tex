@@ -1,12 +1,13 @@
 \chapter{Audio}
 \section{ZX Spectrum 1-bit}
-
+\begin{multicols}{2}
 The baseline sound of the ZX Spectrum was produced by toggling the Ear
 bit (bit 4) of \$fe (254) The ULA port to produce 1-bit audio.  It is
 enabled by bit 4 of Next register \$08 (8).  While this does work on
 the ZX Spectrum Next, there are other much better methods and this is
 only supported for backward compatibility.
 
+\sinset
 Code:
 \begin{verbatim}
 ;; enable internal speaker
@@ -18,6 +19,7 @@ in a,(c)
 or $10
 out (c),a
 \end{verbatim}
+\einset
 
 \section{Sampled 8-bit}
 
@@ -33,6 +35,7 @@ and nextreg \$2C; channel C to ports \$4f, and \$f9 and nextreg \$2E;
 and channel D to: \$5f and \$fb; with port \$df connected to both
 channel A and C and nextreg \$2D connected to both channel A and D.
 
+\sinset
 Code:
 \begin{verbatim}
 ;; enable SpecDrum/Convox audio
@@ -44,6 +47,7 @@ in a,(c)
 or $08
 out (c),a
 \end{verbatim}
+\einset
 
 \section{Turbosound}
 
@@ -58,6 +62,7 @@ selected chip is selected by writing the register number to the
 control register. You can then access a chip register using the access
 port.
 
+\sinset
 Code:
 \begin{verbatim}
 ;; enable TurboSound audio
@@ -69,6 +74,7 @@ in a,(c)
 or $02
 out (c),a
 \end{verbatim}
+\einset
 
 Each of the three AY chips has three channels, A, B, and C whose
 mapping is controlled by bit 5 of Next register 0x08 (8).
@@ -92,3 +98,4 @@ mapping is controlled by bit 5 of Next register 0x08 (8).
 If connected the Pi Zero is configured to use the ZX Next as a
 soundcard over an \iis interface making the Raspberry Pi a fully
 configurable audio source for the ZX Spectrum Next.
+\end{multicols}
