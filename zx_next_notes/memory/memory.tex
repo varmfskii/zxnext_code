@@ -3,11 +3,11 @@ The ZX Spectrum Next commonly has with either 1MB or 2MB SRAM
 memory. This is more the 64kB directly addressable by its Z80N CPU. It
 is therefore necessary to use some form of memory paging to address
 all of the memory. This is accomplished using 8k pages or 16k
-banks. 256k of the total memory is used by the ROM images leaving
-either 768k (pages 0-95/banks 0-47) or 1792k (pages 0-223/banks 0-111)
-that can be paged in as RAM. Pages 10, 11, and 14 are a little odd in
-that rather than coming from the normal SRAM, they come from BRAM
-internal to the FPGA except in the case of Layer2 data.
+banks. 256k of the total memory is used by the ROM images and device
+specific RAM leaving either 768k (pages 0-95/banks 0-47) or 1792k
+(pages 0-223/banks 0-111) that can be paged in as RAM. Pages 10, 11,
+and 14 are a little odd in that rather than coming from the normal
+SRAM, they come from BRAM internal to the FPGA.
 
 \input{memory/memory_management.tex}
 \input{memory/memory_map.tex}

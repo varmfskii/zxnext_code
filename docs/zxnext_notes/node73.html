@@ -31,30 +31,30 @@
 <A
  HREF="node72.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html782"
+<A ID="tex2html779"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html784"
+<A ID="tex2html781"
   HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node74.html">Multiface</A>
+ HREF="node74.html">divMMC</A>
 <B> Up:</B> <A
  HREF="node72.html">ZX Spectrum 128k</A>
 <B> Previous:</B> <A
  HREF="node72.html">ZX Spectrum 128k</A>
- &nbsp; <B>  <A ID="tex2html783"
+ &nbsp; <B>  <A ID="tex2html780"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html785"
+ &nbsp; <B>  <A ID="tex2html782"
   HREF="node184.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00542010000000000000">
+<H5><A ID="SECTION00513021000000000000">
 ROM paging and selection</A>
-</H4>
+</H5>
 
 <P>
 $0000-$3fff is usually mapped to ROM. This area can only be fully
@@ -71,82 +71,7 @@ compatibility with the original machines' ROM paging as long as the
 ROM is not paged out.
 
 <P>
-Port $1FFD (1FFD) Plus 3 Memory Paging Control
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-3 = Unused, nust be 0</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = High bit of ROM selection (low bit is in Port $7FFD)
-  <table width="90%">  <tr><td valign="top">&nbsp;00 = ROM0 = 128k editor and menu system
-  </td></tr>
-<tr><td valign="top">&nbsp;01 = ROM1 = 128k syntax checker
-  </td></tr>
-<tr><td valign="top">&nbsp;10 = ROM2 = +3DOS
-  </td></tr>
-<tr><td valign="top">&nbsp;11 = ROM3 = 48k BASIC
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = Special mode: Low bit of memory configuration number</td></tr>
-<tr><td valign="top">&nbsp;bit 0 = Paging mode
-  <table width="90%">  <tr><td valign="top">&nbsp;0 = Normal
-  </td></tr>
-<tr><td valign="top">&nbsp;1 = Special
-  </td></tr></table>
-</td></tr></table>
-
-You should echo writes to $5B67
-Port $7FFD (7FFD) Memory Paging Control
-<table width="90%"><tr><td valign="top">&nbsp;bits 6-7 = reserved</td></tr>
-<tr><td valign="top">&nbsp;bit 5 = Lock memory paging</td></tr>
-<tr><td valign="top">&nbsp;bit 4 = low bit of ROM Select (high bit is in Port $1FFD) 
-  <table width="90%">  <tr><td valign="top">&nbsp;00 = ROM0 = 128k editor and menu system
-  </td></tr>
-<tr><td valign="top">&nbsp;01 = ROM1 = 128k syntax checker
-  </td></tr>
-<tr><td valign="top">&nbsp;10 = ROM2 = +3DOS
-  </td></tr>
-<tr><td valign="top">&nbsp;11 = ROM3 = 48k BASIC
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = Shadow screen toggle</td></tr>
-<tr><td valign="top">&nbsp;bits 2-0 = LSB of Bank number for slot 4 (MSB is in Port $DFFD)
-</td></tr></table>
-
-Disable with bit 5 port $7FFD
-Port $DFFD (DFFD) Next Memory Bank Select
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Reserved, must be 0</td></tr>
-<tr><td valign="top">&nbsp;bits 3-0 = MSB of bank number for slot 4 (LSB is in Port $7FFD)
-</td></tr></table>
-
-
-<P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node74.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node72.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node72.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html782"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html784"
-  HREF="node184.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node74.html">Multiface</A>
-<B> Up:</B> <A
- HREF="node72.html">ZX Spectrum 128k</A>
-<B> Previous:</B> <A
- HREF="node72.html">ZX Spectrum 128k</A>
- &nbsp; <B>  <A ID="tex2html783"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html785"
-  HREF="node184.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<BR><HR>
 
 </BODY>
 </HTML>

@@ -1,3 +1,29 @@
 \section{Memory Map}
+
 \subsection{Global Memory Map}
+
+\begin{tabular}{l|l|l}
+  \textbf{Physical Address} & \textbf{Size} & \textbf{Description}\\
+  \hline
+  \$000000-\$00FFFF & 64k & ZX Spectrum ROM (ROM0-3)\\
+  \$010000-\$011FFF & 8k & EsxDOS ROM\\
+  \$012000-\$013FFF & 8k & Multiface ROM\\
+  \$014000-\$017FFF & 16k & EsxDOS Extra ROM\\
+  \$018000-\$01BFFF & 16k & Alternate ROM\\
+  \$01C000-\$01FFFF & 16k & Multiface RAM\\
+  \$020000-\$03FFFF & 128k & DivMMC RAM\\
+  \$040000-\$0FFFFF & 768k & Standard RAM\\
+  \$100000-\$1FFFFF & 1024k & Expanded RAM
+\end{tabular}
+
+Normal RAM is divided into 8k pages or 16k banks which may be mapped
+into the 64k memory space by the memory management hardware of the
+Next. Some of these pages have special properties.
+
+Pages 10, 11 and 14 are used by Layer 1/0 (ULA) video modes with 10
+used by standard Spectrum ULA video, 10 and 11 used by Timex Hi-res
+and Hi-colour modes, 11 used by Timex alternate video and page 14 used
+by the ULA shadow mode. Pages 10 an 11 are usable by Layer 3 (Tilemap)
+video.
+
 \subsection{Z80 Visible Memory Map}
