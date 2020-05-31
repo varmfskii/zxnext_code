@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Dot Clock</TITLE>
-<META NAME="description" CONTENT="Dot Clock">
+<TITLE>Copper and Display Timing</TITLE>
+<META NAME="description" CONTENT="Copper and Display Timing">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node98.html">
-<LINK REL="previous" HREF="node96.html">
+<LINK REL="next" HREF="node123.html">
+<LINK REL="previous" HREF="node80.html">
 <LINK REL="next" HREF="node98.html">
 </HEAD>
 
@@ -27,94 +27,112 @@
  HREF="node98.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node93.html">
+ HREF="zxnext_notes.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node96.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html910"
+<A ID="tex2html905"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html912"
-  HREF="node177.html">
+<A ID="tex2html907"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node98.html">Coordinates</A>
+ HREF="node98.html">Introduction</A>
 <B> Up:</B> <A
- HREF="node93.html">Timing</A>
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
- HREF="node96.html">Resolution</A>
- &nbsp; <B>  <A ID="tex2html911"
+ HREF="node96.html">Programming examples</A>
+ &nbsp; <B>  <A ID="tex2html906"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html913"
-  HREF="node177.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html908"
+  HREF="node184.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00710040000000000000">
-Dot Clock</A>
-</H4>
+<H1><A ID="SECTION00700000000000000000">
+Copper and Display Timing</A>
+</H1>
+From: KevB (aka 9bitcolour)
 
 <P>
-The dot clock on the ZX Spectrum Next runs at 13.5Mhz for HDMI and
-around 14Mhz for VGA. The COPPER clock runs at the same frequency as
-the dot clock. For v3.00 the copper runs at twice the frequency of the
-dot clock.
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<P>
-The number of dot clocks per line is calculated by multiplying the
-number of 3.5Mhz Z80 T-states per line by four. Example: 228Ts * 4 =
-912 dot clocks.
-
-<P>
-The number of dot clocks per second is calculated by the following:
-
-<P>
-T-states per line * 4 * line count * refresh rate
-
-<P>
-In standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img1.svg"
- ALT="$256\times 192$"></SPAN> resolution the duration of one pixel is two
-dot clocks. In Timex HIRES <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img22.svg"
- ALT="$512\times192$"></SPAN> resolution the duration of
-one pixel is one dot clock.
-
-<P>
-Details of the dot clock counts can be found in tables 5.1 and 5.2.
-
-<P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="2006"></A>
-<TABLE>
-<CAPTION><STRONG>Table 6.1:</STRONG>
-Vertical Line Counts and Dot Clock Combinations</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img51.svg"
- ALT="\begin{table}\centering
-\csvautotabular{copper/perline.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html909"
+  HREF="node98.html">Introduction</A>
+<LI><A ID="tex2html910"
+  HREF="node99.html">Overview</A>
+</UL>
+</UL>
+</UL>
 <BR>
-
-<P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="2010"></A>
-<TABLE>
-<CAPTION><STRONG>Table 6.2:</STRONG>
-Dot Clocks per Second</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img52.svg"
- ALT="\begin{table}\centering
-\csvautotabular{copper/persec.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+<LI><A ID="tex2html911"
+  HREF="node100.html">Timing</A>
+<UL>
+<LI><A ID="tex2html912"
+  HREF="node101.html">Machines</A>
+<LI><A ID="tex2html913"
+  HREF="node102.html">Display</A>
+<LI><A ID="tex2html914"
+  HREF="node103.html">Resolution</A>
+<LI><A ID="tex2html915"
+  HREF="node104.html">Dot Clock</A>
+<LI><A ID="tex2html916"
+  HREF="node105.html">Coordinates</A>
+<LI><A ID="tex2html917"
+  HREF="node106.html">Compare</A>
+<LI><A ID="tex2html918"
+  HREF="node107.html">Overscan</A>
+</UL>
 <BR>
-
-<P>
+<LI><A ID="tex2html919"
+  HREF="node108.html">Instructions</A>
+<UL>
+<LI><A ID="tex2html920"
+  HREF="node109.html">NOOP</A>
+<LI><A ID="tex2html921"
+  HREF="node110.html">MOVE</A>
+<LI><A ID="tex2html922"
+  HREF="node111.html">WAIT</A>
+<LI><A ID="tex2html923"
+  HREF="node112.html">Example</A>
+</UL>
+<BR>
+<LI><A ID="tex2html924"
+  HREF="node113.html">Control</A>
+<UL>
+<LI><A ID="tex2html925"
+  HREF="node114.html">STOP</A>
+<LI><A ID="tex2html926"
+  HREF="node115.html">RESET</A>
+<LI><A ID="tex2html927"
+  HREF="node116.html">START</A>
+<LI><A ID="tex2html928"
+  HREF="node117.html">FRAME</A>
+</UL>
+<BR>
+<LI><A ID="tex2html929"
+  HREF="node118.html">Configuration</A>
+<UL>
+<LI><A ID="tex2html930"
+  HREF="node119.html">Refresh Rate</A>
+<LI><A ID="tex2html931"
+  HREF="node120.html">Video Modes</A>
+<LI><A ID="tex2html932"
+  HREF="node121.html">Machine Type</A>
+<LI><A ID="tex2html933"
+  HREF="node122.html">Summary</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

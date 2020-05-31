@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Example</TITLE>
-<META NAME="description" CONTENT="Example">
+<TITLE>Coordinates</TITLE>
+<META NAME="description" CONTENT="Coordinates">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node106.html">
 <LINK REL="previous" HREF="node104.html">
 <LINK REL="next" HREF="node106.html">
 </HEAD>
@@ -26,55 +27,65 @@
  HREF="node106.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node101.html">
+ HREF="node100.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node104.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html946"
+<A ID="tex2html969"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html948"
-  HREF="node177.html">
+<A ID="tex2html971"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node106.html">Control</A>
+ HREF="node106.html">Compare</A>
 <B> Up:</B> <A
- HREF="node101.html">Instructions</A>
+ HREF="node100.html">Timing</A>
 <B> Previous:</B> <A
- HREF="node104.html">WAIT</A>
- &nbsp; <B>  <A ID="tex2html947"
+ HREF="node104.html">Dot Clock</A>
+ &nbsp; <B>  <A ID="tex2html970"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html949"
-  HREF="node177.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html972"
+  HREF="node184.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00720040000000000000">
-Example</A>
+<H4><A ID="SECTION00710050000000000000">
+Coordinates</A>
 </H4>
 
 <P>
-The following example provides a simple COPPER program to move data to
-a hardware register at two specific pixel positions. The BYTES for the
-program are listed in the left column:
+The top left pixel of the frame buffer is line 0 and horizontal dot
+clock 0. This is also known as &ldquo;0,0&rdquo;.
 
 <P>
-<PRE>
-         PAL8 equ   0x41           ; 8 bit palette hardware register
+The bottom right pixel of the frame buffer in standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
+ ALT="$256\times 192$"></SPAN>
+resolution is line 191 and horizontal dot clocks 510+511.
 
-$80,$00       WAIT  0,0            ; wait for pixel position 0,0 (H,V)
-$00,$00       NOOP                 ; fine tune timing by one dot clock
-$41,$E0       MOVE  PAL8,11100000b ; write RED to palette register
+<P>
+The bottom right pixel of the frame buffer in Timex HIRES
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img18.svg"
+ ALT="$512\times192$"></SPAN> resolution is line 191 and horizontal dot clock 511.
 
-$C0,$BF       WAIT  32,191         ; wait for pixel position 256,191
-$00,$00       NOOP                 ; fine tune timing by one dot clock
-$41,$00       MOVE  PAL8,00000000b ; write BLACK to palette register
+<P>
+The line one pixel above the frame buffer is the last line of the
+video frame and equal to the total line count minus one (312-1 for
+example).
 
-$FF,$FF       WAIT  63,511         ; wait for an out of range position
-</PRE>
+<P>
+The line one pixel below the frame buffer is line 192.
+
+<P>
+The COPPER horizontal dot clock compare is locked to every eight
+pixels in standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
+ ALT="$256\times 192$"></SPAN> resolution and every sixteen pixels
+in Timex HIRES <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img18.svg"
+ ALT="$512\times192$"></SPAN> resolution. The NOOP instruction can be
+used to fine tune timing in single dot clock steps.
 
 <P>
 <BR><HR>

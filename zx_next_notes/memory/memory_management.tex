@@ -1,7 +1,18 @@
-\section{Memory Management}
+\section {Memory}
+A ZX Spectrum Next will typically have either 1MB or 2MB memory. There
+are two different types of memory, BRAM and SRAM. BRAM exists on the
+FPGA and SRAM is the normal memory outside the FPGA. At startup files
+are read off the SD card to fill what would normally be considered to
+be ROM. There are a number of different ways to control memory on the
+ZX Spectrum Next.  ZX Next native, ZX Spectrum 128 with the +3
+extensions, divMMC, and Multiface.
+
+\section{Default Layout}
 The default mapping of memory banks is the same as on 128k Spectrum
 models with a ROM mapped in at \$0000-\$3FFF, bank 5 at \$4000-\$7FFF,
 bank 2 at \$8000-\$BFFF, and bank 0 at \$C000-\$FFFF.
+
+\section{RAM}
 
 \subsection{ZX Spectrum Next Native}
 Registers \$50 to \$57 control the which SRAM pages are in each of the
@@ -47,6 +58,18 @@ no corresponding system variable for the Next-only Next Memory Bank
 Select (\$DFFD) and standard OS routines may not support the extended
 banks properly.
 
+\paragraph{Paging out ROM}
+
+ROM can be paged out by enabling AllRam mode, or by using Next memory
+management. Beware that some programs may assume that they can find
+ROM service routines at fixed addresses between \$0000-\$3fff. More
+importantly, if the default interrupt mode (IM 1) is set, the Z80 will
+jump the program counter to \$0038 every frame expecting to find an
+interrupt handler there. If it does not, pain and suffering will
+likely result. DI is your friend. On the plus side, this does allow
+you to write your own interrupt handler without the nuisance of using
+IM 2.
+
 \paragraph{Spectrum 128 Special Paging}
 
 ``Special paging mode'' (also called ``AllRam mode'' or ``CP/M mode'')
@@ -58,6 +81,12 @@ configuration is selected as follows:
   \caption{Special Paging Modes}
   \csvautotabular{memory/zx128mm.csv}
 \end{table}
+
+\section{ROM}
+
+\subsection{ZX Next native}
+
+\subsection{ZX Spectrum 128k}
 
 \paragraph{ROM paging and selection}
 
@@ -73,23 +102,24 @@ is bit 2 of Plus 3 Memory Paging Control (\$1FFD). This maintains
 compatibility with the original machines' ROM paging as long as the
 ROM is not paged out.
 
-\paragraph{Paging out ROM}
-
-ROM can be paged out by enabling AllRam mode, or by using Next memory
-management. Beware that some programs may assume that they can find
-ROM service routines at fixed addresses between \$0000-\$3fff. More
-importantly, if the default interrupt mode (IM 1) is set, the Z80 will
-jump the program counter to \$0038 every frame expecting to find an
-interrupt handler there. If it does not, pain and suffering will
-likely result. DI is your friend. On the plus side, this does allow
-you to write your own interrupt handler without the nuisance of using
-IM 2.
-
 \input{ports/1FFD.tex}
 \input{ports/7FFD.tex}
 \input{ports/DFFD.tex}
 
-\subsection{Interactions between paging methods}
+\subsection{Multiface}
+
+9f 1-In, 128-In2\\
+1f 1-Out\\
+bf 128-In, 3-Out\\
+3f 128-Out, 3-In, 3-button\\
+7f3f 3-7ffd\\
+1f3f 3-1ffd
+
+\subsection{divMMC}
+
+\input{ports/E3.tex}
+
+\section{Interactions between paging methods}
 
 Changes made in 128 style and Next style memory management are
 synchronized. The most recent change always has priority. This means

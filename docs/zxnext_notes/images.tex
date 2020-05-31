@@ -1,5 +1,5 @@
 \batchmode
-\documentclass[10pt]{book}
+\documentclass[11pt]{book}
 \RequirePackage{ifthen}
 
 
@@ -11,10 +11,6 @@
 \usepackage{makeidx}
 \usepackage{xintbinhex}
 \usepackage{hang}
-\usepackage[margin=1.0in]{geometry}
-\usepackage[hyphens]{url}
-\usepackage{multicol}
-\usepackage{changepage}
 
 \setlength{\parindent}{0pt} 
 
@@ -30,9 +26,7 @@
 \providecommand{\iic}{ I\textsuperscript{2}C }%
 \providecommand{\register}[3]{Register (#1) \$#2 (\xintHexToDec{#2}) $\Rightarrow$\  #3}%
 \providecommand{\port}[2]{Port \$#1 (\xintHexToDec{#1}) #2}%
-\providecommand{\textoverline}[1]{$\overline{\hbox{#1}}$}%
-\providecommand{\sinset}{\end{multicols}\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}}%
-\providecommand{\einset}{\end{adjustwidth}\begin{multicols}{2}} 
+\providecommand{\textoverline}[1]{$\overline{\hbox{#1}}$} 
 
 
 \usepackage{xcolor}
@@ -144,19 +138,19 @@
 % !!! IMAGES START HERE !!!
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline8081}%
+\lthtmlinlinemathA{tex2html_wrap_inline7952}%
 $256\times 192$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline8087}%
+\lthtmlinlinemathA{tex2html_wrap_inline7958}%
 $320\times 256$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline8090}%
+\lthtmlinlinemathA{tex2html_wrap_inline7961}%
 $640\times 256$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -166,25 +160,25 @@ $640\times 256$%
 \stepcounter{section}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline103}%
+\lthtmlinlinemathA{tex2html_wrap_inline77}%
 $256\times192\times256$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline105}%
+\lthtmlinlinemathA{tex2html_wrap_inline79}%
 $320\times256\times256$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline107}%
+\lthtmlinlinemathA{tex2html_wrap_inline81}%
 $640\times256\times6$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline126}%
+\lthtmlinlinemathA{tex2html_wrap_inline100}%
 $\Rightarrow$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -197,29 +191,21 @@ $\Rightarrow$%
 \stepcounter{subsection}
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlfigureA{adjustwidth258}%
-\begin{adjustwidth}
-% latex2html id marker 258
-{0.05\textwidth}{0.05\textwidth}
-\begin{table}[h]\centering
-  \caption{ULA Colour}
+\lthtmlfigureA{table200}%
+\begin{table}\centering
+  
   \csvautotabular{video/flash.csv}
-\end{table}
-\end{adjustwidth}%
+\end{table}%
 \lthtmlfigureZ
 \lthtmlcheckvsize\clearpage}
 
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlfigureA{adjustwidth265}%
-\begin{adjustwidth}
-% latex2html id marker 265
-{0.05\textwidth}{0.05\textwidth}
-\begin{table}[h]\centering
-  \caption{ULA Next}
+\lthtmlfigureA{table205}%
+\begin{table}\centering
+  
   \csvautotabular{video/palfmt.csv}
-\end{table}
-\end{adjustwidth}%
+\end{table}%
 \lthtmlfigureZ
 \lthtmlcheckvsize\clearpage}
 
@@ -230,342 +216,109 @@ $\Rightarrow$%
 \stepcounter{subparagraph}
 \stepcounter{subparagraph}
 \stepcounter{subparagraph}
-{\newpage\clearpage
-\lthtmlfigureA{adjustwidth272}%
-\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
-\begin{verbatim}
-
-; 64 colour palette file format (internal) - version 1.0
-; copyright (c) 2009 Andrew Owen
-;
-; The palette file is stored as a BASIC program with embedded machine code
-
-header:
-
-db 0x00 ; program file
-db 0x14, 0x01, "64colour" ; file name
-dw 0x0097 ; data length
-dw 0x0000 ; autostart line
-dw 0x0097 ; program length
-
-basic:
-
-; 0 RANDOMIZE USR ((PEEK VAL "2
-; 3635"+VAL "256"*PEEK VAL "23636"
-; )+VAL "48"): LOAD "": REM
-
-db 0x00, 0x00, 0x93, 0x00, 0xf9, 0xc0, 0x28, 0x28
-db 0xbe, 0xb0, 0x22, 0x32, 0x33, 0x36, 0x33, 0x35
-db 0x22, 0x2b, 0xb0, 0x22, 0x32, 0x35, 0x36, 0x22
-db 0x2a, 0xbe, 0xb0, 0x22, 0x32, 0x33, 0x36, 0x33
-db 0x36, 0x22, 0x29, 0x2b, 0xb0, 0x22, 0x34, 0x38
-db 0x22, 0x29, 0x3a, 0xef, 0x22, 0x22, 0x3a, 0xea
-
-start:
-
-di ; disable interrupts
-ld hl, 38 ; HL = length of code
-add hl, bc ; BC = entry point (start) from BASIC
-ld bc, 0xbf3b ; register select
-ld a, 64 ; mode group
-out (c), a ;
-ld a, 1 ;
-ld b, 0xff ; choose register port
-out (c), a ; turn palette mode on
-xor a ; first register
-
-setreg:
-
-ld b, 0xbf ; choose register port
-out (c), a ; select register
-ex af, af' ; save current register select
-ld a, (hl) ; get data
-ld b, 0xff ; choose data port
-out (c), a ; set it
-ex af, af' ; restore current register
-inc hl ; advance pointer
-inc a ; increase register
-cp 64 ; are we nearly there yet?
-jr nz, setreg ; repeat until all 64 have been done
-ei ; enable interrupts
-ret ; return
-
-; this is where the actual data is stored. The following is an example palette.
-
-registers:
-
-db 0x00, 0x02, 0x18, 0x1b, 0xc0, 0xc3, 0xd8, 0xdb ; INK
-db 0x00, 0x02, 0x18, 0x1b, 0xc0, 0xc3, 0xd8, 0xdb ; PAPER
-db 0x00, 0x03, 0x1c, 0x1f, 0xe0, 0xe3, 0xfc, 0xff ; +BRIGHT
-db 0x00, 0x03, 0x1c, 0x1f, 0xe0, 0xe3, 0xfc, 0xff ;
-db 0xdb, 0xd8, 0xc3, 0xc0, 0x1b, 0x18, 0x02, 0x00 ; +FLASH
-db 0xdb, 0xd8, 0xc3, 0xc0, 0x1b, 0x18, 0x02, 0x00 ;
-db 0xff, 0xfc, 0xe3, 0xe0, 0x1f, 0x1c, 0x03, 0x00 ; +BRIGHT/
-db 0xff, 0xfc, 0xe3, 0xe0, 0x1f, 0x1c, 0x03, 0x00 ; +FLASH
-
-terminating_byte:
-
-db 0x0d\end{verbatim}
-
-\end{adjustwidth}%
-\lthtmlfigureZ
-\lthtmlcheckvsize\clearpage}
-
 \stepcounter{subsection}
 \stepcounter{subsection}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline443}%
+\lthtmlinlinemathA{tex2html_wrap_inline371}%
 $8\times8$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline445}%
+\lthtmlinlinemathA{tex2html_wrap_inline373}%
 $32\times24$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline455}%
+\lthtmlinlinemathA{tex2html_wrap_inline383}%
 $0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline459}%
+\lthtmlinlinemathA{tex2html_wrap_inline387}%
 $0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
-{\newpage\clearpage
-\lthtmlfigureA{adjustwidth405}%
-\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
-Code:
-\begin{verbatim}
-
-;; from any other Timex mode:
-ld a,$00
-ld c,$ff
-out (c),a
-
-;; from LoRes mode:
-ld bc,$243B ; next register select port
-ld a,$15
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-and $7f
-out (c),a\end{verbatim}
-
-\end{adjustwidth}%
-\lthtmlfigureZ
-\lthtmlcheckvsize\clearpage}
-
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline461}%
+\lthtmlinlinemathA{tex2html_wrap_inline389}%
 $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline463}%
+\lthtmlinlinemathA{tex2html_wrap_inline391}%
 $1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
-{\newpage\clearpage
-\lthtmlfigureA{adjustwidth412}%
-\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
-Code:
-\par
-\begin{verbatim}
-
-;; disable LoRes mode:
-ld bc,$243B ; next register select port
-ld a,$15
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-and $7f
-out (c),a
-;; set Timex mode
-ld bc,$243B ; next register select port
-ld a,$08
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-or $04
-out (c),a
-;; set alternate page mode
-ld c,$ff
-ld a,$01
-out (c),a\end{verbatim}
-
-\end{adjustwidth}%
-\lthtmlfigureZ
-\lthtmlcheckvsize\clearpage}
-
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline467}%
+\lthtmlinlinemathA{tex2html_wrap_inline395}%
 $8\times1$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline469}%
+\lthtmlinlinemathA{tex2html_wrap_inline397}%
 $32\times192$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
-{\newpage\clearpage
-\lthtmlfigureA{adjustwidth419}%
-\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
-Code:
-\begin{verbatim}
-
-;; disable LoRes mode:
-ld bc,$243B ; next register select port
-ld a,$15
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-and $7f
-out (c),a
-;; set Timex mode
-ld bc,$243B ; next register select port
-ld a,$08
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-or $04
-out (c),a
-;; set hi-colour mode
-ld c,$ff
-ld a,$02
-out (c),a\end{verbatim}
-
-\end{adjustwidth}%
-\lthtmlfigureZ
-\lthtmlcheckvsize\clearpage}
-
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline477}%
+\lthtmlinlinemathA{tex2html_wrap_inline405}%
 $512\times192$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{adjustwidth426}%
-\begin{adjustwidth}
-% latex2html id marker 426
-{0.05\textwidth}{0.05\textwidth}
-\begin{table}[h]\centering
-  \caption{Hi-Resolution Colours}
+\lthtmlfigureA{table359}%
+\begin{table}\centering
+  
   \csvautotabular{video/hires.csv}
-\end{table}
-\end{adjustwidth}%
+\end{table}%
 \lthtmlfigureZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline479}%
+\lthtmlinlinemathA{tex2html_wrap_inline407}%
 $64\times32$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline483}%
+\lthtmlinlinemathA{tex2html_wrap_inline411}%
 $64\times24$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline485}%
+\lthtmlinlinemathA{tex2html_wrap_inline413}%
 $C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
-{\newpage\clearpage
-\lthtmlfigureA{adjustwidth433}%
-\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
-Code:
-\begin{verbatim}
-
-;; disable LoRes mode:
-ld bc,$243B ; next register select port
-ld a,$15
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-and $7f
-out (c),a
-;; set Timex mode
-ld bc,$243B ; next register select port
-ld a,$08
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-or $04
-out (c),a
-;; set hi-res mode, black on white
-ld c,$ff
-ld a,$06
-out (c),a\end{verbatim}
-
-\end{adjustwidth}%
-\lthtmlfigureZ
-\lthtmlcheckvsize\clearpage}
-
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline487}%
+\lthtmlinlinemathA{tex2html_wrap_inline415}%
 $128\times96$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline489}%
+\lthtmlinlinemathA{tex2html_wrap_inline417}%
 $100xxxxx$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
-{\newpage\clearpage
-\lthtmlfigureA{adjustwidth576}%
-\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
-Code: 256 colour
-\begin{verbatim}
-
-;; enable LoRes mode:
-nextreg $15,$80
-;; 256-colour mode
-ld bc,$243B ; next register select port
-ld a,$6A
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-and $EF ; lores radistan control
-out (c),a\end{verbatim}
-
-\par
-Code: 16 colour
-\begin{verbatim}
-
-;; enable LoRes mode:
-nextreg $15,$80
-;; 16-colour mode
-nextreg $6A,$10\end{verbatim}
-
-\end{adjustwidth}%
-\lthtmlfigureZ
-\lthtmlcheckvsize\clearpage}
-
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline596}%
+\lthtmlinlinemathA{tex2html_wrap_inline515}%
 $640\times256\times16$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -580,25 +333,25 @@ $640\times256\times16$%
 \stepcounter{section}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline740}%
+\lthtmlinlinemathA{tex2html_wrap_inline660}%
 $40\times32$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline744}%
+\lthtmlinlinemathA{tex2html_wrap_inline664}%
 $80\times32$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline750}%
+\lthtmlinlinemathA{tex2html_wrap_inline670}%
 $40\times30$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline752}%
+\lthtmlinlinemathA{tex2html_wrap_inline672}%
 $80\times30$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -613,25 +366,25 @@ $80\times30$%
 \stepcounter{paragraph}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline1045}%
+\lthtmlinlinemathA{tex2html_wrap_inline951}%
 $16\times16$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline1047}%
+\lthtmlinlinemathA{tex2html_wrap_inline953}%
 $2\times$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline1049}%
+\lthtmlinlinemathA{tex2html_wrap_inline955}%
 $4\times$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline1051}%
+\lthtmlinlinemathA{tex2html_wrap_inline957}%
 $8\times$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -639,96 +392,17 @@ $8\times$%
 \stepcounter{subsection}
 \stepcounter{paragraph}
 \stepcounter{subparagraph}
-{\newpage\clearpage
-\lthtmlfigureA{adjustwidth1030}%
-\begin{adjustwidth}
-% latex2html id marker 1030
-{0.05\textwidth}{0.05\textwidth}
-As an example of an 8-bit sprite, let’s have a look at figure 2.1.
-\par
-\begin{figure}\centering
-  \includegraphics{video/sprite_1.png}
-  \caption{Pattern Example}
-\end{figure}
-\par
-Using the default palette, which is initialised with RGB332 colours
-from 0-255, the hexadecimal values for this pattern arranged in a
-$16\times16$\  array are shown below:
-\par
-\begin{verbatim}
-
-04040404040404E3E3E3E3E3E3E3E3E3
-04FFFFFFFFFF04E3E3E3E3E3E3E3E3E3
-04FFFBFBFBFF04E3E3E3E3E3E3E3E3E3
-04FFFBF5F5FBFF04E3E3E3E3E3E3E3E3
-04FFFBF5A8A8FBFF04E3E3E3E3E3E3E3
-04FFFFFBA844A8FBFF04E3E3E3E3E3E3
-040404FFFBA844A8FBFF04E3E3E3E3E3
-E3E3E304FFFBA84444FBFF04E304E3E3
-E3E3E3E304FFFB444444FBFF044D04E3
-E3E3E3E3E304FFFB44444444FA4D04E3
-E3E3E3E3E3E304FFFB44FFF54404E3E3
-E3E3E3E3E3E3E304FF44F5A804E3E3E3
-E3E3E3E3E3E3E3E304FA4404A804E3E3
-E3E3E3E3E3E3E3044D4D04E304F504E3
-E3E3E3E3E3E3E3E30404E3E3E304FA04
-E3E3E3E3E3E3E3E3E3E3E3E3E3E30404\end{verbatim}
-
-\par
-Here \$E3 is used as the transparent index.
-\par
-These 256 bytes would be stored in pattern memory in left to right,
-top to bottom order.
-\end{adjustwidth}%
-\lthtmlfigureZ
-\lthtmlcheckvsize\clearpage}
-
 \stepcounter{subparagraph}
-{\newpage\clearpage
-\lthtmlfigureA{adjustwidth1037}%
-\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
-As an example we will use the same sprite image as was given in the
-8-bit pattern example. Here only the lower 4 bits of each pixel is
-retained to confine each pixel’s color to 4-bits:
-\par
-\begin{verbatim}
-
-4444444333333333
-4FFFFF4333333333
-4FBBBF4333333333
-4FB55BF433333333
-4FB588BF43333333
-4FFB848BF4333333
-444FB848BF433333
-3334FB844BF43433
-33334FB444BF4D43
-333334FB4444AD43
-3333334FB4F54433
-33333334F4584333
-333333334A448433
-33333334DD434543
-33333333443334A4
-3333333333333344\end{verbatim}
-
-\par
-\$3 is used as the transparent index.
-\par
-These 128 bytes would be stored in pattern memory in left to right,
-top to bottom order.
-\end{adjustwidth}%
-\lthtmlfigureZ
-\lthtmlcheckvsize\clearpage}
-
 \stepcounter{subsection}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline1073}%
+\lthtmlinlinemathA{tex2html_wrap_inline979}%
 $1\times$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline1077}%
+\lthtmlinlinemathA{tex2html_wrap_inline983}%
 $4\times4$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -736,7 +410,7 @@ $4\times4$%
 \stepcounter{subsection}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline1376}%
+\lthtmlinlinemathA{tex2html_wrap_inline1280}%
 $^O$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -744,74 +418,20 @@ $^O$%
 \stepcounter{subsection}
 \stepcounter{chapter}
 \stepcounter{section}
-{\newpage\clearpage
-\lthtmlfigureA{adjustwidth1505}%
-\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
-Code:
-\begin{verbatim}
-
-;; enable internal speaker
-ld bc,$243B
-ld a,$08
-out (c),a
-ld bc,$253B
-in a,(c)
-or $10
-out (c),a\end{verbatim}
-
-\end{adjustwidth}%
-\lthtmlfigureZ
-\lthtmlcheckvsize\clearpage}
-
 \stepcounter{section}
-{\newpage\clearpage
-\lthtmlfigureA{adjustwidth1512}%
-\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
-Code:
-\begin{verbatim}
-
-;; enable SpecDrum/Convox audio
-ld bc,$243B
-ld a,$08
-out (c),a
-ld bc,$253B
-in a,(c)
-or $08
-out (c),a\end{verbatim}
-
-\end{adjustwidth}%
-\lthtmlfigureZ
-\lthtmlcheckvsize\clearpage}
-
 \stepcounter{section}
-{\newpage\clearpage
-\lthtmlfigureA{adjustwidth1519}%
-\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
-Code:
-\begin{verbatim}
-
-;; enable TurboSound audio
-ld bc,$243B
-ld a,$08
-out (c),a
-ld bc,$253B
-in a,(c)
-or $02
-out (c),a\end{verbatim}
-
-\end{adjustwidth}%
-\lthtmlfigureZ
-\lthtmlcheckvsize\clearpage}
-
 \stepcounter{subsection}
 \stepcounter{chapter}
 \stepcounter{section}
+\stepcounter{section}
+\stepcounter{section}
 \stepcounter{subsection}
 \stepcounter{subsection}
+\stepcounter{paragraph}
 \stepcounter{paragraph}
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlfigureA{table1733}%
+\lthtmlfigureA{table1619}%
 \begin{table}\centering
   
   \csvautotabular{memory/zx128mm.csv}
@@ -819,9 +439,13 @@ out (c),a\end{verbatim}
 \lthtmlfigureZ
 \lthtmlcheckvsize\clearpage}
 
-\stepcounter{paragraph}
+\stepcounter{section}
+\stepcounter{subsection}
+\stepcounter{subsection}
 \stepcounter{paragraph}
 \stepcounter{subsection}
+\stepcounter{subsection}
+\stepcounter{section}
 \stepcounter{section}
 \stepcounter{subsection}
 \stepcounter{subsection}
@@ -832,15 +456,11 @@ out (c),a\end{verbatim}
 \stepcounter{section}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{adjustwidth1871}%
-\begin{adjustwidth}
-% latex2html id marker 1871
-{0.05\textwidth}{0.05\textwidth}
-\begin{table}[h]\centering
-  \caption{zxnDMA Registers}
+\lthtmlfigureA{table1726}%
+\begin{table}\centering
+  
   \csvautotabular{zxndma/registers.csv}
-\end{table}
-\end{adjustwidth}%
+\end{table}%
 \lthtmlfigureZ
 \lthtmlcheckvsize\clearpage}
 
@@ -855,316 +475,6 @@ out (c),a\end{verbatim}
 \stepcounter{paragraph}
 \stepcounter{paragraph}
 \stepcounter{section}
-{\newpage\clearpage
-\lthtmlfigureA{adjustwidth1885}%
-\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
-\begin{enumerate}
-\item Assembly
-\par
-Short example program to DMA memory to the screen then DMA a sprite
-  image from memory to sprite RAM, and then showing said sprite scroll
-  across the screen.
-\par
-\begin{verbatim}
-
-;------------------------------------------------------------------------------
-device zxspectrum48
-;------------------------------------------------------------------------------
-; DEFINE testing
-;------------------------------------------------------------------------------
-; DMA (Register 6)
-;
-;------------------------------------------------------------------------------
-;zxnDMA programming example
-;------------------------------------------------------------------------------
-;(c) Jim Bagley
-;------------------------------------------------------------------------------
-DMA_RESET equ $c3
-DMA_RESET_PORT_A_TIMING equ $c7
-DMA_RESET_PORT_B_TIMING equ $cb
-DMA_LOAD equ $cf ; %11001111
-DMA_CONTINUE equ $d3
-DMA_DISABLE_INTERUPTS equ $af
-DMA_ENABLE_INTERUPTS equ $ab
-DMA_RESET_DISABLE_INTERUPTS equ $a3
-DMA_ENABLE_AFTER_RETI equ $b7
-DMA_READ_STATUS_BYTE equ $bf
-DMA_REINIT_STATUS_BYTE equ $8b
-DMA_START_READ_SEQUENCE equ $a7
-DMA_FORCE_READY equ $b3
-DMA_DISABLE equ $83
-DMA_ENABLE equ $87
-DMA_WRITE_REGISTER_COMMAND equ $bb
-DMA_BURST equ %11001101
-DMA_CONTINUOUS equ %10101101
-ZXN_DMA_PORT equ $6b
-SPRITE_STATUS_SLOT_SELECT equ $303B
-SPRITE_IMAGE_PORT equ $5b
-SPRITE_INFO_PORT equ $57
-;------------------------------------------------------------------------------
-
-IFDEF testing
-org $6000
-ELSE
-org $2000
-ENDIF
-
-start
-ld hl,$0000
-ld de,$4000
-ld bc,$800
-call TransferDMA ; copy some random data to the screen pointing
-; to ROM for now, for the purpose of showing
-; how to do a DMA copy.
-ld a,0 ; sprite image number we want to update
-ld bc,SPRITE_STATUS_SLOT_SELECT
-out (c),a ; set the sprite image number
-ld bc,1*256 ; number to transfer (1)
-ld hl,testsprite ; from
-call TransferDMASprite ; transfer to sprite ram
-
-nextreg 21,1 ; turn sprite on. for more info on this check
-; out https://www.specnext.com/tbblue-io-port-system/
-ld de,0
-ld (xpos),de ; set initial X position ( doesn't need it for
-; this demo, but if you run the .loop again it
-; will continue from where it was
-ld a,$20
-ld (ypos),a ; set initial Y position
-
-.loop
-ld a,0 ; sprite number we want to position
-ld bc,SPRITE_STATUS_SLOT_SELECT
-out (c),a
-ld de,(xpos)
-ld hl,(ypos) ; ignores H so doing this rather than
-; ld a,(ypos):ld l,a
-ld bc,(image) ; not flipped or palette shifted
-call SetSprite
-
-halt
-
-ld de,(xpos)
-inc de
-ld (xpos),de
-ld a,d
-cp $01
-jr nz,.loop ; if high byte of xpos is not 1 (right of
-; screen )
-ld a,e
-cp $20+1
-jr nz,.loop ; if low byte is not $21 just off the right of
-; the screen, $20 is off screen but as the
-; INC DE is just above and not updated sprite
-; after it, it needs to be $21
-xor a
-ret ; return back to basic with OK
-
-xpos dw 0 ; x position
-ypos db 0 ; y position
-; these next two BITS and IMAGE are swapped
-; as bits needs to go into B register image
-; db 0+$80 ; use image 0 (for the image we
-; transfered)+$80 to set the sprite to active
-bits db 0 ; not flipped or palette shifted
-
-c1 = %11100000
-c2 = %11000000
-c3 = %10100000
-c4 = %10000000
-c5 = %01100000
-c6 = %01000000
-c7 = %00100000
-c8 = %00000000
-
-testsprite
-db c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1
-db c1,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c1
-db c1,c2,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c2,c1
-db c1,c2,c3,c4,c4,c4,c4,c4,c4,c4,c4,c4,c4,c3,c2,c1
-db c1,c2,c3,c4,c5,c5,c5,c5,c5,c5,c5,c5,c4,c3,c2,c1
-db c1,c2,c3,c4,c5,c6,c6,c6,c6,c6,c6,c5,c4,c3,c2,c1
-db c1,c2,c3,c4,c5,c6,c7,c7,c7,c7,c6,c5,c4,c3,c2,c1
-db c1,c2,c3,c4,c5,c6,c7,c8,c8,c7,c6,c5,c4,c3,c2,c1
-db c1,c2,c3,c4,c5,c6,c7,c8,c8,c7,c6,c5,c4,c3,c2,c1
-db c1,c2,c3,c4,c5,c6,c7,c7,c7,c7,c6,c5,c4,c3,c2,c1
-db c1,c2,c3,c4,c5,c6,c6,c6,c6,c6,c6,c5,c4,c3,c2,c1
-db c1,c2,c3,c4,c5,c5,c5,c5,c5,c5,c5,c5,c4,c3,c2,c1
-db c1,c2,c3,c4,c4,c4,c4,c4,c4,c4,c4,c4,c4,c3,c2,c1
-db c1,c2,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c3,c2,c1
-db c1,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c2,c1
-db c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1,c1
-
-;-------------------------------------------------
-; de = X
-; l = Y
-; b = bits
-; c = sprite image
-SetSprite
-push bc
-ld bc,SPRITE_INFO_PORT
-out (c),e ; Xpos
-out (c),l ; Ypos
-pop hl
-ld a,d
-and 1
-or h
-out (c),a
-ld a,l:or $80
-out (c),a ; image
-ret
-
-;--------------------------------
-; hl = source
-; de = destination
-; bc = length
-;--------------------------------
-TransferDMA
-di
-ld (DMASource),hl
-ld (DMADest),de
-ld (DMALength),bc
-ld hl,DMACode
-ld b,DMACode_Len
-ld c,ZXN_DMA_PORT
-otir
-ei
-ret
-
-DMACode db DMA_DISABLE
-db %01111101 ; R0-Transfer mode, A -> B, write adress
-; + block length
-DMASource dw 0 ; R0-Port A, Start address
-; (source address)
-DMALength dw 0 ; R0-Block length (length in bytes)
-db %01010100 ; R1-write A time byte, increment, to
-; memory, bitmask
-db %00000010 ; 2t
-db %01010000 ; R2-write B time byte, increment, to
-; memory, bitmask
-db %00000010 ; R2-Cycle length port B
-db DMA_CONTINUOUS ; R4-Continuous mode (use this for block
-; transfer), write dest adress
-DMADest dw 0 ; R4-Dest address (destination address)
-db %10000010 ; R5-Restart on end of block, RDY active
-; LOW
-db DMA_LOAD ; R6-Load
-db DMA_ENABLE ; R6-Enable DMA
-
-DMACode_Len equ $-DMACode
-
-;------------------------------------------------------------------------------
-; hl = source
-; bc = length
-; set port to write to with TBBLUE_REGISTER_SELECT
-; prior to call
-;------------------------------------------------------------------------------
-TransferDMAPort
-di
-ld (DMASourceP),hl
-ld (DMALengthP),bc
-ld hl,DMACodeP
-ld b,DMACode_LenP
-ld c,ZXN_DMA_PORT
-otir
-ei
-ret
-
-DMACodeP db DMA_DISABLE
-db %01111101 ; R0-Transfer mode, A -> B, write adress
-; + block length
-DMASourceP dw 0 ; R0-Port A, Start address (source address)
-DMALengthP dw 0 ; R0-Block length (length in bytes)
-db %01010100 ; R1-read A time byte, increment, to
-; memory, bitmask
-db %00000010 ; R1-Cycle length port A
-db %01101000 ; R2-write B time byte, increment, to
-; memory, bitmask
-db %00000010 ; R2-Cycle length port B
-db %10101101 ; R4-Continuous mode (use this for block
-; transfer), write dest adress
-dw $253b ; R4-Dest address (destination address)
-db %10000010 ; R5-Restart on end of block, RDY active
-; LOW
-db DMA_LOAD ; R6-Load
-db DMA_ENABLE ; R6-Enable DMA
-
-DMACode_LenP equ $-DMACodeP
-;------------------------------------------------------------------------------
-; hl = source
-; bc = length
-;------------------------------------------------------------------------------
-TransferDMASprite
-di
-ld (DMASourceS),hl
-ld (DMALengthS),bc
-ld hl,DMACodeS
-ld b,DMACode_LenS
-ld c,ZXN_DMA_PORT
-otir
-ei
-ret
-
-DMACodeS db DMA_DISABLE
-db %01111101 ; R0-Transfer mode, A -> B, write adress
-; + block length
-DMASourceS dw 0 ; R0-Port A, Start address (source address)
-DMALengthS dw 0 ; R0-Block length (length in bytes)
-db %01010100 ; R1-read A time byte, increment, to
-; memory, bitmask
-db %00000010 ; R1-Cycle length port A
-db %01101000 ; R2-write B time byte, increment, to
-; memory, bitmask
-db %00000010 ; R2-Cycle length port B
-db %10101101 ; R4-Continuous mode (use this for block
-; transfer), write dest adress
-dw SPRITE_IMAGE_PORT ; R4-Dest address (destination address)
-db %10000010 ; R5-Restart on end of block, RDY active
-; LOW
-db DMA_LOAD ; R6-Load
-db DMA_ENABLE ; R6-Enable DMA
-DMACode_LenS equ $-DMACodeS
-;------------------------------------------------------------------------------
-; de = dest, a = fill value, bc = lenth
-;------------------------------------------------------------------------------
-DMAFill
-di
-ld (FillValue),a
-ld (DMACDest),de
-ld (DMACLength),bc
-ld hl,DMACCode
-ld b,DMACCode_Len
-ld c,ZXN_DMA_PORT
-otir
-ei
-ret
-
-FillValue db 22
-DMACCode db DMA_DISABLE
-db %01111101
-DMACSource dw FillValue
-DMACLength dw 0
-db %00100100,%00010000,%10101101
-DMACDest dw 0
-db DMA_LOAD,DMA_ENABLE
-DMACCode_Len equ $-DMACCode
-
-;------------------------------------------------------------------------------
-; End of file
-;------------------------------------------------------------------------------
-
-IFDEF testing
-savesna "dmatest.sna",start
-ELSE
-fin
-savebin "DMATEST",start,fin-start
-ENDIF\end{verbatim}
-
-\end{enumerate}
-\end{adjustwidth}%
-\lthtmlfigureZ
-\lthtmlcheckvsize\clearpage}
-
 \stepcounter{chapter}
 \stepcounter{paragraph}
 \stepcounter{paragraph}
@@ -1174,7 +484,7 @@ ENDIF\end{verbatim}
 \stepcounter{paragraph}
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlfigureA{table2005}%
+\lthtmlfigureA{table1869}%
 \begin{table}\centering
   
   \csvautotabular{copper/perline.csv}
@@ -1183,7 +493,7 @@ ENDIF\end{verbatim}
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2009}%
+\lthtmlfigureA{table1873}%
 \begin{table}\centering
   
   \csvautotabular{copper/persec.csv}
@@ -1194,7 +504,7 @@ ENDIF\end{verbatim}
 \stepcounter{paragraph}
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlfigureA{table2015}%
+\lthtmlfigureA{table1879}%
 \begin{table}\centering
   
   \csvautotabular{copper/maxhcmp.csv}
@@ -1203,7 +513,7 @@ ENDIF\end{verbatim}
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2019}%
+\lthtmlfigureA{table1883}%
 \begin{table}\centering
   
   \csvautotabular{copper/aftermaxcmp.csv}
@@ -1212,7 +522,7 @@ ENDIF\end{verbatim}
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2023}%
+\lthtmlfigureA{table1887}%
 \begin{table}\centering
   
   \csvautotabular{copper/htime.csv}
@@ -1223,7 +533,7 @@ ENDIF\end{verbatim}
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2027}%
+\lthtmlfigureA{table1891}%
 \begin{table}\centering\tiny
   
   \csvautotabular{copper/vtime.csv}
@@ -1237,19 +547,19 @@ ENDIF\end{verbatim}
 
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline2102}%
+\lthtmlinlinemathA{tex2html_wrap_inline1966}%
 $352\times288$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline2104}%
+\lthtmlinlinemathA{tex2html_wrap_inline1968}%
 $352\times240$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2032}%
+\lthtmlfigureA{table1896}%
 \begin{table}\centering
   
   \csvautotabular{copper/idealres.csv}
@@ -1258,7 +568,7 @@ $352\times240$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2036}%
+\lthtmlfigureA{table1900}%
 \begin{table}\centering\small
   
   \csvautotabular{copper/idealparam.csv}
@@ -1282,7 +592,7 @@ RIGHT: Last pixel of the extended right border area - see notes below**
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table2041}%
+\lthtmlfigureA{table1905}%
 \begin{table}\centering
   
   \csvautotabular{copper/instrbit.csv}
@@ -1304,7 +614,7 @@ D   8 bit data
 \stepcounter{paragraph}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table2054}%
+\lthtmlfigureA{table1918}%
 \begin{table}\centering
   
   \csvautotabular{copper/regbit.csv}
@@ -1319,7 +629,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2058}%
+\lthtmlfigureA{table1922}%
 \begin{table}\centering
   
   \csvautotabular{copper/controlmodes.csv}
@@ -1340,7 +650,7 @@ C   2 bit control
 \stepcounter{paragraph}
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlfigureA{table2532}%
+\lthtmlfigureA{table2396}%
 \begin{table}\centering
   
   \csvautotabular{copper/videotiming.csv}
@@ -1351,13 +661,13 @@ C   2 bit control
 \stepcounter{chapter}
 \stepcounter{chapter}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline2589}%
+\lthtmlinlinemathA{tex2html_wrap_inline2453}%
 $I^2S$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline2591}%
+\lthtmlinlinemathA{tex2html_wrap_inline2455}%
 $I^2C$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -1366,7 +676,7 @@ $I^2C$%
 \stepcounter{section}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar2689}%
+\lthtmlfigureA{labeledpar2553}%
 \begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
 \textbf{COLOURS [RGB] \textit{paper} \textit{ink}}
 \end{labeledpar}%
@@ -1374,7 +684,7 @@ $I^2C$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar2697}%
+\lthtmlfigureA{labeledpar2561}%
 \begin{labeledpar}{Parameters}{\textit{paper}}
   Paper (background) colour
 \end{labeledpar}%
@@ -1382,7 +692,7 @@ $I^2C$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar2701}%
+\lthtmlfigureA{labeledpar2565}%
 \begin{labeledpar}{Parameters:}{\textit{ink}}
   Ink (foreground) colour
 \end{labeledpar}%
@@ -1390,7 +700,7 @@ $I^2C$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar2706}%
+\lthtmlfigureA{labeledpar2570}%
 \begin{labeledpar}{Parameters:}{RGB}
   Causes ink and paper colours to be interpreted as 9-bit octal RGB numbers
 \end{labeledpar}%
@@ -1398,7 +708,7 @@ $I^2C$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar2713}%
+\lthtmlfigureA{labeledpar2577}%
 \begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
 \textbf{COPYSYS}
 \end{labeledpar}%
@@ -1406,7 +716,7 @@ $I^2C$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar2721}%
+\lthtmlfigureA{labeledpar2585}%
 \begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
 \textbf{DATE}\\
 \textbf{DATE C}\\
@@ -1418,7 +728,7 @@ $I^2C$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar2732}%
+\lthtmlfigureA{labeledpar2596}%
 \begin{labeledpar}{Parameters}{\textit{time-specification}}
   Time/date in the format MM/DD/YY HH:MM:SS
 \end{labeledpar}%
@@ -1426,7 +736,7 @@ $I^2C$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar2737}%
+\lthtmlfigureA{labeledpar2601}%
 \begin{labeledpar}{Parameters:}{C}
   Continuously show the date and time until a key is pressed
 \end{labeledpar}%
@@ -1434,7 +744,7 @@ $I^2C$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar2741}%
+\lthtmlfigureA{labeledpar2605}%
 \begin{labeledpar}{Parameters:}{CONTINUOUS}
   Continuously show the date and time until a key is pressed
 \end{labeledpar}%
@@ -1442,7 +752,7 @@ $I^2C$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar2745}%
+\lthtmlfigureA{labeledpar2609}%
 \begin{labeledpar}{Parameters:}{SET}
   Prompt the user for the current date and time
 \end{labeledpar}%
@@ -1450,26 +760,26 @@ $I^2C$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline2817}%
+\lthtmlinlinemathA{tex2html_wrap_inline2681}%
 \(|\)%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline2825}%
+\lthtmlinlinemathA{tex2html_wrap_inline2689}%
 \(>\)%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline2829}%
+\lthtmlinlinemathA{tex2html_wrap_inline2693}%
 \(<\)%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlfigureA{table3539}%
+\lthtmlfigureA{table3403}%
 \begin{table}\centering
   
 \csvautotabular{system/cpm/scb.csv}
@@ -1478,7 +788,7 @@ $I^2C$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table3660}%
+\lthtmlfigureA{table3524}%
 \begin{table}\centering
   
 \csvautotabular{system/cpm/return_codes.csv}
@@ -1487,7 +797,7 @@ $I^2C$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table3710}%
+\lthtmlfigureA{table3574}%
 \begin{table}\centering
   
 \csvautotabular{system/cpm/fcb.csv}
@@ -1508,7 +818,7 @@ $I^2C$%
 \appendix
 \stepcounter{chapter}
 {\newpage\clearpage
-\lthtmlfigureA{table5589}%
+\lthtmlfigureA{table5453}%
 \begin{table}\centering\tiny
   
   \csvautotabular{appendices/ports/ports.csv}
@@ -1518,13 +828,13 @@ $I^2C$%
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline5715}%
+\lthtmlinlinemathA{tex2html_wrap_inline5581}%
 $\overline{\hbox{CS}}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline5724}%
+\lthtmlinlinemathA{tex2html_wrap_inline5590}%
 $\overline{\hbox{DATA}}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -1533,31 +843,31 @@ $\overline{\hbox{DATA}}$%
 \stepcounter{chapter}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline5943}%
+\lthtmlinlinemathA{tex2html_wrap_inline5809}%
 $\overline{\hbox{RESET}}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline6709}%
+\lthtmlinlinemathA{tex2html_wrap_inline6575}%
 $\overline{\hbox{IORQULA}}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline6711}%
+\lthtmlinlinemathA{tex2html_wrap_inline6577}%
 $\overline{\hbox{ROMCS}}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline6942}%
+\lthtmlinlinemathA{tex2html_wrap_inline6808}%
 $\hbox{Divider}=\frac{538461}{\hbox{Rate}}-1$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline6944}%
+\lthtmlinlinemathA{tex2html_wrap_inline6810}%
 $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -1567,7 +877,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \stepcounter{chapter}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table7065}%
+\lthtmlfigureA{table6931}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/00-opcode.csv}
@@ -1576,7 +886,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7069}%
+\lthtmlfigureA{table6935}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/20-opcode.csv}
@@ -1585,7 +895,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7073}%
+\lthtmlfigureA{table6939}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/40-opcode.csv}
@@ -1594,7 +904,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7077}%
+\lthtmlfigureA{table6943}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/60-opcode.csv}
@@ -1603,7 +913,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7081}%
+\lthtmlfigureA{table6947}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/80-opcode.csv}
@@ -1612,7 +922,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7085}%
+\lthtmlfigureA{table6951}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/a0-opcode.csv}
@@ -1621,7 +931,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7089}%
+\lthtmlfigureA{table6955}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/c0-opcode.csv}
@@ -1630,7 +940,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7093}%
+\lthtmlfigureA{table6959}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/e0-opcode.csv}
@@ -1640,7 +950,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table7098}%
+\lthtmlfigureA{table6964}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/cb00-opcode.csv}
@@ -1649,7 +959,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7102}%
+\lthtmlfigureA{table6968}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/cb20-opcode.csv}
@@ -1658,7 +968,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7106}%
+\lthtmlfigureA{table6972}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/cb40-opcode.csv}
@@ -1667,7 +977,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7110}%
+\lthtmlfigureA{table6976}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/cb60-opcode.csv}
@@ -1676,7 +986,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7114}%
+\lthtmlfigureA{table6980}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/cb80-opcode.csv}
@@ -1685,7 +995,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7118}%
+\lthtmlfigureA{table6984}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/cba0-opcode.csv}
@@ -1694,7 +1004,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7122}%
+\lthtmlfigureA{table6988}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/cbc0-opcode.csv}
@@ -1703,7 +1013,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7126}%
+\lthtmlfigureA{table6992}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/cbe0-opcode.csv}
@@ -1713,7 +1023,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table7131}%
+\lthtmlfigureA{table6997}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/dd00-opcode.csv}
@@ -1722,7 +1032,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7135}%
+\lthtmlfigureA{table7001}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/dd60-opcode.csv}
@@ -1731,7 +1041,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7139}%
+\lthtmlfigureA{table7005}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/dd90-opcode.csv}
@@ -1741,7 +1051,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table7144}%
+\lthtmlfigureA{table7010}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/ed00-opcode.csv}
@@ -1752,7 +1062,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7148}%
+\lthtmlfigureA{table7014}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/ed50-opcode.csv}
@@ -1761,7 +1071,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7152}%
+\lthtmlfigureA{table7018}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/ed90-opcode.csv}
@@ -1773,7 +1083,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table7157}%
+\lthtmlfigureA{table7023}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/fd00-opcode.csv}
@@ -1782,7 +1092,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7161}%
+\lthtmlfigureA{table7027}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/fd60-opcode.csv}
@@ -1791,7 +1101,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7165}%
+\lthtmlfigureA{table7031}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/fd90-opcode.csv}
@@ -1801,7 +1111,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table7170}%
+\lthtmlfigureA{table7036}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/ddcb00-opcode.csv}
@@ -1811,7 +1121,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table7175}%
+\lthtmlfigureA{table7041}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/opcode/fdcb00-opcode.csv}
@@ -1821,7 +1131,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 
 \stepcounter{chapter}
 {\newpage\clearpage
-\lthtmlfigureA{table7346}%
+\lthtmlfigureA{table7212}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/aci-mnemonics.csv}
@@ -1830,7 +1140,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7350}%
+\lthtmlfigureA{table7216}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/add-mnemonics.csv}
@@ -1839,7 +1149,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7354}%
+\lthtmlfigureA{table7220}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/adi-mnemonics.csv}
@@ -1848,7 +1158,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7358}%
+\lthtmlfigureA{table7224}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/bit0-mnemonics.csv}
@@ -1857,7 +1167,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7362}%
+\lthtmlfigureA{table7228}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/bit4-mnemonics.csv}
@@ -1866,7 +1176,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7366}%
+\lthtmlfigureA{table7232}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/brlc-mnemonics.csv}
@@ -1875,7 +1185,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7370}%
+\lthtmlfigureA{table7236}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/cp-mnemonics.csv}
@@ -1884,7 +1194,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7374}%
+\lthtmlfigureA{table7240}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/dcx-mnemonics.csv}
@@ -1893,7 +1203,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7378}%
+\lthtmlfigureA{table7244}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/in-mnemonics.csv}
@@ -1902,7 +1212,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7382}%
+\lthtmlfigureA{table7248}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/jc-mnemonics.csv}
@@ -1911,7 +1221,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7386}%
+\lthtmlfigureA{table7252}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/ld0-mnemonics.csv}
@@ -1920,7 +1230,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7390}%
+\lthtmlfigureA{table7256}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/ld1-mnemonics.csv}
@@ -1929,7 +1239,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7394}%
+\lthtmlfigureA{table7260}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/ld2-mnemonics.csv}
@@ -1938,7 +1248,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7398}%
+\lthtmlfigureA{table7264}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/ld3-mnemonics.csv}
@@ -1947,7 +1257,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7402}%
+\lthtmlfigureA{table7268}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/ld4-mnemonics.csv}
@@ -1956,7 +1266,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7406}%
+\lthtmlfigureA{table7272}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/ld5-mnemonics.csv}
@@ -1965,7 +1275,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7410}%
+\lthtmlfigureA{table7276}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/lda-mnemonics.csv}
@@ -1974,7 +1284,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7414}%
+\lthtmlfigureA{table7280}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/mov0-mnemonics.csv}
@@ -1983,7 +1293,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7418}%
+\lthtmlfigureA{table7284}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/mov1-mnemonics.csv}
@@ -1992,7 +1302,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7422}%
+\lthtmlfigureA{table7288}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/mul-mnemonics.csv}
@@ -2001,7 +1311,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7426}%
+\lthtmlfigureA{table7292}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/out-mnemonics.csv}
@@ -2010,7 +1320,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7430}%
+\lthtmlfigureA{table7296}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/res0-mnemonics.csv}
@@ -2019,7 +1329,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7434}%
+\lthtmlfigureA{table7300}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/res4-mnemonics.csv}
@@ -2028,7 +1338,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7438}%
+\lthtmlfigureA{table7304}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/ret-mnemonics.csv}
@@ -2037,7 +1347,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7442}%
+\lthtmlfigureA{table7308}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/rr-mnemonics.csv}
@@ -2046,7 +1356,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7446}%
+\lthtmlfigureA{table7312}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/sbb-mnemonics.csv}
@@ -2055,7 +1365,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7450}%
+\lthtmlfigureA{table7316}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/set0-mnemonics.csv}
@@ -2064,7 +1374,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7454}%
+\lthtmlfigureA{table7320}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/set4-mnemonics.csv}
@@ -2073,7 +1383,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7458}%
+\lthtmlfigureA{table7324}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/setae-mnemonics.csv}
@@ -2082,7 +1392,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table7462}%
+\lthtmlfigureA{table7328}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/sub-mnemonics.csv}

@@ -32,11 +32,11 @@
 <A
  HREF="node25.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html502"
+<A ID="tex2html519"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html504"
-  HREF="node177.html">
+<A ID="tex2html521"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -45,10 +45,10 @@
  HREF="node10.html">Layer 1</A>
 <B> Previous:</B> <A
  HREF="node25.html">Timex Hi-Colour Mode</A>
- &nbsp; <B>  <A ID="tex2html503"
+ &nbsp; <B>  <A ID="tex2html520"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html505"
-  HREF="node177.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html522"
+  HREF="node184.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
@@ -61,7 +61,7 @@ Timex Hi-Resolution Mode</A>
 Timex mode 6
 
 <P>
-This is a monochrome <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img22.svg"
+This is a monochrome <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img18.svg"
  ALT="$512\times192$"></SPAN> video mode located at global
 coordinates (32, 32) to (287, 223) with each pixel being half
 width. It is selected by writing to the Timex ULA port ($ff with
@@ -69,46 +69,61 @@ values that also select which two colours (or colour entries in
 ULANext mode) you use.
 
 <P>
-<BR>
-<IMG STYLE=""
- SRC="img23.svg"
- ALT="\begin{adjustwidth}
-% latex2html id marker 426
-{0.05\textwidth}{0.05\textwidth}
-...
-...solution Colours}
+<BR><P></P>
+<DIV class="CENTER"><A ID="360"></A>
+<TABLE>
+<CAPTION><STRONG>Table 2.3:</STRONG>
+Hi-Resolution Colours</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img19.svg"
+ ALT="\begin{table}\centering
 \csvautotabular{video/hires.csv}
-\end{table}\end{adjustwidth}">
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
 <BR>
+
 <P>
 Pixels are mapped into both the bitmap 1 and bitmap 2 areas where
 8-pixel wide character columns alternate between the two bitmap areas.
 The pixels within a byte being rendered left to right lsb to msb as in
 other Spectrum video modes.  The addresses for each row within a
-character are based on a <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img24.svg"
- ALT="$64\times32$"></SPAN> grid of <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img11.svg"
+character are based on a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img20.svg"
+ ALT="$64\times32$"></SPAN> grid of <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img10.svg"
  ALT="$8\times8$"></SPAN> characters
-which using a <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img25.svg"
+which using a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img21.svg"
  ALT="$64\times24$"></SPAN> R, C, and Y scheme gives us addresses of
 the form <!-- MATH
  $C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.16ex; vertical-align: -0.46ex; " SRC="img26.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img22.svg"
  ALT="$C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1$"></SPAN>.
 
 <P>
-<BR>
-<IMG STYLE=""
- SRC="img27.svg"
- ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
 Code:
-\begin{verbatim};; d...
-...mode, black on white
+<PRE>
+;; disable LoRes mode:
+ld bc,$243B ; next register select port
+ld a,$15
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+and $7f
+out (c),a
+;; set Timex mode
+ld bc,$243B ; next register select port
+ld a,$08
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+or $04
+out (c),a
+;; set hi-res mode, black on white
 ld c,$ff
 ld a,$06
-out (c),a\end{verbatim}
-\end{adjustwidth}">
-<BR>
+out (c),a
+</PRE>
+
 <P>
 <BR><HR>
 

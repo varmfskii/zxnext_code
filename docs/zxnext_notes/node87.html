@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Operating speed</TITLE>
-<META NAME="description" CONTENT="Operating speed">
+<TITLE>WR0 – Write Register Group 0</TITLE>
+<META NAME="description" CONTENT="WR0 – Write Register Group 0">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,53 +27,61 @@
  HREF="node88.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node79.html">
+ HREF="node86.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node86.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html838"
+<A ID="tex2html865"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html840"
-  HREF="node177.html">
+<A ID="tex2html867"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node88.html">The DMA and Interrupts</A>
+ HREF="node88.html">WR1 – Write Register</A>
 <B> Up:</B> <A
- HREF="node79.html">zxnDMA Registers</A>
+ HREF="node86.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node86.html">WR6 – Command Register</A>
- &nbsp; <B>  <A ID="tex2html839"
+ HREF="node86.html">zxnDMA Registers</A>
+ &nbsp; <B>  <A ID="tex2html866"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html841"
-  HREF="node177.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html868"
+  HREF="node184.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00660080000000000000">
-Operating speed</A>
+<H4><A ID="SECTION00660010000000000000">
+WR0 – Write Register Group 0</A>
 </H4>
-
-<P>
-The zxnDMA operates at the same speed as the CPU, that is 3.5MHz, 7MHz
-or 14MHz. This is a contended clock that is modified by the ULA and
-the auto-slowdown by Layer2.
-
-<P>
-Auto-slowdown occurs without user intervention if speed exceeds 7Mhz
-and the active Layer2 display is being generated (higher speed
-operation resumes when the active Layer2 display is not
-generated). Programmers do NOT need to account for speed differences
-regarding DMA transfers as this happens automatically.
-
-<P>
-Because of this, the cycle lengths for Ports A and B can be set to
-their minimum values without ill effects. The cycle lengths specified
-for Ports A and B are intended to selectively slow down read or write
-cycles for hardware that cannot operate at the DMA's full speed.
+<PRE>
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 0   |   |   |   |   |   |   |
+     |   |   |   |   |   0   0  Do not use
+     |   |   |   |   |   0   1  Transfer (Prefer this for Z80 DMA compatibility)
+     |   |   |   |   |   1   0  Do not use (Behaves like Transfer, Search on Z80
+     |   |   |   |   |                       DMA)
+     |   |   |   |   |   1   1  Do not use (Behaves like Transfer, Search/Trans-
+     |   |   |   |   |                      fer on Z80 DMA)
+     |   |   |   |   0 = Port B -&gt; Port A (Byte transfer direction)
+     |   |   |   |   1 = Port A -&gt; Port B
+     |   |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT A STARTING ADDRESS (LOW BYTE)
+     |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT A STARTING ADDRESS (HIGH BYTE)
+     |   V
+D7  D6  D5  D4  D3  D2  D1  D0  BLOCK LENGTH (LOW BYTE)
+     V
+D7  D6  D5  D4  D3  D2  D1  D0  BLOCK LENGTH (HIGH BYTE)
+</PRE>
+Several registers are accessible from WR0. The first write to WR0 is
+to the base register byte. Bits D6:D3 are optionally set to indicate
+that associated registers in this group will be written next. The
+order the writes come in are from D3 to D6 (right to left). For
+example, if bits D6 and D3 are set, the next two writes will be
+directed to PORT A STARTING ADDRESS LOW followed by BLOCK LENGTH HIGH.
 
 <P>
 <BR><HR>

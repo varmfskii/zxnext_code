@@ -1,3 +1,17 @@
-\port{E3}{divMMC Control}\\
+\port{E3}{divMMC Control}\\     
 Disable with bit 2 of Nextreg \$09
-
+\begin{itemize}
+\item[] bit 7 = conmem, enable divMMC memory
+\item[] bit 6 = mapram, enable divMMC allRAM mode
+\item[] bits 3-0 = bank, selected divMMC ram bank for \$2000-\$3FFF region
+\item conmem can be used to manually control divMMC mapping. When enabled\\
+\$0000-\$1FFF contains esxDOS ROM or esxDOS page 3\\
+\$2000-\$3FFF contains esxDOS RAM page selected by bits 3-0
+\item divMMC automatically maps itself in when instruction fetches hit
+specific addresses in the ROM. When this happens, the esxDOS ROM (or divMMC
+bank 3 if mapram is set) appears in \$0000-\$1FFF and the selected divMMC
+bank appears as RAM in \$2000-\$3FFF
+\item bit 6 can only be set, once set only a power cycle can reset it.
+nextreg \$09 bit 3 can be set to reset this bit.
+\end{itemize}
+divMMC automapping is normally disabled by NextZXOS see nextreg \$06 bit 4.\\

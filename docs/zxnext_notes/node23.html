@@ -32,11 +32,11 @@
 <A
  HREF="node22.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html490"
+<A ID="tex2html507"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html492"
-  HREF="node177.html">
+<A ID="tex2html509"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -45,10 +45,10 @@
  HREF="node10.html">Layer 1</A>
 <B> Previous:</B> <A
  HREF="node22.html">Layer 1 Clipping</A>
- &nbsp; <B>  <A ID="tex2html491"
+ &nbsp; <B>  <A ID="tex2html508"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html493"
-  HREF="node177.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html510"
+  HREF="node184.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
@@ -62,27 +62,27 @@ Timex mode 0
 
 <P>
 This is the default ULA mode and has its origins in the original ZX
-Spectrum. It uses <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img1.svg"
+Spectrum. It uses <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
  ALT="$256\times 192$"></SPAN> pixels located at global coordinates
-(32, 32) to (287, 223) with <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img11.svg"
+(32, 32) to (287, 223) with <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img10.svg"
  ALT="$8\times8$"></SPAN> colour attribute areas mapped
-into a <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img12.svg"
+into a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img11.svg"
  ALT="$32\times24$"></SPAN> grid. If Timex modes are not enabled, this and the
 LoRes mode are the only ones available, so you would switch back to
 this mode by writing 000xxxxx to Next register $15 (21, the sprites
 and layers register). If another Timex mode is enabled, then this is
 mode 0 so you would write 0 to port $ff to enable it. This is a
-<SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img1.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
  ALT="$256\times 192$"></SPAN> video mode. The bitmap 1 area is used for selection
 between ink and paper colours with one bit per pixel and the attribute
 1 area for colour attributes.
 
 <P>
 The easiest way to visualize the mapping of this mode is to think of
-the <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img1.svg"
- ALT="$256\times 192$"></SPAN> area as being divided into a <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img12.svg"
+the <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
+ ALT="$256\times 192$"></SPAN> area as being divided into a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img11.svg"
  ALT="$32\times24$"></SPAN> grid of
-<SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img11.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img10.svg"
  ALT="$8\times8$"></SPAN> characters.  IF we consider X and Y as the position in the
 grid and R to the the row within the character.  For ink/paper
 selection, 0=paper, 1=ink and the entries are stored left to right as
@@ -90,30 +90,35 @@ lsb to msb within the bye.  The address for a pixel value is:
 <!-- MATH
  $0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.16ex; vertical-align: -0.46ex; " SRC="img13.svg"
- ALT="$0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>. Each <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img11.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img12.svg"
+ ALT="$0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>. Each <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img10.svg"
  ALT="$8\times8$"></SPAN> cell has
 its own colour attribute where the address for an attribute cell is
 <!-- MATH
  $0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.16ex; vertical-align: -0.46ex; " SRC="img14.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img13.svg"
  ALT="$0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN> in other words mapped lineally
 column-wise starting at the beginning of the attribute 1 area.
 
 <P>
-<BR>
-<IMG STYLE=""
- SRC="img15.svg"
- ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
 Code:
-\begin{verbatim};; f...
-...ext register r/w port
-in a,(c)
-and $7f
-out (c),a\end{verbatim}
-\end{adjustwidth}">
-<BR>
+<PRE>
+  ;; from any other Timex mode:
+  ld a,$00
+  ld c,$ff
+  out (c),a
+
+  ;; from LoRes mode:
+  ld bc,$243B ; next register select port
+  ld a,$15
+  out (c),a
+  ld bc,$253B ; next register r/w port
+  in a,(c)
+  and $7f
+  out (c),a
+</PRE>
+
 <P>
 
 <DIV CLASS="navigation"><HR>
@@ -127,11 +132,11 @@ out (c),a\end{verbatim}
 <A
  HREF="node22.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html490"
+<A ID="tex2html507"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html492"
-  HREF="node177.html">
+<A ID="tex2html509"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -140,10 +145,10 @@ out (c),a\end{verbatim}
  HREF="node10.html">Layer 1</A>
 <B> Previous:</B> <A
  HREF="node22.html">Layer 1 Clipping</A>
- &nbsp; <B>  <A ID="tex2html491"
+ &nbsp; <B>  <A ID="tex2html508"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html493"
-  HREF="node177.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html510"
+  HREF="node184.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

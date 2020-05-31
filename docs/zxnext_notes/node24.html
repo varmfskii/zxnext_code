@@ -32,11 +32,11 @@
 <A
  HREF="node23.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html494"
+<A ID="tex2html511"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html496"
-  HREF="node177.html">
+<A ID="tex2html513"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -45,10 +45,10 @@
  HREF="node10.html">Layer 1</A>
 <B> Previous:</B> <A
  HREF="node23.html">ZX Spectrum Mode</A>
- &nbsp; <B>  <A ID="tex2html495"
+ &nbsp; <B>  <A ID="tex2html512"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html497"
-  HREF="node177.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html514"
+  HREF="node184.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
@@ -69,30 +69,42 @@ Spectrum mode except the pixel are mapped to the bitmap 2 area giving
 use pixel addresses of <!-- MATH
  $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.16ex; vertical-align: -0.46ex; " SRC="img16.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img14.svg"
  ALT="$1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN> and
 the attributes to the attribute 2 area with addresses of
 <!-- MATH
  $1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.16ex; vertical-align: -0.46ex; " SRC="img17.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img15.svg"
  ALT="$1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>.
 
 <P>
-<BR>
-<IMG STYLE=""
- SRC="img18.svg"
- ALT="\begin{adjustwidth}{0.05\textwidth}{0.05\textwidth}
 Code:
-\par
-\begin{verbatim}
-...
-... alternate page mode
+
+<P>
+<PRE>
+;; disable LoRes mode:
+ld bc,$243B ; next register select port
+ld a,$15
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+and $7f
+out (c),a
+;; set Timex mode
+ld bc,$243B ; next register select port
+ld a,$08
+out (c),a
+ld bc,$253B ; next register r/w port
+in a,(c)
+or $04
+out (c),a
+;; set alternate page mode
 ld c,$ff
 ld a,$01
-out (c),a\end{verbatim}
-\end{adjustwidth}">
-<BR>
+out (c),a
+</PRE>
+
 <P>
 <BR><HR>
 

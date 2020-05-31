@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Compare</TITLE>
-<META NAME="description" CONTENT="Compare">
+<TITLE>Overview</TITLE>
+<META NAME="description" CONTENT="Overview">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node100.html">
 <LINK REL="previous" HREF="node98.html">
 <LINK REL="next" HREF="node100.html">
 </HEAD>
@@ -27,152 +26,79 @@
  HREF="node100.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node93.html">
+ HREF="node97.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node98.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html918"
+<A ID="tex2html938"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html920"
-  HREF="node177.html">
+<A ID="tex2html940"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node100.html">Overscan</A>
+ HREF="node100.html">Timing</A>
 <B> Up:</B> <A
- HREF="node93.html">Timing</A>
+ HREF="node97.html">Copper and Display Timing</A>
 <B> Previous:</B> <A
- HREF="node98.html">Coordinates</A>
- &nbsp; <B>  <A ID="tex2html919"
+ HREF="node98.html">Introduction</A>
+ &nbsp; <B>  <A ID="tex2html939"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html921"
-  HREF="node177.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html941"
+  HREF="node184.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00710060000000000000">
-Compare</A>
+<H4><A ID="SECTION00700020000000000000">
+Overview</A>
 </H4>
 
 <P>
-The COPPER uses a 9 bit vertical line compare allowing it to handle
-the various line counts.
+The ZX Spectrum Next COPPER has three instructions: NOOP, MOVE, WAIT. 
 
 <P>
-The COPPER horizontal compare is 6 bits meaning that it can wait for
-64 positions across each line. The range of this value is limited by
-the machine timing as that determines the number of dot clocks per
-line.
+NOOP is used to fine tune timing. MOVE writes data to a specific range
+of hardware registers. WAIT waits for a pixel position on the video
+display.
 
 <P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="2016"></A>
-<TABLE>
-<CAPTION><STRONG>Table 6.3:</STRONG>
-Maximum Horizontal COPPER Compare</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img53.svg"
- ALT="\begin{table}\centering
-\csvautotabular{copper/maxhcmp.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
+These instructions are stored in 2k (2048 BYTES) of dedicated
+write-only program RAM also known as a &ldquo;Copper list&rdquo;.
 
 <P>
-Each horizontal compare is in steps of 16 dot clocks to cover the full
-range across a raster line.
+Each instruction is 16 bits (WORD) in size allowing for a maximum of
+1024 instructions to be stored in the program RAM. The COPPER uses an
+internal 10 bit program counter (PC) which wraps to zero at the end of
+the list. The PC can be reset to zero, this is the default value after
+a hard/soft reset.
 
 <P>
-16 dot clocks = 4 pixels in lo <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img28.svg"
- ALT="$128\times96$"></SPAN> resolution
+The instructions are stored in big endian format and transferred to
+the 2k program RAM using the Z80 or DMA (bits 15..8 followed by bits
+7..0).
 
 <P>
-16 dot clocks = 8 pixels in standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img1.svg"
- ALT="$256\times 192$"></SPAN> resolution
+Three write-only hardware registers control access to the program RAM
+as well as the operating modes.
 
 <P>
-16 dot clocks = 16 pixels in high <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img22.svg"
- ALT="$512\times192$"></SPAN> resolution
+System performance is not affected when the COPPER is executing instructions.
 
 <P>
-There is some slack to consider after the maximum horizontal compare
-value. The slack is calculated using the following:
+The hardware registers and COPPER program RAM are not connected to the
+main memory BUS. The overall design of this system together with the
+use of alternate clock edges means that contention between the COPPER,
+Z80 and DMA has been eliminated.
 
 <P>
-dot clocks per line - maximum horizontal compare * 16
+The COPPER has a base clock speed of 13.5Mhz for HDMI and 14Mhz for VGA.
 
 <P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="2020"></A>
-<TABLE>
-<CAPTION><STRONG>Table 6.4:</STRONG>
-Slack Dot Clocks After Maximum Compare</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img54.svg"
- ALT="\begin{table}\centering
-\csvautotabular{copper/aftermaxcmp.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
-
-<P>
-Table 5.5 provides details of the horizontal display, left/right
-border, blanking and COPPER dot clock/pixel position compare values:
-
-<P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="2024"></A>
-<TABLE>
-<CAPTION><STRONG>Table 6.5:</STRONG>
-Horizontal Timing</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img55.svg"
- ALT="\begin{table}\centering
-\csvautotabular{copper/htime.csv}
-\par
-\raggedright -- Dot clock compare is out of range.
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
-
-<P>
-Table 5.6 provides a detailed list of vertical display, top/bottom
-border and blanking as well as maximum COPPER line compare. It also
-provides the ULA VBLANK interrupt line number.
-
-<P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="2028"></A>
-<TABLE>
-<CAPTION><STRONG>Table 6.6:</STRONG>
-Vertical Timing</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img56.svg"
- ALT="\begin{table}\centering\tiny
-\csvautotabular{copper/vtime.csv}
-\par
-\raggedright -- Line compare is out of range
-\par
-* ULA VBLANK interrupt.
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
-
-<P>
-Note: The HDMI overscan and blanking period is larger than that of a
-VGA monitor which can auto-adjust alignment. The following data is
-based on visible results from various monitors thus subject to
-refinement.
-
-<P>
-Pixels are visible during DISPLAY/BORDER and hidden during BLANKING.
+The bandwidth is around 14 million single cycle NOOP/WAIT instructions
+and 7 million two cycle MOVE instructions per second.
 
 <P>
 
@@ -182,28 +108,28 @@ Pixels are visible during DISPLAY/BORDER and hidden during BLANKING.
  HREF="node100.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node93.html">
+ HREF="node97.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node98.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html918"
+<A ID="tex2html938"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html920"
-  HREF="node177.html">
+<A ID="tex2html940"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node100.html">Overscan</A>
+ HREF="node100.html">Timing</A>
 <B> Up:</B> <A
- HREF="node93.html">Timing</A>
+ HREF="node97.html">Copper and Display Timing</A>
 <B> Previous:</B> <A
- HREF="node98.html">Coordinates</A>
- &nbsp; <B>  <A ID="tex2html919"
+ HREF="node98.html">Introduction</A>
+ &nbsp; <B>  <A ID="tex2html939"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html921"
-  HREF="node177.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html941"
+  HREF="node184.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

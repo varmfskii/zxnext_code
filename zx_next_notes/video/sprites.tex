@@ -86,8 +86,7 @@ pixel can be one of 256 colours. One colour indicates transparency and
 this is programmed into the Sprite Transparency Index register
 (nextreg \$4B). By default the transparent value is \$E3.
 
-\sinset
-As an example of an 8-bit sprite, let’s have a look at figure 2.1.
+As an example of an 8-bit sprite, let’s have a look at figure 1.1.
 
 \begin{figure}\centering
   \includegraphics{video/sprite_1.png}
@@ -115,13 +114,12 @@ E3E3E3E3E3E3E3E304FA4404A804E3E3
 E3E3E3E3E3E3E3044D4D04E304F504E3
 E3E3E3E3E3E3E3E30404E3E3E304FA04
 E3E3E3E3E3E3E3E3E3E3E3E3E3E30404
-\end{verbatim}
 
+\end{verbatim}
 Here \$E3 is used as the transparent index.
 
 These 256 bytes would be stored in pattern memory in left to right,
 top to bottom order.
-\einset
 
 \subparagraph{4-Bit Sprite Patterns}
 
@@ -136,7 +134,6 @@ Since each pixel only occupies 4-bits, two pixels are stored in each
 byte. The leftmost pixel is stored in the upper 4-bits and the
 rightmost pixel is stored in the lower 4-bits.
 
-\sinset
 As an example we will use the same sprite image as was given in the
 8-bit pattern example. Here only the lower 4 bits of each pixel is
 retained to confine each pixel’s color to 4-bits:
@@ -164,7 +161,6 @@ retained to confine each pixel’s color to 4-bits:
 
 These 128 bytes would be stored in pattern memory in left to right,
 top to bottom order.
-\einset
 
 The actual colour that will appear on screen will depend on the
 palette, described below. The default palette will not likely generate
@@ -185,16 +181,16 @@ using binary math:
 
 \begin{verbatim}
 8-bit Sprite
-  PPPP0000
+PPPP0000
 + IIIIIIII
 ----------
-  SSSSSSSS
+SSSSSSSS
 
 4-bit Sprite
-  PPPP0000
+PPPP0000
 + 0000IIII
 ----------
-  SSSSSSSS = PPPPIIII
+SSSSSSSS = PPPPIIII
 \end{verbatim}
 
 Where “PPPP” is the 4-bit palette offset from the sprite’s attributes

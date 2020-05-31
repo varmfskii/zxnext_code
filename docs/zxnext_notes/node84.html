@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>WR4 – Write Register Group 4</TITLE>
-<META NAME="description" CONTENT="WR4 – Write Register Group 4">
+<TITLE>Modes of Operation</TITLE>
+<META NAME="description" CONTENT="Modes of Operation">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,56 +27,62 @@
  HREF="node85.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node79.html">
+ HREF="node80.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node83.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html826"
+<A ID="tex2html844"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html828"
-  HREF="node177.html">
+<A ID="tex2html846"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node85.html">WR5 – Write Register</A>
+ HREF="node85.html">Programming the zxnDMA</A>
 <B> Up:</B> <A
- HREF="node79.html">zxnDMA Registers</A>
+ HREF="node80.html">zxnDMA</A>
 <B> Previous:</B> <A
- HREF="node83.html">WR3 – Write Register</A>
- &nbsp; <B>  <A ID="tex2html827"
+ HREF="node83.html">Description</A>
+ &nbsp; <B>  <A ID="tex2html845"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html829"
-  HREF="node177.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html847"
+  HREF="node184.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00660050000000000000">
-WR4 – Write Register Group 4</A>
-</H4>
-<PRE>
-D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
- 1   |   |   0   |   |   0   1
-     |   |       |   |
-     0   0 = Do not use (Behaves like Continuous mode, Byte mode on Z80 DMA)
-     0   1 = Continuous mode
-     1   0 = Burst mode
-     1   1 = Do not use
-                 |   |
-                 |   V
-D7  D6  D5  D4  D3  D2  D1  D0  PORT B STARTING ADDRESS (LOW BYTE)
-                 |
-                 V
-D7  D6  D5  D4  D3  D2  D1  D0  PORT B STARTING ADDRESS (HIGH BYTE)
-</PRE>
+<H1><A ID="SECTION00640000000000000000">
+Modes of Operation</A>
+</H1>
+The zxnDMA can operate in a z80-dma compatibility mode.
 
 <P>
-The Z80 DMA defines three more registers in this group through D4 that
-define interrupt behaviour. Interrups and pulse generation are not
-implemented in the zxnDMA nor are these registers available for
-writing.
+The z80-dma compatibility mode is selected by setting bit 6 of nextreg
+$06. In this mode, all transfers involve length+1 bytes which is the
+same behaviour as the z80-dma chip. In zxn-dma mode, the transfer
+length is exactly the number of bytes programmed. This mode is mainly
+present to accommodate existing spectrum software that uses the
+z80-dma and for cp/m programs that may have a z80-dma option.
+
+<P>
+The zxnDMA can also operate in either burst or continuous modes.
+
+<P>
+Continuous mode means the DMA chip runs to completion without allowing
+the CPU to run. When the CPU starts the DMA, the DMA operation will
+complete before the CPU executes its next instruction.
+
+<P>
+Burst mode nominally means the DMA lets the CPU run if either port is
+not ready. This condition can't happen in the zxnDMA chip except when
+operated in the special fixed time transfer mode. In this mode, the
+zxnDMA will let the CPU run while it waits for the fixed time to
+expire between bytes transferred.
+
+<P>
+Note that there is no byte transfer mode as in the Z80 DMA.
 
 <P>
 <BR><HR>

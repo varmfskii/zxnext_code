@@ -23,8 +23,7 @@ the layer.
 \input{registers/tbblue/13.tex}
 \input{registers/tbblue/69.tex}
 \input{registers/tbblue/70.tex}
-\sinset
-Code:
+
 \paragraph{Layer 2 $256\times192$, Write only overlaid on ROM}
 \begin{verbatim}
 p_layer2: defl $123b
@@ -52,6 +51,7 @@ loop:
   dec c
   jr nz,loop
 \end{verbatim}
+
 \paragraph{Layer 2 $256\times192$ resolution}
 \begin{verbatim}
 r_mmu_7:  defl $57
@@ -75,6 +75,7 @@ loop2:
   cp $18               ; stop at page 24
   jp NZ,loop1
 \end{verbatim}
+
 \paragraph{Layer 2 $320\times256$ resolution}
 \begin{verbatim}
 r_mmu_7:  defl $57
@@ -98,6 +99,7 @@ loop2:
   cp $1C               ; stop at page 28
   jp NZ,loop1
 \end{verbatim}
+
 \paragraph{Layer 2 $640\times256$ resolution}
 \begin{verbatim}
 r_mmu_7:  defl $57
@@ -121,7 +123,6 @@ loop2:
   cp $1C      ; stop at page 28
   jp NZ, loop1
 \end{verbatim}
-\einset
 
 \subsection{Scrolling}
 Scrolling Layer 2 is controlled by registers \$16 and \$17. (Is there

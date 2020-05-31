@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Programming the zxnDMA</TITLE>
-<META NAME="description" CONTENT="Programming the zxnDMA">
+<TITLE>Global Memory Map</TITLE>
+<META NAME="description" CONTENT="Global Memory Map">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,66 +27,35 @@
  HREF="node79.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node73.html">
+ HREF="node77.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node77.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html793"
+<A ID="tex2html804"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html795"
-  HREF="node177.html">
+<A ID="tex2html806"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node79.html">zxnDMA Registers</A>
+ HREF="node79.html">Z80 Visible Memory Map</A>
 <B> Up:</B> <A
- HREF="node73.html">zxnDMA</A>
+ HREF="node77.html">Memory Map</A>
 <B> Previous:</B> <A
- HREF="node77.html">Modes of Operation</A>
- &nbsp; <B>  <A ID="tex2html794"
+ HREF="node77.html">Memory Map</A>
+ &nbsp; <B>  <A ID="tex2html805"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html796"
-  HREF="node177.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html807"
+  HREF="node184.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00650000000000000000">
-Programming the zxnDMA</A>
-</H1>
-Like the Z80 DMA chip, the zxnDMA has seven write registers named
-WR0-WR6 that control the device. Each register WR0-WR6 can have zero
-or more parameters associated with it.
-
-<P>
-In a first write to the zxnDMA port, the write value is compared
-against a bitmask to determine which of the WR0-WR6 is the
-target. Remaining bits in the written value can contain data as well
-as a list of associated parameter bits. The parameter bits determine
-if further writes are expected to deliver parameter values. If there
-are multiple parameter bits set, the expected order of parameter
-values written is determined by parameter bit position from right to
-left (bit 0 through bit 7). Once all parameters are written, the
-zxnDMA again expects a regular register write selecting WR0-WR6.
-
-<P>
-The table X.Y describes the registers and the bitmask required to
-select them on the zxnDMA.
-
-<P>
-<BR>
-<IMG STYLE=""
- SRC="img49.svg"
- ALT="\begin{adjustwidth}
-% latex2html id marker 1871
-{0.05\textwidth}{0.05\textwidth}...
-...A Registers}
-\csvautotabular{zxndma/registers.csv}
-\end{table}\end{adjustwidth}">
-<BR>
-<P>
+<H2><A ID="SECTION00561000000000000000">
+Global Memory Map</A>
+</H2>
 <BR><HR>
 
 </BODY>

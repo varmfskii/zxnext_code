@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Introduction</TITLE>
-<META NAME="description" CONTENT="Introduction">
+<TITLE>WR4 – Write Register Group 4</TITLE>
+<META NAME="description" CONTENT="WR4 – Write Register Group 4">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,41 +27,54 @@
  HREF="node92.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node90.html">
+ HREF="node86.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node90.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html879"
+<A ID="tex2html881"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html881"
-  HREF="node177.html">
+<A ID="tex2html883"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node92.html">Overview</A>
+ HREF="node92.html">WR5 – Write Register</A>
 <B> Up:</B> <A
- HREF="node90.html">Copper and Display Timing</A>
+ HREF="node86.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node90.html">Copper and Display Timing</A>
- &nbsp; <B>  <A ID="tex2html880"
-  HREF="node1.html">Contents</A></B> 
+ HREF="node90.html">WR3 – Write Register</A>
  &nbsp; <B>  <A ID="tex2html882"
-  HREF="node177.html">Index</A></B> 
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html884"
+  HREF="node184.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00700010000000000000">
-Introduction</A>
+<H4><A ID="SECTION00660050000000000000">
+WR4 – Write Register Group 4</A>
 </H4>
-
-<P>
-The ZX Spectrum Next includes a co-processor named &ldquo;COPPER&rdquo;. It
-functions in a similar way to the Copper found in the Commodore Amiga
-Agnus custom chip.  It's role is to free the Z80 of tasks that require
-the writing of hardware registers at precise pixel co-ordinates.
+<PRE>
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 1   |   |   0   |   |   0   1
+     |   |       |   |
+     0   0 = Do not use (Behaves like Continuous mode, Byte mode on Z80 DMA)
+     0   1 = Continuous mode
+     1   0 = Burst mode
+     1   1 = Do not use
+                 |   |
+                 |   V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT B STARTING ADDRESS (LOW BYTE)
+                 |
+                 V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT B STARTING ADDRESS (HIGH BYTE)
+</PRE>
+The Z80 DMA defines three more registers in this group through D4 that
+define interrupt behaviour. Interrups and pulse generation are not
+implemented in the zxnDMA nor are these registers available for
+writing.
 
 <P>
 <BR><HR>

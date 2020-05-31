@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Overview</TITLE>
-<META NAME="description" CONTENT="Overview">
+<TITLE>Multiface</TITLE>
+<META NAME="description" CONTENT="Multiface">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -16,7 +16,7 @@
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node75.html">
-<LINK REL="previous" HREF="node73.html">
+<LINK REL="previous" HREF="node72.html">
 <LINK REL="next" HREF="node75.html">
 </HEAD>
 
@@ -27,43 +27,48 @@
  HREF="node75.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node73.html">
+ HREF="node70.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node73.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html777"
+<A ID="tex2html786"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html779"
-  HREF="node177.html">
+<A ID="tex2html788"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node75.html">Accessing the zxnDMA</A>
+ HREF="node75.html">divMMC</A>
 <B> Up:</B> <A
- HREF="node73.html">zxnDMA</A>
+ HREF="node70.html">ROM</A>
 <B> Previous:</B> <A
- HREF="node73.html">zxnDMA</A>
- &nbsp; <B>  <A ID="tex2html778"
+ HREF="node73.html">ROM paging and selection</A>
+ &nbsp; <B>  <A ID="tex2html787"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html780"
-  HREF="node177.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html789"
+  HREF="node184.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00610000000000000000">
-Overview</A>
-</H1>
+<H2><A ID="SECTION00543000000000000000">
+Multiface</A>
+</H2>
 
 <P>
-The ZX Spectrum Next DMA (zxnDMA) is a single channel dma device that
-implements a subset of the Z80 DMA functionality. The subset is large
-enough to be compatible with common uses of the similar Datagear
-interface available for standard ZX Spectrum computers and
-compatibles. It also adds a burst mode capability that can deliver
-audio at programmable sample rates to the DAC device.
+9f 1-In, 128-In2
+<BR>
+1f 1-Out
+<BR>
+bf 128-In, 3-Out
+<BR>
+3f 128-Out, 3-In, 3-button
+<BR>
+7f3f 3-7ffd
+<BR>
+1f3f 3-1ffd
 
 <P>
 <BR><HR>

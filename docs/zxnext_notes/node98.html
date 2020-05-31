@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Coordinates</TITLE>
-<META NAME="description" CONTENT="Coordinates">
+<TITLE>Introduction</TITLE>
+<META NAME="description" CONTENT="Introduction">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,65 +27,41 @@
  HREF="node99.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node93.html">
+ HREF="node97.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node97.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html914"
+<A ID="tex2html934"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html916"
-  HREF="node177.html">
+<A ID="tex2html936"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node99.html">Compare</A>
+ HREF="node99.html">Overview</A>
 <B> Up:</B> <A
- HREF="node93.html">Timing</A>
+ HREF="node97.html">Copper and Display Timing</A>
 <B> Previous:</B> <A
- HREF="node97.html">Dot Clock</A>
- &nbsp; <B>  <A ID="tex2html915"
+ HREF="node97.html">Copper and Display Timing</A>
+ &nbsp; <B>  <A ID="tex2html935"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html917"
-  HREF="node177.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html937"
+  HREF="node184.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00710050000000000000">
-Coordinates</A>
+<H4><A ID="SECTION00700010000000000000">
+Introduction</A>
 </H4>
 
 <P>
-The top left pixel of the frame buffer is line 0 and horizontal dot
-clock 0. This is also known as &ldquo;0,0&rdquo;.
-
-<P>
-The bottom right pixel of the frame buffer in standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img1.svg"
- ALT="$256\times 192$"></SPAN>
-resolution is line 191 and horizontal dot clocks 510+511.
-
-<P>
-The bottom right pixel of the frame buffer in Timex HIRES
-<SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img22.svg"
- ALT="$512\times192$"></SPAN> resolution is line 191 and horizontal dot clock 511.
-
-<P>
-The line one pixel above the frame buffer is the last line of the
-video frame and equal to the total line count minus one (312-1 for
-example).
-
-<P>
-The line one pixel below the frame buffer is line 192.
-
-<P>
-The COPPER horizontal dot clock compare is locked to every eight
-pixels in standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img1.svg"
- ALT="$256\times 192$"></SPAN> resolution and every sixteen pixels
-in Timex HIRES <SPAN CLASS="MATH"><IMG STYLE="height: 1.92ex; vertical-align: -0.31ex; " SRC="img22.svg"
- ALT="$512\times192$"></SPAN> resolution. The NOOP instruction can be
-used to fine tune timing in single dot clock steps.
+The ZX Spectrum Next includes a co-processor named &ldquo;COPPER&rdquo;. It
+functions in a similar way to the Copper found in the Commodore Amiga
+Agnus custom chip.  It's role is to free the Z80 of tasks that require
+the writing of hardware registers at precise pixel co-ordinates.
 
 <P>
 <BR><HR>

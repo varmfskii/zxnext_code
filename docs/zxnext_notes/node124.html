@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Character I/O Functions</TITLE>
-<META NAME="description" CONTENT="Character I/O Functions">
+<TITLE>Raspberry Pi0 Acceleration</TITLE>
+<META NAME="description" CONTENT="Raspberry Pi0 Acceleration">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,217 +27,317 @@
  HREF="node125.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node122.html">
+ HREF="zxnext_notes.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node123.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1054"
+<A ID="tex2html1057"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1056"
-  HREF="node177.html">
+<A ID="tex2html1059"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node125.html">Disk I/O Functions</A>
+ HREF="node125.html">System Software</A>
 <B> Up:</B> <A
- HREF="node122.html">BIOS</A>
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
- HREF="node123.html">System Initialization Functions</A>
- &nbsp; <B>  <A ID="tex2html1055"
+ HREF="node123.html">Interrupts</A>
+ &nbsp; <B>  <A ID="tex2html1058"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1057"
-  HREF="node177.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1060"
+  HREF="node184.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H3><A ID="SECTION001013200000000000000">
-Character I/O Functions</A>
-</H3>
-This section defines the CP/M 3 character I/O routines CONST, CONIN,
-CONOUT, LIST, AUXOUT, AUXIN, LISTST, CONOST, AUXIST, and AUXOST.  CP/M
-3 assumes all simple character I/O operations are performed in
-eight-bit ASCII, upper and lowercase, with no parity. An ASCII CTRL-Z
-($1a) denotes an end-of-file condition for an input device.
+<H1><A ID="SECTION00900000000000000000">
+Raspberry Pi0 Acceleration</A>
+</H1>
+The Spectrum Next has a header (with male pins) which can be attached
+to a Raspberry Pi Zero. There is a modified version of DietPi called
+NextPi which is the standard distro for the Raspberry Pi0
+accelerator. Software for the general public should be written
+assuming that it will be interfacing with a Pi0 running this distro.
 
 <P>
-In CP/M 3, you can direct each of the five logical character devices
-to any combination of up to twelve physical devices. Each of the five
-logical devices has a 16-bit vector in the System Control Block (SCB)
-. Each bit of the vector represents a physical device where bit 15
-corresponds to device zero, and bit 4 is device eleven. Bits 0 through
-3 are reserved for future system use.
+If you are more adventurous, you may choose to use another distro, or
+even another accelerator that uses the Raspberry Pi style (40 pin)
+expansion bus.  Chief concers when doing this is that you have a
+console presented on the UART that defaults to 115,200 bps, you don't
+need to login, the machine is configured with a driver to treat the
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+ ALT="$I^2S$"></SPAN> interface as a sound card, and the presence of the nextpi
+scripts.
 
 <P>
-<A NAME="4685"></A>
-BIOS Function 2: CONST
+The Raspberry Pi 0 has a Broadcom BCM2835 SoC with an ARMv6 core, a
+Videocore 4 GPU, and its own 512 MB memory and HDMI output. It has its
+own SD card from which it boots. For this application the Pi 0 ships
+with a 1GB microSD card containing NextPi a customized version of
+DietPi.
 
 <P>
-Sample the Status of the Console Input Device
-<BR>
-Entry Parameters: None
-<BR>
-Returned value:
-<table width="90%"><tr><td valign="top">&nbsp;A=$ff if a console character is ready to read</td></tr>
-<tr><td valign="top">&nbsp;A=$00 if no console character is ready to read
+The Pi Zero, if installed, is a smart peripheral for the ZX Spectrum
+Next. Available interfaces are: low level access to the GPIO pins,
+higher level access to standardized I/O interfaces, and use of the Pi
+Zero as a sound card.
+
+<P>
+When using the low level GPIO interface Pi Zero GPIO pins 2-27 can be
+configured as either inputs or outputs using nextregs $90-$93. If
+they are outputs, the output state can be set by writing to nextregs
+$98-$9b. The current status of the GPIO pins can be read from
+nextregs $98-$9b whether it is the state driven by the ZX Spectrum
+Next or the state drive by some other peripherial attached to the bus
+(normally the Raspberry Pi Zero).
+
+<P>
+Standardized I/O access with the Pi Zero can use the <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img54.svg"
+ ALT="$I^2C$"></SPAN>, SPI, or
+UART interfaces and is configured using nextreg $a0. Any enabled port
+will disable low level (write) access to the corresponding GPIO
+pins.
+
+<P>
+The <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img54.svg"
+ ALT="$I^2C$"></SPAN> interface is controlled using ports $103b (SCL) and $113b
+(SDA). This is the same <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img54.svg"
+ ALT="$I^2C$"></SPAN> interface that is used for the optional
+Real Time Clock. Interfacing with the Pi Zero over <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img54.svg"
+ ALT="$I^2C$"></SPAN> is
+complicated by the fact that it is a master/slave interface, but both
+the ZX Spectrum Next and Pi Zero are configured to be bus masters.
+
+<P>
+The SPI interface is controlled using ports $e7 (/CS) and $eb
+(/DATA). The SPI interface is shared between the SD card(s), the flash
+memory, and the Pi Zero. Interfacing with the Pi Zero over SPI is
+complicated by the fact it is a master/slave interface and both the ZX
+Spectrum Next and Pi Zero are configured to be bus masters.
+
+<P>
+The UART interface is controlled by ports $133b (TX), $143b (RX),
+and $153b (control). This is the default means of bidirectional
+communication between the ZX Spectrum Next and Pi Zero. To use the
+UART you must first enable the UART on the GPIO and connecting it to
+the Pi Zero (not hats) by setting nextreg $a0 bits 5 and 4 to 1 and
+selecting Pi for the UART by setting port $153b bit 6 to 1. Assuming
+that the serial parameters match (by default both ends are set to
+115,200 bps with 8N1 and no flow control) this will give you access to
+the serial console on the Pi Zero over the UART.
+
+<P>
+<PRE>
+;; enable UART connection with Pi Zero
+   ld c,$3b
+   ld b,$15 ; UART control
+;; select Pi on UART control
+   in a,(c)
+   or $40
+   out (c),a
+   ld b,$24 ; Next Register Select
+   ld a,$a0
+   out (c),a
+   inc b ; Next Register Data
+;; Enable UART on GPIO and select Pi
+   in a,(c)
+   or $30
+   out (c),a
+</PRE>
+
+<P>
+The <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+ ALT="$I^2S$"></SPAN> sound interface between the ZX Spectrum Next and the Pi Zero
+is controlled by nextregs $a2 and $a3. Normally, one would control
+the Pi through some other channel such as the UART recieve audio from
+the Pi to either use as a fulloy programmable sound card or to allow
+loading of tape files on the ZX Spectrum Next.
+
+<P>
+(R/W) $90 (144) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> PI GPIO Output Enable 0
+<table width="90%">
+bit 7 = Pi GPIO 7
+bit 6 = Pi GPIO 6
+bit 5 = Pi GPIO 5
+bit 4 = Pi GPIO 4
+bit 3 = Pi GPIO 3
+bit 2 = Pi GPIO 2
+bit 1 = Pi GPIO 1 (cannot be enabled)
+bit 0 = Pi GPIO 0 (cannot be enabled)<tr><td valign="top">&nbsp;$00 on soft reset
 </td></tr></table>
 
 <P>
-Read the status of the currently assigned console device and return
-$ff in register A if a character is ready to read, and $ff in
-register A if no console characters are ready.
-
-<P>
-<A NAME="4688"></A>
-BIOS Function 3: CONIN
-
-<P>
-Read a Character from the Console
-<BR>
-Entry Parameters: None
-<BR>
-Returned Values: A=Console Character
-
-<P>
-Read the next console character into register A with no parity. If no
-console character is ready, wait until a character is available before
-returning.
-
-<P>
-<A NAME="4689"></A>
-BIOS Function 4: CONOUT
-
-<P>
-Output Character to Console
-<BR>
-Entry Parameters: C=Console Character
-<BR>
-Returned Values: None
-
-<P>
-Send the character in register C to the console output device. The
-character is in ASCII with no parity.
-
-<P>
-<A NAME="4690"></A>
-BIOS Function 5: LIST
-
-<P>
-Output Character to List Device
-<BR>
-Entry Parameters: C=Character
-<BR>
-Returned Values: None
-
-<P>
-Send the character from register C to the listing device. The
-character is in ASCII with no parity.
-
-<P>
-<A NAME="4691"></A>
-BIOS Function 6: AUXOUT
-
-<P>
-Output a Character to the Auxiliary Output Device
-<BR>
-Entry Parameters: C=Character
-<BR>
-Returned Values: None
-
-<P>
-Send the character from register C to the currently assigned AUXOUT
-device. The character is in ASCII with no parity.
-
-<P>
-<A NAME="4692"></A>
-BIOS Function 7: AUXIN
-
-<P>
-Read a Character from the Auxiliary Input Device
-<BR>
-Entry Parameters: None
-<BR>
-Returned Values: A=Character
-
-<P>
-Read the next character from the currently assigned AUXIN device into
-register A with no parity. A returned ASCII CTRL-Z ($1a) reports an
-end-of-file.
-
-<P>
-<A NAME="4693"></A>
-BIOS Function 15: LISTST
-
-<P>
-Return the Ready Status of the List Device
-<BR>
-Entry Parameters: None
-<BR>
-Returned Values:
-<table width="90%"><tr><td valign="top">&nbsp;A=$00 if list device is not ready to accept a character</td></tr>
-<tr><td valign="top">&nbsp;A=$ff if list device is ready to accept a character
+(R/W) $91 (145) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> PI GPIO Output Enable 1
+<table width="90%">
+bit 7 = Pi GPIO 15
+bit 6 = Pi GPIO 14
+bit 5 = Pi GPIO 13
+bit 4 = Pi GPIO 12
+bit 3 = Pi GPIO 11
+bit 2 = Pi GPIO 10
+bit 1 = Pi GPIO 9
+bit 0 = Pi GPIO 8<tr><td valign="top">&nbsp;$00 on soft reset
 </td></tr></table>
 
 <P>
-<A NAME="4696"></A>
-BIOS Function 17: CONOST
-
-<P>
-Return Output Status of Console
-<BR>
-Entry Parameters: None
-<BR>
-Returned Values:
-<table width="90%"><tr><td valign="top">&nbsp;A=$ff if ready</td></tr>
-<tr><td valign="top">&nbsp;A=$00 if not ready
+(R/W) $92 (146) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> PI GPIO Output Enable 2
+<table width="90%">
+bit 7 = Pi GPIO 23
+bit 6 = Pi GPIO 22
+bit 5 = Pi GPIO 21
+bit 4 = Pi GPIO 20
+bit 3 = Pi GPIO 19
+bit 2 = Pi GPIO 18
+bit 1 = Pi GPIO 17
+bit 0 = Pi GPIO 16<tr><td valign="top">&nbsp;$00 on soft reset
 </td></tr></table>
 
 <P>
-The CONOST routine checks the status of the console. CONOST returns an
-$ff if the console is ready to display another character. This entry
-point allows for full polled handshaking communications support.
-
-<P>
-<A NAME="4699"></A>
-BIOS Function 18: AUXIST
-
-<P>
-Return Input Status of Auxiliary Port
-<BR>
-Entry Parameters: None
-<BR>
-Returned Values:
-<table width="90%"><tr><td valign="top">&nbsp;A=$ff if ready</td></tr>
-<tr><td valign="top">&nbsp;A=$00 if not ready
+(R/W) $93 (147) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> PI GPIO Output Enable 3
+<table width="90%">
+bits 7-4 = Reserved, must be 0
+bit 3 = Pi GPIO 27
+bit 2 = Pi GPIO 26
+bit 1 = Pi GPIO 25
+bit 0 = Pi GPIO 24<tr><td valign="top">&nbsp;$00 on soft reset
 </td></tr></table>
 
 <P>
-The AUXIST routine checks the input status of the auxiliary port. This
-entry point allows full polled handshaking for communications support
-using an auxiliary port.
-
-<P>
-<A NAME="4702"></A>
-BIOS Function 19: AUXOST
-
-<P>
-Return Output Status of Auxiliary Port
-<BR>
-Entry Parameters: None
-<BR>
-Returned Values:
-<table width="90%"><tr><td valign="top">&nbsp;A=$ff if ready</td></tr>
-<tr><td valign="top">&nbsp;A=$00 if not ready
+(R/W) $98 (152) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> PI GPIO 0
+<table width="90%">
+bit 7 = Pi GPIO 7
+bit 6 = Pi GPIO 6
+bit 5 = Pi GPIO 5
+bit 4 = Pi GPIO 4
+bit 3 = Pi GPIO 3
+bit 2 = Pi GPIO 2
+bit 1 = Pi GPIO 1 (read only)
+bit 0 = Pi GPIO 0 (read only)<tr><td valign="top">&nbsp;$ff on soft reset
 </td></tr></table>
 
 <P>
-The AUXOST routine checks the output status of the auxiliary
-port. This routine allows full polled handshaking for communications
-support using an auxiliary port.
+(R/W) $99 (153) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> PI GPIO 1
+<table width="90%">
+bit 7 = Pi GPIO 15
+bit 6 = Pi GPIO 14
+bit 5 = Pi GPIO 13
+bit 4 = Pi GPIO 12
+bit 3 = Pi GPIO 11
+bit 2 = Pi GPIO 10
+bit 1 = Pi GPIO 9
+bit 0 = Pi GPIO 8<tr><td valign="top">&nbsp;$01 on soft reset
+</td></tr></table>
 
 <P>
+(R/W) $9A (154) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> PI GPIO 2
+<table width="90%">
+bit 7 = Pi GPIO 23
+bit 6 = Pi GPIO 22
+bit 5 = Pi GPIO 21
+bit 4 = Pi GPIO 20
+bit 3 = Pi GPIO 19
+bit 2 = Pi GPIO 18
+bit 1 = Pi GPIO 17
+bit 0 = Pi GPIO 16<tr><td valign="top">&nbsp;$00 on soft reset
+</td></tr></table>
+
+<P>
+(R/W) $9B (155) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> PI GPIO 3
+<table width="90%">
+bits 7-4 = Reserved, must be 0
+bit 3 = Pi GPIO 27
+bit 2 = Pi GPIO 26
+bit 1 = Pi GPIO 25
+bit 0 = Pi GPIO 24<tr><td valign="top">&nbsp;$00 on soft reset
+</td></tr></table>
+
+<P>
+(R/W) $A0 (160) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> PI Peripheral Enable
+
+<UL>
+<LI>bits 7-6 = Reserved, must be 0
+</LI>
+<LI>bit 5 = Enable UART on GPIO 14,15 (overrides gpio) (soft reset
+  = 0)
+</LI>
+<LI>bit 4 = 0 to connect Rx to GPIO 15, Tx to GPIO 14 (for comm
+  with pi hats) (soft reset = 0) = 1 to connect Rx to GPIO 14, Tx to
+  GPIO 15 (for comm with pi)
+</LI>
+<LI>bit 3 = Enable <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img54.svg"
+ ALT="$I^2C$"></SPAN> on GPIO 2,3 (override gpio) (soft reset =
+  0)
+</LI>
+<LI>bits 2-1 = Reserved, must be 0
+</LI>
+<LI>bit 0 = Enable SPI on GPIO 7,8,9,10,11 (overrides gpio) (soft
+  reset = 0)
+</LI>
+</UL>
+
+<P>
+(R/W) $A2 (162) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> PI <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+ ALT="$I^2S$"></SPAN> Audio Control
+
+<UL>
+<LI>bits 7-6 = <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+ ALT="$I^2S$"></SPAN> enable (soft reset = 00)
+  
+<UL>
+<LI>00 = <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+ ALT="$I^2S$"></SPAN> off
+</LI>
+<LI>01 = <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+ ALT="$I^2S$"></SPAN> is mono source right
+</LI>
+<LI>10 = <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+ ALT="$I^2S$"></SPAN> is mono source left
+</LI>
+<LI>11 = <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+ ALT="$I^2S$"></SPAN> is stereo
+  
+</LI>
+</UL>
+</LI>
+<LI>bit 5 = Reserved, must be 0
+</LI>
+<LI>bit 4 = 0 PCM_DOUT to pi, PCM_DIN from pi (hats) (soft reset
+  = 0) = 1 PCM_DOUT from pi, PCM_DIN to pi (pi)
+</LI>
+<LI>bit 3 = Mute left side (soft reset = 0)
+</LI>
+<LI>bit 2 = Mute right side (soft reset = 0)
+</LI>
+<LI>bit 1 = Slave mode (PCM_CLK, PCM_FS supplied externally)
+  (soft reset = 0)
+</LI>
+<LI>bit 0 = Direct <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+ ALT="$I^2S$"></SPAN> audio to EAR on port $FE (soft reset = 0)
+</LI>
+</UL>
+
+<P>
+(R/W) $A3 (163) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> PI <SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.11ex; " SRC="img53.svg"
+ ALT="$I^2S$"></SPAN> Clock Divide (Master Mode)
+<table width="90%">
+bits 7-0 = Clock divide sets sample rate when in master mode
+  (soft reset = 11)<tr><td valign="top">&nbsp;clock divider = 538461 / SampleRateHz - 1
+</td></tr></table>
+
 
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
@@ -245,28 +345,28 @@ support using an auxiliary port.
  HREF="node125.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node122.html">
+ HREF="zxnext_notes.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node123.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1054"
+<A ID="tex2html1057"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1056"
-  HREF="node177.html">
+<A ID="tex2html1059"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node125.html">Disk I/O Functions</A>
+ HREF="node125.html">System Software</A>
 <B> Up:</B> <A
- HREF="node122.html">BIOS</A>
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
- HREF="node123.html">System Initialization Functions</A>
- &nbsp; <B>  <A ID="tex2html1055"
+ HREF="node123.html">Interrupts</A>
+ &nbsp; <B>  <A ID="tex2html1058"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1057"
-  HREF="node177.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html1060"
+  HREF="node184.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
 <HTML lang="EN">
 <HEAD>
-<TITLE>Accessing the zxnDMA</TITLE>
-<META NAME="description" CONTENT="Accessing the zxnDMA">
+<TITLE>divMMC</TITLE>
+<META NAME="description" CONTENT="divMMC">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node76.html">
 <LINK REL="previous" HREF="node74.html">
 <LINK REL="next" HREF="node76.html">
 </HEAD>
@@ -27,48 +26,56 @@
  HREF="node76.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node73.html">
+ HREF="node70.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node74.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html781"
+<A ID="tex2html790"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html783"
-  HREF="node177.html">
+<A ID="tex2html792"
+  HREF="node184.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node76.html">Description</A>
+ HREF="node76.html">Interactions between paging methods</A>
 <B> Up:</B> <A
- HREF="node73.html">zxnDMA</A>
+ HREF="node70.html">ROM</A>
 <B> Previous:</B> <A
- HREF="node74.html">Overview</A>
- &nbsp; <B>  <A ID="tex2html782"
+ HREF="node74.html">Multiface</A>
+ &nbsp; <B>  <A ID="tex2html791"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html784"
-  HREF="node177.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html793"
+  HREF="node184.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00620000000000000000">
-Accessing the zxnDMA</A>
-</H1>
-The zxnDMA is mapped to two Read/Write IO Ports 0x0B and 0x6B which
-are the same ones used by the Datagear but unlike the Datagear, the
-port at 0x6B runs in zxnDMA mode while the second, port 0x0B, is
-similar to the MB-02 interface and runs in compatibility mode.
+<H2><A ID="SECTION00544000000000000000">
+divMMC</A>
+</H2>
 
 <P>
-Port $0B (0B) DMA Control (Z80 Mode, 3.01.02)
+Port $E3 (E3) divMMC Control
+<BR>
+Disable with bit 2 of Nextreg $09
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = conmem, enable divMMC memory</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = mapram, enable divMMC allRAM mode</td></tr>
+<tr><td valign="top">&nbsp;bits 3-0 = bank, selected divMMC ram bank for $2000-$3FFF region
+conmem can be used to manually control divMMC mapping. When enabled
+<BR>$0000-$1FFF contains esxDOS ROM or esxDOS page 3
+<BR>$2000-$3FFF contains esxDOS RAM page selected by bits 3-0
+divMMC automatically maps itself in when instruction fetches hit
+specific addresses in the ROM. When this happens, the esxDOS ROM (or divMMC
+bank 3 if mapram is set) appears in $0000-$1FFF and the selected divMMC
+bank appears as RAM in $2000-$3FFF
+bit 6 can only be set, once set only a power cycle can reset it.
+nextreg $09 bit 3 can be set to reset this bit.
+</td></tr></table>
 
-<P>
-Port $6B (6B) DMA Control (Next Mode, 3.01.02)
-
-<P>
-
+divMMC automapping is normally disabled by NextZXOS see nextreg $06 bit 4.
+<BR>
 <P>
 <BR><HR>
 
