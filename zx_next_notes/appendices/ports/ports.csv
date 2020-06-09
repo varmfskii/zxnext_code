@@ -36,11 +36,13 @@ R,W,16----------------0,Port(hex),Description,Disable
 *,,XXXX XXXX 0001 1111,\$1f,Kempston joy 1,Nextreg \$05
 *,,XXXX XXXX 0011 0111,\$37,Kempston joy 2,Nextreg \$05
 *,*,XXXX XXXX 0001 1111,\$1f,Multiface 1 disable,
-*,,XXXX XXXX 1001 1111,\$9f,Multiface 1 enable,
-*,*,XXXX XXXX 0011 1111,\$3f,Multiface 128 disable,
-*,,XXXX XXXX 1011 1111,\$bf,Multiface 128 enable,
+*,*,XXXX XXXX 1001 1111,\$9f,Multiface 1 enable,
+*,*,XXXX XXXX 0001 1111,\$1f,Multiface 128 v87.12 disable,
+*,*,XXXX XXXX 1001 1111,\$9f,Multiface 128 v87.12 enable,
+*,*,XXXX XXXX 0011 1111,\$3f,Multiface 128 v87.2 disable,
+*,*,XXXX XXXX 1011 1111,\$bf,Multiface 128 v87.2 enable,
 *,*,XXXX XXXX 1011 1111,\$bf,Multiface +3 disable,
-*,,XXXX XXXX 0011 1111,\$3f,Multiface +3 enable,
+*,*,XXXX XXXX 0011 1111,\$3f,Multiface +3 enable,
 *,*,0011 0000 0011 1011,\$303b,Sprite slot/flags,
 ,*,XXXX XXXX 0101 0111,\$57,Sprite attributes,
 ,*,XXXX XXXX 0101 1011,\$5b,Sprite pattern,

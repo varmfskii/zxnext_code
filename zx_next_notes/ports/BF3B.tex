@@ -1,0 +1,14 @@
+\port{BF3B}{ULA+ register}
+\begin{itemize}
+\item[] bits 7-6 = Select register group
+\begin{itemize}
+\item 00 = palette group
+\item 01 = mode group
+\end{itemize}
+\item[] bits 5-0 = data
+\begin{itemize}
+\item[] If palette group, selects index 0-63 in ula+ palette
+\item[] If mode group, ignored
+\end{itemize}
+\end{itemize}
+

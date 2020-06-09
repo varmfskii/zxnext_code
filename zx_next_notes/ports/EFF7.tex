@@ -1,0 +1,9 @@
+\port{EFF7}{Pentagon 1024 paging}
+\begin{itemize}
+\item[] bit 3 = 1 to overlay the bottom 16k with ram from 16k bank 0
+\item[] bit 2 = 0 to enable Pentagon 1024 mapping and disable bit 5 port
+0x7ffd locking, 1 to select standard zx128 mapping **
+\item[] ** Applies only when pentagon 1024 mapping mode is enabled via
+nextreg 0x8f.
+\end{itemize}
+

@@ -26,5 +26,6 @@ all other layers. If you also need the same colour in regular priority
 (for example: for enviromental masking) you will have to set it up
 again, this time with no priority.
 
-Reads return the second byte and do not autoincrement.
+Reads return the second byte and do not autoincrement. Writes to
+nextreg \$40, \$41, \$41, or \$43 reset to the first write.
 

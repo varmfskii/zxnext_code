@@ -1,0 +1,20 @@
+\register{R/W}{0A}{Peripheral 5 setting:}
+\begin{itemize}
+\item bits 7-6 = Multiface type (00 on hard reset)
+  \begin{itemize}
+  \item 00 = Multiface +3 (enable port 0x3F, disable port 0xBF)
+  \item 01 = Multiface 128 v87.2 (enable port 0xBF, disable port 0x3F)
+  \item 10 = Multiface 128 v87.12 (enable port 0x9F, disable port 0x1F)
+  \item 11 = Multiface 1 (enable port 0x9F, disable port 0x1F)
+  \end{itemize}
+\item bits 5-4 = Reserved, must be zero
+\item bit 3 = 1 to reverse left and right mouse buttons
+\item bits 1-0 = mouse dpi (00 on hard reset)
+  \begin{itemize}
+  \item 00 = low dpi
+  \item 01 = default
+  \item 10 = medium dpi
+  \item 11 = high dpi
+  \end{itemize}
+\end{itemize}
+
