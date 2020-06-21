@@ -1,10 +1,36 @@
 \chapter{Interrupts}
-CPU processing of interrupts is enabled using the EI instruction and
-disabled with the DI instruction. Interrupts can happen at any time
-and should preserve register contents.  If none of your code uses the
+The Z80 has three different hardware interrupt signals:
+\textoverline{RESET}, \textoverline{NMI}, and \textoverline{INT}.
+
+\textoverline{RESET} is used to return the CPU to a known state. When
+the \textoverline{RESET} line is pulled low, a \textoverline{RESET} is
+generated. The CPU then does several things. I, and R are set to \$00.
+PC is set to \$0000. SP becomes \$FFFF. A and F are set to \$FF.  The
+interrupt mode is set to 0. And (maskable) interrupts are disabled by
+clearing IFF1 and IFF2.
+
+\textoverline{NMI} is the non-maskable interrupt. Upon receiving a
+non-maskable interrupt (\textoverline{NMI} being pulled low), PC is
+pushed on the stack, IFF1 is copied to IFF2, IFF1 is cleared
+(inhibiting maskable interrupts). The \textoverline{NMI} should end
+with RETN which copies the contents of IFF2 to IFF1 (returning the
+interrupt state to what it was before the \textoverline{NMI}) and PF is
+popped off the stack.
+
+The interrupt generally of most interest to programmers is
+\textoverline{INT}. So much so that if programmers talk about
+interrupts on the Z80, they are probebly only talking about
+\textoverline{INT}. The processing of \textoverline{INT} is controlled
+by IFF1 and IFF2 which are set using EI to enable interrupts and reset
+using DI to disable interrupts. Interrupts can happen at any time and
+should preserve register contents.  If none of your code uses the
 alternate registers the EXX and EX AF,AF’ instructions can make this
-faster and easier. Upon completion of your interrupt routine you
-should call the RTI instruction and re-enable interrupts.
+faster and easier. Interrupt routined should end with EI and RETI to
+reenable interrupts, potentially inform the interrupting device that
+its interrupt has been serviced, and return from the interrupt
+routine. In general the Spectrum machines do not make any distingtion
+between RET and RETI, but future developments in the ZX Spectrum Next
+may make the distinction important.
  
 IM0 – When an interrupt is received by the CPU it disables interrupts
 and executes the instruction placed on the bus by the interrupting
@@ -45,7 +71,7 @@ handler:
 ;; handle interrupt
 ;; restore registers
 ei
-rti
+reti
 ;; jump to interrupt routine
 org $fdfd
 jp handler

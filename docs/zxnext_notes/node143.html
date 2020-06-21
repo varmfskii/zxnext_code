@@ -32,11 +32,11 @@
 <A
  HREF="node142.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1162"
+<A ID="tex2html1166"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1164"
-  HREF="node184.html">
+<A ID="tex2html1168"
+  HREF="node186.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -45,10 +45,10 @@
  HREF="node142.html">Registers</A>
 <B> Previous:</B> <A
  HREF="node142.html">Registers</A>
- &nbsp; <B>  <A ID="tex2html1163"
+ &nbsp; <B>  <A ID="tex2html1167"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1165"
-  HREF="node184.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1169"
+  HREF="node186.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
@@ -112,7 +112,7 @@ Read
 <LI>bit 7 = Expansion bus <!-- MATH
  $\overline{\hbox{RESET}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img74.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img53.svg"
  ALT="$\overline{\hbox{RESET}}$"></SPAN> Asserted
 </LI>
 <LI>bits 6-2 = Reserved
@@ -128,7 +128,7 @@ Write
 <LI>bit 7 = Generate/Release Expansion bus <!-- MATH
  $\overline{\hbox{RESET}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img74.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img53.svg"
  ALT="$\overline{\hbox{RESET}}$"></SPAN>
 </LI>
 <LI>bits 6-2 = Reserved, must be 0
@@ -337,6 +337,43 @@ bits 1-0 = scanlines
   lockstep
 </td></tr></table>
 
+Register (R/W) $0A (0A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Peripheral 5 setting:
+
+<UL>
+<LI>bits 7-6 = Multiface type (00 on hard reset)
+  
+<UL>
+<LI>00 = Multiface +3 (enable port 0x3F, disable port 0xBF)
+</LI>
+<LI>01 = Multiface 128 v87.2 (enable port 0xBF, disable port 0x3F)
+</LI>
+<LI>10 = Multiface 128 v87.12 (enable port 0x9F, disable port 0x1F)
+</LI>
+<LI>11 = Multiface 1 (enable port 0x9F, disable port 0x1F)
+  
+</LI>
+</UL>
+</LI>
+<LI>bits 5-4 = Reserved, must be zero
+</LI>
+<LI>bit 3 = 1 to reverse left and right mouse buttons
+</LI>
+<LI>bits 1-0 = mouse dpi (00 on hard reset)
+  
+<UL>
+<LI>00 = low dpi
+</LI>
+<LI>01 = default
+</LI>
+<LI>10 = medium dpi
+</LI>
+<LI>11 = high dpi
+  
+</LI>
+</UL>
+</LI>
+</UL>
 Register (R) $0E (0E) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Core Version (sub minor number)
 <table width="90%">
@@ -1007,7 +1044,8 @@ all other layers. If you also need the same colour in regular priority
 again, this time with no priority.
 
 <P>
-Reads return the second byte and do not autoincrement.
+Reads return the second byte and do not autoincrement. Writes to
+nextreg $40, $41, $41, or $43 reset to the first write.
 Register (R/W) $4A (4A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Fallback Colour Value
 
@@ -1418,14 +1456,14 @@ Immediate
 <LI>bit 5 = I/O cycle Disable/Ignore <!-- MATH
  $\overline{\hbox{IORQULA}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.67ex; vertical-align: -0.56ex; " SRC="img75.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.67ex; vertical-align: -0.56ex; " SRC="img77.svg"
  ALT="$\overline{\hbox{IORQULA}}$"></SPAN> (0 on
   hard reset)
 </LI>
 <LI>bit 4 = Memory cycle Disable/Ignore <!-- MATH
  $\overline{\hbox{ROMCS}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img76.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img78.svg"
  ALT="$\overline{\hbox{ROMCS}}$"></SPAN> (0 on
   hard reset)
 </LI>
@@ -1441,14 +1479,14 @@ After Soft Reset (Copied into bits 7-4)
 <LI>bit 1 = I/O cycle Disable/Ignore <!-- MATH
  $\overline{\hbox{IORQULA}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.67ex; vertical-align: -0.56ex; " SRC="img75.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.67ex; vertical-align: -0.56ex; " SRC="img77.svg"
  ALT="$\overline{\hbox{IORQULA}}$"></SPAN> (0 on
   hard reset)
 </LI>
 <LI>bit 0 = Memory cycle Disable/Ignore <!-- MATH
  $\overline{\hbox{ROMCS}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img76.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img78.svg"
  ALT="$\overline{\hbox{ROMCS}}$"></SPAN> (0 on
   hard reset)
 </LI>
@@ -1460,10 +1498,13 @@ Register (R/W) $81 (81) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>bit 7 = (R) Expansion bus <!-- MATH
  $\overline{\hbox{ROMCS}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img76.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img78.svg"
  ALT="$\overline{\hbox{ROMCS}}$"></SPAN> asserted
 </LI>
-<LI>bits 6-5 = Reserved, must be 0
+<LI>bit 6 = Allow peripherials to override the ULA on some even
+  port reads (Rotoronics Wafadrive)
+</LI>
+<LI>bit 5 = Disable expansion bus NMI debounce (Opus Discovery)
 </LI>
 <LI>bit 4 = (W) Propagate max CPU clock at all times (0 on hard
   reset)
@@ -1559,7 +1600,12 @@ Register (R/W) $85 (85) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <UL>
 <LI>bit 7 = Enable configuration of port decoding on soft reset (3.01.01)
 </LI>
-<LI>bits 6-2 = Reserved
+<LI>bits 6-4 = Reserved
+</LI>
+<LI>bit 3 = Enable Z80 CTC ports $183B, $193B, $1A3B, $1B3B, $1C3B,
+  $1D3B, $1E3B, and $1F3B
+</LI>
+<LI>bit 2 = Enable Pentagon 1024 memory port $EFF7
 </LI>
 <LI>bit 1 = Enable DMA port $0B (3.01.02)
 </LI>
@@ -1639,7 +1685,12 @@ Register (R/W) $89 (89) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <UL>
 <LI>bit 7 = Enable configuration of port decoding on soft reset (3.01.01)
 </LI>
-<LI>bits 6-2 = Reserved
+<LI>bits 6-4 = Reserved
+</LI>
+<LI>bit 3 = Enable Z80 CTC ports $183B, $193B, $1A3B, $1B3B, $1C3B,
+  $1D3B, $1E3B, and $1F3B
+</LI>
+<LI>bit 2 = Enable Pentagon 1024 memory port $EFF7
 </LI>
 <LI>bit 1 = Enable DMA port $0B (3.01.02)
 </LI>
@@ -1952,12 +2003,12 @@ Register (R/W) $A3 (A3) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <!-- MATH
  $\hbox{Divider}=\frac{538461}{\hbox{Rate}}-1$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 3.34ex; vertical-align: -1.24ex; " SRC="img77.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 3.34ex; vertical-align: -1.24ex; " SRC="img79.svg"
  ALT="$\hbox{Divider}=\frac{538461}{\hbox{Rate}}-1$"></SPAN> or
 <!-- MATH
  $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 3.54ex; vertical-align: -1.44ex; " SRC="img78.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 3.54ex; vertical-align: -1.44ex; " SRC="img80.svg"
  ALT="$\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$"></SPAN>
 Register (R) $B0 (B0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Extended Keys 0 (3.01.05)
@@ -2015,11 +2066,11 @@ Register (W) $FF (FF) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 <A
  HREF="node142.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1162"
+<A ID="tex2html1166"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1164"
-  HREF="node184.html">
+<A ID="tex2html1168"
+  HREF="node186.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -2028,10 +2079,10 @@ Register (W) $FF (FF) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
  HREF="node142.html">Registers</A>
 <B> Previous:</B> <A
  HREF="node142.html">Registers</A>
- &nbsp; <B>  <A ID="tex2html1163"
+ &nbsp; <B>  <A ID="tex2html1167"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1165"
-  HREF="node184.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html1169"
+  HREF="node186.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

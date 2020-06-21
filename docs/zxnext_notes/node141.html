@@ -31,11 +31,11 @@
 <A
  HREF="node140.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1151"
+<A ID="tex2html1155"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1153"
-  HREF="node184.html">
+<A ID="tex2html1157"
+  HREF="node186.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -44,10 +44,10 @@
  HREF="node139.html">Ports</A>
 <B> Previous:</B> <A
  HREF="node140.html">8-bit</A>
- &nbsp; <B>  <A ID="tex2html1152"
+ &nbsp; <B>  <A ID="tex2html1156"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1154"
-  HREF="node184.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1158"
+  HREF="node186.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
@@ -123,6 +123,14 @@ Port $153B (153B) UART control
 <tr><td valign="top">&nbsp;bits 2-0 = Bits 16-14 of prescalar
 </td></tr></table>
 
+Port $183B (183B) CTC Channel 0
+Port $193B (193B) CTC Channel 1
+Port $1A3B (1A3B) CTC Channel 2
+Port $1B3B (1B3B) CTC Channel 3
+Port $1C3B (1C3B) CTC Channel 4
+Port $1D3B (1D3B) CTC Channel 5
+Port $1E3B (1E3B) CTC Channel 6
+Port $183B (183B) CTC Channel 7
 Port $1FFD (1FFD) Plus 3 Memory Paging Control
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-3 = Unused, nust be 0</td></tr>
 <tr><td valign="top">&nbsp;bit 2 = High bit of ROM selection (low bit is in Port $7FFD)
@@ -185,7 +193,21 @@ Port $7FFE (7FFE) Keyboard 8 (read only)
 <tr><td valign="top">&nbsp;bit 4: Space
 </td></tr></table>
 
-Port $BF3D (BF3D) ULAplus register
+Port $BF3B (BF3B) ULA+ register
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Select register group
+
+<UL>
+<LI>00 = palette group
+</LI>
+<LI>01 = mode group
+</LI>
+</UL></td></tr>
+<tr><td valign="top">&nbsp;bits 5-0 = data
+<table width="90%"><tr><td valign="top">&nbsp;If palette group, selects index 0-63 in ula+ palette</td></tr>
+<tr><td valign="top">&nbsp;If mode group, ignored
+</td></tr></table>
+</td></tr></table>
+
 Port $BFFD (BFFD) Turbosound Data
 Port $BFFE (BFFE) Keyboard 7 (read only)
 <table width="90%"><tr><td valign="top">&nbsp;bit 0 = 'H'</td></tr>
@@ -206,6 +228,14 @@ Port $DFFE (DFFE) Keyboard 6 (read only)
 <tr><td valign="top">&nbsp;bit 2 = 'I'</td></tr>
 <tr><td valign="top">&nbsp;bit 3 = 'O'</td></tr>
 <tr><td valign="top">&nbsp;bit 4 = 'P'
+</td></tr></table>
+
+Port $EFF7 (EFF7) Pentagon 1024 paging
+<table width="90%"><tr><td valign="top">&nbsp;bit 3 = 1 to overlay the bottom 16k with ram from 16k bank 0</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = 0 to enable Pentagon 1024 mapping and disable bit 5 port
+0x7ffd locking, 1 to select standard zx128 mapping **</td></tr>
+<tr><td valign="top">&nbsp;** Applies only when pentagon 1024 mapping mode is enabled via
+nextreg 0x8f.
 </td></tr></table>
 
 Port $EFFE (EFFE) Keyboard 5 (read only)
@@ -260,6 +290,11 @@ Port $FEFE (FEFE) Keyboard 1 (read only)
 <tr><td valign="top">&nbsp;bit 4 = Caps Shift
 </td></tr></table>
 
+Port $FF3B (FF3B) ULA+ data
+<table width="90%"><tr><td valign="top">&nbsp;If palette group, 8-bit (RRRGGGBB) value for current index</td></tr>
+<tr><td valign="top">&nbsp;If mode group, bit 1 = enable ULA+
+</td></tr></table>
+
 Port $FFDF (FFDF) Kempston Mouse Y
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Y coordinate of mouse (0-192)
 </td></tr></table>
@@ -300,11 +335,11 @@ Select Register
 <A
  HREF="node140.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1151"
+<A ID="tex2html1155"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1153"
-  HREF="node184.html">
+<A ID="tex2html1157"
+  HREF="node186.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -313,10 +348,10 @@ Select Register
  HREF="node139.html">Ports</A>
 <B> Previous:</B> <A
  HREF="node140.html">8-bit</A>
- &nbsp; <B>  <A ID="tex2html1152"
+ &nbsp; <B>  <A ID="tex2html1156"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1154"
-  HREF="node184.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html1158"
+  HREF="node186.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

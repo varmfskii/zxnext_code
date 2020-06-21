@@ -14,6 +14,7 @@ R,W,16----------------0,Port(hex),Description,Disable
 *,*,0001 0011 0011 1011,\$133b,UART tx,
 *,*,0001 0100 0011 1011,\$143b,UART rx,
 *,*,0001 0101 0011 1011,\$153b,UART control,
+*,*,0001 1XXX 0011 1011,\$183b,CTC 8 channels \$183b-\$1f3b,
 *,*,XXXX XXXX 0110 1011,\$6b,zxnDMA,
 *,*,11XX XXXX XXXX X101,\$fffd,AY reg,Nextreg \$06 bit 0
 ,*,10XX XXXX XXXX X101,\$bffd,AY dat,Nextreg \$06 bit 0

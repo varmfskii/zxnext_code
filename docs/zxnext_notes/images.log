@@ -1,100 +1,100 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2020.5.6)  31 MAY 2020 15:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.6.18)  20 JUN 2020 22:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **./images.tex
 (./images.tex
-LaTeX2e <2019-10-01> patch level 1
-
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-06-03>
 (/usr/share/texmf-dist/tex/latex/base/book.cls
-Document Class: book 2019/08/27 v1.4j Standard LaTeX document class
+Document Class: book 2019/12/20 v1.4l Standard LaTeX document class
 (/usr/share/texmf-dist/tex/latex/base/bk11.clo
-File: bk11.clo 2019/08/27 v1.4j Standard LaTeX file (size option)
+File: bk11.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@chapter=\count81
-\c@section=\count82
-\c@subsection=\count83
-\c@subsubsection=\count84
-\c@paragraph=\count85
-\c@subparagraph=\count86
-\c@figure=\count87
-\c@table=\count88
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
-\bibindent=\dimen102
+\c@part=\count167
+\c@chapter=\count168
+\c@section=\count169
+\c@subsection=\count170
+\c@subsubsection=\count171
+\c@paragraph=\count172
+\c@subparagraph=\count173
+\c@figure=\count174
+\c@table=\count175
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
 ) (/usr/share/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 ) (/usr/share/texmf-dist/tex/latex/csvsimple/csvsimple.sty
 Package: csvsimple 2019/04/09 version 1.21 LaTeX CSV file processing
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texmf-dis
 t/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks14
-\pgfutil@tempdima=\dimen103
-\pgfutil@tempdimb=\dimen104
+\pgfutil@everybye=\toks15
+\pgfutil@tempdima=\dimen135
+\pgfutil@tempdimb=\dimen136
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)) (/u
 sr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box27
+\pgfutil@abb=\box45
 (/usr/share/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 )) (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/share
 /texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2019/08/03 v3.1.4b (3.1.4b)
+Package: pgfrcs 2020/01/08 v3.1.5b (3.1.5b)
 )) (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texmf
 -dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks15
-\pgfkeys@temptoks=\toks16
+\pgfkeys@pathtoks=\toks16
+\pgfkeys@temptoks=\toks17
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
-\pgfkeys@tmptoks=\toks17
+\pgfkeys@tmptoks=\toks18
 ))) (/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count89
+\etb@tempcnta=\count176
 ) (/usr/share/texmf-dist/tex/latex/tools/shellesc.sty
-Package: shellesc 2016/06/07 v0.02b unified shell escape interface for LaTeX
-Package shellesc Info: Restricted shell escape enabled on input line 72.
+Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 77.
 )
-\csv@file=\read1
-\c@csvinputline=\count90
-\c@csvrow=\count91
-\c@csvcol=\count92
+\csv@file=\read2
+\c@csvinputline=\count177
+\c@csvrow=\count178
+\c@csvcol=\count179
 \csv@out=\write3
 ) (/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty
-Package: booktabs 2019/10/08 v1.6180339 publication quality tables
-\heavyrulewidth=\dimen105
-\lightrulewidth=\dimen106
-\cmidrulewidth=\dimen107
-\belowrulesep=\dimen108
-\belowbottomsep=\dimen109
-\aboverulesep=\dimen110
-\abovetopsep=\dimen111
-\cmidrulesep=\dimen112
-\cmidrulekern=\dimen113
-\defaultaddspace=\dimen114
-\@cmidla=\count93
-\@cmidlb=\count94
-\@aboverulesep=\dimen115
-\@belowrulesep=\dimen116
-\@thisruleclass=\count95
-\@lastruleclass=\count96
-\@thisrulewidth=\dimen117
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen137
+\lightrulewidth=\dimen138
+\cmidrulewidth=\dimen139
+\belowrulesep=\dimen140
+\belowbottomsep=\dimen141
+\aboverulesep=\dimen142
+\abovetopsep=\dimen143
+\cmidrulesep=\dimen144
+\cmidrulekern=\dimen145
+\defaultaddspace=\dimen146
+\@cmidla=\count180
+\@cmidlb=\count181
+\@aboverulesep=\dimen147
+\@belowrulesep=\dimen148
+\@thisruleclass=\count182
+\@lastruleclass=\count183
+\@thisrulewidth=\dimen149
 ) (/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\enitkv@toks@=\toks18
-\labelindent=\skip43
-\enit@outerparindent=\dimen118
-\enit@toks=\toks19
-\enit@inbox=\box28
-\enit@count@id=\count97
-\enitdp@description=\count98
+\enitkv@toks@=\toks19
+\labelindent=\skip49
+\enit@outerparindent=\dimen150
+\enit@toks=\toks20
+\enit@inbox=\box46
+\enit@count@id=\count184
+\enitdp@description=\count185
 ) (/usr/share/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 ) (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
 (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks20
+\KV@toks@=\toks21
 ) (/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2019/10/08 v1.3c Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
 (/usr/share/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 ) (/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
@@ -104,29 +104,27 @@ Package graphics Info: Driver file: pdftex.def on input line 105.
 (/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen119
-\Gin@req@width=\dimen120
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
 ) (/usr/share/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
 ) (/usr/share/texmf-dist/tex/generic/xint/xintbinhex.sty (/usr/share/texmf-dist
 /tex/generic/xint/xintkernel.sty
-Package: xintkernel 2019/09/10 v1.3f Paraphernalia for the xint packages (JFB)
-\xint_c_ii^xiv=\count99
-\xint_c_ii^xxi=\count100
+Package: xintkernel 2020/02/25 v1.4b Paraphernalia for the xint packages (JFB)
+\xint_c_ii^xiv=\count186
+\xint_c_ii^xxi=\count187
 )
-Package: xintbinhex 2019/09/10 v1.3f Expandable binary and hexadecimal conversi
+Package: xintbinhex 2020/02/25 v1.4b Expandable binary and hexadecimal conversi
 ons (JFB)
-\xint_c_ii^xv=\count101
-\xint_c_ii^xvi=\count102
+\xint_c_ii^xv=\count188
+\xint_c_ii^xvi=\count189
 ) (/usr/share/texmf-dist/tex/latex/hang/hang.sty
 Package: hang 2017/02/18 v2.1 Hanging paragraphs and list items
-\hangingindent=\skip44
-\hangingleftmargin=\skip45
-\labeledleftmargin=\skip46
+\hangingindent=\skip50
+\hangingleftmargin=\skip51
+\labeledleftmargin=\skip52
 )
 \@indexfile=\write4
-\openout4 = `images.idx'.
-
 Writing index file images.idx
 (/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
@@ -145,39 +143,43 @@ Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 ) (/usr/share/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2018/08/11 v1.3c Input encoding file
-\inpenc@prehook=\toks21
-\inpenc@posthook=\toks22
+\inpenc@prehook=\toks22
+\inpenc@posthook=\toks23
 )
-\sizebox=\box29
+\sizebox=\box47
 \lthtmlwrite=\write5
 (/usr/share/texmf-dist/tex/latex/preview/preview.sty
-Package: preview 2017/04/24 11.91 (AUCTeX/preview-latex)
+Package: preview 2017/04/24 12.2 (AUCTeX/preview-latex)
 (/usr/share/texmf-dist/tex/generic/luatex85/luatex85.sty
 Package: luatex85 2016/06/15 v1.4 pdftex aliases for luatex
 ) (/usr/share/texmf-dist/tex/latex/preview/prtightpage.def
-\PreviewBorder=\dimen121
+\PreviewBorder=\dimen153
 )
-\pr@snippet=\count103
-\pr@box=\box30
-\pr@output=\toks23
+\pr@snippet=\count190
+\pr@box=\box48
+\pr@output=\toks24
 )
-\lthtmlPageBox=\box31
-\lthtmlCropMarkHeight=\dimen122
-\lthtmlCropMarkDepth=\dimen123
+\lthtmlPageBox=\box49
+\lthtmlCropMarkHeight=\dimen154
+\lthtmlCropMarkDepth=\dimen155
 ! Too many }'s.
 l.87 ...preview}\copy\lthtmlPageBox\end{preview}}}
                                                   %
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-(./images.aux (/home/alex/retro/zx/zxnext/code/zx_next_notes/video/video.aux) (
-/home/alex/retro/zx/zxnext/code/zx_next_notes/audio/audio.aux) (/home/alex/retr
-o/zx/zxnext/code/zx_next_notes/memory/memory.aux) (/home/alex/retro/zx/zxnext/c
-ode/zx_next_notes/zxndma/zxndma.aux) (/home/alex/retro/zx/zxnext/code/zx_next_n
-otes/copper/copper.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/interrup
-ts.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/pi0.aux) (/home/alex/ret
-ro/zx/zxnext/code/zx_next_notes/system/system.aux) (/home/alex/retro/zx/zxnext/
-code/zx_next_notes/appendices/ports/ports.aux)
+(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-06-03 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count191
+\l__pdf_internal_box=\box50
+) (./images.aux (/home/alex/retro/zx/zxnext/code/zx_next_notes/video/video.aux)
+(/home/alex/retro/zx/zxnext/code/zx_next_notes/audio/audio.aux) (/home/alex/ret
+ro/zx/zxnext/code/zx_next_notes/memory/memory.aux) (/home/alex/retro/zx/zxnext/
+code/zx_next_notes/zxndma/zxndma.aux) (/home/alex/retro/zx/zxnext/code/zx_next_
+notes/copper/copper.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/interru
+pts.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/pi0.aux) (/home/alex/re
+tro/zx/zxnext/code/zx_next_notes/system/system.aux) (/home/alex/retro/zx/zxnext
+/code/zx_next_notes/appendices/ports/ports.aux)
 (/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/registers/registers.a
 ux)
 (/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/opcode/opcode-mnemoni
@@ -185,16 +187,16 @@ c.aux)
 (/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/mnemonic/mnemonic-opc
 ode.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/file_formats
 .aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/call_tables.aux
-))
-\openout1 = `images.aux'.
-
+) (/home/alex/retro/zx/zxnext/code/zx_next_notes/ctc/ctc.aux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 118.
 LaTeX Font Info:    ... okay on input line 118.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 118.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 118.
 LaTeX Font Info:    ... okay on input line 118.
 LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 118.
 LaTeX Font Info:    ... okay on input line 118.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 118.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 118.
+LaTeX Font Info:    ... okay on input line 118.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 118.
 LaTeX Font Info:    ... okay on input line 118.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 118.
 LaTeX Font Info:    ... okay on input line 118.
@@ -203,53 +205,47 @@ LaTeX Font Info:    ... okay on input line 118.
 ABD: EveryShipout initializing macros (/usr/share/texmf-dist/tex/context/base/m
 kii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count104
-\scratchdimen=\dimen124
-\scratchbox=\box32
-\nofMPsegments=\count105
-\nofMParguments=\count106
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count107
-\MPscratchDim=\dimen125
-\MPnumerator=\count108
-\makeMPintoPDFobject=\count109
-\everyMPtoPDFconversion=\toks25
-) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-(/usr/share/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-) (/usr/share/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-(/usr/share/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-(/usr/share/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-))) (/usr/share/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-(/usr/share/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-(/usr/share/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-(/usr/share/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)))) (/usr/share/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2019/07/25 v0.30 Utility functions of pdfTeX for LuaTeX (HO
+\scratchcounter=\count192
+\scratchdimen=\dimen156
+\scratchbox=\box51
+\nofMPsegments=\count193
+\nofMParguments=\count194
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count195
+\MPscratchDim=\dimen157
+\MPnumerator=\count196
+\makeMPintoPDFobject=\count197
+\everyMPtoPDFconversion=\toks26
+) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+(/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+) (/usr/share/texmf-dist/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+(/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)) (/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+(/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+) (/usr/share/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)) (/usr/share/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-04 v0.32 Utility functions of pdfTeX for LuaTeX (HO
 )
-(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+(/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
 )
-Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
+85.
 Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
+(grfext)             \AppendGraphicsExtensions on input line 504.
 (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
@@ -286,20 +282,20 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 143.
 
-:tex2html_wrap_inline7998:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline8162:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline7998:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline8162:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 Preview: Tightpage -32891 -32891 32891 32891
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
-:tex2html_wrap_inline8004:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline8168:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline8004:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline8168:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [2]
 
-:tex2html_wrap_inline8007:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline8171:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline8007:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline8171:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [3]
 
 :tex2html_wrap_inline77:lthtmlCropMarkHeight:=13.05666pt
@@ -577,452 +573,465 @@ Overfull \hbox (132.6706pt too wide) in paragraph at lines 658--658
 :table2442:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [52]
 
-:tex2html_wrap_inline2499:lthtmlCropMarkHeight:=15.12923pt
+:tex2html_wrap_inline2503:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline2499:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2503:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [53]
 
-:tex2html_wrap_inline2501:lthtmlCropMarkHeight:=15.12923pt
+:tex2html_wrap_inline2505:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline2501:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2505:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [54]
 
-:labeledpar2599:lthtmlCropMarkHeight:=22.94998pt
+:tex2html_wrap_inline2507:lthtmlCropMarkHeight:=15.48238pt
 
-:labeledpar2599:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2507:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [55]
 
-:labeledpar2607:lthtmlCropMarkHeight:=22.94998pt
+:tex2html_wrap_inline2570:lthtmlCropMarkHeight:=15.12923pt
 
-:labeledpar2607:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2570:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [56]
 
-:labeledpar2611:lthtmlCropMarkHeight:=22.94998pt
+:tex2html_wrap_inline2572:lthtmlCropMarkHeight:=15.12923pt
 
-:labeledpar2611:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2572:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [57]
 
-:labeledpar2616:lthtmlCropMarkHeight:=33.20416pt
+:labeledpar2670:lthtmlCropMarkHeight:=22.94998pt
 
-:labeledpar2616:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2670:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [58]
 
-:labeledpar2623:lthtmlCropMarkHeight:=21.64207pt
+:labeledpar2678:lthtmlCropMarkHeight:=22.94998pt
 
-:labeledpar2623:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2678:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [59]
 
-:labeledpar2631:lthtmlCropMarkHeight:=73.91293pt
+:labeledpar2682:lthtmlCropMarkHeight:=22.94998pt
 
-:labeledpar2631:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2682:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [60]
 
-:labeledpar2642:lthtmlCropMarkHeight:=22.94998pt
+:labeledpar2687:lthtmlCropMarkHeight:=33.20416pt
 
-:labeledpar2642:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2687:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [61]
 
-:labeledpar2647:lthtmlCropMarkHeight:=21.73332pt
+:labeledpar2694:lthtmlCropMarkHeight:=21.64207pt
 
-:labeledpar2647:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2694:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [62]
 
-:labeledpar2651:lthtmlCropMarkHeight:=35.33333pt
+:labeledpar2702:lthtmlCropMarkHeight:=73.91293pt
 
-:labeledpar2651:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2702:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [63]
 
-:labeledpar2655:lthtmlCropMarkHeight:=21.73332pt
+:labeledpar2713:lthtmlCropMarkHeight:=22.94998pt
 
-:labeledpar2655:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2713:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [64]
 
-:tex2html_wrap_inline2727:lthtmlCropMarkHeight:=14.2125pt
+:labeledpar2718:lthtmlCropMarkHeight:=21.73332pt
 
-:tex2html_wrap_inline2727:lthtmlCropMarkDepth:=2.73749pt:1ex:=4.71457pt
+:labeledpar2718:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [65]
 
-:tex2html_wrap_inline2735:lthtmlCropMarkHeight:=11.9031pt
+:labeledpar2722:lthtmlCropMarkHeight:=35.33333pt
 
-:tex2html_wrap_inline2735:lthtmlCropMarkDepth:=0.42812pt:1ex:=4.71457pt
+:labeledpar2722:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [66]
 
-:tex2html_wrap_inline2739:lthtmlCropMarkHeight:=11.9031pt
+:labeledpar2726:lthtmlCropMarkHeight:=21.73332pt
 
-:tex2html_wrap_inline2739:lthtmlCropMarkDepth:=0.42812pt:1ex:=4.71457pt
+:labeledpar2726:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [67]
 
-:table3449:lthtmlCropMarkHeight:=537.59962pt
+:tex2html_wrap_inline2798:lthtmlCropMarkHeight:=14.2125pt
 
-:table3449:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2798:lthtmlCropMarkDepth:=2.73749pt:1ex:=4.71457pt
 [68]
-Overfull \hbox (109.80673pt too wide) in paragraph at lines 796--796
- [][] 
- []
 
+:tex2html_wrap_inline2806:lthtmlCropMarkHeight:=11.9031pt
 
-:table3570:lthtmlCropMarkHeight:=115.99991pt
-
-:table3570:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2806:lthtmlCropMarkDepth:=0.42812pt:1ex:=4.71457pt
 [69]
-Overfull \hbox (40.63914pt too wide) in paragraph at lines 805--805
- [][] 
- []
 
+:tex2html_wrap_inline2810:lthtmlCropMarkHeight:=11.9031pt
 
-:table3620:lthtmlCropMarkHeight:=360.79974pt
-
-:table3620:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2810:lthtmlCropMarkDepth:=0.42812pt:1ex:=4.71457pt
 [70]
-Overfull \hbox (71.23457pt too wide) in paragraph at lines 826--826
+
+:table3520:lthtmlCropMarkHeight:=537.59962pt
+
+:table3520:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[71]
+Overfull \hbox (109.80673pt too wide) in paragraph at lines 814--814
  [][] 
  []
 
 
-:table5499:lthtmlCropMarkHeight:=343.19998pt
+:table3641:lthtmlCropMarkHeight:=115.99991pt
 
-:table5499:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[71]
-
-:tex2html_wrap_inline5627:lthtmlCropMarkHeight:=15.48238pt
-
-:tex2html_wrap_inline5627:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table3641:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [72]
+Overfull \hbox (40.63914pt too wide) in paragraph at lines 823--823
+ [][] 
+ []
 
-:tex2html_wrap_inline5636:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline5636:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table3691:lthtmlCropMarkHeight:=360.79974pt
+
+:table3691:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [73]
+Overfull \hbox (71.23373pt too wide) in paragraph at lines 844--844
+ [][] 
+ []
 
-:tex2html_wrap_inline5855:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline5855:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table5570:lthtmlCropMarkHeight:=364.19998pt
+
+:table5570:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [74]
 
-:tex2html_wrap_inline6621:lthtmlCropMarkHeight:=15.48238pt
+:tex2html_wrap_inline5698:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline6621:lthtmlCropMarkDepth:=2.12917pt:1ex:=4.71457pt
+:tex2html_wrap_inline5698:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [75]
 
-:tex2html_wrap_inline6623:lthtmlCropMarkHeight:=15.48238pt
+:tex2html_wrap_inline5707:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline6623:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline5707:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [76]
 
-:tex2html_wrap_inline6854:lthtmlCropMarkHeight:=15.46692pt
+:tex2html_wrap_inline6744:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline6854:lthtmlCropMarkDepth:=5.34497pt:1ex:=4.71457pt
+:tex2html_wrap_inline6744:lthtmlCropMarkDepth:=2.12917pt:1ex:=4.71457pt
 [77]
 
-:tex2html_wrap_inline6856:lthtmlCropMarkHeight:=15.46692pt
+:tex2html_wrap_inline6746:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline6856:lthtmlCropMarkDepth:=6.30002pt:1ex:=4.71457pt
+:tex2html_wrap_inline6746:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [78]
 
-:table6977:lthtmlCropMarkHeight:=168.69972pt
+:tex2html_wrap_inline6977:lthtmlCropMarkHeight:=15.46692pt
 
-:table6977:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline6977:lthtmlCropMarkDepth:=5.34497pt:1ex:=4.71457pt
 [79]
 
-:table6981:lthtmlCropMarkHeight:=168.69972pt
+:tex2html_wrap_inline6979:lthtmlCropMarkHeight:=15.46692pt
 
-:table6981:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline6979:lthtmlCropMarkDepth:=6.30002pt:1ex:=4.71457pt
 [80]
 
-:table6985:lthtmlCropMarkHeight:=168.69972pt
+:table7100:lthtmlCropMarkHeight:=168.69972pt
 
-:table6985:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7100:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [81]
 
-:table6989:lthtmlCropMarkHeight:=168.69972pt
+:table7104:lthtmlCropMarkHeight:=168.69972pt
 
-:table6989:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7104:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [82]
 
-:table6993:lthtmlCropMarkHeight:=168.69972pt
+:table7108:lthtmlCropMarkHeight:=168.69972pt
 
-:table6993:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7108:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [83]
 
-:table6997:lthtmlCropMarkHeight:=168.69972pt
+:table7112:lthtmlCropMarkHeight:=168.69972pt
 
-:table6997:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7112:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [84]
 
-:table7001:lthtmlCropMarkHeight:=168.69972pt
+:table7116:lthtmlCropMarkHeight:=168.69972pt
 
-:table7001:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7116:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [85]
 
-:table7005:lthtmlCropMarkHeight:=168.69972pt
+:table7120:lthtmlCropMarkHeight:=168.69972pt
 
-:table7005:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7120:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [86]
 
-:table7010:lthtmlCropMarkHeight:=168.69972pt
+:table7124:lthtmlCropMarkHeight:=168.69972pt
 
-:table7010:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7124:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [87]
 
-:table7014:lthtmlCropMarkHeight:=168.69972pt
+:table7128:lthtmlCropMarkHeight:=168.69972pt
 
-:table7014:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7128:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [88]
 
-:table7018:lthtmlCropMarkHeight:=168.69972pt
+:table7133:lthtmlCropMarkHeight:=168.69972pt
 
-:table7018:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7133:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [89]
 
-:table7022:lthtmlCropMarkHeight:=168.69972pt
+:table7137:lthtmlCropMarkHeight:=168.69972pt
 
-:table7022:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7137:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [90]
 
-:table7026:lthtmlCropMarkHeight:=168.69972pt
+:table7141:lthtmlCropMarkHeight:=168.69972pt
 
-:table7026:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7141:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [91]
 
-:table7030:lthtmlCropMarkHeight:=168.69972pt
+:table7145:lthtmlCropMarkHeight:=168.69972pt
 
-:table7030:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7145:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [92]
 
-:table7034:lthtmlCropMarkHeight:=168.69972pt
+:table7149:lthtmlCropMarkHeight:=168.69972pt
 
-:table7034:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7149:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [93]
 
-:table7038:lthtmlCropMarkHeight:=168.69972pt
+:table7153:lthtmlCropMarkHeight:=168.69972pt
 
-:table7038:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7153:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [94]
 
-:table7043:lthtmlCropMarkHeight:=159.19974pt
+:table7157:lthtmlCropMarkHeight:=168.69972pt
 
-:table7043:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7157:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [95]
 
-:table7047:lthtmlCropMarkHeight:=168.69972pt
+:table7161:lthtmlCropMarkHeight:=168.69972pt
 
-:table7047:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7161:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [96]
 
-:table7051:lthtmlCropMarkHeight:=130.69978pt
+:table7166:lthtmlCropMarkHeight:=159.19974pt
 
-:table7051:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7166:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [97]
 
-:table7056:lthtmlCropMarkHeight:=167.7553pt
+:table7170:lthtmlCropMarkHeight:=168.69972pt
 
-:table7056:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7170:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [98]
 
-:table7060:lthtmlCropMarkHeight:=168.69972pt
+:table7174:lthtmlCropMarkHeight:=130.69978pt
 
-:table7060:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7174:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [99]
 
-:table7064:lthtmlCropMarkHeight:=167.7553pt
+:table7179:lthtmlCropMarkHeight:=167.7553pt
 
-:table7064:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7179:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [100]
 
-:table7069:lthtmlCropMarkHeight:=159.19974pt
+:table7183:lthtmlCropMarkHeight:=168.69972pt
 
-:table7069:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7183:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [101]
 
-:table7073:lthtmlCropMarkHeight:=168.69972pt
+:table7187:lthtmlCropMarkHeight:=167.7553pt
 
-:table7073:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7187:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [102]
 
-:table7077:lthtmlCropMarkHeight:=130.69978pt
+:table7192:lthtmlCropMarkHeight:=159.19974pt
 
-:table7077:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7192:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [103]
 
-:table7082:lthtmlCropMarkHeight:=168.69972pt
+:table7196:lthtmlCropMarkHeight:=168.69972pt
 
-:table7082:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7196:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [104]
 
-:table7087:lthtmlCropMarkHeight:=168.69972pt
+:table7200:lthtmlCropMarkHeight:=130.69978pt
 
-:table7087:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7200:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [105]
 
-:table7258:lthtmlCropMarkHeight:=149.69975pt
+:table7205:lthtmlCropMarkHeight:=168.69972pt
 
-:table7258:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7205:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [106]
 
-:table7262:lthtmlCropMarkHeight:=187.69969pt
+:table7210:lthtmlCropMarkHeight:=168.69972pt
 
-:table7262:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7210:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [107]
 
-:table7266:lthtmlCropMarkHeight:=140.19977pt
+:table7381:lthtmlCropMarkHeight:=149.69975pt
 
-:table7266:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7381:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [108]
 
-:table7270:lthtmlCropMarkHeight:=206.69966pt
+:table7385:lthtmlCropMarkHeight:=187.69969pt
 
-:table7270:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7385:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [109]
 
-:table7274:lthtmlCropMarkHeight:=206.69966pt
+:table7389:lthtmlCropMarkHeight:=140.19977pt
 
-:table7274:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7389:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [110]
 
-:table7278:lthtmlCropMarkHeight:=159.19974pt
+:table7393:lthtmlCropMarkHeight:=206.69966pt
 
-:table7278:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7393:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [111]
 
-:table7282:lthtmlCropMarkHeight:=197.19968pt
+:table7397:lthtmlCropMarkHeight:=206.69966pt
 
-:table7282:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7397:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [112]
 
-:table7286:lthtmlCropMarkHeight:=206.69966pt
+:table7401:lthtmlCropMarkHeight:=159.19974pt
 
-:table7286:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7401:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [113]
 
-:table7290:lthtmlCropMarkHeight:=225.69963pt
+:table7405:lthtmlCropMarkHeight:=197.19968pt
 
-:table7290:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7405:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [114]
 
-:table7294:lthtmlCropMarkHeight:=149.69975pt
+:table7409:lthtmlCropMarkHeight:=206.69966pt
 
-:table7294:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7409:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [115]
 
-:table7298:lthtmlCropMarkHeight:=140.19977pt
+:table7413:lthtmlCropMarkHeight:=225.69963pt
 
-:table7298:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7413:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [116]
 
-:table7302:lthtmlCropMarkHeight:=140.19977pt
+:table7417:lthtmlCropMarkHeight:=149.69975pt
 
-:table7302:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7417:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [117]
 
-:table7306:lthtmlCropMarkHeight:=168.69972pt
+:table7421:lthtmlCropMarkHeight:=140.19977pt
 
-:table7306:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7421:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [118]
 
-:table7310:lthtmlCropMarkHeight:=168.69972pt
+:table7425:lthtmlCropMarkHeight:=140.19977pt
 
-:table7310:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7425:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [119]
 
-:table7314:lthtmlCropMarkHeight:=178.1997pt
+:table7429:lthtmlCropMarkHeight:=168.69972pt
 
-:table7314:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7429:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [120]
 
-:table7318:lthtmlCropMarkHeight:=178.1997pt
+:table7433:lthtmlCropMarkHeight:=168.69972pt
 
-:table7318:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7433:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [121]
 
-:table7322:lthtmlCropMarkHeight:=111.69981pt
+:table7437:lthtmlCropMarkHeight:=178.1997pt
 
-:table7322:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7437:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [122]
 
-:table7326:lthtmlCropMarkHeight:=168.69972pt
+:table7441:lthtmlCropMarkHeight:=178.1997pt
 
-:table7326:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7441:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [123]
 
-:table7330:lthtmlCropMarkHeight:=168.69972pt
+:table7445:lthtmlCropMarkHeight:=111.69981pt
 
-:table7330:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7445:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [124]
 
-:table7334:lthtmlCropMarkHeight:=206.69966pt
+:table7449:lthtmlCropMarkHeight:=168.69972pt
 
-:table7334:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7449:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [125]
 
-:table7338:lthtmlCropMarkHeight:=206.69966pt
+:table7453:lthtmlCropMarkHeight:=168.69972pt
 
-:table7338:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7453:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [126]
 
-:table7342:lthtmlCropMarkHeight:=206.69966pt
+:table7457:lthtmlCropMarkHeight:=206.69966pt
 
-:table7342:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7457:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [127]
 
-:table7346:lthtmlCropMarkHeight:=206.69966pt
+:table7461:lthtmlCropMarkHeight:=206.69966pt
 
-:table7346:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7461:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [128]
 
-:table7350:lthtmlCropMarkHeight:=216.19965pt
+:table7465:lthtmlCropMarkHeight:=206.69966pt
 
-:table7350:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7465:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [129]
 
-:table7354:lthtmlCropMarkHeight:=216.19965pt
+:table7469:lthtmlCropMarkHeight:=206.69966pt
 
-:table7354:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7469:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [130]
 
-:table7358:lthtmlCropMarkHeight:=159.19974pt
+:table7473:lthtmlCropMarkHeight:=216.19965pt
 
-:table7358:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7473:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [131]
 
-:table7362:lthtmlCropMarkHeight:=206.69966pt
+:table7477:lthtmlCropMarkHeight:=216.19965pt
 
-:table7362:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7477:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [132]
 
-:table7366:lthtmlCropMarkHeight:=206.69966pt
+:table7481:lthtmlCropMarkHeight:=159.19974pt
 
-:table7366:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7481:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [133]
 
-:table7370:lthtmlCropMarkHeight:=244.6996pt
+:table7485:lthtmlCropMarkHeight:=206.69966pt
 
-:table7370:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table7485:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [134]
 
-:table7374:lthtmlCropMarkHeight:=235.19962pt
+:table7489:lthtmlCropMarkHeight:=206.69966pt
 
-:table7374:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[135] (./images.aux) ) 
+:table7489:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[135]
+
+:table7493:lthtmlCropMarkHeight:=244.6996pt
+
+:table7493:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[136]
+
+:table7497:lthtmlCropMarkHeight:=235.19962pt
+
+:table7497:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[137] (./images.aux) ) 
 Here is how much of TeX's memory you used:
- 4882 strings out of 492167
- 84152 string characters out of 6131559
- 188195 words of memory out of 5000000
- 9017 multiletter control sequences out of 15000+600000
- 7392 words of font info for 26 fonts, out of 8000000 for 9000
+ 5092 strings out of 480478
+ 89080 string characters out of 5905959
+ 368230 words of memory out of 5000000
+ 20878 multiletter control sequences out of 15000+600000
+ 536767 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 46i,10n,49p,795b,383s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
-x10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></us
-r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
-/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on images.pdf (135 pages, 266531 bytes).
+ 43i,10n,49p,795b,397s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-
+ts1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/
+share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
+></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/c
+m-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm080
+0.pfb>
+Output written on images.pdf (137 pages, 294643 bytes).
 PDF statistics:
- 476 PDF objects out of 1000 (max. 8388607)
- 326 compressed objects within 4 object streams
+ 491 PDF objects out of 1000 (max. 8388607)
+ 337 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
