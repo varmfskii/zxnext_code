@@ -31,11 +31,11 @@
 <A
  HREF="node58.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html685"
+<A ID="tex2html687"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html687"
-  HREF="node186.html">
+<A ID="tex2html689"
+  HREF="node187.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -44,10 +44,10 @@
  HREF="node56.html">Audio</A>
 <B> Previous:</B> <A
  HREF="node58.html">Sampled 8-bit</A>
- &nbsp; <B>  <A ID="tex2html686"
-  HREF="node1.html">Contents</A></B> 
  &nbsp; <B>  <A ID="tex2html688"
-  HREF="node186.html">Index</A></B> 
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html690"
+  HREF="node187.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
@@ -86,21 +86,29 @@ Each of the three AY chips has three channels, A, B, and C whose
 mapping is controlled by bit 5 of Next register 0x08 (8).
 
 <P>
-Register (R/W) $00 (00) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $00 (00) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel A fine tune
-Register (R/W) $01 (01) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $01 (01) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel A coarse tune (4 bits)
-Register (R/W) $02 (02) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $02 (02) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel B fine tune
-Register (R/W) $03 (03) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $03 (03) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel B coarse tune (4 bits)
-Register (R/W) $04 (04) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $04 (04) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel C fine tune
-Register (R/W) $05 (05) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $05 (05) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel C coarse tune (4 bits)
-Register (R/W) $06 (06) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $06 (06) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Noise period (5 bits)
-Register (R/W) $07 (07) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $07 (07) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Tone Enable
 
 <UL>
@@ -117,7 +125,8 @@ Register (R/W) $07 (07) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>bit 0 = Channel A noise enable (0=enable, 1=disable)
 </LI>
 </UL>
-Register (R/W) $08 (08) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $08 (08) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel A amplitude
 
 <UL>
@@ -134,7 +143,8 @@ Register (R/W) $08 (08) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>bits 3-0 = value of fixed amplitude
 </LI>
 </UL>
-Register (R/W) $09 (09) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $09 (09) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel B amplitude
 
 <UL>
@@ -151,7 +161,8 @@ Register (R/W) $09 (09) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>bits 3-0 = value of fixed amplitude
 </LI>
 </UL>
-Register (R/W) $0A (0A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $0A (0A) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Channel C amplitude
 
 <UL>
@@ -168,11 +179,14 @@ Register (R/W) $0A (0A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>bits 3-0 = value of fixed amplitude
 </LI>
 </UL>
-Register (R/W) $0B (0B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $0B (0B) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Envelope period fine
-Register (R/W) $0C (0C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $0C (0C) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Envelope period coarse
-Register (R/W) $0D (0D) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+Register (R/W) $0D (0D) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Envelope shape
 
 <UL>
@@ -235,7 +249,7 @@ hold = 0
 <A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
 <UL CLASS="ChildLinks">
-<LI><A ID="tex2html689"
+<LI><A ID="tex2html691"
   HREF="node60.html">Pi Audio</A>
 </UL>
 <!--End of Table of Child-Links-->
@@ -251,11 +265,11 @@ hold = 0
 <A
  HREF="node58.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html685"
+<A ID="tex2html687"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html687"
-  HREF="node186.html">
+<A ID="tex2html689"
+  HREF="node187.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -264,10 +278,10 @@ hold = 0
  HREF="node56.html">Audio</A>
 <B> Previous:</B> <A
  HREF="node58.html">Sampled 8-bit</A>
- &nbsp; <B>  <A ID="tex2html686"
-  HREF="node1.html">Contents</A></B> 
  &nbsp; <B>  <A ID="tex2html688"
-  HREF="node186.html">Index</A></B> </DIV>
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html690"
+  HREF="node187.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>
