@@ -32,11 +32,11 @@
 <A
  HREF="node127.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1098"
+<A ID="tex2html1107"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1100"
-  HREF="node187.html">
+<A ID="tex2html1109"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -45,10 +45,10 @@
  HREF="node126.html">CP/M</A>
 <B> Previous:</B> <A
  HREF="node127.html">Utilities</A>
- &nbsp; <B>  <A ID="tex2html1099"
+ &nbsp; <B>  <A ID="tex2html1108"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1101"
-  HREF="node187.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1110"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
@@ -64,7 +64,7 @@ that must be passes to them and the values that are returned to the
 calling program.
 
 <P>
-<A NAME="3184"></A>
+<A NAME="3193"></A>
 BDOS function 0: <SPAN  CLASS="textbf">SYSTEM RESET</SPAN>
 
 <P>
@@ -84,7 +84,7 @@ Function 108, Get/Set Program Return Code, prior to making a System
 Reset call or jumping to location $0000.
 
 <P>
-<A NAME="3188"></A>
+<A NAME="3197"></A>
 BDOS function 1: <SPAN  CLASS="textbf">CONSOLE INPUT</SPAN>
 
 <P>
@@ -123,7 +123,7 @@ character is typed, thus suspending execution if a character is not
 ready.
 
 <P>
-<A NAME="3194"></A>
+<A NAME="3203"></A>
 BDOS function 2: <SPAN  CLASS="textbf">CONSOLE OUTPUT</SPAN>
 
 <P>
@@ -141,7 +141,7 @@ scroll, CTRL-S, start scroll, CTRL-Q, and echoes characters to the
 logical list device, LST:, if printer echo, CTRL-P, has been invoked.
 
 <P>
-<A NAME="3198"></A>
+<A NAME="3207"></A>
 BDOS function 3: <SPAN  CLASS="textbf">AUXILIARY INPUT</SPAN>
 
 <P>
@@ -160,7 +160,7 @@ auxiliary input device, AUXIN:, into register A. Control does not
 return to the calling program 'I the character is read.  unti
 
 <P>
-<A NAME="3204"></A>
+<A NAME="3213"></A>
 BDOS function 4: <SPAN  CLASS="textbf">AUXILIARY OUTPUT</SPAN>
 
 <P>
@@ -174,7 +174,7 @@ The Auxiliary Output function sends the ASCII character from register
 E to the logical auxiliary output device, AUXOUT:.
 
 <P>
-<A NAME="3208"></A>
+<A NAME="3217"></A>
 BDOS function 5: <SPAN  CLASS="textbf">LIST OUTPUT</SPAN>
 
 <P>
@@ -188,7 +188,7 @@ The List Output function sends the ASCII character in register E to
 the logical list device, LST:.
 
 <P>
-<A NAME="3212"></A>
+<A NAME="3221"></A>
 BDOS function 6: <SPAN  CLASS="textbf">DIRECT CONSOLE I/O</SPAN>
 
 <P>
@@ -234,7 +234,7 @@ register E.
 </UL>
 
 <P>
-<A NAME="3220"></A>
+<A NAME="3229"></A>
 BDOS function 7: <SPAN  CLASS="textbf">AUXILIARY INPUT STATUS</SPAN>
 
 <P>
@@ -254,7 +254,7 @@ device, AUXIN:. If no character is ready for input, the value $00 is
 returned.
 
 <P>
-<A NAME="3226"></A>
+<A NAME="3235"></A>
 BDOS function 8: <SPAN  CLASS="textbf">AUXILIARY OUTPUT STATUS</SPAN>
 
 <P>
@@ -274,7 +274,7 @@ to accept a character for output.  If the device is not ready for
 output, the value $00 is returned.
 
 <P>
-<A NAME="3232"></A>
+<A NAME="3241"></A>
 BDOS function 9: <SPAN  CLASS="textbf">PRINT STRING</SPAN>
 
 <P>
@@ -295,7 +295,7 @@ CTRL-Q, and echoes to the logical list device, LST:, if printer echo,
 CTRL-P, has been invoked.
 
 <P>
-<A NAME="3236"></A>
+<A NAME="3245"></A>
 BDOS function 10: <SPAN  CLASS="textbf">READ CONSOLE BUFFER</SPAN>
 
 <P>
@@ -469,7 +469,7 @@ the screen. However, these characters are not lost. They reappear if
 characters are deleted out of the line, or if a CTRL-E is typed.
 
 <P>
-<A NAME="3246"></A>
+<A NAME="3255"></A>
 BDOS function 11: <SPAN  CLASS="textbf">GET CONSOLE STATUS</SPAN>
 
 <P>
@@ -495,7 +495,7 @@ the value $01 in register A only if a CTRL-C has been typed at the
 console.
 
 <P>
-<A NAME="3252"></A>
+<A NAME="3261"></A>
 BDOS function 12: <SPAN  CLASS="textbf">RETURN VERSION NUMBER</SPAN>
 
 <P>
@@ -517,7 +517,7 @@ applications programs that must run on multiple versions of CP/M and
 MP/M.
 
 <P>
-<A NAME="3258"></A>
+<A NAME="3267"></A>
 BDOS function 13: <SPAN  CLASS="textbf">RESET DISK SYSTEM</SPAN>
 
 <P>
@@ -535,7 +535,7 @@ operation. Function 37, Reset Drive, can also be used for this
 purpose.
 
 <P>
-<A NAME="3262"></A>
+<A NAME="3271"></A>
 BDOS function 14: <SPAN  CLASS="textbf">SELECT DISK</SPAN>
 
 <P>
@@ -586,7 +586,7 @@ physical error codes:
 </UL>
 
 <P>
-<A NAME="3270"></A>
+<A NAME="3279"></A>
 BDOS function 15: <SPAN  CLASS="textbf">OPEN FILE</SPAN>
 
 <P>
@@ -675,7 +675,7 @@ codes:
 </UL>
 
 <P>
-<A NAME="3278"></A>
+<A NAME="3287"></A>
 BDOS function 16: <SPAN  CLASS="textbf">CLOSE FILE</SPAN>
 
 <P>
@@ -745,7 +745,7 @@ to one of the following physical error codes:
 </UL>
 
 <P>
-<A NAME="3288"></A>
+<A NAME="3297"></A>
 BDOS function 17: <SPAN  CLASS="textbf">SEARCH FOR FIRST</SPAN>
 
 <P>
@@ -847,7 +847,7 @@ one of the following physical error codes:
 </UL>
 
 <P>
-<A NAME="3298"></A>
+<A NAME="3307"></A>
 BDOS function 18: <SPAN  CLASS="textbf">SEARCH FOR NEXT</SPAN>
 
 <P>
@@ -873,7 +873,7 @@ Function 17 or another Function 18 call with no other intervening BDOS
 disk-related function calls.
 
 <P>
-<A NAME="3304"></A>
+<A NAME="3313"></A>
 BDOS function 19: <SPAN  CLASS="textbf">DELETE FILE</SPAN>
 
 <P>
@@ -962,7 +962,7 @@ codes:
 </UL>
 
 <P>
-<A NAME="3314"></A>
+<A NAME="3323"></A>
 BDOS function 20: <SPAN  CLASS="textbf">READ SEQUENTIAL</SPAN>
 
 <P>
@@ -1053,7 +1053,7 @@ depending on the current BDOS Multi-Sector Count. It is always set to
 zero when the Multi-Sector Count is equal to one.
 
 <P>
-<A NAME="3324"></A>
+<A NAME="3333"></A>
 BDOS function 21: <SPAN  CLASS="textbf">WRITE SEQUENTIAL</SPAN>
 
 <P>
@@ -1164,7 +1164,7 @@ to 127 depending on the current BDOS Multi-Sector Count. It is always
 set to zero when the Multi-Sector Count is set to one.
 
 <P>
-<A NAME="3334"></A>
+<A NAME="3343"></A>
 BDOS function 22: <SPAN  CLASS="textbf">MAKE FILE</SPAN>
 
 <P>
@@ -1269,7 +1269,7 @@ codes:
 </UL>
 
 <P>
-<A NAME="3344"></A>
+<A NAME="3353"></A>
 BDOS function 23: <SPAN  CLASS="textbf">RENAME FILE</SPAN>
 
 <P>
@@ -1330,7 +1330,7 @@ following physical or extended error codes:
 </UL>
 
 <P>
-<A NAME="3352"></A>
+<A NAME="3361"></A>
 BDOS function 24: <SPAN  CLASS="textbf">RETURN LOGIN VECTOR</SPAN>
 
 <P>
@@ -1355,7 +1355,7 @@ byte in the FCB. Function 24 maintains compatibilty with earlier
 releases since registers A and L contain the same values upon return.
 
 <P>
-<A NAME="3358"></A>
+<A NAME="3367"></A>
 BDOS function 25: <SPAN  CLASS="textbf">RETURN CURRENT DISK</SPAN>
 
 <P>
@@ -1374,7 +1374,7 @@ register A. The disk numbers range from 0 through 15 corresponding to
 drives A through P.
 
 <P>
-<A NAME="3364"></A>
+<A NAME="3373"></A>
 BDOS function 26: <SPAN  CLASS="textbf">SET DMA ADDRESS</SPAN>
 
 <P>
@@ -1413,7 +1413,7 @@ value until it is changed by another Set DMA Address, or Reset Disk
 System call.
 
 <P>
-<A NAME="3368"></A>
+<A NAME="3377"></A>
 BDOS function 27: <SPAN  CLASS="textbf">GET ADDR(ALLOC)</SPAN>
 
 <P>
@@ -1449,7 +1449,7 @@ a drive. The CP/M 3 utilities that display a drive's free space, DIR
 and SHOW, use Function 46 for that purpose.
 
 <P>
-<A NAME="3374"></A>
+<A NAME="3383"></A>
 BDOS function 28: <SPAN  CLASS="textbf">WRITE PROTECT DISK</SPAN>
 
 <P>
@@ -1465,7 +1465,7 @@ reset operation must be performed for a Read-Only drive to restore it
 to the Read-Write state (see Functions 13 and 37).
 
 <P>
-<A NAME="3378"></A>
+<A NAME="3387"></A>
 BDOS function 29: <SPAN  CLASS="textbf">GET READ-ONLY VECTOR</SPAN>
 
 <P>
@@ -1489,7 +1489,7 @@ returned by Function 24. The least significant bit corresponds to
 drive A, while the most significant bit corresponds to drive P.
 
 <P>
-<A NAME="3384"></A>
+<A NAME="3393"></A>
 BDOS function 30: <SPAN  CLASS="textbf">SET FILE ATTRIBUTES</SPAN>
 
 <P>
@@ -1582,7 +1582,7 @@ error codes:
 </UL>
 
 <P>
-<A NAME="3394"></A>
+<A NAME="3403"></A>
 BDOS function 31: <SPAN  CLASS="textbf">GET ADDR(DPB PARMS)</SPAN>
 
 <P>
@@ -1608,8 +1608,8 @@ the return modes (see Function 45), Function 31 returns the value
 $FFFF in the register pair HL.
 
 <P>
-<A NAME="3400"></A>
-<A NAME="3401"></A>
+<A NAME="3409"></A>
+<A NAME="3410"></A>
 BDOS function 32: <SPAN  CLASS="textbf">SET/GET USER CODE</SPAN>
 
 <P>
@@ -1631,7 +1631,7 @@ the range of 0 to 15. If register E is not $FF, then the current user
 number is changed to the value of E, modulo 16.
 
 <P>
-<A NAME="3407"></A>
+<A NAME="3416"></A>
 BDOS function 33: <SPAN  CLASS="textbf">READ RANDOM</SPAN>
 
 <P>
@@ -1747,7 +1747,7 @@ read before the error is encountered. This value can range from 0 to
 to zero when the Multi-Sector Count is equal to one.
 
 <P>
-<A NAME="3417"></A>
+<A NAME="3426"></A>
 BDOS function 34: <SPAN  CLASS="textbf">WRITE RANDOM</SPAN>
 
 <P>
@@ -1878,7 +1878,7 @@ to 127 depending on the current BDOS Multi-Sector Count. It is always
 set to zero when the Multi-Sector Count is equal to one.
 
 <P>
-<A NAME="3427"></A>
+<A NAME="3436"></A>
 BDOS function 35: <SPAN  CLASS="textbf">COMPUTE FILE SIZE</SPAN>
 
 <P>
@@ -1949,7 +1949,7 @@ physical errors:
 </UL>
 
 <P>
-<A NAME="3435"></A>
+<A NAME="3444"></A>
 BDOS function 36: <SPAN  CLASS="textbf">SET RANDOM RECORD</SPAN>
 
 <P>
@@ -1993,7 +1993,7 @@ to set the record number, and subsequent random read and write
 operations continue from the next record in the file.
 
 <P>
-<A NAME="3441"></A>
+<A NAME="3450"></A>
 BDOS function 37: <SPAN  CLASS="textbf">RESET DRIVE</SPAN>
 
 <P>
@@ -2017,7 +2017,7 @@ drive, labelled P. Bit values of 1 indicate that the specified drive
 is to be reset.
 
 <P>
-<A NAME="3447"></A>
+<A NAME="3456"></A>
 BDOS function 38: <SPAN  CLASS="textbf">ACCESS DRIVE</SPAN>
 
 <P>
@@ -2031,7 +2031,7 @@ called, the file system returns a zero In register A indicating that
 the access request is successful.
 
 <P>
-<A NAME="3451"></A>
+<A NAME="3460"></A>
 BDOS function 39: <SPAN  CLASS="textbf">FREE DRIVE</SPAN>
 
 <P>
@@ -2045,7 +2045,7 @@ called, the file system returns a zero In register A indicating that
 the free request is successful.
 
 <P>
-<A NAME="3455"></A>
+<A NAME="3464"></A>
 BDOS function 40: <SPAN  CLASS="textbf">WRITE RANDOM WITH ZERO FILL</SPAN>
 
 <P>
@@ -2071,7 +2071,7 @@ data blocks of files created using the Write Random function (Function
 34) contain uninitialized data.
 
 <P>
-<A NAME="3461"></A>
+<A NAME="3470"></A>
 BDOS function 41: <SPAN  CLASS="textbf">TEST AND WRITE RECORD</SPAN>
 
 <P>
@@ -2092,7 +2092,7 @@ supported under CP/M 3. If called, Function 41 returns with register A
 set to $FF and register H set to zero.
 
 <P>
-<A NAME="3467"></A>
+<A NAME="3476"></A>
 BDOS function 42: <SPAN  CLASS="textbf">LOCK RECORD</SPAN>
 
 <P>
@@ -2117,7 +2117,7 @@ performs no action except to return the value $00 in register A
 indicating that the record lock operation is successful.
 
 <P>
-<A NAME="3473"></A>
+<A NAME="3482"></A>
 BDOS function 43: <SPAN  CLASS="textbf">UNLOCK RECORD</SPAN>
 
 <P>
@@ -2142,7 +2142,7 @@ performs no action except to return the value $00 in register A
 indicating that the record unlock operation is successful.
 
 <P>
-<A NAME="3479"></A>
+<A NAME="3488"></A>
 BDOS function 44: <SPAN  CLASS="textbf">SET MULTI-SECTOR COUNT</SPAN>
 
 <P>
@@ -2182,7 +2182,7 @@ Upon return, register A is set to zero if the specified value is in
 the range of 1 to 128. Otherwise, register A is set to $FF.
 
 <P>
-<A NAME="3485"></A>
+<A NAME="3494"></A>
 BDOS function 45: <SPAN  CLASS="textbf">SET BDOS ERROR MODE</SPAN>
 
 <P>
@@ -2219,7 +2219,7 @@ messages are displayed, however, when the BDOS is in Return Error
 mode.
 
 <P>
-<A NAME="3491"></A>
+<A NAME="3500"></A>
 BDOS function 46: <SPAN  CLASS="textbf">GET DISK FREE SPACE</SPAN>
 
 <P>
@@ -2277,7 +2277,7 @@ following values:
 </UL>
 
 <P>
-<A NAME="3499"></A>
+<A NAME="3508"></A>
 BDOS function 47: <SPAN  CLASS="textbf">CHAIN TO PROGRAM</SPAN>
 
 <P>
@@ -2302,7 +2302,7 @@ Function 47 does not return any values to the calling program and any
 encountered errors are handled by the CCP.
 
 <P>
-<A NAME="3503"></A>
+<A NAME="3512"></A>
 BDOS function 48: <SPAN  CLASS="textbf">FLUSH BUFFERS</SPAN>
 
 <P>
@@ -2348,8 +2348,8 @@ register H set to the following physical error code:
 </UL>
 
 <P>
-<A NAME="3511"></A>
-<A NAME="3512"></A>
+<A NAME="3520"></A>
+<A NAME="3521"></A>
 BDOS function 49: <SPAN  CLASS="textbf">GET/SET SYSTEM CONTROL BLOCK</SPAN>
 
 <P>
@@ -2411,7 +2411,7 @@ Control Block is summarized in <A HREF="#table:91">9.1</A>.
 
 <P>
 <BR><P></P>
-<DIV class="CENTER"><A ID="table:91"></A><A ID="3522"></A>
+<DIV class="CENTER"><A ID="table:91"></A><A ID="3531"></A>
 <TABLE>
 <CAPTION><STRONG>Table 9.1:</STRONG>
 System Control Block</CAPTION>
@@ -2430,7 +2430,7 @@ parameter block greater than $63, the function performs no action but
 returns with registers A and HL set to zero.
 
 <P>
-<A NAME="3526"></A>
+<A NAME="3535"></A>
 BDOS function 50: <SPAN  CLASS="textbf">DIRECT BIOS CALLS</SPAN>
 
 <P>
@@ -2480,7 +2480,7 @@ the definition of the BIOS functions and their register passing and
 return conventions.
 
 <P>
-<A NAME="3534"></A>
+<A NAME="3543"></A>
 BDOS function 59: <SPAN  CLASS="textbf">LOAD OVERLAY</SPAN>
 
 <P>
@@ -2532,7 +2532,7 @@ to $FE. All other error returns are consistent with the error codes
 returned by BDOS Function 20, Read Sequential.
 
 <P>
-<A NAME="3540"></A>
+<A NAME="3549"></A>
 BDOS function 60: <SPAN  CLASS="textbf">CALL RESIDENT SYSTEM EXTENSION</SPAN>
 
 <P>
@@ -2571,7 +2571,7 @@ BDOS returns $FF in registers A and L. RSX function numbers from 0 to
 numbers 128 to 255 are reserved for system use.
 
 <P>
-<A NAME="3548"></A>
+<A NAME="3557"></A>
 BDOS function 98: <SPAN  CLASS="textbf">FREE BLOCKS</SPAN>
 
 <P>
@@ -2618,7 +2618,7 @@ register H set to the following physical error code:
 </UL>
 
 <P>
-<A NAME="3556"></A>
+<A NAME="3565"></A>
 BDOS function 99: <SPAN  CLASS="textbf">TRUNCATE FILE</SPAN>
 
 <P>
@@ -2695,7 +2695,7 @@ following physical or extended error codes:
 </UL>
 
 <P>
-<A NAME="3564"></A>
+<A NAME="3573"></A>
 BDOS function 100: <SPAN  CLASS="textbf">SET DIRECTORY LABEL</SPAN>
 
 <P>
@@ -2782,7 +2782,7 @@ codes:
 </UL>
 
 <P>
-<A NAME="3574"></A>
+<A NAME="3583"></A>
 BDOS function 101: <SPAN  CLASS="textbf">RETURN DIRECTORY LABEL DATA</SPAN>
 
 <P>
@@ -2830,7 +2830,7 @@ set to $FF, 25S decimal, and register H set to one of the following:
 </UL>
 
 <P>
-<A NAME="3584"></A>
+<A NAME="3593"></A>
 BDOS function 102: <SPAN  CLASS="textbf">READ FILE DATE STAMPS AND PASSWORD MODE</SPAN>
 
 <P>
@@ -2902,7 +2902,7 @@ following physical or extended error codes:
 </UL>
 
 <P>
-<A NAME="3598"></A>
+<A NAME="3607"></A>
 BDOS function 103: <SPAN  CLASS="textbf">WRITE FILE XFCB</SPAN>
 
 <P>
@@ -2974,7 +2974,7 @@ codes:
 </UL>
 
 <P>
-<A NAME="3608"></A>
+<A NAME="3617"></A>
 BDOS function 104: <SPAN  CLASS="textbf">SET DATE AND TIME</SPAN>
 
 <P>
@@ -3010,7 +3010,7 @@ This function also sets the seconds field of the system date and time
 to zero.
 
 <P>
-<A NAME="3616"></A>
+<A NAME="3625"></A>
 BDOS function 105: <SPAN  CLASS="textbf">GET DATE AND TIME</SPAN>
 
 <P>
@@ -3035,7 +3035,7 @@ seconds field of the system date and time in register A as a two digit
 BCD value.
 
 <P>
-<A NAME="3622"></A>
+<A NAME="3631"></A>
 BDOS function 106: <SPAN  CLASS="textbf">SET DEFAULT PASSWORD</SPAN>
 
 <P>
@@ -3063,7 +3063,7 @@ To make a Function 106 call, the calling program sets register pair DE
 to the address of an 8-byte field containing the password.
 
 <P>
-<A NAME="3628"></A>
+<A NAME="3637"></A>
 BDOS function 107: <SPAN  CLASS="textbf">RETURN SERIAL NUMBER</SPAN>
 
 <P>
@@ -3082,8 +3082,8 @@ Function 107 returns the CP/M 3 serial number to the 6-byte field
 addressed by register pair DE.
 
 <P>
-<A NAME="3634"></A>
-<A NAME="3635"></A>
+<A NAME="3643"></A>
+<A NAME="3644"></A>
 BDOS function 108: <SPAN  CLASS="textbf">GET/SET PROGRAM RETURN CODE</SPAN>
 
 <P>
@@ -3119,7 +3119,7 @@ DE. Program Return Codes are defined in <A HREF="#table:92">9.2</A>
 
 <P>
 <BR><P></P>
-<DIV class="CENTER"><A ID="table:92"></A><A ID="3643"></A>
+<DIV class="CENTER"><A ID="table:92"></A><A ID="3652"></A>
 <TABLE>
 <CAPTION><STRONG>Table 9.2:</STRONG>
 Program Return Codes</CAPTION>
@@ -3133,8 +3133,8 @@ Program Return Codes</CAPTION>
 <BR>
 
 <P>
-<A NAME="3647"></A>
-<A NAME="3648"></A>
+<A NAME="3656"></A>
+<A NAME="3657"></A>
 BDOS function 109: <SPAN  CLASS="textbf">GET/SET CONSOLE MODE</SPAN>
 
 <P>
@@ -3193,8 +3193,8 @@ unless the program has an RSX that overrides the default value. Refer
 to Section 2.2.1 for detailed information on Console Mode.
 
 <P>
-<A NAME="3658"></A>
-<A NAME="3659"></A>
+<A NAME="3667"></A>
+<A NAME="3668"></A>
 BDOS function 110: <SPAN  CLASS="textbf">GET/SET OUTPUT DELIMITER</SPAN>
 
 <P>
@@ -3222,7 +3222,7 @@ restores the Output Delimiter to the default value when a transient
 program is loaded.
 
 <P>
-<A NAME="3665"></A>
+<A NAME="3674"></A>
 BDOS function 111: <SPAN  CLASS="textbf">PRINT BLOCK</SPAN>
 
 <P>
@@ -3252,7 +3252,7 @@ The CCB format is:
 </td></tr></table>
 
 <P>
-<A NAME="3673"></A>
+<A NAME="3682"></A>
 BDOS function 112: <SPAN  CLASS="textbf">LIST BLOCK</SPAN>
 
 <P>
@@ -3278,7 +3278,7 @@ The CCB format is:
 </td></tr></table>
 
 <P>
-<A NAME="3681"></A>
+<A NAME="3690"></A>
 BDOS function 152: <SPAN  CLASS="textbf">PARSE FILENAME</SPAN>
 
 <P>
@@ -3367,7 +3367,7 @@ Parse Filename function initializes the specified FCB shown in
 
 <P>
 <BR><P></P>
-<DIV class="CENTER"><A ID="table:93"></A><A ID="3693"></A>
+<DIV class="CENTER"><A ID="table:93"></A><A ID="3702"></A>
 <TABLE>
 <CAPTION><STRONG>Table 9.3:</STRONG>
 FCB Format</CAPTION>
@@ -3414,11 +3414,11 @@ advanced over the delimiter before placing it in the PFCB.
 <A
  HREF="node127.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1098"
+<A ID="tex2html1107"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1100"
-  HREF="node187.html">
+<A ID="tex2html1109"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -3427,10 +3427,10 @@ advanced over the delimiter before placing it in the PFCB.
  HREF="node126.html">CP/M</A>
 <B> Previous:</B> <A
  HREF="node127.html">Utilities</A>
- &nbsp; <B>  <A ID="tex2html1099"
+ &nbsp; <B>  <A ID="tex2html1108"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1101"
-  HREF="node187.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html1110"
+  HREF="node191.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

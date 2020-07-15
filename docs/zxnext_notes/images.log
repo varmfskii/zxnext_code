@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.7.4)  5 JUL 2020 17:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.7.4)  15 JUL 2020 12:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -184,7 +184,7 @@ Package: luatex85 2016/06/15 v1.4 pdftex aliases for luatex
 \lthtmlCropMarkHeight=\dimen158
 \lthtmlCropMarkDepth=\dimen159
 ! Too many }'s.
-l.88 ...preview}\copy\lthtmlPageBox\end{preview}}}
+l.89 ...preview}\copy\lthtmlPageBox\end{preview}}}
                                                   %
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
@@ -193,33 +193,36 @@ Such booboos are generally harmless, so keep going.
 File: l3backend-pdfmode.def 2020-06-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count199
 \l__pdf_internal_box=\box52
-) (./images.aux (/home/alex/retro/zx/code/zx_next_notes/video/video.aux) (/home
-/alex/retro/zx/code/zx_next_notes/audio/audio.aux) (/home/alex/retro/zx/code/zx
-_next_notes/memory/memory.aux) (/home/alex/retro/zx/code/zx_next_notes/zxndma/z
-xndma.aux) (/home/alex/retro/zx/code/zx_next_notes/copper/copper.aux) (/home/al
-ex/retro/zx/code/zx_next_notes/interrupts.aux) (/home/alex/retro/zx/code/zx_nex
-t_notes/pi0.aux) (/home/alex/retro/zx/code/zx_next_notes/system/system.aux) (/h
-ome/alex/retro/zx/code/zx_next_notes/appendices/ports/ports.aux) (/home/alex/re
-tro/zx/code/zx_next_notes/appendices/registers/registers.aux) (/home/alex/retro
-/zx/code/zx_next_notes/appendices/opcode/opcode-mnemonic.aux)
-(/home/alex/retro/zx/code/zx_next_notes/appendices/mnemonic/mnemonic-opcode.aux
-) (/home/alex/retro/zx/code/zx_next_notes/appendices/file_formats.aux) (/home/a
-lex/retro/zx/code/zx_next_notes/appendices/call_tables.aux) (/home/alex/retro/z
-x/code/zx_next_notes/ctc/ctc.aux))
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 119.
-LaTeX Font Info:    ... okay on input line 119.
+) (./images.aux (/home/alex/retro/zx/zxnext/code/zx_next_notes/video/video.aux)
+(/home/alex/retro/zx/zxnext/code/zx_next_notes/audio/audio.aux) (/home/alex/ret
+ro/zx/zxnext/code/zx_next_notes/memory/memory.aux) (/home/alex/retro/zx/zxnext/
+code/zx_next_notes/zxndma/zxndma.aux) (/home/alex/retro/zx/zxnext/code/zx_next_
+notes/copper/copper.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/interru
+pts.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/pi0.aux) (/home/alex/re
+tro/zx/zxnext/code/zx_next_notes/system/system.aux) (/home/alex/retro/zx/zxnext
+/code/zx_next_notes/appendices/ports/ports.aux)
+(/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/registers/registers.a
+ux)
+(/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/opcode/opcode-mnemoni
+c.aux)
+(/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/mnemonic/mnemonic-opc
+ode.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/file_formats
+.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/call_tables.aux
+) (/home/alex/retro/zx/zxnext/code/zx_next_notes/ctc/ctc.aux))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
 ABD: EveryShipout initializing macros (/usr/share/texmf-dist/tex/context/base/m
 kii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -295,414 +298,414 @@ latex2htmlLength oddsidemargin=29.0pt
 latex2htmlLength evensidemargin=80.0pt
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 144.
+(Font)              <10.95> on input line 145.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 144.
+(Font)              <8> on input line 145.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 144.
+(Font)              <6> on input line 145.
 
-:tex2html_wrap_inline8755:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline8943:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline8755:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline8943:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 Preview: Tightpage -32891 -32891 32891 32891
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
-:tex2html_wrap_inline8761:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline8949:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline8761:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline8949:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [2]
 
-:tex2html_wrap_inline8764:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline8952:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline8764:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline8952:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [3]
 
-:tex2html_wrap_inline78:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline87:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline78:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline87:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [4]
 
-:tex2html_wrap_inline80:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline89:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline80:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline89:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [5]
 
-:tex2html_wrap_inline82:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline91:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline82:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline91:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [6]
 
-:tex2html_wrap_inline101:lthtmlCropMarkHeight:=10.01727pt
+:tex2html_wrap_inline110:lthtmlCropMarkHeight:=10.01727pt
 
-:tex2html_wrap_inline101:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline110:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [7]
 
-:table201:lthtmlCropMarkHeight:=34.39996pt
+:table210:lthtmlCropMarkHeight:=34.39996pt
 
-:table201:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table210:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [8]
 
-:table206:lthtmlCropMarkHeight:=129.5999pt
+:table215:lthtmlCropMarkHeight:=129.5999pt
 
-:table206:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table215:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [9]
 
-:tex2html_wrap_inline372:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline381:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline372:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline381:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [10]
 
-:tex2html_wrap_inline374:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline383:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline374:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline383:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [11]
 
-:tex2html_wrap_inline384:lthtmlCropMarkHeight:=13.48248pt
+:tex2html_wrap_inline393:lthtmlCropMarkHeight:=13.48248pt
 
-:tex2html_wrap_inline384:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
+:tex2html_wrap_inline393:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
 [12]
 
-:tex2html_wrap_inline388:lthtmlCropMarkHeight:=13.48248pt
+:tex2html_wrap_inline397:lthtmlCropMarkHeight:=13.48248pt
 
-:tex2html_wrap_inline388:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
+:tex2html_wrap_inline397:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
 [13]
 
-:tex2html_wrap_inline390:lthtmlCropMarkHeight:=13.48248pt
+:tex2html_wrap_inline399:lthtmlCropMarkHeight:=13.48248pt
 
-:tex2html_wrap_inline390:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
+:tex2html_wrap_inline399:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
 [14]
 
-:tex2html_wrap_inline392:lthtmlCropMarkHeight:=13.48248pt
+:tex2html_wrap_inline401:lthtmlCropMarkHeight:=13.48248pt
 
-:tex2html_wrap_inline392:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
+:tex2html_wrap_inline401:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
 [15]
 
-:tex2html_wrap_inline396:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline405:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline396:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline405:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [16]
 
-:tex2html_wrap_inline398:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline407:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline398:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline407:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [17]
 
-:tex2html_wrap_inline406:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline415:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline406:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline415:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [18]
 
-:table360:lthtmlCropMarkHeight:=129.5999pt
+:table369:lthtmlCropMarkHeight:=129.5999pt
 
-:table360:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table369:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [19]
 
-:tex2html_wrap_inline408:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline417:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline408:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline417:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [20]
 
-:tex2html_wrap_inline412:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline421:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline412:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline421:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [21]
 
-:tex2html_wrap_inline414:lthtmlCropMarkHeight:=13.48248pt
+:tex2html_wrap_inline423:lthtmlCropMarkHeight:=13.48248pt
 
-:tex2html_wrap_inline414:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
+:tex2html_wrap_inline423:lthtmlCropMarkDepth:=1.64249pt:1ex:=4.71457pt
 [22]
 
-:tex2html_wrap_inline416:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline425:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline416:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline425:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [23]
 
-:tex2html_wrap_inline418:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline427:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline418:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline427:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [24]
 
-:tex2html_wrap_inline516:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline525:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline516:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline525:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [25]
 
-:tex2html_wrap_inline661:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline670:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline661:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline670:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [26]
 
-:tex2html_wrap_inline665:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline674:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline665:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline674:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [27]
 
-:tex2html_wrap_inline671:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline680:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline671:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline680:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [28]
 
-:tex2html_wrap_inline673:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline682:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline673:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline682:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [29]
 
-:tex2html_wrap_inline952:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline961:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline952:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline961:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [30]
 
-:tex2html_wrap_inline954:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline963:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline954:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline963:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [31]
 
-:tex2html_wrap_inline956:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline965:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline956:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline965:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [32]
 
-:tex2html_wrap_inline958:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline967:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline958:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline967:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [33]
 
-:tex2html_wrap_inline980:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline989:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline980:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline989:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [34]
 
-:tex2html_wrap_inline984:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline993:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline984:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline993:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [35]
 
-:tex2html_wrap_inline1281:lthtmlCropMarkHeight:=15.44032pt
+:tex2html_wrap_inline1290:lthtmlCropMarkHeight:=15.44032pt
 
-:tex2html_wrap_inline1281:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline1290:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [36]
 
-:table1655:lthtmlCropMarkHeight:=75.19994pt
+:table1664:lthtmlCropMarkHeight:=75.19994pt
 
-:table1655:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1664:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [37]
-Overfull \hbox (157.3037pt too wide) in paragraph at lines 465--465
+Overfull \hbox (157.3037pt too wide) in paragraph at lines 466--466
  [][] 
  []
 
 
-:table1773:lthtmlCropMarkHeight:=102.39992pt
+:table1782:lthtmlCropMarkHeight:=102.39992pt
 
-:table1773:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1782:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [38]
 
-:table1916:lthtmlCropMarkHeight:=115.99991pt
+:table1925:lthtmlCropMarkHeight:=115.99991pt
 
-:table1916:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1925:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [39]
 
-:table1920:lthtmlCropMarkHeight:=115.99991pt
+:table1929:lthtmlCropMarkHeight:=115.99991pt
 
-:table1920:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1929:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [40]
 
-:table1926:lthtmlCropMarkHeight:=75.19994pt
+:table1935:lthtmlCropMarkHeight:=75.19994pt
 
-:table1926:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1935:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [41]
 
-:table1930:lthtmlCropMarkHeight:=75.19994pt
+:table1939:lthtmlCropMarkHeight:=75.19994pt
 
-:table1930:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1939:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [42]
-Overfull \hbox (36.52087pt too wide) in paragraph at lines 533--533
+Overfull \hbox (36.52087pt too wide) in paragraph at lines 534--534
  [][] 
  []
 
 
-:table1934:lthtmlCropMarkHeight:=140.33322pt
-
-:table1934:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[43]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 546.
-
-Overfull \hbox (11.31319pt too wide) in paragraph at lines 546--546
- [][] 
- []
-
-
-:table1938:lthtmlCropMarkHeight:=167.53333pt
-
-:table1938:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[44]
-
-:tex2html_wrap_inline2013:lthtmlCropMarkHeight:=13.05666pt
-
-:tex2html_wrap_inline2013:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
-[45]
-
-:tex2html_wrap_inline2015:lthtmlCropMarkHeight:=13.05666pt
-
-:tex2html_wrap_inline2015:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
-[46]
-
-:table1943:lthtmlCropMarkHeight:=47.99995pt
+:table1943:lthtmlCropMarkHeight:=140.33322pt
 
 :table1943:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[47]
+[43]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 591.
+(Font)              <5> on input line 547.
 
-Overfull \hbox (33.41745pt too wide) in paragraph at lines 591--591
+Overfull \hbox (11.31319pt too wide) in paragraph at lines 547--547
  [][] 
  []
 
 
-:table1947:lthtmlCropMarkHeight:=234.19998pt
+:table1947:lthtmlCropMarkHeight:=167.53333pt
 
 :table1947:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[48]
+[44]
 
-:table1952:lthtmlCropMarkHeight:=111.00412pt
+:tex2html_wrap_inline2022:lthtmlCropMarkHeight:=13.05666pt
+
+:tex2html_wrap_inline2022:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+[45]
+
+:tex2html_wrap_inline2024:lthtmlCropMarkHeight:=13.05666pt
+
+:tex2html_wrap_inline2024:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+[46]
+
+:table1952:lthtmlCropMarkHeight:=47.99995pt
 
 :table1952:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[49]
-Overfull \hbox (11.48543pt too wide) in paragraph at lines 629--629
+[47]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 592.
+
+Overfull \hbox (33.41745pt too wide) in paragraph at lines 592--592
  [][] 
  []
 
 
-:table1965:lthtmlCropMarkHeight:=97.40411pt
+:table1956:lthtmlCropMarkHeight:=234.19998pt
 
-:table1965:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1956:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[48]
+
+:table1961:lthtmlCropMarkHeight:=111.00412pt
+
+:table1961:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[49]
+Overfull \hbox (11.48543pt too wide) in paragraph at lines 630--630
+ [][] 
+ []
+
+
+:table1974:lthtmlCropMarkHeight:=97.40411pt
+
+:table1974:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [50]
 
-:table1969:lthtmlCropMarkHeight:=84.41245pt
+:table1978:lthtmlCropMarkHeight:=84.41245pt
 
-:table1969:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table1978:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [51]
-Overfull \hbox (132.6706pt too wide) in paragraph at lines 659--659
+Overfull \hbox (132.6706pt too wide) in paragraph at lines 660--660
  [][] 
  []
 
 
-:table2443:lthtmlCropMarkHeight:=319.99977pt
+:table2452:lthtmlCropMarkHeight:=319.99977pt
 
-:table2443:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table2452:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [52]
 
-:tex2html_wrap_inline2504:lthtmlCropMarkHeight:=15.48238pt
+:tex2html_wrap_inline2513:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline2504:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2513:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [53]
 
-:tex2html_wrap_inline2506:lthtmlCropMarkHeight:=15.48238pt
+:tex2html_wrap_inline2515:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline2506:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2515:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [54]
 
-:tex2html_wrap_inline2508:lthtmlCropMarkHeight:=15.48238pt
+:tex2html_wrap_inline2517:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline2508:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2517:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [55]
 
-:tex2html_wrap_inline2571:lthtmlCropMarkHeight:=15.12923pt
+:tex2html_wrap_inline2580:lthtmlCropMarkHeight:=15.12923pt
 
-:tex2html_wrap_inline2571:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2580:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [56]
 
-:tex2html_wrap_inline2573:lthtmlCropMarkHeight:=15.12923pt
+:tex2html_wrap_inline2582:lthtmlCropMarkHeight:=15.12923pt
 
-:tex2html_wrap_inline2573:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline2582:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [57]
 
-:labeledpar2671:lthtmlCropMarkHeight:=22.94998pt
+:labeledpar2680:lthtmlCropMarkHeight:=22.94998pt
 
-:labeledpar2671:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2680:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [58]
 
-:labeledpar2679:lthtmlCropMarkHeight:=22.94998pt
-
-:labeledpar2679:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[59]
-
-:labeledpar2683:lthtmlCropMarkHeight:=22.94998pt
-
-:labeledpar2683:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[60]
-
-:labeledpar2688:lthtmlCropMarkHeight:=33.20416pt
+:labeledpar2688:lthtmlCropMarkHeight:=22.94998pt
 
 :labeledpar2688:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[59]
+
+:labeledpar2692:lthtmlCropMarkHeight:=22.94998pt
+
+:labeledpar2692:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[60]
+
+:labeledpar2697:lthtmlCropMarkHeight:=33.20416pt
+
+:labeledpar2697:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [61]
 
-:labeledpar2695:lthtmlCropMarkHeight:=21.64207pt
+:labeledpar2704:lthtmlCropMarkHeight:=21.64207pt
 
-:labeledpar2695:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2704:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [62]
 
-:labeledpar2703:lthtmlCropMarkHeight:=73.91293pt
+:labeledpar2712:lthtmlCropMarkHeight:=73.91293pt
 
-:labeledpar2703:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2712:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [63]
 
-:labeledpar2714:lthtmlCropMarkHeight:=22.94998pt
-
-:labeledpar2714:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[64]
-
-:labeledpar2719:lthtmlCropMarkHeight:=21.73332pt
-
-:labeledpar2719:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[65]
-
-:labeledpar2723:lthtmlCropMarkHeight:=35.33333pt
+:labeledpar2723:lthtmlCropMarkHeight:=22.94998pt
 
 :labeledpar2723:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[64]
+
+:labeledpar2728:lthtmlCropMarkHeight:=21.73332pt
+
+:labeledpar2728:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[65]
+
+:labeledpar2732:lthtmlCropMarkHeight:=35.33333pt
+
+:labeledpar2732:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [66]
 
-:labeledpar2727:lthtmlCropMarkHeight:=21.73332pt
+:labeledpar2736:lthtmlCropMarkHeight:=21.73332pt
 
-:labeledpar2727:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:labeledpar2736:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [67]
 
-:tex2html_wrap_inline2799:lthtmlCropMarkHeight:=14.2125pt
+:tex2html_wrap_inline2808:lthtmlCropMarkHeight:=14.2125pt
 
-:tex2html_wrap_inline2799:lthtmlCropMarkDepth:=2.73749pt:1ex:=4.71457pt
+:tex2html_wrap_inline2808:lthtmlCropMarkDepth:=2.73749pt:1ex:=4.71457pt
 [68]
 
-:tex2html_wrap_inline2807:lthtmlCropMarkHeight:=11.9031pt
+:tex2html_wrap_inline2816:lthtmlCropMarkHeight:=11.9031pt
 
-:tex2html_wrap_inline2807:lthtmlCropMarkDepth:=0.42812pt:1ex:=4.71457pt
+:tex2html_wrap_inline2816:lthtmlCropMarkDepth:=0.42812pt:1ex:=4.71457pt
 [69]
 
-:tex2html_wrap_inline2811:lthtmlCropMarkHeight:=11.9031pt
+:tex2html_wrap_inline2820:lthtmlCropMarkHeight:=11.9031pt
 
-:tex2html_wrap_inline2811:lthtmlCropMarkDepth:=0.42812pt:1ex:=4.71457pt
+:tex2html_wrap_inline2820:lthtmlCropMarkDepth:=0.42812pt:1ex:=4.71457pt
 [70]
 
-:table3521:lthtmlCropMarkHeight:=537.59962pt
+:table3530:lthtmlCropMarkHeight:=537.59962pt
 
-:table3521:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table3530:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [71]
-Overfull \hbox (109.80673pt too wide) in paragraph at lines 815--815
+Overfull \hbox (109.80673pt too wide) in paragraph at lines 816--816
  [][] 
  []
 
 
-:table3642:lthtmlCropMarkHeight:=115.99991pt
+:table3651:lthtmlCropMarkHeight:=115.99991pt
 
-:table3642:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table3651:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [72]
-Overfull \hbox (40.63914pt too wide) in paragraph at lines 824--824
+Overfull \hbox (40.63914pt too wide) in paragraph at lines 825--825
  [][] 
  []
 
 
-:table3692:lthtmlCropMarkHeight:=360.79974pt
+:table3701:lthtmlCropMarkHeight:=360.79974pt
 
-:table3692:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table3701:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [73] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
@@ -711,7 +714,7 @@ File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 ! Argument of \lst@next has an extra }.
 <inserted text> 
                 \par 
-l.843 \lthtmlfigureZ
+l.844 \lthtmlfigureZ
                     
 I've run across a `}' that doesn't seem to match anything.
 For example, `\def\a#1{...}' and `\a}' would produce
@@ -724,7 +727,7 @@ Runaway argument?
 ! Paragraph ended before \lst@next was complete.
 <to be read again> 
                    \par 
-l.843 \lthtmlfigureZ
+l.844 \lthtmlfigureZ
                     
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
@@ -733,7 +736,7 @@ My plan is to forget the whole thing and hope for the best.
 ! Extra }, or forgotten \endgroup.
 \lthtmlTightFBox ...xpandafter \box \next \egroup 
                                                   \lthtmlCropMarkHeight =\ht...
-l.843 \lthtmlfigureZ
+l.844 \lthtmlfigureZ
                     
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -742,12 +745,12 @@ the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
 
-:lstlisting5092:lthtmlCropMarkHeight:=6.0pt
+:lstlisting5053:lthtmlCropMarkHeight:=6.0pt
 
-:lstlisting5092:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5053:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [74]
 ! Extra }, or forgotten \endgroup.
-l.844 \lthtmlcheckvsize\clearpage}
+l.845 \lthtmlcheckvsize\clearpage}
                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -758,7 +761,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.851 \lthtmlfigureZ
+l.852 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -766,20 +769,20 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.851 \lthtmlfigureZ
+l.852 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5097:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5056:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5097:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5056:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [75]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.859 \lthtmlfigureZ
+l.860 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -787,20 +790,20 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.859 \lthtmlfigureZ
+l.860 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5100:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5059:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5100:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5059:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [76]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.867 \lthtmlfigureZ
+l.868 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -808,20 +811,20 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.867 \lthtmlfigureZ
+l.868 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5103:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5062:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5103:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5062:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [77]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.875 \lthtmlfigureZ
+l.876 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -829,20 +832,20 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.875 \lthtmlfigureZ
+l.876 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5106:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5065:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5106:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5065:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [78]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.883 \lthtmlfigureZ
+l.884 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -850,20 +853,20 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.883 \lthtmlfigureZ
+l.884 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5109:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5068:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5109:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5068:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [79]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.891 \lthtmlfigureZ
+l.892 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -871,20 +874,20 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.891 \lthtmlfigureZ
+l.892 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5112:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5071:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5112:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5071:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [80]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.900 \lthtmlfigureZ
+l.901 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -892,13 +895,13 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.900 \lthtmlfigureZ
+l.901 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (53.79597pt too wide) in paragraph at lines 900--900
+Overfull \hbox (53.79597pt too wide) in paragraph at lines 901--901
 [][]\OT1/cmr/m/n/10.95 unsigned char esx$[]\OML/cmm/m/it/10.95 os[]et[]rive\OT1
 /cmr/m/n/10.95 (\OML/cmm/m/it/10.95 void\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95
  unsignedcharesx[]os[]et[]rive\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 unsignedc
@@ -906,14 +909,14 @@ hardrive\OT1/cmr/m/n/10.95 )$
  []
 
 
-:lstlisting5115:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5074:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5115:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5074:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [81]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.908 \lthtmlfigureZ
+l.910 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -921,27 +924,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   chdir(unsigned char *pathn...
-l.908 \lthtmlfigureZ
+l.910 \lthtmlfigureZ
                     
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.908 \lthtmlfigureZ
+l.910 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5118:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5078:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5118:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5078:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [82]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.916 \lthtmlfigureZ
+l.918 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -949,20 +952,20 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   chmod(unsigned char *filen...
-l.916 \lthtmlfigureZ
+l.918 \lthtmlfigureZ
                     
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.916 \lthtmlfigureZ
+l.918 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (28.14467pt too wide) in paragraph at lines 916--916
+Overfull \hbox (28.14467pt too wide) in paragraph at lines 918--918
 [][]\OT1/cmr/m/n/10.95 unsigned char esx$[][]\OML/cmm/m/it/10.95 hmod\OT1/cmr/m
 /n/10.95 (\OML/cmm/m/it/10.95 unsignedchar \OMS/cmsy/m/n/10.95 ^^C \OML/cmm/m/i
 t/10.95 filename; uint\OT1/cmr/m/n/10.95 8[]\OML/cmm/m/it/10.95 attr[]ask; uint
@@ -970,14 +973,14 @@ t/10.95 filename; uint\OT1/cmr/m/n/10.95 8[]\OML/cmm/m/it/10.95 attr[]ask; uint
  []
 
 
-:lstlisting5121:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5081:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5121:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5081:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [83]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.924 \lthtmlfigureZ
+l.926 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -985,27 +988,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   close(unsigned char handle...
-l.924 \lthtmlfigureZ
+l.926 \lthtmlfigureZ
                     
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.924 \lthtmlfigureZ
+l.926 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5124:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5084:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5124:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5084:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [84]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.932 \lthtmlfigureZ
+l.934 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1013,27 +1016,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   closedir(unsigned char han...
-l.932 \lthtmlfigureZ
+l.934 \lthtmlfigureZ
                     
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.932 \lthtmlfigureZ
+l.934 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5127:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5087:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5127:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5087:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [85]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.940 \lthtmlfigureZ
+l.942 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1041,27 +1044,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...sting}[language=C]^^Muint32_t esx_f_
                                                   fgetpos(unsigned char hand...
-l.940 \lthtmlfigureZ
+l.942 \lthtmlfigureZ
                     
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.940 \lthtmlfigureZ
+l.942 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5130:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5090:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5130:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5090:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [86]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.948 \lthtmlfigureZ
+l.950 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1069,27 +1072,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   fstat(unsigned char handle...
-l.948 \lthtmlfigureZ
+l.950 \lthtmlfigureZ
                     
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.948 \lthtmlfigureZ
+l.950 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5133:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5093:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5133:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5093:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [87]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.956 \lthtmlfigureZ
+l.958 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1097,27 +1100,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   ftrunc(unsigned char handl...
-l.956 \lthtmlfigureZ
+l.958 \lthtmlfigureZ
                     
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.956 \lthtmlfigureZ
+l.958 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5136:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5096:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5136:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5096:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [88]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.964 \lthtmlfigureZ
+l.966 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1125,27 +1128,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   get_canonical_path(char *p...
-l.964 \lthtmlfigureZ
+l.966 \lthtmlfigureZ
                     
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.964 \lthtmlfigureZ
+l.966 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5139:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5099:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5139:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5099:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [89]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.972 \lthtmlfigureZ
+l.974 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1153,27 +1156,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   getcwd(unsigned char *buf)...
-l.972 \lthtmlfigureZ
+l.974 \lthtmlfigureZ
                     
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.972 \lthtmlfigureZ
+l.974 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5142:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5102:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5142:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5102:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [90]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.980 \lthtmlfigureZ
+l.982 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1181,27 +1184,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   getcwd_drive(unsigned char...
-l.980 \lthtmlfigureZ
+l.982 \lthtmlfigureZ
                     
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.980 \lthtmlfigureZ
+l.982 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5145:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5105:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5145:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5105:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [91]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.988 \lthtmlfigureZ
+l.990 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1209,27 +1212,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...sting}[language=C]^^Muint32_t esx_f_
                                                   getfree(void)^^M\end {lstl...
-l.988 \lthtmlfigureZ
+l.990 \lthtmlfigureZ
                     
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.988 \lthtmlfigureZ
+l.990 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5148:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5108:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5148:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5108:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [92]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.996 \lthtmlfigureZ
+l.998 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1237,27 +1240,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   mkdir(unsigned char *pathn...
-l.996 \lthtmlfigureZ
+l.998 \lthtmlfigureZ
                     
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.996 \lthtmlfigureZ
+l.998 \lthtmlfigureZ
                     
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5151:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5111:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5151:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5111:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [93]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1004 \lthtmlfigureZ
+l.1006 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1265,27 +1268,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   open(unsigned char *filena...
-l.1004 \lthtmlfigureZ
+l.1006 \lthtmlfigureZ
                      
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1004 \lthtmlfigureZ
+l.1006 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5154:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5114:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5154:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5114:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [94]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1013 \lthtmlfigureZ
+l.1015 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1293,27 +1296,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   opendir(unsigned char *dir...
-l.1013 \lthtmlfigureZ
+l.1015 \lthtmlfigureZ
                      
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Double subscript.
 <argument> ...har *dirname)^^Munsigned char esx_f_
                                                   opendir_ex(unsigned char *...
-l.1013 \lthtmlfigureZ
+l.1015 \lthtmlfigureZ
                      
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1013 \lthtmlfigureZ
+l.1015 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (110.05608pt too wide) in paragraph at lines 1013--1013
+Overfull \hbox (110.05608pt too wide) in paragraph at lines 1015--1015
 [][]\OT1/cmr/m/n/10.95 unsigned char esx$[][]\OML/cmm/m/it/10.95 pendir\OT1/cmr
 /m/n/10.95 (\OML/cmm/m/it/10.95 unsignedchar \OMS/cmsy/m/n/10.95 ^^C \OML/cmm/m
 /it/10.95 dirname\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 unsignedcharesx[][]pen
@@ -1322,14 +1325,14 @@ dir[]x\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 unsignedchar \OMS/cmsy/m/n/10.95
  []
 
 
-:lstlisting5157:lthtmlCropMarkHeight:=43.85745pt
+:lstlisting5117:lthtmlCropMarkHeight:=43.85745pt
 
-:lstlisting5157:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5117:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [95]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1021 \lthtmlfigureZ
+l.1023 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1337,20 +1340,20 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   open_p3(unsigned char *fil...
-l.1021 \lthtmlfigureZ
+l.1023 \lthtmlfigureZ
                      
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1021 \lthtmlfigureZ
+l.1023 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (73.41599pt too wide) in paragraph at lines 1021--1021
+Overfull \hbox (73.41599pt too wide) in paragraph at lines 1023--1023
 [][]\OT1/cmr/m/n/10.95 unsigned char esx$[][]\OML/cmm/m/it/10.95 pen[]\OT1/cmr/
 m/n/10.95 3(\OML/cmm/m/it/10.95 unsignedchar \OMS/cmsy/m/n/10.95 ^^C \OML/cmm/m
 /it/10.95 filename; unsignedcharmode; structesx[]\OT1/cmr/m/n/10.95 3[]\OML/cmm
@@ -1358,14 +1361,14 @@ m/n/10.95 3(\OML/cmm/m/it/10.95 unsignedchar \OMS/cmsy/m/n/10.95 ^^C \OML/cmm/m
  []
 
 
-:lstlisting5160:lthtmlCropMarkHeight:=43.85745pt
+:lstlisting5120:lthtmlCropMarkHeight:=43.85745pt
 
-:lstlisting5160:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5120:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [96]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1029 \lthtmlfigureZ
+l.1031 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1373,27 +1376,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...sting}[language=C]^^Muint16_t esx_f_
                                                   read(unsigned char handle,...
-l.1029 \lthtmlfigureZ
+l.1031 \lthtmlfigureZ
                      
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1029 \lthtmlfigureZ
+l.1031 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5163:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5123:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5163:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5123:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [97]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1037 \lthtmlfigureZ
+l.1039 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1401,27 +1404,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   readdir(unsigned char hand...
-l.1037 \lthtmlfigureZ
+l.1039 \lthtmlfigureZ
                      
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1037 \lthtmlfigureZ
+l.1039 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5166:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5126:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5166:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5126:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [98]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1045 \lthtmlfigureZ
+l.1047 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1429,27 +1432,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   rename(unsigned char *old,...
-l.1045 \lthtmlfigureZ
+l.1047 \lthtmlfigureZ
                      
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1045 \lthtmlfigureZ
+l.1047 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5169:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5129:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5169:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5129:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [99]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1053 \lthtmlfigureZ
+l.1055 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1457,27 +1460,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   rewinddir(unsigned char ha...
-l.1053 \lthtmlfigureZ
+l.1055 \lthtmlfigureZ
                      
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1053 \lthtmlfigureZ
+l.1055 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5172:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5132:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5172:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5132:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [100]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1061 \lthtmlfigureZ
+l.1063 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1485,27 +1488,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   rmdir(unsigned char *pathn...
-l.1061 \lthtmlfigureZ
+l.1063 \lthtmlfigureZ
                      
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1061 \lthtmlfigureZ
+l.1063 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5175:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5135:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5175:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5135:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [101]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1070 \lthtmlfigureZ
+l.1071 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1513,34 +1516,34 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...sting}[language=C]^^Muint32_t esx_f_
                                                   seek(unsigned char handle,...
-l.1070 \lthtmlfigureZ
+l.1071 \lthtmlfigureZ
                      
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1070 \lthtmlfigureZ
+l.1071 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (23.93001pt too wide) in paragraph at lines 1070--1070
+Overfull \hbox (23.93001pt too wide) in paragraph at lines 1071--1071
 [][]\OT1/cmr/m/n/10.95 uint32$[]\OML/cmm/m/it/10.95 esx[][]eek\OT1/cmr/m/n/10.9
 5 (\OML/cmm/m/it/10.95 unsignedcharhandle; uint\OT1/cmr/m/n/10.95 32[]\OML/cmm/
 m/it/10.95 distance; unsignedcharwhence\OT1/cmr/m/n/10.95 )$ 
  []
 
 
-:lstlisting5178:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5138:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5178:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5138:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [102]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1078 \lthtmlfigureZ
+l.1079 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1548,27 +1551,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   seekdir(unsigned char hand...
-l.1078 \lthtmlfigureZ
+l.1079 \lthtmlfigureZ
                      
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1078 \lthtmlfigureZ
+l.1079 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5181:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5141:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5181:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5141:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [103]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1086 \lthtmlfigureZ
+l.1087 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1576,27 +1579,27 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...}[language=C]^^Munsigned char esx_f_
                                                   sync(unsigned char handle)...
-l.1086 \lthtmlfigureZ
+l.1087 \lthtmlfigureZ
                      
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1086 \lthtmlfigureZ
+l.1087 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5185:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5145:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5185:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5145:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [104]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1094 \lthtmlfigureZ
+l.1095 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1604,22 +1607,22 @@ you left one out. Proceed, with fingers crossed.
 ! Double subscript.
 <argument> ...sting}[language=C]^^Muint32_t esx_f_
                                                   telldir(unsigned char hand...
-l.1094 \lthtmlfigureZ
+l.1095 \lthtmlfigureZ
                      
 I treat `x_1_2' essentially like `x_1{}_2'.
 
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1094 \lthtmlfigureZ
+l.1095 \lthtmlfigureZ
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5188:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5148:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5188:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5148:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [105]
 ! Missing $ inserted.
 <inserted text> 
@@ -1645,9 +1648,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5191:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5151:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5191:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5151:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [106]
 ! Missing $ inserted.
 <inserted text> 
@@ -1673,9 +1676,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5194:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5154:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5194:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5154:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [107]
 ! Missing $ inserted.
 <inserted text> 
@@ -1701,9 +1704,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5197:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5157:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5197:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5157:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [108]
 ! Missing $ inserted.
 <inserted text> 
@@ -1722,9 +1725,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5200:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5160:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5200:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5160:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [109]
 ! Missing $ inserted.
 <inserted text> 
@@ -1743,9 +1746,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5203:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5163:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5203:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5163:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [110]
 ! Missing $ inserted.
 <inserted text> 
@@ -1771,9 +1774,9 @@ cmr/m/n/10.95 )$
  []
 
 
-:lstlisting5206:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5166:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5206:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5166:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [111]
 ! Missing $ inserted.
 <inserted text> 
@@ -1799,9 +1802,9 @@ T1/cmr/m/n/10.95 )$
  []
 
 
-:lstlisting5209:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5169:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5209:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5169:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [112]
 ! Missing $ inserted.
 <inserted text> 
@@ -1820,9 +1823,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5212:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5172:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5212:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5172:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [113]
 ! Missing $ inserted.
 <inserted text> 
@@ -1841,9 +1844,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5215:lthtmlCropMarkHeight:=43.85745pt
+:lstlisting5175:lthtmlCropMarkHeight:=43.85745pt
 
-:lstlisting5215:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5175:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [114]
 ! Missing $ inserted.
 <inserted text> 
@@ -1862,9 +1865,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5218:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5178:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5218:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5178:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [115]
 ! Missing $ inserted.
 <inserted text> 
@@ -1883,9 +1886,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5221:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5181:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5221:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5181:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [116]
 ! Missing $ inserted.
 <inserted text> 
@@ -1904,9 +1907,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5224:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5184:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5224:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5184:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [117]
 ! Missing $ inserted.
 <inserted text> 
@@ -1932,9 +1935,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5228:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5188:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5228:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5188:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [118]
 ! Missing $ inserted.
 <inserted text> 
@@ -1960,9 +1963,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5231:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5191:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5231:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5191:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [119]
 ! Missing $ inserted.
 <inserted text> 
@@ -1988,9 +1991,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5234:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5194:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5234:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5194:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [120]
 ! Missing $ inserted.
 <inserted text> 
@@ -2016,9 +2019,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5237:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5197:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5237:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5197:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [121]
 ! Missing $ inserted.
 <inserted text> 
@@ -2044,9 +2047,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5240:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5200:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5240:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5200:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [122]
 ! Missing $ inserted.
 <inserted text> 
@@ -2072,9 +2075,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5243:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5203:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5243:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5203:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [123]
 ! Missing $ inserted.
 <inserted text> 
@@ -2115,9 +2118,9 @@ T1/cmr/m/n/10.95 )$
  []
 
 
-:lstlisting5246:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5206:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5246:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5206:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [124]
 ! Missing $ inserted.
 <inserted text> 
@@ -2143,9 +2146,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5249:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5209:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5249:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5209:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [125]
 ! Missing $ inserted.
 <inserted text> 
@@ -2242,9 +2245,9 @@ edcharesx[][]apein[]oggle[]ause\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 void\OT1
  []
 
 
-:lstlisting5252:lthtmlCropMarkHeight:=57.91801pt
+:lstlisting5212:lthtmlCropMarkHeight:=57.91801pt
 
-:lstlisting5252:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5212:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [126]
 ! Missing $ inserted.
 <inserted text> 
@@ -2307,9 +2310,9 @@ C
  []
 
 
-:lstlisting5255:lthtmlCropMarkHeight:=57.45746pt
+:lstlisting5215:lthtmlCropMarkHeight:=57.45746pt
 
-:lstlisting5255:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5215:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [127]
 ! Missing $ inserted.
 <inserted text> 
@@ -2328,9 +2331,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5258:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5218:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5258:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5218:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [128]
 ! Missing $ inserted.
 <inserted text> 
@@ -2349,9 +2352,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5261:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5221:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5261:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5221:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [129]
 ! Missing $ inserted.
 <inserted text> 
@@ -2370,9 +2373,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5264:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5224:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5264:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5224:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [130]
 ! Missing $ inserted.
 <inserted text> 
@@ -2391,9 +2394,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5267:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5227:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5267:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5227:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [131]
 ! Missing $ inserted.
 <inserted text> 
@@ -2412,9 +2415,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5270:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5230:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5270:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5230:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [132]
 ! Missing $ inserted.
 <inserted text> 
@@ -2433,9 +2436,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5273:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5233:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5273:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5233:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [133]
 ! Missing $ inserted.
 <inserted text> 
@@ -2454,9 +2457,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5276:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5236:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5276:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5236:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [134]
 ! Missing $ inserted.
 <inserted text> 
@@ -2475,9 +2478,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5279:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5239:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5279:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5239:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [135]
 ! Missing $ inserted.
 <inserted text> 
@@ -2496,9 +2499,9 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-:lstlisting5282:lthtmlCropMarkHeight:=31.59999pt
+:lstlisting5242:lthtmlCropMarkHeight:=31.59999pt
 
-:lstlisting5282:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:lstlisting5242:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [136]
 ! Missing \endcsname inserted.
 <to be read again> 
@@ -2618,9 +2621,9 @@ the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
 
-:table6159:lthtmlCropMarkHeight:=6.0pt
+:table6027:lthtmlCropMarkHeight:=6.0pt
 
-:table6159:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:table6027:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 ! You can't use `\let' after \advance.
 \@ignorefalse ->\global \let 
                              \if@ignore \iffalse 
@@ -2645,10 +2648,10 @@ the matching `\fi'. I've inserted a `\fi'; this might work.
 
  
 Here is how much of TeX's memory you used:
- 6707 strings out of 480478
- 109887 string characters out of 5905960
- 567085 words of memory out of 5000000
- 22536 multiletter control sequences out of 15000+600000
+ 6708 strings out of 480478
+ 110194 string characters out of 5905960
+ 567097 words of memory out of 5000000
+ 22537 multiletter control sequences out of 15000+600000
  536090 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,10n,57p,795b,1319s stack positions out of 5000i,500n,10000p,200000b,80000s

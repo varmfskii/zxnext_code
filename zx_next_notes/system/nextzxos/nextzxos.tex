@@ -42,6 +42,7 @@ Get IDEDOS version number
 \$00A3 \textbf{IDE\_INTERFACE}
 
 Initialise card interfaces
+
 \$00A6 \textbf{IDE\_INIT}
 
 Initialise IDEDOS
@@ -115,25 +116,25 @@ Set byte in type-specific partition information
 
 Open a swap partition (file)
 
-A swap file will be opened on success. The file must be unfragmented
-or the call will return with error \$4a (rc\_fragmented). Further swap
-related calls will use units related to the selected block size.
-
-Entry:
-\begin{itemize}
-\item[] A bits 0-6 = block size, 1-32 512-byte sectors
-  \begin{itemize}
-  \item[] A bit 7 = 0, open available system swap file
-    (c:/nextzxos/swp-N.p3d) that is large enough.
-  \item[] BC=max block size required
-  \end{itemize}
-  \begin{itemize}
-  \item[] A bit 7 = 1, open indicated swap file
-    (c:/nextzxos/swp-N.p3d) that is large enough.
-  \item[] BC=\$ff terminated pointer to swap file name
-  \end{itemize}
-\end{itemize}
-Exit: IX=swap handle
+%A swap file will be opened on success. The file must be unfragmented
+%or the call will return with error \$4a (rc\_fragmented). Further swap
+%related calls will use units related to the selected block size.
+%
+%Entry:
+%\begin{itemize}
+%\item[] A bits 0-6 = block size, 1-32 512-byte sectors
+%  \begin{itemize}
+%  \item[] A bit 7 = 0, open available system swap file
+%    (c:/nextzxos/swp-N.p3d) that is large enough.
+%  \item[] BC=max block size required
+%  \end{itemize}
+%  \begin{itemize}
+%  \item[] A bit 7 = 1, open indicated swap file
+%    (c:/nextzxos/swp-N.p3d) that is large enough.
+%  \item[] BC=\$ff terminated pointer to swap file name
+%  \end{itemize}
+%\end{itemize}
+%Exit: IX=swap handle
 
 \$00DC \textbf{IDE\_SWAP\_CLOSE}
 
@@ -171,47 +172,47 @@ Change block size of swap partition
 
 Map drive to partition or physical device
 
-Entry:
-\begin{itemize}
-\item[] A = Unit 0-15 (4=RAMdisk)
-\item[] BC=partition number (A != 4)
-\item[] A = \$ff for filesystem image
-\item[] BC=\$ff terminated image filename
-\item[] L=drive letter A-P
-\end{itemize}
-Exit: IX is preserved
+%Entry:
+%\begin{itemize}
+%\item[] A = Unit 0-15 (4=RAMdisk)
+%\item[] BC=partition number (A != 4)
+%\item[] A = \$ff for filesystem image
+%\item[] BC=\$ff terminated image filename
+%\item[] L=drive letter A-P
+%\end{itemize}
+%Exit: IX is preserved
 
 \index{IDE\_DOS\_UNMAP}
 \$00F4 (244) \textbf{IDE\_DOS\_UNMAP}
 
 Unmap drive
 
-Remove mapping from the specified drive
-
-Entry: L=drive letter A-P\\
-Exit: IX is preserved
+%Remove mapping from the specified drive
+%
+%Entry: L=drive letter A-P\\
+%Exit: IX is preserved
 
 \index{IDE\_DOS\_MAPPING}
 \$00F7 (247) \textbf{IDE\_DOS\_MAPPING}
 
 Get drive mapping
 
-Entry:
-\begin{itemize}
-\item[] L=drive letter A-P
-\item[] BC=pointer to 18-byte buffer
-\end{itemize}
-Exit:
-\begin{itemize}
-\item[] Zero set: drive not mapped
-\item[] Zero clear:
-  \begin{itemize}
-  \item[] A=Unit 0-15, 4=RAMdisk, \$ff=filesystem image
-  \item[] BC=partition number
-  \item[] buffer contains description or nothing
-  \end{itemize}
-\item[] IX is preserved
-\end{itemize}
+%Entry:
+%\begin{itemize}
+%\item[] L=drive letter A-P
+%\item[] BC=pointer to 18-byte buffer
+%\end{itemize}
+%Exit:
+%\begin{itemize}
+%\item[] Zero set: drive not mapped
+%\item[] Zero clear:
+%  \begin{itemize}
+%  \item[] A=Unit 0-15, 4=RAMdisk, \$ff=filesystem image
+%  \item[] BC=partition number
+%  \item[] buffer contains description or nothing
+%  \end{itemize}
+%\item[] IX is preserved
+%\end{itemize}
 
 \$00FA \textbf{IDE\_DOS\_UNPERMANENT}
 
@@ -222,11 +223,11 @@ Remove permanent drive mapping
 
 Load a snapshot
 
-Loads a supported snapshot (currently .Z80, .SNA, .O, or .P). Call
-must be made in layer 0 mode. For .O and .P SP bust be <\$8000.
-
-Entry: HL=\$ff terminated filespec
-Exit: Does not return on success.
+%Loads a supported snapshot (currently .Z80, .SNA, .O, or .P). Call
+%must be made in layer 0 mode. For .O and .P SP bust be <\$8000.
+%
+%Entry: HL=\$ff terminated filespec
+%Exit: Does not return on success.
 
 \$0100 \textbf{DOS\_INITIALISE}
 
@@ -241,40 +242,43 @@ Get +3DOS issue and version numbers
 
 Create and/or open a file
 
-Opeens the file corresponding to the filename pointed to by HL.
-
-Entry:
-\begin{itemize}
-\item[] B = File number 0-15
-\item[] C = Access mode required
-  \begin{itemize}
-  \item[] 1 = exclusive-read
-  \item[] 2 = exclusive-write
-  \item[] 3 = exclusive-read/write
-  \item[] 5 = shared-read
-  \end{itemize}
-\item[] D = Create action
-  \begin{itemize}
-  \item[] 0 - Error if file does not exist  
-  \item[] 1 - Create and open new file with header
-  \item[] 2 - Create and open new file without header
-  \end{itemize}
-\item[] E = Open action
-  \begin{itemize}
-  \item[] 0 - Error if file already exist  s
-  \item[] 1 - Open file and read header
-  \item[] 2 - Open file and ignore header
-  \item[] 3 - Erase filename.BAK, rename file to filename.BAK, follow
-    create action
-  \item[] 4 - Erase existing file, follow create action
-  \end{itemize}
-\item[] HL = Address of filename (no wildcards, unless D=0 and E=1 or 2)
-\end{itemize}
-Exit:
-\begin{itemize}
-\item[] New file: Zero set
-\item[] Existing file: Zero clear
-\end{itemize}
+%Opens the file corresponding to the filename pointed to by HL.
+%
+%Entry:
+%\begin{itemize}
+%\item[] B = File number 0-15
+%\item[] C = Access mode required
+%  \begin{itemize}
+%  \item bits 7-3 = Reserved, must be 0
+%  \item bits 2-0 = Access mode
+%  \item[] 1 = exclusive-read
+%  \item[] 2 = exclusive-write
+%  \item[] 3 = exclusive-read/write
+%  \item[] 5 = shared-read
+%  \end{itemize}
+%\item[] D = Create action
+%  \begin{itemize}
+%  \item[] 0 - Error if file does not exist  
+%  \item[] 1 - Create and open new file with header
+%  \item[] 2 - Create and open new file without header
+%  \end{itemize}
+%\item[] E = Open action
+%  \begin{itemize}
+%  \item[] 0 - Error if file already exists
+%  \item[] 1 - Open file and read header
+%  \item[] 2 - Open file and ignore header
+%  \item[] 3 - Erase filename.BAK, rename file to filename.BAK, follow
+%    create action
+%  \item[] 4 - Erase existing file, follow create action
+%  \end{itemize}
+%\item[] HL = Address of filename (no wildcards, unless D=0 and E=1 or 2)
+%\end{itemize}
+%Exit:
+%\begin{itemize}
+%\item[] New file: Carry set, Zero set
+%\item[] Existing file: Carry Set, Zero clear
+%\item[] Error: Carry clear, A = Error number
+%\end{itemize}
 
 \$0109 \textbf{DOS\_CLOSE}
 
@@ -309,50 +313,50 @@ Write a byte
 
 Catalog disk directory
 
-Fills a buffer with part of the directory indicated by the path
-pointed to by HL. If the buffer is filled with zeros, the call places
-the first n entries from the directory into the buffer. If it begins
-with a directory entry, it fills the buffer starting with that
-directory entry. Directory entries are 13 bytes long and consist of an
-8-byte filename, a 3-byte type (extension), and a 2-byte size. Shorter
-filenames and types are padded with spaces. The most significant bit
-of the filename and type may be set to indicicate extra information
-about the file.
-
-Entry:
-\begin{itemize}
-\item[] B = size of buffer in entries
-\item[] C = Filter
-  \begin{itemize}
-  \item[] bit 0: Include system files
-  \item[] bit 1: Set bit 7 of f7 if entry has a valid long file name
-  \item[] bit 2: Include directories, set bit 7 of f8 for directories
-  \item[] bits 3-7: reserved (0) 
-  \end{itemize}
-\item[] DE = Address of buffer
-\item[] HL = Address of directory name (wildcards permitted)
-\end{itemize}
-Exit:
-\begin{itemize}
-\item[] B = number of completed entries, if the size that is passed,
-  there may be more entries
-\item[] HL = Directory handle for long filenames, used by
-  IDE\_GET\_LFN
-\end{itemize}
+%Fills a buffer with part of the directory indicated by the path
+%pointed to by HL. If the buffer is filled with zeros, the call places
+%the first n entries from the directory into the buffer. If it begins
+%with a directory entry, it fills the buffer starting with that
+%directory entry. Directory entries are 13 bytes long and consist of an
+%8-byte filename, a 3-byte type (extension), and a 2-byte size. Shorter
+%filenames and types are padded with spaces. The most significant bit
+%of the filename and type may be set to indicicate extra information
+%about the file.
+%
+%Entry:
+%\begin{itemize}
+%\item[] B = size of buffer in entries
+%\item[] C = Filter
+%  \begin{itemize}
+%  \item[] bit 0: Include system files
+%  \item[] bit 1: Set bit 7 of f7 if entry has a valid long file name
+%  \item[] bit 2: Include directories, set bit 7 of f8 for directories
+%  \item[] bits 3-7: reserved (0) 
+%  \end{itemize}
+%\item[] DE = Address of buffer
+%\item[] HL = Address of directory name (wildcards permitted)
+%\end{itemize}
+%Exit:
+%\begin{itemize}
+%\item[] B = number of completed entries, if the size that is passed,
+%  there may be more entries
+%\item[] HL = Directory handle for long filenames, used by
+%  IDE\_GET\_LFN
+%\end{itemize}
 
 \index{DOS\_FREE\_SPACE}
 \$0121 (289) \textbf{DOS\_FREE\_SPACE}
 
 Free space on disk
 
-How much free space is on this disk?
-
-Entry: A = Drive, ASCII A-P\\
-Exit:
-\begin{itemize}
-\item[] HL = Free space in kB up to 65535k
-\item[] BCDE = Free space in kB
-\end{itemize}
+%How much free space is on this disk?
+%
+%Entry: A = Drive, ASCII A-P\\
+%Exit:
+%\begin{itemize}
+%\item[] HL = Free space in kB up to 65535k
+%\item[] BCDE = Free space in kB
+%\end{itemize}
 
 \$0124 \textbf{DOS\_DELETE}
 
@@ -379,8 +383,8 @@ Set/get default user number
 
 Get file pointer for random access
 
-Entry: B = File number\\
-Exit: DEHL = File Pointer
+%Entry: B = File number
+%Exit: DEHL = File Pointer
 
 \$0136 \textbf{DOS\_SET\_POSITION}
 
@@ -391,11 +395,11 @@ Set file pointer for random access
 
 Get end of file position for random access
 
-Gets the first position after the last byte written without
-considering soft-EOF. This does not accect the file pointer.
-
-Entry: B = File number\\
-Exit: DEHL = EOF position
+%Gets the first position after the last byte written without
+%considering soft-EOF. This does not accect the file pointer.
+%
+%Entry: B = File number\\
+%Exit: DEHL = EOF position
 
 \$013C \textbf{DOS\_GET\_1346}
 
@@ -542,34 +546,34 @@ Get number of open partitions
 
 Create, delete, change or get directory
 
-Read or manipulate the IDE path (directory), does not affect what the
-current default drive is.\\
-rc\_path\_change: change directory\\
-rc\_path\_get: get current directory\\
-rc\_path\_make: create a new directory\\
-rc\_path\_delete: remove a directory
-
-Entry:
-\begin{itemize}
-\item[] A=reason code
-  \begin{itemize}
-  \item[] 0=rc\_path\_change
-  \item[] 1=rc\_path\_get
-  \item[] 2=rc\_path\_make
-  \item[] 3=rc\_path\_delete
-  \end{itemize}
-  \item[] HL=pointer to \$ff terminated filespec or buffer for
-    returned filespec data (256 bytes)
-\end{itemize}
-Exit: IY is affected
+%Read or manipulate the IDE path (directory), does not affect what the
+%current default drive is.\\
+%rc\_path\_change: change directory\\
+%rc\_path\_get: get current directory\\
+%rc\_path\_make: create a new directory\\
+%rc\_path\_delete: remove a directory
+%
+%Entry:
+%\begin{itemize}
+%\item[] A=reason code
+%  \begin{itemize}
+%  \item[] 0=rc\_path\_change
+%  \item[] 1=rc\_path\_get
+%  \item[] 2=rc\_path\_make
+%  \item[] 3=rc\_path\_delete
+%  \end{itemize}
+%  \item[] HL=pointer to \$ff terminated filespec or buffer for
+%    returned filespec data (256 bytes)
+%\end{itemize}
+%Exit: IY is affected
 
 \index{IDE\_CAPACITY}
 \$01b4 (436) \textbf{IDE\_CAPACITY}
 
 Get card capacity
 
-Entry: C=unit (0 or 1)\\
-Exit: DEHL=total card capacity in 512-byte sectors
+%Entry: C=unit (0 or 1)
+%Exit: DEHL=total card capacity in 512-byte sectors
 
 \index{IDE\_GET\_LFN}
 \$01b7 (439) \textbf{IDE\_GET\_LFN}
@@ -578,61 +582,61 @@ Get long filename
 
 Obtain a long file name and other file information.
 
-Entry:
-\begin{itemize}
-\item[] HL=address of filespec provided by last DOS\_CATALOG call
-\item[] IX=directory handle provided by last DOS\_CATALOG call
-\item[] DE=address of a file entry filled by the last DOS\_CATALOG call
-\item[] BC=address of a 261-byte buffer to receive the long filename
-\end{itemize}
-Exit:
-\begin{itemize}
-\item[] buffer contains file name
-\item[] BC=date (MS-DOS format)
-\item[] DE=time (MS-DOS format)
-\item[] HLIX=filesize, bytes (for directories 0)
-\end{itemize}
+%Entry:
+%\begin{itemize}
+%\item[] HL=address of filespec provided by last DOS\_CATALOG call
+%\item[] IX=directory handle provided by last DOS\_CATALOG call
+%\item[] DE=address of a file entry filled by the last DOS\_CATALOG call
+%\item[] BC=address of a 261-byte buffer to receive the long filename
+%\end{itemize}
+%Exit:
+%\begin{itemize}
+%\item[] buffer contains file name
+%\item[] BC=date (MS-DOS format)
+%\item[] DE=time (MS-DOS format)
+%\item[] HLIX=filesize, bytes (for directories 0)
+%\end{itemize}
 
 \index{IDE\_BROWSER}
 \$01ba (442) \textbf{IDE\_BROWSER}
 
 File browser
 
-Run the file browser. The filetypes buffer pointed to by HL is a \$ff
-terminated buffer of filetypes. Each filetype consists of a length
-followed by a type description. Types are the file extension, wild
-cards ? and * are permitted, a colon (:) and an optional command to
-execute on the filetype with vertical bar representing the filemane in
-the command. The help text may contain window control codes, but if
-the character size is changed, it must be returned to size 5 at the
-end of the string.
-
-Entry:
-\begin{itemize}
-\item[] IY=\$5c3a (ERR\_NR)
-\item[] HL=address of supported filetypes buffer
-\item[] DE=address of \$ff terminated help text
-\item[] A=browser capability mask
-  \begin{itemize}
-  \item[] bit 0: BROSWERCAPS\_COPY - files may be copied
-  \item[] bit 1: BROSWERCAPS\_RENAME - files/dirs may be renamed
-  \item[] bit 2: BROSWERCAPS\_MKDIR - directories may be created
-  \item[] bit 3: BROSWERCAPS\_ERASE - files/dirs may be deleted
-  \item[] bit 4: BROSWERCAPS\_REMOUNT - SD card may be remounted
-  \item[] bit 5: BROSWERCAPS\_UNMOUNT - drives may be unmounted
-  \item[] bit 6: reserved (0)
-  \item[] bit 7: BROSWERCAPS\_SYSCFG - system use - use browser.cfg
-  \end{itemize}
-\end{itemize}
-Exit:
-\begin{itemize}
-\item[] Zero flag set: file selected (ENTER pressed)
-  \begin{itemize}
-  \item[] HL=address of short \$ff terminated filename in RAM 7
-  \item[] DE=address of long \$ff teminated filename in RAM 7
-  \end{itemize}
-\item[] Zero flag clear: no file selected (SPACE/BREAK pressed)
-\end{itemize}
+%Run the file browser. The filetypes buffer pointed to by HL is a \$ff
+%terminated buffer of filetypes. Each filetype consists of a length
+%followed by a type description. Types are the file extension, wild
+%cards ? and * are permitted, a colon (:) and an optional command to
+%execute on the filetype with vertical bar representing the filemane in
+%the command. The help text may contain window control codes, but if
+%the character size is changed, it must be returned to size 5 at the
+%end of the string.
+%
+%Entry:
+%\begin{itemize}
+%\item[] IY=\$5c3a (ERR\_NR)
+%\item[] HL=address of supported filetypes buffer
+%\item[] DE=address of \$ff terminated help text
+%\item[] A=browser capability mask
+%  \begin{itemize}
+%  \item[] bit 0: BROSWERCAPS\_COPY - files may be copied
+%  \item[] bit 1: BROSWERCAPS\_RENAME - files/dirs may be renamed
+%  \item[] bit 2: BROSWERCAPS\_MKDIR - directories may be created
+%  \item[] bit 3: BROSWERCAPS\_ERASE - files/dirs may be deleted
+%  \item[] bit 4: BROSWERCAPS\_REMOUNT - SD card may be remounted
+%  \item[] bit 5: BROSWERCAPS\_UNMOUNT - drives may be unmounted
+%  \item[] bit 6: reserved (0)
+%  \item[] bit 7: BROSWERCAPS\_SYSCFG - system use - use browser.cfg
+%  \end{itemize}
+%\end{itemize}
+%Exit:
+%\begin{itemize}
+%\item[] Zero flag set: file selected (ENTER pressed)
+%  \begin{itemize}
+%  \item[] HL=address of short \$ff terminated filename in RAM 7
+%  \item[] DE=address of long \$ff teminated filename in RAM 7
+%  \end{itemize}
+%\item[] Zero flag clear: no file selected (SPACE/BREAK pressed)
+%\end{itemize}
 
 \index{IDE\_BANK}
 \$01bd (445) \textbf{IDE\_BANK}
@@ -694,28 +698,28 @@ Obtain a map of card addresses describing the space occupies by the
 file. Can be called multiple times if the buffer is filled, continuing
 from previous.
 
-Entry:
-\begin{itemize}
-\item[] A=file handle (just opened, or following previous DISK\_FILEMAP calls)
-\item[] IX=buffer
-\item[] DE=max entries (each 6 bytes: 4 byte address, 2 byte sector count)
-\end{itemize}
-Exit (success):\\
-Fc=0\\
-DE=max entries-number of entries returned\\
-HL=address in buffer after last entry\\
-A=card flags: bit 0=card id (0 or 1)\\
-bit 1=0 for byte addressing, 1 for block addressing
-
-Exit (failure):\\
-Fc=1\\
-A=error
-
-NOTES:\\
-Each entry may describe an area of the file between 2K and just under 32MB\\
-in size, depending upon the fragmentation and disk format.\\
-Please see example application code, stream.asm, for full usage information\\
-(available separately or at the end of this document).
+%Entry:
+%\begin{itemize}
+%\item[] A=file handle (just opened, or following previous DISK\_FILEMAP calls)
+%\item[] IX=buffer
+%\item[] DE=max entries (each 6 bytes: 4 byte address, 2 byte sector count)
+%\end{itemize}
+%Exit (success):\\
+%Fc=0\\
+%DE=max entries-number of entries returned\\
+%HL=address in buffer after last entry\\
+%A=card flags: bit 0=card id (0 or 1)\\
+%bit 1=0 for byte addressing, 1 for block addressing
+%
+%Exit (failure):\\
+%Fc=1\\
+%A=error
+%
+%NOTES:\\
+%Each entry may describe an area of the file between 2K and just under 32MB\\
+%in size, depending upon the fragmentation and disk format.\\
+%Please see example application code, stream.asm, for full usage information\\
+%(available separately or at the end of this document).
 
 \textbf{DISK\_STREAM\_BYTES}
 
@@ -729,15 +733,16 @@ void *esx_disk_stream_bytes(void *dst,uint16_t len)
 unsigned char esx_disk_stream_end(void)
 \end{lstlisting}
 
-Stop current streaming operation.\\
-Entry: A=card flags\\
-Exit (success): Fc=0\\
-Exit (failure): Fc=1, A=esx\_edevicebusy
+Stop current streaming operation.
 
-NOTES:\\
-This call must be made to terminate a streaming operation.\\
-Please see example application code, stream.asm, for full usage information\\
-(available separately or at the end of this document).
+%Entry: A=card flags\\
+%Exit (success): Fc=0\\
+%Exit (failure): Fc=1, A=esx\_edevicebusy
+%
+%NOTES:\\
+%This call must be made to terminate a streaming operation.\\
+%Please see example application code, stream.asm, for full usage information\\
+%(available separately or at the end of this document).
 
 \textbf{DISK\_STREAM\_SECTORS}
 
@@ -751,22 +756,23 @@ void *esx_disk_stream_sectors(void *dst,uint8_t sectors)
 unsigned char esx_disk_stream_start(struct esx_filemap_entry *entry)
 \end{lstlisting}
 
-Start reading from the card in streaming mode.\\
-Entry: IXDE=card address\\
-BC=number of 512-byte blocks to stream\\
-A=card flags\\
-Exit (success): Fc=0\\
-B=0 for SD/MMC protocol, 1 for IDE protocol\\
-C=8-bit data port\\
-Exit (failure): Fc=1, A=esx\_edevicebusy
+Start reading from the card in streaming mode.
 
-NOTES:\\
-On the Next, this call always returns with B=0 (SD/MMC protocol) and C=\$EB\\
-When streaming using the SD/MMC protocol, after every 512 bytes you must read\\
-a 2-byte CRC value (which can be discarded) and then wait for a \$FE value\\
-indicating that the next block is ready to be read.\\
-Please see example application code, stream.asm, for full usage information\\
-(available separately or at the end of this document).
+%Entry: IXDE=card address
+%BC=number of 512-byte blocks to stream\\
+%A=card flags\\
+%Exit (success): Fc=0\\
+%B=0 for SD/MMC protocol, 1 for IDE protocol\\
+%C=8-bit data port\\
+%Exit (failure): Fc=1, A=esx\_edevicebusy
+%
+%NOTES:\\
+%On the Next, this call always returns with B=0 (SD/MMC protocol) and C=\$EB\\
+%When streaming using the SD/MMC protocol, after every 512 bytes you must read\\
+%a 2-byte CRC value (which can be discarded) and then wait for a \$FE value\\
+%indicating that the next block is ready to be read.\\
+%Please see example application code, stream.asm, for full usage information\\
+%(available separately or at the end of this document).
 
 \textbf{DOS\_CATALOG}
 
@@ -787,21 +793,50 @@ unsigned char esx_dos_get_drive(void)
 unsigned char esx_dos_set_drive(unsigned char drive)
 \end{lstlisting}
 
+\subsection{esxDOS compatible API}
+
+The esxDOS-compatible API is a bit simpler to use than the
++3DOS-compatible API.
+
+To make a call, you only need to set up the entry parameters as
+indicated and perform a RST \$08; DEFB hook\_code. On return, registers
+AF,BC,DE,HL will all be changed. IX,IY and the alternate registers are
+never changed (except for M\_P3DOS).
+
+(Note that the standard 48K BASIC ROM must be paged in to the bottom
+of memory, but this is the usual situation after starting a machine
+code program with a USR function call).
+
+Notice that error codes are different from those returned by +3DOS
+calls, and also the carry flag is SET for an error condition when
+returning from an esxDOS call (instead of RESET, as is the case for
++3DOS).
+
+If desired, you can use the M\_GETERR hook to generate a BASIC error
+report for any error returned, or even use it to generate your own
+custom BASIC error report.
+
+All of the calls where a filename is specified will accept long
+filenames (LFNs) and most will accept wildcards (for an operation such
+as F\_OPEN where a single file is always used, the first matching
+filename will be used).
+
 \$00A9 \textbf{F\_CHDIR}
 
 \begin{lstlisting}[language=C]
 unsigned char esx_f_chdir(unsigned char *pathname)
 \end{lstlisting}
 
-Change directory.\\
-Entry:\\
-A=drive specifier (overridden if filespec includes a drive)\\
-IX=path, null-terminated\\
-Exit (success):\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Change directory.
+
+%Entry:\\
+%A=drive specifier (overridden if filespec includes a drive)\\
+%IX=path, null-terminated\\
+%Exit (success):\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 \$00AF \textbf{F\_CHMOD}
 
@@ -809,25 +844,26 @@ A=error code
 unsigned char esx_f_chmod(unsigned char *filename, uint8_t attr_mask, uint8_t attr)
 \end{lstlisting}
 
-Modify file attributes.\\
-Entry:\\
-A=drive specifier (overridden if filespec includes a drive)\\
-IX=filespec, null-terminated\\
-B=attribute values bitmap\\
-C=bitmap of attributes to change (1=change, 0=do not change)
+Modify file attributes.
 
-Bitmasks for B and C are any combination of:\\
-A\_WRITE \%00000001\\
-A\_READ \%10000000\\
-A\_RDWR \%10000001\\
-A\_HIDDEN \%00000010\\
-A\_SYSTEM \%00000100\\
-A\_ARCH \%00100000\\
-Exit (success):\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+%Entry:
+%A=drive specifier (overridden if filespec includes a drive)\\
+%IX=filespec, null-terminated\\
+%B=attribute values bitmap\\
+%C=bitmap of attributes to change (1=change, 0=do not change)
+%
+%Bitmasks for B and C are any combination of:\\
+%A\_WRITE \%00000001\\
+%A\_READ \%10000000\\
+%A\_RDWR \%10000001\\
+%A\_HIDDEN \%00000010\\
+%A\_SYSTEM \%00000100\\
+%A\_ARCH \%00100000\\
+%Exit (success):\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 
 \$009B\textbf{F\_CLOSE}
@@ -836,15 +872,15 @@ A=error code
 unsigned char esx_f_close(unsigned char handle)
 \end{lstlisting}
 
-Close a file or directory.\\
-Entry:\\
-A=file handle or directory handle\\
-Exit (success):\\
-Fc=0\\
-A=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Close a file or directory.
+%Entry:\\
+%A=file handle or directory handle\\
+%Exit (success):\\
+%Fc=0\\
+%A=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 \textbf{F\_CLOSEDIR}
 
@@ -858,15 +894,16 @@ unsigned char esx_f_closedir(unsigned char handle)
 uint32_t esx_f_fgetpos(unsigned char handle)
 \end{lstlisting}
 
-Get current file position.\\
-Entry:\\
-A=file handle\\
-Exit (success):\\
-Fc=0\\
-BCDE=current position\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Get current file position.
+
+%Entry:\\
+%A=file handle\\
+%Exit (success):\\
+%Fc=0\\
+%BCDE=current position\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 \$00A1 \textbf{F\_FSTAT}
 
@@ -874,24 +911,25 @@ A=error code
 unsigned char esx_f_fstat(unsigned char handle, struct esx_stat *es)
 \end{lstlisting}
 
-Get file information/status.\\
-Entry:\\
-A=file handle\\
-IX=11-byte buffer address\\
-Exit (success):\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Get file information/status.
 
-NOTES:\\
-The following details are returned in the 11-byte buffer:\\
-+0(1) '*'\\
-+1(1) \$81\\
-+2(1) file attributes (MS-DOS format)\\
-+3(2) timestamp (MS-DOS format)\\
-+5(2) datestamp (MS-DOS format)\\
-+7(4) file size in bytes
+%Entry:\\
+%A=file handle\\
+%IX=11-byte buffer address\\
+%Exit (success):\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
+%
+%Note:\\
+%The following details are returned in the 11-byte buffer:\\
+%+0(1) '*'\\
+%+1(1) \$81\\
+%+2(1) file attributes (MS-DOS format)\\
+%+3(2) timestamp (MS-DOS format)\\
+%+5(2) datestamp (MS-DOS format)\\
+%+7(4) file size in bytes
 
 \$00A2 \textbf{F\_FTRUNC}
 
@@ -899,27 +937,27 @@ The following details are returned in the 11-byte buffer:\\
 unsigned char esx_f_ftrunc(unsigned char handle, uint32_t size)
 \end{lstlisting}
 
-Truncate/extend file.\\
-Entry:\\
-A=file handle\\
-BCDE=new filesize\\
-Exit (success):\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Truncate/extend file.
 
-NOTES:\\
-Sets the filesize to precisely BCDE bytes.\\
-If BCDE<current filesize, the file is trunctated.\\
-If BCDE>current filesize, the file is extended. The extended part is erased\\
-with zeroes.\\
-The file position is unaffected. Therefore, if truncating, make sure to\\
-set the file position within the file before further writes (otherwise it\\
-will be extended again).\\
-+3DOS headers are included as part of the filesize. Truncating such files is\\
-not recommended.
-
+%Entry:\\
+%A=file handle\\
+%BCDE=new filesize\\
+%Exit (success):\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
+%
+%NOTES:\\
+%Sets the filesize to precisely BCDE bytes.\\
+%If BCDE<current filesize, the file is trunctated.\\
+%If BCDE>current filesize, the file is extended. The extended part is erased\\
+%with zeroes.\\
+%The file position is unaffected. Therefore, if truncating, make sure to\\
+%set the file position within the file before further writes (otherwise it\\
+%will be extended again).\\
+%+3DOS headers are included as part of the filesize. Truncating such files is\\
+%not recommended.
 
 \textbf{F\_GET\_CANONICAL\_PATH}
 
@@ -933,15 +971,16 @@ unsigned char esx_f_get_canonical_path(char *pathname, char *canonical)
 unsigned char esx_f_getcwd(unsigned char *buf)
 \end{lstlisting}
 
-Get current working directory.\\
-Entry:\\
-A=drive\\
-IX=buffer for null-terminated path\\
-Exit (success):\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Get current working directory.
+
+%Entry:\\
+%A=drive\\
+%IX=buffer for null-terminated path\\
+%Exit (success):\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 \textbf{F\_GETCWD\_DRIVE}
 
@@ -955,15 +994,16 @@ unsigned char esx_f_getcwd_drive(unsigned char drive, char *buf)
 uint32_t esx_f_getfree(void)
 \end{lstlisting}
 
-Gets free space on drive.\\
-Entry:\\
-A=drive specifier\\
-Exit (success):\\
-Fc=0\\
-BCDE=number of 512-byte blocks free on drive\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Gets free space on drive.
+
+%Entry:\\
+%A=drive specifier\\
+%Exit (success):\\
+%Fc=0\\
+%BCDE=number of 512-byte blocks free on drive\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 \$00AA \textbf{F\_MKDIR}
 
@@ -971,15 +1011,16 @@ A=error code
 unsigned char esx_f_mkdir(unsigned char *pathname)
 \end{lstlisting}
 
-Create directory.\\
-Entry:\\
-A=drive specifier (overridden if filespec includes a drive)\\
-IX=path, null-terminated\\
-Exit (success):\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Create directory.
+
+%Entry:\\
+%A=drive specifier (overridden if filespec includes a drive)\\
+%IX=path, null-terminated\\
+%Exit (success):\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 \$009A \textbf{F\_OPEN}
 
@@ -987,29 +1028,30 @@ A=error code
 unsigned char esx_f_open(unsigned char *filename,unsigned char mode)
 \end{lstlisting}
 
-Open a file.\\
-Entry:\\
-A=drive specifier (overridden if filespec includes a drive)\\
-IX=filespec, null-terminated\\
-B=access modes, a combination of:\\
-any/all of:\\
-esx\_mode\_read \$01 request read access\\
-esx\_mode\_write \$02 request write access\\
-esx\_mode\_use\_header \$40 read/write +3DOS header\\
-plus one of:\\
-esx\_mode\_open\_exist \$00 only open existing file\\
-esx\_mode\_open\_creat \$08 open existing or create file\\
-esx\_mode\_creat\_noexist \$04 create new file, error if exists\\
-esx\_mode\_creat\_trunc \$0c create new file, delete existing
+Open a file.
 
-DE=8-byte buffer with/for +3DOS header data (if specified in mode)\\
-(NB: filetype will be set to \$ff if headerless file was opened)\\
-Exit (success):\\
-Fc=0\\
-A=file handle\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+%Entry:\\
+%A=drive specifier (overridden if filespec includes a drive)\\
+%IX=filespec, null-terminated\\
+%B=access modes, a combination of:\\
+%any/all of:\\
+%esx\_mode\_read \$01 request read access\\
+%esx\_mode\_write \$02 request write access\\
+%esx\_mode\_use\_header \$40 read/write +3DOS header\\
+%plus one of:\\
+%esx\_mode\_open\_exist \$00 only open existing file\\
+%esx\_mode\_open\_creat \$08 open existing or create file\\
+%esx\_mode\_creat\_noexist \$04 create new file, error if exists\\
+%esx\_mode\_creat\_trunc \$0c create new file, delete existing
+%
+%DE=8-byte buffer with/for +3DOS header data (if specified in mode)\\
+%(NB: filetype will be set to \$ff if headerless file was opened)\\
+%Exit (success):\\
+%Fc=0\\
+%A=file handle\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 \$00A3 \textbf{F\_OPENDIR}
 
@@ -1018,17 +1060,18 @@ unsigned char esx_f_opendir(unsigned char *dirname)
 unsigned char esx_f_opendir_ex(unsigned char *dirname,uint8_t mode)
 \end{lstlisting}
 
-Open directory.\\
-Entry:\\
-A=drive specifier (overridden if filespec includes a drive)\\
-IX=directory, null-terminated\\
-B=access mode (only esx\_mode\_use\_header and esx\_mode\_use\_lfn matter)\\
-any/all of:\\
-esx\_mode\_use\_lfn \$10 return long filenames\\
-esx\_mode\_use\_header \$40 read/write +3DOS headers\\
-Exit (success):\\
-A=dir handle\\
-Fc=0
+Open directory.
+
+%Entry:\\
+%A=drive specifier (overridden if filespec includes a drive)\\
+%IX=directory, null-terminated\\
+%B=access mode (only esx\_mode\_use\_header and esx\_mode\_use\_lfn matter)\\
+%any/all of:\\
+%esx\_mode\_use\_lfn \$10 return long filenames\\
+%esx\_mode\_use\_header \$40 read/write +3DOS headers\\
+%Exit (success):\\
+%A=dir handle\\
+%Fc=0
 
 \$009A \textbf{F\_OPEN}
 
@@ -1036,29 +1079,30 @@ Fc=0
 unsigned char esx_f_open_p3(unsigned char *filename,unsigned char mode,struct esx_p3_hdr *h)
 \end{lstlisting}
 
-Open a file.\\
-Entry:\\
-A=drive specifier (overridden if filespec includes a drive)\\
-IX=filespec, null-terminated\\
-B=access modes, a combination of:\\
-any/all of:\\
-esx\_mode\_read \$01 request read access\\
-esx\_mode\_write \$02 request write access\\
-esx\_mode\_use\_header \$40 read/write +3DOS header\\
-plus one of:\\
-esx\_mode\_open\_exist \$00 only open existing file\\
-esx\_mode\_open\_creat \$08 open existing or create file\\
-esx\_mode\_creat\_noexist \$04 create new file, error if exists\\
-esx\_mode\_creat\_trunc \$0c create new file, delete existing
+Open a file.
 
-DE=8-byte buffer with/for +3DOS header data (if specified in mode)\\
-(NB: filetype will be set to \$ff if headerless file was opened)\\
-Exit (success):\\
-Fc=0\\
-A=file handle\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+%Entry:\\
+%A=drive specifier (overridden if filespec includes a drive)\\
+%IX=filespec, null-terminated\\
+%B=access modes, a combination of:\\
+%any/all of:\\
+%esx\_mode\_read \$01 request read access\\
+%esx\_mode\_write \$02 request write access\\
+%esx\_mode\_use\_header \$40 read/write +3DOS header\\
+%plus one of:\\
+%esx\_mode\_open\_exist \$00 only open existing file\\
+%esx\_mode\_open\_creat \$08 open existing or create file\\
+%esx\_mode\_creat\_noexist \$04 create new file, error if exists\\
+%esx\_mode\_creat\_trunc \$0c create new file, delete existing
+%
+%DE=8-byte buffer with/for +3DOS header data (if specified in mode)\\
+%(NB: filetype will be set to \$ff if headerless file was opened)\\
+%Exit (success):\\
+%Fc=0\\
+%A=file handle\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 \$009D \textbf{F\_READ}
 
@@ -1066,22 +1110,23 @@ A=error code
 uint16_t esx_f_read(unsigned char handle, void *dst, size_t nbytes)
 \end{lstlisting}
 
-Read bytes from file.\\
-Entry:\\
-A=file handle\\
-IX=address\\
-BC=bytes to read\\
-Exit (success):\\
-Fc=0\\
-BC=bytes actually read (also in DE)\\
-HL=address following bytes read\\
-Exit (failure):\\
-Fc=1\\
-BC=bytes actually read\\
-A=error code
+Read bytes from file.
 
-NOTES:\\
-EOF is not an error, check BC to determine if all bytes requested were read.
+%Entry:\\
+%A=file handle\\
+%IX=address\\
+%BC=bytes to read\\
+%Exit (success):\\
+%Fc=0\\
+%BC=bytes actually read (also in DE)\\
+%HL=address following bytes read\\
+%Exit (failure):\\
+%Fc=1\\
+%BC=bytes actually read\\
+%A=error code
+%
+%NOTES:\\
+%EOF is not an error, check BC to determine if all bytes requested were read.
 
 \$00A4 \textbf{F\_READDIR}
 
@@ -1089,31 +1134,32 @@ EOF is not an error, check BC to determine if all bytes requested were read.
 unsigned char esx_f_readdir(unsigned char handle,struct esx_dirent *dirent)
 \end{lstlisting}
 
-Read next directory entry.\\
-Entry:\\
-A=handle\\
-IX=buffer\\
-Exit (success):\\
-A=number of entries returned (0 or 1)\\
-If 0, there are no more entries\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Read next directory entry.
 
-Buffer format:\\
-1 byte file attributes (MSDOS format)\\
-? bytes file/directory name, null-terminated\\
-2 bytes timestamp (MSDOS format)\\
-2 bytes datestamp (MSDOS format)\\
-4 bytes file size
-
-NOTES:\\
-If the directory was opened with the esx\_mode\_use\_lfn bit, long filenames\\
-(up to 260 bytes plus terminator) are returned; otherwise short filenames\\
-(up to 12 bytes plus terminator) are returned.\\
-If opened with the esx\_mode\_use\_header bit, after the normal entry follows the\\
-8-byte +3DOS header (for headerless files, type=\$ff, other bytes=zero).
+%Entry:\\
+%A=handle\\
+%IX=buffer\\
+%Exit (success):\\
+%A=number of entries returned (0 or 1)\\
+%If 0, there are no more entries\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
+%
+%Buffer format:\\
+%1 byte file attributes (MSDOS format)\\
+%? bytes file/directory name, null-terminated\\
+%2 bytes timestamp (MSDOS format)\\
+%2 bytes datestamp (MSDOS format)\\
+%4 bytes file size
+%
+%NOTES:\\
+%If the directory was opened with the esx\_mode\_use\_lfn bit, long filenames\\
+%(up to 260 bytes plus terminator) are returned; otherwise short filenames\\
+%(up to 12 bytes plus terminator) are returned.\\
+%If opened with the esx\_mode\_use\_header bit, after the normal entry follows the\\
+%8-byte +3DOS header (for headerless files, type=\$ff, other bytes=zero).
 
 \$00B0 \textbf{F\_RENAME}
 
@@ -1121,16 +1167,17 @@ If opened with the esx\_mode\_use\_header bit, after the normal entry follows th
 unsigned char esx_f_rename(unsigned char *old, unsigned char *new)
 \end{lstlisting}
 
-Rename or move a file.\\
-Entry:\\
-A=drive specifier (overridden if filespec includes a drive)\\
-IX=source filespec, null-terminated\\
-DE=destination filespec, null-terminated\\
-Exit (success):\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Rename or move a file.
+
+%Entry:\\
+%A=drive specifier (overridden if filespec includes a drive)\\
+%IX=source filespec, null-terminated\\
+%DE=destination filespec, null-terminated\\
+%Exit (success):\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 \$00A7 \textbf{F\_REWINDDIR}
 
@@ -1138,14 +1185,15 @@ A=error code
 unsigned char esx_f_rewinddir(unsigned char handle)
 \end{lstlisting}
 
-Rewind directory position to the start of the directory.\\
-Entry:\\
-A=handle\\
-Exit (success):\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Rewind directory position to the start of the directory.
+
+%Entry:\\
+%A=handle\\
+%Exit (success):\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 \$00AB \textbf{F\_RMDIR}
 
@@ -1153,41 +1201,42 @@ A=error code
 unsigned char esx_f_rmdir(unsigned char *pathname)
 \end{lstlisting}
 
-Remove directory.\\
-Entry:\\
-A=drive specifier (overridden if filespec includes a drive)\\
-IX=path, null-terminated\\
-Exit (success):\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Remove directory.
+
+%Entry:\\
+%A=drive specifier (overridden if filespec includes a drive)\\
+%IX=path, null-terminated\\
+%Exit (success):\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 \$009F \textbf{F\_SEEK}
 
 \begin{lstlisting}[language=C]
-uint32_t esx_f_seek(unsigned char handle, uint32_t distance, unsigned char whe
-nce)
+uint32_t esx_f_seek(unsigned char handle, uint32_t distance, unsigned char whence)
 \end{lstlisting}
 
-Seek to position in file.\\
-Entry:\\
-A=file handle\\
-BCDE=bytes to seek\\
-IXL=seek mode:\\
-esx\_seek\_set \$00 set the fileposition to BCDE\\
-esx\_seek\_fwd \$01 add BCDE to the fileposition\\
-esx\_seek\_bwd \$02 subtract BCDE from the fileposition\\
-Exit (success):\\
-Fc=0\\
-BCDE=current position\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Seek to position in file.
 
-NOTES:\\
-Attempts to seek past beginning/end of file leave BCDE=position=0/filesize\\
-respectively, with no error.
+%Entry:\\
+%A=file handle\\
+%BCDE=bytes to seek\\
+%IXL=seek mode:\\
+%esx\_seek\_set \$00 set the fileposition to BCDE\\
+%esx\_seek\_fwd \$01 add BCDE to the fileposition\\
+%esx\_seek\_bwd \$02 subtract BCDE from the fileposition\\
+%Exit (success):\\
+%Fc=0\\
+%BCDE=current position\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
+%
+%NOTES:\\
+%Attempts to seek past beginning/end of file leave BCDE=position=0/filesize\\
+%respectively, with no error.
 
 \$00A6 \textbf{F\_SEEKDIR}
 
@@ -1195,37 +1244,39 @@ respectively, with no error.
 unsigned char esx_f_seekdir(unsigned char handle,uint32_t pos)
 \end{lstlisting}
 
-Set current directory position.\\
-Entry:\\
-A=handle\\
-BCDE=offset in directory to seek to (as returned by F\_TELLDIR)\\
-Exit (success):\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Set current directory position.
+
+%Entry:\\
+%A=handle\\
+%BCDE=offset in directory to seek to (as returned by F\_TELLDIR)\\
+%Exit (success):\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 \$00AC \textbf{F\_STAT}
 
-Get unopened file information/status.\\
-Entry:\\
-A=drive specifier (overridden if filespec includes a drive)\\
-IX=filespec, null-terminated\\
-DE=11-byte buffer address\\
-Exit (success):\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Get unopened file information/status.
 
-NOTES:\\
-The following details are returned in the 11-byte buffer:\\
-+0(1) drive specifier\\
-+1(1) \$81\\
-+2(1) file attributes (MS-DOS format)\\
-+3(2) timestamp (MS-DOS format)\\
-+5(2) datestamp (MS-DOS format)\\
-+7(4) file size in bytes
+%Entry:\\
+%A=drive specifier (overridden if filespec includes a drive)\\
+%IX=filespec, null-terminated\\
+%DE=11-byte buffer address\\
+%Exit (success):\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
+%
+%NOTES:\\
+%The following details are returned in the 11-byte buffer:\\
+%+0(1) drive specifier\\
+%+1(1) \$81\\
+%+2(1) file attributes (MS-DOS format)\\
+%+3(2) timestamp (MS-DOS format)\\
+%+5(2) datestamp (MS-DOS format)\\
+%+7(4) file size in bytes
 
 \$009C \textbf{F\_SYNC}
 
@@ -1233,14 +1284,15 @@ The following details are returned in the 11-byte buffer:\\
 unsigned char esx_f_sync(unsigned char handle)
 \end{lstlisting}
 
-Sync file changes to disk.\\
-Entry:\\
-A=file handle\\
-Exit (success):\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Sync file changes to disk.
+
+%Entry:\\
+%A=file handle\\
+%Exit (success):\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 \$00A5 \textbf{F\_TELLDIR}
 
@@ -1248,41 +1300,42 @@ A=error code
 uint32_t esx_f_telldir(unsigned char handle)
 \end{lstlisting}
 
-Get current directory position.\\
-Entry:\\
-A=handle\\
-Exit (success):\\
-BCDE=current offset in directory\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Get current directory position.
+
+%Entry:\\
+%A=handle\\
+%Exit (success):\\
+%BCDE=current offset in directory\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 \$00AE \textbf{F\_TRUNC}
 
 \begin{lstlisting}[language=C]
-unsigned char esx_f_trunc(unsigned char *filename,uint32_t size
-)
+unsigned char esx_f_trunc(unsigned char *filename,uint32_t size)
 \end{lstlisting}
 
-Truncate/extend unopened file.\\
-Entry:\\
-A=drive specifier (overridden if filespec includes a drive)\\
-IX=source filespec, null-terminated\\
-BCDE=new filesize\\
-Exit (success):\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Truncate/extend unopened file.
 
-NOTES:\\
-Sets the filesize to precisely BCDE bytes.\\
-If BCDE<current filesize, the file is trunctated.\\
-If BCDE>current filesize, the file is extended. The extended part is erased\\
-with zeroes.\\
-+3DOS headers are included as part of the filesize. Truncating such files is\\
-not recommended.
+%Entry:\\
+%A=drive specifier (overridden if filespec includes a drive)\\
+%IX=source filespec, null-terminated\\
+%BCDE=new filesize\\
+%Exit (success):\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
+%
+%NOTES:\\
+%Sets the filesize to precisely BCDE bytes.\\
+%If BCDE<current filesize, the file is trunctated.\\
+%If BCDE>current filesize, the file is extended. The extended part is erased\\
+%with zeroes.\\
+%+3DOS headers are included as part of the filesize. Truncating such files is\\
+%not recommended.
 
 \$00AD \textbf{F\_UNLINK}
 
@@ -1290,15 +1343,16 @@ not recommended.
 unsigned char esx_f_unlink(unsigned char *filename)
 \end{lstlisting}
 
-Delete file.\\
-Entry:\\
-A=drive specifier (overridden if filespec includes a drive)\\
-IX=filespec, null-terminated\\
-Exit (success):\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Delete file.
+
+%Entry:\\
+%A=drive specifier (overridden if filespec includes a drive)\\
+%IX=filespec, null-terminated\\
+%Exit (success):\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
 
 \$009E \textbf{F\_WRITE}
 
@@ -1306,17 +1360,18 @@ A=error code
 uint16_t esx_f_write(unsigned char handle, void *src, size_t nbytes)
 \end{lstlisting}
 
-Write bytes to file.\\
-Entry:\\
-A=file handle\\
-IX=address\\
-BC=bytes to write\\
-Exit (success):\\
-Fc=0\\
-BC=bytes actually written\\
-Exit (failure):\\
-Fc=1\\
-BC=bytes actually written
+Write bytes to file.
+
+%Entry:\\
+%A=file handle\\
+%IX=address\\
+%BC=bytes to write\\
+%Exit (success):\\
+%Fc=0\\
+%BC=bytes actually written\\
+%Exit (failure):\\
+%Fc=1\\
+%BC=bytes actually written
 
 \textbf{IDE\_BANK\_ALLOC}
 
@@ -1351,9 +1406,8 @@ unsigned char esx_ide_bank_total(unsigned char banktype)
 \textbf{IDE\_BROWSER}
 
 \begin{lstlisting}[language=C]
-unsigned char esx_ide_browser(uint8_t browsercaps, void *filetypes, char *help, char *dst_sfn, char *dst_lfn)
+unsigned char esx_ide_browser(uint8_t browsercaps, void *filetypes, char *help,char *dst_sfn, char *dst_lfn)
 \end{lstlisting}
-
 
 \textbf{IDE\_GET\_LFN}
 
@@ -1375,21 +1429,22 @@ unsigned char esx_ide_mode_set(struct esx_mode *mode)
 
 \$0088 \textbf{M\_DOSVER}
 
-Get API version/mode information.\\
-Entry:\\
--\\
-Exit:\\
-For esxDOS <= 0.8.6\\
-Fc=1, error\\
-A=14 ("no such device")
+Get API version/mode information.
 
-For NextOS:\\
-Fc=0, success\\
-B='N',C='X' (NextOS signature)\\
-DE=NextOS version in BCD format: D=major, E=minor version number\\
-eg for NextOS v1.94, DE=\$0194\\
-HL=A=0 if running in NextOS mode (and zero flag is set)\\
-HL,A<>0 if running in 48K mode (and zero flag is reset)
+%Entry:\\
+%-\\
+%Exit:\\
+%For esxDOS <= 0.8.6\\
+%Fc=1, error\\
+%A=14 ("no such device")
+%
+%For NextOS:\\
+%Fc=0, success\\
+%B='N',C='X' (NextOS signature)\\
+%DE=NextOS version in BCD format: D=major, E=minor version number\\
+%eg for NextOS v1.94, DE=\$0194\\
+%HL=A=0 if running in NextOS mode (and zero flag is set)\\
+%HL,A<>0 if running in 48K mode (and zero flag is reset)
 
 \$0092 \textbf{M\_DRVAPI}
 
@@ -1397,40 +1452,41 @@ HL,A<>0 if running in 48K mode (and zero flag is reset)
 unsigned char esx_m_drvapi(struct esx_drvapi *)
 \end{lstlisting}
 
-Access API for installable drivers.\\
-Entry:\\
-C=driver id (0=driver API)\\
-B=call id\\
-HL,DE=other parameters\\
-Exit (success):\\
-Fc=0\\
-other values depend on API call\\
-Exit (failure):\\
-Fc=1\\
-A=0, driver not found\\
-else A=driver-specific error code (esxDOS error code for driver API)\\
-If C=0, the driver API is selected and calls are as follows:\\
-(Note that these are not really useful for user applications; they are used\\
-by the .install/.uninstall dot commands).
+Access API for installable drivers.
 
-B=0, query the RTC\\
-(returns the same results as M\_GETDATE)
-
-B=1, install a driver\\
-D=number of relocations (0-255)\\
-E=driver id, with bit 7=1 if should be called on an IM1 interrupt\\
-HL=address of 512-byte driver code followed by D x 2-byte reloc offsets\\
-Possible error values are:\\
-esx\_eexist (18) driver with same id already installed\\
-esx\_einuse (23) no free driver slots available\\
-esx\_eloadingko (26) bad relocation table
-
-B=2, uninstall a driver\\
-E=driver id (bit 7 ignored)
-
-B=3, get paging value for driver banks\\
-C=port (always \$e3 on ZXNext)\\
-A=paging value for DivMMC bank containing drivers (usually \$82)
+%Entry:\\
+%C=driver id (0=driver API)\\
+%B=call id\\
+%HL,DE=other parameters\\
+%Exit (success):\\
+%Fc=0\\
+%other values depend on API call\\
+%Exit (failure):\\
+%Fc=1\\
+%A=0, driver not found\\
+%else A=driver-specific error code (esxDOS error code for driver API)\\
+%If C=0, the driver API is selected and calls are as follows:\\
+%(Note that these are not really useful for user applications; they are used\\
+%by the .install/.uninstall dot commands).
+%
+%B=0, query the RTC\\
+%(returns the same results as M\_GETDATE)
+%
+%B=1, install a driver\\
+%D=number of relocations (0-255)\\
+%E=driver id, with bit 7=1 if should be called on an IM1 interrupt\\
+%HL=address of 512-byte driver code followed by D x 2-byte reloc offsets\\
+%Possible error values are:\\
+%esx\_eexist (18) driver with same id already installed\\
+%esx\_einuse (23) no free driver slots available\\
+%esx\_eloadingko (26) bad relocation table
+%
+%B=2, uninstall a driver\\
+%E=driver id (bit 7 ignored)
+%
+%B=3, get paging value for driver banks\\
+%C=port (always \$e3 on ZXNext)\\
+%A=paging value for DivMMC bank containing drivers (usually \$82)
 
 \$0095 \textbf{M\_ERRH}
 
@@ -1439,16 +1495,17 @@ void esx_m_errh(void (*handler)(uint8_t error))
 \end{lstlisting}
 
 Install error handler for dot command.\\
-Entry: HL=address of error handler within dot command\\
-(0 to change back to standard handler)
 
-NOTES:\\
-Can only be used from within a dot command.\\
-If any BASIC error occurs during a call to ROM3 (using RST \$10 or RST \$18)\\
-then your error handler will be entered with:\\
-DE=address that would have been returned to if the error had not\\
-occurred\\
-A=BASIC error code-1 (eg 8=9 STOP statement)
+%Entry: HL=address of error handler within dot command\\
+%(0 to change back to standard handler)
+%
+%NOTES:\\
+%Can only be used from within a dot command.\\
+%If any BASIC error occurs during a call to ROM3 (using RST \$10 or RST \$18)\\
+%then your error handler will be entered with:\\
+%DE=address that would have been returned to if the error had not\\
+%occurred\\
+%A=BASIC error code-1 (eg 8=9 STOP statement)
 
 \$008F \textbf{M\_EXECCMD}
 
@@ -1456,26 +1513,27 @@ A=BASIC error code-1 (eg 8=9 STOP statement)
 uint16_t esx_m_execcmd(unsigned char *cmdline)
 \end{lstlisting}
 
-Execute a dot command.\\
-Entry:\\
-IX=address of commandline, excluding the leading "."\\
-terminated with \$00 (or \$0d, or ':')\\
-Exit (success):\\
-Fc=0\\
-Exit (failure):\\
-Fc=1\\
-A=error code (0 means user-defined error)\\
-HL=address of user-defined error message within dot command
+Execute a dot command.
 
-NOTES:\\
-The dot command name can be fully-pathed if desired. If just a name is\\
-provided, it is opened from the C:/BIN directory.\\
-eg: defm "hexdump afile.txt",0 ; runs c:/bin/hexdump\\
-defm "./mycommand.dot afile.txt",0 ; runs mycommand.dot in current\\
-
-If A=0, the dot command has provided its own error message but this is not\\
-normally accessible. It can be read using the M\_GETERR hook.\\
-This hook cannot be used from within another dot command.
+%Entry:\\
+%IX=address of commandline, excluding the leading "."\\
+%terminated with \$00 (or \$0d, or ':')\\
+%Exit (success):\\
+%Fc=0\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code (0 means user-defined error)\\
+%HL=address of user-defined error message within dot command
+%
+%NOTES:\\
+%The dot command name can be fully-pathed if desired. If just a name is\\
+%provided, it is opened from the C:/BIN directory.\\
+%eg: defm "hexdump afile.txt",0 ; runs c:/bin/hexdump\\
+%defm "./mycommand.dot afile.txt",0 ; runs mycommand.dot in current\\
+%
+%If A=0, the dot command has provided its own error message but this is not\\
+%normally accessible. It can be read using the M\_GETERR hook.\\
+%This hook cannot be used from within another dot command.
 
 \$008E \textbf{M\_GETDATE}
 
@@ -1483,16 +1541,17 @@ This hook cannot be used from within another dot command.
 unsigned char esx_m_getdate(struct dos_tm *)
 \end{lstlisting}
 
-Get the current date/time.\\
-Entry:\\
--\\
-Exit:\\
-Fc=0 if RTC present and providing valid date/time, and:\\
-BC=date, in MS-DOS format\\
-DE=time, in MS-DOS format\\
-Fc=1 if no RTC, or invalid date/time, and:\\
-BC=0\\
-DE=0
+Get the current date/time.
+
+%Entry:\\
+%-\\
+%Exit:\\
+%Fc=0 if RTC present and providing valid date/time, and:\\
+%BC=date, in MS-DOS format\\
+%DE=time, in MS-DOS format\\
+%Fc=1 if no RTC, or invalid date/time, and:\\
+%BC=0\\
+%DE=0
 
 \$0093 \textbf{M\_GETERR}
 
@@ -1500,22 +1559,22 @@ DE=0
 void esx_m_geterr(uint16_t error,unsigned char *msg)
 \end{lstlisting}
 
-Entry:\\
-A=esxDOS error code, or 0=user defined error from dot command\\
-if A=0, IX=error message address from dot command
-
-B=0, generate BASIC error report (does not return)\\
-B=1, return error message to 32-byte buffer at DE
-
-NOTES:\\
-Dot commands may use this call to fetch a standard esxDOS error message\\
-(with B=1), but must not use it to generate an error report (with B=0) as\\
-this would short-circuit the tidy-up code.\\
-User programs may use the call to generate any custom error message (and not\\
-just a custom message returned by a dot command). To do this, enter with\\
-A=0 and IX=address of custom message, where IX>=\$4000.\\
-Custom error messages must be terminated with bit 7 set on the final\\
-character.
+%Entry:
+%A=esxDOS error code, or 0=user defined error from dot command\\
+%if A=0, IX=error message address from dot command
+%
+%B=0, generate BASIC error report (does not return)\\
+%B=1, return error message to 32-byte buffer at DE
+%
+%NOTES:\\
+%Dot commands may use this call to fetch a standard esxDOS error message\\
+%(with B=1), but must not use it to generate an error report (with B=0) as\\
+%this would short-circuit the tidy-up code.\\
+%User programs may use the call to generate any custom error message (and not\\
+%just a custom message returned by a dot command). To do this, enter with\\
+%A=0 and IX=address of custom message, where IX>=\$4000.\\
+%Custom error messages must be terminated with bit 7 set on the final\\
+%character.
 
 \$008D \textbf{M\_GETHANDLE}
 
@@ -1523,20 +1582,21 @@ character.
 unsigned char esx_m_gethandle(void)
 \end{lstlisting}
 
-Get the file handle of the currently running dot command\\
-Entry:\\
--\\
-Exit:\\
-A=handle\\
-Fc=0
+Get the file handle of the currently running dot command
 
-NOTES:\\
-This call allows dot commands which are >8K to read further data direct\\
-from their own file (for loading into another memory area, or overlaying\\
-as required into the normal 8K dot command area currently in use).\\
-On entry to a dot command, the file is left open with the file pointer\\
-positioned directly after the first 8K.\\
-This call returns meaningless results if not called from a dot command.
+%Entry:\\
+%-\\
+%Exit:\\
+%A=handle\\
+%Fc=0
+%
+%NOTES:\\
+%This call allows dot commands which are >8K to read further data direct\\
+%from their own file (for loading into another memory area, or overlaying\\
+%as required into the normal 8K dot command area currently in use).\\
+%On entry to a dot command, the file is left open with the file pointer\\
+%positioned directly after the first 8K.\\
+%This call returns meaningless results if not called from a dot command.
 
 \$0089 \textbf{M\_GETSETDRV}
 
@@ -1545,27 +1605,28 @@ unsigned char esx_m_getdrv(void)
 unsigned char esx_m_setdrv(unsigned char drive)
 \end{lstlisting}
 
-Get or set the default drive.\\
-Entry:\\
-A=0, get the default drive\\
-A<>0, set the default drive to A\\
-bits 7..3=drive letter (0=A...15=P)\\
-bits 2..0=drive number (0) -- change: set a bit so drive A can be selected\\
-Exit (success):\\
-Fc=0\\
-A=default drive, encoded as:\\
-bits 7..3=drive letter (0=A...15=P)\\
-bits 2..0=drive number (0)\\
-Exit (failure):\\
-Fc=1\\
-A=error code
+Get or set the default drive.
 
-NOTE:\\
-This call isn't really very useful, as it is not necessary to provide a\\
-specific drive to calls which need a drive/filename.\\
-For such calls, you can instead provide:\\
-A='*' use the default drive\\
-A='\$' use the system drive (C:, where the NEXTOS and BIN directories are)
+%Entry:\\
+%A=0, get the default drive\\
+%A<>0, set the default drive to A\\
+%bits 7..3=drive letter (0=A...15=P)\\
+%bits 2..0=drive number (0) -- change: set a bit so drive A can be selected\\
+%Exit (success):\\
+%Fc=0\\
+%A=default drive, encoded as:\\
+%bits 7..3=drive letter (0=A...15=P)\\
+%bits 2..0=drive number (0)\\
+%Exit (failure):\\
+%Fc=1\\
+%A=error code
+%
+%NOTE:\\
+%This call isn't really very useful, as it is not necessary to provide a\\
+%specific drive to calls which need a drive/filename.\\
+%For such calls, you can instead provide:\\
+%A='*' use the default drive\\
+%A='\$' use the system drive (C:, where the NEXTOS and BIN directories are)
 
 \$0091 \textbf{M\_SETCAPS}
 
@@ -1573,21 +1634,21 @@ A='\$' use the system drive (C:, where the NEXTOS and BIN directories are)
 unsigned char esx_m_setcaps(unsigned char caps)
 \end{lstlisting}
 
-Entry: A=capabilities to set:\\
-bit 7=1, do not erase new file data in f\_truncate/f\_ftruncate\\
-(increases performance of these calls)\\
-bits 0..6: reserved, must be zero\\
-Exit: Fc=0, success\\
-E=previous capabilities
-
-NOTE: This call is only available from NextOS v1.98M+.\\
-Earlier versions will return with Fc=1 (error) and A=esx\_enocmd\\
-NOTE: You should save the original value of the capabilities which is\\
-returned in E. After completing the calls you need with your altered\\
-capabilities, restore the original value by calling M\_SETCAPS again\\
-with the value that was previously returned in E.\\
-This will ensure that other programs running after you have exited\\
-will continue to see the original expected behaviour.
+%Entry: A=capabilities to set:
+%bit 7=1, do not erase new file data in f\_truncate/f\_ftruncate\\
+%(increases performance of these calls)\\
+%bits 0..6: reserved, must be zero\\
+%Exit: Fc=0, success\\
+%E=previous capabilities
+%
+%NOTE: This call is only available from NextOS v1.98M+.\\
+%Earlier versions will return with Fc=1 (error) and A=esx\_enocmd\\
+%NOTE: You should save the original value of the capabilities which is\\
+%returned in E. After completing the calls you need with your altered\\
+%capabilities, restore the original value by calling M\_SETCAPS again\\
+%with the value that was previously returned in E.\\
+%This will ensure that other programs running after you have exited\\
+%will continue to see the original expected behaviour.
 
 \$008B \textbf{M\_TAPEIN}
 
@@ -1601,25 +1662,26 @@ unsigned char esx_m_tapein_setpos(uint16_t block)
 unsigned char esx_m_tapein_toggle_pause(void)
 \end{lstlisting}
 
-Tape input redirection control.\\
-Entry:\\
-B=0, in\_open:\\
-Attach tap file with name at IX, drive in A\\
-B=1, in\_close:\\
-Detach tap file\\
-B=2, in\_info:\\
-Return attached filename to buffer at IX and drive in A\\
-B=3, in\_setpos:\\
-Set position of tape pointer to block DE (0=start)\\
-B=4, in\_getpos:\\
-Get position of tape pointer, in blocks, to HL\\
-B=5, in\_pause:\\
-Toggles pause delay when loading SCREEN\$\\
-On exit, A=1 if pause now enabled, A=0 if not\\
-B=6, in\_flags:\\
-Set tape flags to A\\
-bit 0: 1=pause delay at SCREEN\$ (as set by in\_pause)\\
-bit 1: 1=simulate tape loading with border/sound
+Tape input redirection control.
+
+%Entry:\\
+%B=0, in\_open:\\
+%Attach tap file with name at IX, drive in A\\
+%B=1, in\_close:\\
+%Detach tap file\\
+%B=2, in\_info:\\
+%Return attached filename to buffer at IX and drive in A\\
+%B=3, in\_setpos:\\
+%Set position of tape pointer to block DE (0=start)\\
+%B=4, in\_getpos:\\
+%Get position of tape pointer, in blocks, to HL\\
+%B=5, in\_pause:\\
+%Toggles pause delay when loading SCREEN\$\\
+%On exit, A=1 if pause now enabled, A=0 if not\\
+%B=6, in\_flags:\\
+%Set tape flags to A\\
+%bit 0: 1=pause delay at SCREEN\$ (as set by in\_pause)\\
+%bit 1: 1=simulate tape loading with border/sound
 
 \$008C \textbf{M\_TAPEOUT}
 
@@ -1630,16 +1692,17 @@ unsigned char esx_m_tapeout_open(unsigned char *appendname)
 unsigned char esx_m_tapeout_trunc(unsigned char *filename)
 \end{lstlisting}
 
-Tape output redirection control.\\
-Entry:\\
-B=0, out\_open:\\
-Create/attach tap file with name at IX for appending, drive A\\
-B=1, out\_close:\\
-Detach tap file\\
-B=2, out\_info:\\
-Return attached filename to buffer at IX and drive in A\\
-B=3, out\_trunc:\\
-Create/overwrite tap file with name at IX, drive A
+Tape output redirection control.
+
+%Entry:\\
+%B=0, out\_open:\\
+%Create/attach tap file with name at IX for appending, drive A\\
+%B=1, out\_close:\\
+%Detach tap file\\
+%B=2, out\_info:\\
+%Return attached filename to buffer at IX and drive in A\\
+%B=3, out\_trunc:\\
+%Create/overwrite tap file with name at IX, drive A
 
 \textbf{SLICE\_DIRENT}
 

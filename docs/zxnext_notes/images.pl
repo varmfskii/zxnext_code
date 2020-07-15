@@ -374,8 +374,7 @@ $key = q/{lstlisting}[language=C]uint32_tesx_f_seek(unsignedcharhandle,uint32_td
 $cached_env_img{$key} = q|<IMG STYLE=""
  SRC="|."$dir".q|img102.svg"
  ALT="\begin{lstlisting}[language=C]
-uint32_t esx_f_seek(unsigned char handle, uint32_t distance, unsigned char whe
-nce)
+uint32_t esx_f_seek(unsigned char handle, uint32_t distance, unsigned char whence)
 \end{lstlisting}">|; 
 
 $key = q/{lstlisting}[language=C]uint32_tesx_f_telldir(unsignedcharhandle){lstlisting};LFS=11;AAT/;
@@ -594,8 +593,7 @@ $key = q/{lstlisting}[language=C]unsignedcharesx_f_trunc(unsignedchar*filename,u
 $cached_env_img{$key} = q|<IMG STYLE=""
  SRC="|."$dir".q|img106.svg"
  ALT="\begin{lstlisting}[language=C]
-unsigned char esx_f_trunc(unsigned char *filename,uint32_t size
-)
+unsigned char esx_f_trunc(unsigned char *filename,uint32_t size)
 \end{lstlisting}">|; 
 
 $key = q/{lstlisting}[language=C]unsignedcharesx_f_unlink(unsignedchar*filename){lstlisting};LFS=11;AAT/;
@@ -644,7 +642,7 @@ $key = q/{lstlisting}[language=C]unsignedcharesx_ide_browser(uint8_tbrowsercaps,
 $cached_env_img{$key} = q|<IMG STYLE=""
  SRC="|."$dir".q|img114.svg"
  ALT="\begin{lstlisting}[language=C]
-unsigned char esx_ide_browser(uint8_t browsercaps, void *filetypes, char *help, char *dst_sfn, char *dst_lfn)
+unsigned char esx_ide_browser(uint8_t browsercaps, void *filetypes, char *help,char *dst_sfn, char *dst_lfn)
 \end{lstlisting}">|; 
 
 $key = q/{lstlisting}[language=C]unsignedcharesx_ide_get_lfn(structesx_lfn*dir,structesx_cat_entry*query){lstlisting};LFS=11;AAT/;

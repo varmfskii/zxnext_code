@@ -32,11 +32,11 @@
 <A
  HREF="node136.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1141"
+<A ID="tex2html1151"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1143"
-  HREF="node187.html">
+<A ID="tex2html1153"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -45,10 +45,10 @@
  HREF="node136.html">NextZXOS</A>
 <B> Previous:</B> <A
  HREF="node136.html">NextZXOS</A>
- &nbsp; <B>  <A ID="tex2html1142"
+ &nbsp; <B>  <A ID="tex2html1152"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1144"
-  HREF="node187.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1154"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
@@ -107,6 +107,8 @@ $00A3 <SPAN  CLASS="textbf">IDE_INTERFACE</SPAN>
 
 <P>
 Initialise card interfaces
+
+<P>
 $00A6 <SPAN  CLASS="textbf">IDE_INIT</SPAN>
 
 <P>
@@ -209,34 +211,11 @@ $00D6 <SPAN  CLASS="textbf">IDE_PARTITION_SETINFO</SPAN>
 Set byte in type-specific partition information
 
 <P>
-<A NAME="4942"></A>
+<A NAME="4951"></A>
 $00D9 (217) <SPAN  CLASS="textbf">IDE_SWAP_OPEN</SPAN>
 
 <P>
 Open a swap partition (file)
-
-<P>
-A swap file will be opened on success. The file must be unfragmented
-or the call will return with error $4a (rc_fragmented). Further swap
-related calls will use units related to the selected block size.
-
-<P>
-Entry:
-<table width="90%"><tr><td valign="top">&nbsp;A bits 0-6 = block size, 1-32 512-byte sectors
-  <table width="90%">  <tr><td valign="top">&nbsp;A bit 7 = 0, open available system swap file
-    (c:/nextzxos/swp-N.p3d) that is large enough.
-  </td></tr>
-<tr><td valign="top">&nbsp;BC=max block size required
-  </td></tr></table>
-
-  <table width="90%">  <tr><td valign="top">&nbsp;A bit 7 = 1, open indicated swap file
-    (c:/nextzxos/swp-N.p3d) that is large enough.
-  </td></tr>
-<tr><td valign="top">&nbsp;BC=$ff terminated pointer to swap file name
-  </td></tr></table>
-</td></tr></table>
-
-Exit: IX=swap handle
 
 <P>
 $00DC <SPAN  CLASS="textbf">IDE_SWAP_CLOSE</SPAN>
@@ -257,7 +236,7 @@ $00E2 <SPAN  CLASS="textbf">IDE_SWAP_IN</SPAN>
 Read block from swap partition
 
 <P>
-<A NAME="4953"></A>
+<A NAME="4956"></A>
 $00E5 (231) <SPAN  CLASS="textbf">IDE_SWAP_EX</SPAN>
 
 <P>
@@ -285,63 +264,25 @@ $00EE <SPAN  CLASS="textbf">IDE_SWAP_RESIZE</SPAN>
 Change block size of swap partition
 
 <P>
-<A NAME="4958"></A>
+<A NAME="4961"></A>
 $00F1 (241) <SPAN  CLASS="textbf">IDE_DOS_MAP</SPAN>
 
 <P>
 Map drive to partition or physical device
 
 <P>
-Entry:
-<table width="90%"><tr><td valign="top">&nbsp;A = Unit 0-15 (4=RAMdisk)</td></tr>
-<tr><td valign="top">&nbsp;BC=partition number (A != 4)</td></tr>
-<tr><td valign="top">&nbsp;A = $ff for filesystem image</td></tr>
-<tr><td valign="top">&nbsp;BC=$ff terminated image filename</td></tr>
-<tr><td valign="top">&nbsp;L=drive letter A-P
-</td></tr></table>
-
-Exit: IX is preserved
-
-<P>
-<A NAME="4962"></A>
+<A NAME="4963"></A>
 $00F4 (244) <SPAN  CLASS="textbf">IDE_DOS_UNMAP</SPAN>
 
 <P>
 Unmap drive
 
 <P>
-Remove mapping from the specified drive
-
-<P>
-Entry: L=drive letter A-P
-<BR>
-Exit: IX is preserved
-
-<P>
-<A NAME="4964"></A>
+<A NAME="4965"></A>
 $00F7 (247) <SPAN  CLASS="textbf">IDE_DOS_MAPPING</SPAN>
 
 <P>
 Get drive mapping
-
-<P>
-Entry:
-<table width="90%"><tr><td valign="top">&nbsp;L=drive letter A-P</td></tr>
-<tr><td valign="top">&nbsp;BC=pointer to 18-byte buffer
-</td></tr></table>
-
-Exit:
-<table width="90%"><tr><td valign="top">&nbsp;Zero set: drive not mapped</td></tr>
-<tr><td valign="top">&nbsp;Zero clear:
-  <table width="90%">  <tr><td valign="top">&nbsp;A=Unit 0-15, 4=RAMdisk, $ff=filesystem image
-  </td></tr>
-<tr><td valign="top">&nbsp;BC=partition number
-  </td></tr>
-<tr><td valign="top">&nbsp;buffer contains description or nothing
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;IX is preserved
-</td></tr></table>
 
 <P>
 $00FA <SPAN  CLASS="textbf">IDE_DOS_UNPERMANENT</SPAN>
@@ -350,19 +291,11 @@ $00FA <SPAN  CLASS="textbf">IDE_DOS_UNPERMANENT</SPAN>
 Remove permanent drive mapping
 
 <P>
-<A NAME="4973"></A>
+<A NAME="4968"></A>
 $00FD (253) <SPAN  CLASS="textbf">IDE_SNAPLOAD</SPAN>
 
 <P>
 Load a snapshot
-
-<P>
-Loads a supported snapshot (currently .Z80, .SNA, .O, or .P). Call
-must be made in layer 0 mode. For .O and .P SP bust be &lt;$8000.
-
-<P>
-Entry: HL=$ff terminated filespec
-Exit: Does not return on success.
 
 <P>
 $0100 <SPAN  CLASS="textbf">DOS_INITIALISE</SPAN>
@@ -377,56 +310,11 @@ $0103 <SPAN  CLASS="textbf">DOS_VERSION</SPAN>
 Get +3DOS issue and version numbers
 
 <P>
-<A NAME="4977"></A>
+<A NAME="4972"></A>
 $0106 (262) <SPAN  CLASS="textbf">DOS_OPEN</SPAN>
 
 <P>
 Create and/or open a file
-
-<P>
-Opeens the file corresponding to the filename pointed to by HL.
-
-<P>
-Entry:
-<table width="90%"><tr><td valign="top">&nbsp;B = File number 0-15</td></tr>
-<tr><td valign="top">&nbsp;C = Access mode required
-  <table width="90%">  <tr><td valign="top">&nbsp;1 = exclusive-read
-  </td></tr>
-<tr><td valign="top">&nbsp;2 = exclusive-write
-  </td></tr>
-<tr><td valign="top">&nbsp;3 = exclusive-read/write
-  </td></tr>
-<tr><td valign="top">&nbsp;5 = shared-read
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;D = Create action
-  <table width="90%">  <tr><td valign="top">&nbsp;0 - Error if file does not exist  
-  </td></tr>
-<tr><td valign="top">&nbsp;1 - Create and open new file with header
-  </td></tr>
-<tr><td valign="top">&nbsp;2 - Create and open new file without header
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;E = Open action
-  <table width="90%">  <tr><td valign="top">&nbsp;0 - Error if file already exist  s
-  </td></tr>
-<tr><td valign="top">&nbsp;1 - Open file and read header
-  </td></tr>
-<tr><td valign="top">&nbsp;2 - Open file and ignore header
-  </td></tr>
-<tr><td valign="top">&nbsp;3 - Erase filename.BAK, rename file to filename.BAK, follow
-    create action
-  </td></tr>
-<tr><td valign="top">&nbsp;4 - Erase existing file, follow create action
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;HL = Address of filename (no wildcards, unless D=0 and E=1 or 2)
-</td></tr></table>
-
-Exit:
-<table width="90%"><tr><td valign="top">&nbsp;New file: Zero set</td></tr>
-<tr><td valign="top">&nbsp;Existing file: Zero clear
-</td></tr></table>
 
 <P>
 $0109 <SPAN  CLASS="textbf">DOS_CLOSE</SPAN>
@@ -471,64 +359,18 @@ $011B <SPAN  CLASS="textbf">DOS_BYTE_WRITE</SPAN>
 Write a byte
 
 <P>
-<A NAME="4996"></A>
+<A NAME="4981"></A>
 $011E (286) <SPAN  CLASS="textbf">DOS_CATALOG</SPAN>
 
 <P>
 Catalog disk directory
 
 <P>
-Fills a buffer with part of the directory indicated by the path
-pointed to by HL. If the buffer is filled with zeros, the call places
-the first n entries from the directory into the buffer. If it begins
-with a directory entry, it fills the buffer starting with that
-directory entry. Directory entries are 13 bytes long and consist of an
-8-byte filename, a 3-byte type (extension), and a 2-byte size. Shorter
-filenames and types are padded with spaces. The most significant bit
-of the filename and type may be set to indicicate extra information
-about the file.
-
-<P>
-Entry:
-<table width="90%"><tr><td valign="top">&nbsp;B = size of buffer in entries</td></tr>
-<tr><td valign="top">&nbsp;C = Filter
-  <table width="90%">  <tr><td valign="top">&nbsp;bit 0: Include system files
-  </td></tr>
-<tr><td valign="top">&nbsp;bit 1: Set bit 7 of f7 if entry has a valid long file name
-  </td></tr>
-<tr><td valign="top">&nbsp;bit 2: Include directories, set bit 7 of f8 for directories
-  </td></tr>
-<tr><td valign="top">&nbsp;bits 3-7: reserved (0) 
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;DE = Address of buffer</td></tr>
-<tr><td valign="top">&nbsp;HL = Address of directory name (wildcards permitted)
-</td></tr></table>
-
-Exit:
-<table width="90%"><tr><td valign="top">&nbsp;B = number of completed entries, if the size that is passed,
-  there may be more entries</td></tr>
-<tr><td valign="top">&nbsp;HL = Directory handle for long filenames, used by
-  IDE_GET_LFN
-</td></tr></table>
-
-<P>
-<A NAME="5004"></A>
+<A NAME="4983"></A>
 $0121 (289) <SPAN  CLASS="textbf">DOS_FREE_SPACE</SPAN>
 
 <P>
 Free space on disk
-
-<P>
-How much free space is on this disk?
-
-<P>
-Entry: A = Drive, ASCII A-P
-<BR>
-Exit:
-<table width="90%"><tr><td valign="top">&nbsp;HL = Free space in kB up to 65535k</td></tr>
-<tr><td valign="top">&nbsp;BCDE = Free space in kB
-</td></tr></table>
 
 <P>
 $0124 <SPAN  CLASS="textbf">DOS_DELETE</SPAN>
@@ -561,16 +403,11 @@ $0130 <SPAN  CLASS="textbf">DOS_SET_USER</SPAN>
 Set/get default user number
 
 <P>
-<A NAME="5013"></A>
+<A NAME="4990"></A>
 $0133 (307) <SPAN  CLASS="textbf">DOS_GET_POSITION</SPAN>
 
 <P>
 Get file pointer for random access
-
-<P>
-Entry: B = File number
-<BR>
-Exit: DEHL = File Pointer
 
 <P>
 $0136 <SPAN  CLASS="textbf">DOS_SET_POSITION</SPAN>
@@ -579,20 +416,11 @@ $0136 <SPAN  CLASS="textbf">DOS_SET_POSITION</SPAN>
 Set file pointer for random access
 
 <P>
-<A NAME="5016"></A>
+<A NAME="4993"></A>
 $0139 (313) <SPAN  CLASS="textbf">DOS_GET_EOF</SPAN>
 
 <P>
 Get end of file position for random access
-
-<P>
-Gets the first position after the last byte written without
-considering soft-EOF. This does not accect the file pointer.
-
-<P>
-Entry: B = File number
-<BR>
-Exit: DEHL = EOF position
 
 <P>
 $013C <SPAN  CLASS="textbf">DOS_GET_1346</SPAN>
@@ -805,57 +633,21 @@ $01a5 <SPAN  CLASS="textbf">IDE_PARTITIONS</SPAN>
 Get number of open partitions
 
 <P>
-<A NAME="5053"></A>
+<A NAME="5030"></A>
 $01b1 (433) <SPAN  CLASS="textbf">IDE_PATH</SPAN>
 
 <P>
 Create, delete, change or get directory
 
 <P>
-Read or manipulate the IDE path (directory), does not affect what the
-current default drive is.
-<BR>
-rc_path_change: change directory
-<BR>
-rc_path_get: get current directory
-<BR>
-rc_path_make: create a new directory
-<BR>
-rc_path_delete: remove a directory
-
-<P>
-Entry:
-<table width="90%"><tr><td valign="top">&nbsp;A=reason code
-  <table width="90%">  <tr><td valign="top">&nbsp;0=rc_path_change
-  </td></tr>
-<tr><td valign="top">&nbsp;1=rc_path_get
-  </td></tr>
-<tr><td valign="top">&nbsp;2=rc_path_make
-  </td></tr>
-<tr><td valign="top">&nbsp;3=rc_path_delete
-  </td></tr></table>
-
-  </td></tr>
-<tr><td valign="top">&nbsp;HL=pointer to $ff terminated filespec or buffer for
-    returned filespec data (256 bytes)
-</td></tr></table>
-
-Exit: IY is affected
-
-<P>
-<A NAME="5059"></A>
+<A NAME="5032"></A>
 $01b4 (436) <SPAN  CLASS="textbf">IDE_CAPACITY</SPAN>
 
 <P>
 Get card capacity
 
 <P>
-Entry: C=unit (0 or 1)
-<BR>
-Exit: DEHL=total card capacity in 512-byte sectors
-
-<P>
-<A NAME="5061"></A>
+<A NAME="5034"></A>
 $01b7 (439) <SPAN  CLASS="textbf">IDE_GET_LFN</SPAN>
 
 <P>
@@ -865,73 +657,14 @@ Get long filename
 Obtain a long file name and other file information.
 
 <P>
-Entry:
-<table width="90%"><tr><td valign="top">&nbsp;HL=address of filespec provided by last DOS_CATALOG call</td></tr>
-<tr><td valign="top">&nbsp;IX=directory handle provided by last DOS_CATALOG call</td></tr>
-<tr><td valign="top">&nbsp;DE=address of a file entry filled by the last DOS_CATALOG call</td></tr>
-<tr><td valign="top">&nbsp;BC=address of a 261-byte buffer to receive the long filename
-</td></tr></table>
-
-Exit:
-<table width="90%"><tr><td valign="top">&nbsp;buffer contains file name</td></tr>
-<tr><td valign="top">&nbsp;BC=date (MS-DOS format)</td></tr>
-<tr><td valign="top">&nbsp;DE=time (MS-DOS format)</td></tr>
-<tr><td valign="top">&nbsp;HLIX=filesize, bytes (for directories 0)
-</td></tr></table>
-
-<P>
-<A NAME="5067"></A>
+<A NAME="5036"></A>
 $01ba (442) <SPAN  CLASS="textbf">IDE_BROWSER</SPAN>
 
 <P>
 File browser
 
 <P>
-Run the file browser. The filetypes buffer pointed to by HL is a $ff
-terminated buffer of filetypes. Each filetype consists of a length
-followed by a type description. Types are the file extension, wild
-cards ? and * are permitted, a colon (:) and an optional command to
-execute on the filetype with vertical bar representing the filemane in
-the command. The help text may contain window control codes, but if
-the character size is changed, it must be returned to size 5 at the
-end of the string.
-
-<P>
-Entry:
-<table width="90%"><tr><td valign="top">&nbsp;IY=$5c3a (ERR_NR)</td></tr>
-<tr><td valign="top">&nbsp;HL=address of supported filetypes buffer</td></tr>
-<tr><td valign="top">&nbsp;DE=address of $ff terminated help text</td></tr>
-<tr><td valign="top">&nbsp;A=browser capability mask
-  <table width="90%">  <tr><td valign="top">&nbsp;bit 0: BROSWERCAPS_COPY - files may be copied
-  </td></tr>
-<tr><td valign="top">&nbsp;bit 1: BROSWERCAPS_RENAME - files/dirs may be renamed
-  </td></tr>
-<tr><td valign="top">&nbsp;bit 2: BROSWERCAPS_MKDIR - directories may be created
-  </td></tr>
-<tr><td valign="top">&nbsp;bit 3: BROSWERCAPS_ERASE - files/dirs may be deleted
-  </td></tr>
-<tr><td valign="top">&nbsp;bit 4: BROSWERCAPS_REMOUNT - SD card may be remounted
-  </td></tr>
-<tr><td valign="top">&nbsp;bit 5: BROSWERCAPS_UNMOUNT - drives may be unmounted
-  </td></tr>
-<tr><td valign="top">&nbsp;bit 6: reserved (0)
-  </td></tr>
-<tr><td valign="top">&nbsp;bit 7: BROSWERCAPS_SYSCFG - system use - use browser.cfg
-  </td></tr></table>
-</td></tr></table>
-
-Exit:
-<table width="90%"><tr><td valign="top">&nbsp;Zero flag set: file selected (ENTER pressed)
-  <table width="90%">  <tr><td valign="top">&nbsp;HL=address of short $ff terminated filename in RAM 7
-  </td></tr>
-<tr><td valign="top">&nbsp;DE=address of long $ff teminated filename in RAM 7
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;Zero flag clear: no file selected (SPACE/BREAK pressed)
-</td></tr></table>
-
-<P>
-<A NAME="5077"></A>
+<A NAME="5038"></A>
 $01bd (445) <SPAN  CLASS="textbf">IDE_BANK</SPAN>
 
 <P>
@@ -1010,11 +743,11 @@ Convert BASIC between plain text &amp; tokenised forms
 <A
  HREF="node136.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1141"
+<A ID="tex2html1151"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1143"
-  HREF="node187.html">
+<A ID="tex2html1153"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -1023,10 +756,10 @@ Convert BASIC between plain text &amp; tokenised forms
  HREF="node136.html">NextZXOS</A>
 <B> Previous:</B> <A
  HREF="node136.html">NextZXOS</A>
- &nbsp; <B>  <A ID="tex2html1142"
+ &nbsp; <B>  <A ID="tex2html1152"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1144"
-  HREF="node187.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html1154"
+  HREF="node191.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

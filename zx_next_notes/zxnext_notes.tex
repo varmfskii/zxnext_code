@@ -20,8 +20,9 @@
 % custom sequences for consistency
 \newcommand{\iis}{ I\textsuperscript{2}S }
 \newcommand{\iic}{ I\textsuperscript{2}C }
-\newcommand{\register}[3]{Register (#1) \$#2 (\xintHexToDec{#2}) $\Rightarrow$ #3}
-\newcommand{\port}[2]{Port \$#1 (\xintHexToDec{#1}) #2}
+\newcommand{\hexdec}[1]{\$#1 (\xintHexToDec{#1})}
+\newcommand{\register}[3]{Register (#1) \hexdec{#2} $\Rightarrow$ #3}
+\newcommand{\port}[2]{Port \hexdec{#1} #2}
 \newcommand{\textoverline}[1]{$\overline{\hbox{#1}}$}
 \begin{document}
 \frontmatter
