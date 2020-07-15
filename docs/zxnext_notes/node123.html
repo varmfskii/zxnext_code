@@ -61,17 +61,17 @@ The Z80 has three different hardware interrupt signals:
  $\overline{\hbox{RESET}}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img53.svg"
+ SRC="img52.svg"
  ALT="$\overline{\hbox{RESET}}$"></SPAN>, <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img54.svg"
+ SRC="img53.svg"
  ALT="$\overline{\hbox{NMI}}$"></SPAN>, and <!-- MATH
  $\overline{\hbox{INT}}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img55.svg"
+ SRC="img54.svg"
  ALT="$\overline{\hbox{INT}}$"></SPAN>.
 
 <P>
@@ -79,18 +79,18 @@ The Z80 has three different hardware interrupt signals:
  $\overline{\hbox{RESET}}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img53.svg"
+ SRC="img52.svg"
  ALT="$\overline{\hbox{RESET}}$"></SPAN> is used to return the CPU to a known state. When
 the <!-- MATH
  $\overline{\hbox{RESET}}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img53.svg"
+ SRC="img52.svg"
  ALT="$\overline{\hbox{RESET}}$"></SPAN> line is pulled low, a <!-- MATH
  $\overline{\hbox{RESET}}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img53.svg"
+ SRC="img52.svg"
  ALT="$\overline{\hbox{RESET}}$"></SPAN> is
 generated. The CPU then does several things. I, and R are set to $00.
 PC is set to $0000. SP becomes $FFFF. A and F are set to $FF.  The
@@ -102,27 +102,27 @@ clearing IFF1 and IFF2.
  $\overline{\hbox{NMI}}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img54.svg"
+ SRC="img53.svg"
  ALT="$\overline{\hbox{NMI}}$"></SPAN> is the non-maskable interrupt. Upon receiving a
 non-maskable interrupt (<!-- MATH
  $\overline{\hbox{NMI}}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img54.svg"
+ SRC="img53.svg"
  ALT="$\overline{\hbox{NMI}}$"></SPAN> being pulled low), PC is
 pushed on the stack, IFF1 is copied to IFF2, IFF1 is cleared
 (inhibiting maskable interrupts). The <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img54.svg"
+ SRC="img53.svg"
  ALT="$\overline{\hbox{NMI}}$"></SPAN> should end
 with RETN which copies the contents of IFF2 to IFF1 (returning the
 interrupt state to what it was before the <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img54.svg"
+ SRC="img53.svg"
  ALT="$\overline{\hbox{NMI}}$"></SPAN>) and PF is
 popped off the stack.
 
@@ -132,19 +132,19 @@ The interrupt generally of most interest to programmers is
  $\overline{\hbox{INT}}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img55.svg"
+ SRC="img54.svg"
  ALT="$\overline{\hbox{INT}}$"></SPAN>. So much so that if programmers talk about
 interrupts on the Z80, they are probebly only talking about
 <!-- MATH
  $\overline{\hbox{INT}}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img55.svg"
+ SRC="img54.svg"
  ALT="$\overline{\hbox{INT}}$"></SPAN>. The processing of <!-- MATH
  $\overline{\hbox{INT}}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img55.svg"
+ SRC="img54.svg"
  ALT="$\overline{\hbox{INT}}$"></SPAN> is controlled
 by IFF1 and IFF2 which are set using EI to enable interrupts and reset
 using DI to disable interrupts. Interrupts can happen at any time and

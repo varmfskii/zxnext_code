@@ -8,15 +8,15 @@ default memory mapping and the use of bank 5 this will be mapped as
 some combination of memory \$4000-\$57FF, \$5800-\$5AFF,
 \$6000-\$77FF, \$780-\$7AFF. All of the modes other than the lores
 mode can either use the default ZX Spectrum colours, ULANext mode, or
-an emulation of ULA+. In the Spectrum and Timex modes all colours are
+an emulation of ULAplus. In the Spectrum and Timex modes all colours are
 either Paper (foreground), paper (background), or border colours.
 
 \subsection{Colour Attributes}
 The ZX Spectrum Next has three major modes for colour attributes: the
 ZX Spectrum attribute mapping, which is augmented by using the ZX
-Spectrum Next's palette; ULA Next, which allows the user to how many
+Spectrum Next's palette; ULANext, which allows the user to how many
 foreground and how many background colous are to be selected by the
-attribute bytes; and an emulation of ULA+.
+attribute bytes; and an emulation of ULAplus.
 
 \paragraph{ULA Colour}
 In ULA colour INKs are mapped to indices 0-7, Bright INKS to indices
@@ -28,25 +28,25 @@ is the default state for interpreting ULA palettes.
   \csvautotabular{video/flash.csv}
 \end{table}
 
-\paragraph{ULA Next}
-The ULA next modes use a varying number of bits from the attribute
+\paragraph{ULANext}
+The ULANext modes use a varying number of bits from the attribute
 byte to determine the ink colours as the palette index from the
 appropriate bits (all others being zero) and the paper colours coming
 from the indicated value+128 with palette format 255 being a special
 case where all the bits determine the ink colour while the paper is
 always palette index 128. The ULA always takes border colour from
-paper. ULA next is enabled using bit 0 of nextreg \$43 (palette
+paper. ULANext is enabled using bit 0 of nextreg \$43 (palette
 control) and controlled with nextreg \$42 (ULA Next attribute byte
 format)
 
 \begin{table}[h]\centering
-  \caption{ULA Next}
+  \caption{ULANext}
   \csvautotabular{video/palfmt.csv}
 \end{table}
 
-\paragraph{ULA+}
+\paragraph{ULAplus}
 The ZX Next emulates ULAPlus using the last 64 (192-255) entries of
-the ULA palette. ULA+ is controlled using two ports: \$BF3B (register
+the ULA palette. ULAplus is controlled using two ports: \$BF3B (register
 port) and \$FF3B (data port)
 
 \subparagraph{I/O ports}

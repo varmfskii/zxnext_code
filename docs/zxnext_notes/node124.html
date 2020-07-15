@@ -69,7 +69,7 @@ expansion bus.  Chief concers when doing this is that you have a
 console presented on the UART that defaults to 115,200 bps, you don't
 need to login, the machine is configured with a driver to treat the
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
+ SRC="img55.svg"
  ALT="$I^2S$"></SPAN> interface as a sound card, and the presence of the nextpi
 scripts.
 
@@ -97,7 +97,7 @@ Next or the state drive by some other peripherial attached to the bus
 
 <P>
 Standardized I/O access with the Pi Zero can use the <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img57.svg"
+ SRC="img56.svg"
  ALT="$I^2C$"></SPAN>, SPI, or
 UART interfaces and is configured using nextreg $a0. Any enabled port
 will disable low level (write) access to the corresponding GPIO
@@ -105,13 +105,13 @@ pins.
 
 <P>
 The <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img57.svg"
+ SRC="img56.svg"
  ALT="$I^2C$"></SPAN> interface is controlled using ports $103b (SCL) and $113b
 (SDA). This is the same <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img57.svg"
+ SRC="img56.svg"
  ALT="$I^2C$"></SPAN> interface that is used for the optional
 Real Time Clock. Interfacing with the Pi Zero over <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img57.svg"
+ SRC="img56.svg"
  ALT="$I^2C$"></SPAN> is
 complicated by the fact that it is a master/slave interface, but both
 the ZX Spectrum Next and Pi Zero are configured to be bus masters.
@@ -155,7 +155,7 @@ the serial console on the Pi Zero over the UART.
 
 <P>
 The <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
+ SRC="img55.svg"
  ALT="$I^2S$"></SPAN> sound interface between the ZX Spectrum Next and the Pi Zero
 is controlled by nextregs $a2 and $a3. Normally, one would control
 the Pi through some other channel such as the UART recieve audio from
@@ -292,7 +292,7 @@ bit 0 = Pi GPIO 24<tr><td valign="top">&nbsp;$00 on soft reset
   GPIO 15 (for comm with pi)
 </LI>
 <LI>bit 3 = Enable <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img57.svg"
+ SRC="img56.svg"
  ALT="$I^2C$"></SPAN> on GPIO 2,3 (override gpio) (soft reset =
   0)
 </LI>
@@ -307,29 +307,29 @@ bit 0 = Pi GPIO 24<tr><td valign="top">&nbsp;$00 on soft reset
 (R/W) $A2 (162) <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> PI <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
+ SRC="img55.svg"
  ALT="$I^2S$"></SPAN> Audio Control
 
 <UL>
 <LI>bits 7-6 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
+ SRC="img55.svg"
  ALT="$I^2S$"></SPAN> enable (soft reset = 00)
   
 <UL>
 <LI>00 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
+ SRC="img55.svg"
  ALT="$I^2S$"></SPAN> off
 </LI>
 <LI>01 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
+ SRC="img55.svg"
  ALT="$I^2S$"></SPAN> is mono source right
 </LI>
 <LI>10 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
+ SRC="img55.svg"
  ALT="$I^2S$"></SPAN> is mono source left
 </LI>
 <LI>11 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
+ SRC="img55.svg"
  ALT="$I^2S$"></SPAN> is stereo
   
 </LI>
@@ -348,7 +348,7 @@ bit 0 = Pi GPIO 24<tr><td valign="top">&nbsp;$00 on soft reset
   (soft reset = 0)
 </LI>
 <LI>bit 0 = Direct <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
+ SRC="img55.svg"
  ALT="$I^2S$"></SPAN> audio to EAR on port $FE (soft reset = 0)
 </LI>
 </UL>
@@ -357,7 +357,7 @@ bit 0 = Pi GPIO 24<tr><td valign="top">&nbsp;$00 on soft reset
 (R/W) $A3 (163) <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> PI <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
+ SRC="img55.svg"
  ALT="$I^2S$"></SPAN> Clock Divide (Master Mode)
 <table width="90%">
 bits 7-0 = Clock divide sets sample rate when in master mode
