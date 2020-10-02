@@ -1,18 +1,19 @@
 \register{R/W}{6F}{Layer 3 Tile Definitions Base Address}
 \begin{itemize}
-\item bits 7-6 = Read back as zero, write values ignored
-\item bits 5-0 = MSB of address of the tilemap in Bank 5 (\$0C on
-  reset)
+\item bit 7 = Select bank
+\begin{itemize}
+\item[] 0 = Bank 5
+\item[] 1 = Bank 7
+\end{itemize}
+\item bit 6 = Reserved, must be 0
+\item bits 5-0 = MSB of address of the tile definitions in Bank 5 (16k) or 7
+(8k) (\$0C on reset)
 \end{itemize}
 Soft Reset default \$0C - This is because the address is \$4C00 so the
 MSB is \$4C. But the stored value is only the lower 6 bits so it's an
 offset into the 16k Bank 5. To calculate therefore subtract \$40
 leaving you with \$0C.
 
-The value written is an offset into the 16k Bank 5 allowing the
-tilemap to be placed at any multiple of 256 bytes.  Writing a physical
-MSB address in \$40 -- \$7F or \$C0 -- \$FF range is permitted.
-
-The value read back should be treated as having a fully significant
-8-bit value.
-
+The value written is an offset into the 16k Bank 5 or the 8k lower
+half of Bank 7 allowing the tilemap to be placed at any multiple of
+256 bytes.

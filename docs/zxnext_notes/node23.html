@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
 <HEAD>
 <TITLE>ZX Spectrum Mode</TITLE>
 <META NAME="description" CONTENT="ZX Spectrum Mode">
@@ -11,7 +11,7 @@
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
@@ -62,34 +62,27 @@ Timex mode 0
 
 <P>
 This is the default ULA mode and has its origins in the original ZX
-Spectrum. It uses <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img1.svg"
+Spectrum. It uses <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
  ALT="$256\times 192$"></SPAN> pixels located at global coordinates
-(32, 32) to (287, 223) with <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+(32, 32) to (287, 223) with <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img10.svg"
  ALT="$8\times8$"></SPAN> colour attribute areas mapped
-into a <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img11.svg"
+into a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img11.svg"
  ALT="$32\times24$"></SPAN> grid. If Timex modes are not enabled, this and the
 LoRes mode are the only ones available, so you would switch back to
 this mode by writing 000xxxxx to Next register $15 (21, the sprites
 and layers register). If another Timex mode is enabled, then this is
 mode 0 so you would write 0 to port $ff to enable it. This is a
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img1.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
  ALT="$256\times 192$"></SPAN> video mode. The bitmap 1 area is used for selection
 between ink and paper colours with one bit per pixel and the attribute
 1 area for colour attributes.
 
 <P>
 The easiest way to visualize the mapping of this mode is to think of
-the <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img1.svg"
- ALT="$256\times 192$"></SPAN> area as being divided into a <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img11.svg"
+the <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
+ ALT="$256\times 192$"></SPAN> area as being divided into a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img11.svg"
  ALT="$32\times24$"></SPAN> grid of
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img10.svg"
  ALT="$8\times8$"></SPAN> characters.  IF we consider X and Y as the position in the
 grid and R to the the row within the character.  For ink/paper
 selection, 0=paper, 1=ink and the entries are stored left to right as
@@ -97,17 +90,14 @@ lsb to msb within the bye.  The address for a pixel value is:
 <!-- MATH
  $0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$
  -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img12.svg"
- ALT="$0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>. Each <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img12.svg"
+ ALT="$0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>. Each <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img10.svg"
  ALT="$8\times8$"></SPAN> cell has
 its own colour attribute where the address for an attribute cell is
 <!-- MATH
  $0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$
  -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img13.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.14ex; vertical-align: -0.45ex; " SRC="img13.svg"
  ALT="$0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN> in other words mapped lineally
 column-wise starting at the beginning of the attribute 1 area.
 

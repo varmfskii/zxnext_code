@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
 <HEAD>
 <TITLE>Video Layering and Transparency</TITLE>
 <META NAME="description" CONTENT="Video Layering and Transparency">
@@ -11,7 +11,7 @@
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
@@ -66,19 +66,16 @@ color, layer 1 (ULA, Timex modes, or LoRes), layer 2
 (<!-- MATH
  $256\times192\times256$
  -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img4.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img4.svg"
  ALT="$256\times192\times256$"></SPAN>, <!-- MATH
  $320\times256\times256$
  -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img5.svg"
  ALT="$320\times256\times256$"></SPAN>, or
 <!-- MATH
  $640\times256\times16$
  -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img6.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img6.svg"
  ALT="$640\times256\times16$"></SPAN>), layer 3 (16 or 2 colour tiles), and sprites;
 we generate the full video display.
 
@@ -90,8 +87,7 @@ the layers controlled by a combination of the video layering register
 2 is set as a priority colour.
 
 <P>
-Register (R/W) $15 (15) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+Register (R/W) $15 (15) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite and Layer System Setup
 
 <UL>
@@ -131,7 +127,7 @@ Register (R/W) $15 (15) <SPAN CLASS="MATH"><IMG STYLE=""
 </UL>
 
 <P>
-<A NAME="108"></A>
+<A NAME="90"></A>
 Transparency for Layer 2, Layer 1, and 1-bit Tilemaps are
 controlled by Next register $14 (20) and defaults to $E3. Sprites
 and 4-bit Tilemaps have their own registers ($4B and $4C
@@ -145,8 +141,7 @@ register $4C. If all layers are transparent, the transparency
 fallback colour is displayed. This is set by register $4A.
 
 <P>
-Register (R/W) $14 (14) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+Register (R/W) $14 (14) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Global transparency color
 
 <UL>
@@ -157,8 +152,9 @@ Register (R/W) $14 (14) <SPAN CLASS="MATH"><IMG STYLE=""
 only by the MSB bits of the final 9-bit colour)
 <BR>(Note2: this only affects Layer 2, ULA and LoRes. Sprites use register
 $4B for transparency and tilemap uses nextreg $4C)
-Register (R/W) $4A (4A) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (R/W) $4A (4A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Fallback Colour Value
 
 <UL>
@@ -167,8 +163,9 @@ Register (R/W) $4A (4A) <SPAN CLASS="MATH"><IMG STYLE=""
 </LI>
 </UL>
 (black on reset = 0)
-Register (R/W) $4B (4B) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (R/W) $4B (4B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Transparency Index
 
 <UL>
@@ -176,8 +173,9 @@ Register (R/W) $4B (4B) <SPAN CLASS="MATH"><IMG STYLE=""
 </LI>
 </UL>
 For 4-bit sprites only the bottom 4-bits are relevant.
-Register (R/W) $4C (4C) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (R/W) $4C (4C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Level 3 Transparency Index
 
 <UL>

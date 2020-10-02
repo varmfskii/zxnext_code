@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
 <HEAD>
 <TITLE>Programming Tilemap mode</TITLE>
 <META NAME="description" CONTENT="Programming Tilemap mode">
@@ -11,7 +11,7 @@
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
@@ -57,8 +57,7 @@ Programming Tilemap mode</A>
 </H2>
 
 <P>
-Register (R/W) $6B (6B) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+Register (R/W) $6B (6B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Control
 
 <UL>
@@ -120,8 +119,7 @@ Bit 0 forces the tilemap to be on top of the ULA. It can be useful in
 tilemap.
 
 <P>
-Register (R/W) $6C (6C) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+Register (R/W) $6C (6C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Default Layer 3 Attribute*
 
 <UL>
@@ -147,15 +145,20 @@ entries. In this case, the tile attributes used are taken from this
 register instead.
 
 <P>
-Register (R/W) $6E (6E) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+Register (R/W) $6E (6E) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 Tilemap Base Address
 
 <UL>
-<LI>bits 7-6 = Read back as zero, write values ignored
+<LI>bit 7 = Bank Select
+<table width="90%"><tr><td valign="top">&nbsp;0 = Bank 5</td></tr>
+<tr><td valign="top">&nbsp;1 = Bank 7
+</td></tr></table>
+
 </LI>
-<LI>bits 5-0 = MSB of address of the tilemap in Bank 5 ($2C on
-  reset)
+<LI>bit 6 = Reserved, must be 0
+</LI>
+<LI>bits 5-0 = MSB of address of the tilemap in Bank 5 (16k) or 7 (8k)
+($2C on reset)
 </LI>
 </UL>
 Soft Reset default $2C - This is because the address is $6C00 so the
@@ -164,13 +167,9 @@ offset into the 16k Bank 5. To calculate therefore subtract $40
 leaving you with $2C.
 
 <P>
-The value written is an offset into the 16k Bank 5 allowing the
-tilemap to be placed at any multiple of 256 bytes.  Writing a physical
-MSB address in $40 - $7F or $C0 - $FF range is permitted.
-
-<P>
-The value read back should be treated as having a fully significant
-8-bit value.
+The value written is an offset into the 16k Bank 5 or the 8k lower
+half of Bank 7 allowinf the tilemap to be placed at any multiple of
+256 bytes.
 
 <P>
 This register determines the tilemapís base address in bank 5. The
@@ -181,25 +180,28 @@ traditional ULA physical addresses, is permitted. The value read back
 should be treated as a fully significant 8-bit value.
 
 <P>
-The tilemap will be <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img25.svg"
- ALT="$40\times32$"></SPAN> or <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img26.svg"
+The tilemap will be <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img25.svg"
+ ALT="$40\times32$"></SPAN> or <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img26.svg"
  ALT="$80\times32$"></SPAN> in size depending on
 the resolution selected in nextreg $6B. Each entry in the tilemap is
 normally two bytes but can be one byte if attributes are eliminated by
 setting bit 5 of nextreg $6B.
 
 <P>
-Register (R/W) $6F (6F) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+Register (R/W) $6F (6F) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 Tile Definitions Base Address
 
 <UL>
-<LI>bits 7-6 = Read back as zero, write values ignored
+<LI>bit 7 = Select bank
+<table width="90%"><tr><td valign="top">&nbsp;0 = Bank 5</td></tr>
+<tr><td valign="top">&nbsp;1 = Bank 7
+</td></tr></table>
+
 </LI>
-<LI>bits 5-0 = MSB of address of the tilemap in Bank 5 ($0C on
-  reset)
+<LI>bit 6 = Reserved, must be 0
+</LI>
+<LI>bits 5-0 = MSB of address of the tile definitions in Bank 5 (16k) or 7
+(8k) ($0C on reset)
 </LI>
 </UL>
 Soft Reset default $0C - This is because the address is $4C00 so the
@@ -208,13 +210,9 @@ offset into the 16k Bank 5. To calculate therefore subtract $40
 leaving you with $0C.
 
 <P>
-The value written is an offset into the 16k Bank 5 allowing the
-tilemap to be placed at any multiple of 256 bytes.  Writing a physical
-MSB address in $40 - $7F or $C0 - $FF range is permitted.
-
-<P>
-The value read back should be treated as having a fully significant
-8-bit value.
+The value written is an offset into the 16k Bank 5 or the 8k lower
+half of Bank 7 allowing the tilemap to be placed at any multiple of
+256 bytes.
 
 <P>
 This register determines the base address of tile definitions in bank
@@ -231,9 +229,8 @@ Each tile definition is 32 bytes in size and is located at address:
 Tile Def Base Addr + 32 * (Tile Number)
 
 <P>
-<A NAME="803"></A>
-Register (R/W) $4C (4C) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+<A NAME="360"></A>
+Register (R/W) $4C (4C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Level 3 Transparency Index
 
 <UL>
@@ -254,9 +251,8 @@ colour.
 For palette information see palette section.
 
 <P>
-<A NAME="822"></A>
-Register (R/W) $1B (1B) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+<A NAME="366"></A>
+Register (R/W) $1B (1B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Clip Window Definition
 
 <UL>
@@ -279,12 +275,10 @@ The X coords are internally doubled.
 
 <P>
 The tilemap display surface extends 32 pixels around the central
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img1.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
  ALT="$256\times 192$"></SPAN> display. The origin of the clip window is the top left
 corner of this area 32 pixels to the left and 32 pixels above the
-central <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img1.svg"
+central <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
  ALT="$256\times 192$"></SPAN> display. The X coordinates are internally
 doubled to cover the full 320 pixel width of the surface. The clip
 window indicates the portion of the tilemap display that is
@@ -292,9 +286,8 @@ non-transparent and its indicated extent is inclusive; it will extend
 from X1*2 to X2*2+1 horizontally and from Y1 to Y2 vertically.
 
 <P>
-<A NAME="839"></A>
-Register (R/W) $2F (2F) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+<A NAME="374"></A>
+Register (R/W) $2F (2F) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Horizontal Scroll Control MSB
 
 <UL>
@@ -304,8 +297,9 @@ Register (R/W) $2F (2F) <SPAN CLASS="MATH"><IMG STYLE=""
 </LI>
 </UL>
 Meaningful Range is 0-319 in 40 char mode, 0-639 in 80 char mode
-Register (R/W) $30 (30) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (R/W) $30 (30) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Horizontal Scroll Control LSB
 
 <UL>
@@ -313,16 +307,18 @@ Register (R/W) $30 (30) <SPAN CLASS="MATH"><IMG STYLE=""
 </LI>
 </UL>
 Meaningful range is 0-319 in 40 char mode, 0-639 in 80 char mode
-Register (R/W) $31 (31) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (R/W) $31 (31) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Vertical Scroll Control
 
 <UL>
 <LI>bits 7-0 = Y Offset (0-255) )$00 on reset)
 </LI>
 </UL>
-Register (R/W) $68 (68) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (R/W) $68 (68) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> ULA Control
 <table width="90%">
 bit 7 = Disable ULA output (0 on reset)
@@ -347,7 +343,6 @@ bit 0 = Enable stencil mode (0 on reset)</td></tr>
   the result is transparent, otherwise the result is the logical AND
   of both colours.
 </td></tr></table>
-
 
 <P>
 Bit 0 can be set to choose stencil mode for the combined output of the

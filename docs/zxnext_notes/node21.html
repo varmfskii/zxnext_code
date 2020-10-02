@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
 <HEAD>
 <TITLE>Layer 1 Scrolling</TITLE>
 <META NAME="description" CONTENT="Layer 1 Scrolling">
@@ -11,7 +11,7 @@
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
@@ -59,32 +59,32 @@ Layer 1 Scrolling</A>
 Layer 1 has two sets of scrolling registers. One for the the legacy
 modes (ZX Spectrum, Alternate Page, Timex Hi-Resoulution, and Timex
 Hi-colour) and a second set for the two ZX Spextrum Next specific
-LoRes modes.  All modes scroll as if they were <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img1.svg"
+LoRes modes.  All modes scroll as if they were <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
  ALT="$256\times 192$"></SPAN> screens
 located at global coordinates (32, 32) to (287, 223), The registers
 for the legacy modes are $26 and $27 and the registers for the LoRes
 modes are $32 and $33.
 
 <P>
-Register (R/W) $26 (26) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+Register (R/W) $26 (26) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> ULA Horizontal Scroll Control
 
 <UL>
 <LI>bits 7-0 = ULA X Offset (0-255) (0 on reset)
 </LI>
 </UL>
-Register (R/W) $27 (27) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (R/W) $27 (27) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> ULA Vertical Scroll Control
 
 <UL>
 <LI>bits 7-0 = ULA Y Offset (0-191) (0 on reset)
 </LI>
 </UL>
-Register (R/W) $32 (32) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (R/W) $32 (32) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 1,0 (LoRes) Horizontal Scroll Control)
 
 <UL>
@@ -93,8 +93,9 @@ Register (R/W) $32 (32) <SPAN CLASS="MATH"><IMG STYLE=""
 </UL>
 Layer 1,0 (LoRes) scrolls in "half-pixels" at the same resolution and
 smoothness as Layer 2.
-Register (R/W) $33 (33) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (R/W) $33 (33) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 1,0 (LoRes) Vertical Scroll Control)
 
 <UL>

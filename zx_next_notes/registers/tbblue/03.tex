@@ -15,7 +15,8 @@ bits 2-0 select machine type when in config mode
   \begin{itemize}
   \item 1 = Apply user lock on display timing (0 on hard reset)
   \end{itemize}
-\item bits 2-1 = Machine Type
+\item bits 2-0 = Machine Type (config mode only)\\
+determines roms loaded
 \item[] Machine Types/Display Timings
   \begin{itemize}
   \item 000 or 001 = ZX 48K

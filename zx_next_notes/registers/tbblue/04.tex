@@ -4,5 +4,7 @@
 \item bits 4-0 = 16k SRAM bank mapping* (\$00 on hard reset)
 \item[] *Maps a 16k SRAM bank over the bottom 16k. Applies only in
   config mode when the bootrom is disabled
+\item[] **Odd multiples of 256k are unreliable if storing data in sram
+  for the mext core started.
 \end{itemize}
 

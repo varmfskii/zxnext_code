@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
 <HEAD>
 <TITLE>Character I/O Functions</TITLE>
 <META NAME="description" CONTENT="Character I/O Functions">
@@ -11,7 +11,7 @@
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
@@ -71,7 +71,7 @@ corresponds to device zero, and bit 4 is device eleven. Bits 0 through
 3 are reserved for future system use.
 
 <P>
-<A NAME="4676"></A>
+<A NAME="3431"></A>
 BIOS Function 2: CONST
 
 <P>
@@ -90,7 +90,7 @@ $ff in register A if a character is ready to read, and $ff in
 register A if no console characters are ready.
 
 <P>
-<A NAME="4679"></A>
+<A NAME="3434"></A>
 BIOS Function 3: CONIN
 
 <P>
@@ -106,7 +106,7 @@ console character is ready, wait until a character is available before
 returning.
 
 <P>
-<A NAME="4680"></A>
+<A NAME="3435"></A>
 BIOS Function 4: CONOUT
 
 <P>
@@ -121,7 +121,7 @@ Send the character in register C to the console output device. The
 character is in ASCII with no parity.
 
 <P>
-<A NAME="4681"></A>
+<A NAME="3436"></A>
 BIOS Function 5: LIST
 
 <P>
@@ -136,7 +136,7 @@ Send the character from register C to the listing device. The
 character is in ASCII with no parity.
 
 <P>
-<A NAME="4682"></A>
+<A NAME="3437"></A>
 BIOS Function 6: AUXOUT
 
 <P>
@@ -151,7 +151,7 @@ Send the character from register C to the currently assigned AUXOUT
 device. The character is in ASCII with no parity.
 
 <P>
-<A NAME="4683"></A>
+<A NAME="3438"></A>
 BIOS Function 7: AUXIN
 
 <P>
@@ -167,7 +167,7 @@ register A with no parity. A returned ASCII CTRL-Z ($1a) reports an
 end-of-file.
 
 <P>
-<A NAME="4684"></A>
+<A NAME="3439"></A>
 BIOS Function 15: LISTST
 
 <P>
@@ -181,7 +181,7 @@ Returned Values:
 </td></tr></table>
 
 <P>
-<A NAME="4687"></A>
+<A NAME="3442"></A>
 BIOS Function 17: CONOST
 
 <P>
@@ -200,7 +200,7 @@ $ff if the console is ready to display another character. This entry
 point allows for full polled handshaking communications support.
 
 <P>
-<A NAME="4690"></A>
+<A NAME="3445"></A>
 BIOS Function 18: AUXIST
 
 <P>
@@ -219,7 +219,7 @@ entry point allows full polled handshaking for communications support
 using an auxiliary port.
 
 <P>
-<A NAME="4693"></A>
+<A NAME="3448"></A>
 BIOS Function 19: AUXOST
 
 <P>

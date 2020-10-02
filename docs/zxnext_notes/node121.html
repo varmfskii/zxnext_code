@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
 <HEAD>
 <TITLE>Machine Type</TITLE>
 <META NAME="description" CONTENT="Machine Type">
@@ -11,7 +11,7 @@
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
@@ -76,8 +76,7 @@ from reading the machine register combined with the refresh register
 and video mode bits:
 
 <P>
-Register (R/W) $03 (03) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+Register (R/W) $03 (03) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Machine Type
 <BR>
 A write to this register disables the boot rom in config mode
@@ -105,7 +104,9 @@ bit 3 = Display Timing user lock control
   
 </LI>
 </UL>
-bits 2-1 = Machine Type</td></tr>
+bits 2-0 = Machine Type (config mode only)
+<BR>
+determines roms loaded</td></tr>
 <tr><td valign="top">&nbsp;Machine Types/Display Timings
   
 <UL>
@@ -119,7 +120,6 @@ bits 2-1 = Machine Type</td></tr>
   
 </LI>
 </UL></td></tr></table>
-
 
 <P>
 

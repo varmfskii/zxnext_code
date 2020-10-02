@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
 <HEAD>
 <TITLE>8-bit</TITLE>
 <META NAME="description" CONTENT="8-bit">
@@ -11,7 +11,7 @@
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
@@ -64,6 +64,8 @@ Port $0F (0F) DAC A
 </td></tr></table>
 
 Disable with bit 3 of Nextreg $08
+
+<P>
 Port $1F (1F) Kempston/Mega Drive Joystick 1/DAC B
 <BR>
 Read
@@ -148,11 +150,15 @@ Port $3F (3F) DAC A
 </td></tr></table>
 
 Disable with bit 3 of Nextreg $08
+
+<P>
 Port $4F (4F) DAC C
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
 </td></tr></table>
 
 Disable with bit 3 of Nextreg $08
+
+<P>
 Port $57 (57) Sprite Attributes
 <BR>
 Byte 1
@@ -201,20 +207,16 @@ Anchor
   </td></tr></table>
 </td></tr>
 <tr><td valign="top">&nbsp;bit 4-3 = X-axis scale factor
-  <table width="90%">  <tr><td valign="top">&nbsp;00 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img33.svg"
+  <table width="90%">  <tr><td valign="top">&nbsp;00 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img33.svg"
  ALT="$1\times$"></SPAN>
   </td></tr>
-<tr><td valign="top">&nbsp;01 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img30.svg"
+<tr><td valign="top">&nbsp;01 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
  ALT="$2\times$"></SPAN> 
   </td></tr>
-<tr><td valign="top">&nbsp;10 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img31.svg"
+<tr><td valign="top">&nbsp;10 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img31.svg"
  ALT="$4\times$"></SPAN> 
   </td></tr>
-<tr><td valign="top">&nbsp;11 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img32.svg"
+<tr><td valign="top">&nbsp;11 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img32.svg"
  ALT="$8\times$"></SPAN></td></tr></table>
 </td></tr>
 <tr><td valign="top">&nbsp;bit 2-1 = Y-axis scale factor</td></tr>
@@ -258,15 +260,20 @@ Big-sprite Relative
 <tr><td valign="top">&nbsp;bit 0 = Enable relative pattern offset
 </td></tr></table>
 
+<P>
 Port $5B (5B) Sprite Pattern
 <BR>
 Load data into sprite pattern memory auto-incrementing. Port $303B
 can be used to set the starting sprite pattern number.
+
+<P>
 Port $5F (5F) DAC D
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
 </td></tr></table>
 
 Disable with bit 3 of Nextreg $08
+
+<P>
 Port $6B (6B) DMA Control (Next Mode, 3.01.02)
 
 <P>
@@ -275,6 +282,8 @@ Port $DF (DF) DAC A/C, SpecDrum
 </td></tr></table>
 
 Disable with bit 3 of Nextreg $08
+
+<P>
 Port $E3 (E3) divMMC Control
 <BR>
 Disable with bit 2 of Nextreg $09
@@ -297,39 +306,49 @@ divMMC automapping is normally disabled by NextZXOS see nextreg $06 bit 4.
 Port $E7 (E7) SPI <!-- MATH
  $\overline{\hbox{CS}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img137.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img137.svg"
  ALT="$\overline{\hbox{CS}}$"></SPAN> (SD card, flash, rpi)
 <BR>
 Disable with bit 2 of Nextreg $09
+
+<P>
 Port $EB (EB) SPI <!-- MATH
  $\overline{\hbox{DATA}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img138.svg"
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img138.svg"
  ALT="$\overline{\hbox{DATA}}$"></SPAN> (SD card, flash, rpi)
 <BR>
 Disable with bit 2 of Nextreg $09
+
+<P>
 Port $F1 (F1) DAC A (precedence over $xxFD)
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
 </td></tr></table>
 
 Disable with bit 3 of Nextreg $08
+
+<P>
 Port $F3 (F3) DAC B
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
 </td></tr></table>
 
 Disable with bit 3 of Nextreg $08
+
+<P>
 Port $F9 (F9) DAC C (precedence over $xxFD)
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
 </td></tr></table>
 
 Disable with bit 3 of Nextreg $08
+
+<P>
 Port $FB (FB) DAC D
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
 </td></tr></table>
 
 Disable with bit 3 of Nextreg $08
+
+<P>
 Port $FE (FE) ULA
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-5 = Unused</td></tr>
 <tr><td valign="top">&nbsp;bit 4 = enable ear output </td></tr>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
 <HEAD>
 <TITLE>ZX Spectrum 128</TITLE>
 <META NAME="description" CONTENT="ZX Spectrum 128">
@@ -11,7 +11,7 @@
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
@@ -82,6 +82,8 @@ Port $1FFD (1FFD) Plus 3 Memory Paging Control
 </td></tr></table>
 
 You should echo writes to $5B67
+
+<P>
 Port $7FFD (7FFD) Memory Paging Control
 <table width="90%"><tr><td valign="top">&nbsp;bits 6-7 = reserved</td></tr>
 <tr><td valign="top">&nbsp;bit 5 = Lock memory paging</td></tr>
@@ -100,11 +102,12 @@ Port $7FFD (7FFD) Memory Paging Control
 </td></tr></table>
 
 Disable with bit 5 port $7FFD
+
+<P>
 Port $DFFD (DFFD) Next Memory Bank Select
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Reserved, must be 0</td></tr>
 <tr><td valign="top">&nbsp;bits 3-0 = MSB of bank number for slot 4 (LSB is in Port $7FFD)
 </td></tr></table>
-
 
 <P>
 <BR><HR>

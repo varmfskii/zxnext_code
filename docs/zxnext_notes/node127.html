@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
 <HEAD>
 <TITLE>Utilities</TITLE>
 <META NAME="description" CONTENT="Utilities">
@@ -11,7 +11,7 @@
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
@@ -229,16 +229,12 @@ DEVICE NAMES
 <BR>
 DEVICE VALUES
 <BR>
-DEVICE logical-dev {XON<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img67.svg"
- ALT="\(\vert\)"></SPAN>NOXON<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img67.svg"
+DEVICE logical-dev {XON<SPAN CLASS="MATH"><IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img67.svg"
+ ALT="\(\vert\)"></SPAN>NOXON<SPAN CLASS="MATH"><IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img67.svg"
  ALT="\(\vert\)"></SPAN>baud-rate},
 <BR>
-DEVICE physical-dev {XON<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img67.svg"
- ALT="\(\vert\)"></SPAN>NOXON<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img67.svg"
+DEVICE physical-dev {XON<SPAN CLASS="MATH"><IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img67.svg"
+ ALT="\(\vert\)"></SPAN>NOXON<SPAN CLASS="MATH"><IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img67.svg"
  ALT="\(\vert\)"></SPAN>baud-rate}
 <BR>
 DEVICE logical-dev=physical-dev {option} {,physical-dev {option},...}
@@ -324,28 +320,28 @@ Echo characters to the terminal
 The following special character sequences may be used
 
 <UL>
-<LI>&#92;a alert (bell) (ASCII 7)
+<LI>\a alert (bell) (ASCII 7)
 </LI>
-<LI>&#92;b backspace (ASCII 8)
+<LI>\b backspace (ASCII 8)
 </LI>
-<LI>&#92;e escape (ASCII 27)
+<LI>\e escape (ASCII 27)
 </LI>
-<LI>&#92;n line feed (ASCII 10)
+<LI>\n line feed (ASCII 10)
 </LI>
-<LI>&#92;r carriage return (ASCII 13)
+<LI>\r carriage return (ASCII 13)
 </LI>
-<LI>&#92;l interpret further characters as lower-case
+<LI>\l interpret further characters as lower-case
 </LI>
-<LI>&#92;u interpret further characters as upper-case
+<LI>\u interpret further characters as upper-case
 </LI>
-<LI>&#92;&#92;backslash ('&#92;')
+<LI>\\backslash ('\')
 </LI>
 </UL>
 
 <P>
 Note that CP/M converts all your typed characters to upper-case before
 providing them to ECHO.COM. Therefore you will need to use
-&#92;l and &#92;u to specify the case of
+\l and \u to specify the case of
 characters if it is important (in ESCape sequences, for example).
 
 <P>
@@ -358,8 +354,7 @@ ED
 <BR>
 ED input-filespec
 <BR>
-ED input-filespec {d: <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img67.svg"
+ED input-filespec {d: <SPAN CLASS="MATH"><IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img67.svg"
  ALT="\(\vert\)"></SPAN> output-filespec}
 
 <P>
@@ -420,13 +415,11 @@ Export file to a NextZXOS drive.
 <P>
 =0.7cm Syntax:
 <BR>
-GENCOM COM-Eilespec RSX-filespec... RSX-Eilespec {[LOADER <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img67.svg"
+GENCOM COM-Eilespec RSX-filespec... RSX-Eilespec {[LOADER <SPAN CLASS="MATH"><IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img67.svg"
  ALT="\(\vert\)"></SPAN>
   SCB=(Offset,value)]}
 <BR>
-GENCOM RSX-filespec ... RSX-filespec {[NULL <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img67.svg"
+GENCOM RSX-filespec ... RSX-filespec {[NULL <SPAN CLASS="MATH"><IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img67.svg"
  ALT="\(\vert\)"></SPAN>
   SCB=(Offset,value)l}
 <BR>
@@ -447,8 +440,7 @@ records to COM files without RSXS.
 <P>
 =0.7cm Syntax:
 <BR>
-GENCPM {AUTO<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img67.svg"
+GENCPM {AUTO<SPAN CLASS="MATH"><IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img67.svg"
  ALT="\(\vert\)"></SPAN>AUTO DISPLAY}
 
 <P>
@@ -503,12 +495,10 @@ HELP topic [NOPAGE]
 <BR>
 HELP topic subtopic1...subtopic8
 <BR>
-HELP<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img68.svg"
+HELP<SPAN CLASS="MATH"><IMG STYLE="height: 1.55ex; vertical-align: -0.20ex; " SRC="img68.svg"
  ALT="\(&gt;\)"></SPAN>topic
 <BR>
-HELP<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img68.svg"
+HELP<SPAN CLASS="MATH"><IMG STYLE="height: 1.55ex; vertical-align: -0.20ex; " SRC="img68.svg"
  ALT="\(&gt;\)"></SPAN>.subtopic
 
 <P>
@@ -519,8 +509,7 @@ CP/M Plus commands.
 Typing HELP topic displays information about that topic. Typing HELP
 topic subtopic displays information about that subtopics One or two
 letters is enough to identify the topics. After HELP displays
-information for your topic, it displays the special prompt HELP<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img68.svg"
+information for your topic, it displays the special prompt HELP<SPAN CLASS="MATH"><IMG STYLE="height: 1.55ex; vertical-align: -0.20ex; " SRC="img68.svg"
  ALT="\(&gt;\)"></SPAN>
 on your screen, followed by a list of subtopics.
 
@@ -537,8 +526,7 @@ on your screen, followed by a list of subtopics.
 </LI>
 <LI>[NOPAGE] option disables the 24 lines per page console display.
 </LI>
-<LI>Press any key to exit a display and return to the HELP<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img68.svg"
+<LI>Press any key to exit a display and return to the HELP<SPAN CLASS="MATH"><IMG STYLE="height: 1.55ex; vertical-align: -0.20ex; " SRC="img68.svg"
  ALT="\(&gt;\)"></SPAN> prompt.
 </LI>
 </UL>
@@ -608,14 +596,10 @@ Show or change a NextReg register (use at your own risk!)
 <BR>
 LIB filespec options
 <BR>
-LIB filespec options=filespec <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img69.svg"
- ALT="\(&lt;\)"></SPAN>modifier<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img68.svg"
- ALT="\(&gt;\)"></SPAN> f,filespec<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img69.svg"
- ALT="\(&lt;\)"></SPAN>modifier<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img68.svg"
+LIB filespec options=filespec <SPAN CLASS="MATH"><IMG STYLE="height: 1.55ex; vertical-align: -0.20ex; " SRC="img69.svg"
+ ALT="\(&lt;\)"></SPAN>modifier<SPAN CLASS="MATH"><IMG STYLE="height: 1.55ex; vertical-align: -0.20ex; " SRC="img68.svg"
+ ALT="\(&gt;\)"></SPAN> f,filespec<SPAN CLASS="MATH"><IMG STYLE="height: 1.55ex; vertical-align: -0.20ex; " SRC="img69.svg"
+ ALT="\(&lt;\)"></SPAN>modifier<SPAN CLASS="MATH"><IMG STYLE="height: 1.55ex; vertical-align: -0.20ex; " SRC="img68.svg"
  ALT="\(&gt;\)"></SPAN>
 
 <P>
@@ -838,16 +822,13 @@ password for a password-protected file.
 <P>
 =0.7cm Syntax:
 <BR>
-SET d: [CREATE=ON<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img67.svg"
+SET d: [CREATE=ON<SPAN CLASS="MATH"><IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img67.svg"
  ALT="\(\vert\)"></SPAN>OFF]
 <BR>
-SET d: [ACCESS=ON<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img67.svg"
+SET d: [ACCESS=ON<SPAN CLASS="MATH"><IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img67.svg"
  ALT="\(\vert\)"></SPAN>OFF]
 <BR>
-SET d: [UPDATE=ON<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img67.svg"
+SET d: [UPDATE=ON<SPAN CLASS="MATH"><IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img67.svg"
  ALT="\(\vert\)"></SPAN>OFF]
 
 <P>
@@ -882,12 +863,10 @@ SETDEF d:i,d:i,d:i,d:i
 <BR>
 SETDEF [ORDER= (typ1, typn)]
 <BR>
-SETDEF [DISPLAY <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img67.svg"
+SETDEF [DISPLAY <SPAN CLASS="MATH"><IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img67.svg"
  ALT="\(\vert\)"></SPAN> NO DISPLAY)
 <BR>
-SETDEF [PAGE <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img67.svg"
+SETDEF [PAGE <SPAN CLASS="MATH"><IMG STYLE="height: 2.53ex; vertical-align: -0.69ex; " SRC="img67.svg"
  ALT="\(\vert\)"></SPAN> NOPAGE]
 
 <P>

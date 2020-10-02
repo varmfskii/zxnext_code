@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
 <HEAD>
 <TITLE>Next Colour Palettes</TITLE>
 <META NAME="description" CONTENT="Next Colour Palettes">
@@ -11,7 +11,7 @@
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
@@ -66,8 +66,7 @@ automatically increment the palette index number so it is possible to
 efficiently write the values for a collection of palette entries.
 
 <P>
-Register (R/W) $40 (40) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+Register (R/W) $40 (40) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Palette Index Select
 
 <UL>
@@ -91,8 +90,9 @@ assigned to INK and PAPER out of the attribute byte.
 In ULAplus mode, the last 64 entries (indices 192 to 255) hold the
 ULAplus palette.  The ULA always takes border colour from PAPER for
 standard ULA and Enhanced ULA
-Register (R/W) $41 (41) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (R/W) $41 (41) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> 8-bit Palette Data
 
 <UL>
@@ -103,8 +103,9 @@ The lower blue bit of the 9-bit internal colour will be the logical or
 of bits 0 and 1 of the 8-bit entry. After each write, the palette
 index auto-increments if aut-increment has been enabled (NextReg $43
 bit 7), Reads do not auto-increment.
-Register (R/W) $43 (43) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (R/W) $43 (43) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Palette Control
 
 <UL>
@@ -144,8 +145,9 @@ Register (R/W) $43 (43) <SPAN CLASS="MATH"><IMG STYLE=""
 <LI>bit 0 = Enable EnhancedULA mode if 1. (0 after a reset)
 </LI>
 </UL>
-Register (R/W) $44 (44) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (R/W) $44 (44) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> 9-bit Palette Data
 <BR>
 Non Level 2

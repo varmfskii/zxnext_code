@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
 <HEAD>
 <TITLE>Programming Sprites</TITLE>
 <META NAME="description" CONTENT="Programming Sprites">
@@ -11,7 +11,7 @@
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
@@ -74,6 +74,7 @@ Read: Sprite status
 <tr><td valign="top">&nbsp;bit 0 = Collision flag
 </td></tr></table>
 
+<P>
 <PRE>
 X S S S S S S S
 N6 X N N N N N N
@@ -139,20 +140,16 @@ Anchor
   </td></tr></table>
 </td></tr>
 <tr><td valign="top">&nbsp;bit 4-3 = X-axis scale factor
-  <table width="90%">  <tr><td valign="top">&nbsp;00 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img33.svg"
+  <table width="90%">  <tr><td valign="top">&nbsp;00 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img33.svg"
  ALT="$1\times$"></SPAN>
   </td></tr>
-<tr><td valign="top">&nbsp;01 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img30.svg"
+<tr><td valign="top">&nbsp;01 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
  ALT="$2\times$"></SPAN> 
   </td></tr>
-<tr><td valign="top">&nbsp;10 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img31.svg"
+<tr><td valign="top">&nbsp;10 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img31.svg"
  ALT="$4\times$"></SPAN> 
   </td></tr>
-<tr><td valign="top">&nbsp;11 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img32.svg"
+<tr><td valign="top">&nbsp;11 = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img32.svg"
  ALT="$8\times$"></SPAN></td></tr></table>
 </td></tr>
 <tr><td valign="top">&nbsp;bit 2-1 = Y-axis scale factor</td></tr>
@@ -195,7 +192,6 @@ Big-sprite Relative
 <tr><td valign="top">&nbsp;bit 4-1 = Reserved, must be 0</td></tr>
 <tr><td valign="top">&nbsp;bit 0 = Enable relative pattern offset
 </td></tr></table>
-
 
 <P>
 Once a sprite is selected via port $303B, its attributes can be
@@ -240,8 +236,7 @@ sprites and grants the program random access to a sprite’s individual
 attribute bytes.
 
 <P>
-Register (R/W) $34 (34) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+Register (R/W) $34 (34) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Number
 <BR>
 Lockstep (NextReg $09 bit 4 set)
@@ -260,34 +255,39 @@ No Lockstep (NextReg $09 bit 4 clear)
 </UL>
 This register selects which sprite has its attributes connected to the
 sprite attribute registers
-Register (W) $35 (35) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (W) $35 (35) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 0
 
 <UL>
 <LI>bits 7-0 = Sprite X coordinate LSB (MSB in NextReg $37)
 </LI>
 </UL>
-Register (W) $75 (75) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (W) $75 (75) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 0 (Auto-incrementing)
 <BR>
 See nextreg $35
-Register (W) $36 (36) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (W) $36 (36) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 1
 
 <UL>
 <LI>bits 7-0 = Sprite Y coordinate LSB (MSB in NextReg $39)
 </LI>
 </UL>
-Register (W) $76 (76) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (W) $76 (76) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 1 (Auto-incrementing)
 <BR>
 See nextreg $36
-Register (W) $37 (37) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (W) $37 (37) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 2
 
 <UL>
@@ -297,8 +297,7 @@ Register (W) $37 (37) <SPAN CLASS="MATH"><IMG STYLE=""
 </LI>
 <LI>bit 2 = Enable vertical mirror (reverse)
 </LI>
-<LI>bit 1 = Enable 90<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img35.svg"
+<LI>bit 1 = Enable 90<SPAN CLASS="MATH"><IMG STYLE="height: 2.21ex; vertical-align: -0.11ex; " SRC="img35.svg"
  ALT="$^O$"></SPAN> Clockwise Rotation
 </LI>
 </UL>
@@ -315,13 +314,15 @@ Relative Sprites
 </LI>
 </UL>
 Rotation is applied before mirroring
-Register (W) $77 (77) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (W) $77 (77) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 2 (Auto-incrementing)
 <BR>
 See nextreg $37
-Register (W) $38 (38) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (W) $38 (38) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 3
 
 <UL>
@@ -332,13 +333,15 @@ Register (W) $38 (38) <SPAN CLASS="MATH"><IMG STYLE=""
 <LI>bits 5-0 = Sprite Pattern Number
 </LI>
 </UL>
-Register (W) $78 (78) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (W) $78 (78) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 3 (Auto-incrementing)
 <BR>
 See nextreg $38
-Register (W) $39 (39) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (W) $39 (39) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 4
 <BR>
 Normal Sprites
@@ -384,8 +387,9 @@ Relative, Unified Sprites
 <LI>bit 0 = Pattern number is relative to anchor
 </LI>
 </UL>
-Register (W) $79 (79) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img7.svg"
+
+<P>
+Register (W) $79 (79) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 4 (Auto-incrementing)
 <BR>
 See nextreg $39

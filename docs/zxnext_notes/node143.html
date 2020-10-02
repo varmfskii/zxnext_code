@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 
-<!--Converted with LaTeX2HTML 2019 (Released January 1, 2019) -->
-<HTML lang="EN">
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
 <HEAD>
 <TITLE>16-bit</TITLE>
 <META NAME="description" CONTENT="16-bit">
@@ -11,7 +11,7 @@
 
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
-<META NAME="Generator" CONTENT="LaTeX2HTML v2019">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
@@ -56,7 +56,11 @@
 16-bit</A>
 </H1>
 Port $103B (103B)  I<SUP>2</SUP>C SCL (rtc, rpi)
+
+<P>
 Port $113B (113B)  I<SUP>2</SUP>C SDA (rtc, rpi)
+
+<P>
 Port $123B (123B) Layer 2
 <BR>
 Bit 4 = 0
@@ -85,6 +89,7 @@ Bit 4 = 1
 <tr><td valign="top">&nbsp;bit 2-0 = 16k bank relative offset
 </td></tr></table>
 
+<P>
 Port $133B (133B) UART tx
 <BR>
 Read: UART Status
@@ -95,6 +100,8 @@ Read: UART Status
 </td></tr></table>
 
 Write: UART Transmit
+
+<P>
 Port $143B (143B) UART rx
 <BR>
 Read: UART Receive
@@ -109,6 +116,7 @@ Write: UART Prescalar
 <tr><td valign="top">&nbsp;bits 6-0 = Prescalar bits
 </td></tr></table>
 
+<P>
 Port $153B (153B) UART control
 <table width="90%"><tr><td valign="top">&nbsp;bit 7 = Reserved (0)</td></tr>
 <tr><td valign="top">&nbsp;bit 6 = UART select
@@ -123,6 +131,7 @@ Port $153B (153B) UART control
 <tr><td valign="top">&nbsp;bits 2-0 = Bits 16-14 of prescalar
 </td></tr></table>
 
+<P>
 Port $183B (183B) CTC Channel 0
 Port $193B (193B) CTC Channel 1
 Port $1A3B (1A3B) CTC Channel 2
@@ -152,8 +161,14 @@ Port $1FFD (1FFD) Plus 3 Memory Paging Control
 </td></tr></table>
 
 You should echo writes to $5B67
+
+<P>
 Port $243B (243B) Next Register Select
+
+<P>
 Port $253B (253B) Next Register Data
+
+<P>
 Port $303B (303B) Sprite Slot/Flags
 <BR>
 Write: Sprite Slot Select
@@ -167,6 +182,7 @@ Read: Sprite status
 <tr><td valign="top">&nbsp;bit 0 = Collision flag
 </td></tr></table>
 
+<P>
 Port $7FFD (7FFD) Memory Paging Control
 <table width="90%"><tr><td valign="top">&nbsp;bits 6-7 = reserved</td></tr>
 <tr><td valign="top">&nbsp;bit 5 = Lock memory paging</td></tr>
@@ -185,6 +201,8 @@ Port $7FFD (7FFD) Memory Paging Control
 </td></tr></table>
 
 Disable with bit 5 port $7FFD
+
+<P>
 Port $7FFE (7FFE) Keyboard 8 (read only)
 <table width="90%"><tr><td valign="top">&nbsp;bit 0: 'B'</td></tr>
 <tr><td valign="top">&nbsp;bit 1: 'N'</td></tr>
@@ -193,6 +211,7 @@ Port $7FFE (7FFE) Keyboard 8 (read only)
 <tr><td valign="top">&nbsp;bit 4: Space
 </td></tr></table>
 
+<P>
 Port $BF3B (BF3B) ULAplus register
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Select register group
 
@@ -208,7 +227,10 @@ Port $BF3B (BF3B) ULAplus register
 </td></tr></table>
 </td></tr></table>
 
+<P>
 Port $BFFD (BFFD) Turbosound Data
+
+<P>
 Port $BFFE (BFFE) Keyboard 7 (read only)
 <table width="90%"><tr><td valign="top">&nbsp;bit 0 = 'H'</td></tr>
 <tr><td valign="top">&nbsp;bit 1 = 'J'</td></tr>
@@ -217,11 +239,13 @@ Port $BFFE (BFFE) Keyboard 7 (read only)
 <tr><td valign="top">&nbsp;bit 4 = Enter
 </td></tr></table>
 
+<P>
 Port $DFFD (DFFD) Next Memory Bank Select
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Reserved, must be 0</td></tr>
 <tr><td valign="top">&nbsp;bits 3-0 = MSB of bank number for slot 4 (LSB is in Port $7FFD)
 </td></tr></table>
 
+<P>
 Port $DFFE (DFFE) Keyboard 6 (read only)
 <table width="90%"><tr><td valign="top">&nbsp;bit 0 = 'Y'</td></tr>
 <tr><td valign="top">&nbsp;bit 1 = 'U'</td></tr>
@@ -230,6 +254,7 @@ Port $DFFE (DFFE) Keyboard 6 (read only)
 <tr><td valign="top">&nbsp;bit 4 = 'P'
 </td></tr></table>
 
+<P>
 Port $EFF7 (EFF7) Pentagon 1024 paging
 <table width="90%"><tr><td valign="top">&nbsp;bit 3 = 1 to overlay the bottom 16k with ram from 16k bank 0</td></tr>
 <tr><td valign="top">&nbsp;bit 2 = 0 to enable Pentagon 1024 mapping and disable bit 5 port
@@ -238,6 +263,7 @@ Port $EFF7 (EFF7) Pentagon 1024 paging
 nextreg 0x8f.
 </td></tr></table>
 
+<P>
 Port $EFFE (EFFE) Keyboard 5 (read only)
 <table width="90%"><tr><td valign="top">&nbsp;bit 0 = ‘6’</td></tr>
 <tr><td valign="top">&nbsp;bit 1 = ‘7’</td></tr>
@@ -246,6 +272,7 @@ Port $EFFE (EFFE) Keyboard 5 (read only)
 <tr><td valign="top">&nbsp;bit 4 = ‘0’
 </td></tr></table>
 
+<P>
 Port $F7FE (F7FE) Keyboard 4 (read only)
 <table width="90%"><tr><td valign="top">&nbsp;bit 0 = ‘5’</td></tr>
 <tr><td valign="top">&nbsp;bit 1 = ‘4’</td></tr>
@@ -254,6 +281,7 @@ Port $F7FE (F7FE) Keyboard 4 (read only)
 <tr><td valign="top">&nbsp;bit 4 = ‘1’
 </td></tr></table>
 
+<P>
 Port $FADF (FADF) Kempston Mouse Buttons
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Wheel delta since last read</td></tr>
 <tr><td valign="top">&nbsp;bit 3 = fourth button</td></tr>
@@ -262,10 +290,12 @@ Port $FADF (FADF) Kempston Mouse Buttons
 <tr><td valign="top">&nbsp;bit 0 = right button
 </td></tr></table>
 
+<P>
 Port $FBDF (FBDF) Kempston Mouse X
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = X coordinate of mouse
 </td></tr></table>
 
+<P>
 Port $FBFE (FBFE) Keyboard 3 (read only)
 <table width="90%"><tr><td valign="top">&nbsp;bit 0 = ‘T’</td></tr>
 <tr><td valign="top">&nbsp;bit 1 = ‘R’</td></tr>
@@ -274,6 +304,7 @@ Port $FBFE (FBFE) Keyboard 3 (read only)
 <tr><td valign="top">&nbsp;bit 4 = ‘Q’
 </td></tr></table>
 
+<P>
 Port $FDFE (FDFE) Keyboard 2 (read only)
 <table width="90%"><tr><td valign="top">&nbsp;bit 0 = ‘G’</td></tr>
 <tr><td valign="top">&nbsp;bit 1 = ‘F’</td></tr>
@@ -282,6 +313,7 @@ Port $FDFE (FDFE) Keyboard 2 (read only)
 <tr><td valign="top">&nbsp;bit 4 = ‘A’
 </td></tr></table>
 
+<P>
 Port $FEFE (FEFE) Keyboard 1 (read only)
 <table width="90%"><tr><td valign="top">&nbsp;bit 0 = ‘V’</td></tr>
 <tr><td valign="top">&nbsp;bit 1 = ‘C’</td></tr>
@@ -290,15 +322,18 @@ Port $FEFE (FEFE) Keyboard 1 (read only)
 <tr><td valign="top">&nbsp;bit 4 = Caps Shift
 </td></tr></table>
 
+<P>
 Port $FF3B (FF3B) ULAplus data
 <table width="90%"><tr><td valign="top">&nbsp;If palette group, 8-bit (RRRGGGBB) value for current index</td></tr>
 <tr><td valign="top">&nbsp;If mode group, bit 1 = enable ULAplus
 </td></tr></table>
 
+<P>
 Port $FFDF (FFDF) Kempston Mouse Y
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Y coordinate of mouse (0-192)
 </td></tr></table>
 
+<P>
 Port $FFFD (FFFD) Turbo Sound Next Control
 <BR>
 Select Chip
@@ -323,6 +358,7 @@ Select Register
 <tr><td valign="top">&nbsp;bits 3-0 = Register Number
 </td></tr></table>
 
+<P>
 
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
