@@ -691,6 +691,46 @@ $I^2C$%
 \stepcounter{section}
 \stepcounter{subsection}
 {\newpage\clearpage
+\lthtmlfigureA{labeledpar2790}%
+\begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
+\textbf{COLOURS [RGB] \textit{paper} \textit{ink}}
+\end{labeledpar}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{labeledpar2798}%
+\begin{labeledpar}{Parameters}{\textit{paper}}
+  Paper (background) colour
+\end{labeledpar}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{labeledpar2802}%
+\begin{labeledpar}{Parameters:}{\textit{ink}}
+  Ink (foreground) colour
+\end{labeledpar}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{labeledpar2807}%
+\begin{labeledpar}{Parameters:}{RGB}
+  Causes ink and paper colours to be interpreted as 9-bit octal RGB numbers
+\end{labeledpar}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{labeledpar2814}%
+\begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
+\textbf{COPYSYS}
+\end{labeledpar}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
 \lthtmlfigureA{labeledpar2822}%
 \begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
 \textbf{DATE}\\
@@ -698,6 +738,38 @@ $I^2C$%
 \textbf{DATE CONTINUOUS}\\
 \textbf{DATE \textit{time-specification}}\\
 \textbf{DATE SET}
+\end{labeledpar}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{labeledpar2833}%
+\begin{labeledpar}{Parameters}{\textit{time-specification}}
+  Time/date in the format MM/DD/YY HH:MM:SS
+\end{labeledpar}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{labeledpar2838}%
+\begin{labeledpar}{Parameters:}{C}
+  Continuously show the date and time until a key is pressed
+\end{labeledpar}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{labeledpar2842}%
+\begin{labeledpar}{Parameters:}{CONTINUOUS}
+  Continuously show the date and time until a key is pressed
+\end{labeledpar}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{labeledpar2846}%
+\begin{labeledpar}{Parameters:}{SET}
+  Prompt the user for the current date and time
 \end{labeledpar}%
 \lthtmlfigureZ
 \lthtmlcheckvsize\clearpage}
@@ -759,7 +831,426 @@ $I^2C$%
 \stepcounter{subsection}
 \stepcounter{subsection}
 \stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3616}%
+\begin{lstlisting}[language=C]
+unsigned char esx_disk_filemap(uint8_t handle,struct esx_filemap *fmap)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3619}%
+\begin{lstlisting}[language=C]
+void *esx_disk_stream_bytes(void *dst,uint16_t len)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3622}%
+\begin{lstlisting}[language=C]
+unsigned char esx_disk_stream_end(void)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3625}%
+\begin{lstlisting}[language=C]
+void *esx_disk_stream_sectors(void *dst,uint8_t sectors)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3628}%
+\begin{lstlisting}[language=C]
+unsigned char esx_disk_stream_start(struct esx_filemap_entry *entry)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3631}%
+\begin{lstlisting}[language=C]
+unsigned char esx_dos_catalog(struct esx_cat *cat)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3634}%
+\begin{lstlisting}[language=C]
+unsigned char esx_dos_catalog_next(struct esx_cat *cat)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3637}%
+\begin{lstlisting}[language=C]
+unsigned char esx_dos_get_drive(void)
+unsigned char esx_dos_set_drive(unsigned char drive)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
 \stepcounter{subsection}
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3641}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_chdir(unsigned char *pathname)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3644}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_chmod(unsigned char *filename, uint8_t attr_mask, uint8_t attr)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3647}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_close(unsigned char handle)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3650}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_closedir(unsigned char handle)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3653}%
+\begin{lstlisting}[language=C]
+uint32_t esx_f_fgetpos(unsigned char handle)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3656}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_fstat(unsigned char handle, struct esx_stat *es)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3659}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_ftrunc(unsigned char handle, uint32_t size)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3662}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_get_canonical_path(char *pathname, char *canonical)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3665}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_getcwd(unsigned char *buf)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3668}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_getcwd_drive(unsigned char drive, char *buf)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3671}%
+\begin{lstlisting}[language=C]
+uint32_t esx_f_getfree(void)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3674}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_mkdir(unsigned char *pathname)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3677}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_open(unsigned char *filename,unsigned char mode)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3680}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_opendir(unsigned char *dirname)
+unsigned char esx_f_opendir_ex(unsigned char *dirname,uint8_t mode)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3683}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_open_p3(unsigned char *filename,unsigned char mode,struct esx_p3_hdr *h)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3686}%
+\begin{lstlisting}[language=C]
+uint16_t esx_f_read(unsigned char handle, void *dst, size_t nbytes)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3689}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_readdir(unsigned char handle,struct esx_dirent *dirent)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3692}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_rename(unsigned char *old, unsigned char *new)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3695}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_rewinddir(unsigned char handle)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3698}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_rmdir(unsigned char *pathname)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3701}%
+\begin{lstlisting}[language=C]
+uint32_t esx_f_seek(unsigned char handle, uint32_t distance, unsigned char whence)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3704}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_seekdir(unsigned char handle,uint32_t pos)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3708}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_sync(unsigned char handle)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3711}%
+\begin{lstlisting}[language=C]
+uint32_t esx_f_telldir(unsigned char handle)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3714}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_trunc(unsigned char *filename,uint32_t size)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3717}%
+\begin{lstlisting}[language=C]
+unsigned char esx_f_unlink(unsigned char *filename)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3720}%
+\begin{lstlisting}[language=C]
+uint16_t esx_f_write(unsigned char handle, void *src, size_t nbytes)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3723}%
+\begin{lstlisting}[language=C]
+unsigned char esx_ide_bank_alloc(unsigned char banktype)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3726}%
+\begin{lstlisting}[language=C]
+unsigned char esx_ide_bank_avail(unsigned char banktype)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3729}%
+\begin{lstlisting}[language=C]
+unsigned char esx_ide_bank_free(unsigned char banktype, unsigned char page)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3732}%
+\begin{lstlisting}[language=C]
+unsigned char esx_ide_bank_reserve(unsigned char banktype,unsigned char page)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3735}%
+\begin{lstlisting}[language=C]
+unsigned char esx_ide_bank_total(unsigned char banktype)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3738}%
+\begin{lstlisting}[language=C]
+unsigned char esx_ide_browser(uint8_t browsercaps, void *filetypes, char *help,char *dst_sfn, char *dst_lfn)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3741}%
+\begin{lstlisting}[language=C]
+unsigned char esx_ide_get_lfn(struct esx_lfn *dir, struct esx_cat_entry *query)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3744}%
+\begin{lstlisting}[language=C]
+unsigned char esx_ide_mode_get(struct esx_mode *mode)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3747}%
+\begin{lstlisting}[language=C]
+unsigned char esx_ide_mode_set(struct esx_mode *mode)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3751}%
+\begin{lstlisting}[language=C]
+unsigned char esx_m_drvapi(struct esx_drvapi *)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3754}%
+\begin{lstlisting}[language=C]
+void esx_m_errh(void (*handler)(uint8_t error))
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3757}%
+\begin{lstlisting}[language=C]
+uint16_t esx_m_execcmd(unsigned char *cmdline)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3760}%
+\begin{lstlisting}[language=C]
+unsigned char esx_m_getdate(struct dos_tm *)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3763}%
+\begin{lstlisting}[language=C]
+void esx_m_geterr(uint16_t error,unsigned char *msg)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3766}%
+\begin{lstlisting}[language=C]
+unsigned char esx_m_gethandle(void)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3769}%
+\begin{lstlisting}[language=C]
+unsigned char esx_m_getdrv(void)
+unsigned char esx_m_setdrv(unsigned char drive)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3772}%
+\begin{lstlisting}[language=C]
+unsigned char esx_m_setcaps(unsigned char caps)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
 {\newpage\clearpage
 \lthtmlfigureA{lstlisting3775}%
 \begin{lstlisting}[language=C]
@@ -781,6 +1272,78 @@ unsigned char esx_m_tapeout_close(void)
 unsigned char esx_m_tapeout_info(uint8_t *drive,unsigned char *filename)
 unsigned char esx_m_tapeout_open(unsigned char *appendname)
 unsigned char esx_m_tapeout_trunc(unsigned char *filename)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3781}%
+\begin{lstlisting}[language=C]
+struct esx_dirent_slice *esx_slice_dirent(struct esx_dirent *)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3784}%
+\begin{lstlisting}[language=C]
+unsigned char extended_sna_load(unsigned char handle)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3787}%
+\begin{lstlisting}[language=C]
+unsigned char *p3dos_copy_cstr_to_pstr(char *pdst, const char *csrc)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3790}%
+\begin{lstlisting}[language=C]
+unsigned char *p3dos_copy_pstr_to_cstr(char *cdst, const char *psrc)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3793}%
+\begin{lstlisting}[language=C]
+unsigned char *p3dos_cstr_to_pstr(unsigned char *s)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3796}%
+\begin{lstlisting}[language=C]
+char *p3dos_dosname_from_catname(char *dosname, char *catname)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3799}%
+\begin{lstlisting}[language=C]
+unsigned char p3dos_edrv_from_pdrv(unsigned char pdrv)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3802}%
+\begin{lstlisting}[language=C]
+unsigned char p3dos_pdrv_from_edrv(unsigned char edrv)
+\end{lstlisting}%
+\lthtmlfigureZ
+\lthtmlcheckvsize\clearpage}
+
+{\newpage\clearpage
+\lthtmlfigureA{lstlisting3805}%
+\begin{lstlisting}[language=C]
+unsigned char *p3dos_pstr_to_cstr(unsigned char *s)
 \end{lstlisting}%
 \lthtmlfigureZ
 \lthtmlcheckvsize\clearpage}

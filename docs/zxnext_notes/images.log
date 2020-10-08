@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.10.7)  8 OCT 2020 13:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.8.25)  2 OCT 2020 08:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -183,19 +183,22 @@ Package: luatex85 2016/06/15 v1.4 pdftex aliases for luatex
 File: l3backend-pdfmode.def 2020-06-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count199
 \l__pdf_internal_box=\box52
-) (./images.aux (/home/alex/retro/zx/code/zx_next_notes/video/video.aux) (/home
-/alex/retro/zx/code/zx_next_notes/audio/audio.aux) (/home/alex/retro/zx/code/zx
-_next_notes/memory/memory.aux) (/home/alex/retro/zx/code/zx_next_notes/zxndma/z
-xndma.aux) (/home/alex/retro/zx/code/zx_next_notes/copper/copper.aux) (/home/al
-ex/retro/zx/code/zx_next_notes/interrupts.aux) (/home/alex/retro/zx/code/zx_nex
-t_notes/pi0.aux) (/home/alex/retro/zx/code/zx_next_notes/system/system.aux) (/h
-ome/alex/retro/zx/code/zx_next_notes/appendices/ports/ports.aux) (/home/alex/re
-tro/zx/code/zx_next_notes/appendices/registers/registers.aux) (/home/alex/retro
-/zx/code/zx_next_notes/appendices/opcode/opcode-mnemonic.aux)
-(/home/alex/retro/zx/code/zx_next_notes/appendices/mnemonic/mnemonic-opcode.aux
-) (/home/alex/retro/zx/code/zx_next_notes/appendices/file_formats.aux) (/home/a
-lex/retro/zx/code/zx_next_notes/appendices/call_tables.aux) (/home/alex/retro/z
-x/code/zx_next_notes/ctc/ctc.aux))
+) (./images.aux (/home/alex/retro/zx/zxnext/code/zx_next_notes/video/video.aux)
+(/home/alex/retro/zx/zxnext/code/zx_next_notes/audio/audio.aux) (/home/alex/ret
+ro/zx/zxnext/code/zx_next_notes/memory/memory.aux) (/home/alex/retro/zx/zxnext/
+code/zx_next_notes/zxndma/zxndma.aux) (/home/alex/retro/zx/zxnext/code/zx_next_
+notes/copper/copper.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/interru
+pts.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/pi0.aux) (/home/alex/re
+tro/zx/zxnext/code/zx_next_notes/system/system.aux) (/home/alex/retro/zx/zxnext
+/code/zx_next_notes/appendices/ports/ports.aux)
+(/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/registers/registers.a
+ux)
+(/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/opcode/opcode-mnemoni
+c.aux)
+(/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/mnemonic/mnemonic-opc
+ode.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/file_formats
+.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/call_tables.aux
+) (/home/alex/retro/zx/zxnext/code/zx_next_notes/ctc/ctc.aux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 121.
 LaTeX Font Info:    ... okay on input line 121.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 121.
@@ -602,31 +605,76 @@ Overfull \hbox (132.6706pt too wide) in paragraph at lines 653--654
 :tex2html_wrap_inline2694:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [56]
 
+:labeledpar2790:lthtmlCropMarkHeight:=22.94998pt
+
+:labeledpar2790:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[57]
+
+:labeledpar2798:lthtmlCropMarkHeight:=22.94998pt
+
+:labeledpar2798:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[58]
+
+:labeledpar2802:lthtmlCropMarkHeight:=22.94998pt
+
+:labeledpar2802:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[59]
+
+:labeledpar2807:lthtmlCropMarkHeight:=33.20416pt
+
+:labeledpar2807:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[60]
+
+:labeledpar2814:lthtmlCropMarkHeight:=21.64207pt
+
+:labeledpar2814:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[61]
+
 :labeledpar2822:lthtmlCropMarkHeight:=73.91293pt
 
 :labeledpar2822:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[57]
+[62]
+
+:labeledpar2833:lthtmlCropMarkHeight:=22.94998pt
+
+:labeledpar2833:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[63]
+
+:labeledpar2838:lthtmlCropMarkHeight:=21.73332pt
+
+:labeledpar2838:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[64]
+
+:labeledpar2842:lthtmlCropMarkHeight:=35.33333pt
+
+:labeledpar2842:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[65]
+
+:labeledpar2846:lthtmlCropMarkHeight:=21.73332pt
+
+:labeledpar2846:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[66]
 
 :tex2html_wrap_inline3818:lthtmlCropMarkHeight:=14.2125pt
 
 :tex2html_wrap_inline3818:lthtmlCropMarkDepth:=2.73749pt:1ex:=4.71457pt
-[58]
+[67]
 
 :tex2html_wrap_inline3826:lthtmlCropMarkHeight:=11.9031pt
 
 :tex2html_wrap_inline3826:lthtmlCropMarkDepth:=0.42812pt:1ex:=4.71457pt
-[59]
+[68]
 
 :tex2html_wrap_inline3830:lthtmlCropMarkHeight:=11.9031pt
 
 :tex2html_wrap_inline3830:lthtmlCropMarkDepth:=0.42812pt:1ex:=4.71457pt
-[60]
+[69]
 
 :table3245:lthtmlCropMarkHeight:=537.59962pt
 
 :table3245:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[61]
-Overfull \hbox (109.80673pt too wide) in paragraph at lines 737--738
+[70]
+Overfull \hbox (109.80673pt too wide) in paragraph at lines 809--810
  [][] 
  []
 
@@ -634,8 +682,8 @@ Overfull \hbox (109.80673pt too wide) in paragraph at lines 737--738
 :table3366:lthtmlCropMarkHeight:=115.99991pt
 
 :table3366:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[62]
-Overfull \hbox (40.63914pt too wide) in paragraph at lines 746--747
+[71]
+Overfull \hbox (40.63914pt too wide) in paragraph at lines 818--819
  [][] 
  []
 
@@ -643,17 +691,381 @@ Overfull \hbox (40.63914pt too wide) in paragraph at lines 746--747
 :table3416:lthtmlCropMarkHeight:=360.79974pt
 
 :table3416:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[63] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+[72] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 )
-Overfull \hbox (117.47485pt too wide) in paragraph at lines 769--770
+Overfull \hbox (117.47485pt too wide) in paragraph at lines 837--838
+[][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3616:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3616:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[73]
+
+:lstlisting3619:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3619:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[74]
+
+:lstlisting3622:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3622:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[75]
+Overfull \hbox (18.92383pt too wide) in paragraph at lines 861--862
+[][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3625:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3625:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[76]
+Overfull \hbox (97.76465pt too wide) in paragraph at lines 869--870
+[][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3628:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3628:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[77]
+
+:lstlisting3631:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3631:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[78]
+Overfull \hbox (12.35376pt too wide) in paragraph at lines 885--886
+[][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3634:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3634:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[79]
+
+:lstlisting3637:lthtmlCropMarkHeight:=45.2pt
+
+:lstlisting3637:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[80]
+
+:lstlisting3641:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3641:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[81]
+Overfull \hbox (196.31567pt too wide) in paragraph at lines 911--912
+[][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3644:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3644:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[82]
+
+:lstlisting3647:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3647:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[83]
+
+:lstlisting3650:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3650:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[84]
+
+:lstlisting3653:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3653:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[85]
+Overfull \hbox (97.76465pt too wide) in paragraph at lines 943--944
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3656:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3656:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[86]
+Overfull \hbox (64.9143pt too wide) in paragraph at lines 951--952
+[][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3659:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3659:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[87]
+Overfull \hbox (117.47485pt too wide) in paragraph at lines 959--960
+[][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3662:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3662:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[88]
+
+:lstlisting3665:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3665:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[89]
+Overfull \hbox (71.48438pt too wide) in paragraph at lines 975--976
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (18.92383pt too wide) in paragraph at lines 770--771
+:lstlisting3668:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3668:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[90]
+
+:lstlisting3671:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3671:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[91]
+
+:lstlisting3674:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3674:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[92]
+Overfull \hbox (97.76465pt too wide) in paragraph at lines 999--1000
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3677:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3677:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[93]
+Overfull \hbox (91.19458pt too wide) in paragraph at lines 1008--1009
+[][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3680:lthtmlCropMarkHeight:=45.2pt
+
+:lstlisting3680:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[94]
+Overfull \hbox (255.44629pt too wide) in paragraph at lines 1016--1017
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3683:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3683:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[95]
+Overfull \hbox (91.19458pt too wide) in paragraph at lines 1024--1025
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3686:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3686:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[96]
+Overfull \hbox (143.75513pt too wide) in paragraph at lines 1032--1033
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3689:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3689:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[97]
+Overfull \hbox (84.62451pt too wide) in paragraph at lines 1040--1041
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3692:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3692:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[98]
+
+:lstlisting3695:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3695:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[99]
+
+:lstlisting3698:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3698:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[100]
+Overfull \hbox (189.7456pt too wide) in paragraph at lines 1064--1065
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3701:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3701:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[101]
+Overfull \hbox (58.34424pt too wide) in paragraph at lines 1072--1073
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3704:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3704:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[102]
+
+:lstlisting3708:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3708:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[103]
+
+:lstlisting3711:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3711:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[104]
+Overfull \hbox (71.48438pt too wide) in paragraph at lines 1096--1097
+[][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3714:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3714:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[105]
+
+:lstlisting3717:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3717:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[106]
+Overfull \hbox (97.76465pt too wide) in paragraph at lines 1112--1113
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3720:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3720:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[107]
+Overfull \hbox (18.92383pt too wide) in paragraph at lines 1120--1121
+[][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3723:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3723:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[108]
+Overfull \hbox (18.92383pt too wide) in paragraph at lines 1128--1129
+[][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3726:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3726:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[109]
+Overfull \hbox (143.75513pt too wide) in paragraph at lines 1136--1137
+[][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3729:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3729:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[110]
+Overfull \hbox (156.89526pt too wide) in paragraph at lines 1144--1145
+[][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3732:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3732:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[111]
+Overfull \hbox (18.92383pt too wide) in paragraph at lines 1152--1153
+[][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3735:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3735:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[112]
+Overfull \hbox (360.56738pt too wide) in paragraph at lines 1160--1161
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3738:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3738:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[113]
+Overfull \hbox (170.0354pt too wide) in paragraph at lines 1168--1169
+[][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3741:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3741:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[114]
+
+:lstlisting3744:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3744:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[115]
+
+:lstlisting3747:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3747:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[116]
+
+:lstlisting3751:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3751:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[117]
+
+:lstlisting3754:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3754:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[118]
+
+:lstlisting3757:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3757:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[119]
+
+:lstlisting3760:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3760:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[120]
+
+:lstlisting3763:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3763:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[121]
+
+:lstlisting3766:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3766:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[122]
+
+:lstlisting3769:lthtmlCropMarkHeight:=45.2pt
+
+:lstlisting3769:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[123]
+
+:lstlisting3772:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3772:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[124]
+Overfull \hbox (117.47485pt too wide) in paragraph at lines 1260--1261
+[][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (18.92383pt too wide) in paragraph at lines 1261--1262
 [][][][][][][][][][][][][][][] 
  []
 
@@ -661,18 +1073,18 @@ Overfull \hbox (18.92383pt too wide) in paragraph at lines 770--771
 :lstlisting3775:lthtmlCropMarkHeight:=113.20003pt
 
 :lstlisting3775:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[64]
-Overfull \hbox (124.04492pt too wide) in paragraph at lines 781--782
+[125]
+Overfull \hbox (124.04492pt too wide) in paragraph at lines 1272--1273
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (38.63403pt too wide) in paragraph at lines 782--783
+Overfull \hbox (38.63403pt too wide) in paragraph at lines 1273--1274
 [][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (32.06396pt too wide) in paragraph at lines 783--784
+Overfull \hbox (32.06396pt too wide) in paragraph at lines 1274--1275
 [][][][][][][][][][][][][][][] 
  []
 
@@ -680,8 +1092,77 @@ Overfull \hbox (32.06396pt too wide) in paragraph at lines 783--784
 :lstlisting3778:lthtmlCropMarkHeight:=72.40001pt
 
 :lstlisting3778:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[65]
-Overfull \hbox (71.23373pt too wide) in paragraph at lines 794--795
+[126]
+Overfull \hbox (58.34424pt too wide) in paragraph at lines 1282--1283
+[][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3781:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3781:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[127]
+
+:lstlisting3784:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3784:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[128]
+Overfull \hbox (97.76465pt too wide) in paragraph at lines 1298--1299
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3787:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3787:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[129]
+Overfull \hbox (97.76465pt too wide) in paragraph at lines 1306--1307
+[][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3790:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3790:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[130]
+
+:lstlisting3793:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3793:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[131]
+Overfull \hbox (58.34424pt too wide) in paragraph at lines 1322--1323
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3796:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3796:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[132]
+Overfull \hbox (5.78369pt too wide) in paragraph at lines 1330--1331
+[][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3799:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3799:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[133]
+Overfull \hbox (5.78369pt too wide) in paragraph at lines 1338--1339
+[][][][][][][][][][][][][][] 
+ []
+
+
+:lstlisting3802:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3802:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[134]
+
+:lstlisting3805:lthtmlCropMarkHeight:=31.59999pt
+
+:lstlisting3805:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+[135]
+Overfull \hbox (71.23373pt too wide) in paragraph at lines 1357--1358
  [][] 
  []
 
@@ -689,328 +1170,328 @@ Overfull \hbox (71.23373pt too wide) in paragraph at lines 794--795
 :table6139:lthtmlCropMarkHeight:=364.19998pt
 
 :table6139:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[66]
+[136]
 
 :tex2html_wrap_inline6471:lthtmlCropMarkHeight:=15.48238pt
 
 :tex2html_wrap_inline6471:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[67]
+[137]
 
 :tex2html_wrap_inline6473:lthtmlCropMarkHeight:=15.48238pt
 
 :tex2html_wrap_inline6473:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[68]
+[138]
 
 :tex2html_wrap_inline7583:lthtmlCropMarkHeight:=15.48238pt
 
 :tex2html_wrap_inline7583:lthtmlCropMarkDepth:=2.12917pt:1ex:=4.71457pt
-[69]
+[139]
 
 :tex2html_wrap_inline7585:lthtmlCropMarkHeight:=15.48238pt
 
 :tex2html_wrap_inline7585:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[70]
+[140]
 
 :tex2html_wrap_inline7639:lthtmlCropMarkHeight:=15.46692pt
 
 :tex2html_wrap_inline7639:lthtmlCropMarkDepth:=5.34497pt:1ex:=4.71457pt
-[71]
+[141]
 
 :tex2html_wrap_inline7641:lthtmlCropMarkHeight:=15.46692pt
 
 :tex2html_wrap_inline7641:lthtmlCropMarkDepth:=6.30002pt:1ex:=4.71457pt
-[72]
+[142]
 
 :table7957:lthtmlCropMarkHeight:=168.69972pt
 
 :table7957:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[73]
+[143]
 
 :table7961:lthtmlCropMarkHeight:=168.69972pt
 
 :table7961:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[74]
+[144]
 
 :table7965:lthtmlCropMarkHeight:=168.69972pt
 
 :table7965:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[75]
+[145]
 
 :table7969:lthtmlCropMarkHeight:=168.69972pt
 
 :table7969:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[76]
+[146]
 
 :table7973:lthtmlCropMarkHeight:=168.69972pt
 
 :table7973:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[77]
+[147]
 
 :table7977:lthtmlCropMarkHeight:=168.69972pt
 
 :table7977:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[78]
+[148]
 
 :table7981:lthtmlCropMarkHeight:=168.69972pt
 
 :table7981:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[79]
+[149]
 
 :table7985:lthtmlCropMarkHeight:=168.69972pt
 
 :table7985:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[80]
+[150]
 
 :table7990:lthtmlCropMarkHeight:=168.69972pt
 
 :table7990:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[81]
+[151]
 
 :table7994:lthtmlCropMarkHeight:=168.69972pt
 
 :table7994:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[82]
+[152]
 
 :table7998:lthtmlCropMarkHeight:=168.69972pt
 
 :table7998:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[83]
+[153]
 
 :table8002:lthtmlCropMarkHeight:=168.69972pt
 
 :table8002:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[84]
+[154]
 
 :table8006:lthtmlCropMarkHeight:=168.69972pt
 
 :table8006:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[85]
+[155]
 
 :table8010:lthtmlCropMarkHeight:=168.69972pt
 
 :table8010:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[86]
+[156]
 
 :table8014:lthtmlCropMarkHeight:=168.69972pt
 
 :table8014:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[87]
+[157]
 
 :table8018:lthtmlCropMarkHeight:=168.69972pt
 
 :table8018:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[88]
+[158]
 
 :table8023:lthtmlCropMarkHeight:=159.19974pt
 
 :table8023:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[89]
+[159]
 
 :table8027:lthtmlCropMarkHeight:=168.69972pt
 
 :table8027:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[90]
+[160]
 
 :table8031:lthtmlCropMarkHeight:=130.69978pt
 
 :table8031:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[91]
+[161]
 
 :table8036:lthtmlCropMarkHeight:=167.7553pt
 
 :table8036:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[92]
+[162]
 
 :table8040:lthtmlCropMarkHeight:=168.69972pt
 
 :table8040:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[93]
+[163]
 
 :table8044:lthtmlCropMarkHeight:=167.7553pt
 
 :table8044:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[94]
+[164]
 
 :table8049:lthtmlCropMarkHeight:=159.19974pt
 
 :table8049:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[95]
+[165]
 
 :table8053:lthtmlCropMarkHeight:=168.69972pt
 
 :table8053:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[96]
+[166]
 
 :table8057:lthtmlCropMarkHeight:=130.69978pt
 
 :table8057:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[97]
+[167]
 
 :table8062:lthtmlCropMarkHeight:=168.69972pt
 
 :table8062:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[98]
+[168]
 
 :table8067:lthtmlCropMarkHeight:=168.69972pt
 
 :table8067:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[99]
+[169]
 
 :table8238:lthtmlCropMarkHeight:=149.69975pt
 
 :table8238:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[100]
+[170]
 
 :table8242:lthtmlCropMarkHeight:=187.69969pt
 
 :table8242:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[101]
+[171]
 
 :table8246:lthtmlCropMarkHeight:=140.19977pt
 
 :table8246:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[102]
+[172]
 
 :table8250:lthtmlCropMarkHeight:=206.69966pt
 
 :table8250:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[103]
+[173]
 
 :table8254:lthtmlCropMarkHeight:=206.69966pt
 
 :table8254:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[104]
+[174]
 
 :table8258:lthtmlCropMarkHeight:=159.19974pt
 
 :table8258:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[105]
+[175]
 
 :table8262:lthtmlCropMarkHeight:=197.19968pt
 
 :table8262:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[106]
+[176]
 
 :table8266:lthtmlCropMarkHeight:=206.69966pt
 
 :table8266:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[107]
+[177]
 
 :table8270:lthtmlCropMarkHeight:=225.69963pt
 
 :table8270:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[108]
+[178]
 
 :table8274:lthtmlCropMarkHeight:=149.69975pt
 
 :table8274:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[109]
+[179]
 
 :table8278:lthtmlCropMarkHeight:=140.19977pt
 
 :table8278:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[110]
+[180]
 
 :table8282:lthtmlCropMarkHeight:=140.19977pt
 
 :table8282:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[111]
+[181]
 
 :table8286:lthtmlCropMarkHeight:=168.69972pt
 
 :table8286:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[112]
+[182]
 
 :table8290:lthtmlCropMarkHeight:=168.69972pt
 
 :table8290:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[113]
+[183]
 
 :table8294:lthtmlCropMarkHeight:=178.1997pt
 
 :table8294:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[114]
+[184]
 
 :table8298:lthtmlCropMarkHeight:=178.1997pt
 
 :table8298:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[115]
+[185]
 
 :table8302:lthtmlCropMarkHeight:=111.69981pt
 
 :table8302:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[116]
+[186]
 
 :table8306:lthtmlCropMarkHeight:=168.69972pt
 
 :table8306:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[117]
+[187]
 
 :table8310:lthtmlCropMarkHeight:=168.69972pt
 
 :table8310:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[118]
+[188]
 
 :table8314:lthtmlCropMarkHeight:=206.69966pt
 
 :table8314:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[119]
+[189]
 
 :table8318:lthtmlCropMarkHeight:=206.69966pt
 
 :table8318:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[120]
+[190]
 
 :table8322:lthtmlCropMarkHeight:=206.69966pt
 
 :table8322:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[121]
+[191]
 
 :table8326:lthtmlCropMarkHeight:=206.69966pt
 
 :table8326:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[122]
+[192]
 
 :table8330:lthtmlCropMarkHeight:=216.19965pt
 
 :table8330:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[123]
+[193]
 
 :table8334:lthtmlCropMarkHeight:=216.19965pt
 
 :table8334:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[124]
+[194]
 
 :table8338:lthtmlCropMarkHeight:=159.19974pt
 
 :table8338:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[125]
+[195]
 
 :table8342:lthtmlCropMarkHeight:=206.69966pt
 
 :table8342:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[126]
+[196]
 
 :table8346:lthtmlCropMarkHeight:=206.69966pt
 
 :table8346:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[127]
+[197]
 
 :table8350:lthtmlCropMarkHeight:=244.6996pt
 
 :table8350:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[128]
+[198]
 
 :table8354:lthtmlCropMarkHeight:=235.19962pt
 
 :table8354:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[129] (./images.aux) ) 
+[199] (./images.aux) ) 
 Here is how much of TeX's memory you used:
- 6814 strings out of 480478
- 111546 string characters out of 5905959
+ 7069 strings out of 480478
+ 115840 string characters out of 5905959
  577376 words of memory out of 5000000
- 22585 multiletter control sequences out of 15000+600000
- 536762 words of font info for 38 fonts, out of 8000000 for 9000
+ 22839 multiletter control sequences out of 15000+600000
+ 537108 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,10n,53p,795b,1180s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-
@@ -1021,13 +1502,13 @@ e1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
 ></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/
-type1/public/cm-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm
--super/sfrm0800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095
-.pfb>
-Output written on images.pdf (129 pages, 291199 bytes).
+type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/c
+m-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm080
+0.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on images.pdf (199 pages, 332720 bytes).
 PDF statistics:
- 466 PDF objects out of 1000 (max. 8388607)
- 320 compressed objects within 4 object streams
+ 695 PDF objects out of 1000 (max. 8388607)
+ 477 compressed objects within 5 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
