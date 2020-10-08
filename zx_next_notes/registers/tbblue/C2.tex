@@ -1,0 +1,10 @@
+\register{R/W}{C2}{INT EN 0} (3.01.08)\\
+(\$83 on reset)
+\begin{itemize}
+\item bit 7 = Expansion bus INT
+\item bits 6-2 = Reserved, must be 0
+\item bit 1 = Line
+\item bit 0 = ULA
+\end{itemize}
+* Set bits indicate the corresponding signals will generate an interrupt
+

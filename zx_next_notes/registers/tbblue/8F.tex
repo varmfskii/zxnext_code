@@ -1,0 +1,19 @@
+\register{R/W}{8F}{Memory Mapping Mode}
+\begin{itemize}
+\item bits 7-2 = Reserved, must be zero
+\item bits 1-0 = Mapping mode applied
+  \begin{itemize}
+  \item 00 = Standard ZX 128k +3
+  \item 01 = Profi 1024k (limited to 768k on 1MB machines)
+  \item 10 = Pentagon 512k
+  \item 11 = Pentagon 1024k (limited to 768k on 1MB machines)
+  \end{itemize}
+\end{itemize}
+* Standard ZX 128k +3 = principally ports \$7FFD, \$DFFD, and \$1FFD\\
+* Profi 1024k = principally ports \$7FFD and\$DFFD (may become a victim of
+FPGA Space)\\
+* Pentagon 512k = principally port \$7FFD\\
+* Pentagon 1024k = principally ports \$7FFD and \$EFF7\\
+** The mapping modes affect how ports \$7FFD, \$DFFD, \$1FFD, and \$EFF7
+carry out memory paging, see ports
+
