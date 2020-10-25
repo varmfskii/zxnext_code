@@ -1,15 +1,19 @@
-\register{R/W}{8E}{Legacy Memory Paging Control (3.01.01)}
+\register{R/W}{8E}{Spectrum 128k Memory Mapping (3.01.01)}
 \begin{itemize}
-\item bit 7 = Bank number bit 3
-\item bit 6-4 = Bank number bits 2-0
+\item bit 7 = Bank number bit 3 (port \$dffd bit 0)
+\item bit 6-4 = Bank number bits 2-0 (port \$7ffd bits 2-0)
 \item bit 3 = Enable change ram page (read as 1)
-\item bit 2 = Paging mode
+\item bit 2 = Paging mode (port \$1ffd bit 0)
 \begin{itemize}
 \item 0 = Normal paging mode
 \item 1 = Special paging mode (lot bit of memory configuration)
 \end{itemize}
 \item[] Normal Paging Mode
-\item bits 1-0 = ROM selection
+\item bits 1-0 = ROM selection (port \$1ffd bit 1 and \$7ffd bit 4)
 \item[] Special (all RAM) Paging Mode
-\item bits 1-0 = RAM configuration selection
+\item bits 1-0 = RAM configuration selection (port \$1ffd bits 2-1)
 \end{itemize}
+Writes can affect all ports \$7ffd, \$dffd, and \$1ffd\\
+Writes can always change the ROM/allRAM mapping\\
+Writes immediately change the current MMU mapping as if by port write.
+

@@ -1938,12 +1938,12 @@ After Soft Reset (copied into bits 7-4)
 
 <P>
 Register (R/W) $8E (8E) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Legacy Memory Paging Control (3.01.01)
+ ALT="$\Rightarrow$"></SPAN> Spectrum 128k Memory Mapping (3.01.01)
 <table width="90%">
-bit 7 = Bank number bit 3
-bit 6-4 = Bank number bits 2-0
+bit 7 = Bank number bit 3 (port $dffd bit 0)
+bit 6-4 = Bank number bits 2-0 (port $7ffd bits 2-0)
 bit 3 = Enable change ram page (read as 1)
-bit 2 = Paging mode
+bit 2 = Paging mode (port $1ffd bit 0)
 
 <UL>
 <LI>0 = Normal paging mode
@@ -1951,11 +1951,18 @@ bit 2 = Paging mode
 <LI>1 = Special paging mode (lot bit of memory configuration)
 </LI>
 </UL><tr><td valign="top">&nbsp;Normal Paging Mode
-bits 1-0 = ROM selection</td></tr>
+bits 1-0 = ROM selection (port $1ffd bit 1 and $7ffd bit 4)</td></tr>
 <tr><td valign="top">&nbsp;Special (all RAM) Paging Mode
-bits 1-0 = RAM configuration selection
+bits 1-0 = RAM configuration selection (port $1ffd bits 2-1)
 </td></tr></table>
 
+Writes can affect all ports $7ffd, $dffd, and $1ffd
+<BR>
+Writes can always change the ROM/allRAM mapping
+<BR>
+Writes immediately change the current MMU mapping as if by port write.
+
+<P>
 Register (R/W) $90 (90) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 1/4
 
