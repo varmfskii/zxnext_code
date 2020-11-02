@@ -1,12 +1,11 @@
-\register{R/W}{C0}{INT SIG 0} (3.01.08)\\
+\register{R/W}{C0}{Interrupt Control} (3.01.08)\\
 (\$00 on reset)
 \begin{itemize}
-\item bit 7 = Expansion bus INT
-\item bits 6-2 = Reserved, must be 0
-\item bit 1 = Line
-\item bit 0 = ULA
+\item bit 7-5 = Programmable portion of IM2 vector
+\item bits 4-1 = Reserved, must be 0
+\item bit 0 = Maskable interrupt mode
+\begin{itemize}
+\item[] 0 - pulse
+\item[] 1 - IM2
 \end{itemize}
-* Set bits indicate the corresponding hardware generated an interrupt\\
-* Set bits during writes clear corresponding bits\\
-* Expansion bus INT operated independently of this register and is read only
-
+\end{itemize}
