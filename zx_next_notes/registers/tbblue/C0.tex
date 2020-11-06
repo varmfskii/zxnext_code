@@ -2,7 +2,9 @@
 (\$00 on reset)
 \begin{itemize}
 \item bit 7-5 = Programmable portion of IM2 vector
-\item bits 4-1 = Reserved, must be 0
+\item bit 4 = Reserved, must be 0
+\item bit 3 = Enable stackless NMI response
+\item bits 2-1 = Reserved, must be 0
 \item bit 0 = Maskable interrupt mode
 \begin{itemize}
 \item[] 0 - pulse
