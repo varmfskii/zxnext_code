@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Clock Support Function</TITLE>
-<META NAME="description" CONTENT="Clock Support Function">
+<TITLE>NextZXOS</TITLE>
+<META NAME="description" CONTENT="NextZXOS">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -26,57 +26,56 @@
  HREF="node137.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node135.html">
+ HREF="node125.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node135.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1149"
+<A ID="tex2html1143"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1151"
-  HREF="node193.html">
+<A ID="tex2html1145"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node137.html">NextZXOS</A>
+ HREF="node137.html">+3DOS compatible API</A>
 <B> Up:</B> <A
- HREF="node135.html">Memory Select and Move</A>
+ HREF="node125.html">System Software</A>
 <B> Previous:</B> <A
- HREF="node135.html">Memory Select and Move</A>
- &nbsp; <B>  <A ID="tex2html1150"
+ HREF="node135.html">NextZXOS</A>
+ &nbsp; <B>  <A ID="tex2html1144"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1152"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1146"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H3><A ID="SECTION001014100000000000000">
-Clock Support Function</A>
-</H3>
-This section defines the clock support function TIME.
+<H1><A ID="SECTION001030000000000000000">
+NextZXOS</A>
+</H1>
+A ZX Spectrum I/O system supported by the ZX Spectrum Next. This
+Documentation is largely from Garry Lancaster's DOCs at
+https://gitlab.com/thesmog358/tbblue/blob/master/docs/nextzxos/NextZXOS_and_esxDOS_APIs.pdf. Before
+making any calls disable writes to Layer 2 in the $0000-$3fff area with port $123b.
 
 <P>
-<A NAME="3500"></A>
-BIOS Function 26: TIME
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<P>
-Get and Set Time
-<BR>
-Entry Parameters: C=Time Get/Set Flag
-<BR>
-Returned values: None
-
-<P>
-The BDOS calls the TIME function to indicate to the BIOS whether it
-has just set the Time and Date fields in the SCB, or whether the BDOS
-is about to get the Time and Date from the SCB. On entry to the TIME
-function, a zero in register C indicates that the BIOS should update
-the Time and Date fields in the SCB. A $ff in register C indicates
-that the BDOS has just set the Time and Date in the SCB and the BIOS
-should update its clock. Upon exit, you must restore register pairs HL
-and DE to their entry values.
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html1147"
+  HREF="node137.html">+3DOS compatible API</A>
+<LI><A ID="tex2html1148"
+  HREF="node138.html">esxDOS compatible API</A>
+<LI><A ID="tex2html1149"
+  HREF="node139.html">Next Extensions</A>
+<LI><A ID="tex2html1150"
+  HREF="node140.html">esxDOS compatible API</A>
+</UL>
+<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

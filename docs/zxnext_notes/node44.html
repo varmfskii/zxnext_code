@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Combining ULA &amp; Tilemap</TITLE>
-<META NAME="description" CONTENT="Combining ULA &amp; Tilemap">
+<TITLE>Changes Since 2.00.26</TITLE>
+<META NAME="description" CONTENT="Changes Since 2.00.26">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,50 +27,57 @@
  HREF="node45.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node38.html">
+ HREF="node43.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node43.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html621"
+<A ID="tex2html617"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html623"
-  HREF="node193.html">
+<A ID="tex2html619"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node45.html">Programming Tilemap mode</A>
+ HREF="node45.html">Future Direction</A>
 <B> Up:</B> <A
- HREF="node38.html">Layer 3 (Tilemap) Mode</A>
+ HREF="node43.html">Programming Tilemap mode</A>
 <B> Previous:</B> <A
- HREF="node43.html">Memory Organization &amp; Display</A>
- &nbsp; <B>  <A ID="tex2html622"
+ HREF="node43.html">Programming Tilemap mode</A>
+ &nbsp; <B>  <A ID="tex2html618"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html624"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html620"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION00344000000000000000">
-Combining ULA &amp; Tilemap</A>
-</H2>
-The combination of the ULA and tilemap is done in one of two modes:
-the standard mode or the stencil mode.
+<H4><A ID="SECTION00345010000000000000">
+Changes Since 2.00.26</A>
+</H4>
 
 <P>
-The standard mode uses bit 8 of a tile's tilemap entry to determine if
-a tile is above or below the ULA. The source of the final pixel
-generated is then the topmost non-transparent pixel. If the ULA or
-tilemap is disabled then they are treated as transparent.
 
-<P>
-The stencil mode will only be applied if both the ULA and tilemap are
-enabled. In the stencil mode, the final pixel will be transparent if
-either the ULA or tilemap are transparent. Otherwise the final pixel
-is a logical AND of the corresponding colour bits. The stencil mode
-allows one layer to act as a cut-out for the other.
+<OL>
+<LI>512 Tile Mode. In 2.00.26, the 512 tile mode was automatically
+  selected when the ULA was disabled. With the ULA disabled, the
+  tilemap attribute bit “ULA on top” was re-purposed to be bit 8 of
+  the tile number. In 2.00.27, selection of the 512 tile mode is moved
+  to bit 1 of Tilemap Control nextreg $6B. This way 512 tile mode can
+  be independently chosen without disabling the ULA. The “ULA on top”
+  bit is still taken as bit 8 of the tile number and in the 512 mode,
+  the tilemap is always displayed underneath the ULA.
+</LI>
+<LI>Tilemap Always On Top of ULA. In 2.00.27, bit 0 of Tilemap
+  Control nextreg $6B is used to indicate that the tilemap should
+  always be displayed on top of the ULA. This allows the tilemap to
+  display over the ULA when in 512 mode.
+</LI>
+<LI>1-bit tilemaps. In 3.00.00, a number of modifications were made
+  to accomidate 1-bit tilemaps.
+</LI>
+</OL>
 
 <P>
 <BR><HR>

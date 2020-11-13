@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Layer 2 , Write only overlaid on ROM</TITLE>
-<META NAME="description" CONTENT="Layer 2 , Write only overlaid on ROM">
+<TITLE>Layer 2 resolution</TITLE>
+<META NAME="description" CONTENT="Layer 2 resolution">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -32,68 +32,52 @@
 <A
  HREF="node30.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html558"
+<A ID="tex2html552"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html560"
-  HREF="node193.html">
+<A ID="tex2html554"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node32.html">Layer 2 , Write</A>
+ HREF="node32.html">Layer 2 resolution</A>
 <B> Up:</B> <A
  HREF="node29.html">Configuration</A>
 <B> Previous:</B> <A
  HREF="node30.html">Layer 2 , Write</A>
- &nbsp; <B>  <A ID="tex2html559"
+ &nbsp; <B>  <A ID="tex2html553"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html561"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html555"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
 <H4><A ID="SECTION00331020000000000000">
-Layer 2 <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img2.svg"
- ALT="$320\times 256$"></SPAN>, Write only overlaid on ROM</A>
+Layer 2 <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
+ ALT="$256\times 192$"></SPAN> resolution</A>
 </H4>
 <PRE>
-p_layer2: defl $123b
-r_layer2: defb $70
+r_mmu_7:  defl $57
+r_disp1:  defl $69
+r_layer2: defl $70
 start:
-  nextreg r_layer2,$10 ; 320x256x256
-  ld bc,p_layer2
-  ld a,$03       ; enable, wo, 1st 16k
-  out (c),a
-  ld a,$10       ; bank offset +0
-  out (c),a
-  call wrtpage
-  ld bc,p_layer2
-  ld a,$11       ; bank offset +1
-  out (c),a
-  call wrtpage
-  ld bc,p_layer2
-  ld a,$12       ; bank offset +2
-  out (c),a
-  call wrtpage
-  ld bc,p_layer2
-  ld a,$12       ; bank offset +3
-  out (c),a
-  call wrtpage
-  ld bc,p_layer2
-  ld a,$12       ; bank offset +4
-  out (c),a
-  call wrtpage
-  ret
-wrtpage:  
-  ld hl,$0000
-  ld bc,$0040    ; 40*256 writes
-loop:
+  nextreg r_disp1,$80  ; enable layer 2
+  nextreg r_layer2,$00 ; 256x192x256
+  ld a,$12             ; page 18=bank 9
+loop1:
+  nextreg r_mmu_7,a    ; map page into slot 7
+  ld bc,$0020          ; 20*256 = 8k
+  ld hl,$E000          ; address of slot 7
+loop2:
   ld (hl),b
   inc hl
-  djnz loop
+  djnz loop2
   dec c
-  jr nz,loop
+  jp NZ,loop2
+  inc a
+  cp $18               ; stop at page 24
+  jp NZ,loop1
 </PRE>
 
 <P>

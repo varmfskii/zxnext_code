@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Description</TITLE>
-<META NAME="description" CONTENT="Description">
+<TITLE>Programming the zxnDMA</TITLE>
+<META NAME="description" CONTENT="Programming the zxnDMA">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,53 +27,67 @@
  HREF="node86.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node82.html">
+ HREF="node80.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node84.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html865"
+<A ID="tex2html859"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html867"
-  HREF="node193.html">
+<A ID="tex2html861"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node86.html">Modes of Operation</A>
+ HREF="node86.html">zxnDMA Registers</A>
 <B> Up:</B> <A
- HREF="node82.html">zxnDMA</A>
+ HREF="node80.html">zxnDMA</A>
 <B> Previous:</B> <A
- HREF="node84.html">Accessing the zxnDMA</A>
- &nbsp; <B>  <A ID="tex2html866"
+ HREF="node84.html">Modes of Operation</A>
+ &nbsp; <B>  <A ID="tex2html860"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html868"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html862"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00630000000000000000">
-Description</A>
+<H1><A ID="SECTION00650000000000000000">
+Programming the zxnDMA</A>
 </H1>
-The normal Z80 DMA (Z8410) chip is a pipelined device and because of
-that it has numerous off-by-one idiosyncrasies and requirements on the
-order that certain commands should be carried out. These issues are
-not duplicated in the zxnDMA. You can continue to program the zxnDMA
-as if it is were a Z8410 DMA device but it can also be programmed in a
-simpler manner.
+Like the Z80 DMA chip, the zxnDMA has seven write registers named
+WR0-WR6 that control the device. Each register WR0-WR6 can have zero
+or more parameters associated with it.
 
 <P>
-The single channel of the zxnDMA chip consists of two ports named A
-and B. Transfers can occur in either direction between ports A and B,
-each port can describe a target in memory or IO, and each can be
-configured to autoincrement, autodecrement or stay fixed after a byte
-is transferred.
+In a first write to the zxnDMA port, the write value is compared
+against a bitmask to determine which of the WR0-WR6 is the
+target. Remaining bits in the written value can contain data as well
+as a list of associated parameter bits. The parameter bits determine
+if further writes are expected to deliver parameter values. If there
+are multiple parameter bits set, the expected order of parameter
+values written is determined by parameter bit position from right to
+left (bit 0 through bit 7). Once all parameters are written, the
+zxnDMA again expects a regular register write selecting WR0-WR6.
 
 <P>
-A special feature of the zxnDMA can force each byte transfer to take a
-fixed amount of time so that the zxnDMA can be used to deliver sampled
-audio.
+The table X.Y describes the registers and the bitmask required to
+select them on the zxnDMA.
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1895"></A>
+<TABLE>
+<CAPTION><STRONG>Table 5.1:</STRONG>
+zxnDMA Registers</CAPTION>
+<TR><TD><IMG STYLE="height: 20.58ex; " SRC="img37.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{zxndma/registers.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
 
 <P>
 <BR><HR>

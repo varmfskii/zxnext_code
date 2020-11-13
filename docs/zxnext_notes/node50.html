@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Pattern Number</TITLE>
-<META NAME="description" CONTENT="Pattern Number">
+<TITLE>4-Bit Sprite Patterns</TITLE>
+<META NAME="description" CONTENT="4-Bit Sprite Patterns">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -26,65 +26,88 @@
  HREF="node51.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node49.html">
+ HREF="node48.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node49.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html659"
+<A ID="tex2html655"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html661"
-  HREF="node193.html">
+<A ID="tex2html657"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node51.html">8-Bit Sprite Patterns</A>
+ HREF="node51.html">Sprite Palette</A>
 <B> Up:</B> <A
- HREF="node49.html">Sprite Patterns</A>
+ HREF="node48.html">Pattern Number</A>
 <B> Previous:</B> <A
- HREF="node49.html">Sprite Patterns</A>
- &nbsp; <B>  <A ID="tex2html660"
+ HREF="node49.html">8-Bit Sprite Patterns</A>
+ &nbsp; <B>  <A ID="tex2html656"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html662"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html658"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00351010000000000000">
-Pattern Number</A>
-</H4>
+<H5><A ID="SECTION00351012000000000000">
+4-Bit Sprite Patterns</A>
+</H5>
+
+<P>
+The <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img29.svg"
+ ALT="$16\times16$"></SPAN> pixel image uses 4-bits for each pixel so that each
+pixel can be one of 16 colours. One colour indicates transparency and
+this is programmed into the lower 4-bits of the Sprite Transparency
+Index register (nextreg $4B). By default the transparency value is
+$3. Note that the same register is shared with 8-bit patterns to
+identify the transparent index.
+
+<P>
+Since each pixel only occupies 4-bits, two pixels are stored in each
+byte. The leftmost pixel is stored in the upper 4-bits and the
+rightmost pixel is stored in the lower 4-bits.
+
+<P>
+As an example we will use the same sprite image as was given in the
+8-bit pattern example. Here only the lower 4 bits of each pixel is
+retained to confine each pixel’s color to 4-bits:
+
+<P>
 <PRE>
-N5 N4 N3 N2 N1 N0 N6
+4444444333333333
+4FFFFF4333333333
+4FBBBF4333333333
+4FB55BF433333333
+4FB588BF43333333
+4FFB848BF4333333
+444FB848BF433333
+3334FB844BF43433
+33334FB444BF4D43
+333334FB4444AD43
+3333334FB4F54433
+33333334F4584333
+333333334A448433
+33333334DD434543
+33333333443334A4
+3333333333333344
 </PRE>
-N6, despite the name, is the least significant bit.
 
 <P>
-This 7-bit pattern number can identify 128 patterns in the 16k pattern
-memory, each of which are 128 bytes in size. The full 7-bits are
-therefore used for 4-bit sprites.
+$3 is used as the transparent index.
 
 <P>
-For 8-bit sprites, N6=0 always. The remaining 6 bits can identify 64
-patterns, each of which is 256 bytes in size.
+These 128 bytes would be stored in pattern memory in left to right,
+top to bottom order.
 
 <P>
-The N5:N0,N6 bits are stored in a particular sprite’s attributes to
-identify which image a sprite uses.
+The actual colour that will appear on screen will depend on the
+palette, described below. The default palette will not likely generate
+suitable colours for 4-bit sprites.
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
-
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html663"
-  HREF="node51.html">8-Bit Sprite Patterns</A>
-<LI><A ID="tex2html664"
-  HREF="node52.html">4-Bit Sprite Patterns</A>
-</UL>
-<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

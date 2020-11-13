@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Tile Definitions</TITLE>
-<META NAME="description" CONTENT="Tile Definitions">
+<TITLE>Combining ULA &amp; Tilemap</TITLE>
+<META NAME="description" CONTENT="Combining ULA &amp; Tilemap">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node43.html">
 <LINK REL="previous" HREF="node41.html">
 <LINK REL="next" HREF="node43.html">
 </HEAD>
@@ -26,93 +27,53 @@
  HREF="node43.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node40.html">
+ HREF="node36.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node41.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html613"
+<A ID="tex2html607"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html615"
-  HREF="node193.html">
+<A ID="tex2html609"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node43.html">Memory Organization &amp; Display</A>
+ HREF="node43.html">Programming Tilemap mode</A>
 <B> Up:</B> <A
- HREF="node40.html">Data Structures</A>
+ HREF="node36.html">Layer 3 (Tilemap) Mode</A>
 <B> Previous:</B> <A
- HREF="node41.html">Tilemap</A>
- &nbsp; <B>  <A ID="tex2html614"
+ HREF="node41.html">Memory Organization &amp; Display</A>
+ &nbsp; <B>  <A ID="tex2html608"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html616"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html610"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00342020000000000000">
-Tile Definitions</A>
-</H4>
-The second data structure is the tile definitions themselves. To find
-the difinition for a specific tile you would look at (base address) +
-(tile number) * (definition size).
+<H2><A ID="SECTION00344000000000000000">
+Combining ULA &amp; Tilemap</A>
+</H2>
+The combination of the ULA and tilemap is done in one of two modes:
+the standard mode or the stencil mode.
 
 <P>
-For 4-bit, 16-colour, tiles, each <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img10.svg"
- ALT="$8\times8$"></SPAN> tile takes up 32
-bytes. Each pixel uses four bits to select one of 16 colours. A tile
-is defined in X major order with packing in the X direction in the
-same way that 4-bit sprites are defined. The 4-bit colour of each
-pixel is augmented by the 4-bit palette offset from the tilemap in the
-most significant bits to form an 8-bit colour index that is looked up
-in the tilemap palette to determine the final 9-bit colour sent to the
-display. Ane of the 16 colours for each tile is the transparency
-color.
+The standard mode uses bit 8 of a tile's tilemap entry to determine if
+a tile is above or below the ULA. The source of the final pixel
+generated is then the topmost non-transparent pixel. If the ULA or
+tilemap is disabled then they are treated as transparent.
 
 <P>
-For 1-bit, 2-colour, tiles, each <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img10.svg"
- ALT="$8\times8$"></SPAN> tile takes up 8
-bytes. Each pixel uses one bit to select one of two colours. A tile is
-defined in X major order with packing in the X direction. The 1-bit
-colour of each pixel is augmented by the 7-bit palette offset from the
-tilemap in the most significant bits to form an 8-bit colour index
-that is looked up in the tilemap palette to determine the final 9-bit
-colour sent to the display. Transparency for each tile is according to
-the global transparency colour.
+The stencil mode will only be applied if both the ULA and tilemap are
+enabled. In the stencil mode, the final pixel will be transparent if
+either the ULA or tilemap are transparent. Otherwise the final pixel
+is a logical AND of the corresponding colour bits. The stencil mode
+allows one layer to act as a cut-out for the other.
 
 <P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node43.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node40.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node41.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html613"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html615"
-  HREF="node193.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node43.html">Memory Organization &amp; Display</A>
-<B> Up:</B> <A
- HREF="node40.html">Data Structures</A>
-<B> Previous:</B> <A
- HREF="node41.html">Tilemap</A>
- &nbsp; <B>  <A ID="tex2html614"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html616"
-  HREF="node193.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<BR><HR>
 
 </BODY>
 </HTML>

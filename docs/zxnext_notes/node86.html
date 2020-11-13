@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Modes of Operation</TITLE>
-<META NAME="description" CONTENT="Modes of Operation">
+<TITLE>zxnDMA Registers</TITLE>
+<META NAME="description" CONTENT="zxnDMA Registers">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node87.html">
+<LINK REL="next" HREF="node96.html">
 <LINK REL="previous" HREF="node85.html">
 <LINK REL="next" HREF="node87.html">
 </HEAD>
@@ -27,64 +27,66 @@
  HREF="node87.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node82.html">
+ HREF="node80.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node85.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html869"
+<A ID="tex2html863"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html871"
-  HREF="node193.html">
+<A ID="tex2html865"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node87.html">Programming the zxnDMA</A>
+ HREF="node87.html">WR0 – Write Register</A>
 <B> Up:</B> <A
- HREF="node82.html">zxnDMA</A>
+ HREF="node80.html">zxnDMA</A>
 <B> Previous:</B> <A
- HREF="node85.html">Description</A>
- &nbsp; <B>  <A ID="tex2html870"
+ HREF="node85.html">Programming the zxnDMA</A>
+ &nbsp; <B>  <A ID="tex2html864"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html872"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html866"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00640000000000000000">
-Modes of Operation</A>
+<H1><A ID="SECTION00660000000000000000">
+zxnDMA Registers</A>
 </H1>
-The zxnDMA can operate in a z80-dma compatibility mode.
+These are described below following the same convention used by Zilog
+for its DMA chip:
 
 <P>
-The z80-dma compatibility mode is selected by setting bit 6 of nextreg
-$06. In this mode, all transfers involve length+1 bytes which is the
-same behaviour as the z80-dma chip. In zxn-dma mode, the transfer
-length is exactly the number of bytes programmed. This mode is mainly
-present to accommodate existing spectrum software that uses the
-z80-dma and for cp/m programs that may have a z80-dma option.
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<P>
-The zxnDMA can also operate in either burst or continuous modes.
-
-<P>
-Continuous mode means the DMA chip runs to completion without allowing
-the CPU to run. When the CPU starts the DMA, the DMA operation will
-complete before the CPU executes its next instruction.
-
-<P>
-Burst mode nominally means the DMA lets the CPU run if either port is
-not ready. This condition can't happen in the zxnDMA chip except when
-operated in the special fixed time transfer mode. In this mode, the
-zxnDMA will let the CPU run while it waits for the fixed time to
-expire between bytes transferred.
-
-<P>
-Note that there is no byte transfer mode as in the Z80 DMA.
-
-<P>
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html867"
+  HREF="node87.html">WR0 – Write Register Group 0</A>
+<LI><A ID="tex2html868"
+  HREF="node88.html">WR1 – Write Register Group 1</A>
+<LI><A ID="tex2html869"
+  HREF="node89.html">WR2 – Write Register Group 2</A>
+<LI><A ID="tex2html870"
+  HREF="node90.html">WR3 – Write Register Group 3</A>
+<LI><A ID="tex2html871"
+  HREF="node91.html">WR4 – Write Register Group 4</A>
+<LI><A ID="tex2html872"
+  HREF="node92.html">WR5 – Write Register Group 5</A>
+<LI><A ID="tex2html873"
+  HREF="node93.html">WR6 – Command Register</A>
+<LI><A ID="tex2html874"
+  HREF="node94.html">Operating speed</A>
+<LI><A ID="tex2html875"
+  HREF="node95.html">The DMA and Interrupts</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

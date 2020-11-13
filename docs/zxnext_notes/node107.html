@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Coordinates</TITLE>
-<META NAME="description" CONTENT="Coordinates">
+<TITLE>Overscan</TITLE>
+<META NAME="description" CONTENT="Overscan">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node108.html">
 <LINK REL="previous" HREF="node106.html">
 <LINK REL="next" HREF="node108.html">
 </HEAD>
@@ -27,65 +26,94 @@
  HREF="node108.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node102.html">
+ HREF="node100.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node106.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html994"
+<A ID="tex2html988"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html996"
-  HREF="node193.html">
+<A ID="tex2html990"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node108.html">Compare</A>
+ HREF="node108.html">Instructions</A>
 <B> Up:</B> <A
- HREF="node102.html">Timing</A>
+ HREF="node100.html">Timing</A>
 <B> Previous:</B> <A
- HREF="node106.html">Dot Clock</A>
- &nbsp; <B>  <A ID="tex2html995"
+ HREF="node106.html">Compare</A>
+ &nbsp; <B>  <A ID="tex2html989"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html997"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html991"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00710050000000000000">
-Coordinates</A>
+<H4><A ID="SECTION00710070000000000000">
+Overscan</A>
 </H4>
 
 <P>
-The top left pixel of the frame buffer is line 0 and horizontal dot
-clock 0. This is also known as &ldquo;0,0&rdquo;.
+The visible area of the display can extend to resolutions exceeding
+<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
+ ALT="$256\times 192$"></SPAN>.
 
 <P>
-The bottom right pixel of the frame buffer in standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
- ALT="$256\times 192$"></SPAN>
-resolution is line 191 and horizontal dot clocks 510+511.
+The 50/60 Hz refresh rate mode dictates the vertical limit.
 
 <P>
-The bottom right pixel of the frame buffer in Timex HIRES
-<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img18.svg"
- ALT="$512\times192$"></SPAN> resolution is line 191 and horizontal dot clock 511.
+VGA and HDMI differ with VGA providing more visible pixels beyond the
+range of HDMI. Table 5.7 provides ideal
+extended pixel resolutions:
 
 <P>
-The line one pixel above the frame buffer is the last line of the
-video frame and equal to the total line count minus one (312-1 for
-example).
+Maximum Extended VGA Resolutions
 
 <P>
-The line one pixel below the frame buffer is line 192.
+50Hz = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img44.svg"
+ ALT="$352\times288$"></SPAN> (standard 256 resolution)
 
 <P>
-The COPPER horizontal dot clock compare is locked to every eight
-pixels in standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
- ALT="$256\times 192$"></SPAN> resolution and every sixteen pixels
-in Timex HIRES <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img18.svg"
- ALT="$512\times192$"></SPAN> resolution. The NOOP instruction can be
-used to fine tune timing in single dot clock steps.
+60Hz = <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img45.svg"
+ ALT="$352\times240$"></SPAN> (standard 256 resolution)
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="2065"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.7:</STRONG>
+Ideal Extended Resolutions for Both VGA and HDMI</CAPTION>
+<TR><TD><IMG STYLE="height: 9.09ex; " SRC="img46.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/idealres.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Table 5.8 provides COPPER horizontal position and vertical
+line compare parameters for ideal extended resolutions:
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="2069"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.8:</STRONG>
+Ideal Extended Resolution Display Parameters</CAPTION>
+<TR><TD><IMG STYLE="height: 48.43ex; " SRC="img47.svg"
+ ALT="\begin{table}\centering\small
+\csvautotabular{copper/idealparam.csv}
+\par
+\ra...
+... The fractional part is specified in dot clocks (NOOP instructions).
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
 
 <P>
 <BR><HR>

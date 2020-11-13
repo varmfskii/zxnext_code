@@ -29,9 +29,7 @@ the layer.
 \paragraph{Layer 2 $256\times192$, Write only overlaid on ROM}
 \begin{verbatim}
 p_layer2: defl $123b
-r_l2ctl: defb $70
 start:
-  nextreg r_l2ctl,$00 ; 256x192x256
   ld bc,p_layer2
   ld a,$03       ; enable, wo, 1st 16k
   out (c),a
@@ -42,86 +40,6 @@ start:
   call wrtpage
   ld bc,p_layer2
   ld a,$83       ; enable, wo, 3rd 16k
-  out (c),a
-  call wrtpage
-  ret
-wrtpage:  
-  ld hl,$0000
-  ld bc,$0040    ; 40*256 writes
-loop:
-  ld (hl),b
-  inc hl
-  djnz loop
-  dec c
-  jr nz,loop
-\end{verbatim}
-
-\paragraph{Layer 2 $320\times256$, Write only overlaid on ROM}
-\begin{verbatim}
-p_layer2: defl $123b
-r_layer2: defb $70
-start:
-  nextreg r_layer2,$10 ; 320x256x256
-  ld bc,p_layer2
-  ld a,$03       ; enable, wo, 1st 16k
-  out (c),a
-  ld a,$10       ; bank offset +0
-  out (c),a
-  call wrtpage
-  ld bc,p_layer2
-  ld a,$11       ; bank offset +1
-  out (c),a
-  call wrtpage
-  ld bc,p_layer2
-  ld a,$12       ; bank offset +2
-  out (c),a
-  call wrtpage
-  ld bc,p_layer2
-  ld a,$12       ; bank offset +3
-  out (c),a
-  call wrtpage
-  ld bc,p_layer2
-  ld a,$12       ; bank offset +4
-  out (c),a
-  call wrtpage
-  ret
-wrtpage:  
-  ld hl,$0000
-  ld bc,$0040    ; 40*256 writes
-loop:
-  ld (hl),b
-  inc hl
-  djnz loop
-  dec c
-  jr nz,loop
-\end{verbatim}
-
-\paragraph{Layer 2 $640\times256$, Write only overlaid on ROM}
-\begin{verbatim}
-p_layer2: defl $123b
-r_layer2: defb $70
-start:
-  nextreg r_layer2,$20 ; 640x256x16
-  ld bc,p_layer2
-  ld a,$03       ; enable, wo, 1st 16k
-  out (c),a
-  ld a,$10       ; bank offset +0
-  out (c),a
-  call wrtpage
-  ld bc,p_layer2
-  ld a,$11       ; bank offset +1
-  out (c),a
-  call wrtpage
-  ld bc,p_layer2
-  ld a,$12       ; bank offset +2
-  out (c),a
-  call wrtpage
-  ld bc,p_layer2
-  ld a,$12       ; bank offset +3
-  out (c),a
-  call wrtpage
-  ld bc,p_layer2
-  ld a,$12       ; bank offset +4
   out (c),a
   call wrtpage
   ret

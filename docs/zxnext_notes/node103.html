@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Machines</TITLE>
-<META NAME="description" CONTENT="Machines">
+<TITLE>Resolution</TITLE>
+<META NAME="description" CONTENT="Resolution">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,47 +27,64 @@
  HREF="node104.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node102.html">
+ HREF="node100.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node102.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html978"
+<A ID="tex2html972"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html980"
-  HREF="node193.html">
+<A ID="tex2html974"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node104.html">Display</A>
+ HREF="node104.html">Dot Clock</A>
 <B> Up:</B> <A
- HREF="node102.html">Timing</A>
+ HREF="node100.html">Timing</A>
 <B> Previous:</B> <A
- HREF="node102.html">Timing</A>
- &nbsp; <B>  <A ID="tex2html979"
+ HREF="node102.html">Display</A>
+ &nbsp; <B>  <A ID="tex2html973"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html981"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html975"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00710010000000000000">
-Machines</A>
+<H4><A ID="SECTION00710030000000000000">
+Resolution</A>
 </H4>
 
 <P>
-The ZX Spectrum Next has four machine types (48k, 128k, Pentagon, and
-HDMI). The machine timing and HDMI determine the number of T-states
-per line which determines the base dot clock frequency and Z80/DMA
-clock speed.
+There are two main horizontal resolutions: standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
+ ALT="$256\times 192$"></SPAN> and
+Timex HIRES <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img18.svg"
+ ALT="$512\times192$"></SPAN>. Details of LORES <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img23.svg"
+ ALT="$128\times96$"></SPAN> are not
+included to simplify this guide.
 
 <P>
-This guide groups machine types by their timing for convenience. The
-HDMI video mode overrides the default machine timing so it is included
-as an extra machine type which does not exist in the official
-documentation.
+The frame buffer height is fixed at 192 pixels and surrounded by a
+large border and overscan as well as horizontal and vertical blanking
+periods.
+
+<P>
+There are five vertical line counts: 261, 262, 311, 312, 320. Several
+pixels are hidden in the overscan and blanking periods beyond the
+visible border.
+
+<P>
+The result is <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
+ ALT="$256\times 192$"></SPAN> and <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img18.svg"
+ ALT="$512\times192$"></SPAN> pixel resolutions with
+a large border.
+
+<P>
+The colour of the visible border beyond the frame buffer can be
+manipulated. Visual changes will not show during the overscan and
+blanking periods.
 
 <P>
 <BR><HR>

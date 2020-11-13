@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>ZX Next native</TITLE>
-<META NAME="description" CONTENT="ZX Next native">
+<TITLE>ROM paging and selection</TITLE>
+<META NAME="description" CONTENT="ROM paging and selection">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node74.html">
 <LINK REL="previous" HREF="node72.html">
 <LINK REL="next" HREF="node74.html">
 </HEAD>
@@ -32,66 +31,44 @@
 <A
  HREF="node72.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html798"
+<A ID="tex2html793"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html800"
-  HREF="node193.html">
+<A ID="tex2html795"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node74.html">ZX Spectrum 128k</A>
+ HREF="node74.html">divMMC</A>
 <B> Up:</B> <A
- HREF="node72.html">ROM</A>
+ HREF="node72.html">ZX Spectrum 128k</A>
 <B> Previous:</B> <A
- HREF="node72.html">ROM</A>
- &nbsp; <B>  <A ID="tex2html799"
+ HREF="node72.html">ZX Spectrum 128k</A>
+ &nbsp; <B>  <A ID="tex2html794"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html801"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html796"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00513010000000000000">
-ZX Next native</A>
-</H4>
+<H5><A ID="SECTION00513021000000000000">
+ROM paging and selection</A>
+</H5>
 
 <P>
-Slots 0 and 1 select use by ROM by selecting page $FF. Which what ROM
-is mapped in is determined by the other memory management system. If
-the rest of the system selected the 48k ROM, Nextreg $8C determines
-whether the actual 48k ROM, or the ZX Next Alternate ROM is in use. In
-addition, it is possible to enable writing to the Alternate ROM.
+$0000-$3fff is usually mapped to ROM. This area can only be fully
+remapped using Next memory management. ROM is not considered one of
+the numbered banks; it is mapped to the two 8k-banks by default, or by
+setting their 8k-bank numbers to 255.
 
 <P>
-Register (R/W) $8C (8C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Alternate ROM
-<BR>
-Immediate
-
-<UL>
-<LI>bit 7 = Alt ROM Enable (0 on hard reset)
-</LI>
-<LI>bit 6 = Alt ROM visible ONLY during writes (0 on hard reset)
-</LI>
-<LI>bit 5 = Reserved, must be 0
-</LI>
-<LI>bit 4 = 48k ROM Lock (0 on hard reset)
-</LI>
-</UL>
-After Soft Reset (copied into bits 7-4)
-
-<UL>
-<LI>bit 3 = Alt ROM Enable (0 on hard reset)
-</LI>
-<LI>bit 2 = Alt ROM visible ONLY during writes (0 on hard reset)
-</LI>
-<LI>bit 1 = Reserved, must be 0
-</LI>
-<LI>bit 0 = 48k ROM Lock (0 on hard reset)
-</LI>
-</UL>
+The 128k Spectrum has 2 ROM pages. Which of these is mapped is
+selected by altering Bit 4 of Memory Paging Control ($7FFD). The
++2a/+3 has 4 ROM pages; the extra bit needed to select between these
+is bit 2 of Plus 3 Memory Paging Control ($1FFD). This maintains
+compatibility with the original machines' ROM paging as long as the
+ROM is not paged out.
 
 <P>
 <BR><HR>

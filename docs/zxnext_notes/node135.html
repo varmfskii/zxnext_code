@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Memory Select and Move Functions</TITLE>
-<META NAME="description" CONTENT="Memory Select and Move Functions">
+<TITLE>NextZXOS</TITLE>
+<META NAME="description" CONTENT="NextZXOS">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="previous" HREF="node131.html">
+<LINK REL="next" HREF="node136.html">
+<LINK REL="previous" HREF="node126.html">
 <LINK REL="next" HREF="node136.html">
 </HEAD>
 
@@ -26,170 +27,36 @@
  HREF="node136.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node128.html">
+ HREF="node125.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node134.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1144"
+<A ID="tex2html1139"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1146"
-  HREF="node193.html">
+<A ID="tex2html1141"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node136.html">Clock Support Function</A>
+ HREF="node136.html">NextZXOS</A>
 <B> Up:</B> <A
- HREF="node128.html">CP/M</A>
+ HREF="node125.html">System Software</A>
 <B> Previous:</B> <A
- HREF="node134.html">Disk I/O Functions</A>
- &nbsp; <B>  <A ID="tex2html1145"
+ HREF="node134.html">Clock Support Function</A>
+ &nbsp; <B>  <A ID="tex2html1140"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1147"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1142"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION001014000000000000000">
-Memory Select and Move Functions</A>
-</H2>
-This section defines the memory management functions MOVE, XMOVE,
-SELMEM, and SETBNK.
-
-<P>
-<A NAME="3491"></A>
-BIOS Function 25: MOVE
-
-<P>
-Memory-to-Memory Block Move
-<BR>
-Entry Parameters:
-<table width="90%"><tr><td valign="top">&nbsp;HL=Destination address</td></tr>
-<tr><td valign="top">&nbsp;DE=Source address</td></tr>
-<tr><td valign="top">&nbsp;BC=Count
-</td></tr></table>
-
-Returned Values: HL and DE must point to next bytes following move
-operation
-
-<P>
-The BDOS calls the MOVE routine to perform memory to memory block
-moves to allow use of the Z80 LDIR instruction or special DMA
-hardware, if available. Note that the arguments in HL and DE are
-reversed from the Z8O machine instruction, necessitating the use of
-XCHG instructions on either side of the LDIR. The BDOS uses this
-routine for all large memory copy operations. On return, the HL and DE
-registers are expected to point to the next bytes following the move.
-
-<P>
-Usually, the BDOS expects MOVE to transfer data within the currently
-selected bank or common memory. However, if the BDOS calls the XMOVE
-entry point before calling MOVE, the MOVE routine must perform an
-interbank transfer.
-
-<P>
-<A NAME="3494"></A>
-BIOS Function 27: SELMEM
-
-<P>
-Select Memory Bank
-<BR>
-Entry Parameters: A=Memory Bank
-<BR>
-Returned Values; None
-
-<P>
-The SELMEM entry point is only present in banked systems. The banked
-version of the CP/M 3 BDOS calls SELMEM to select the current memory
-bank for further instruction execution or buffer references. You must
-preserve or restore all registers other than the accumulator, A, upon
-exit.
-
-<P>
-<A NAME="3495"></A>
-BIOS Function 28: SETBNK
-
-<P>
-Specify Bank for DMA Operation
-<BR>
-Entry Parameters: A=Memory Bank
-<BR>
-Returned Values: None
-
-<P>
-SETBNK only occurs in the banked version of CP/M 3. SETBNK specifies
-the bank that the subsequent disk READ or WRITE routine must use for
-memory transfers. The BDOS always makes a call to SETBNK to identify
-the DMA bank before performing a READ or WRITE call. Note that the
-BDOS does not reference banks other than 0 or 1 unless another bank is
-specified by the BANK field of a Data Buffer Control Block (BCB).
-
-<P>
-<A NAME="3496"></A>
-BIOS Function 29: XMOVE
-
-<P>
-Set Banks for Following MOVE
-<BR>
-Entry Parameters:
-<table width="90%"><tr><td valign="top">&nbsp;B=destination bank</td></tr>
-<tr><td valign="top">&nbsp;C=source bank
-</td></tr></table>
-
-Returned Values: None
-
-<P>
-XMOVE is provided for banked systems that support memory-to- memory
-DMA transfers over the entire extended address range. Systems with
-this feature can have their data buffers located in an alternate bank
-instead of in common memory, as is usually required. An XMOVE call
-affects only the following MOVE call. All subsequent MOVE calls apply
-to the memory selected by the latest call to SELMEM. After a call to
-the XMOVE function, the following call to the MOVE function is not
-more than 128 bytes of data.
-
-<P>
+<H1><A ID="SECTION001020000000000000000">
+NextZXOS</A>
+</H1>
 <BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
-
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html1148"
-  HREF="node136.html">Clock Support Function</A>
-</UL>
-<!--End of Table of Child-Links-->
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node136.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node128.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node134.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1144"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1146"
-  HREF="node193.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node136.html">Clock Support Function</A>
-<B> Up:</B> <A
- HREF="node128.html">CP/M</A>
-<B> Previous:</B> <A
- HREF="node134.html">Disk I/O Functions</A>
- &nbsp; <B>  <A ID="tex2html1145"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1147"
-  HREF="node193.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

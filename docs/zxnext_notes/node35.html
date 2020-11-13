@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Layer 2 resolution</TITLE>
-<META NAME="description" CONTENT="Layer 2 resolution">
+<TITLE>Clipping</TITLE>
+<META NAME="description" CONTENT="Clipping">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -26,58 +26,89 @@
  HREF="node36.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node29.html">
+ HREF="node28.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node34.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html574"
+<A ID="tex2html568"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html576"
-  HREF="node193.html">
+<A ID="tex2html570"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node36.html">Scrolling</A>
+ HREF="node36.html">Layer 3 (Tilemap) Mode</A>
 <B> Up:</B> <A
- HREF="node29.html">Configuration</A>
+ HREF="node28.html">Layer 2</A>
 <B> Previous:</B> <A
- HREF="node34.html">Layer 2 resolution</A>
- &nbsp; <B>  <A ID="tex2html575"
+ HREF="node34.html">Scrolling</A>
+ &nbsp; <B>  <A ID="tex2html569"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html577"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html571"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00331060000000000000">
-Layer 2 <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img3.svg"
- ALT="$640\times 256$"></SPAN> resolution</A>
-</H4>
-<PRE>
-r_mmu_7:  defl $57
-r_disp1:  defl $69
-r_layer2:  defl $70
-start:
-  nextreg r_disp1, $80   ; enable layer 2
-  nextreg r_layer2, $20  ; 640x256x16
-  ld a, $12    ; page 18=bank 9
-loop1:
-  nextreg r_mmu_7, a  ; map page into slot 7
-  ld bc, $0020    ; 20*256 = 8k
-  ld hl, $E000    ; start address for slot 7
-loop2:
-  ld (hl), b
-  inc hl
-  djnz loop2
-  dec c
-  jp NZ, loop2
-  inc a
-  cp $1C      ; stop at page 28
-  jp NZ, loop1
-</PRE>
+<H2><A ID="SECTION00333000000000000000">
+Clipping</A>
+</H2>
+The Clip area for is based on the local coordinate system for the mode
+in question and is set using register $18 with the option of
+selection which write in active using register $1C.
+
+<P>
+Register (R/W) $18 (18) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Layer 2 Clip Window Definition
+
+<UL>
+<LI>bits 7-0 = Coords of the clip window
+  <table width="90%">  <tr><td valign="top">&nbsp;1st write - X1 position
+  </td></tr>
+<tr><td valign="top">&nbsp;2nd write - X2 position
+  </td></tr>
+<tr><td valign="top">&nbsp;3rd write - Y1 position
+  </td></tr>
+<tr><td valign="top">&nbsp;4rd write - Y2 position
+  </td></tr></table>
+</LI>
+</UL>
+Reads do not advance the clip position
+<BR>
+The values are 0,255,0,191 after a Reset
+
+<P>
+Register (R/W) $1C (1C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Clip Window Control
+<BR>
+Read
+
+<UL>
+<LI>bits 7-6 = Layer 3 Clip Index
+</LI>
+<LI>bits 5-4 = Layer 0/1 Clip Index
+</LI>
+<LI>bits 3-2 = Sprite clip index
+</LI>
+<LI>bits 1-0 = Layer 2 Clip Index
+</LI>
+</UL>
+Write
+
+<UL>
+<LI>bits 7-4 = Reserved, must be 0
+</LI>
+<LI>bit 3 - reset Layer 3 clip index
+</LI>
+<LI>bit 2 - reset Layer 0/1 clip index
+</LI>
+<LI>bit 1 - reset sprite clip index.
+</LI>
+<LI>bit 0 - reset Layer 2 clip index.
+</LI>
+</UL>
 
 <P>
 <BR><HR>

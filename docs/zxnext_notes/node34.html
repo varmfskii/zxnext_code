@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Layer 2 resolution</TITLE>
-<META NAME="description" CONTENT="Layer 2 resolution">
+<TITLE>Scrolling</TITLE>
+<META NAME="description" CONTENT="Scrolling">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -16,7 +16,7 @@
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node35.html">
-<LINK REL="previous" HREF="node33.html">
+<LINK REL="previous" HREF="node29.html">
 <LINK REL="next" HREF="node35.html">
 </HEAD>
 
@@ -27,58 +27,55 @@
  HREF="node35.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node29.html">
+ HREF="node28.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node33.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html570"
+<A ID="tex2html564"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html572"
-  HREF="node193.html">
+<A ID="tex2html566"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node35.html">Layer 2 resolution</A>
+ HREF="node35.html">Clipping</A>
 <B> Up:</B> <A
- HREF="node29.html">Configuration</A>
+ HREF="node28.html">Layer 2</A>
 <B> Previous:</B> <A
  HREF="node33.html">Layer 2 resolution</A>
- &nbsp; <B>  <A ID="tex2html571"
+ &nbsp; <B>  <A ID="tex2html565"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html573"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html567"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00331050000000000000">
-Layer 2 <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img2.svg"
- ALT="$320\times 256$"></SPAN> resolution</A>
-</H4>
-<PRE>
-r_mmu_7:  defl $57
-r_disp1:  defl $69
-r_layer2: defl $70
-start:
-  nextreg r_disp1,$80  ; enable layer 2
-  nextreg r_layer2,$10 ; 320x256x256
-  ld a,$12             ; page 18=bank 9
-loop1:
-  nextreg r_mmu_7,a    ; map page into slot 7
-  ld bc,$0020          ; 20*256 = 8k
-  ld hl,$E000          ; start of slot 7
-loop2:
-  ld (hl),b
-  inc hl
-  djnz loop2
-  dec c
-  jp NZ,loop2
-  inc a
-  cp $1C               ; stop at page 28
-  jp NZ,loop1
-</PRE>
+<H2><A ID="SECTION00332000000000000000">
+Scrolling</A>
+</H2>
+Scrolling Layer 2 is controlled by registers $16 and $17. (Is there
+a third scrolling register for layer 2?)
+
+<P>
+Register (R/W) $16 (16) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Layer 2 Horizontal Scroll Control
+
+<UL>
+<LI>bits 7-0 = X Offset (0-255)(0 on reset)
+</LI>
+</UL>
+
+<P>
+Register (R/W) $17 (17) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Layer 2 Vertical Scroll Control
+
+<UL>
+<LI>bits 7-0 = Y Offset (0-191)(0 on reset)
+</LI>
+</UL>
 
 <P>
 <BR><HR>

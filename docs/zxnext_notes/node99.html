@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Copper and Display Timing</TITLE>
-<META NAME="description" CONTENT="Copper and Display Timing">
+<TITLE>Overview</TITLE>
+<META NAME="description" CONTENT="Overview">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node125.html">
-<LINK REL="previous" HREF="node82.html">
+<LINK REL="previous" HREF="node98.html">
 <LINK REL="next" HREF="node100.html">
 </HEAD>
 
@@ -27,113 +26,111 @@
  HREF="node100.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="zxnext_notes.html">
+ HREF="node97.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node98.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html930"
+<A ID="tex2html949"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html932"
-  HREF="node193.html">
+<A ID="tex2html951"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node100.html">Introduction</A>
+ HREF="node100.html">Timing</A>
 <B> Up:</B> <A
- HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
+ HREF="node97.html">Copper and Display Timing</A>
 <B> Previous:</B> <A
- HREF="node98.html">Programming examples</A>
- &nbsp; <B>  <A ID="tex2html931"
+ HREF="node98.html">Introduction</A>
+ &nbsp; <B>  <A ID="tex2html950"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html933"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html952"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00700000000000000000">
-Copper and Display Timing</A>
-</H1>
-From: KevB (aka 9bitcolour)
+<H4><A ID="SECTION00700020000000000000">
+Overview</A>
+</H4>
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+The ZX Spectrum Next COPPER has three instructions: NOOP, MOVE, WAIT. 
 
-<UL CLASS="ChildLinks">
-<LI><UL>
-<LI><UL>
-<LI><UL>
-<LI><A ID="tex2html934"
-  HREF="node100.html">Introduction</A>
-<LI><A ID="tex2html935"
-  HREF="node101.html">Overview</A>
-</UL>
-</UL>
-</UL>
+<P>
+NOOP is used to fine tune timing. MOVE writes data to a specific range
+of hardware registers. WAIT waits for a pixel position on the video
+display.
+
+<P>
+These instructions are stored in 2k (2048 BYTES) of dedicated
+write-only program RAM also known as a &ldquo;Copper list&rdquo;.
+
+<P>
+Each instruction is 16 bits (WORD) in size allowing for a maximum of
+1024 instructions to be stored in the program RAM. The COPPER uses an
+internal 10 bit program counter (PC) which wraps to zero at the end of
+the list. The PC can be reset to zero, this is the default value after
+a hard/soft reset.
+
+<P>
+The instructions are stored in big endian format and transferred to
+the 2k program RAM using the Z80 or DMA (bits 15..8 followed by bits
+7..0).
+
+<P>
+Three write-only hardware registers control access to the program RAM
+as well as the operating modes.
+
+<P>
+System performance is not affected when the COPPER is executing instructions.
+
+<P>
+The hardware registers and COPPER program RAM are not connected to the
+main memory BUS. The overall design of this system together with the
+use of alternate clock edges means that contention between the COPPER,
+Z80 and DMA has been eliminated.
+
+<P>
+The COPPER has a base clock speed of 13.5Mhz for HDMI and 14Mhz for VGA.
+
+<P>
+The bandwidth is around 14 million single cycle NOOP/WAIT instructions
+and 7 million two cycle MOVE instructions per second.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node100.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node97.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node98.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html949"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html951"
+  HREF="node191.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
-<LI><A ID="tex2html936"
-  HREF="node102.html">Timing</A>
-<UL>
-<LI><A ID="tex2html937"
-  HREF="node103.html">Machines</A>
-<LI><A ID="tex2html938"
-  HREF="node104.html">Display</A>
-<LI><A ID="tex2html939"
-  HREF="node105.html">Resolution</A>
-<LI><A ID="tex2html940"
-  HREF="node106.html">Dot Clock</A>
-<LI><A ID="tex2html941"
-  HREF="node107.html">Coordinates</A>
-<LI><A ID="tex2html942"
-  HREF="node108.html">Compare</A>
-<LI><A ID="tex2html943"
-  HREF="node109.html">Overscan</A>
-</UL>
-<BR>
-<LI><A ID="tex2html944"
-  HREF="node110.html">Instructions</A>
-<UL>
-<LI><A ID="tex2html945"
-  HREF="node111.html">NOOP</A>
-<LI><A ID="tex2html946"
-  HREF="node112.html">MOVE</A>
-<LI><A ID="tex2html947"
-  HREF="node113.html">WAIT</A>
-<LI><A ID="tex2html948"
-  HREF="node114.html">Example</A>
-</UL>
-<BR>
-<LI><A ID="tex2html949"
-  HREF="node115.html">Control</A>
-<UL>
-<LI><A ID="tex2html950"
-  HREF="node116.html">STOP</A>
-<LI><A ID="tex2html951"
-  HREF="node117.html">RESET</A>
-<LI><A ID="tex2html952"
-  HREF="node118.html">START</A>
-<LI><A ID="tex2html953"
-  HREF="node119.html">FRAME</A>
-</UL>
-<BR>
-<LI><A ID="tex2html954"
-  HREF="node120.html">Configuration</A>
-<UL>
-<LI><A ID="tex2html955"
-  HREF="node121.html">Refresh Rate</A>
-<LI><A ID="tex2html956"
-  HREF="node122.html">Video Modes</A>
-<LI><A ID="tex2html957"
-  HREF="node123.html">Machine Type</A>
-<LI><A ID="tex2html958"
-  HREF="node124.html">Summary</A>
-</UL></UL>
-<!--End of Table of Child-Links-->
-<BR><HR>
+<B> Next:</B> <A
+ HREF="node100.html">Timing</A>
+<B> Up:</B> <A
+ HREF="node97.html">Copper and Display Timing</A>
+<B> Previous:</B> <A
+ HREF="node98.html">Introduction</A>
+ &nbsp; <B>  <A ID="tex2html950"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html952"
+  HREF="node191.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

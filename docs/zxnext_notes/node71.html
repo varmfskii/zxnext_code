@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Spectrum 128 Special Paging</TITLE>
-<META NAME="description" CONTENT="Spectrum 128 Special Paging">
+<TITLE>ZX Next native</TITLE>
+<META NAME="description" CONTENT="ZX Next native">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node72.html">
 <LINK REL="previous" HREF="node70.html">
 <LINK REL="next" HREF="node72.html">
 </HEAD>
@@ -26,55 +27,71 @@
  HREF="node72.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node68.html">
+ HREF="node70.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node70.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html785"
+<A ID="tex2html784"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html787"
-  HREF="node193.html">
+<A ID="tex2html786"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node72.html">ROM</A>
+ HREF="node72.html">ZX Spectrum 128k</A>
 <B> Up:</B> <A
- HREF="node68.html">ZX Spectrum 128</A>
+ HREF="node70.html">ROM</A>
 <B> Previous:</B> <A
- HREF="node70.html">Paging out ROM</A>
- &nbsp; <B>  <A ID="tex2html786"
+ HREF="node70.html">ROM</A>
+ &nbsp; <B>  <A ID="tex2html785"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html788"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html787"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H5><A ID="SECTION00512023000000000000">
-Spectrum 128 Special Paging</A>
-</H5>
+<H4><A ID="SECTION00513010000000000000">
+ZX Next native</A>
+</H4>
 
 <P>
-&ldquo;Special paging mode&rdquo; (also called &ldquo;AllRam mode&rdquo; or &ldquo;CP/M mode&rdquo;)
-is enabled by writing a value with the LSB set to Plus 3 Memory Paging
-Control ($1FFD). Depending on the 3 low bits of this value a memory
-configuration is selected as follows:
+Slots 0 and 1 select use by ROM by selecting page $FF. Which what ROM
+is mapped in is determined by the other memory management system. If
+the rest of the system selected the 48k ROM, Nextreg $8C determines
+whether the actual 48k ROM, or the ZX Next Alternate ROM is in use. In
+addition, it is possible to enable writing to the Alternate ROM.
 
 <P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="1727"></A>
-<TABLE>
-<CAPTION><STRONG>Table 4.1:</STRONG>
-Special Paging Modes</CAPTION>
-<TR><TD><IMG STYLE="height: 14.84ex; " SRC="img36.svg"
- ALT="\begin{table}\centering
-\csvautotabular{memory/zx128mm.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+Register (R/W) $8C (8C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Alternate ROM
 <BR>
+Immediate
+
+<UL>
+<LI>bit 7 = Alt ROM Enable (0 on hard reset)
+</LI>
+<LI>bit 6 = Alt ROM visible ONLY during writes (0 on hard reset)
+</LI>
+<LI>bit 5 = Reserved, must be 0
+</LI>
+<LI>bit 4 = 48k ROM Lock (0 on hard reset)
+</LI>
+</UL>
+After Soft Reset (copied into bits 7-4)
+
+<UL>
+<LI>bit 3 = Alt ROM Enable (0 on hard reset)
+</LI>
+<LI>bit 2 = Alt ROM visible ONLY during writes (0 on hard reset)
+</LI>
+<LI>bit 1 = Reserved, must be 0
+</LI>
+<LI>bit 0 = 48k ROM Lock (0 on hard reset)
+</LI>
+</UL>
 
 <P>
 <BR><HR>

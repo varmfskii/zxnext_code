@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>WR2 – Write Register Group 2</TITLE>
-<META NAME="description" CONTENT="WR2 – Write Register Group 2">
+<TITLE>WR4 – Write Register Group 4</TITLE>
+<META NAME="description" CONTENT="WR4 – Write Register Group 4">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,111 +27,57 @@
  HREF="node92.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node88.html">
+ HREF="node86.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node90.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html898"
+<A ID="tex2html892"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html900"
-  HREF="node193.html">
+<A ID="tex2html894"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node92.html">WR3 – Write Register</A>
+ HREF="node92.html">WR5 – Write Register</A>
 <B> Up:</B> <A
- HREF="node88.html">zxnDMA Registers</A>
+ HREF="node86.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node90.html">WR1 – Write Register</A>
- &nbsp; <B>  <A ID="tex2html899"
+ HREF="node90.html">WR3 – Write Register</A>
+ &nbsp; <B>  <A ID="tex2html893"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html901"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html895"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00660030000000000000">
-WR2 – Write Register Group 2</A>
+<H4><A ID="SECTION00660050000000000000">
+WR4 – Write Register Group 4</A>
 </H4>
 <PRE>
 D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
- 0   |   |   |   |   0   0   0
-     |   |   |   |
-     |   |   |   0 = Port B is memory
-     |   |   |   1 = Port B is IO
-     |   |   |
-     |   0   0 = Port B address decrements
-     |   0   1 = Port B address increments
-     |   1   0 = Port B address is fixed
-     |   1   1 = Port B address is fixed
-     |
-     V
-D7  D6  D5  D4  D3  D2  D1  D0  PORT B VARIABLE TIMING BYTE
- 0   0   |   0   0   0   |   |
-         |               0   0 = Cycle Length = 4
-         |               0   1 = Cycle Length = 3
-         |               1   0 = Cycle Length = 2
-         |               1   1 = Do not use
-         |
-         V
-D7  D6  D5  D4  D3  D2  D1  D0  ZXN PRESCALAR (FIXED TIME TRANSFER)
+ 1   |   |   0   |   |   0   1
+     |   |       |   |
+     0   0 = Do not use (Behaves like Continuous mode, Byte mode on Z80 DMA)
+     0   1 = Continuous mode
+     1   0 = Burst mode
+     1   1 = Do not use
+                 |   |
+                 |   V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT B STARTING ADDRESS (LOW BYTE)
+                 |
+                 V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT B STARTING ADDRESS (HIGH BYTE)
 </PRE>
-The ZXN PRESCALAR is a feature of the zxnDMA implementation. If
-non-zero, a delay will be inserted after each byte is transferred such
-that the total time needed for each transfer is determined by the
-prescalar. This works in both the continuous mode and the burst
-mode. If the DMA is operated in burst mode, the DMA will give up any
-waiting time to the CPU so that the CPU can run while the DMA is idle.
+The Z80 DMA defines three more registers in this group through D4 that
+define interrupt behaviour. Interrups and pulse generation are not
+implemented in the zxnDMA nor are these registers available for
+writing.
 
 <P>
-The rate of transfer is given by the formula &ldquo;Frate = 875kHz /
-prescalar&rdquo; or, rearranged, &ldquo;prescalar = 875kHz / Frate&rdquo;. The formula
-is framed in terms of a sample rate (Frate) but Frate can be inverted
-to set a transfer time for each byte instead. The 875kHz constant is a
-nominal value assuming a 28MHz system clock; the system clock actually
-varies from this depending on the video timing selected by the user
-(HDMI, VGA0-6) so for complete accuracy the constant should be
-prorated according to documentation for nextreg $11.
-
-<P>
-In a DMA audio setting, selecting a sample rate of 16kHz would mean
-setting the prescalar value to 55. This sample period is constant
-across changes in CPU speed.
-
-<P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node92.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node88.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node90.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html898"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html900"
-  HREF="node193.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node92.html">WR3 – Write Register</A>
-<B> Up:</B> <A
- HREF="node88.html">zxnDMA Registers</A>
-<B> Previous:</B> <A
- HREF="node90.html">WR1 – Write Register</A>
- &nbsp; <B>  <A ID="tex2html899"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html901"
-  HREF="node193.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<BR><HR>
 
 </BODY>
 </HTML>

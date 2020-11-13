@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Changes Since 2.00.26</TITLE>
-<META NAME="description" CONTENT="Changes Since 2.00.26">
+<TITLE>Sprites</TITLE>
+<META NAME="description" CONTENT="Sprites">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node47.html">
-<LINK REL="previous" HREF="node45.html">
+<LINK REL="previous" HREF="node36.html">
 <LINK REL="next" HREF="node47.html">
 </HEAD>
 
@@ -27,60 +26,162 @@
  HREF="node47.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node45.html">
+ HREF="node3.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node45.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html631"
+<A ID="tex2html625"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html633"
-  HREF="node193.html">
+<A ID="tex2html627"
+  HREF="node191.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node47.html">Future Direction</A>
+ HREF="node47.html">Sprite Patterns</A>
 <B> Up:</B> <A
- HREF="node45.html">Programming Tilemap mode</A>
+ HREF="node3.html">Video</A>
 <B> Previous:</B> <A
- HREF="node45.html">Programming Tilemap mode</A>
- &nbsp; <B>  <A ID="tex2html632"
+ HREF="node45.html">Future Direction</A>
+ &nbsp; <B>  <A ID="tex2html626"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html634"
-  HREF="node193.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html628"
+  HREF="node191.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00345010000000000000">
-Changes Since 2.00.26</A>
-</H4>
+<H1><A ID="SECTION00350000000000000000">
+Sprites</A>
+</H1>
+
+<P>
+February 25, 2019  Victor Trucco
+
+<P>
+The Spectrum Next has a hardware sprite system with the following
+characteristics:
 
 <P>
 
-<OL>
-<LI>512 Tile Mode. In 2.00.26, the 512 tile mode was automatically
-  selected when the ULA was disabled. With the ULA disabled, the
-  tilemap attribute bit “ULA on top” was re-purposed to be bit 8 of
-  the tile number. In 2.00.27, selection of the 512 tile mode is moved
-  to bit 1 of Tilemap Control nextreg $6B. This way 512 tile mode can
-  be independently chosen without disabling the ULA. The “ULA on top”
-  bit is still taken as bit 8 of the tile number and in the 512 mode,
-  the tilemap is always displayed underneath the ULA.
+<UL>
+<LI>Total of 128 sprites
 </LI>
-<LI>Tilemap Always On Top of ULA. In 2.00.27, bit 0 of Tilemap
-  Control nextreg $6B is used to indicate that the tilemap should
-  always be displayed on top of the ULA. This allows the tilemap to
-  display over the ULA when in 512 mode.
+<LI>Display surface is <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img2.svg"
+ ALT="$320\times 256$"></SPAN> overlapping the ULA screen by
+  32 pixels on each side
 </LI>
-<LI>1-bit tilemaps. In 3.00.00, a number of modifications were made
-  to accomidate 1-bit tilemaps.
+<LI>Minimum of 100 sprites per scanline*
 </LI>
-</OL>
+<LI>Choice of 512 colours for each pixel
+</LI>
+<LI>Site of each sprite is <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img29.svg"
+ ALT="$16\times16$"></SPAN> pixels but sprites can be
+  magnified <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
+ ALT="$2\times$"></SPAN>, <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img31.svg"
+ ALT="$4\times$"></SPAN> or <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img32.svg"
+ ALT="$8\times$"></SPAN> horizontally and
+  vertically
+</LI>
+<LI>Sprites can be mirrored and rotated
+</LI>
+<LI>Sprites can be grouped together to form larger sprites under the
+  control of a single anchor
+</LI>
+<LI>A 16K pattern memory can contain 64 8-bit sprite images or 128
+  4-bit sprite images and combinations in-between
+</LI>
+<LI>A per sprite palette offset allows sprites to share images but
+  colour them differently
+</LI>
+<LI>A nextreg interface allows the copper to move sprites during the
+  video frame
+</LI>
+</UL>
+
+<P>
+*A minimum of 100 <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img29.svg"
+ ALT="$16\times16$"></SPAN> sprites is guaranteed to be displayed
+in any scanline. Any additional sprites will not be displayed with the
+hardware ensuring sprites are not partially plotted.
+
+<P>
+The actual limit is determined by how many 28MHz clock cycles there
+are in a scanline. The sprite hardware is able to plot one pixel cycle
+and uses one cycle to qualify each sprite. Since the number of cycles
+there are in a scanline varies with video timing (HDMI, VGA), the
+number of pixels that can be plotted also varies but the minimum will
+be 1600 pixels per line including overhead cycles needed to qualify
+100 sprites. Since sprites magified horizontally involve plotting more
+pixels, <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img30.svg"
+ ALT="$2\times$"></SPAN>, <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img31.svg"
+ ALT="$4\times$"></SPAN>, and <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img32.svg"
+ ALT="$8\times$"></SPAN> sprites will take more
+cycles to plot and the presence of these sprites in a line will reduce
+the total number of sprites that can be plotted.
 
 <P>
 <BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html629"
+  HREF="node47.html">Sprite Patterns</A>
+<UL>
+<LI><A ID="tex2html630"
+  HREF="node48.html">Pattern Number</A>
+<UL>
+<LI><A ID="tex2html631"
+  HREF="node49.html">8-Bit Sprite Patterns</A>
+<LI><A ID="tex2html632"
+  HREF="node50.html">4-Bit Sprite Patterns</A>
+</UL>
+</UL>
+<BR>
+<LI><A ID="tex2html633"
+  HREF="node51.html">Sprite Palette</A>
+<LI><A ID="tex2html634"
+  HREF="node52.html">Sprite Attributes</A>
+<LI><A ID="tex2html635"
+  HREF="node53.html">Relative Sprites</A>
+<LI><A ID="tex2html636"
+  HREF="node54.html">Programming Sprites</A>
+<LI><A ID="tex2html637"
+  HREF="node55.html">Global Control of Sprites</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node47.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node45.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html625"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html627"
+  HREF="node191.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node47.html">Sprite Patterns</A>
+<B> Up:</B> <A
+ HREF="node3.html">Video</A>
+<B> Previous:</B> <A
+ HREF="node45.html">Future Direction</A>
+ &nbsp; <B>  <A ID="tex2html626"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html628"
+  HREF="node191.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>
