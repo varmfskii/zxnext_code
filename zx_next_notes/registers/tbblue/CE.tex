@@ -1,1 +1,16 @@
-\register{}{CE}{Reserved}
+\register{R/W}{CE}{DMA Interrupt Enable 2 (3.01.09)}
+(\$00 on reset)
+\begin{itemize}
+\item bit 7 = Reserved, must be 0
+\item bit 6 = UART1 Tx empty
+\item bit 5 = UART1 Rx half full
+\item bit 4 = UART1 Rx available
+\item bit 3 = Reserved, must be 0
+\item bit 2 = UART0 Tx empty
+\item bit 1 = UART0 Tx half full
+\item bit 0 = UART0 Tx available
+\end{itemize}
+* Set bits indicate the corresponding interrupt will interrupt a DMA
+  operation when in IM2 mode.
+  
+  

@@ -1,1 +1,9 @@
-\register{}{CC}{Reserved}
+\register{R/W}{CC}{DMA Interrupt Enable 0 (3.01.09)}
+(\$00 on reset)
+\begin{itemize}
+\item bits 7-2 = Reserved, must be 0
+\item bit 1 = Line
+\item bit 0 = ULA
+\end{itemize}
+* Set bits indicate the specified interrupt will interrupt a DMA
+  operation when in IM2 mode

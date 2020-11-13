@@ -1,10 +1,10 @@
-\register{R/W}{8F}{Memory Mapping Mode}
+\register{R/W}{8F}{Memory Mapping Mode} (3.01.06)
 \begin{itemize}
 \item bits 7-2 = Reserved, must be zero
 \item bits 1-0 = Mapping mode applied
   \begin{itemize}
   \item 00 = Standard ZX 128k +3
-  \item 01 = Reserved
+  \item 01 = Profi (removed in 3.01.09)
   \item 10 = Pentagon 512k
   \item 11 = Pentagon 1024k (limited to 768k on 1MB machines)
   \end{itemize}

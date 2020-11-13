@@ -1,1 +1,14 @@
-\register{}{CD}{Reserved}
+\register{R/W}{CD}{DMA Interrupt Enable 1 (3.01.09)}
+(\$00 on reset)
+\begin{itemize}
+\item bit 7 = CTC channel 7 zc/to
+\item bit 6 = CTC channel 6 zc/to
+\item bit 5 = CTC channel 5 zc/to
+\item bit 4 = CTC channel 4 zc/to
+\item bit 3 = CTC channel 3 zc/to
+\item bit 2 = CTC channel 2 zc/to
+\item bit 1 = CTC channel 1 zc/to
+\item bit 0 = CTC channel 0 zc/to
+\end{itemize}
+* Set bits indicate the corresponding interrupt will interrupt a DMA
+  operation when in IM2 mode

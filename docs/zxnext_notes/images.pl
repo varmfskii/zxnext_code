@@ -1044,7 +1044,7 @@ $cached_env_img{$key} = q|<IMG STYLE="height: 34.59ex; " SRC="|."$dir".q|img169.
 \end{table}">|; 
 
 $key = q/{table}{centering{{tiny{{{csvautotabular{appendicesslashportsslashports.csv}{table};LFS=11;AAT/;
-$cached_env_img{$key} = q|<IMG STYLE="height: 75.91ex; " SRC="|."$dir".q|img136.svg"
+$cached_env_img{$key} = q|<IMG STYLE="height: 77.38ex; " SRC="|."$dir".q|img136.svg"
  ALT="\begin{table}\centering\tiny
 \csvautotabular{appendices/ports/ports.csv}
 \end{table}">|; 

@@ -1,4 +1,4 @@
-\register{R/W}{C9}{Interrupt Status 1} (3.01.08)\\
+\register{R/W}{C9}{Interrupt Status 1 (3.01.09)}
 \begin{itemize}
 \item bit 7 = ctc channel 7 zc/to
 \item bit 6 = ctc channel 6 zc/to
@@ -9,5 +9,5 @@
 \item bit 1 = ctc channel 1 zc/to
 \item bit 0 = ctc channel 0 zc/to
 \end{itemize}
-* Reads return current interrupt bit status
-* Writes clear status bits where bits are set
+* Set bits indicate the device generated an interrupt in the past
+* Writes clear bits where bits are set except in IM2 mode

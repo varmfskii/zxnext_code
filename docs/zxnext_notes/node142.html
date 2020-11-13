@@ -59,14 +59,14 @@
 Port $6B (6B) DMA Control (Z80 Mode, 3.01.02)
 
 <P>
-Port $0F (0F) DAC A
+Port $0F (0F) DAC B
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
 </td></tr></table>
 
 Disable with bit 3 of Nextreg $08
 
 <P>
-Port $1F (1F) Kempston/Mega Drive Joystick 1/DAC B
+Port $1F (1F) Kempston/Mega Drive Joystick 1/DAC A
 <BR>
 Read
 <table width="90%"><tr><td valign="top">&nbsp;bit 7 = &rdquo;start&rdquo; button</td></tr>
@@ -277,7 +277,7 @@ Disable with bit 3 of Nextreg $08
 Port $6B (6B) DMA Control (Next Mode, 3.01.02)
 
 <P>
-Port $DF (DF) DAC A/C, SpecDrum
+Port $DF (DF) DAC A,D
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
 </td></tr></table>
 
@@ -342,7 +342,7 @@ Port $F9 (F9) DAC C (precedence over $xxFD)
 Disable with bit 3 of Nextreg $08
 
 <P>
-Port $FB (FB) DAC D
+Port $FB (FB) DAC A,D
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
 </td></tr></table>
 

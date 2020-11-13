@@ -1,7 +1,7 @@
-\register{R/W}{C0}{Interrupt Control} (3.01.08)\\
+\register{R/W}{C0}{Interrupt Control} (3.01.09)\\
 (\$00 on reset)
 \begin{itemize}
-\item bit 7-5 = Programmable portion of IM2 vector
+\item bits 7-5 = Programmable portion of IM2 vector *
 \item bit 4 = Reserved, must be 0
 \item bit 3 = Enable stackless NMI response
 \item bits 2-1 = Reserved, must be 0
@@ -11,3 +11,19 @@
 \item[] 1 - IM2
 \end{itemize}
 \end{itemize}
+* In IM2 mode vector generated is:
+\begin{itemize}
+\item bits 7-5 = nextreg \$C0 bits 7-5
+\item bits 4-1 = Interrupt source
+\begin{itemize}
+\item[] 0 - line interrupt (highest priority)
+\item[] 1 - UART 0 Rx
+\item[] 2 - UART 1 Rx
+\item[] 3--10 - CTC channels 0-7
+\item[] 11 - ULA
+\item[] 12 - UART 0 Tx
+\item[] 13 - UART 1 Tx (lowest priority)
+\end{itemize}
+\item bit 0 = 0
+\end{itemize}
+

@@ -17,7 +17,8 @@ R,W,16----------------0,Port(hex),Description,Disable
 *,*,0001 1XXX 0011 1011,\$183b,CTC 8 channels \$183b-\$1f3b,
 *,*,XXXX XXXX 0110 1011,\$6b,zxnDMA,
 *,*,11XX XXXX XXXX X101,\$fffd,AY reg,Nextreg \$06 bit 0
-,*,10XX XXXX XXXX X101,\$bffd,AY dat,Nextreg \$06 bit 0
+*,*,10XX XXXX XXXX X101,\$bffd,AY dat,Nextreg \$06 bit 0 (readable on +3 only)
+*,,10XX XXXX XXXX 0101,\$bff5,AY inf,(inside bffd decoding)
 ,*,XXXX XXXX 0000 1111,\$0f,DAC A,Nextreg \$08 bit 3
 ,*,XXXX XXXX 1111 0001,\$f1,DAC A (precedence over XXFD),Nextreg \$08 bit 3
 ,*,XXXX XXXX 0011 1111,\$3f,DAC A,Nextreg \$08 bit 3
