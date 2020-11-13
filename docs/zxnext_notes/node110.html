@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>MOVE</TITLE>
-<META NAME="description" CONTENT="MOVE">
+<TITLE>Instructions</TITLE>
+<META NAME="description" CONTENT="Instructions">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node111.html">
-<LINK REL="previous" HREF="node109.html">
+<LINK REL="next" HREF="node115.html">
+<LINK REL="previous" HREF="node102.html">
 <LINK REL="next" HREF="node111.html">
 </HEAD>
 
@@ -27,51 +27,81 @@
  HREF="node111.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node108.html">
+ HREF="node99.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node109.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1004"
+<A ID="tex2html1006"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1006"
-  HREF="node191.html">
+<A ID="tex2html1008"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node111.html">WAIT</A>
+ HREF="node111.html">NOOP</A>
 <B> Up:</B> <A
- HREF="node108.html">Instructions</A>
+ HREF="node99.html">Copper and Display Timing</A>
 <B> Previous:</B> <A
- HREF="node109.html">NOOP</A>
- &nbsp; <B>  <A ID="tex2html1005"
-  HREF="node1.html">Contents</A></B> 
+ HREF="node109.html">Overscan</A>
  &nbsp; <B>  <A ID="tex2html1007"
-  HREF="node191.html">Index</A></B> 
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1009"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00720020000000000000">
-MOVE</A>
-</H4>
+<H1><A ID="SECTION00720000000000000000">
+Instructions</A>
+</H1>
 
 <P>
-MOVE executes in two dot clocks. It moves 8 bits of data into any of
-the Next hardware registers in the range $00 (0) .. $7F (127).
+This section describes the behaviour of the COPPER instructions as
+well as the bit definitions and execution time.
 
 <P>
-The WORD value $0000 is reserved for the NOOP instruction so no
-register access is carried out for that special case. Register $00 is
-read-only so not affected by the restriction of not being able to
-write zero to it.
+The three 16 bit COPPER instructions are comprised of the following
+bit definitions:
 
 <P>
-This instruction can perform 7 million register writes per second for
-VGA and 6.75 million register writes per second for HDMI.
+<BR><P></P>
+<DIV class="CENTER"><A ID="2088"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.9:</STRONG>
+Instruction Bit Definition</CAPTION>
+<TR><TD><IMG STYLE="height: 22.40ex; " SRC="img48.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/instrbit.csv}
+\par
+\raggedrigh...
+...line compare
+\par
+R 7 bit Next register 0x00..0x7F
+\par
+D 8 bit data
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<P>
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html1010"
+  HREF="node111.html">NOOP</A>
+<LI><A ID="tex2html1011"
+  HREF="node112.html">MOVE</A>
+<LI><A ID="tex2html1012"
+  HREF="node113.html">WAIT</A>
+<LI><A ID="tex2html1013"
+  HREF="node114.html">Example</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

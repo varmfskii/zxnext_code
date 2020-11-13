@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Turbosound</TITLE>
-<META NAME="description" CONTENT="Turbosound">
+<TITLE>ZX Spectrum 1-bit</TITLE>
+<META NAME="description" CONTENT="ZX Spectrum 1-bit">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node60.html">
 <LINK REL="previous" HREF="node58.html">
 <LINK REL="next" HREF="node60.html">
 </HEAD>
@@ -26,273 +27,58 @@
  HREF="node60.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node56.html">
+ HREF="node58.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node58.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html695"
+<A ID="tex2html701"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html697"
-  HREF="node191.html">
+<A ID="tex2html703"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node60.html">Pi Audio</A>
+ HREF="node60.html">Sampled 8-bit</A>
 <B> Up:</B> <A
- HREF="node56.html">Audio</A>
+ HREF="node58.html">Audio</A>
 <B> Previous:</B> <A
- HREF="node58.html">Sampled 8-bit</A>
- &nbsp; <B>  <A ID="tex2html696"
+ HREF="node58.html">Audio</A>
+ &nbsp; <B>  <A ID="tex2html702"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html698"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html704"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00430000000000000000">
-Turbosound</A>
+<H1><A ID="SECTION00410000000000000000">
+ZX Spectrum 1-bit</A>
 </H1>
 
 <P>
-TurboSound consists of the implementation of three AY-3-8912 chips. To
-enable TurboSound set bit 1 of Next Register $08 (8). Once enabled
-the sound chips and registers of the sound chips are selected using
-port $fffd (65533) TurboSound Next Control while the registers are
-accessed using $bffd () Sound Chip Register Access.  To enable access
-to a particular chip write 111111xx to the control register where
-01=AY1, 10=AY2, and 11=AY3.  Access to particular registers of the
-selected chip is selected by writing the register number to the
-control register. You can then access a chip register using the access
-port.
+The baseline sound of the ZX Spectrum was produced by toggling the Ear
+bit (bit 4) of $fe (254) The ULA port to produce 1-bit audio.  It is
+enabled by bit 4 of Next register $08 (8).  While this does work on
+the ZX Spectrum Next, there are other much better methods and this is
+only supported for backward compatibility.
 
 <P>
 Code:
 <PRE>
-;; enable TurboSound audio
+;; enable internal speaker
 ld bc,$243B
 ld a,$08
 out (c),a
 ld bc,$253B
 in a,(c)
-or $02
+or $10
 out (c),a
 </PRE>
 
 <P>
-Each of the three AY chips has three channels, A, B, and C whose
-mapping is controlled by bit 5 of Next register 0x08 (8).
-
-<P>
-Register (R/W) $00 (00) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel A fine tune
-Register (R/W) $01 (01) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel A coarse tune (4 bits)
-
-<P>
-Register (R/W) $02 (02) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel B fine tune
-
-<P>
-Register (R/W) $03 (03) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel B coarse tune (4 bits)
-
-<P>
-Register (R/W) $04 (04) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel C fine tune
-
-<P>
-Register (R/W) $05 (05) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel C coarse tune (4 bits)
-
-<P>
-Register (R/W) $06 (06) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Noise period (5 bits)
-
-<P>
-Register (R/W) $07 (07) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Tone Enable
-
-<UL>
-<LI>bit 5 = Channel C tone enable (0=enable, 1=disable)
-</LI>
-<LI>bit 4 = Channel B tone enable (0=enable, 1=disable)
-</LI>
-<LI>bit 3 = Channel A tone enable (0=enable, 1=disable)
-</LI>
-<LI>bit 2 = Channel C noise enable (0=enable, 1=disable)
-</LI>
-<LI>bit 1 = Channel B noise enable (0=enable, 1=disable)
-</LI>
-<LI>bit 0 = Channel A noise enable (0=enable, 1=disable)
-</LI>
-</UL>
-
-<P>
-Register (R/W) $08 (08) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel A amplitude
-
-<UL>
-<LI>bit 4 = enable fixed amplitude
-  
-<UL>
-<LI>0 = fixed amplitude
-</LI>
-<LI>1 = use envelope generator (bits 0-3 ignored)
-  
-</LI>
-</UL>
-</LI>
-<LI>bits 3-0 = value of fixed amplitude
-</LI>
-</UL>
-
-<P>
-Register (R/W) $09 (09) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel B amplitude
-
-<UL>
-<LI>bit 4 = enable fixed amplitude
-  
-<UL>
-<LI>0 = fixed amplitude
-</LI>
-<LI>1 = use envelope generator (bits 0-3 ignored)
-  
-</LI>
-</UL>
-</LI>
-<LI>bits 3-0 = value of fixed amplitude
-</LI>
-</UL>
-
-<P>
-Register (R/W) $0A (0A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel C amplitude
-
-<UL>
-<LI>bit 4 = enable fixed amplitude
-  
-<UL>
-<LI>0 = fixed amplitude
-</LI>
-<LI>1 = use envelope generator (bits 0-3 ignored)
-  
-</LI>
-</UL>
-</LI>
-<LI>bits 3-0 = value of fixed amplitude
-</LI>
-</UL>
-
-<P>
-Register (R/W) $0B (0B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Envelope period fine
-
-<P>
-Register (R/W) $0C (0C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Envelope period coarse
-
-<P>
-Register (R/W) $0D (0D) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Envelope shape
-
-<UL>
-<LI>bit 3 = Continue
-  
-<UL>
-<LI>0 = drop to amplitude 0 after 1 cycle
-</LI>
-<LI>1 = use ‘Hold’ value
-  
-</LI>
-</UL>
-</LI>
-<LI>bit 2 = Attack
-  
-<UL>
-<LI>0 = generator counts down
-</LI>
-<LI>1 = generator counts up
-  
-</LI>
-</UL>
-</LI>
-<LI>bit 1 = Alternate
-<BR>
-hold = 0
-  
-<UL>
-<LI>0 = generator resets after each cycle
-</LI>
-<LI>1=generator reverses direction each cycle
-  
-</LI>
-</UL>
-  hold=1
-  
-<UL>
-<LI>0 = hold final value
-</LI>
-<LI>1 = hold initial value
-  
-</LI>
-</UL>
-</LI>
-<LI>bit 0 = Hold
-  
-<UL>
-<LI>0 = cycle continuously
-</LI>
-<LI>1 = perform one cycle and hold
-  
-</LI>
-</UL>
-</LI>
-</UL>
-
-<P>
 <BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
-
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html699"
-  HREF="node60.html">Pi Audio</A>
-</UL>
-<!--End of Table of Child-Links-->
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node60.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node56.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node58.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html695"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html697"
-  HREF="node191.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node60.html">Pi Audio</A>
-<B> Up:</B> <A
- HREF="node56.html">Audio</A>
-<B> Previous:</B> <A
- HREF="node58.html">Sampled 8-bit</A>
- &nbsp; <B>  <A ID="tex2html696"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html698"
-  HREF="node191.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

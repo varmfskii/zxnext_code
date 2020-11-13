@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Clock Support Function</TITLE>
-<META NAME="description" CONTENT="Clock Support Function">
+<TITLE>Disk I/O Functions</TITLE>
+<META NAME="description" CONTENT="Disk I/O Functions">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -26,58 +26,285 @@
  HREF="node135.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node133.html">
+ HREF="node131.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node133.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1135"
+<A ID="tex2html1140"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1137"
-  HREF="node191.html">
+<A ID="tex2html1142"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node135.html">NextZXOS</A>
+ HREF="node135.html">Memory Select and Move</A>
 <B> Up:</B> <A
- HREF="node133.html">Memory Select and Move</A>
+ HREF="node131.html">BIOS</A>
 <B> Previous:</B> <A
- HREF="node133.html">Memory Select and Move</A>
- &nbsp; <B>  <A ID="tex2html1136"
+ HREF="node133.html">Character I/O Functions</A>
+ &nbsp; <B>  <A ID="tex2html1141"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1138"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1143"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H3><A ID="SECTION001014100000000000000">
-Clock Support Function</A>
+<H3><A ID="SECTION001013300000000000000">
+Disk I/O Functions</A>
 </H3>
-This section defines the clock support function TIME.
+This section defines the CP/M 3 BIOS disk I/O routines HOME, SELDSK,
+SETTRK, SETSEC, SETDMA, READ, WRITE, SECTRN, MULTIO, and FLUSH.
+
+<P>
+<A NAME="3466"></A>
+BIOS Function 8: HOME
+
+<P>
+Select Track 00 of the Specified Drive
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values: None
+
+<P>
+Return the disk head of the currently selected disk to the track 00
+position. Usually, you can translate the HOME call into a call on
+SETTRK with a parameter of 0.
+
+<P>
+<A NAME="3467"></A>
+BIOS Function 9: SELDSK
+
+<P>
+Select the Specified Disk Drive
+<BR>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C=Disk Drive (0-15)</td></tr>
+<tr><td valign="top">&nbsp;E=Initial Select Flag
+</td></tr></table>
+
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;HL=Address of Disk Parameter Header (DPH) if drive exists</td></tr>
+<tr><td valign="top">&nbsp;HL=0000H if drive does not exist
+</td></tr></table>
+
+Select the disk drive specified in register C for further operations,
+where register C contains 0 for drive A, 1 for drive B, and so on to
+15 for drive P. On each disk select, SELDSK must return in HL the base
+address of a 25-byte area called the Disk Parameter Header. If there
+is an attempt to select a nonexistent drive, SELDSK returns HL=$0000
+as an error indicator.  On entry to SELDSK, you can determine if it is
+the first time the specified disk is selected. Bit 0, the least
+significant bit in register E, is set to 0 if the drive has not been
+previously selected. This information is of interest in systems that
+read configuration information from the disk to set up a dynamic disk
+definition table.
+
+<P>
+<A NAME="3472"></A>
+BIOS Function 10: SETTRK
+
+<P>
+Set Specified Track Number
+<BR>
+Entry Parameters: BC=Track Number
+<BR>
+Returned Values: None
+
+<P>
+Register BC contains the track number for a subsequent disk access on
+the currently selected drive. Normally, the track number is saved
+until the next READ or WRITE occurs.
+
+<P>
+<A NAME="3473"></A>
+BIOS Function 11: SETSEC
+
+<P>
+Set Specified Sector Number
+<BR>
+Entry Parameters: BC=Sector Number
+<BR>
+Returned Values: None
+
+<P>
+Register BC contains the sector number for the subsequent disk access
+on the currently selected drive. This number is the value returned by
+SECTRN. Usually, you delay actual sector selection until a READ or
+WRITE operation occurs.
+
+<P>
+<A NAME="3474"></A>
+BIOS Function 12: SETDMA
+
+<P>
+Set Address for Subsequent Disk I/O
+<BR>
+Entry Parameters: BC=Direct Memory Access Address
+<BR>
+Returned Values: None
+
+<P>
+Register BC contains the DMA (Direct Memory Access) address for the
+subsequent READ or WRITE operation. For example, if B = $00 and C =
+$80 when the BDOS calls SETDMA, then the subsequent read operation
+reads its data starting at $80, or the subsequent write operation
+gets its data from 80H, until the next call to SETDMA occurs.
+
+<P>
+<A NAME="3475"></A>
+BIOS Function 13: READ
+
+<P>
+Read a Sector from the Specified Drive
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;A=$00 if no errors occurred</td></tr>
+<tr><td valign="top">&nbsp;A=$01 if nonrecoverable error condition occurred</td></tr>
+<tr><td valign="top">&nbsp;A=$ff if media has changed
+</td></tr></table>
+
+Assume the BDOS has selected the drive, set the track, set the sector,
+and specified the DMA address. The READ subroutine attempts to read
+one sector based upon these parameters, then returns one of the error
+codes in register A as described above.
+
+<P>
+If the value in register A is $00, then CP/M 3 assumes that the disk
+operation completed properly. If an error occurs, the BIOS should
+attempt several retries to see if the error is recoverable before
+returning the error code.
+
+<P>
+If an error occurs in a system that supports automatic density
+selection, the system should verify the density of the drive. If the
+density has changed, return a $ff in the accumulator. This causes the
+BDOS to terminate the current operation and relog in the disk.
+
+<P>
+<A NAME="3478"></A>
+BIOS Function 14: WRITE
+
+<P>
+Write a Sector to the Specified Disk
+<BR>
+Entry Parameters: C=Deblocking Codes
+<BR>
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;A=$00 if no error occurred</td></tr>
+<tr><td valign="top">&nbsp;A=$01 if physical error occurred</td></tr>
+<tr><td valign="top">&nbsp;A=$02 if disk is Read-Only</td></tr>
+<tr><td valign="top">&nbsp;A=$ff if media has changed
+</td></tr></table>
+
+<P>
+Write the data from the currently selected DMA address to the
+currently selected drive, track, and sector. Upon each call to WRITE,
+the BDOS provides the following information in register C:
+<table width="90%"><tr><td valign="top">&nbsp;0 = deferred write</td></tr>
+<tr><td valign="top">&nbsp;1 = nondeferred write</td></tr>
+<tr><td valign="top">&nbsp;2 = deferred write to the first sector of a new data block
+</td></tr></table>
+
+<P>
+This information is provided for those BIOS implementations that do
+blocking/deblocking in the BIOS instead of the BDOS.
+
+<P>
+<A NAME="3483"></A>
+BIOS Function 16: SECTRN
+
+<P>
+Translate Sector Number Given Translate Table
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;BC=Logical Sector Number</td></tr>
+<tr><td valign="top">&nbsp;DE=Translate Table Address
+</td></tr></table>
+
+Returned Values: HL=Physical Sector Number
+
+<P>
+SECTRN performs logical sequential sector address to physical sector
+translation to improve the overall response of CP/M 3.
 
 <P>
 <A NAME="3486"></A>
-BIOS Function 26: TIME
+BIOS Function 23: MULTIO
 
 <P>
-Get and Set Time
+Set Count of Consecutive Sectors for READ or WRITE
 <BR>
-Entry Parameters: C=Time Get/Set Flag
+Entry Parameters: C=Multisector Count
 <BR>
-Returned values: None
+Returned Values: None
 
 <P>
-The BDOS calls the TIME function to indicate to the BIOS whether it
-has just set the Time and Date fields in the SCB, or whether the BDOS
-is about to get the Time and Date from the SCB. On entry to the TIME
-function, a zero in register C indicates that the BIOS should update
-the Time and Date fields in the SCB. A $ff in register C indicates
-that the BDOS has just set the Time and Date in the SCB and the BIOS
-should update its clock. Upon exit, you must restore register pairs HL
-and DE to their entry values.
-<BR><HR>
+To transfer logically consecutive disk sectors to or from contiguous
+memory locations, the BDOS issues a MULTIO call, followed by a series
+of READ or WRITE calls. This allows the BIOS to transfer multiple
+sectors in a single disk operation. The maximum value of the sector
+count is dependent on the physical sector size, ranging from 128 with
+128-byte sectors, to 4 with 4096-byte sectors. Thus, the BIOS can
+transfer up to 16K directly to or from the TPA with a single
+operation.
+
+<P>
+<A NAME="3487"></A>
+BIOS Function 24: FLUSH
+
+<P>
+Force Physical Buffer Flushing for User-supported Deblocking
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;A=$00 if no error occurred</td></tr>
+<tr><td valign="top">&nbsp;A=$001 if physical error occurred</td></tr>
+<tr><td valign="top">&nbsp;A=$002 if disk is Read-Only
+</td></tr></table>
+
+<P>
+The flush buffers entry point allows the system to force physical
+sector buffer flushing when your BIOS is performing its own record
+blocking and deblocking.  The BDOS calls the FLUSH routine to ensure
+that no dirty buffers remain in memory.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node135.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node131.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node133.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html1140"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html1142"
+  HREF="node193.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node135.html">Memory Select and Move</A>
+<B> Up:</B> <A
+ HREF="node131.html">BIOS</A>
+<B> Previous:</B> <A
+ HREF="node133.html">Character I/O Functions</A>
+ &nbsp; <B>  <A ID="tex2html1141"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1143"
+  HREF="node193.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

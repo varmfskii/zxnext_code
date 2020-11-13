@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Memory Select and Move Functions</TITLE>
-<META NAME="description" CONTENT="Memory Select and Move Functions">
+<TITLE>Character I/O Functions</TITLE>
+<META NAME="description" CONTENT="Character I/O Functions">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="previous" HREF="node129.html">
+<LINK REL="next" HREF="node134.html">
+<LINK REL="previous" HREF="node132.html">
 <LINK REL="next" HREF="node134.html">
 </HEAD>
 
@@ -26,140 +27,217 @@
  HREF="node134.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node126.html">
+ HREF="node131.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node132.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1130"
+<A ID="tex2html1136"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1132"
-  HREF="node191.html">
+<A ID="tex2html1138"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node134.html">Clock Support Function</A>
+ HREF="node134.html">Disk I/O Functions</A>
 <B> Up:</B> <A
- HREF="node126.html">CP/M</A>
+ HREF="node131.html">BIOS</A>
 <B> Previous:</B> <A
- HREF="node132.html">Disk I/O Functions</A>
- &nbsp; <B>  <A ID="tex2html1131"
+ HREF="node132.html">System Initialization Functions</A>
+ &nbsp; <B>  <A ID="tex2html1137"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1133"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1139"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION001014000000000000000">
-Memory Select and Move Functions</A>
-</H2>
-This section defines the memory management functions MOVE, XMOVE,
-SELMEM, and SETBNK.
+<H3><A ID="SECTION001013200000000000000">
+Character I/O Functions</A>
+</H3>
+This section defines the CP/M 3 character I/O routines CONST, CONIN,
+CONOUT, LIST, AUXOUT, AUXIN, LISTST, CONOST, AUXIST, and AUXOST.  CP/M
+3 assumes all simple character I/O operations are performed in
+eight-bit ASCII, upper and lowercase, with no parity. An ASCII CTRL-Z
+($1a) denotes an end-of-file condition for an input device.
 
 <P>
-<A NAME="3477"></A>
-BIOS Function 25: MOVE
+In CP/M 3, you can direct each of the five logical character devices
+to any combination of up to twelve physical devices. Each of the five
+logical devices has a 16-bit vector in the System Control Block (SCB)
+. Each bit of the vector represents a physical device where bit 15
+corresponds to device zero, and bit 4 is device eleven. Bits 0 through
+3 are reserved for future system use.
 
 <P>
-Memory-to-Memory Block Move
+<A NAME="3445"></A>
+BIOS Function 2: CONST
+
+<P>
+Sample the Status of the Console Input Device
 <BR>
-Entry Parameters:
-<table width="90%"><tr><td valign="top">&nbsp;HL=Destination address</td></tr>
-<tr><td valign="top">&nbsp;DE=Source address</td></tr>
-<tr><td valign="top">&nbsp;BC=Count
+Entry Parameters: None
+<BR>
+Returned value:
+<table width="90%"><tr><td valign="top">&nbsp;A=$ff if a console character is ready to read</td></tr>
+<tr><td valign="top">&nbsp;A=$00 if no console character is ready to read
 </td></tr></table>
 
-Returned Values: HL and DE must point to next bytes following move
-operation
+<P>
+Read the status of the currently assigned console device and return
+$ff in register A if a character is ready to read, and $ff in
+register A if no console characters are ready.
 
 <P>
-The BDOS calls the MOVE routine to perform memory to memory block
-moves to allow use of the Z80 LDIR instruction or special DMA
-hardware, if available. Note that the arguments in HL and DE are
-reversed from the Z8O machine instruction, necessitating the use of
-XCHG instructions on either side of the LDIR. The BDOS uses this
-routine for all large memory copy operations. On return, the HL and DE
-registers are expected to point to the next bytes following the move.
+<A NAME="3448"></A>
+BIOS Function 3: CONIN
 
 <P>
-Usually, the BDOS expects MOVE to transfer data within the currently
-selected bank or common memory. However, if the BDOS calls the XMOVE
-entry point before calling MOVE, the MOVE routine must perform an
-interbank transfer.
-
-<P>
-<A NAME="3480"></A>
-BIOS Function 27: SELMEM
-
-<P>
-Select Memory Bank
+Read a Character from the Console
 <BR>
-Entry Parameters: A=Memory Bank
+Entry Parameters: None
 <BR>
-Returned Values; None
+Returned Values: A=Console Character
 
 <P>
-The SELMEM entry point is only present in banked systems. The banked
-version of the CP/M 3 BDOS calls SELMEM to select the current memory
-bank for further instruction execution or buffer references. You must
-preserve or restore all registers other than the accumulator, A, upon
-exit.
+Read the next console character into register A with no parity. If no
+console character is ready, wait until a character is available before
+returning.
 
 <P>
-<A NAME="3481"></A>
-BIOS Function 28: SETBNK
+<A NAME="3449"></A>
+BIOS Function 4: CONOUT
 
 <P>
-Specify Bank for DMA Operation
+Output Character to Console
 <BR>
-Entry Parameters: A=Memory Bank
+Entry Parameters: C=Console Character
 <BR>
 Returned Values: None
 
 <P>
-SETBNK only occurs in the banked version of CP/M 3. SETBNK specifies
-the bank that the subsequent disk READ or WRITE routine must use for
-memory transfers. The BDOS always makes a call to SETBNK to identify
-the DMA bank before performing a READ or WRITE call. Note that the
-BDOS does not reference banks other than 0 or 1 unless another bank is
-specified by the BANK field of a Data Buffer Control Block (BCB).
+Send the character in register C to the console output device. The
+character is in ASCII with no parity.
 
 <P>
-<A NAME="3482"></A>
-BIOS Function 29: XMOVE
+<A NAME="3450"></A>
+BIOS Function 5: LIST
 
 <P>
-Set Banks for Following MOVE
+Output Character to List Device
 <BR>
-Entry Parameters:
-<table width="90%"><tr><td valign="top">&nbsp;B=destination bank</td></tr>
-<tr><td valign="top">&nbsp;C=source bank
-</td></tr></table>
-
+Entry Parameters: C=Character
+<BR>
 Returned Values: None
 
 <P>
-XMOVE is provided for banked systems that support memory-to- memory
-DMA transfers over the entire extended address range. Systems with
-this feature can have their data buffers located in an alternate bank
-instead of in common memory, as is usually required. An XMOVE call
-affects only the following MOVE call. All subsequent MOVE calls apply
-to the memory selected by the latest call to SELMEM. After a call to
-the XMOVE function, the following call to the MOVE function is not
-more than 128 bytes of data.
+Send the character from register C to the listing device. The
+character is in ASCII with no parity.
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+<A NAME="3451"></A>
+BIOS Function 6: AUXOUT
 
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html1134"
-  HREF="node134.html">Clock Support Function</A>
-</UL>
-<!--End of Table of Child-Links-->
+<P>
+Output a Character to the Auxiliary Output Device
+<BR>
+Entry Parameters: C=Character
+<BR>
+Returned Values: None
+
+<P>
+Send the character from register C to the currently assigned AUXOUT
+device. The character is in ASCII with no parity.
+
+<P>
+<A NAME="3452"></A>
+BIOS Function 7: AUXIN
+
+<P>
+Read a Character from the Auxiliary Input Device
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values: A=Character
+
+<P>
+Read the next character from the currently assigned AUXIN device into
+register A with no parity. A returned ASCII CTRL-Z ($1a) reports an
+end-of-file.
+
+<P>
+<A NAME="3453"></A>
+BIOS Function 15: LISTST
+
+<P>
+Return the Ready Status of the List Device
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;A=$00 if list device is not ready to accept a character</td></tr>
+<tr><td valign="top">&nbsp;A=$ff if list device is ready to accept a character
+</td></tr></table>
+
+<P>
+<A NAME="3456"></A>
+BIOS Function 17: CONOST
+
+<P>
+Return Output Status of Console
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;A=$ff if ready</td></tr>
+<tr><td valign="top">&nbsp;A=$00 if not ready
+</td></tr></table>
+
+<P>
+The CONOST routine checks the status of the console. CONOST returns an
+$ff if the console is ready to display another character. This entry
+point allows for full polled handshaking communications support.
+
+<P>
+<A NAME="3459"></A>
+BIOS Function 18: AUXIST
+
+<P>
+Return Input Status of Auxiliary Port
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;A=$ff if ready</td></tr>
+<tr><td valign="top">&nbsp;A=$00 if not ready
+</td></tr></table>
+
+<P>
+The AUXIST routine checks the input status of the auxiliary port. This
+entry point allows full polled handshaking for communications support
+using an auxiliary port.
+
+<P>
+<A NAME="3462"></A>
+BIOS Function 19: AUXOST
+
+<P>
+Return Output Status of Auxiliary Port
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;A=$ff if ready</td></tr>
+<tr><td valign="top">&nbsp;A=$00 if not ready
+</td></tr></table>
+
+<P>
+The AUXOST routine checks the output status of the auxiliary
+port. This routine allows full polled handshaking for communications
+support using an auxiliary port.
+
+<P>
 
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
@@ -167,28 +245,28 @@ more than 128 bytes of data.
  HREF="node134.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node126.html">
+ HREF="node131.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node132.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1130"
+<A ID="tex2html1136"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1132"
-  HREF="node191.html">
+<A ID="tex2html1138"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node134.html">Clock Support Function</A>
+ HREF="node134.html">Disk I/O Functions</A>
 <B> Up:</B> <A
- HREF="node126.html">CP/M</A>
+ HREF="node131.html">BIOS</A>
 <B> Previous:</B> <A
- HREF="node132.html">Disk I/O Functions</A>
- &nbsp; <B>  <A ID="tex2html1131"
+ HREF="node132.html">System Initialization Functions</A>
+ &nbsp; <B>  <A ID="tex2html1137"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1133"
-  HREF="node191.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html1139"
+  HREF="node193.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

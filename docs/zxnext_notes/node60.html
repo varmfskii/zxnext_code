@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Pi Audio</TITLE>
-<META NAME="description" CONTENT="Pi Audio">
+<TITLE>Sampled 8-bit</TITLE>
+<META NAME="description" CONTENT="Sampled 8-bit">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node61.html">
 <LINK REL="previous" HREF="node59.html">
 <LINK REL="next" HREF="node61.html">
 </HEAD>
@@ -26,38 +27,63 @@
  HREF="node61.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node59.html">
+ HREF="node58.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node59.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html700"
+<A ID="tex2html705"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html702"
-  HREF="node191.html">
+<A ID="tex2html707"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node61.html">Memory</A>
+ HREF="node61.html">Turbosound</A>
 <B> Up:</B> <A
- HREF="node59.html">Turbosound</A>
+ HREF="node58.html">Audio</A>
 <B> Previous:</B> <A
- HREF="node59.html">Turbosound</A>
- &nbsp; <B>  <A ID="tex2html701"
+ HREF="node59.html">ZX Spectrum 1-bit</A>
+ &nbsp; <B>  <A ID="tex2html706"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html703"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html708"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION00431000000000000000">
-Pi Audio</A>
-</H2>
-If connected the Pi Zero is configured to use the ZX Next as a
-soundcard over an  I<SUP>2</SUP>S interface making the Raspberry Pi a fully
-configurable audio source for the ZX Spectrum Next.
+<H1><A ID="SECTION00420000000000000000">
+Sampled 8-bit</A>
+</H1>
+
+<P>
+The ZX Next has four 8-bit D/A audio channels connected to provide
+sampled stereo sound. Channels A and B are the left channels, while C
+and D are the right channels. In order use 8-bit sound, it must first
+be enabled by setting bit 3 on nextreg $08. In order to emulate
+legacy hardware there are a number of ports that can be used to
+control the four channels additionally these are mirrored to three
+nextregs to enable driving audio using the copper.  Channel A is
+mapped to ports $0f, $3f, and $f1; channel B to ports $1f and $f3
+and nextreg $2C; channel C to ports $4f, and $f9 and nextreg $2E;
+and channel D to: $5f and $fb; with port $df connected to both
+channel A and C and nextreg $2D connected to both channel A and D.
+
+<P>
+Code:
+<PRE>
+;; enable SpecDrum/Convox audio
+ld bc,$243B
+ld a,$08
+out (c),a
+ld bc,$253B
+in a,(c)
+or $08
+out (c),a
+</PRE>
+
+<P>
 <BR><HR>
 
 </BODY>

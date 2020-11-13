@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Sprite Patterns</TITLE>
-<META NAME="description" CONTENT="Sprite Patterns">
+<TITLE>Future Direction</TITLE>
+<META NAME="description" CONTENT="Future Direction">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node51.html">
 <LINK REL="previous" HREF="node46.html">
 <LINK REL="next" HREF="node48.html">
 </HEAD>
@@ -27,110 +26,57 @@
  HREF="node48.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node46.html">
+ HREF="node45.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node46.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html638"
+<A ID="tex2html635"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html640"
-  HREF="node191.html">
+<A ID="tex2html637"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node48.html">Pattern Number</A>
+ HREF="node48.html">Sprites</A>
 <B> Up:</B> <A
- HREF="node46.html">Sprites</A>
+ HREF="node45.html">Programming Tilemap mode</A>
 <B> Previous:</B> <A
- HREF="node46.html">Sprites</A>
- &nbsp; <B>  <A ID="tex2html639"
+ HREF="node46.html">Changes Since 2.00.26</A>
+ &nbsp; <B>  <A ID="tex2html636"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html641"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html638"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION00351000000000000000">
-Sprite Patterns</A>
-</H2>
-Sprite patterns are the images that each sprite can take on. The
-images are stored in a 16K memory internal to the FPGA and are
-identified by pattern number. A particular sprite chooses a pattern by
-storing a pattern number in its attributes.
+<H4><A ID="SECTION00345020000000000000">
+Future Direction</A>
+</H4>
 
 <P>
-All sprites are <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img29.svg"
- ALT="$16\times16$"></SPAN> pixels in size but the come in two
-flavours: 4-bit and 8-bit. The bit width describes how many bits are
-used to code the colour of each pixel.
+The following compatible changes may be applied at a later date:
 
 <P>
-An 8-bit sprite uses a full byte to colour each of its pixels so that
-each pixel can be one of 256 colours. In this case, a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img29.svg"
- ALT="$16\times16$"></SPAN>
-sprite requires 256 bytes of pattern memory to store its image.
 
-<P>
-A 4-bit sprite uses a nibble to colour each of its pixels so that each
-pixel can be one of 16 colours. In this case, a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img29.svg"
- ALT="$16\times16$"></SPAN> sprite
-requires just 128 bytes of pattern memory to store its image.
-
-<P>
-The 16K pattern memory can contain any combination of these images,
-whether they are 128 bytes or 256 bytes and their locations in the
-pattern memory are described by a pattern number. This pattern number
-is 7 bits with bits named as follows:
-
-<P>
+<OL>
+<LI>Addition of a bit to Tilemap Control to select a reduced tilemap
+  area of size <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img11.svg"
+ ALT="$32\times24$"></SPAN> or <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img21.svg"
+ ALT="$64\times24$"></SPAN> that covers the ULA
+  screen.
+</LI>
+<LI>Addition of a bit to Tilemap Control to select split addressing
+  where the tilemap’s tiles and attributes as well as the tile
+  definitions are split between the two 8k halves of the 16k ULA ram
+  in the same way that the two Timex display files are split. The
+  intention is to make it easier for the tilemap to co-exist with all
+  the display modes of the ULA.
+</LI>
+</OL>
 <BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
-
-<UL CLASS="ChildLinks">
-<LI><UL>
-<LI><A ID="tex2html642"
-  HREF="node48.html">Pattern Number</A>
-<UL>
-<LI><A ID="tex2html643"
-  HREF="node49.html">8-Bit Sprite Patterns</A>
-<LI><A ID="tex2html644"
-  HREF="node50.html">4-Bit Sprite Patterns</A>
-</UL></UL></UL>
-<!--End of Table of Child-Links-->
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node48.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node46.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node46.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html638"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html640"
-  HREF="node191.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node48.html">Pattern Number</A>
-<B> Up:</B> <A
- HREF="node46.html">Sprites</A>
-<B> Previous:</B> <A
- HREF="node46.html">Sprites</A>
- &nbsp; <B>  <A ID="tex2html639"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html641"
-  HREF="node191.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

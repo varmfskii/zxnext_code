@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Copper and Display Timing</TITLE>
-<META NAME="description" CONTENT="Copper and Display Timing">
+<TITLE>The DMA and Interrupts</TITLE>
+<META NAME="description" CONTENT="The DMA and Interrupts">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node123.html">
-<LINK REL="previous" HREF="node80.html">
+<LINK REL="previous" HREF="node96.html">
 <LINK REL="next" HREF="node98.html">
 </HEAD>
 
@@ -27,112 +26,55 @@
  HREF="node98.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="zxnext_notes.html">
+ HREF="node88.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node96.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html916"
+<A ID="tex2html922"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html918"
-  HREF="node191.html">
+<A ID="tex2html924"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node98.html">Introduction</A>
+ HREF="node98.html">Programming examples</A>
 <B> Up:</B> <A
- HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
+ HREF="node88.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node96.html">Programming examples</A>
- &nbsp; <B>  <A ID="tex2html917"
+ HREF="node96.html">Operating speed</A>
+ &nbsp; <B>  <A ID="tex2html923"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html919"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html925"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00700000000000000000">
-Copper and Display Timing</A>
-</H1>
-From: KevB (aka 9bitcolour)
+<H4><A ID="SECTION00660090000000000000">
+The DMA and Interrupts</A>
+</H4>
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+The zxnDMA cannot currently generate interrupts.
 
-<UL CLASS="ChildLinks">
-<LI><UL>
-<LI><UL>
-<LI><UL>
-<LI><A ID="tex2html920"
-  HREF="node98.html">Introduction</A>
-<LI><A ID="tex2html921"
-  HREF="node99.html">Overview</A>
-</UL>
-</UL>
-</UL>
-<BR>
-<LI><A ID="tex2html922"
-  HREF="node100.html">Timing</A>
-<UL>
-<LI><A ID="tex2html923"
-  HREF="node101.html">Machines</A>
-<LI><A ID="tex2html924"
-  HREF="node102.html">Display</A>
-<LI><A ID="tex2html925"
-  HREF="node103.html">Resolution</A>
-<LI><A ID="tex2html926"
-  HREF="node104.html">Dot Clock</A>
-<LI><A ID="tex2html927"
-  HREF="node105.html">Coordinates</A>
-<LI><A ID="tex2html928"
-  HREF="node106.html">Compare</A>
-<LI><A ID="tex2html929"
-  HREF="node107.html">Overscan</A>
-</UL>
-<BR>
-<LI><A ID="tex2html930"
-  HREF="node108.html">Instructions</A>
-<UL>
-<LI><A ID="tex2html931"
-  HREF="node109.html">NOOP</A>
-<LI><A ID="tex2html932"
-  HREF="node110.html">MOVE</A>
-<LI><A ID="tex2html933"
-  HREF="node111.html">WAIT</A>
-<LI><A ID="tex2html934"
-  HREF="node112.html">Example</A>
-</UL>
-<BR>
-<LI><A ID="tex2html935"
-  HREF="node113.html">Control</A>
-<UL>
-<LI><A ID="tex2html936"
-  HREF="node114.html">STOP</A>
-<LI><A ID="tex2html937"
-  HREF="node115.html">RESET</A>
-<LI><A ID="tex2html938"
-  HREF="node116.html">START</A>
-<LI><A ID="tex2html939"
-  HREF="node117.html">FRAME</A>
-</UL>
-<BR>
-<LI><A ID="tex2html940"
-  HREF="node118.html">Configuration</A>
-<UL>
-<LI><A ID="tex2html941"
-  HREF="node119.html">Refresh Rate</A>
-<LI><A ID="tex2html942"
-  HREF="node120.html">Video Modes</A>
-<LI><A ID="tex2html943"
-  HREF="node121.html">Machine Type</A>
-<LI><A ID="tex2html944"
-  HREF="node122.html">Summary</A>
-</UL></UL>
-<!--End of Table of Child-Links-->
+<P>
+The other side of this is that while the DMA controls the bus, the Z80
+cannot respond to interrupts. On the Z80, the nmi interrupt is edge
+triggered so if an nmi occurs the fact that it occurred is stored
+internally in the Z80 so that it will respond when it is woken up. On
+the other hand, maskable interrupts are level triggered. That is, the
+Z80 must be active to regularly sample the /INT line to determine if a
+maskable interrupt is occurring. On the Spectrum and the ZX Next, the
+ULA (and line interrupt) are only asserted for a fixed amount of time
+&nbsp;30 cycles at 3.5MHz. If the DMA is executing a transfer while the
+interrupt is asserted, the CPU will not be able to see this and it
+will most likely miss the interrupt. In burst mode, the CPU will never
+miss these interrupts, although this may change if multiple channels
+are implemented.
+
+<P>
 <BR><HR>
 
 </BODY>

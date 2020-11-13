@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>START</TITLE>
-<META NAME="description" CONTENT="START">
+<TITLE>STOP</TITLE>
+<META NAME="description" CONTENT="STOP">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,41 +27,45 @@
  HREF="node117.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node113.html">
+ HREF="node115.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node115.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1032"
+<A ID="tex2html1038"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1034"
-  HREF="node191.html">
+<A ID="tex2html1040"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node117.html">FRAME</A>
+ HREF="node117.html">RESET</A>
 <B> Up:</B> <A
- HREF="node113.html">Control</A>
+ HREF="node115.html">Control</A>
 <B> Previous:</B> <A
- HREF="node115.html">RESET</A>
- &nbsp; <B>  <A ID="tex2html1033"
+ HREF="node115.html">Control</A>
+ &nbsp; <B>  <A ID="tex2html1039"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1035"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1041"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00730030000000000000">
-START</A>
+<H4><A ID="SECTION00730010000000000000">
+STOP</A>
 </H4>
 
 <P>
-Entering this mode causes an idle COPPER to start executing
-instructions from the current program counter. Entering this mode
-while the COPPER is running has no effect other than to disable FRAME
-mode if active.
+This is the default operating mode set during a hard/soft reset. The
+COPPER is idle in this state and will STOP if currently executing when
+entering this mode. It is safe to write to any location within the 2K
+program RAM when the COPPER is stopped.
+
+<P>
+Entering STOP mode preserves the internal program counter so that the
+COPPER may continue when restarted.
 
 <P>
 <BR><HR>

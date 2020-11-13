@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>8-Bit Sprite Patterns</TITLE>
-<META NAME="description" CONTENT="8-Bit Sprite Patterns">
+<TITLE>Sprite Patterns</TITLE>
+<META NAME="description" CONTENT="Sprite Patterns">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node50.html">
+<LINK REL="next" HREF="node53.html">
 <LINK REL="previous" HREF="node48.html">
 <LINK REL="next" HREF="node50.html">
 </HEAD>
@@ -32,88 +32,105 @@
 <A
  HREF="node48.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html651"
+<A ID="tex2html652"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html653"
-  HREF="node191.html">
+<A ID="tex2html654"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node50.html">4-Bit Sprite Patterns</A>
+ HREF="node50.html">Pattern Number</A>
 <B> Up:</B> <A
- HREF="node48.html">Pattern Number</A>
+ HREF="node48.html">Sprites</A>
 <B> Previous:</B> <A
- HREF="node48.html">Pattern Number</A>
- &nbsp; <B>  <A ID="tex2html652"
+ HREF="node48.html">Sprites</A>
+ &nbsp; <B>  <A ID="tex2html653"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html654"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html655"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H5><A ID="SECTION00351011000000000000">
-8-Bit Sprite Patterns</A>
-</H5>
+<H2><A ID="SECTION00351000000000000000">
+Sprite Patterns</A>
+</H2>
+Sprite patterns are the images that each sprite can take on. The
+images are stored in a 16K memory internal to the FPGA and are
+identified by pattern number. A particular sprite chooses a pattern by
+storing a pattern number in its attributes.
 
 <P>
-The <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img29.svg"
- ALT="$16\times16$"></SPAN> pixel image uses 8-bits for each pixel so that each
-pixel can be one of 256 colours. One colour indicates transparency and
-this is programmed into the Sprite Transparency Index register
-(nextreg $4B). By default the transparent value is $E3.
+All sprites are <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img29.svg"
+ ALT="$16\times16$"></SPAN> pixels in size but the come in two
+flavours: 4-bit and 8-bit. The bit width describes how many bits are
+used to code the colour of each pixel.
 
 <P>
-As an example of an 8-bit sprite, let’s have a look at figure 1.1.
+An 8-bit sprite uses a full byte to colour each of its pixels so that
+each pixel can be one of 256 colours. In this case, a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img29.svg"
+ ALT="$16\times16$"></SPAN>
+sprite requires 256 bytes of pattern memory to store its image.
 
 <P>
-
-<DIV class="CENTER"><A ID="413"></A>
-<TABLE>
-<CAPTION class="BOTTOM"><STRONG>Figure 2.1:</STRONG>
-Pattern Example</CAPTION>
-<TR><TD>
-<DIV class="CENTER">  <IMG STYLE=""
- SRC="./sprite_1.png"
- ALT="Image sprite_1">
-  </DIV></TD></TR>
-</TABLE>
-</DIV>
+A 4-bit sprite uses a nibble to colour each of its pixels so that each
+pixel can be one of 16 colours. In this case, a <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img29.svg"
+ ALT="$16\times16$"></SPAN> sprite
+requires just 128 bytes of pattern memory to store its image.
 
 <P>
-Using the default palette, which is initialised with RGB332 colours
-from 0-255, the hexadecimal values for this pattern arranged in a
-<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img29.svg"
- ALT="$16\times16$"></SPAN> array are shown below:
-
-<P>
-<PRE>
-04040404040404E3E3E3E3E3E3E3E3E3
-04FFFFFFFFFF04E3E3E3E3E3E3E3E3E3
-04FFFBFBFBFF04E3E3E3E3E3E3E3E3E3
-04FFFBF5F5FBFF04E3E3E3E3E3E3E3E3
-04FFFBF5A8A8FBFF04E3E3E3E3E3E3E3
-04FFFFFBA844A8FBFF04E3E3E3E3E3E3
-040404FFFBA844A8FBFF04E3E3E3E3E3
-E3E3E304FFFBA84444FBFF04E304E3E3
-E3E3E3E304FFFB444444FBFF044D04E3
-E3E3E3E3E304FFFB44444444FA4D04E3
-E3E3E3E3E3E304FFFB44FFF54404E3E3
-E3E3E3E3E3E3E304FF44F5A804E3E3E3
-E3E3E3E3E3E3E3E304FA4404A804E3E3
-E3E3E3E3E3E3E3044D4D04E304F504E3
-E3E3E3E3E3E3E3E30404E3E3E304FA04
-E3E3E3E3E3E3E3E3E3E3E3E3E3E30404
-</PRE>
-Here $E3 is used as the transparent index.
-
-<P>
-These 256 bytes would be stored in pattern memory in left to right,
-top to bottom order.
+The 16K pattern memory can contain any combination of these images,
+whether they are 128 bytes or 256 bytes and their locations in the
+pattern memory are described by a pattern number. This pattern number
+is 7 bits with bits named as follows:
 
 <P>
 <BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><A ID="tex2html656"
+  HREF="node50.html">Pattern Number</A>
+<UL>
+<LI><A ID="tex2html657"
+  HREF="node51.html">8-Bit Sprite Patterns</A>
+<LI><A ID="tex2html658"
+  HREF="node52.html">4-Bit Sprite Patterns</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node50.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node48.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node48.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html652"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html654"
+  HREF="node193.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node50.html">Pattern Number</A>
+<B> Up:</B> <A
+ HREF="node48.html">Sprites</A>
+<B> Previous:</B> <A
+ HREF="node48.html">Sprites</A>
+ &nbsp; <B>  <A ID="tex2html653"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html655"
+  HREF="node193.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

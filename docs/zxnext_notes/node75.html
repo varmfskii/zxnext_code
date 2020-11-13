@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Multiface</TITLE>
-<META NAME="description" CONTENT="Multiface">
+<TITLE>ROM paging and selection</TITLE>
+<META NAME="description" CONTENT="ROM paging and selection">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -26,51 +26,49 @@
  HREF="node76.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node70.html">
+ HREF="node74.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node74.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html801"
+<A ID="tex2html807"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html803"
-  HREF="node191.html">
+<A ID="tex2html809"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node76.html">Interactions between paging methods</A>
+ HREF="node76.html">divMMC</A>
 <B> Up:</B> <A
- HREF="node70.html">ROM</A>
+ HREF="node74.html">ZX Spectrum 128k</A>
 <B> Previous:</B> <A
- HREF="node74.html">divMMC</A>
- &nbsp; <B>  <A ID="tex2html802"
+ HREF="node74.html">ZX Spectrum 128k</A>
+ &nbsp; <B>  <A ID="tex2html808"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html804"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html810"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00513040000000000000">
-Multiface</A>
-</H4>
+<H5><A ID="SECTION00513021000000000000">
+ROM paging and selection</A>
+</H5>
 
 <P>
-Need to find useful docs on the Multiface memory.
+$0000-$3fff is usually mapped to ROM. This area can only be fully
+remapped using Next memory management. ROM is not considered one of
+the numbered banks; it is mapped to the two 8k-banks by default, or by
+setting their 8k-bank numbers to 255.
 
 <P>
-9f 1-In, 128-In2
-<BR>
-1f 1-Out
-<BR>
-bf 128-In, 3-Out
-<BR>
-3f 128-Out, 3-In, 3-button
-<BR>
-7f3f 3-7ffd
-<BR>
-1f3f 3-1ffd
+The 128k Spectrum has 2 ROM pages. Which of these is mapped is
+selected by altering Bit 4 of Memory Paging Control ($7FFD). The
++2a/+3 has 4 ROM pages; the extra bit needed to select between these
+is bit 2 of Plus 3 Memory Paging Control ($1FFD). This maintains
+compatibility with the original machines' ROM paging as long as the
+ROM is not paged out.
 
 <P>
 <BR><HR>

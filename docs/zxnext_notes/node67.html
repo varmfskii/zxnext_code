@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Spectrum 128 Standard Paging</TITLE>
-<META NAME="description" CONTENT="Spectrum 128 Standard Paging">
+<TITLE>ZX Spectrum Next Native</TITLE>
+<META NAME="description" CONTENT="ZX Spectrum Next Native">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -32,51 +32,170 @@
 <A
  HREF="node66.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html763"
+<A ID="tex2html766"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html765"
-  HREF="node191.html">
+<A ID="tex2html768"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node68.html">Paging out ROM</A>
+ HREF="node68.html">ZX Spectrum 128</A>
 <B> Up:</B> <A
- HREF="node66.html">ZX Spectrum 128</A>
+ HREF="node66.html">RAM</A>
 <B> Previous:</B> <A
- HREF="node66.html">ZX Spectrum 128</A>
- &nbsp; <B>  <A ID="tex2html764"
+ HREF="node66.html">RAM</A>
+ &nbsp; <B>  <A ID="tex2html767"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html766"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html769"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H5><A ID="SECTION00512021000000000000">
-Spectrum 128 Standard Paging</A>
-</H5>
+<H4><A ID="SECTION00512010000000000000">
+ZX Spectrum Next Native</A>
+</H4>
+Registers $50 to $57 control the which SRAM pages are in each of the
+eight memory slots.  Registers $50 and $51 support the special value
+$FF which indicates that the currently selected ROM is to be mapped
+into slots 0 and/or 1 ($0000-$3FFF).
 
 <P>
-128-style memory management can only alter the bank addressed at
-$c000 (16k-slot 4, or 8k-slots 7-8). The active 16k-bank at $c000 is
-selected by writing the 3 LSBs of the 16k-bank number to the bottom 3
-bits of Memory Paging Control ($7FFD), and the 4 MSBs to the bottom 4
-bits of Next Memory Bank Select ($DFFD). (The reason for the division
-is that the original Spectrum 128, having only 128k of memory, only
-needed 3 bits.)
+Register (R/W) $50 (50) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 0 Control
+
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $0000 to $1FFF ($ff on
+  reset)
+</LI>
+</UL>
+Pages can be from 0 to 223 on a fully expanded Next.
+<BR>
+A 255 value causes the ROM to become visible.
+Register (R/W) $51 (51) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 1 Control
+
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $2000 to $3FFF ($ff on
+  reset)
+</LI>
+</UL>
+Pages can be from 0 to 223 on a fully expanded Next.
+<BR>
+A 255 value causes the ROM to become visible.
 
 <P>
-If you are using the standard interrupt handler or OS routines, then
-any time you write to Memory Paging Control ($7FFD) you should also
-store the value at $5B5C. Any time you write to Plus 3 Memory Paging
-Control ($1FFD) you should also store the value at $5B67. There is
-no corresponding system variable for the Next-only Next Memory Bank
-Select ($DFFD) and standard OS routines may not support the extended
-banks properly.
+Register (R/W) $52 (52) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 2 Control
+
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $4000 to $5FFF ($0A on
+  reset)
+</LI>
+</UL>
+Pages can be from 0 to 223 on a fully expanded Next.
 
 <P>
-<BR><HR>
+Register (R/W) $53 (53) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 3 Control
+
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $6000 to $7FFF ($0B on
+  reset)
+</LI>
+</UL>
+Pages can be from 0 to 223 on a fully expanded Next.
+
+<P>
+Register (R/W) $54 (54) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 4 Control
+
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $8000 to $9FFF ($04 on
+  reset)
+</LI>
+</UL>
+Pages can be from 0 to 223 on a fully expanded Next.
+
+<P>
+Register (R/W) $55 (55) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 5 Control
+
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $A000 to $BFFF ($05 on
+  reset)
+</LI>
+</UL>
+Pages can be from 0 to 223 on a fully expanded Next.
+
+<P>
+Register (R/W) $56 (56) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 6 Control
+
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $C000 to $DFFF ($00 on
+  reset)
+</LI>
+</UL>
+Pages can be from 0 to 223 on a fully expanded Next.
+
+<P>
+Register (R/W) $57 (57) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 7 Control
+
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $E000 to $FFFF ($01 on
+  reset)
+</LI>
+</UL>
+Pages can be from 0 to 223 on a fully expanded Next.
+
+<P>
+Writing to ports $1FFD, $7FFD and $DFFD writes $FF to MMU0 and
+MMU1 and writes appropriate values to MMU6 and MMU7 to map in the
+selected 16k bank.
+
+<P>
++3 special modes override the MMUs if used.
+
+<P>
+In addition the ZX Next has special controls which allow the data area
+for Layer 2 to be overlaied on memory in a fashion that permits
+selective read or write access. For details see the section on Layer 2
+video.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node68.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node66.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node66.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html766"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html768"
+  HREF="node193.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node68.html">ZX Spectrum 128</A>
+<B> Up:</B> <A
+ HREF="node66.html">RAM</A>
+<B> Previous:</B> <A
+ HREF="node66.html">RAM</A>
+ &nbsp; <B>  <A ID="tex2html767"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html769"
+  HREF="node193.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

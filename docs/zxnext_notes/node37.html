@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>General Description</TITLE>
-<META NAME="description" CONTENT="General Description">
+<TITLE>Clipping</TITLE>
+<META NAME="description" CONTENT="Clipping">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node38.html">
 <LINK REL="previous" HREF="node36.html">
 <LINK REL="next" HREF="node38.html">
 </HEAD>
@@ -27,68 +26,89 @@
  HREF="node38.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node36.html">
+ HREF="node28.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node36.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html585"
+<A ID="tex2html582"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html587"
-  HREF="node191.html">
+<A ID="tex2html584"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node38.html">Data Structures</A>
+ HREF="node38.html">Layer 3 (Tilemap) Mode</A>
 <B> Up:</B> <A
- HREF="node36.html">Layer 3 (Tilemap) Mode</A>
+ HREF="node28.html">Layer 2</A>
 <B> Previous:</B> <A
- HREF="node36.html">Layer 3 (Tilemap) Mode</A>
- &nbsp; <B>  <A ID="tex2html586"
+ HREF="node36.html">Scrolling</A>
+ &nbsp; <B>  <A ID="tex2html583"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html588"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html585"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION00341000000000000000">
-General Description</A>
+<H2><A ID="SECTION00333000000000000000">
+Clipping</A>
 </H2>
-The tilemap is a hardware character oriented display. It uses a set of
-user defined 4-bit, 16-colour, or 1-bit, 2-colour <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img10.svg"
- ALT="$8\times8$"></SPAN>
-tiles. The tiles can be dispplayed in two resolutions: <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img25.svg"
- ALT="$40\times32$"></SPAN>
-tiles (<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img2.svg"
- ALT="$320\times 256$"></SPAN> pixels) and <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img26.svg"
- ALT="$80\times32$"></SPAN> tiles (<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img3.svg"
- ALT="$640\times 256$"></SPAN>
-pixels).
+The Clip area for is based on the local coordinate system for the mode
+in question and is set using register $18 with the option of
+selection which write in active using register $1C.
 
 <P>
-The display area on screen is the same as the sprite layer, meaning it
-overlaps the standard <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
- ALT="$256\times 192$"></SPAN> area by 32 pixels on all
-sides. Vertically this is larger than the physical HDMI display, which
-will cut off the top and bottom character rows making the visible area
-<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img27.svg"
- ALT="$40\times30$"></SPAN> or <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img28.svg"
- ALT="$80\times30$"></SPAN>, but the full area is visible on VGA.
+Register (R/W) $18 (18) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Layer 2 Clip Window Definition
+
+<UL>
+<LI>bits 7-0 = Coords of the clip window
+  <table width="90%">  <tr><td valign="top">&nbsp;1st write - X1 position
+  </td></tr>
+<tr><td valign="top">&nbsp;2nd write - X2 position
+  </td></tr>
+<tr><td valign="top">&nbsp;3rd write - Y1 position
+  </td></tr>
+<tr><td valign="top">&nbsp;4rd write - Y2 position
+  </td></tr></table>
+</LI>
+</UL>
+Reads do not advance the clip position
+<BR>
+The values are 0,255,0,191 after a Reset
 
 <P>
-The obvious application for the tilemap is for a fast, clearly
-readable and wide multicoloured character display. Less obvious
-perhaps is that it can also be used to make fast and wide resolution
-full colour backgrounds with easily animated components such as have
-historically been used in many games.
+Register (R/W) $1C (1C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
+ ALT="$\Rightarrow$"></SPAN> Clip Window Control
+<BR>
+Read
 
-<P>
-The tilemap is defined by two data structures and configured using
-four NextRegs. The NextRegs are $6b (107), Tilemap Control; $6c
-(108), Default Tilemap Attribute, $6c (110); Tilemap Base Address;
-and $6d (111) Tile Definitions Base Address.
+<UL>
+<LI>bits 7-6 = Layer 3 Clip Index
+</LI>
+<LI>bits 5-4 = Layer 0/1 Clip Index
+</LI>
+<LI>bits 3-2 = Sprite clip index
+</LI>
+<LI>bits 1-0 = Layer 2 Clip Index
+</LI>
+</UL>
+Write
+
+<UL>
+<LI>bits 7-4 = Reserved, must be 0
+</LI>
+<LI>bit 3 - reset Layer 3 clip index
+</LI>
+<LI>bit 2 - reset Layer 0/1 clip index
+</LI>
+<LI>bit 1 - reset sprite clip index.
+</LI>
+<LI>bit 0 - reset Layer 2 clip index.
+</LI>
+</UL>
 
 <P>
 <BR><HR>

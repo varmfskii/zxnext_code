@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>WR3 – Write Register Group 3</TITLE>
-<META NAME="description" CONTENT="WR3 – Write Register Group 3">
+<TITLE>WR1 – Write Register Group 1</TITLE>
+<META NAME="description" CONTENT="WR1 – Write Register Group 1">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,50 +27,58 @@
  HREF="node91.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node86.html">
+ HREF="node88.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node89.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html888"
+<A ID="tex2html894"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html890"
-  HREF="node191.html">
+<A ID="tex2html896"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node91.html">WR4 – Write Register</A>
+ HREF="node91.html">WR2 – Write Register</A>
 <B> Up:</B> <A
- HREF="node86.html">zxnDMA Registers</A>
+ HREF="node88.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node89.html">WR2 – Write Register</A>
- &nbsp; <B>  <A ID="tex2html889"
+ HREF="node89.html">WR0 – Write Register</A>
+ &nbsp; <B>  <A ID="tex2html895"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html891"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html897"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00660040000000000000">
-WR3 – Write Register Group 3</A>
+<H4><A ID="SECTION00660020000000000000">
+WR1 – Write Register Group 1</A>
 </H4>
 <PRE>
 D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
- 1   |   0   0   0   0   0   0
+ 0   |   |   |   |   1   0   0
+     |   |   |   |
+     |   |   |   0 = Port A is memory
+     |   |   |   1 = Port A is IO
+     |   |   |
+     |   0   0 = Port A address decrements
+     |   0   1 = Port A address increments
+     |   1   0 = Port A address is fixed
+     |   1   1 = Port A address is fixed
      |
-     1 = DMA Enable
+     V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT A VARIABLE TIMING BYTE
+ 0   0   0   0   0   0   |   |
+                         0   0 = Cycle Length = 4
+                         0   1 = Cycle Length = 3
+                         1   0 = Cycle Length = 2
+                         1   1 = Do not use
 </PRE>
-The Z80 DMA defines more fields but they are ignored by the zxnDMA.
-
-<P>
-The two other registers defined by the Z80 DMA in this group on D4 and
-D3 are implemented by the zxnDMA but they do nothing.
-
-<P>
-It is preferred to start the DMA by writing an Enable DMA command to
-WR6.
+The cycle length is the number of cycles used in a read or write
+ operation. The first cycle asserts signals and the last cycle
+ releases them. There is no half cycle timing for the control signals.
 
 <P>
 <BR><HR>

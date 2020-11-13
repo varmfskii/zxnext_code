@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Video Modes</TITLE>
-<META NAME="description" CONTENT="Video Modes">
+<TITLE>Configuration</TITLE>
+<META NAME="description" CONTENT="Configuration">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node121.html">
-<LINK REL="previous" HREF="node119.html">
+<LINK REL="previous" HREF="node115.html">
 <LINK REL="next" HREF="node121.html">
 </HEAD>
 
@@ -27,145 +26,68 @@
  HREF="node121.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node118.html">
+ HREF="node99.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node119.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1052"
+<A ID="tex2html1054"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1054"
-  HREF="node191.html">
+<A ID="tex2html1056"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node121.html">Machine Type</A>
+ HREF="node121.html">Refresh Rate</A>
 <B> Up:</B> <A
- HREF="node118.html">Configuration</A>
+ HREF="node99.html">Copper and Display Timing</A>
 <B> Previous:</B> <A
- HREF="node119.html">Refresh Rate</A>
- &nbsp; <B>  <A ID="tex2html1053"
-  HREF="node1.html">Contents</A></B> 
+ HREF="node119.html">FRAME</A>
  &nbsp; <B>  <A ID="tex2html1055"
-  HREF="node191.html">Index</A></B> 
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1057"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00740020000000000000">
-Video Modes</A>
-</H4>
+<H1><A ID="SECTION00740000000000000000">
+Configuration</A>
+</H1>
 
 <P>
-The video mode can only be changed during the boot process so one
-initial read is required of this register during software start up
-phase.
+Hardware registers provide timing and configuration data allowing
+software to build and configure COPPER programs that function
+correctly across the various video modes and machine types. It is not
+essential to detect the machine type but it should be noted that
+software should not assume that it is running on a specific machine as
+the COPPER hardware is available across all four machine types.
 
 <P>
-The machine timing is identical for the seven VGA modes although the
-physical refresh rate of the video output speeds up for each mode in
-turn by roughly 1Hz. The internal timing of the machine remains
-constant and as close to the original hardware as possible. VGA is a
-perfect Amstrad ZX Spectrum 128k +3 for example as far as timing is
-concerned across the seven VGA modes.
+Three registers can be read to determine the machine configuration for
+Ts per line, dot clocks, refresh rate, line count and maximum
+horizontal dot clock/pixel position compare.
 
 <P>
-The effect of this speed up means that mode 0 will execute in one
-second of time whereas mode 6 will execute in a shorter time
-period. Mode 0 is as close to 50/60 Hz as possible where mode 6 is
-closer to 60/70 Hz. That would mean that one second of machine time
-for mode 6 will execute in 0.83 seconds of human time when running 50
-frames per second at 60Hz.
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<P>
-The eighth mode (mode 7) is used for HDMI timing. Machine
-configuration is forced for this mode. Line counts, Ts and various
-other settings are set to meet the rigid HDMI timing
-specification. For mode 7, 50/60 Hz are rock solid but the original
-hardware timing loses Ts across all machines to meet HDMI display
-requirements.
-
-<P>
-Software that was previously written for specific hardware with
-hard-coded software timing loops may fail. This is one of the risks of
-coding timing loops counting Ts. We saw evidence of this with the
-release of the 1985 Sinclair ZX Spectrum 128k+ and the later Amstrad
-models as previous software written for the ZX Spectrum 48k/48k+ would
-fail when trying to display colour attribute and border effects as the
-number of Ts per line was changed from 224Ts (1982 original 48k) to
-228Ts (128k models). The ZX Spectrum Next runs slower in HDMI
-mode. Demos may fail to display correctly and games may slow down
-although setting the Z80 to 7Mhz can solve the game slow down, demos
-should be run in VGA mode for maximum compatibility.
-
-<P>
-Video timing also affects audio output as the sample rate can vary
-depending on the output timing method.
-
-<P>
-The following register allows software to read the video timing mode:
-
-<P>
-Register (R/W) $11 (11) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Video Timing (writable in config mode only)
-<table width="90%">
-bits 7-3 = Reserved, must be 0
-bits 2-0 = Mode (VGA = 0..6, HDMI = 7)
-  
-<UL>
-<LI>000 = Base VGA timing, clk28 = 28000000
-</LI>
-<LI>001 = VGA setting 1, clk28 = 28571429
-</LI>
-<LI>010 = VGA setting 2, clk28 = 29464286
-</LI>
-<LI>011 = VGA setting 3, clk28 = 30000000
-</LI>
-<LI>100 = VGA setting 4, clk28 = 31000000
-</LI>
-<LI>101 = VGA setting 5, clk28 = 32000000
-</LI>
-<LI>110 = VGA setting 6, clk28 = 33000000
-</LI>
-<LI>111 = HDMI, clk28 = 27000000
-  
-</LI>
-</UL><tr><td valign="top">&nbsp;50/60Hz selection depends on bit 2 of register $05</td></tr>
-<tr><td valign="top">&nbsp;Only writable in config mode
-</td></tr></table>
-
-<P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node121.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node118.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node119.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1052"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1054"
-  HREF="node191.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node121.html">Machine Type</A>
-<B> Up:</B> <A
- HREF="node118.html">Configuration</A>
-<B> Previous:</B> <A
- HREF="node119.html">Refresh Rate</A>
- &nbsp; <B>  <A ID="tex2html1053"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1055"
-  HREF="node191.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html1058"
+  HREF="node121.html">Refresh Rate</A>
+<LI><A ID="tex2html1059"
+  HREF="node122.html">Video Modes</A>
+<LI><A ID="tex2html1060"
+  HREF="node123.html">Machine Type</A>
+<LI><A ID="tex2html1061"
+  HREF="node124.html">Summary</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
 
 </BODY>
 </HTML>

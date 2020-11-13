@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Global Memory Map</TITLE>
-<META NAME="description" CONTENT="Global Memory Map">
+<TITLE>Interactions between paging methods</TITLE>
+<META NAME="description" CONTENT="Interactions between paging methods">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -16,7 +16,7 @@
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node79.html">
-<LINK REL="previous" HREF="node77.html">
+<LINK REL="previous" HREF="node64.html">
 <LINK REL="next" HREF="node79.html">
 </HEAD>
 
@@ -27,93 +27,50 @@
  HREF="node79.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node77.html">
+ HREF="node63.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node77.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html815"
+<A ID="tex2html819"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html817"
-  HREF="node191.html">
+<A ID="tex2html821"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node79.html">Z80 Visible Memory Map</A>
+ HREF="node79.html">Memory Map</A>
 <B> Up:</B> <A
- HREF="node77.html">Memory Map</A>
+ HREF="node63.html">Memory</A>
 <B> Previous:</B> <A
- HREF="node77.html">Memory Map</A>
- &nbsp; <B>  <A ID="tex2html816"
+ HREF="node77.html">Multiface</A>
+ &nbsp; <B>  <A ID="tex2html820"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html818"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html822"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION00531000000000000000">
-Global Memory Map</A>
-</H2>
+<H1><A ID="SECTION00520000000000000000">
+Interactions between paging methods</A>
+</H1>
 
 <P>
-<TABLE class="PAD  BORDER" style="">
-<TR><TH CLASS="LEFT"><SPAN  CLASS="textbf">Physical Address</SPAN></TH>
-<TH CLASS="LEFT"><SPAN  CLASS="textbf">Size</SPAN></TH>
-<TH CLASS="LEFT"><SPAN  CLASS="textbf">Description</SPAN></TH>
-</TR>
-<TR><TD CLASS="LEFT">$000000-$00FFFF</TD>
-<TD CLASS="LEFT">64k</TD>
-<TD CLASS="LEFT">ZX Spectrum ROM (ROM0-3)</TD>
-</TR>
-<TR><TD CLASS="LEFT">$010000-$011FFF</TD>
-<TD CLASS="LEFT">8k</TD>
-<TD CLASS="LEFT">EsxDOS ROM</TD>
-</TR>
-<TR><TD CLASS="LEFT">$012000-$013FFF</TD>
-<TD CLASS="LEFT">8k</TD>
-<TD CLASS="LEFT">Multiface ROM</TD>
-</TR>
-<TR><TD CLASS="LEFT">$014000-$017FFF</TD>
-<TD CLASS="LEFT">16k</TD>
-<TD CLASS="LEFT">EsxDOS Extra ROM</TD>
-</TR>
-<TR><TD CLASS="LEFT">$018000-$01BFFF</TD>
-<TD CLASS="LEFT">16k</TD>
-<TD CLASS="LEFT">Alternate ROM</TD>
-</TR>
-<TR><TD CLASS="LEFT">$01C000-$01FFFF</TD>
-<TD CLASS="LEFT">16k</TD>
-<TD CLASS="LEFT">Multiface RAM</TD>
-</TR>
-<TR><TD CLASS="LEFT">$020000-$03FFFF</TD>
-<TD CLASS="LEFT">128k</TD>
-<TD CLASS="LEFT">DivMMC RAM</TD>
-</TR>
-<TR><TD CLASS="LEFT">$040000-$0FFFFF</TD>
-<TD CLASS="LEFT">768k</TD>
-<TD CLASS="LEFT">Standard RAM</TD>
-</TR>
-<TR><TD CLASS="LEFT">$100000-$1FFFFF</TD>
-<TD CLASS="LEFT">1024k</TD>
-<TD CLASS="LEFT">Expanded RAM</TD>
-</TR>
-</TABLE>
+Changes made in 128 style and Next style memory management are
+synchronized. The most recent change always has priority. This means
+that
 
 <P>
-Normal RAM is divided into 8k pages or 16k banks which may be mapped
-into the 64k memory space by the memory management hardware of the
-Next. Some of these pages have special properties.
-
-<P>
-Pages 10, 11 and 14 are used by Layer 1/0 (ULA) video modes with 10
-used by standard Spectrum ULA video, 10 and 11 used by Timex Hi-res
-and Hi-colour modes, 11 used by Timex alternate video and page 14 used
-by the ULA shadow mode. Pages 10 an 11 are usable by Layer 3 (Tilemap)
-video.
-
-<P>
+using 128-style memory management to select a new 16k-bank in 16k-slot
+4 will update the MMU registers for the two 8k-slots with the
+corresponding 8k-bank numbers.  enabling AllRam mode will update all
+of the 8k-bank values with the appropriate 8k-slot numbers. These may
+then be overwritten using Next memory management without needing to
+alter the value at port $1FFD.  Since the 128-style memory management
+ports are not readable, there is no synchronization applicable in the
+other direction.
 <BR><HR>
 
 </BODY>

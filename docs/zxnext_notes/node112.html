@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Example</TITLE>
-<META NAME="description" CONTENT="Example">
+<TITLE>MOVE</TITLE>
+<META NAME="description" CONTENT="MOVE">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node113.html">
 <LINK REL="previous" HREF="node111.html">
 <LINK REL="next" HREF="node113.html">
 </HEAD>
@@ -26,55 +27,49 @@
  HREF="node113.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node108.html">
+ HREF="node110.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node111.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1012"
+<A ID="tex2html1018"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1014"
-  HREF="node191.html">
+<A ID="tex2html1020"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node113.html">Control</A>
+ HREF="node113.html">WAIT</A>
 <B> Up:</B> <A
- HREF="node108.html">Instructions</A>
+ HREF="node110.html">Instructions</A>
 <B> Previous:</B> <A
- HREF="node111.html">WAIT</A>
- &nbsp; <B>  <A ID="tex2html1013"
+ HREF="node111.html">NOOP</A>
+ &nbsp; <B>  <A ID="tex2html1019"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1015"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1021"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00720040000000000000">
-Example</A>
+<H4><A ID="SECTION00720020000000000000">
+MOVE</A>
 </H4>
 
 <P>
-The following example provides a simple COPPER program to move data to
-a hardware register at two specific pixel positions. The BYTES for the
-program are listed in the left column:
+MOVE executes in two dot clocks. It moves 8 bits of data into any of
+the Next hardware registers in the range $00 (0) .. $7F (127).
 
 <P>
-<PRE>
-         PAL8 equ   0x41           ; 8 bit palette hardware register
+The WORD value $0000 is reserved for the NOOP instruction so no
+register access is carried out for that special case. Register $00 is
+read-only so not affected by the restriction of not being able to
+write zero to it.
 
-$80,$00       WAIT  0,0            ; wait for pixel position 0,0 (H,V)
-$00,$00       NOOP                 ; fine tune timing by one dot clock
-$41,$E0       MOVE  PAL8,11100000b ; write RED to palette register
-
-$C0,$BF       WAIT  32,191         ; wait for pixel position 256,191
-$00,$00       NOOP                 ; fine tune timing by one dot clock
-$41,$00       MOVE  PAL8,00000000b ; write BLACK to palette register
-
-$FF,$FF       WAIT  63,511         ; wait for an out of range position
-</PRE>
+<P>
+This instruction can perform 7 million register writes per second for
+VGA and 6.75 million register writes per second for HDMI.
 
 <P>
 <BR><HR>

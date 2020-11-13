@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>WR0 – Write Register Group 0</TITLE>
-<META NAME="description" CONTENT="WR0 – Write Register Group 0">
+<TITLE>Programming the zxnDMA</TITLE>
+<META NAME="description" CONTENT="Programming the zxnDMA">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,61 +27,67 @@
  HREF="node88.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node86.html">
+ HREF="node82.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node86.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html876"
+<A ID="tex2html873"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html878"
-  HREF="node191.html">
+<A ID="tex2html875"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node88.html">WR1 – Write Register</A>
+ HREF="node88.html">zxnDMA Registers</A>
 <B> Up:</B> <A
- HREF="node86.html">zxnDMA Registers</A>
+ HREF="node82.html">zxnDMA</A>
 <B> Previous:</B> <A
- HREF="node86.html">zxnDMA Registers</A>
- &nbsp; <B>  <A ID="tex2html877"
+ HREF="node86.html">Modes of Operation</A>
+ &nbsp; <B>  <A ID="tex2html874"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html879"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html876"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00660010000000000000">
-WR0 – Write Register Group 0</A>
-</H4>
-<PRE>
-D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
- 0   |   |   |   |   |   |   |
-     |   |   |   |   |   0   0  Do not use
-     |   |   |   |   |   0   1  Transfer (Prefer this for Z80 DMA compatibility)
-     |   |   |   |   |   1   0  Do not use (Behaves like Transfer, Search on Z80
-     |   |   |   |   |                       DMA)
-     |   |   |   |   |   1   1  Do not use (Behaves like Transfer, Search/Trans-
-     |   |   |   |   |                      fer on Z80 DMA)
-     |   |   |   |   0 = Port B -&gt; Port A (Byte transfer direction)
-     |   |   |   |   1 = Port A -&gt; Port B
-     |   |   |   V
-D7  D6  D5  D4  D3  D2  D1  D0  PORT A STARTING ADDRESS (LOW BYTE)
-     |   |   V
-D7  D6  D5  D4  D3  D2  D1  D0  PORT A STARTING ADDRESS (HIGH BYTE)
-     |   V
-D7  D6  D5  D4  D3  D2  D1  D0  BLOCK LENGTH (LOW BYTE)
-     V
-D7  D6  D5  D4  D3  D2  D1  D0  BLOCK LENGTH (HIGH BYTE)
-</PRE>
-Several registers are accessible from WR0. The first write to WR0 is
-to the base register byte. Bits D6:D3 are optionally set to indicate
-that associated registers in this group will be written next. The
-order the writes come in are from D3 to D6 (right to left). For
-example, if bits D6 and D3 are set, the next two writes will be
-directed to PORT A STARTING ADDRESS LOW followed by BLOCK LENGTH HIGH.
+<H1><A ID="SECTION00650000000000000000">
+Programming the zxnDMA</A>
+</H1>
+Like the Z80 DMA chip, the zxnDMA has seven write registers named
+WR0-WR6 that control the device. Each register WR0-WR6 can have zero
+or more parameters associated with it.
+
+<P>
+In a first write to the zxnDMA port, the write value is compared
+against a bitmask to determine which of the WR0-WR6 is the
+target. Remaining bits in the written value can contain data as well
+as a list of associated parameter bits. The parameter bits determine
+if further writes are expected to deliver parameter values. If there
+are multiple parameter bits set, the expected order of parameter
+values written is determined by parameter bit position from right to
+left (bit 0 through bit 7). Once all parameters are written, the
+zxnDMA again expects a regular register write selecting WR0-WR6.
+
+<P>
+The table X.Y describes the registers and the bitmask required to
+select them on the zxnDMA.
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="1909"></A>
+<TABLE>
+<CAPTION><STRONG>Table 5.1:</STRONG>
+zxnDMA Registers</CAPTION>
+<TR><TD><IMG STYLE="height: 20.58ex; " SRC="img37.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{zxndma/registers.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
 
 <P>
 <BR><HR>

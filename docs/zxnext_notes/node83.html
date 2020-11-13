@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Description</TITLE>
-<META NAME="description" CONTENT="Description">
+<TITLE>Overview</TITLE>
+<META NAME="description" CONTENT="Overview">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,53 +27,43 @@
  HREF="node84.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node80.html">
+ HREF="node82.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node82.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html851"
+<A ID="tex2html857"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html853"
-  HREF="node191.html">
+<A ID="tex2html859"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node84.html">Modes of Operation</A>
+ HREF="node84.html">Accessing the zxnDMA</A>
 <B> Up:</B> <A
- HREF="node80.html">zxnDMA</A>
+ HREF="node82.html">zxnDMA</A>
 <B> Previous:</B> <A
- HREF="node82.html">Accessing the zxnDMA</A>
- &nbsp; <B>  <A ID="tex2html852"
+ HREF="node82.html">zxnDMA</A>
+ &nbsp; <B>  <A ID="tex2html858"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html854"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html860"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00630000000000000000">
-Description</A>
+<H1><A ID="SECTION00610000000000000000">
+Overview</A>
 </H1>
-The normal Z80 DMA (Z8410) chip is a pipelined device and because of
-that it has numerous off-by-one idiosyncrasies and requirements on the
-order that certain commands should be carried out. These issues are
-not duplicated in the zxnDMA. You can continue to program the zxnDMA
-as if it is were a Z8410 DMA device but it can also be programmed in a
-simpler manner.
 
 <P>
-The single channel of the zxnDMA chip consists of two ports named A
-and B. Transfers can occur in either direction between ports A and B,
-each port can describe a target in memory or IO, and each can be
-configured to autoincrement, autodecrement or stay fixed after a byte
-is transferred.
-
-<P>
-A special feature of the zxnDMA can force each byte transfer to take a
-fixed amount of time so that the zxnDMA can be used to deliver sampled
-audio.
+The ZX Spectrum Next DMA (zxnDMA) is a single channel dma device that
+implements a subset of the Z80 DMA functionality. The subset is large
+enough to be compatible with common uses of the similar Datagear
+interface available for standard ZX Spectrum computers and
+compatibles. It also adds a burst mode capability that can deliver
+audio at programmable sample rates to the DAC device.
 
 <P>
 <BR><HR>

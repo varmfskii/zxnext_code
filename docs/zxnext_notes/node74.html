@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>divMMC</TITLE>
-<META NAME="description" CONTENT="divMMC">
+<TITLE>ZX Spectrum 128k</TITLE>
+<META NAME="description" CONTENT="ZX Spectrum 128k">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node75.html">
-<LINK REL="previous" HREF="node72.html">
+<LINK REL="next" HREF="node76.html">
+<LINK REL="previous" HREF="node73.html">
 <LINK REL="next" HREF="node75.html">
 </HEAD>
 
@@ -27,116 +27,47 @@
  HREF="node75.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node70.html">
+ HREF="node72.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node73.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html797"
+<A ID="tex2html802"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html799"
-  HREF="node191.html">
+<A ID="tex2html804"
+  HREF="node193.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node75.html">Multiface</A>
+ HREF="node75.html">ROM paging and selection</A>
 <B> Up:</B> <A
- HREF="node70.html">ROM</A>
+ HREF="node72.html">ROM</A>
 <B> Previous:</B> <A
- HREF="node73.html">ROM paging and selection</A>
- &nbsp; <B>  <A ID="tex2html798"
+ HREF="node73.html">ZX Next native</A>
+ &nbsp; <B>  <A ID="tex2html803"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html800"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html805"
+  HREF="node193.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00513030000000000000">
-divMMC</A>
+<H4><A ID="SECTION00513020000000000000">
+ZX Spectrum 128k</A>
 </H4>
 
 <P>
-The divMMC ROM mapping can take priority when it is enabled by port
-$E3 or, when automapping has been enabled by nextreg $06, when it
-has been automapped due to reading one of the appropriate
-addresses. Port $E3 also controls whether the divMMC maps the esxDOS
-ROM or divMMC RAM page 3 into slot 0 and which divMMC RAM page is
-mapped into slot 1.
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<P>
-Port $E3 (E3) divMMC Control
-<BR>
-Disable with bit 2 of Nextreg $09
-<table width="90%"><tr><td valign="top">&nbsp;bit 7 = conmem, enable divMMC memory</td></tr>
-<tr><td valign="top">&nbsp;bit 6 = mapram, enable divMMC allRAM mode</td></tr>
-<tr><td valign="top">&nbsp;bits 3-0 = bank, selected divMMC ram bank for $2000-$3FFF region
-conmem can be used to manually control divMMC mapping. When enabled
-<BR>$0000-$1FFF contains esxDOS ROM or esxDOS page 3
-<BR>$2000-$3FFF contains esxDOS RAM page selected by bits 3-0
-divMMC automatically maps itself in when instruction fetches hit
-specific addresses in the ROM. When this happens, the esxDOS ROM (or divMMC
-bank 3 if mapram is set) appears in $0000-$1FFF and the selected divMMC
-bank appears as RAM in $2000-$3FFF
-bit 6 can only be set, once set only a power cycle can reset it.
-nextreg $09 bit 3 can be set to reset this bit.
-</td></tr></table>
-
-divMMC automapping is normally disabled by NextZXOS see nextreg $06 bit 4.
-<BR>
-Register (R/W) $06 (06) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Peripheral 2 Settings
-
-<UL>
-<LI>bit 7 = F8 CPU Speed Hotkey Enable (1 on reset)
-</LI>
-<LI>bit 6 = Enable classic audio mode (beep and tape to internal speaker,
-  other audio to ear and HDMI, 3.01.02)
-</LI>
-<LI>bit 5 = F3 50Hz/60Hz Hotkey Enable (1 on reset)
-</LI>
-<LI>bit 4 = divMMC Automap/NMI Enable (0 on hard reset)
-</LI>
-<LI>bit 3 = NMI Button Enable (0 on hard reset)
-</LI>
-<LI>bit 2 = PS/2 Mode (0 = keyboard, 1 = mouse)
-</LI>
-<LI>bits 1-0 = PSG Mode (00 = YM, 01 = AY, 11 = hold all PSGs in Reset)
-</LI>
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html806"
+  HREF="node75.html">ROM paging and selection</A>
 </UL>
-
-<P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node75.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node70.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node73.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html797"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html799"
-  HREF="node191.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node75.html">Multiface</A>
-<B> Up:</B> <A
- HREF="node70.html">ROM</A>
-<B> Previous:</B> <A
- HREF="node73.html">ROM paging and selection</A>
- &nbsp; <B>  <A ID="tex2html798"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html800"
-  HREF="node191.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<!--End of Table of Child-Links-->
+<BR><HR>
 
 </BODY>
 </HTML>
