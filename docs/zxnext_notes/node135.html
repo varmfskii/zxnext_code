@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>NextZXOS</TITLE>
-<META NAME="description" CONTENT="NextZXOS">
+<TITLE>System Initialization Functions</TITLE>
+<META NAME="description" CONTENT="System Initialization Functions">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -16,7 +16,7 @@
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node136.html">
-<LINK REL="previous" HREF="node126.html">
+<LINK REL="previous" HREF="node134.html">
 <LINK REL="next" HREF="node136.html">
 </HEAD>
 
@@ -27,36 +27,160 @@
  HREF="node136.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node125.html">
+ HREF="node134.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node134.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1139"
+<A ID="tex2html1143"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1141"
-  HREF="node191.html">
+<A ID="tex2html1145"
+  HREF="node194.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node136.html">NextZXOS</A>
+ HREF="node136.html">Character I/O Functions</A>
 <B> Up:</B> <A
- HREF="node125.html">System Software</A>
+ HREF="node134.html">BIOS</A>
 <B> Previous:</B> <A
- HREF="node134.html">Clock Support Function</A>
- &nbsp; <B>  <A ID="tex2html1140"
+ HREF="node134.html">BIOS</A>
+ &nbsp; <B>  <A ID="tex2html1144"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1142"
-  HREF="node191.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1146"
+  HREF="node194.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION001020000000000000000">
-NextZXOS</A>
-</H1>
-<BR><HR>
+<H3><A ID="SECTION001013100000000000000">
+System Initialization Functions</A>
+</H3>
+This section defines the BIOS system initialization routines BOOT,
+WBOOT, DEVTBL, DEVINI, and DRVTBL.
+
+<P>
+<A NAME="3614"></A>
+BIOS Function 0: BOOT
+
+<P>
+Get Control from Cold Start Loader and Initialize System
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values: None
+
+<P>
+The BOOT entry point gets control from the Cold Start Loader in Bank 0
+and is responsible for basic system initialization. Any remaining
+hardware initialization that is not done by the boot ROMS, the Cold
+Boot Loader, or the LDRBIOS should be performed by the BOOT routine.
+
+<P>
+<A NAME="3615"></A>
+BIOS Function 1: WBOOT
+
+<P>
+Get Control When a Warm Start Occurs
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values: None
+
+<P>
+The WBOOT entry point is entered when a warm start occurs. A warm
+start is performed whenever a user program branches to location 0000H
+or attempts to return to the CCP.
+
+<P>
+<A NAME="3616"></A>
+BIOS Function 20: DEVTBL
+
+<P>
+Return Address of Character I/O Table
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values: HL=address of Chrtbl
+
+<P>
+The DEVTBL and DEVINI entry points allow you to support device
+assignment with a flexible, yet completely optional system. It
+replaces the IOBYTE facility of CP/M 2.2.
+
+<P>
+<A NAME="3617"></A>
+BIOS Function 21: DEVINI
+
+<P>
+Initialize Character I/O Device
+<BR>
+Entry Parameters: C=device number, 0-15
+<BR>
+Returned Values: None
+
+<P>
+The DEVINI routine initializes the physical character device specified
+in register C to the baud rate contained in the appropriate entry of
+the CHRTBL.
+
+<P>
+<A NAME="3618"></A>
+BIOS Function 22: DRVTBL
+
+<P>
+Return Address of Disk Drive Table
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;HL=Address of Drive Table of Disk Parameter Headers (DPH);
+  Hashing can utilized if specified by the DPHs Referenced by this
+  DRVTBL.</td></tr>
+<tr><td valign="top">&nbsp;HL=$ffff if no Drive Table; GENCPM does not set up buffers.
+  Hashing is supported.</td></tr>
+<tr><td valign="top">&nbsp;HL=$fffe if no Drive Table; GENCPM does not set up buffers.
+  Hashing is not supported.
+</td></tr></table>
+
+<P>
+The first instruction of this subroutine must be an LXI H,&lt;address&gt;
+where &lt;address&gt; is one of the above returned values. The GENCPM
+utility accesses the address in this instruction to locate the drive
+table and the disk parameter data structures to determine which system
+configuration to use.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node136.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node134.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node134.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html1143"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html1145"
+  HREF="node194.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node136.html">Character I/O Functions</A>
+<B> Up:</B> <A
+ HREF="node134.html">BIOS</A>
+<B> Previous:</B> <A
+ HREF="node134.html">BIOS</A>
+ &nbsp; <B>  <A ID="tex2html1144"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1146"
+  HREF="node194.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

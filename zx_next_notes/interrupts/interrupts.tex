@@ -10,12 +10,27 @@ interrupt mode is set to 0. And (maskable) interrupts are disabled by
 clearing IFF1 and IFF2.
 
 \textoverline{NMI} is the non-maskable interrupt. Upon receiving a
-non-maskable interrupt (\textoverline{NMI} being pulled low), PC is
-pushed on the stack, IFF1 is copied to IFF2, IFF1 is cleared
+non-maskable interrupt (\textoverline{NMI} being pulled low) one of
+two sequences occur depending on the calue of bit 3 of the interrupt
+control register (nextreg \$C0).
+
+\input{registers/tbblue/C0.tex}
+
+If bit 3 is clear (0) PC is pushed on the stack, IFF1 is copied to
+IFF2, IFF1 is cleared (inhibiting maskable interrupts). The
+\textoverline{NMI} should end with RETN which copies the contents of
+IFF2 to IFF1 (returning the interrupt state to what it was before the
+\textoverline{NMI}) and PC is popped off the stack.
+
+If bit 3 is set (1) PC is stored in the NMI return address registers
+(nextregs \$C2 and \$C3), IFF1 is copied to IFF2, IFF1 is cleared
 (inhibiting maskable interrupts). The \textoverline{NMI} should end
 with RETN which copies the contents of IFF2 to IFF1 (returning the
-interrupt state to what it was before the \textoverline{NMI}) and PF is
-popped off the stack.
+interrupt state to what it was before the \textoverline{NMI}) and PC
+is compied from the NMI return address registers.
+
+\input{registers/tbblue/C2.tex}
+\input{registers/tbblue/C3.tex}
 
 The interrupt generally of most interest to programmers is
 \textoverline{INT}. So much so that if programmers talk about
@@ -31,30 +46,84 @@ its interrupt has been serviced, and return from the interrupt
 routine. In general the Spectrum machines do not make any distingtion
 between RET and RETI, but future developments in the ZX Spectrum Next
 may make the distinction important.
- 
-IM0 – When an interrupt is received by the CPU it disables interrupts
-and executes the instruction placed on the bus by the interrupting
-device and (no known use on the Next) It is enabled with the IM0
-instruction and enabling interrupts (EI).
 
-IM1 – When an interrupt is received, the CPU disables interrupts and
-jumps to an interrupt handler at \$0038 (normally in ROM). The ROM
-interrupt handler updates the frame counter and scans the
-keyboard. This is the default interrupt handling method for the ZX
-Spectrum and is probably the method to use if you don’t need the ROMs
-for anything. It is enabled using the IM1 instruction and enabling
-interrupts.
+The ZX Spectrum Next has 14 internal sources for \textoverline{INT}
+signals. This can be enabled and disabled using nextregs \$C4 --
+\$C6. Which signals have been received can be read/cleared using
+nexregs \$C8 -- \$CA.
 
-IM2 – When the CPU receives an interrupt it disables interrupts and
-jumps to an interrupt routine starting at the contents of the jump
-table at I. The start of the interrupt routine is the contents of
-I*\$100+bus and I*\$100+bus+1. Most devices that can supply interrupts
-on the ZX Spectrum leave the data bus in a floating state.  As a
-result the interpreted state of the data bus while generally \$FF is
-not entirely predictable.  The solution to place your interrupt
-routine at an address where the MSB and LSB are the same (\$0101,
-\$0202, … \$FFFF) then place 257 copies of that value in a block
-starting at I*\$100 (you can set the value of the I register).
+Interrupt Enable
+\input{registers/tbblue/C4.tex}
+\input{registers/tbblue/C5.tex}
+\input{registers/tbblue/C6.tex}
+
+Interupt Status
+\input{registers/tbblue/C8.tex}
+\input{registers/tbblue/C9.tex}
+\input{registers/tbblue/CA.tex}
+
+Internal Interrupt Sources
+\begin{itemize}
+\item[] 0 = Line (highest priority)
+\item[] 1 = UART 0 Rx
+\item[] 2 = UART 1 Rx
+\item[] 3-10 = CTC channels 0-7
+\item[] 11 = ULA
+\item[] 12 = UART 0 Tx
+\item[] 13 = UART 1 Tx (lowest priority)
+\end{itemize}
+
+\paragraph{IM0}
+When an interrupt is received by the CPU it disables interrupts and
+executes the instruction placed on the bus by the interrupting device
+and (no known use on the Next) It is enabled with the IM0 instruction
+and enabling interrupts (EI).
+
+\paragraph{IM1}
+When an interrupt is received, the CPU disables interrupts and jumps
+to an interrupt handler at \$0038 (normally in ROM). The ROM interrupt
+handler updates the frame counter and scans the keyboard. This is the
+default interrupt handling method for the ZX Spectrum and is probably
+the method to use if you don’t need the ROMs for anything. It is
+enabled using the IM1 instruction and enabling interrupts.
+
+\paragraph{IM2}
+The ZX Spectrum Next has both a legacy method for handling IM2 and an
+updated one which makes better use of the capabilities of IM2 which
+was added in Core 3.01.09.
+
+The ZX Spectrum Next has 14 interrupt devices which can all be given
+independent interrupt vectors when using IM2. These interrupts are
+controlled by nextregs \$C0 -- \$CF.  The address of the vector for a
+given interrupt is created by composing the I register (bits 15-0),
+nextreg \$C0 bits 7-5 (bits 7-5) and the interrupt number of the
+interrupt device (bits 4-1). This means that even if you use all 14
+internal interrupt sources, your interrupt vector table is no more
+than 28 bytes which can be at any 32 byte boundry. It also means that
+far less processing has to be done on interrupts which are
+received. External interrupts are a little different. If no vector is
+supplied by a device the implied LSB will be \$FF.
+
+While in IM2 mode, it is possible for interrupts to interrupt DMA
+transfers. This capability is controlled by The DMA Interrupt enable
+registers (nextregs \$CC -- \$CE). When DMA is interrupted, one
+instruction of the main program will be processed, then the interrupt
+will be taken. On return, DMA will continue.
+
+\input{registers/tbblue/CC.tex}
+\input{registers/tbblue/CD.tex}
+\input{registers/tbblue/CE.tex}
+
+In legacy mode, when the CPU receives an interrupt it disables
+interrupts and jumps to an interrupt routine starting at the contents
+of the jump table at I. The start of the interrupt routine is the
+contents of I*\$100+bus and I*\$100+bus+1. Most devices that can
+supply interrupts on the ZX Spectrum leave the data bus in a floating
+state.  As a result the interpreted state of the data bus while
+generally \$FF is not entirely predictable.  The solution to place
+your interrupt routine at an address where the MSB and LSB are the
+same (\$0101, \$0202, … \$FFFF) then place 257 copies of that value in
+a block starting at I*\$100 (you can set the value of the I register).
 
 Code:
 \begin{verbatim}
@@ -79,3 +148,5 @@ jp handler
 org $fe00 ; not actually legal
 defs $101,$fd
 \end{verbatim}
+
+\input{interrupts/ctc.tex}
