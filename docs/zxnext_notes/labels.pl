@@ -3,15 +3,15 @@
 
 
 $key = q/table:91/;
-$external_labels{$key} = "$URL/" . q|node133.html|; 
+$external_labels{$key} = "$URL/" . q|node138.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/table:92/;
-$external_labels{$key} = "$URL/" . q|node133.html|; 
+$external_labels{$key} = "$URL/" . q|node138.html|; 
 $noresave{$key} = "$nosave";
 
 $key = q/table:93/;
-$external_labels{$key} = "$URL/" . q|node133.html|; 
+$external_labels{$key} = "$URL/" . q|node138.html|; 
 $noresave{$key} = "$nosave";
 
 1;

@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>IM2</TITLE>
-<META NAME="description" CONTENT="IM2">
+<TITLE>zxnext_notes</TITLE>
+<META NAME="description" CONTENT="zxnext_notes">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node127.html">
 <LINK REL="previous" HREF="node125.html">
 <LINK REL="next" HREF="node127.html">
 </HEAD>
@@ -26,159 +27,151 @@
  HREF="node127.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node123.html">
+ HREF="node124.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node125.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1081"
+<A ID="tex2html1091"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1083"
-  HREF="node194.html">
+<A ID="tex2html1093"
+  HREF="node199.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
-<B> Next:</B> <A
- HREF="node127.html">Z80 CTC</A>
+<B> Next:</B> 
 <B> Up:</B> <A
- HREF="node123.html">Interrupts</A>
-<B> Previous:</B> <A
- HREF="node125.html">IM1</A>
- &nbsp; <B>  <A ID="tex2html1082"
+ HREF="node124.html">Interrupt Types</A>
+<B> Previous:</B> 
+ &nbsp; <B>  <A ID="tex2html1092"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1084"
-  HREF="node194.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1094"
+  HREF="node199.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00800030000000000000">
-IM2</A>
+<H4><A ID="SECTION00810020000000000000">
+<!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN></A>
 </H4>
-The ZX Spectrum Next has both a legacy method for handling IM2 and an
-updated one which makes better use of the capabilities of IM2 which
-was added in Core 3.01.09.
+<!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> is the non-maskable interrupt. Upon receiving a
+non-maskable interrupt (<!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> being pulled low) one of
+two sequences occur depending on the calue of bit 3 of the interrupt
+control register (nextreg $C0).
 
 <P>
-The ZX Spectrum Next has 14 interrupt devices which can all be given
-independent interrupt vectors when using IM2. These interrupts are
-controlled by nextregs $C0 &ndash; $CF.  The address of the vector for a
-given interrupt is created by composing the I register (bits 15-0),
-nextreg $C0 bits 7-5 (bits 7-5) and the interrupt number of the
-interrupt device (bits 4-1). This means that even if you use all 14
-internal interrupt sources, your interrupt vector table is no more
-than 28 bytes which can be at any 32 byte boundry. It also means that
-far less processing has to be done on interrupts which are
-received. External interrupts are a little different. If no vector is
-supplied by a device the implied LSB will be $FF.
-
-<P>
-While in IM2 mode, it is possible for interrupts to interrupt DMA
-transfers. This capability is controlled by The DMA Interrupt enable
-registers (nextregs $CC &ndash; $CE). When DMA is interrupted, one
-instruction of the main program will be processed, then the interrupt
-will be taken. On return, DMA will continue.
-
-<P>
-Register (R/W) $CC (CC) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> DMA Interrupt Enable 0 (3.01.09)
-($00 on reset)
+Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Interrupt Control (3.01.09)
+<BR>($00 on reset)
 
 <UL>
-<LI>bits 7-2 = Reserved, must be 0
+<LI>bits 7-5 = Programmable portion of IM2 vector *
 </LI>
-<LI>bit 1 = Line
+<LI>bit 4 = Reserved, must be 0
 </LI>
-<LI>bit 0 = ULA
+<LI>bit 3 = Enable stackless <!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> response
+</LI>
+<LI>bits 2-1 = Reserved, must be 0
+</LI>
+<LI>bit 0 = Maskable interrupt mode
+<table width="90%"><tr><td valign="top">&nbsp;0 - pulse</td></tr>
+<tr><td valign="top">&nbsp;1 - IM2
+</td></tr></table>
 </LI>
 </UL>
-* Set bits indicate the specified interrupt will interrupt a DMA
-  operation when in IM2 mode
-Register (R/W) $CD (CD) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> DMA Interrupt Enable 1 (3.01.09)
-($00 on reset)
+* In IM2 mode vector generated is:
 
 <UL>
-<LI>bit 7 = CTC channel 7 zc/to
+<LI>bits 7-5 = nextreg $C0 bits 7-5
 </LI>
-<LI>bit 6 = CTC channel 6 zc/to
+<LI>bits 4-1 = Interrupt source
+<table width="90%"><tr><td valign="top">&nbsp;0 - line interrupt (highest priority)</td></tr>
+<tr><td valign="top">&nbsp;1 - UART 0 Rx</td></tr>
+<tr><td valign="top">&nbsp;2 - UART 1 Rx</td></tr>
+<tr><td valign="top">&nbsp;3&ndash;10 - CTC channels 0-7</td></tr>
+<tr><td valign="top">&nbsp;11 - ULA</td></tr>
+<tr><td valign="top">&nbsp;12 - UART 0 Tx</td></tr>
+<tr><td valign="top">&nbsp;13 - UART 1 Tx (lowest priority)
+</td></tr></table>
+
 </LI>
-<LI>bit 5 = CTC channel 5 zc/to
-</LI>
-<LI>bit 4 = CTC channel 4 zc/to
-</LI>
-<LI>bit 3 = CTC channel 3 zc/to
-</LI>
-<LI>bit 2 = CTC channel 2 zc/to
-</LI>
-<LI>bit 1 = CTC channel 1 zc/to
-</LI>
-<LI>bit 0 = CTC channel 0 zc/to
+<LI>bit 0 = 0
 </LI>
 </UL>
-* Set bits indicate the corresponding interrupt will interrupt a DMA
-  operation when in IM2 mode
-Register (R/W) $CE (CE) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> DMA Interrupt Enable 2 (3.01.09)
-($00 on reset)
-
-<UL>
-<LI>bit 7 = Reserved, must be 0
-</LI>
-<LI>bit 6 = UART1 Tx empty
-</LI>
-<LI>bit 5 = UART1 Rx half full
-</LI>
-<LI>bit 4 = UART1 Rx available
-</LI>
-<LI>bit 3 = Reserved, must be 0
-</LI>
-<LI>bit 2 = UART0 Tx empty
-</LI>
-<LI>bit 1 = UART0 Tx half full
-</LI>
-<LI>bit 0 = UART0 Tx available
-</LI>
-</UL>
-* Set bits indicate the corresponding interrupt will interrupt a DMA
-  operation when in IM2 mode.
 
 <P>
-In legacy mode, when the CPU receives an interrupt it disables
-interrupts and jumps to an interrupt routine starting at the contents
-of the jump table at I. The start of the interrupt routine is the
-contents of I*$100+bus and I*$100+bus+1. Most devices that can
-supply interrupts on the ZX Spectrum leave the data bus in a floating
-state.  As a result the interpreted state of the data bus while
-generally $FF is not entirely predictable.  The solution to place
-your interrupt routine at an address where the MSB and LSB are the
-same ($0101, $0202, … $FFFF) then place 257 copies of that value in
-a block starting at I*$100 (you can set the value of the I register).
+If bit 3 is clear (0) PC is pushed on the stack, IFF1 is copied to
+IFF2, IFF1 is cleared (inhibiting maskable interrupts). The
+<!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> should end with RETN which copies the contents of
+IFF2 to IFF1 (returning the interrupt state to what it was before the
+<!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN>) and PC is popped off the stack.
 
 <P>
-Code:
-<PRE>
-;; my program
-org $8000
-;; enable interrupt mode im2
-ld i,$fe
-im2
-ei
-;; program body
-;; interrupt routine
-handler:
-;; preserve registers used
-;; handle interrupt
-;; restore registers
-ei
-reti
-;; jump to interrupt routine
-org $fdfd
-jp handler
-;; im2 jump table
-org $fe00 ; not actually legal
-defs $101,$fd
-</PRE>
+If bit 3 is set (1) PC is stored in the <!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> return
+address registers (nextregs $C2 and $C3), IFF1 is copied to IFF2,
+IFF1 is cleared (inhibiting maskable interrupts). The
+<!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> should end with RETN which copies the contents of
+IFF2 to IFF1 (returning the interrupt state to what it was before the
+<!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN>) and PC is compied from the <!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN>
+return address registers.
+
+<P>
+Register (R/W) $C2 (C2) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> <!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> Return Address LSB (3.01.09)
+<BR>($00 on reset)
+
+<P>
+Register (R/W) $C3 (C3) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> <!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> Return Address MSB (3.01.09)
+<BR>($00 on reset)
 
 <P>
 
@@ -188,28 +181,26 @@ defs $101,$fd
  HREF="node127.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node123.html">
+ HREF="node124.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node125.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1081"
+<A ID="tex2html1091"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1083"
-  HREF="node194.html">
+<A ID="tex2html1093"
+  HREF="node199.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
-<B> Next:</B> <A
- HREF="node127.html">Z80 CTC</A>
+<B> Next:</B> 
 <B> Up:</B> <A
- HREF="node123.html">Interrupts</A>
-<B> Previous:</B> <A
- HREF="node125.html">IM1</A>
- &nbsp; <B>  <A ID="tex2html1082"
+ HREF="node124.html">Interrupt Types</A>
+<B> Previous:</B> 
+ &nbsp; <B>  <A ID="tex2html1092"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1084"
-  HREF="node194.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html1094"
+  HREF="node199.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

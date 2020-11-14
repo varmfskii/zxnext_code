@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>AY-3-8912</TITLE>
-<META NAME="description" CONTENT="AY-3-8912">
+<TITLE>Ports</TITLE>
+<META NAME="description" CONTENT="Ports">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node152.html">
-<LINK REL="previous" HREF="node150.html">
+<LINK REL="next" HREF="node154.html">
+<LINK REL="previous" HREF="node135.html">
 <LINK REL="next" HREF="node152.html">
 </HEAD>
 
@@ -27,242 +27,63 @@
  HREF="node152.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node149.html">
+ HREF="zxnext_notes.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node150.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1217"
+<A ID="tex2html1226"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1219"
-  HREF="node194.html">
+<A ID="tex2html1228"
+  HREF="node199.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node152.html">zxDMA</A>
+ HREF="node152.html">8-bit</A>
 <B> Up:</B> <A
- HREF="node149.html">Registers</A>
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
- HREF="node150.html">ZX Spectrum Next Registers</A>
- &nbsp; <B>  <A ID="tex2html1218"
+ HREF="node150.html">esxDOS compatible API</A>
+ &nbsp; <B>  <A ID="tex2html1227"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1220"
-  HREF="node194.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1229"
+  HREF="node199.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION001220000000000000000">
-AY-3-8912</A>
+<H1><A ID="SECTION001100000000000000000">
+Ports</A>
 </H1>
 
 <P>
-(R/W) $00 (0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel A fine tune
-
-<UL>
-<LI>bits 7-0 = Channel A frequency bits 7-0
-</LI>
-</UL>
-
-<P>
-(R/W) $01 (1) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel A coarse tune
-
-<UL>
-<LI>bits 7-4 = Reserved
-</LI>
-<LI>bits 4-0 = Channel A frequency bits 11-8
-</LI>
-</UL>
-
-<P>
-(R/W) $02 (0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel B fine tune
-
-<UL>
-<LI>bits 7-0 = Channel A frequency bits 7-0
-</LI>
-</UL>
-
-<P>
-(R/W) $03 (1) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel B coarse tune
-
-<UL>
-<LI>bits 7-4 = Reserved
-</LI>
-<LI>bits 4-0 = Channel A frequency bits 11-8
-</LI>
-</UL>
-
-<P>
-(R/W) $04 (0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel C fine tune
-
-<UL>
-<LI>bits 7-0 = Channel A frequency bits 7-0
-</LI>
-</UL>
-
-<P>
-(R/W) $05 (1) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel C coarse tune
-
-<UL>
-<LI>bits 7-4 = Reserved
-</LI>
-<LI>bits 4-0 = Channel A frequency bits 11-8
-</LI>
-</UL>
-
-<P>
-(R/W) $06 (6) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Noise period
-
-<UL>
-<LI>bits 7-5 = Reserved
-</LI>
-<LI>bits 4-0 = Noise period to noise generator
-</LI>
-</UL>
-
-<P>
-(R/W) $07 (7) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Mixer control I/O Enable
-<table width="90%"><tr><td valign="top">&nbsp;Active low (0=enable, 1= disable)
-bit 7-6: Reserved
-bit 5: Channel C noise enable
-bit 4: Channel B noise enable
-bit 3: Channel A noise enable
-bit 2: Channel C tone enable
-bit 1: Channel B tone enable
-bit 0: Channel A tone enable
-</td></tr></table>
-
-<P>
-(R/W) $0A (10) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel A amplitude
-
-<UL>
-<LI>bits 7-5 = Reserved
-</LI>
-<LI>bit 4 = Amplitude mode
-  
-<UL>
-<LI>0=fixed amplitude
-</LI>
-<LI>1=use envelope generator (bits 0-3 ignored)
-  
-</LI>
-</UL>
-</LI>
-<LI>bits 0-3 = value of fixed amplitude
-</LI>
-</UL>
-
-<P>
-(R/W) $0B (11) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel B amplitude
-<table width="90%"><tr><td valign="top">&nbsp;like channel A amplitude
-</td></tr></table>
-
-<P>
-(R/W) $0C (12) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Channel C amplitude
-<table width="90%"><tr><td valign="top">&nbsp;like channel A amplitude
-</td></tr></table>
-
-<P>
-(R/W) $0D (13) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Envelope period fine
-
-<UL>
-<LI>bits 7-0 = Envelop period LSB
-</LI>
-</UL>
-
-<P>
-(R/W) $0E (14) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Envelope period coarse
-
-<UL>
-<LI>bits 7-0 = Envelop period MSB
-</LI>
-</UL>
-
-<P>
-(R/W) $0F (15) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img7.svg"
- ALT="$\Rightarrow$"></SPAN> Envelope shape
-
-<UL>
-<LI>bits 7-4 = Reserved
-</LI>
-<LI>bit 3 = Continue
-  
-<UL>
-<LI>0=drop to amplitude 0 after 1 cycle
-</LI>
-<LI>1=use ‘Hold’ value
-  
-</LI>
-</UL>
-</LI>
-<LI>bit 2 = Attack
-  
-<UL>
-<LI>0=generator counts down
-</LI>
-<LI>1=generator counts up
-  
-</LI>
-</UL>
-</LI>
-<LI>bit 1-0 = Alternate &amp; Hold
-  
-<UL>
-<LI>00=generator resets after each cycle
-</LI>
-<LI>01=hold final value
-</LI>
-<LI>10=generator reverses direction each cycle
-</LI>
-<LI>11=hold initial value
-  
-</LI>
-</UL>
-</LI>
-</UL>
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node152.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node149.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node150.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1217"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1219"
-  HREF="node194.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR><P></P>
+<DIV class="CENTER"><A ID="6396"></A>
+<TABLE>
+<CAPTION><STRONG>Table A.1:</STRONG>
+ZX Spectrum Ports</CAPTION>
+<TR><TD><IMG STYLE="height: 77.38ex; " SRC="img136.svg"
+ ALT="\begin{table}\centering\tiny
+\csvautotabular{appendices/ports/ports.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
 <BR>
-<B> Next:</B> <A
- HREF="node152.html">zxDMA</A>
-<B> Up:</B> <A
- HREF="node149.html">Registers</A>
-<B> Previous:</B> <A
- HREF="node150.html">ZX Spectrum Next Registers</A>
- &nbsp; <B>  <A ID="tex2html1218"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1220"
-  HREF="node194.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html1230"
+  HREF="node152.html">8-bit</A>
+<LI><A ID="tex2html1231"
+  HREF="node153.html">16-bit</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
 
 </BODY>
 </HTML>

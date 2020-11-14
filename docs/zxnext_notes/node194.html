@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Index</TITLE>
-<META NAME="description" CONTENT="Index">
+<TITLE>+3DOS Compatible Calls</TITLE>
+<META NAME="description" CONTENT="+3DOS Compatible Calls">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,286 +27,680 @@
  HREF="node195.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="zxnext_notes.html">
+ HREF="node193.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node193.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1427"
+<A ID="tex2html1441"
   HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A>  
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html1443"
+  HREF="node199.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node195.html">About this document ...</A>
+ HREF="node195.html">+3DOS compatible error codes</A>
 <B> Up:</B> <A
- HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
+ HREF="node193.html">NextZXOS Calls</A>
 <B> Previous:</B> <A
- HREF="node193.html">List of Tables</A>
- &nbsp; <B>  <A ID="tex2html1428"
+ HREF="node193.html">NextZXOS Calls</A>
+ &nbsp; <B>  <A ID="tex2html1442"
   HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1444"
+  HREF="node199.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
+
+<H2><A ID="SECTION001631000000000000000">
++3DOS Compatible Calls</A>
+</H2>
+
+<P>
+<SPAN  CLASS="textbf">Filesystem Calls</SPAN>
+
+<P>
+<TABLE class="PAD " style="">
+<TR><TD CLASS="LEFT">DOS_VERSION</TD>
+<TD CLASS="LEFT">$0103 (0103)</TD>
+<TD CLASS="LEFT">Get +3DOS issue and version numbers</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">*DOS_OPEN</TD>
+<TD CLASS="LEFT">$0106 (0106)</TD>
+<TD CLASS="LEFT">Create and/or open a file</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_CLOSE</TD>
+<TD CLASS="LEFT">$0109 (0109)</TD>
+<TD CLASS="LEFT">Close a file</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_ABANDON</TD>
+<TD CLASS="LEFT">$010C (010C)</TD>
+<TD CLASS="LEFT">Abandon a file</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_REF_HEAD</TD>
+<TD CLASS="LEFT">$010F (010F)</TD>
+<TD CLASS="LEFT">Point at the header data for this file</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_READ</TD>
+<TD CLASS="LEFT">$0112 (0112)</TD>
+<TD CLASS="LEFT">Read bytes into memory</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_WRITE</TD>
+<TD CLASS="LEFT">$0115 (0115)</TD>
+<TD CLASS="LEFT">Write bytes from memory</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_BYTE_READ</TD>
+<TD CLASS="LEFT">$0118 (0118)</TD>
+<TD CLASS="LEFT">Read a byte</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_BYTE_WRITE</TD>
+<TD CLASS="LEFT">$011B (011B)</TD>
+<TD CLASS="LEFT">Write a byte</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">*DOS_CATALOG</TD>
+<TD CLASS="LEFT">$011E (011E)</TD>
+<TD CLASS="LEFT">Catalog disk directory</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">*DOS_FREE_SPACE</TD>
+<TD CLASS="LEFT">$0121 (0121)</TD>
+<TD CLASS="LEFT">Free space on disk</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_DELETE</TD>
+<TD CLASS="LEFT">$0124 (0124)</TD>
+<TD CLASS="LEFT">Delete a file</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_RENAME</TD>
+<TD CLASS="LEFT">$0127 (0127)</TD>
+<TD CLASS="LEFT">Rename a file</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_BOOT</TD>
+<TD CLASS="LEFT">$012A (012A)</TD>
+<TD CLASS="LEFT">Boot an operating system or other program</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_SET_DRIVE</TD>
+<TD CLASS="LEFT">$012D (012D)</TD>
+<TD CLASS="LEFT">Set/get default drive</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_SET_USER</TD>
+<TD CLASS="LEFT">$0130 (0130)</TD>
+<TD CLASS="LEFT">Set/get default user number</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">*DOS_GET_POSITION</TD>
+<TD CLASS="LEFT">$0133 (0133)</TD>
+<TD CLASS="LEFT">Get file pointer for random access</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_SET_POSITION</TD>
+<TD CLASS="LEFT">$0136 (0136)</TD>
+<TD CLASS="LEFT">Set file pointer for random access</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">*DOS_GET_EOF</TD>
+<TD CLASS="LEFT">$0139 (0139)</TD>
+<TD CLASS="LEFT">Get end of file position for random access</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_GET_1346</TD>
+<TD CLASS="LEFT">$013C (013C)</TD>
+<TD CLASS="LEFT">Get memory usage in pages 1, 3, 4, 6</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_SET_1346</TD>
+<TD CLASS="LEFT">$013F (013F)</TD>
+<TD CLASS="LEFT">Re-allocate memory usage in pages 1, 3, 4, 6</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_FLUSH</TD>
+<TD CLASS="LEFT">$0142 (0142)</TD>
+<TD CLASS="LEFT">Bring disk up to date</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_SET_ACCESS</TD>
+<TD CLASS="LEFT">$0145 (0145)</TD>
+<TD CLASS="LEFT">Change open file's access mode</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_SET_ATTRIBUTES</TD>
+<TD CLASS="LEFT">$0148 (0148)</TD>
+<TD CLASS="LEFT">Change a file's attributes</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_SET_MESSAGE</TD>
+<TD CLASS="LEFT">$014E (014E)</TD>
+<TD CLASS="LEFT">Enable/disable error messages</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+<TABLE class="PAD " style="">
+<TR><TD CLASS="LEFT">DD_L_XDPB</TD>
+<TD CLASS="LEFT">$0187 (0187)</TD>
+<TD CLASS="LEFT">Initialise an XDPB from a disk specification</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_L_DPB</TD>
+<TD CLASS="LEFT">$018A (018A)</TD>
+<TD CLASS="LEFT">Initialise a DPB from a disk specification</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+<SPAN  CLASS="textbf">System Calls</SPAN>
+
+<P>
+<TABLE class="PAD " style="">
+<TR><TD CLASS="LEFT">DOS_INITIALISE</TD>
+<TD CLASS="LEFT">$0100 (0100)</TD>
+<TD CLASS="LEFT">Initialise +3DOS</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+<TABLE class="PAD " style="">
+<TR><TD CLASS="LEFT">IDE_INTERFACE</TD>
+<TD CLASS="LEFT">$00A3 (00A3)</TD>
+<TD CLASS="LEFT">Initialise card interfaces</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_INIT</TD>
+<TD CLASS="LEFT">$00A6 (00A6)</TD>
+<TD CLASS="LEFT">Initialise IDEDOS</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_DRIVE</TD>
+<TD CLASS="LEFT">$00A9 (00A9)</TD>
+<TD CLASS="LEFT">Get unit handle</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">*IDE_SECTOR_READ</TD>
+<TD CLASS="LEFT">$00AC (00AC)</TD>
+<TD CLASS="LEFT">Low-level sector read</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">*IDE_SECTOR_WRITE</TD>
+<TD CLASS="LEFT">$00AF (00AF)</TD>
+<TD CLASS="LEFT">Low-level sector write</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_PARTITON_READ</TD>
+<TD CLASS="LEFT">$00C4 (00C4)</TD>
+<TD CLASS="LEFT">Read a partition entry</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_PARTITION_OPEN</TD>
+<TD CLASS="LEFT">$00CD (00CD)</TD>
+<TD CLASS="LEFT">Open a partition</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_PARTITION_CLOSE</TD>
+<TD CLASS="LEFT">$00D0 (00D0)</TD>
+<TD CLASS="LEFT">Close a partition</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_PARTITIONS</TD>
+<TD CLASS="LEFT">$01A5 (01A5)</TD>
+<TD CLASS="LEFT">Get number of open partitions</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+<SPAN  CLASS="textbf">Unimplemented Calls</SPAN>
+
+<P>
+<TABLE class="PAD " style="">
+<TR><TD CLASS="LEFT">DOS_OPEN_DRIVE</TD>
+<TD CLASS="LEFT">$014B (014B)</TD>
+<TD CLASS="LEFT">Open a drive as a single file</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DOS_MAP_B</TD>
+<TD CLASS="LEFT">$0154 (0154)</TD>
+<TD CLASS="LEFT">Map B: onto unit 0 or 1</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+<TABLE class="PAD " style="">
+<TR><TD CLASS="LEFT">DD_INTERFACE</TD>
+<TD CLASS="LEFT">$0157 (0157)</TD>
+<TD CLASS="LEFT">Is the floppy disk driver interface present?</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_INIT</TD>
+<TD CLASS="LEFT">$015A (015A)</TD>
+<TD CLASS="LEFT">Initialise disk driver</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_SETUP</TD>
+<TD CLASS="LEFT">$015D (015D)</TD>
+<TD CLASS="LEFT">Specify drive parameters</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_SET_RETRY</TD>
+<TD CLASS="LEFT">$0160 (0160)</TD>
+<TD CLASS="LEFT">Set try/retry count</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_READ_SECTOR</TD>
+<TD CLASS="LEFT">$0163 (0163)</TD>
+<TD CLASS="LEFT">Read a sector</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_WRITE_SECTOR</TD>
+<TD CLASS="LEFT">$0166 (0166)</TD>
+<TD CLASS="LEFT">Write a sector</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_CHECK_SECTOR</TD>
+<TD CLASS="LEFT">$0169 (0169)</TD>
+<TD CLASS="LEFT">Check a sector</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_FORMAT</TD>
+<TD CLASS="LEFT">$016C (016C)</TD>
+<TD CLASS="LEFT">Format a track</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_READ_ID</TD>
+<TD CLASS="LEFT">$016F (016F)</TD>
+<TD CLASS="LEFT">Read a sector identifier</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_TEST_UNSUITABLE</TD>
+<TD CLASS="LEFT">$0172 (0172)</TD>
+<TD CLASS="LEFT">Test media suitability</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_LOGIN</TD>
+<TD CLASS="LEFT">$0175 (0175)</TD>
+<TD CLASS="LEFT">Log in disk, initialise XDPB</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_SEL_FORMAT</TD>
+<TD CLASS="LEFT">$0178 (0178)</TD>
+<TD CLASS="LEFT">Pre-initialise XDPB for DD FORMAT</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_ASK_1</TD>
+<TD CLASS="LEFT">$017B (017B)</TD>
+<TD CLASS="LEFT">Is unit 1 &amp; external drive &amp; present?</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_DRIVE_STATUS</TD>
+<TD CLASS="LEFT">$017E (017E)</TD>
+<TD CLASS="LEFT">Fetch drive status</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_EQUIPMENT</TD>
+<TD CLASS="LEFT">$0181 (0181)</TD>
+<TD CLASS="LEFT">What type of drive?</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_ENCODE</TD>
+<TD CLASS="LEFT">$0184 (0184)</TD>
+<TD CLASS="LEFT">Set intercept routine for copy protection</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_L_SEEK</TD>
+<TD CLASS="LEFT">$018D (018D)</TD>
+<TD CLASS="LEFT">uPD765A seek driver</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_L_READ</TD>
+<TD CLASS="LEFT">$0190 (0190)</TD>
+<TD CLASS="LEFT">uPD765A read driver</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_L_WRITE</TD>
+<TD CLASS="LEFT">$0193 (0193)</TD>
+<TD CLASS="LEFT">uPD765A write driver</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_L_ON_MOTOR</TD>
+<TD CLASS="LEFT">$0196 (0196)</TD>
+<TD CLASS="LEFT">Motor on, wait for motor-on time</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_L_T_OFF_MOTOR</TD>
+<TD CLASS="LEFT">$0199 (0199)</TD>
+<TD CLASS="LEFT">Start the motor-off ticker</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">DD_L_OFF_MOTOR</TD>
+<TD CLASS="LEFT">$019C (019C)</TD>
+<TD CLASS="LEFT">Turn the motor off</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+<TABLE class="PAD " style="">
+<TR><TD CLASS="LEFT">IDE_FORMAT</TD>
+<TD CLASS="LEFT">$00B2 (00B2)</TD>
+<TD CLASS="LEFT">Format a partition</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_PARTITION_NEW</TD>
+<TD CLASS="LEFT">$00B8 (00B8)</TD>
+<TD CLASS="LEFT">Create partition</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_PARTITION_INIT</TD>
+<TD CLASS="LEFT">$00BB (00BB)</TD>
+<TD CLASS="LEFT">Initialise partition</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_PARTITION_ERASE</TD>
+<TD CLASS="LEFT">$00BE (00BE)</TD>
+<TD CLASS="LEFT">Delete a partition</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_PARTITION_RENAME</TD>
+<TD CLASS="LEFT">$00C1 (00C1)</TD>
+<TD CLASS="LEFT">Rename a partition</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_PARTITION_WRITE</TD>
+<TD CLASS="LEFT">$00C7 (00C7)</TD>
+<TD CLASS="LEFT">Write a partition entry</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_PARTITION_WINFO</TD>
+<TD CLASS="LEFT">$00CA (00CA)</TD>
+<TD CLASS="LEFT">Write type-specific partition information</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_PARTITION_GETINFO</TD>
+<TD CLASS="LEFT">$00D3 (00D3)</TD>
+<TD CLASS="LEFT">Get byte from type-specific partition information</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_PARTITION_SETINFO</TD>
+<TD CLASS="LEFT">$00D6 (00D6)</TD>
+<TD CLASS="LEFT">Set byte in type-specific partition information</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_DOS_UNPERMANENT</TD>
+<TD CLASS="LEFT">$00FA (00FA)</TD>
+<TD CLASS="LEFT">Remove permanent drive mapping</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">IDE_IDENTIFY</TD>
+<TD CLASS="LEFT">$01A2 (01A2)</TD>
+<TD CLASS="LEFT">Return IDE drive identity information</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node195.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node193.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node193.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html1441"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html1443"
+  HREF="node199.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
-
-<H2><A ID="SECTION001900000000000000000">
-Index</A>
-</H2><DL COMPACT>
-<DT><STRONG>access drive</STRONG>
-<DD><A HREF="node133.html#3362">BDOS</A>
-<DT><STRONG>auxiliary input</STRONG>
-<DD><A HREF="node133.html#3113">BDOS</A>
-<DT><STRONG>auxiliary input status</STRONG>
-<DD><A HREF="node133.html#3135">BDOS</A>
-<DT><STRONG>auxiliary output</STRONG>
-<DD><A HREF="node133.html#3119">BDOS</A>
-<DT><STRONG>auxiliary output status</STRONG>
-<DD><A HREF="node133.html#3141">BDOS</A>
-<DT><STRONG>AUXIN</STRONG>
-<DD><A HREF="node136.html#3629">Character I/O Functions</A>
-<DT><STRONG>AUXIST</STRONG>
-<DD><A HREF="node136.html#3636">Character I/O Functions</A>
-<DT><STRONG>AUXOST</STRONG>
-<DD><A HREF="node136.html#3639">Character I/O Functions</A>
-<DT><STRONG>AUXOUT</STRONG>
-<DD><A HREF="node136.html#3628">Character I/O Functions</A>
-<DT><STRONG>BOOT</STRONG>
-<DD><A HREF="node135.html#3614">System Initialization Functions</A>
-<DT><STRONG>call resident system extension</STRONG>
-<DD><A HREF="node133.html#3455">BDOS</A>
-<DT><STRONG>chain to program</STRONG>
-<DD><A HREF="node133.html#3414">BDOS</A>
-<DT><STRONG>clip window</STRONG>
-<DD><A HREF="node43.html#366">Programming Tilemap mode</A>
- | <A HREF="node55.html#567">Global Control of Sprites</A>
-<DT><STRONG>close file</STRONG>
-<DD><A HREF="node133.html#3193">BDOS</A>
-<DT><STRONG>compute file size</STRONG>
-<DD><A HREF="node133.html#3342">BDOS</A>
-<DT><STRONG>CONIN</STRONG>
-<DD><A HREF="node136.html#3625">Character I/O Functions</A>
-<DT><STRONG>CONOST</STRONG>
-<DD><A HREF="node136.html#3633">Character I/O Functions</A>
-<DT><STRONG>CONOUT</STRONG>
-<DD><A HREF="node136.html#3626">Character I/O Functions</A>
-<DT><STRONG>console input</STRONG>
-<DD><A HREF="node133.html#3103">BDOS</A>
-<DT><STRONG>console output</STRONG>
-<DD><A HREF="node133.html#3109">BDOS</A>
-<DT><STRONG>CONST</STRONG>
-<DD><A HREF="node136.html#3622">Character I/O Functions</A>
-<DT><STRONG>delete file</STRONG>
-<DD><A HREF="node133.html#3219">BDOS</A>
-<DT><STRONG>DEVINI</STRONG>
-<DD><A HREF="node135.html#3617">System Initialization Functions</A>
-<DT><STRONG>DEVTBL</STRONG>
-<DD><A HREF="node135.html#3616">System Initialization Functions</A>
-<DT><STRONG>direct BIOS calls</STRONG>
-<DD><A HREF="node133.html#3441">BDOS</A>
-<DT><STRONG>direct console I/O</STRONG>
-<DD><A HREF="node133.html#3127">BDOS</A>
-<DT><STRONG>DOS_CATALOG</STRONG>
-<DD><A HREF="node142.html#3735">+3DOS compatible API</A>
-<DT><STRONG>DOS_FREE_SPACE</STRONG>
-<DD><A HREF="node142.html#3737">+3DOS compatible API</A>
-<DT><STRONG>DOS_GET_EOF</STRONG>
-<DD><A HREF="node142.html#3747">+3DOS compatible API</A>
-<DT><STRONG>DOS_GET_POSITION</STRONG>
-<DD><A HREF="node142.html#3744">+3DOS compatible API</A>
-<DT><STRONG>DOS_OPEN</STRONG>
-<DD><A HREF="node142.html#3726">+3DOS compatible API</A>
-<DT><STRONG>DRVTBL</STRONG>
-<DD><A HREF="node135.html#3618">System Initialization Functions</A>
-<DT><STRONG>FLUSH</STRONG>
-<DD><A HREF="node137.html#3664">Disk I/O Functions</A>
-<DT><STRONG>flush buffers</STRONG>
-<DD><A HREF="node133.html#3418">BDOS</A>
-<DT><STRONG>free blocks</STRONG>
-<DD><A HREF="node133.html#3463">BDOS</A>
-<DT><STRONG>free drive</STRONG>
-<DD><A HREF="node133.html#3366">BDOS</A>
-<DT><STRONG>get addr(alloc)</STRONG>
-<DD><A HREF="node133.html#3283">BDOS</A>
-<DT><STRONG>get addr(DPB parms)</STRONG>
-<DD><A HREF="node133.html#3309">BDOS</A>
-<DT><STRONG>get console mode</STRONG>
-<DD><A HREF="node133.html#3562">BDOS</A>
-<DT><STRONG>get console status</STRONG>
-<DD><A HREF="node133.html#3161">BDOS</A>
-<DT><STRONG>get date and time</STRONG>
-<DD><A HREF="node133.html#3531">BDOS</A>
-<DT><STRONG>get disk free space</STRONG>
-<DD><A HREF="node133.html#3406">BDOS</A>
-<DT><STRONG>get output delimiter</STRONG>
-<DD><A HREF="node133.html#3573">BDOS</A>
-<DT><STRONG>get program return code</STRONG>
-<DD><A HREF="node133.html#3549">BDOS</A>
-<DT><STRONG>get read-only vector</STRONG>
-<DD><A HREF="node133.html#3293">BDOS</A>
-<DT><STRONG>get system control bock</STRONG>
-<DD><A HREF="node133.html#3426">BDOS</A>
-<DT><STRONG>get user code</STRONG>
-<DD><A HREF="node133.html#3315">BDOS</A>
-<DT><STRONG>HOME</STRONG>
-<DD><A HREF="node137.html#3643">Disk I/O Functions</A>
-<DT><STRONG>IDE_BANK</STRONG>
-<DD><A HREF="node142.html#3792">+3DOS compatible API</A>
-<DT><STRONG>IDE_BROWSER</STRONG>
-<DD><A HREF="node142.html#3790">+3DOS compatible API</A>
-<DT><STRONG>IDE_CAPACITY</STRONG>
-<DD><A HREF="node142.html#3786">+3DOS compatible API</A>
-<DT><STRONG>IDE_DOS_MAP</STRONG>
-<DD><A HREF="node142.html#3715">+3DOS compatible API</A>
-<DT><STRONG>IDE_DOS_MAPPING</STRONG>
-<DD><A HREF="node142.html#3719">+3DOS compatible API</A>
-<DT><STRONG>IDE_DOS_UNMAP</STRONG>
-<DD><A HREF="node142.html#3717">+3DOS compatible API</A>
-<DT><STRONG>IDE_GET_LFN</STRONG>
-<DD><A HREF="node142.html#3788">+3DOS compatible API</A>
-<DT><STRONG>IDE_PATH</STRONG>
-<DD><A HREF="node142.html#3784">+3DOS compatible API</A>
-<DT><STRONG>IDE_SNAPLOAD</STRONG>
-<DD><A HREF="node142.html#3722">+3DOS compatible API</A>
-<DT><STRONG>IDE_SWAP_EX</STRONG>
-<DD><A HREF="node142.html#3710">+3DOS compatible API</A>
-<DT><STRONG>IDE_SWAP_OPEN</STRONG>
-<DD><A HREF="node142.html#3705">+3DOS compatible API</A>
-<DT><STRONG>LIST</STRONG>
-<DD><A HREF="node136.html#3627">Character I/O Functions</A>
-<DT><STRONG>list block</STRONG>
-<DD><A HREF="node133.html#3588">BDOS</A>
-<DT><STRONG>list output</STRONG>
-<DD><A HREF="node133.html#3123">BDOS</A>
-<DT><STRONG>LISTST</STRONG>
-<DD><A HREF="node136.html#3630">Character I/O Functions</A>
-<DT><STRONG>load overlay</STRONG>
-<DD><A HREF="node133.html#3449">BDOS</A>
-<DT><STRONG>lock record</STRONG>
-<DD><A HREF="node133.html#3382">BDOS</A>
-<DT><STRONG>make file</STRONG>
-<DD><A HREF="node133.html#3249">BDOS</A>
-<DT><STRONG>MOVE</STRONG>
-<DD><A HREF="node138.html#3668">Memory Select and Move</A>
-<DT><STRONG>MULTIO</STRONG>
-<DD><A HREF="node137.html#3663">Disk I/O Functions</A>
-<DT><STRONG>open file</STRONG>
-<DD><A HREF="node133.html#3185">BDOS</A>
-<DT><STRONG>palette</STRONG>
-<DD><A HREF="node6.html#112">Palette</A>
- | <A HREF="node51.html#421">Sprite Palette</A>
-<DT><STRONG>parse filename</STRONG>
-<DD><A HREF="node133.html#3596">BDOS</A>
-<DT><STRONG>print block</STRONG>
-<DD><A HREF="node133.html#3580">BDOS</A>
-<DT><STRONG>print string</STRONG>
-<DD><A HREF="node133.html#3147">BDOS</A>
-<DT><STRONG>READ</STRONG>
-<DD><A HREF="node137.html#3652">Disk I/O Functions</A>
-<DT><STRONG>read console buffer</STRONG>
-<DD><A HREF="node133.html#3151">BDOS</A>
-<DT><STRONG>read file date stamps and password mode</STRONG>
-<DD><A HREF="node133.html#3499">BDOS</A>
-<DT><STRONG>read random</STRONG>
-<DD><A HREF="node133.html#3322">BDOS</A>
-<DT><STRONG>read sequential</STRONG>
-<DD><A HREF="node133.html#3229">BDOS</A>
-<DT><STRONG>rename file</STRONG>
-<DD><A HREF="node133.html#3259">BDOS</A>
-<DT><STRONG>reset disk system</STRONG>
-<DD><A HREF="node133.html#3173">BDOS</A>
-<DT><STRONG>reset drive</STRONG>
-<DD><A HREF="node133.html#3356">BDOS</A>
-<DT><STRONG>return current disk</STRONG>
-<DD><A HREF="node133.html#3273">BDOS</A>
-<DT><STRONG>return directory label data</STRONG>
-<DD><A HREF="node133.html#3489">BDOS</A>
-<DT><STRONG>return login vector</STRONG>
-<DD><A HREF="node133.html#3267">BDOS</A>
-<DT><STRONG>return serial number</STRONG>
-<DD><A HREF="node133.html#3543">BDOS</A>
-<DT><STRONG>return version number</STRONG>
-<DD><A HREF="node133.html#3167">BDOS</A>
-<DT><STRONG>scroll offset</STRONG>
-<DD><A HREF="node43.html#374">Programming Tilemap mode</A>
-<DT><STRONG>search for first</STRONG>
-<DD><A HREF="node133.html#3203">BDOS</A>
-<DT><STRONG>search for next</STRONG>
-<DD><A HREF="node133.html#3213">BDOS</A>
-<DT><STRONG>SECTRN</STRONG>
-<DD><A HREF="node137.html#3660">Disk I/O Functions</A>
-<DT><STRONG>SELDSK</STRONG>
-<DD><A HREF="node137.html#3644">Disk I/O Functions</A>
-<DT><STRONG>select disk</STRONG>
-<DD><A HREF="node133.html#3177">BDOS</A>
-<DT><STRONG>SELMEM</STRONG>
-<DD><A HREF="node138.html#3671">Memory Select and Move</A>
-<DT><STRONG>set BDOS error mode</STRONG>
-<DD><A HREF="node133.html#3400">BDOS</A>
-<DT><STRONG>set console mode</STRONG>
-<DD><A HREF="node133.html#3563">BDOS</A>
-<DT><STRONG>set date and time</STRONG>
-<DD><A HREF="node133.html#3523">BDOS</A>
-<DT><STRONG>set default password</STRONG>
-<DD><A HREF="node133.html#3537">BDOS</A>
-<DT><STRONG>set directory label</STRONG>
-<DD><A HREF="node133.html#3479">BDOS</A>
-<DT><STRONG>set dma address</STRONG>
-<DD><A HREF="node133.html#3279">BDOS</A>
-<DT><STRONG>set file attributes</STRONG>
-<DD><A HREF="node133.html#3299">BDOS</A>
-<DT><STRONG>set multi-sector count</STRONG>
-<DD><A HREF="node133.html#3394">BDOS</A>
-<DT><STRONG>set output delimiter</STRONG>
-<DD><A HREF="node133.html#3574">BDOS</A>
-<DT><STRONG>set program return code</STRONG>
-<DD><A HREF="node133.html#3550">BDOS</A>
-<DT><STRONG>set random record</STRONG>
-<DD><A HREF="node133.html#3350">BDOS</A>
-<DT><STRONG>set system control bock</STRONG>
-<DD><A HREF="node133.html#3427">BDOS</A>
-<DT><STRONG>set user code</STRONG>
-<DD><A HREF="node133.html#3316">BDOS</A>
-<DT><STRONG>SETBNK</STRONG>
-<DD><A HREF="node138.html#3672">Memory Select and Move</A>
-<DT><STRONG>SETDMA</STRONG>
-<DD><A HREF="node137.html#3651">Disk I/O Functions</A>
-<DT><STRONG>SETSEC</STRONG>
-<DD><A HREF="node137.html#3650">Disk I/O Functions</A>
-<DT><STRONG>SETTRK</STRONG>
-<DD><A HREF="node137.html#3649">Disk I/O Functions</A>
-<DT><STRONG>system reset</STRONG>
-<DD><A HREF="node133.html#3099">BDOS</A>
-<DT><STRONG>test and write record</STRONG>
-<DD><A HREF="node133.html#3376">BDOS</A>
-<DT><STRONG>TIME</STRONG>
-<DD><A HREF="node139.html#3677">Clock Support Function</A>
-<DT><STRONG>transparency</STRONG>
-<DD><A HREF="node5.html#90">Video Layering and Transparency</A>
- | <A HREF="node43.html#360">Programming Tilemap mode</A>
- | <A HREF="node55.html#582">Global Control of Sprites</A>
-<DT><STRONG>truncate file</STRONG>
-<DD><A HREF="node133.html#3471">BDOS</A>
-<DT><STRONG>unlock record</STRONG>
-<DD><A HREF="node133.html#3388">BDOS</A>
-<DT><STRONG>WBOOT</STRONG>
-<DD><A HREF="node135.html#3615">System Initialization Functions</A>
-<DT><STRONG>WRITE</STRONG>
-<DD><A HREF="node137.html#3655">Disk I/O Functions</A>
-<DT><STRONG>write file XFCB</STRONG>
-<DD><A HREF="node133.html#3513">BDOS</A>
-<DT><STRONG>write protect disk</STRONG>
-<DD><A HREF="node133.html#3289">BDOS</A>
-<DT><STRONG>write random</STRONG>
-<DD><A HREF="node133.html#3332">BDOS</A>
-<DT><STRONG>write random with zero fill</STRONG>
-<DD><A HREF="node133.html#3370">BDOS</A>
-<DT><STRONG>write sequential</STRONG>
-<DD><A HREF="node133.html#3239">BDOS</A>
-<DT><STRONG>XMOVE</STRONG>
-<DD><A HREF="node138.html#3673">Memory Select and Move</A>
-
-</DL>
-<BR><HR>
+<B> Next:</B> <A
+ HREF="node195.html">+3DOS compatible error codes</A>
+<B> Up:</B> <A
+ HREF="node193.html">NextZXOS Calls</A>
+<B> Previous:</B> <A
+ HREF="node193.html">NextZXOS Calls</A>
+ &nbsp; <B>  <A ID="tex2html1442"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1444"
+  HREF="node199.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

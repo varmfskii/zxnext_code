@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>System Software</TITLE>
-<META NAME="description" CONTENT="System Software">
+<TITLE>IM1</TITLE>
+<META NAME="description" CONTENT="IM1">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node146.html">
+<LINK REL="next" HREF="node131.html">
 <LINK REL="previous" HREF="node129.html">
 <LINK REL="next" HREF="node131.html">
 </HEAD>
@@ -27,80 +27,43 @@
  HREF="node131.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="zxnext_notes.html">
+ HREF="node128.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node129.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1097"
+<A ID="tex2html1110"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1099"
-  HREF="node194.html">
+<A ID="tex2html1112"
+  HREF="node199.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node131.html">CP/M</A>
+ HREF="node131.html">IM2</A>
 <B> Up:</B> <A
- HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
+ HREF="node128.html">Interrupt Modes</A>
 <B> Previous:</B> <A
- HREF="node129.html">Raspberry Pi0 Acceleration</A>
- &nbsp; <B>  <A ID="tex2html1098"
+ HREF="node129.html">IM0</A>
+ &nbsp; <B>  <A ID="tex2html1111"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1100"
-  HREF="node194.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1113"
+  HREF="node199.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION001000000000000000000">
-System Software</A>
-</H1>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+<H4><A ID="SECTION00820020000000000000">
+IM1</A>
+</H4>
+When an interrupt is received, the CPU disables interrupts and jumps
+to an interrupt handler at $0038 (normally in ROM). The ROM interrupt
+handler updates the frame counter and scans the keyboard. This is the
+default interrupt handling method for the ZX Spectrum and is probably
+the method to use if you don’t need the ROMs for anything. It is
+enabled using the IM1 instruction and enabling interrupts.
 
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html1101"
-  HREF="node131.html">CP/M</A>
-<UL>
-<LI><A ID="tex2html1102"
-  HREF="node132.html">Utilities</A>
-<LI><A ID="tex2html1103"
-  HREF="node133.html">BDOS</A>
-<LI><A ID="tex2html1104"
-  HREF="node134.html">BIOS</A>
-<UL>
-<LI><A ID="tex2html1105"
-  HREF="node135.html">System Initialization Functions</A>
-<LI><A ID="tex2html1106"
-  HREF="node136.html">Character I/O Functions</A>
-<LI><A ID="tex2html1107"
-  HREF="node137.html">Disk I/O Functions</A>
-</UL>
-<LI><A ID="tex2html1108"
-  HREF="node138.html">Memory Select and Move Functions</A>
-<UL>
-<LI><A ID="tex2html1109"
-  HREF="node139.html">Clock Support Function</A>
-</UL>
-</UL>
-<BR>
-<LI><A ID="tex2html1110"
-  HREF="node140.html">NextZXOS</A>
-<LI><A ID="tex2html1111"
-  HREF="node141.html">NextZXOS</A>
-<UL>
-<LI><A ID="tex2html1112"
-  HREF="node142.html">+3DOS compatible API</A>
-<LI><A ID="tex2html1113"
-  HREF="node143.html">esxDOS compatible API</A>
-<LI><A ID="tex2html1114"
-  HREF="node144.html">Next Extensions</A>
-<LI><A ID="tex2html1115"
-  HREF="node145.html">esxDOS compatible API</A>
-</UL></UL>
-<!--End of Table of Child-Links-->
+<P>
 <BR><HR>
 
 </BODY>

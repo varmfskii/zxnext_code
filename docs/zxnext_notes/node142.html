@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>+3DOS compatible API</TITLE>
-<META NAME="description" CONTENT="+3DOS compatible API">
+<TITLE>Disk I/O Functions</TITLE>
+<META NAME="description" CONTENT="Disk I/O Functions">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node143.html">
 <LINK REL="previous" HREF="node141.html">
 <LINK REL="next" HREF="node143.html">
 </HEAD>
@@ -27,708 +26,253 @@
  HREF="node143.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node141.html">
+ HREF="node139.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node141.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1176"
+<A ID="tex2html1185"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1178"
-  HREF="node194.html">
+<A ID="tex2html1187"
+  HREF="node199.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node143.html">esxDOS compatible API</A>
+ HREF="node143.html">Memory Select and Move</A>
 <B> Up:</B> <A
- HREF="node141.html">NextZXOS</A>
+ HREF="node139.html">BIOS</A>
 <B> Previous:</B> <A
- HREF="node141.html">NextZXOS</A>
- &nbsp; <B>  <A ID="tex2html1177"
+ HREF="node141.html">Character I/O Functions</A>
+ &nbsp; <B>  <A ID="tex2html1186"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1179"
-  HREF="node194.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1188"
+  HREF="node199.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION001031000000000000000">
-+3DOS compatible API</A>
-</H2>
-Generally to make these calls, you need to set up: place ROM 2 at
-$0000-$3fff, RAM bank 7 at $c000-$ffff, stack below $bfe0, and
-set up the parameters for the call in the indicated registers. Call
-the function at its address. Then, restore your system to its previous
-configuration. In general the carry bit of F is cleared on error with
-the error code in A. Calls generally affect the contnts of AF, BC, DE,
-HL, and IX leaving AF', BC', DE', HL', IY, and SP intact. To simplify,
-descriptions will assume this is true and only indicate exceptions to
-the rule.
+<H3><A ID="SECTION001013300000000000000">
+Disk I/O Functions</A>
+</H3>
+This section defines the CP/M 3 BIOS disk I/O routines HOME, SELDSK,
+SETTRK, SETSEC, SETDMA, READ, WRITE, SECTRN, MULTIO, and FLUSH.
 
 <P>
-$0056 <SPAN  CLASS="textbf">IDE_STREAM_OPEN</SPAN>
+<A NAME="3708"></A>
+BIOS Function 8: HOME
 
 <P>
-Open stream to a channel
+Select Track 00 of the Specified Drive
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values: None
 
 <P>
-$0059 <SPAN  CLASS="textbf">IDE_STREAM_CLOSE</SPAN>
+Return the disk head of the currently selected disk to the track 00
+position. Usually, you can translate the HOME call into a call on
+SETTRK with a parameter of 0.
 
 <P>
-Close stream and attached channel
+<A NAME="3709"></A>
+BIOS Function 9: SELDSK
 
 <P>
-$005c <SPAN  CLASS="textbf">IDE_STREAM_IN</SPAN>
+Select the Specified Disk Drive
+<BR>
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;C=Disk Drive (0-15)</td></tr>
+<tr><td valign="top">&nbsp;E=Initial Select Flag
+</td></tr></table>
 
-<P>
-Get byte from current stream
-
-<P>
-$005f <SPAN  CLASS="textbf">IDE_STREAM_OUT</SPAN>
-
-<P>
-Write byte to current stream
-
-<P>
-$0062 <SPAN  CLASS="textbf">IDE_STREAM_PTR</SPAN>
-
-<P>
-Get or set pointer information for current stream
-
-<P>
-$00A0 <SPAN  CLASS="textbf">IDE_VERSION</SPAN>
-
-<P>
-Get IDEDOS version number
-
-<P>
-$00A3 <SPAN  CLASS="textbf">IDE_INTERFACE</SPAN>
-
-<P>
-Initialise card interfaces
-
-<P>
-$00A6 <SPAN  CLASS="textbf">IDE_INIT</SPAN>
-
-<P>
-Initialise IDEDOS
-
-<P>
-$00A9 <SPAN  CLASS="textbf">IDE_DRIVE</SPAN>
-
-<P>
-Get unit handle
-
-<P>
-$00AC <SPAN  CLASS="textbf">IDE_SECTOR_READ</SPAN>
-
-<P>
-Low-level sector read
-
-<P>
-$00AF <SPAN  CLASS="textbf">IDE_SECTOR_WRITE</SPAN>
-
-<P>
-Low-level sector write
-
-<P>
-$00B2 <SPAN  CLASS="textbf">IDE_FORMAT</SPAN>
-
-<P>
-Format a partition
-
-<P>
-$00B5 <SPAN  CLASS="textbf">IDE_PARTITION_FIND</SPAN>
-
-<P>
-Find named partition
-
-<P>
-$00B8 <SPAN  CLASS="textbf">IDE_PARTITION_NEW</SPAN>
-
-<P>
-Create partition
-
-<P>
-$00BB <SPAN  CLASS="textbf">IDE_PARTITION_INIT</SPAN>
-
-<P>
-Initialise partition
-
-<P>
-$00BE <SPAN  CLASS="textbf">IDE_PARTITION_ERASE</SPAN>
-
-<P>
-Delete a partition
-
-<P>
-$00C1 <SPAN  CLASS="textbf">IDE_PARTITION_RENAME</SPAN>
-
-<P>
-Rename a partition
-
-<P>
-$00C4 <SPAN  CLASS="textbf">IDE_PARTITON_READ</SPAN>
-
-<P>
-Read a partition entry
-
-<P>
-$00C7 <SPAN  CLASS="textbf">IDE_PARTITION_WRITE</SPAN>
-
-<P>
-Write a partition entry
-
-<P>
-$00CA <SPAN  CLASS="textbf">IDE_PARTITION_WINFO</SPAN>
-
-<P>
-Write type-specific partition information
-
-<P>
-$00CD <SPAN  CLASS="textbf">IDE_PARTITION_OPEN</SPAN>
-
-<P>
-Open a partition
-
-<P>
-$00D0 <SPAN  CLASS="textbf">IDE_PARTITION_CLOSE</SPAN>
-
-<P>
-Close a partition
-
-<P>
-$00D3 <SPAN  CLASS="textbf">IDE_PARTITION_GETINFO</SPAN>
-
-<P>
-Get byte from type-specific partition information
-
-<P>
-$00D6 <SPAN  CLASS="textbf">IDE_PARTITION_SETINFO</SPAN>
-
-<P>
-Set byte in type-specific partition information
-
-<P>
-<A NAME="3705"></A>
-$00D9 (217) <SPAN  CLASS="textbf">IDE_SWAP_OPEN</SPAN>
-
-<P>
-Open a swap partition (file)
-
-<P>
-$00DC <SPAN  CLASS="textbf">IDE_SWAP_CLOSE</SPAN>
-
-<P>
-Close a swap partition
-
-<P>
-$00DF <SPAN  CLASS="textbf">IDE_SWAP_OUT</SPAN>
-
-<P>
-Write block to swap partition
-
-<P>
-$00E2 <SPAN  CLASS="textbf">IDE_SWAP_IN</SPAN>
-
-<P>
-Read block from swap partition
-
-<P>
-<A NAME="3710"></A>
-$00E5 (231) <SPAN  CLASS="textbf">IDE_SWAP_EX</SPAN>
-
-<P>
-Exchange block with swap partition
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;HL=Address of Disk Parameter Header (DPH) if drive exists</td></tr>
+<tr><td valign="top">&nbsp;HL=0000H if drive does not exist
+</td></tr></table>
 
-<P>
-Deprecated, use IDE_SWAP_IN and IDE_SWAP_OUT
-
-<P>
-$00E8 <SPAN  CLASS="textbf">IDE_SWAP_POS</SPAN>
-
-<P>
-Get current block number in swap partition
-
-<P>
-$00EB <SPAN  CLASS="textbf">IDE_SWAP_MOVE</SPAN>
+Select the disk drive specified in register C for further operations,
+where register C contains 0 for drive A, 1 for drive B, and so on to
+15 for drive P. On each disk select, SELDSK must return in HL the base
+address of a 25-byte area called the Disk Parameter Header. If there
+is an attempt to select a nonexistent drive, SELDSK returns HL=$0000
+as an error indicator.  On entry to SELDSK, you can determine if it is
+the first time the specified disk is selected. Bit 0, the least
+significant bit in register E, is set to 0 if the drive has not been
+previously selected. This information is of interest in systems that
+read configuration information from the disk to set up a dynamic disk
+definition table.
 
 <P>
-Set current block number in swap partition
+<A NAME="3714"></A>
+BIOS Function 10: SETTRK
 
 <P>
-$00EE <SPAN  CLASS="textbf">IDE_SWAP_RESIZE</SPAN>
+Set Specified Track Number
+<BR>
+Entry Parameters: BC=Track Number
+<BR>
+Returned Values: None
 
 <P>
-Change block size of swap partition
+Register BC contains the track number for a subsequent disk access on
+the currently selected drive. Normally, the track number is saved
+until the next READ or WRITE occurs.
 
 <P>
 <A NAME="3715"></A>
-$00F1 (241) <SPAN  CLASS="textbf">IDE_DOS_MAP</SPAN>
+BIOS Function 11: SETSEC
 
 <P>
-Map drive to partition or physical device
+Set Specified Sector Number
+<BR>
+Entry Parameters: BC=Sector Number
+<BR>
+Returned Values: None
+
+<P>
+Register BC contains the sector number for the subsequent disk access
+on the currently selected drive. This number is the value returned by
+SECTRN. Usually, you delay actual sector selection until a READ or
+WRITE operation occurs.
+
+<P>
+<A NAME="3716"></A>
+BIOS Function 12: SETDMA
+
+<P>
+Set Address for Subsequent Disk I/O
+<BR>
+Entry Parameters: BC=Direct Memory Access Address
+<BR>
+Returned Values: None
+
+<P>
+Register BC contains the DMA (Direct Memory Access) address for the
+subsequent READ or WRITE operation. For example, if B = $00 and C =
+$80 when the BDOS calls SETDMA, then the subsequent read operation
+reads its data starting at $80, or the subsequent write operation
+gets its data from 80H, until the next call to SETDMA occurs.
 
 <P>
 <A NAME="3717"></A>
-$00F4 (244) <SPAN  CLASS="textbf">IDE_DOS_UNMAP</SPAN>
+BIOS Function 13: READ
 
 <P>
-Unmap drive
+Read a Sector from the Specified Drive
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;A=$00 if no errors occurred</td></tr>
+<tr><td valign="top">&nbsp;A=$01 if nonrecoverable error condition occurred</td></tr>
+<tr><td valign="top">&nbsp;A=$ff if media has changed
+</td></tr></table>
 
-<P>
-<A NAME="3719"></A>
-$00F7 (247) <SPAN  CLASS="textbf">IDE_DOS_MAPPING</SPAN>
-
-<P>
-Get drive mapping
-
-<P>
-$00FA <SPAN  CLASS="textbf">IDE_DOS_UNPERMANENT</SPAN>
-
-<P>
-Remove permanent drive mapping
-
-<P>
-<A NAME="3722"></A>
-$00FD (253) <SPAN  CLASS="textbf">IDE_SNAPLOAD</SPAN>
-
-<P>
-Load a snapshot
-
-<P>
-$0100 <SPAN  CLASS="textbf">DOS_INITIALISE</SPAN>
-
-<P>
-Initialise +3DOS
-
-<P>
-$0103 <SPAN  CLASS="textbf">DOS_VERSION</SPAN>
-
-<P>
-Get +3DOS issue and version numbers
-
-<P>
-<A NAME="3726"></A>
-$0106 (262) <SPAN  CLASS="textbf">DOS_OPEN</SPAN>
-
-<P>
-Create and/or open a file
-
-<P>
-$0109 <SPAN  CLASS="textbf">DOS_CLOSE</SPAN>
-
-<P>
-Close a file
-
-<P>
-$010C <SPAN  CLASS="textbf">DOS_ABANDON</SPAN>
-
-<P>
-Abandon a file
-
-<P>
-$010F <SPAN  CLASS="textbf">DOS_REF_HEAD</SPAN>
-
-<P>
-Point at the header data for this file
-
-<P>
-$0112 <SPAN  CLASS="textbf">DOS_READ</SPAN>
-
-<P>
-Read bytes into memory
-
-<P>
-$0115 <SPAN  CLASS="textbf">DOS_WRITE</SPAN>
-
-<P>
-Write bytes from memory
-
-<P>
-$0118 <SPAN  CLASS="textbf">DOS_BYTE_READ</SPAN>
-
-<P>
-Read a byte
-
-<P>
-$011B <SPAN  CLASS="textbf">DOS_BYTE_WRITE</SPAN>
-
-<P>
-Write a byte
-
-<P>
-<A NAME="3735"></A>
-$011E (286) <SPAN  CLASS="textbf">DOS_CATALOG</SPAN>
-
-<P>
-Catalog disk directory
-
-<P>
-<A NAME="3737"></A>
-$0121 (289) <SPAN  CLASS="textbf">DOS_FREE_SPACE</SPAN>
-
-<P>
-Free space on disk
-
-<P>
-$0124 <SPAN  CLASS="textbf">DOS_DELETE</SPAN>
-
-<P>
-Delete a file
-
-<P>
-$0127 <SPAN  CLASS="textbf">DOS_RENAME</SPAN>
-
-<P>
-Rename a file
-
-<P>
-$012A <SPAN  CLASS="textbf">DOS_BOOT</SPAN>
-
-<P>
-Boot an operating system or other program
-
-<P>
-$012D <SPAN  CLASS="textbf">DOS_SET_DRIVE</SPAN>
-
-<P>
-Set/get default drive
-
-<P>
-$0130 <SPAN  CLASS="textbf">DOS_SET_USER</SPAN>
-
-<P>
-Set/get default user number
-
-<P>
-<A NAME="3744"></A>
-$0133 (307) <SPAN  CLASS="textbf">DOS_GET_POSITION</SPAN>
-
-<P>
-Get file pointer for random access
-
-<P>
-$0136 <SPAN  CLASS="textbf">DOS_SET_POSITION</SPAN>
-
-<P>
-Set file pointer for random access
-
-<P>
-<A NAME="3747"></A>
-$0139 (313) <SPAN  CLASS="textbf">DOS_GET_EOF</SPAN>
-
-<P>
-Get end of file position for random access
-
-<P>
-$013C <SPAN  CLASS="textbf">DOS_GET_1346</SPAN>
-
-<P>
-Get memory usage in pages 1&nbsp; 3&nbsp; 4&nbsp; 6
-
-<P>
-$013F <SPAN  CLASS="textbf">DOS_SET_1346</SPAN>
-
-<P>
-Re-allocate memory usage in pages 1&nbsp; 3&nbsp; 4&nbsp; 6
-
-<P>
-$0142 <SPAN  CLASS="textbf">DOS_FLUSH</SPAN>
-
-<P>
-Bring disk up to date
-
-<P>
-$0145 <SPAN  CLASS="textbf">DOS_SET_ACCESS</SPAN>
-
-<P>
-Change open file's access mode
-
-<P>
-$0148 <SPAN  CLASS="textbf">DOS_SET_ATTRIBUTES</SPAN>
-
-<P>
-Change a file's attributes
-
-<P>
-$014B <SPAN  CLASS="textbf">DOS_OPEN_DRIVE</SPAN>
-
-<P>
-Open a drive as a single file
-
-<P>
-$014E <SPAN  CLASS="textbf">DOS_SET_MESSAGE</SPAN>
-
-<P>
-Enable/disable error messages
-
-<P>
-$0151 <SPAN  CLASS="textbf">DOS_REF_XDPB</SPAN>
-
-<P>
-Point at XDPB for low level disk access
-
-<P>
-$0154 <SPAN  CLASS="textbf">DOS_MAP_B</SPAN>
-
-<P>
-Map B: onto unit 0 or 1
-
-<P>
-$0157 <SPAN  CLASS="textbf">DD_INTERFACE</SPAN>
-
-<P>
-Is the floppy disk driver interface present?
-
-<P>
-$015A <SPAN  CLASS="textbf">DD_INIT</SPAN>
-
-<P>
-Initialise disk driver
-
-<P>
-$015D <SPAN  CLASS="textbf">DD_SETUP</SPAN>
-
-<P>
-Specify drive parameters
-
-<P>
-$0160 <SPAN  CLASS="textbf">DD_SET_RETRY</SPAN>
-
-<P>
-Set try/retry count
-
-<P>
-$0163 <SPAN  CLASS="textbf">DD_READ_SECTOR</SPAN>
-
-<P>
-Read a sector
-
-<P>
-$0166 <SPAN  CLASS="textbf">DD_WRITE_SECTOR</SPAN>
-
-<P>
-Write a sector
-
-<P>
-$0169 <SPAN  CLASS="textbf">DD_CHECK_SECTOR</SPAN>
-
-<P>
-Check a sector
-
-<P>
-$016C <SPAN  CLASS="textbf">DD_FORMAT</SPAN>
-
-<P>
-Format a track
-
-<P>
-$016F <SPAN  CLASS="textbf">DD_READ_ID</SPAN>
-
-<P>
-Read a sector identifier
-
-<P>
-$0172 <SPAN  CLASS="textbf">DD_TEST_UNSUITABLE</SPAN>
-
-<P>
-Test media suitability
-
-<P>
-$0175 <SPAN  CLASS="textbf">DD_LOGIN</SPAN>
-
-<P>
-Log in disk, initialise XDPB
-
-<P>
-$0178 <SPAN  CLASS="textbf">DD_SEL_FORMAT</SPAN>
-
-<P>
-Pre-initialise XDPB for DD FORMAT
-
-<P>
-$017B <SPAN  CLASS="textbf">DD_ASK_1</SPAN>
-
-<P>
-Is unit 1 (external drive) present?
-
-<P>
-$017E <SPAN  CLASS="textbf">DD_DRIVE_STATUS</SPAN>
-
-<P>
-Fetch drive status
-
-<P>
-$0181 <SPAN  CLASS="textbf">DD_EQUIPMENT</SPAN>
-
-<P>
-What type of drive?
-
-<P>
-$0184 <SPAN  CLASS="textbf">DD_ENCODE</SPAN>
-
-<P>
-Set intercept routine for copy protection
-
-<P>
-$0187 <SPAN  CLASS="textbf">DD_L_XDPB</SPAN>
-
-<P>
-Initialise an XDPB from a disk specification
-
-<P>
-$018A <SPAN  CLASS="textbf">DD_L_DPB</SPAN>
-
-<P>
-Initialise a DPB from a disk specification
-
-<P>
-$018D <SPAN  CLASS="textbf">DD_L_SEEK</SPAN>
-
-<P>
-uPD765A seek driver
-
-<P>
-$0190 <SPAN  CLASS="textbf">DD_L_READ</SPAN>
-
-<P>
-uPD765A read driver
-
-<P>
-$0193 <SPAN  CLASS="textbf">DD_L_WRITE</SPAN>
-
-<P>
-uPD765A write driver
-
-<P>
-$0196 <SPAN  CLASS="textbf">DD_L_ON_MOTOR</SPAN>
-
-<P>
-Motor on, wait for motor-on time
-
-<P>
-$0199 <SPAN  CLASS="textbf">DD_L_T_OFF_MOTOR</SPAN>
-
-<P>
-Start the motor-off ticker
-
-<P>
-$019C <SPAN  CLASS="textbf">DD_L_OFF_MOTOR</SPAN>
-
-<P>
-Turn the motor off
-
-<P>
-$01a2 <SPAN  CLASS="textbf">IDE_IDENTIFY</SPAN>
-
-<P>
-Return IDE drive identity information
-
-<P>
-$01a5 <SPAN  CLASS="textbf">IDE_PARTITIONS</SPAN>
-
-<P>
-Get number of open partitions
+Assume the BDOS has selected the drive, set the track, set the sector,
+and specified the DMA address. The READ subroutine attempts to read
+one sector based upon these parameters, then returns one of the error
+codes in register A as described above.
 
 <P>
-<A NAME="3784"></A>
-$01b1 (433) <SPAN  CLASS="textbf">IDE_PATH</SPAN>
+If the value in register A is $00, then CP/M 3 assumes that the disk
+operation completed properly. If an error occurs, the BIOS should
+attempt several retries to see if the error is recoverable before
+returning the error code.
 
 <P>
-Create, delete, change or get directory
+If an error occurs in a system that supports automatic density
+selection, the system should verify the density of the drive. If the
+density has changed, return a $ff in the accumulator. This causes the
+BDOS to terminate the current operation and relog in the disk.
 
 <P>
-<A NAME="3786"></A>
-$01b4 (436) <SPAN  CLASS="textbf">IDE_CAPACITY</SPAN>
+<A NAME="3720"></A>
+BIOS Function 14: WRITE
 
 <P>
-Get card capacity
+Write a Sector to the Specified Disk
+<BR>
+Entry Parameters: C=Deblocking Codes
+<BR>
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;A=$00 if no error occurred</td></tr>
+<tr><td valign="top">&nbsp;A=$01 if physical error occurred</td></tr>
+<tr><td valign="top">&nbsp;A=$02 if disk is Read-Only</td></tr>
+<tr><td valign="top">&nbsp;A=$ff if media has changed
+</td></tr></table>
 
 <P>
-<A NAME="3788"></A>
-$01b7 (439) <SPAN  CLASS="textbf">IDE_GET_LFN</SPAN>
+Write the data from the currently selected DMA address to the
+currently selected drive, track, and sector. Upon each call to WRITE,
+the BDOS provides the following information in register C:
+<table width="90%"><tr><td valign="top">&nbsp;0 = deferred write</td></tr>
+<tr><td valign="top">&nbsp;1 = nondeferred write</td></tr>
+<tr><td valign="top">&nbsp;2 = deferred write to the first sector of a new data block
+</td></tr></table>
 
 <P>
-Get long filename
+This information is provided for those BIOS implementations that do
+blocking/deblocking in the BIOS instead of the BDOS.
 
 <P>
-Obtain a long file name and other file information.
+<A NAME="3725"></A>
+BIOS Function 16: SECTRN
 
 <P>
-<A NAME="3790"></A>
-$01ba (442) <SPAN  CLASS="textbf">IDE_BROWSER</SPAN>
+Translate Sector Number Given Translate Table
+Entry Parameters:
+<table width="90%"><tr><td valign="top">&nbsp;BC=Logical Sector Number</td></tr>
+<tr><td valign="top">&nbsp;DE=Translate Table Address
+</td></tr></table>
 
-<P>
-File browser
-
-<P>
-<A NAME="3792"></A>
-$01bd (445) <SPAN  CLASS="textbf">IDE_BANK</SPAN>
-
-<P>
-Allocate or free 8K pages in ZX or DivMMC memory
-
-<P>
-$01c0 <SPAN  CLASS="textbf">IDE_BASIC</SPAN>
-
-<P>
-Execute a BASIC command line
-
-<P>
-$01c3 <SPAN  CLASS="textbf">IDE_WINDOW_LINEIN</SPAN>
-
-<P>
-Input line from current window stream
-
-<P>
-$01c6 <SPAN  CLASS="textbf">IDE_WINDOW_STRING</SPAN>
-
-<P>
-Output string to current window stream
-
-<P>
-$01c9 <SPAN  CLASS="textbf">IDE_INTEGER_VAR</SPAN>
-
-<P>
-Get or set NextBASIC integer variable
-
-<P>
-$01cc <SPAN  CLASS="textbf">IDE_RTC</SPAN>
-
-<P>
-Query the real-time-clock module
-
-<P>
-$01cf <SPAN  CLASS="textbf">IDE_DRIVER</SPAN>
-
-<P>
-Access the driver API
-
-<P>
-$01d2 <SPAN  CLASS="textbf">IDE_MOUNT</SPAN>
-
-<P>
-Unmount/remount SD cards
+Returned Values: HL=Physical Sector Number
 
 <P>
-$01d2 <SPAN  CLASS="textbf">IDE_MOUNT</SPAN>
+SECTRN performs logical sequential sector address to physical sector
+translation to improve the overall response of CP/M 3.
 
 <P>
-Unmount/remount SD cards
+<A NAME="3728"></A>
+BIOS Function 23: MULTIO
 
 <P>
-$01d5 <SPAN  CLASS="textbf">IDE_MODE</SPAN>
+Set Count of Consecutive Sectors for READ or WRITE
+<BR>
+Entry Parameters: C=Multisector Count
+<BR>
+Returned Values: None
 
 <P>
-Query NextBASIC display mode info, or change mode
+To transfer logically consecutive disk sectors to or from contiguous
+memory locations, the BDOS issues a MULTIO call, followed by a series
+of READ or WRITE calls. This allows the BIOS to transfer multiple
+sectors in a single disk operation. The maximum value of the sector
+count is dependent on the physical sector size, ranging from 128 with
+128-byte sectors, to 4 with 4096-byte sectors. Thus, the BIOS can
+transfer up to 16K directly to or from the TPA with a single
+operation.
 
 <P>
-$01d8 <SPAN  CLASS="textbf">IDE_TOKENISER</SPAN>
+<A NAME="3729"></A>
+BIOS Function 24: FLUSH
 
 <P>
-Convert BASIC between plain text &amp; tokenised forms
+Force Physical Buffer Flushing for User-supported Deblocking
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;A=$00 if no error occurred</td></tr>
+<tr><td valign="top">&nbsp;A=$001 if physical error occurred</td></tr>
+<tr><td valign="top">&nbsp;A=$002 if disk is Read-Only
+</td></tr></table>
+
+<P>
+The flush buffers entry point allows the system to force physical
+sector buffer flushing when your BIOS is performing its own record
+blocking and deblocking.  The BDOS calls the FLUSH routine to ensure
+that no dirty buffers remain in memory.
 
 <P>
 
@@ -738,28 +282,28 @@ Convert BASIC between plain text &amp; tokenised forms
  HREF="node143.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node141.html">
+ HREF="node139.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node141.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1176"
+<A ID="tex2html1185"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1178"
-  HREF="node194.html">
+<A ID="tex2html1187"
+  HREF="node199.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node143.html">esxDOS compatible API</A>
+ HREF="node143.html">Memory Select and Move</A>
 <B> Up:</B> <A
- HREF="node141.html">NextZXOS</A>
+ HREF="node139.html">BIOS</A>
 <B> Previous:</B> <A
- HREF="node141.html">NextZXOS</A>
- &nbsp; <B>  <A ID="tex2html1177"
+ HREF="node141.html">Character I/O Functions</A>
+ &nbsp; <B>  <A ID="tex2html1186"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1179"
-  HREF="node194.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html1188"
+  HREF="node199.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

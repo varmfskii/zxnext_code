@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>+3DOS compatible error codes</TITLE>
-<META NAME="description" CONTENT="+3DOS compatible error codes">
+<TITLE>Call Tables</TITLE>
+<META NAME="description" CONTENT="Call Tables">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node191.html">
-<LINK REL="previous" HREF="node189.html">
+<LINK REL="next" HREF="node197.html">
+<LINK REL="previous" HREF="node167.html">
 <LINK REL="next" HREF="node191.html">
 </HEAD>
 
@@ -27,413 +27,56 @@
  HREF="node191.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node188.html">
+ HREF="zxnext_notes.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node189.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1411"
+<A ID="tex2html1416"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1413"
-  HREF="node194.html">
+<A ID="tex2html1418"
+  HREF="node199.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node191.html">esxDOS Compatible Calls</A>
+ HREF="node191.html">BDOS Call Table</A>
 <B> Up:</B> <A
- HREF="node188.html">NextZXOS Calls</A>
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
- HREF="node189.html">+3DOS Compatible Calls</A>
- &nbsp; <B>  <A ID="tex2html1412"
+ HREF="node189.html">Z80</A>
+ &nbsp; <B>  <A ID="tex2html1417"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1414"
-  HREF="node194.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1419"
+  HREF="node199.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION001632000000000000000">
-+3DOS compatible error codes</A>
-</H2>
+<H1><A ID="SECTION001600000000000000000">
+Call Tables</A>
+</H1>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<P>
-<SPAN  CLASS="textbf">Recoverable disk errors</SPAN>
-
-<P>
-<TABLE class="PAD " style="">
-<TR><TD CLASS="LEFT">0</TD>
-<TD CLASS="LEFT">rc_ready</TD>
-<TD CLASS="LEFT">Drive not ready</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">1</TD>
-<TD CLASS="LEFT">rc_wp</TD>
-<TD CLASS="LEFT">Disk is write protected</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">2</TD>
-<TD CLASS="LEFT">rc_seek</TD>
-<TD CLASS="LEFT">Seek fail</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">3</TD>
-<TD CLASS="LEFT">rc_crc</TD>
-<TD CLASS="LEFT">CRC data error</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">4</TD>
-<TD CLASS="LEFT">rc_nodata</TD>
-<TD CLASS="LEFT">No data</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">5</TD>
-<TD CLASS="LEFT">rc_mark</TD>
-<TD CLASS="LEFT">Missing address mark</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">6</TD>
-<TD CLASS="LEFT">rc_unrecog</TD>
-<TD CLASS="LEFT">Unrecognised disk format</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">7</TD>
-<TD CLASS="LEFT">rc_unknown</TD>
-<TD CLASS="LEFT">Unknown disk error</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">8</TD>
-<TD CLASS="LEFT">rc_diskchg</TD>
-<TD CLASS="LEFT">Disk changed whilst +3DOS was using it</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">9</TD>
-<TD CLASS="LEFT">rc_unsuit</TD>
-<TD CLASS="LEFT">Unsuitable media for drive</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-</TABLE>
-
-<P>
-<SPAN  CLASS="textbf">Non-recoverable errors</SPAN>
-
-<P>
-<TABLE class="PAD " style="">
-<TR><TD CLASS="LEFT">20</TD>
-<TD CLASS="LEFT">rc_badname</TD>
-<TD CLASS="LEFT">Bad filename</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">21</TD>
-<TD CLASS="LEFT">rc_badparam</TD>
-<TD CLASS="LEFT">Bad parameter</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">22</TD>
-<TD CLASS="LEFT">rc_nodrive</TD>
-<TD CLASS="LEFT">Drive not found</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">23</TD>
-<TD CLASS="LEFT">rc_nofile</TD>
-<TD CLASS="LEFT">File not found</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">24</TD>
-<TD CLASS="LEFT">rc_exists</TD>
-<TD CLASS="LEFT">File already exists</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">25</TD>
-<TD CLASS="LEFT">rc_eof</TD>
-<TD CLASS="LEFT">End of file</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">26</TD>
-<TD CLASS="LEFT">rc_diskfull</TD>
-<TD CLASS="LEFT">Disk full</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">27</TD>
-<TD CLASS="LEFT">rc_dirfull</TD>
-<TD CLASS="LEFT">Directory full</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">28</TD>
-<TD CLASS="LEFT">rc_ro</TD>
-<TD CLASS="LEFT">Read-only file</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">29</TD>
-<TD CLASS="LEFT">rc_number</TD>
-<TD CLASS="LEFT">File number not open (or open with wrong access)</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">30</TD>
-<TD CLASS="LEFT">rc_denied</TD>
-<TD CLASS="LEFT">Access denied</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">31</TD>
-<TD CLASS="LEFT">rc_norename</TD>
-<TD CLASS="LEFT">Cannot rename between drives</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">32</TD>
-<TD CLASS="LEFT">rc_extent</TD>
-<TD CLASS="LEFT">Extent missing</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">33</TD>
-<TD CLASS="LEFT">rc_uncached</TD>
-<TD CLASS="LEFT">Uncached</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">34</TD>
-<TD CLASS="LEFT">rc_toobig</TD>
-<TD CLASS="LEFT">File too big</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">35</TD>
-<TD CLASS="LEFT">rc_notboot</TD>
-<TD CLASS="LEFT">Disk not bootable</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">36</TD>
-<TD CLASS="LEFT">rc_inuse</TD>
-<TD CLASS="LEFT">Drive in use</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-</TABLE>
-
-<P>
-<TABLE class="PAD " style="">
-<TR><TD CLASS="LEFT">56</TD>
-<TD CLASS="LEFT">rc_invpartition</TD>
-<TD CLASS="LEFT">Invalid partition</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">57</TD>
-<TD CLASS="LEFT">rc_partexist</TD>
-<TD CLASS="LEFT">Partition already exists</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">58</TD>
-<TD CLASS="LEFT">rc_notimp</TD>
-<TD CLASS="LEFT">Not implemented</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">59</TD>
-<TD CLASS="LEFT">rc_partopen</TD>
-<TD CLASS="LEFT">Partition open</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">60</TD>
-<TD CLASS="LEFT">rc_nohandle</TD>
-<TD CLASS="LEFT">Out of handles</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">61</TD>
-<TD CLASS="LEFT">rc_notswap</TD>
-<TD CLASS="LEFT">Not a swap partition</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">62</TD>
-<TD CLASS="LEFT">rc_mapped</TD>
-<TD CLASS="LEFT">Drive already mapped</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">63</TD>
-<TD CLASS="LEFT">rc_noxdpb</TD>
-<TD CLASS="LEFT">No XDPB</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">64</TD>
-<TD CLASS="LEFT">rc_noswap</TD>
-<TD CLASS="LEFT">No suitable swap partition</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">65</TD>
-<TD CLASS="LEFT">rc_invdevice</TD>
-<TD CLASS="LEFT">Invalid device</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">67</TD>
-<TD CLASS="LEFT">rc_cmdphase</TD>
-<TD CLASS="LEFT">Command phase error</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">68</TD>
-<TD CLASS="LEFT">rc_dataphase</TD>
-<TD CLASS="LEFT">Data phase error</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">69</TD>
-<TD CLASS="LEFT">rc_notdir</TD>
-<TD CLASS="LEFT">Not a directory</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">74</TD>
-<TD CLASS="LEFT">rc_fragmented</TD>
-<TD CLASS="LEFT">File is fragmented, use .DEFRAG</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-</TABLE>
-
-<P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node191.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node188.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node189.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1411"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1413"
-  HREF="node194.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node191.html">esxDOS Compatible Calls</A>
-<B> Up:</B> <A
- HREF="node188.html">NextZXOS Calls</A>
-<B> Previous:</B> <A
- HREF="node189.html">+3DOS Compatible Calls</A>
- &nbsp; <B>  <A ID="tex2html1412"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1414"
-  HREF="node194.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html1420"
+  HREF="node191.html">BDOS Call Table</A>
+<LI><A ID="tex2html1421"
+  HREF="node192.html">BIOS Call Table</A>
+<LI><A ID="tex2html1422"
+  HREF="node193.html">NextZXOS Calls</A>
+<UL>
+<LI><A ID="tex2html1423"
+  HREF="node194.html">+3DOS Compatible Calls</A>
+<LI><A ID="tex2html1424"
+  HREF="node195.html">+3DOS compatible error codes</A>
+<LI><A ID="tex2html1425"
+  HREF="node196.html">esxDOS Compatible Calls</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
 
 </BODY>
 </HTML>

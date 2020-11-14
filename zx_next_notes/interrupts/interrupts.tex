@@ -1,7 +1,10 @@
 \chapter{Interrupts}
+
+\section{Interrupt Types}
 The Z80 has three different hardware interrupt signals:
 \textoverline{RESET}, \textoverline{NMI}, and \textoverline{INT}.
 
+\paragraph{\textoverline{RESET}}
 \textoverline{RESET} is used to return the CPU to a known state. When
 the \textoverline{RESET} line is pulled low, a \textoverline{RESET} is
 generated. The CPU then does several things. I, and R are set to \$00.
@@ -9,6 +12,7 @@ PC is set to \$0000. SP becomes \$FFFF. A and F are set to \$FF.  The
 interrupt mode is set to 0. And (maskable) interrupts are disabled by
 clearing IFF1 and IFF2.
 
+\paragraph{\textoverline{NMI}}
 \textoverline{NMI} is the non-maskable interrupt. Upon receiving a
 non-maskable interrupt (\textoverline{NMI} being pulled low) one of
 two sequences occur depending on the calue of bit 3 of the interrupt
@@ -22,16 +26,18 @@ IFF2, IFF1 is cleared (inhibiting maskable interrupts). The
 IFF2 to IFF1 (returning the interrupt state to what it was before the
 \textoverline{NMI}) and PC is popped off the stack.
 
-If bit 3 is set (1) PC is stored in the NMI return address registers
-(nextregs \$C2 and \$C3), IFF1 is copied to IFF2, IFF1 is cleared
-(inhibiting maskable interrupts). The \textoverline{NMI} should end
-with RETN which copies the contents of IFF2 to IFF1 (returning the
-interrupt state to what it was before the \textoverline{NMI}) and PC
-is compied from the NMI return address registers.
+If bit 3 is set (1) PC is stored in the \textoverline{NMI} return
+address registers (nextregs \$C2 and \$C3), IFF1 is copied to IFF2,
+IFF1 is cleared (inhibiting maskable interrupts). The
+\textoverline{NMI} should end with RETN which copies the contents of
+IFF2 to IFF1 (returning the interrupt state to what it was before the
+\textoverline{NMI}) and PC is compied from the \textoverline{NMI}
+return address registers.
 
 \input{registers/tbblue/C2.tex}
 \input{registers/tbblue/C3.tex}
 
+\paragraph{\textoverline{INT}}
 The interrupt generally of most interest to programmers is
 \textoverline{INT}. So much so that if programmers talk about
 interrupts on the Z80, they are probebly only talking about
@@ -53,11 +59,13 @@ signals. This can be enabled and disabled using nextregs \$C4 --
 nexregs \$C8 -- \$CA.
 
 Interrupt Enable
+
 \input{registers/tbblue/C4.tex}
 \input{registers/tbblue/C5.tex}
 \input{registers/tbblue/C6.tex}
 
 Interupt Status
+
 \input{registers/tbblue/C8.tex}
 \input{registers/tbblue/C9.tex}
 \input{registers/tbblue/CA.tex}
@@ -73,6 +81,7 @@ Internal Interrupt Sources
 \item[] 13 = UART 1 Tx (lowest priority)
 \end{itemize}
 
+\section{Interrupt Modes}
 \paragraph{IM0}
 When an interrupt is received by the CPU it disables interrupts and
 executes the instruction placed on the bus by the interrupting device
