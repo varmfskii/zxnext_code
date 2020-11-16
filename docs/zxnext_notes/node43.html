@@ -57,7 +57,8 @@ Programming Tilemap mode</A>
 </H2>
 
 <P>
-Register (R/W) $6B (6B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $6B (6B) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Control
 
 <UL>
@@ -119,7 +120,8 @@ Bit 0 forces the tilemap to be on top of the ULA. It can be useful in
 tilemap.
 
 <P>
-Register (R/W) $6C (6C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $6C (6C) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Default Layer 3 Attribute*
 
 <UL>
@@ -145,7 +147,8 @@ entries. In this case, the tile attributes used are taken from this
 register instead.
 
 <P>
-Register (R/W) $6E (6E) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $6E (6E) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 Tilemap Base Address
 
 <UL>
@@ -180,15 +183,18 @@ traditional ULA physical addresses, is permitted. The value read back
 should be treated as a fully significant 8-bit value.
 
 <P>
-The tilemap will be <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img28.svg"
- ALT="$40\times32$"></SPAN> or <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img29.svg"
+The tilemap will be <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img28.svg"
+ ALT="$40\times32$"></SPAN> or <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img29.svg"
  ALT="$80\times32$"></SPAN> in size depending on
 the resolution selected in nextreg $6B. Each entry in the tilemap is
 normally two bytes but can be one byte if attributes are eliminated by
 setting bit 5 of nextreg $6B.
 
 <P>
-Register (R/W) $6F (6F) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $6F (6F) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 Tile Definitions Base Address
 
 <UL>
@@ -230,7 +236,8 @@ Tile Def Base Addr + 32 * (Tile Number)
 
 <P>
 <A NAME="360"></A>
-Register (R/W) $4C (4C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $4C (4C) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Level 3 Transparency Index
 
 <UL>
@@ -252,7 +259,8 @@ For palette information see palette section.
 
 <P>
 <A NAME="366"></A>
-Register (R/W) $1B (1B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $1B (1B) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Clip Window Definition
 
 <UL>
@@ -275,10 +283,12 @@ The X coords are internally doubled.
 
 <P>
 The tilemap display surface extends 32 pixels around the central
-<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img1.svg"
  ALT="$256\times 192$"></SPAN> display. The origin of the clip window is the top left
 corner of this area 32 pixels to the left and 32 pixels above the
-central <SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img1.svg"
+central <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img1.svg"
  ALT="$256\times 192$"></SPAN> display. The X coordinates are internally
 doubled to cover the full 320 pixel width of the surface. The clip
 window indicates the portion of the tilemap display that is
@@ -287,7 +297,8 @@ from X1*2 to X2*2+1 horizontally and from Y1 to Y2 vertically.
 
 <P>
 <A NAME="374"></A>
-Register (R/W) $2F (2F) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $2F (2F) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Horizontal Scroll Control MSB
 
 <UL>
@@ -299,7 +310,8 @@ Register (R/W) $2F (2F) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 Meaningful Range is 0-319 in 40 char mode, 0-639 in 80 char mode
 
 <P>
-Register (R/W) $30 (30) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $30 (30) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Horizontal Scroll Control LSB
 
 <UL>
@@ -309,7 +321,8 @@ Register (R/W) $30 (30) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 Meaningful range is 0-319 in 40 char mode, 0-639 in 80 char mode
 
 <P>
-Register (R/W) $31 (31) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $31 (31) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Vertical Scroll Control
 
 <UL>
@@ -318,7 +331,8 @@ Register (R/W) $31 (31) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $68 (68) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $68 (68) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> ULA Control
 <table width="90%">
 bit 7 = Disable ULA output (0 on reset)

@@ -55,24 +55,28 @@
 <!-- MATH
  $\overline{\hbox{INT}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img6.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img6.svg"
  ALT="$\overline {\hbox {INT}}$"></SPAN></A>
 </H4>
 The interrupt generally of most interest to programmers is
 <!-- MATH
  $\overline{\hbox{INT}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img6.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img6.svg"
  ALT="$\overline {\hbox {INT}}$"></SPAN>. So much so that if programmers talk about
 interrupts on the Z80, they are probebly only talking about
 <!-- MATH
  $\overline{\hbox{INT}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img6.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img6.svg"
  ALT="$\overline {\hbox {INT}}$"></SPAN>. The processing of <!-- MATH
  $\overline{\hbox{INT}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img6.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img6.svg"
  ALT="$\overline {\hbox {INT}}$"></SPAN> is controlled
 by IFF1 and IFF2 which are set using EI to enable interrupts and reset
 using DI to disable interrupts. Interrupts can happen at any time and
@@ -89,7 +93,8 @@ may make the distinction important.
 The ZX Spectrum Next has 14 internal sources for <!-- MATH
  $\overline{\hbox{INT}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img6.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img6.svg"
  ALT="$\overline {\hbox {INT}}$"></SPAN>
 signals. This can be enabled and disabled using nextregs $C4 &ndash;
 $C6. Which signals have been received can be read/cleared using
@@ -99,7 +104,8 @@ nexregs $C8 &ndash; $CA.
 Interrupt Enable
 
 <P>
-Register (R/W) $C4 (C4) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $C4 (C4) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Enable 0 (3.01.08)
 <BR>($83 on reset)
 
@@ -107,7 +113,8 @@ Register (R/W) $C4 (C4) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>bit 7 = Expansion bus <!-- MATH
  $\overline{\hbox{INT}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img6.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img6.svg"
  ALT="$\overline {\hbox {INT}}$"></SPAN>
 </LI>
 <LI>bits 6-2 = Reserved must be zero
@@ -119,7 +126,8 @@ Register (R/W) $C4 (C4) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $C5 (C5) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $C5 (C5) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Enable 1 (3.01.08)
 <BR>($00 on reset)
 
@@ -143,7 +151,8 @@ Register (R/W) $C5 (C5) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (W) $C6 (C6) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $C6 (C6) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Enable 2 (3.01.08)
 <BR>($00 on reset)
 
@@ -171,7 +180,8 @@ Register (W) $C6 (C6) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 Interupt Status
 
 <P>
-Register (R/W) $C8 (C8) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $C8 (C8) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Status 0 (3.01.09)
 <BR>($00 on reset)
 
@@ -187,7 +197,8 @@ Register (R/W) $C8 (C8) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 * Writes clear bits where bits are set except in IM2 mode
 
 <P>
-Register (R/W) $C9 (C9) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $C9 (C9) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Status 1 (3.01.09)
 
 <UL>
@@ -212,7 +223,8 @@ Register (R/W) $C9 (C9) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 * Writes clear bits where bits are set except in IM2 mode
 
 <P>
-Register (R/W) $CA (CA) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $CA (CA) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Status 2 (3.01.09)
 ($00 on reset)
 

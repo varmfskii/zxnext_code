@@ -2,8 +2,10 @@ R,W,16----------------0,Port(hex),Description,Disable
 *,*,XXXX XXXX XXXX XXX0,\$fe,ULA,
 *,*,XXXX XXXX 1111 1111,\$ff,Timex video/floating bus,Nextreg \$08 bit 2
 ,*,0XXX XXXX XXXX XX01,\$7ffd,ZX Spectrum 128 memory,Port \$7ffd bit 5
-,*,01XX XXXX XXXX XX01,\$7ffd,ZX Spectrum 128 memory +3 only,Port \$7ffd bit 5
-,*,1101 XXXX XXXX XX01,\$dffd,ZX Spectrum 128 memory (precedence over AY),Port \$7ffd bit 5
+,*,01XX XXXX XXXX XX01,\$7ffd,ZX Spectrum 128 memory,Port \$7ffd bit 5
+,,,,+3 only,
+,*,1101 XXXX XXXX XX01,\$dffd,ZX Spectrum 128 memory,Port \$7ffd bit 5
+,,,,(precedence over AY),
 ,*,0001 XXXX XXXX XX01,\$1ffd,ZX Spectrum +3 memory,Port \$7ffd bit 5
 *,,0000 XXXX XXXX XX01,,ZX Spectrum +3 floating bus,Port \$7ffd bit 5
 *,*,0010 0100 0011 1011,\$243b,NextREG Register Select,
@@ -17,8 +19,8 @@ R,W,16----------------0,Port(hex),Description,Disable
 *,*,0001 1XXX 0011 1011,\$183b,CTC 8 channels \$183b-\$1f3b,
 *,*,XXXX XXXX 0110 1011,\$6b,zxnDMA,
 *,*,11XX XXXX XXXX X101,\$fffd,AY reg,Nextreg \$06 bit 0
-*,*,10XX XXXX XXXX X101,\$bffd,AY dat,Nextreg \$06 bit 0 (readable on +3 only)
-*,,10XX XXXX XXXX 0101,\$bff5,AY inf,(inside bffd decoding)
+*,*,10XX XXXX XXXX X101,\$bffd,AY dat (readable on +3 only),Nextreg \$06 bit 0
+*,,10XX XXXX XXXX 0101,\$bff5,AY inf (inside bffd decoding),
 ,*,XXXX XXXX 0000 1111,\$0f,DAC A,Nextreg \$08 bit 3
 ,*,XXXX XXXX 1111 0001,\$f1,DAC A (precedence over XXFD),Nextreg \$08 bit 3
 ,*,XXXX XXXX 0011 1111,\$3f,DAC A,Nextreg \$08 bit 3

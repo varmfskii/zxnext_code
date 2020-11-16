@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.10.7)  14 NOV 2020 13:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.10.7)  16 NOV 2020 09:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -294,35 +294,35 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 146.
 
-:tex2html_wrap_inline9775:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline9845:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline9775:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline9845:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 Preview: Tightpage -32891 -32891 32891 32891
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
-:tex2html_wrap_inline9781:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline9851:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline9781:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline9851:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [2]
 
-:tex2html_wrap_inline9784:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline9854:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline9784:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline9854:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [3]
 
-:tex2html_wrap_inline10572:lthtmlCropMarkHeight:=15.48238pt
+:tex2html_wrap_inline10642:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline10572:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline10642:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [4]
 
-:tex2html_wrap_inline10575:lthtmlCropMarkHeight:=15.48238pt
+:tex2html_wrap_inline10645:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline10575:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline10645:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [5]
 
-:tex2html_wrap_inline10578:lthtmlCropMarkHeight:=15.48238pt
+:tex2html_wrap_inline10648:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline10578:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline10648:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [6]
 
 :tex2html_wrap_inline645:lthtmlCropMarkHeight:=13.05666pt
@@ -1162,12 +1162,12 @@ Overfull \hbox (5.78369pt too wide) in paragraph at lines 1348--1349
 
 :lstlisting4061:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [135]
-Overfull \hbox (144.70499pt too wide) in paragraph at lines 1367--1368
+Overfull \hbox (20.90108pt too wide) in paragraph at lines 1367--1368
  [][] 
  []
 
 
-:table6395:lthtmlCropMarkHeight:=371.19998pt
+:table6395:lthtmlCropMarkHeight:=385.19998pt
 
 :table6395:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [136]
@@ -1182,333 +1182,1177 @@ Overfull \hbox (144.70499pt too wide) in paragraph at lines 1367--1368
 :tex2html_wrap_inline6738:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [138]
 
-:tex2html_wrap_inline7976:lthtmlCropMarkHeight:=15.48238pt
-
-:tex2html_wrap_inline7976:lthtmlCropMarkDepth:=2.12917pt:1ex:=4.71457pt
-[139]
-
 :tex2html_wrap_inline7978:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline7978:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline7978:lthtmlCropMarkDepth:=2.12917pt:1ex:=4.71457pt
+[139]
+
+:tex2html_wrap_inline7980:lthtmlCropMarkHeight:=15.48238pt
+
+:tex2html_wrap_inline7980:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [140]
-
-:tex2html_wrap_inline8034:lthtmlCropMarkHeight:=15.46692pt
-
-:tex2html_wrap_inline8034:lthtmlCropMarkDepth:=5.34497pt:1ex:=4.71457pt
-[141]
 
 :tex2html_wrap_inline8036:lthtmlCropMarkHeight:=15.46692pt
 
-:tex2html_wrap_inline8036:lthtmlCropMarkDepth:=6.30002pt:1ex:=4.71457pt
+:tex2html_wrap_inline8036:lthtmlCropMarkDepth:=5.34497pt:1ex:=4.71457pt
+[141]
+
+:tex2html_wrap_inline8038:lthtmlCropMarkHeight:=15.46692pt
+
+:tex2html_wrap_inline8038:lthtmlCropMarkDepth:=6.30002pt:1ex:=4.71457pt
 [142]
 
-:table8430:lthtmlCropMarkHeight:=168.69972pt
-
-:table8430:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[143]
-
-:table8434:lthtmlCropMarkHeight:=168.69972pt
-
-:table8434:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[144]
-
-:table8438:lthtmlCropMarkHeight:=168.69972pt
-
-:table8438:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[145]
-
-:table8442:lthtmlCropMarkHeight:=168.69972pt
-
-:table8442:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[146]
-
-:table8446:lthtmlCropMarkHeight:=168.69972pt
-
-:table8446:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[147]
-
-:table8450:lthtmlCropMarkHeight:=168.69972pt
-
-:table8450:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[148]
-
-:table8454:lthtmlCropMarkHeight:=168.69972pt
-
-:table8454:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[149]
-
-:table8458:lthtmlCropMarkHeight:=168.69972pt
-
-:table8458:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[150]
-
-:table8463:lthtmlCropMarkHeight:=168.69972pt
-
-:table8463:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[151]
-
-:table8467:lthtmlCropMarkHeight:=168.69972pt
-
-:table8467:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[152]
-
-:table8471:lthtmlCropMarkHeight:=168.69972pt
-
-:table8471:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[153]
-
-:table8475:lthtmlCropMarkHeight:=168.69972pt
-
-:table8475:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[154]
-
-:table8479:lthtmlCropMarkHeight:=168.69972pt
-
-:table8479:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[155]
-
-:table8483:lthtmlCropMarkHeight:=168.69972pt
-
-:table8483:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[156]
-
-:table8487:lthtmlCropMarkHeight:=168.69972pt
-
-:table8487:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[157]
-
-:table8491:lthtmlCropMarkHeight:=168.69972pt
-
-:table8491:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[158]
-
-:table8496:lthtmlCropMarkHeight:=159.19974pt
-
-:table8496:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[159]
-
-:table8500:lthtmlCropMarkHeight:=168.69972pt
-
-:table8500:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[160]
-
-:table8504:lthtmlCropMarkHeight:=130.69978pt
-
-:table8504:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[161]
-
-:table8509:lthtmlCropMarkHeight:=167.7553pt
-
-:table8509:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[162]
-
-:table8513:lthtmlCropMarkHeight:=168.69972pt
-
-:table8513:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[163]
-
-:table8517:lthtmlCropMarkHeight:=167.7553pt
-
-:table8517:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[164]
-
-:table8522:lthtmlCropMarkHeight:=159.19974pt
-
-:table8522:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[165]
-
-:table8526:lthtmlCropMarkHeight:=168.69972pt
-
-:table8526:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[166]
-
-:table8530:lthtmlCropMarkHeight:=130.69978pt
-
-:table8530:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[167]
-
-:table8535:lthtmlCropMarkHeight:=168.69972pt
-
-:table8535:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[168]
-
-:table8540:lthtmlCropMarkHeight:=168.69972pt
-
-:table8540:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[169]
-
-:table8711:lthtmlCropMarkHeight:=149.69975pt
-
-:table8711:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[170]
-
-:table8715:lthtmlCropMarkHeight:=187.69969pt
-
-:table8715:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[171]
-
-:table8719:lthtmlCropMarkHeight:=140.19977pt
-
-:table8719:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[172]
-
-:table8723:lthtmlCropMarkHeight:=206.69966pt
-
-:table8723:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[173]
-
-:table8727:lthtmlCropMarkHeight:=206.69966pt
-
-:table8727:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[174]
-
-:table8731:lthtmlCropMarkHeight:=159.19974pt
-
-:table8731:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[175]
-
-:table8735:lthtmlCropMarkHeight:=197.19968pt
-
-:table8735:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[176]
-
-:table8739:lthtmlCropMarkHeight:=206.69966pt
-
-:table8739:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[177]
-
-:table8743:lthtmlCropMarkHeight:=225.69963pt
-
-:table8743:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[178]
-
-:table8747:lthtmlCropMarkHeight:=149.69975pt
-
-:table8747:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[179]
-
-:table8751:lthtmlCropMarkHeight:=140.19977pt
-
-:table8751:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[180]
-
-:table8755:lthtmlCropMarkHeight:=140.19977pt
-
-:table8755:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[181]
-
-:table8759:lthtmlCropMarkHeight:=168.69972pt
-
-:table8759:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[182]
-
-:table8763:lthtmlCropMarkHeight:=168.69972pt
-
-:table8763:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[183]
-
-:table8767:lthtmlCropMarkHeight:=178.1997pt
-
-:table8767:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[184]
-
-:table8771:lthtmlCropMarkHeight:=178.1997pt
-
-:table8771:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[185]
-
-:table8775:lthtmlCropMarkHeight:=111.69981pt
-
-:table8775:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[186]
-
-:table8779:lthtmlCropMarkHeight:=168.69972pt
-
-:table8779:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[187]
-
-:table8783:lthtmlCropMarkHeight:=168.69972pt
-
-:table8783:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[188]
-
-:table8787:lthtmlCropMarkHeight:=206.69966pt
-
-:table8787:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[189]
-
-:table8791:lthtmlCropMarkHeight:=206.69966pt
-
-:table8791:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[190]
-
-:table8795:lthtmlCropMarkHeight:=206.69966pt
-
-:table8795:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[191]
-
-:table8799:lthtmlCropMarkHeight:=206.69966pt
-
-:table8799:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[192]
-
-:table8803:lthtmlCropMarkHeight:=216.19965pt
-
-:table8803:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[193]
-
-:table8807:lthtmlCropMarkHeight:=216.19965pt
-
-:table8807:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[194]
-
-:table8811:lthtmlCropMarkHeight:=159.19974pt
-
-:table8811:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[195]
-
-:table8815:lthtmlCropMarkHeight:=206.69966pt
-
-:table8815:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[196]
-
-:table8819:lthtmlCropMarkHeight:=206.69966pt
-
-:table8819:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[197]
-
-:table8823:lthtmlCropMarkHeight:=244.6996pt
-
-:table8823:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[198]
-
-:table8827:lthtmlCropMarkHeight:=235.19962pt
-
-:table8827:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
-[199] (./images.aux) ) 
+! Package pgfkeys Error: I do not know the key '/csv/wIntelT' and I am going to
+ ignore it. Perhaps you misspelled it.
+
+See the pgfkeys package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+This error message was generated by an \errmessage
+command, so I can't give any explicit help.
+Pretend that you're Hercule Poirot: Examine all clues,
+and deduce the truth by order and method.
+
+! Undefined control sequence.
+\csv@@body ->\opa 
+                  &\zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &
+                   \zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia 
+                        &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &
+                         \ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina 
+                              &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &
+                               \sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina &\sza 
+                                    &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &\sza &
+                                     \tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma 
+                                          &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma &
+                                           \opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb 
+                                                &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb &
+                                                 \zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\zia &\ina &\sza &\tma &\opb &\zib 
+                                                  &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ...\zia &\ina &\sza &\tma &\opb &\zib &
+                                                  \inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\ina &\sza &\tma &\opb &\zib &\inb 
+                                                  &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ...\ina &\sza &\tma &\opb &\zib &\inb &
+                                                  \szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\sza &\tma &\opb &\zib &\inb &\szb 
+                                                  &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ...\sza &\tma &\opb &\zib &\inb &\szb &
+                                                  \tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\tma &\opb &\zib &\inb &\szb &\tmb 
+                                                  
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\csv@@body ->\opa 
+                  &\zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &
+                   \zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia 
+                        &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &
+                         \ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina 
+                              &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &
+                               \sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina &\sza 
+                                    &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &\sza &
+                                     \tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma 
+                                          &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma &
+                                           \opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb 
+                                                &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb &
+                                                 \zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\zia &\ina &\sza &\tma &\opb &\zib 
+                                                  &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ...\zia &\ina &\sza &\tma &\opb &\zib &
+                                                  \inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\ina &\sza &\tma &\opb &\zib &\inb 
+                                                  &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ...\ina &\sza &\tma &\opb &\zib &\inb &
+                                                  \szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\sza &\tma &\opb &\zib &\inb &\szb 
+                                                  &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ...\sza &\tma &\opb &\zib &\inb &\szb &
+                                                  \tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\tma &\opb &\zib &\inb &\szb &\tmb 
+                                                  
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\csv@@body ->\opa 
+                  &\zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &
+                   \zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia 
+                        &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &
+                         \ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina 
+                              &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &
+                               \sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina &\sza 
+                                    &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &\sza &
+                                     \tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma 
+                                          &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma &
+                                           \opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb 
+                                                &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb &
+                                                 \zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\zia &\ina &\sza &\tma &\opb &\zib 
+                                                  &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ...\zia &\ina &\sza &\tma &\opb &\zib &
+                                                  \inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\ina &\sza &\tma &\opb &\zib &\inb 
+                                                  &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ...\ina &\sza &\tma &\opb &\zib &\inb &
+                                                  \szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\sza &\tma &\opb &\zib &\inb &\szb 
+                                                  &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ...\sza &\tma &\opb &\zib &\inb &\szb &
+                                                  \tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\tma &\opb &\zib &\inb &\szb &\tmb 
+                                                  
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\csv@@body ->\opa 
+                  &\zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &
+                   \zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia 
+                        &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &
+                         \ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina 
+                              &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &
+                               \sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina &\sza 
+                                    &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &\sza &
+                                     \tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma 
+                                          &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma &
+                                           \opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb 
+                                                &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb &
+                                                 \zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\zia &\ina &\sza &\tma &\opb &\zib 
+                                                  &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ...\zia &\ina &\sza &\tma &\opb &\zib &
+                                                  \inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\ina &\sza &\tma &\opb &\zib &\inb 
+                                                  &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ...\ina &\sza &\tma &\opb &\zib &\inb &
+                                                  \szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\sza &\tma &\opb &\zib &\inb &\szb 
+                                                  &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ...\sza &\tma &\opb &\zib &\inb &\szb &
+                                                  \tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\tma &\opb &\zib &\inb &\szb &\tmb 
+                                                  
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\csv@@body ->\opa 
+                  &\zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &
+                   \zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia 
+                        &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &
+                         \ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina 
+                              &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &
+                               \sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina &\sza 
+                                    &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &\sza &
+                                     \tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma 
+                                          &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma &
+                                           \opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb 
+                                                &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb &
+                                                 \zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\zia &\ina &\sza &\tma &\opb &\zib 
+                                                  &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ...\zia &\ina &\sza &\tma &\opb &\zib &
+                                                  \inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\ina &\sza &\tma &\opb &\zib &\inb 
+                                                  &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ...\ina &\sza &\tma &\opb &\zib &\inb &
+                                                  \szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\sza &\tma &\opb &\zib &\inb &\szb 
+                                                  &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ...\sza &\tma &\opb &\zib &\inb &\szb &
+                                                  \tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ...&\tma &\opb &\zib &\inb &\szb &\tmb 
+                                                  
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+\csv@@body ->\opa 
+                  &\zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &
+                   \zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+! Undefined control sequence.
+\csv@@body ->\opa &\zia 
+                        &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Misplaced alignment tab character &.
+\csv@@body ->\opa &\zia &
+                         \ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
+l.1421 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+                                                  
+(That makes 100 errors; please try again.) 
 Here is how much of TeX's memory you used:
- 7064 strings out of 480478
- 115760 string characters out of 5905959
- 578045 words of memory out of 5000000
- 22837 multiletter control sequences out of 15000+600000
- 537108 words of font info for 39 fonts, out of 8000000 for 9000
+ 7008 strings out of 480478
+ 114907 string characters out of 5905959
+ 579045 words of memory out of 5000000
+ 22840 multiletter control sequences out of 15000+600000
+ 536771 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  43i,10n,53p,795b,1180s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-
-ts1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/
-share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
-></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/c
-m-super/sfrm0600.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm080
-0.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on images.pdf (199 pages, 332856 bytes).
-PDF statistics:
- 695 PDF objects out of 1000 (max. 8388607)
- 477 compressed objects within 5 object streams
- 0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
+!  ==> Fatal error occurred, no output PDF file produced!

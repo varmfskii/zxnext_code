@@ -70,7 +70,8 @@ Port $253B (9531) is used to access the register value.
 Some registers are accessible only during the initialization process.
 
 <P>
-Register (R) $00 (00) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R) $00 (00) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Machine ID
 
 <UL>
@@ -105,7 +106,8 @@ Register (R) $00 (00) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 <LI>11111010 = ZX Spectrum Next Anti-brick
 </LI>
 </UL>
-Register (R) $01 (01) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R) $01 (01) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Core Version
 <table width="90%">
 bits 7-4 = Major version number
@@ -113,7 +115,8 @@ bits 3-0 = Minor version number<tr><td valign="top">&nbsp;See register $0E for s
 </td></tr></table>
 
 <P>
-Register (R/W) $02 (02) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $02 (02) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Reset
 <BR>
 Read
@@ -122,7 +125,8 @@ Read
 <LI>bit 7 = Expansion bus <!-- MATH
  $\overline{\hbox{RESET}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img4.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img4.svg"
  ALT="$\overline {\hbox {RESET}}$"></SPAN> Asserted
 </LI>
 <LI>bits 6-4 = Reserved
@@ -142,7 +146,8 @@ Write
 <LI>bit 7 = Generate/Release Expansion bus <!-- MATH
  $\overline{\hbox{RESET}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img4.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img4.svg"
  ALT="$\overline {\hbox {RESET}}$"></SPAN>
 </LI>
 <LI>bits 6-4 = Reserved, must be 0
@@ -158,7 +163,8 @@ Write
 </UL>
 
 <P>
-Register (R/W) $03 (03) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $03 (03) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Machine Type
 <BR>
 A write to this register disables the boot rom in config mode
@@ -204,7 +210,8 @@ determines roms loaded</td></tr>
 </UL></td></tr></table>
 
 <P>
-Register (W) $04 (04) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $04 (04) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Configuration Mapping
 <table width="90%">
 bits 7 = Reserved, must be 0
@@ -216,7 +223,8 @@ bits 6-0 = 16k SRAM bank mapping* ($00 on hard reset)<tr><td valign="top">&nbsp;
 </td></tr></table>
 
 <P>
-Register (R/W) $05 (05) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $05 (05) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Peripheral 1 Settings
 
 <UL>
@@ -262,7 +270,8 @@ read after leaving I/O Mode is at most 64 scan lines.
 </UL>
 
 <P>
-Register (R/W) $06 (06) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $06 (06) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Peripheral 2 Settings
 
 <UL>
@@ -284,7 +293,8 @@ Register (R/W) $06 (06) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $07 (07) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $07 (07) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Turbo mode
 <BR>
 Read
@@ -321,7 +331,8 @@ CPU Speeds
 </UL>
 
 <P>
-Register (R/W) $08 (08) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $08 (08) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Peripheral 3 Settings
 
 <UL>
@@ -346,7 +357,8 @@ Register (R/W) $08 (08) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $09 (09) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $09 (09) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Peripheral 4 setting:
 <table width="90%">
 bit 7 = PSG 2 Mono Enable (0 on hard reset)
@@ -373,7 +385,8 @@ bits 1-0 = scanlines
 </td></tr></table>
 
 <P>
-Register (R/W) $0A (0A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $0A (0A) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Peripheral 5 setting:
 
 <UL>
@@ -414,14 +427,16 @@ Register (R/W) $0A (0A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R) $0E (0E) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R) $0E (0E) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Core Version (sub minor number)
 <table width="90%">
 bits 7-0 = Core sub minor version number<tr><td valign="top">&nbsp;(see register $01 for the major and minor version number)
 </td></tr></table>
 
 <P>
-Register (R/W) $10 (10) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $10 (10) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Core Boot
 <BR>
 Read
@@ -442,7 +457,8 @@ bits 4-0 = Core ID<tr><td valign="top">&nbsp;Core ID with bits 4-0 can only be s
 </td></tr></table>
 
 <P>
-Register (R/W) $11 (11) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $11 (11) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Video Timing (writable in config mode only)
 <table width="90%">
 bits 7-3 = Reserved, must be 0
@@ -471,7 +487,8 @@ bits 2-0 = Mode (VGA = 0..6, HDMI = 7)
 </td></tr></table>
 
 <P>
-Register (R/W) $12 (12) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $12 (12) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 2 Active RAM bank
 
 <UL>
@@ -483,7 +500,8 @@ Register (R/W) $12 (12) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $13 (13) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $13 (13) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 2 Shadow RAM bank
 
 <UL>
@@ -495,7 +513,8 @@ Register (R/W) $13 (13) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $14 (14) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $14 (14) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Global transparency color
 
 <UL>
@@ -508,7 +527,8 @@ only by the MSB bits of the final 9-bit colour)
 $4B for transparency and tilemap uses nextreg $4C)
 
 <P>
-Register (R/W) $15 (15) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $15 (15) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite and Layer System Setup
 
 <UL>
@@ -548,7 +568,8 @@ Register (R/W) $15 (15) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $16 (16) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $16 (16) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 2 Horizontal Scroll Control
 
 <UL>
@@ -557,7 +578,8 @@ Register (R/W) $16 (16) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $17 (17) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $17 (17) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 2 Vertical Scroll Control
 
 <UL>
@@ -566,7 +588,8 @@ Register (R/W) $17 (17) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $18 (18) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $18 (18) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 2 Clip Window Definition
 
 <UL>
@@ -586,7 +609,8 @@ Reads do not advance the clip position
 The values are 0,255,0,191 after a Reset
 
 <P>
-Register (R/W) $19 (19) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $19 (19) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Clip Window Definition
 
 <UL>
@@ -611,7 +635,8 @@ X coords are internally doubled and the clip window origin is moved to
 the sprite origin inside the border.
 
 <P>
-Register (R/W) $1A (1A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $1A (1A) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 0 (ULA/LoRes) Clip Window Definition
 
 <UL>
@@ -631,7 +656,8 @@ The values are 0,255,0,191 after a Reset
 Reads do not advance the clip position
 
 <P>
-Register (R/W) $1B (1B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $1B (1B) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Clip Window Definition
 
 <UL>
@@ -653,7 +679,8 @@ Reads do not advance the clip position
 The X coords are internally doubled.
 
 <P>
-Register (R/W) $1C (1C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $1C (1C) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Clip Window Control
 <BR>
 Read
@@ -684,7 +711,8 @@ Write
 </UL>
 
 <P>
-Register (R) $1E (1E) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R) $1E (1E) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Active video line (MSB)
 
 <UL>
@@ -695,7 +723,8 @@ Register (R) $1E (1E) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 </UL>
 
 <P>
-Register (R) $1F (1F) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R) $1F (1F) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Active video line (LSB)
 
 <UL>
@@ -704,7 +733,8 @@ Register (R) $1F (1F) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 </UL>
 
 <P>
-Register (R/W) $22 (22) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $22 (22) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Line Interrupt control
 
 <UL>
@@ -723,7 +753,8 @@ Register (R/W) $22 (22) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $23 (23) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $23 (23) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Line Interrupt value LSB
 
 <UL>
@@ -732,7 +763,8 @@ Register (R/W) $23 (23) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $26 (26) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $26 (26) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> ULA Horizontal Scroll Control
 
 <UL>
@@ -741,7 +773,8 @@ Register (R/W) $26 (26) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $27 (27) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $27 (27) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> ULA Vertical Scroll Control
 
 <UL>
@@ -750,7 +783,8 @@ Register (R/W) $27 (27) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $28 (28) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $28 (28) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Stored Palette Value and PS/2 Keymap Address MSB
 <BR>
 Read
@@ -769,7 +803,8 @@ Write
 </UL>
 
 <P>
-Register (W) $29 (29) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $29 (29) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> PS/2 Keymap Address LSB
 
 <UL>
@@ -778,7 +813,8 @@ Register (W) $29 (29) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 </UL>
 
 <P>
-Register (W) $2A (2A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $2A (2A) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> PS/2 Keymap Data MSB
 
 <UL>
@@ -789,7 +825,8 @@ Register (W) $2A (2A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 </UL>
 
 <P>
-Register (W) $2B (2B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $2B (2B) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> PS/2 Keymap Data LSB
 
 <UL>
@@ -799,7 +836,8 @@ Register (W) $2B (2B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 (writing this register auto-increments the address)
 
 <P>
-Register (R/W) $2C (2C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $2C (2C) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> DAC B Mirror (Left)/ I<SUP>2</SUP>S Left Sample MSB
 <BR>
 Read
@@ -816,7 +854,8 @@ Write
 </UL>
 
 <P>
-Register (R/W) $2D (2D) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $2D (2D) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> DAC A+D Mirror (mono/ I<SUP>2</SUP>S Sample LSB
 <BR>
 Read
@@ -833,7 +872,8 @@ Write
 </UL>
 
 <P>
-Register (R/W) $2E (2E) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $2E (2E) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> DAC C Mirror (Right/ I<SUP>2</SUP>S Risht Sample MSB
 <BR>
 Read
@@ -850,7 +890,8 @@ Write
 </UL>
 
 <P>
-Register (R/W) $2F (2F) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $2F (2F) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Horizontal Scroll Control MSB
 
 <UL>
@@ -862,7 +903,8 @@ Register (R/W) $2F (2F) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 Meaningful Range is 0-319 in 40 char mode, 0-639 in 80 char mode
 
 <P>
-Register (R/W) $30 (30) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $30 (30) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Horizontal Scroll Control LSB
 
 <UL>
@@ -872,7 +914,8 @@ Register (R/W) $30 (30) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 Meaningful range is 0-319 in 40 char mode, 0-639 in 80 char mode
 
 <P>
-Register (R/W) $31 (31) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $31 (31) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Vertical Scroll Control
 
 <UL>
@@ -881,7 +924,8 @@ Register (R/W) $31 (31) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $32 (32) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $32 (32) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 1,0 (LoRes) Horizontal Scroll Control)
 
 <UL>
@@ -892,7 +936,8 @@ Layer 1,0 (LoRes) scrolls in "half-pixels" at the same resolution and
 smoothness as Layer 2.
 
 <P>
-Register (R/W) $33 (33) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $33 (33) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 1,0 (LoRes) Vertical Scroll Control)
 
 <UL>
@@ -903,7 +948,8 @@ Layer 1,0 (LoRes) scrolls in "half-pixels" at the same resolution and
 smoothness as Layer 2.
 
 <P>
-Register (R/W) $34 (34) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $34 (34) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Number
 <BR>
 Lockstep (NextReg $09 bit 4 set)
@@ -924,7 +970,8 @@ This register selects which sprite has its attributes connected to the
 sprite attribute registers
 
 <P>
-Register (W) $35 (35) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $35 (35) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 0
 
 <UL>
@@ -933,7 +980,8 @@ Register (W) $35 (35) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 </UL>
 
 <P>
-Register (W) $36 (36) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $36 (36) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 1
 
 <UL>
@@ -942,7 +990,8 @@ Register (W) $36 (36) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 </UL>
 
 <P>
-Register (W) $37 (37) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $37 (37) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 2
 
 <UL>
@@ -952,7 +1001,8 @@ Register (W) $37 (37) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 </LI>
 <LI>bit 2 = Enable vertical mirror (reverse)
 </LI>
-<LI>bit 1 = Enable 90<SPAN CLASS="MATH"><IMG STYLE="height: 2.21ex; vertical-align: -0.11ex; " SRC="img38.svg"
+<LI>bit 1 = Enable 90<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img38.svg"
  ALT="$^O$"></SPAN> Clockwise Rotation
 </LI>
 </UL>
@@ -971,7 +1021,8 @@ Relative Sprites
 Rotation is applied before mirroring
 
 <P>
-Register (W) $38 (38) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $38 (38) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 3
 
 <UL>
@@ -984,7 +1035,8 @@ Register (W) $38 (38) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 </UL>
 
 <P>
-Register (W) $39 (39) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $39 (39) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 4
 <BR>
 Normal Sprites
@@ -1032,7 +1084,8 @@ Relative, Unified Sprites
 </UL>
 
 <P>
-Register (R/W) $40 (40) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $40 (40) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Palette Index Select
 
 <UL>
@@ -1058,7 +1111,8 @@ ULAplus palette.  The ULA always takes border colour from PAPER for
 standard ULA and Enhanced ULA
 
 <P>
-Register (R/W) $41 (41) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $41 (41) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> 8-bit Palette Data
 
 <UL>
@@ -1071,7 +1125,8 @@ index auto-increments if aut-increment has been enabled (NextReg $43
 bit 7), Reads do not auto-increment.
 
 <P>
-Register (R/W) $42 (42) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $42 (42) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> ULANext Attribute Byte Format
 
 <UL>
@@ -1091,7 +1146,8 @@ entries INK. PAPER and border both take on the fallback colour
 (nextreg $4A) in this mode.
 
 <P>
-Register (R/W) $43 (43) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $43 (43) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Palette Control
 
 <UL>
@@ -1133,7 +1189,8 @@ Register (R/W) $43 (43) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $44 (44) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $44 (44) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> 9-bit Palette Data
 <BR>
 Non Level 2
@@ -1169,7 +1226,8 @@ Reads return the second byte and do not autoincrement. Writes to
 nextreg $40, $41, $41, or $43 reset to the first write.
 
 <P>
-Register (R/W) $4A (4A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $4A (4A) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Fallback Colour Value
 
 <UL>
@@ -1180,7 +1238,8 @@ Register (R/W) $4A (4A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 (black on reset = 0)
 
 <P>
-Register (R/W) $4B (4B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $4B (4B) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Transparency Index
 
 <UL>
@@ -1190,7 +1249,8 @@ Register (R/W) $4B (4B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 For 4-bit sprites only the bottom 4-bits are relevant.
 
 <P>
-Register (R/W) $4C (4C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $4C (4C) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Level 3 Transparency Index
 
 <UL>
@@ -1201,7 +1261,8 @@ Register (R/W) $4C (4C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $50 (50) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $50 (50) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> MMU Slot 0 Control
 
 <UL>
@@ -1214,7 +1275,8 @@ Pages can be from 0 to 223 on a fully expanded Next.
 A 255 value causes the ROM to become visible.
 
 <P>
-Register (R/W) $51 (51) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $51 (51) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> MMU Slot 1 Control
 
 <UL>
@@ -1227,7 +1289,8 @@ Pages can be from 0 to 223 on a fully expanded Next.
 A 255 value causes the ROM to become visible.
 
 <P>
-Register (R/W) $52 (52) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $52 (52) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> MMU Slot 2 Control
 
 <UL>
@@ -1238,7 +1301,8 @@ Register (R/W) $52 (52) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 Pages can be from 0 to 223 on a fully expanded Next.
 
 <P>
-Register (R/W) $53 (53) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $53 (53) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> MMU Slot 3 Control
 
 <UL>
@@ -1249,7 +1313,8 @@ Register (R/W) $53 (53) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 Pages can be from 0 to 223 on a fully expanded Next.
 
 <P>
-Register (R/W) $54 (54) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $54 (54) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> MMU Slot 4 Control
 
 <UL>
@@ -1260,7 +1325,8 @@ Register (R/W) $54 (54) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 Pages can be from 0 to 223 on a fully expanded Next.
 
 <P>
-Register (R/W) $55 (55) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $55 (55) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> MMU Slot 5 Control
 
 <UL>
@@ -1271,7 +1337,8 @@ Register (R/W) $55 (55) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 Pages can be from 0 to 223 on a fully expanded Next.
 
 <P>
-Register (R/W) $56 (56) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $56 (56) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> MMU Slot 6 Control
 
 <UL>
@@ -1282,7 +1349,8 @@ Register (R/W) $56 (56) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 Pages can be from 0 to 223 on a fully expanded Next.
 
 <P>
-Register (R/W) $57 (57) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $57 (57) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> MMU Slot 7 Control
 
 <UL>
@@ -1301,7 +1369,8 @@ selected 16k bank.
 +3 special modes override the MMUs if used.
 
 <P>
-Register (W) $60 (60) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $60 (60) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Copper Data 8-bit Write
 
 <UL>
@@ -1315,7 +1384,8 @@ the coppen address is auto-incremented to the next memory position.
 After a write, the index is auto-incremented to the next memory position.
 
 <P>
-Register (W) $61 (61) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $61 (61) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Copper Address LSB
 
 <UL>
@@ -1324,7 +1394,8 @@ Register (W) $61 (61) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 </UL>
 
 <P>
-Register (W) $62 (62) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $62 (62) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Copper Control
 
 <UL>
@@ -1347,7 +1418,8 @@ Register (W) $62 (62) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 </UL>
 
 <P>
-Register (W) $63 (63) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $63 (63) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Copper Data 16-bit Write
 
 <UL>
@@ -1367,7 +1439,8 @@ After a write to an odd address, the all 16-bits are written to copper
 memory at once.
 
 <P>
-Register (R/W) $64 (64) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $64 (64) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Vertical Line Count Offset (3.01.05)
 <table width="90%">
 bits 7-0 = Offset added to the vertical line counter<tr><td valign="top">&nbsp;affects copper, line interrupt and active line
@@ -1384,7 +1457,8 @@ Eg, if the offset is 32 then vertical line 32 will correspond to
 
 * Since a change in offset takes effect when the ula reaches row 0,
 the change can take up to one frame to occur.
-Register (R/W) $68 (68) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $68 (68) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> ULA Control
 <table width="90%">
 bit 7 = Disable ULA output (0 on reset)
@@ -1411,7 +1485,8 @@ bit 0 = Enable stencil mode (0 on reset)</td></tr>
 </td></tr></table>
 
 <P>
-Register (R/W) $69 (69) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $69 (69) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Display Control 1
 
 <UL>
@@ -1424,7 +1499,8 @@ Register (R/W) $69 (69) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $6A (6A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $6A (6A) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 1,0 (LoRes) Control
 
 <UL>
@@ -1442,7 +1518,8 @@ Register (R/W) $6A (6A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $6B (6B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $6B (6B) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Control
 
 <UL>
@@ -1473,7 +1550,8 @@ Register (R/W) $6B (6B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $6C (6C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $6C (6C) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Default Layer 3 Attribute*
 
 <UL>
@@ -1493,7 +1571,8 @@ Register (R/W) $6C (6C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 *Active tile attribute if bit 5 of nextreg $6B is set.
 
 <P>
-Register (R/W) $6E (6E) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $6E (6E) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 Tilemap Base Address
 
 <UL>
@@ -1518,7 +1597,8 @@ leaving you with $2C.
 The value written is an offset into the 16k Bank 5 or the 8k lower
 half of Bank 7 allowinf the tilemap to be placed at any multiple of
 256 bytes.
-Register (R/W) $6F (6F) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $6F (6F) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 Tile Definitions Base Address
 
 <UL>
@@ -1543,7 +1623,8 @@ leaving you with $0C.
 The value written is an offset into the 16k Bank 5 or the 8k lower
 half of Bank 7 allowing the tilemap to be placed at any multiple of
 256 bytes.
-Register (R/W) $70 (70) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $70 (70) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 2 Control
 
 <UL>
@@ -1555,19 +1636,22 @@ Register (R/W) $70 (70) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>00 = <!-- MATH
  $256\times192\times256$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img7.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img7.svg"
  ALT="$256\times192\times256$"></SPAN>
 </LI>
 <LI>01 = <!-- MATH
  $320\times256\times256$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img8.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img8.svg"
  ALT="$320\times256\times256$"></SPAN>
 </LI>
 <LI>10 = <!-- MATH
  $640\times256\times16$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 1.90ex; vertical-align: -0.30ex; " SRC="img9.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img9.svg"
  ALT="$640\times256\times16$"></SPAN>
 </LI>
 <LI>11 = Do not use
@@ -1580,7 +1664,8 @@ Register (R/W) $70 (70) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $71 (71) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $71 (71) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 2 X Scroll MSB
 
 <UL>
@@ -1591,37 +1676,43 @@ Register (R/W) $71 (71) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (W) $75 (75) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $75 (75) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 0 (Auto-incrementing)
 <BR>
 See nextreg $35
 
 <P>
-Register (W) $76 (76) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $76 (76) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 1 (Auto-incrementing)
 <BR>
 See nextreg $36
 
 <P>
-Register (W) $77 (77) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $77 (77) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 2 (Auto-incrementing)
 <BR>
 See nextreg $37
 
 <P>
-Register (W) $78 (78) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $78 (78) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 3 (Auto-incrementing)
 <BR>
 See nextreg $38
 
 <P>
-Register (W) $79 (79) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $79 (79) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Sprite Attribute 4 (Auto-incrementing)
 <BR>
 See nextreg $39
 
 <P>
-Register (R/W) $7F (7F) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $7F (7F) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> User Register 0
 
 <UL>
@@ -1633,7 +1724,8 @@ Register (R/W) $7F (7F) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 Caution NextReg numbers above $7F are inaccessible to the Copper
 
 <P>
-Register (R/W) $80 (80) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $80 (80) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Expansion Bus Enable
 <BR>
 Immediate
@@ -1647,14 +1739,16 @@ Immediate
 <LI>bit 5 = I/O cycle Disable/Ignore <!-- MATH
  $\overline{\hbox{IORQULA}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.67ex; vertical-align: -0.56ex; " SRC="img139.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img139.svg"
  ALT="$\overline{\hbox{IORQULA}}$"></SPAN> (0 on
   hard reset)
 </LI>
 <LI>bit 4 = Memory cycle Disable/Ignore <!-- MATH
  $\overline{\hbox{ROMCS}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img140.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img140.svg"
  ALT="$\overline{\hbox{ROMCS}}$"></SPAN> (0 on
   hard reset)
 </LI>
@@ -1670,28 +1764,32 @@ After Soft Reset (Copied into bits 7-4)
 <LI>bit 1 = I/O cycle Disable/Ignore <!-- MATH
  $\overline{\hbox{IORQULA}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.67ex; vertical-align: -0.56ex; " SRC="img139.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img139.svg"
  ALT="$\overline{\hbox{IORQULA}}$"></SPAN> (0 on
   hard reset)
 </LI>
 <LI>bit 0 = Memory cycle Disable/Ignore <!-- MATH
  $\overline{\hbox{ROMCS}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img140.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img140.svg"
  ALT="$\overline{\hbox{ROMCS}}$"></SPAN> (0 on
   hard reset)
 </LI>
 </UL>
 
 <P>
-Register (R/W) $81 (81) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $81 (81) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Expansion Bus Control
 
 <UL>
 <LI>bit 7 = (R) Expansion bus <!-- MATH
  $\overline{\hbox{ROMCS}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img140.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img140.svg"
  ALT="$\overline{\hbox{ROMCS}}$"></SPAN> asserted
 </LI>
 <LI>bit 6 = Allow peripherials to override the ULA on some even
@@ -1722,7 +1820,8 @@ Register (R/W) $81 (81) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $82 (82) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $82 (82) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Internal Port decoding control 1/4
 
 <UL>
@@ -1745,7 +1844,8 @@ Register (R/W) $82 (82) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $83 (83) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $83 (83) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Internal Port decoding control 2/4
 
 <UL>
@@ -1769,7 +1869,8 @@ Register (R/W) $83 (83) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $84 (84) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $84 (84) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Internal Port decoding control 3/4
 
 <UL>
@@ -1795,7 +1896,8 @@ Register (R/W) $84 (84) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $85 (85) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $85 (85) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Internal Port decoding control 4/4
 
 <UL>
@@ -1815,7 +1917,8 @@ Register (R/W) $85 (85) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $86 (86) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $86 (86) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Expansion Port decoding control 1/4
 
 <UL>
@@ -1838,7 +1941,8 @@ Register (R/W) $86 (86) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $87 (87) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $87 (87) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Expansion Port decoding control 2/4
 
 <UL>
@@ -1862,7 +1966,8 @@ Register (R/W) $87 (87) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $88 (88) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $88 (88) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Expansion Port decoding control 3/4
 
 <UL>
@@ -1888,7 +1993,8 @@ Register (R/W) $88 (88) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $89 (89) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $89 (89) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Expansion Port decoding control 4/4
 
 <UL>
@@ -1919,7 +2025,8 @@ I/O cycles for disabled ports to propagate to the Expansion Bus,
 otherwise corresponding I/O cycles to the Expansion Bus are filtered.
 
 <P>
-Register (R/W) $8A (8A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $8A (8A) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Expansion Bus I/O Propagate Control
 
 <UL>
@@ -1939,7 +2046,8 @@ Register (R/W) $8A (8A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $8C (8C) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $8C (8C) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Alternate ROM
 <BR>
 Immediate
@@ -1968,7 +2076,8 @@ After Soft Reset (copied into bits 7-4)
 </UL>
 
 <P>
-Register (R/W) $8E (8E) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $8E (8E) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Spectrum 128k Memory Mapping (3.01.01)
 <table width="90%">
 bit 7 = Bank number bit 3 (port $dffd bit 0)
@@ -1994,7 +2103,8 @@ Writes can always change the ROM/allRAM mapping
 Writes immediately change the current MMU mapping as if by port write.
 
 <P>
-Register (R/W) $8F (8F) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $8F (8F) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Memory Mapping Mode (3.01.06)
 
 <UL>
@@ -2022,7 +2132,8 @@ Register (R/W) $8F (8F) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 carry out memory paging, see ports
 
 <P>
-Register (R/W) $90 (90) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $90 (90) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 1/4
 
 <UL>
@@ -2045,7 +2156,8 @@ Register (R/W) $90 (90) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $91 (91) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $91 (91) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 2/4
 
 <UL>
@@ -2068,7 +2180,8 @@ Register (R/W) $91 (91) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $92 (92) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $92 (92) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 3/4
 
 <UL>
@@ -2091,7 +2204,8 @@ Register (R/W) $92 (92) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $93 (93) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $93 (93) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 4/4
 
 <UL>
@@ -2108,7 +2222,8 @@ Register (R/W) $93 (93) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $98 (98) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $98 (98) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO Pin State 1/4
 
 <UL>
@@ -2131,7 +2246,8 @@ Register (R/W) $98 (98) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $99 (99) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $99 (99) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO Pin State 2/4
 
 <UL>
@@ -2154,7 +2270,8 @@ Register (R/W) $99 (99) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $9A (9A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $9A (9A) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO Pin State 3/4
 
 <UL>
@@ -2177,7 +2294,8 @@ Register (R/W) $9A (9A) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $9B (9B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $9B (9B) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO Pin State 4/4
 
 <UL>
@@ -2194,7 +2312,8 @@ Register (R/W) $9B (9B) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $A0 (A0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $A0 (A0) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Pi Peripheral Enable
 
 <UL>
@@ -2222,7 +2341,8 @@ Register (R/W) $A0 (A0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 *Overrides GPIO Enables
 
 <P>
-Register (R/W) $A2 (A2) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $A2 (A2) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Pi  I<SUP>2</SUP>S Audio Control
 
 <UL>
@@ -2263,7 +2383,8 @@ Register (R/W) $A2 (A2) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $A3 (A3) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $A3 (A3) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Pi  I<SUP>2</SUP>S Clock Divide (Master Mode) (removed in 3.01.05)
 
 <UL>
@@ -2273,16 +2394,19 @@ Register (R/W) $A3 (A3) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <!-- MATH
  $\hbox{Divider}=\frac{538461}{\hbox{Rate}}-1$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 3.34ex; vertical-align: -1.24ex; " SRC="img141.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img141.svg"
  ALT="$\hbox{Divider}=\frac{538461}{\hbox{Rate}}-1$"></SPAN> or
 <!-- MATH
  $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 3.54ex; vertical-align: -1.44ex; " SRC="img142.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img142.svg"
  ALT="$\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$"></SPAN>
 
 <P>
-Register (R/W) $A8 (A8) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $A8 (A8) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> ESP WiFi GPIO Output Enable
 
 <UL>
@@ -2295,7 +2419,8 @@ Register (R/W) $A8 (A8) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>bit 0 = GPIO0 output enable (fixed at 0, GPIO2 is read-only)
 </LI>
 </UL>
-Register (R/W) $A9 (A9) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $A9 (A9) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> ESP WiFi GPIO
 
 <UL>
@@ -2308,7 +2433,8 @@ Register (R/W) $A9 (A9) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>bit 0 = Read/Write GPIO0 (reset = 1)
 </LI>
 </UL>
-Register (R) $B0 (B0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R) $B0 (B0) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Extended Keys 0 (3.01.04)
 
 <UL>
@@ -2329,7 +2455,8 @@ Register (R) $B0 (B0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 <LI>bit 0 = 1 if RIGHT pressed
 </LI>
 </UL>
-Register (R) $B1 (B1) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R) $B1 (B1) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Extended Keys 1 (3.01.04)
 
 <UL>
@@ -2350,7 +2477,8 @@ Register (R) $B1 (B1) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 <LI>bit 0 = 1 if EXTEND pressed
 </LI>
 </UL>
-Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Control (3.01.09)
 <BR>($00 on reset)
 
@@ -2362,7 +2490,8 @@ Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>bit 3 = Enable stackless <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
  ALT="$\overline {\hbox {NMI}}$"></SPAN> response
 </LI>
 <LI>bits 2-1 = Reserved, must be 0
@@ -2394,25 +2523,30 @@ Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $C2 (C2) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $C2 (C2) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
  ALT="$\overline {\hbox {NMI}}$"></SPAN> Return Address LSB (3.01.09)
 <BR>($00 on reset)
 
 <P>
-Register (R/W) $C3 (C3) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $C3 (C3) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
  ALT="$\overline {\hbox {NMI}}$"></SPAN> Return Address MSB (3.01.09)
 <BR>($00 on reset)
 
 <P>
-Register (R/W) $C4 (C4) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $C4 (C4) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Enable 0 (3.01.08)
 <BR>($83 on reset)
 
@@ -2420,7 +2554,8 @@ Register (R/W) $C4 (C4) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>bit 7 = Expansion bus <!-- MATH
  $\overline{\hbox{INT}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img6.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img6.svg"
  ALT="$\overline {\hbox {INT}}$"></SPAN>
 </LI>
 <LI>bits 6-2 = Reserved must be zero
@@ -2432,7 +2567,8 @@ Register (R/W) $C4 (C4) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (R/W) $C5 (C5) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $C5 (C5) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Enable 1 (3.01.08)
 <BR>($00 on reset)
 
@@ -2456,7 +2592,8 @@ Register (R/W) $C5 (C5) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 </UL>
 
 <P>
-Register (W) $C6 (C6) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $C6 (C6) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Enable 2 (3.01.08)
 <BR>($00 on reset)
 
@@ -2481,11 +2618,13 @@ Register (W) $C6 (C6) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-al
 * For each UART, Rx half full and Rx available are shared interrupts
 
 <P>
-Register (W) $C7 (C7) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $C7 (C7) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Reserved (3.01.09)
 
 <P>
-Register (R/W) $C8 (C8) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $C8 (C8) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Status 0 (3.01.09)
 <BR>($00 on reset)
 
@@ -2501,7 +2640,8 @@ Register (R/W) $C8 (C8) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 * Writes clear bits where bits are set except in IM2 mode
 
 <P>
-Register (R/W) $C9 (C9) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $C9 (C9) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Status 1 (3.01.09)
 
 <UL>
@@ -2526,7 +2666,8 @@ Register (R/W) $C9 (C9) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 * Writes clear bits where bits are set except in IM2 mode
 
 <P>
-Register (R/W) $CA (CA) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $CA (CA) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Status 2 (3.01.09)
 ($00 on reset)
 
@@ -2553,11 +2694,13 @@ Register (R/W) $CA (CA) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 ** Writes clear bits where bits are set except in IM2 mode
 
 <P>
-Register (W) $CB (CB) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $CB (CB) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Reserved (3.01.09)
 
 <P>
-Register (R/W) $CC (CC) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $CC (CC) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> DMA Interrupt Enable 0 (3.01.09)
 ($00 on reset)
 
@@ -2573,7 +2716,8 @@ Register (R/W) $CC (CC) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
   operation when in IM2 mode
 
 <P>
-Register (R/W) $CD (CD) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $CD (CD) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> DMA Interrupt Enable 1 (3.01.09)
 ($00 on reset)
 
@@ -2599,7 +2743,8 @@ Register (R/W) $CD (CD) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
   operation when in IM2 mode
 
 <P>
-Register (R/W) $CE (CE) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $CE (CE) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> DMA Interrupt Enable 2 (3.01.09)
 ($00 on reset)
 
@@ -2625,11 +2770,13 @@ Register (R/W) $CE (CE) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
   operation when in IM2 mode.
 
 <P>
-Register (W) $CF (CF) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $CF (CF) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Reserved (3.01.09)
 
 <P>
-Register (W) $FF (FF) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (W) $FF (FF) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Debug LEDs (DE-1, DE-2 am Multicore only)
 
 <DIV CLASS="navigation"><HR>

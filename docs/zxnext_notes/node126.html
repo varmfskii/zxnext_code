@@ -55,24 +55,28 @@
 <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
  ALT="$\overline {\hbox {NMI}}$"></SPAN></A>
 </H4>
 <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
  ALT="$\overline {\hbox {NMI}}$"></SPAN> is the non-maskable interrupt. Upon receiving a
 non-maskable interrupt (<!-- MATH
  $\overline{\hbox{NMI}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
  ALT="$\overline {\hbox {NMI}}$"></SPAN> being pulled low) one of
 two sequences occur depending on the calue of bit 3 of the interrupt
 control register (nextreg $C0).
 
 <P>
-Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Control (3.01.09)
 <BR>($00 on reset)
 
@@ -84,7 +88,8 @@ Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-
 <LI>bit 3 = Enable stackless <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
  ALT="$\overline {\hbox {NMI}}$"></SPAN> response
 </LI>
 <LI>bits 2-1 = Reserved, must be 0
@@ -121,55 +126,65 @@ IFF2, IFF1 is cleared (inhibiting maskable interrupts). The
 <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
  ALT="$\overline {\hbox {NMI}}$"></SPAN> should end with RETN which copies the contents of
 IFF2 to IFF1 (returning the interrupt state to what it was before the
 <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
  ALT="$\overline {\hbox {NMI}}$"></SPAN>) and PC is popped off the stack.
 
 <P>
 If bit 3 is set (1) PC is stored in the <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
  ALT="$\overline {\hbox {NMI}}$"></SPAN> return
 address registers (nextregs $C2 and $C3), IFF1 is copied to IFF2,
 IFF1 is cleared (inhibiting maskable interrupts). The
 <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
  ALT="$\overline {\hbox {NMI}}$"></SPAN> should end with RETN which copies the contents of
 IFF2 to IFF1 (returning the interrupt state to what it was before the
 <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
  ALT="$\overline {\hbox {NMI}}$"></SPAN>) and PC is compied from the <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
  ALT="$\overline {\hbox {NMI}}$"></SPAN>
 return address registers.
 
 <P>
-Register (R/W) $C2 (C2) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $C2 (C2) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
  ALT="$\overline {\hbox {NMI}}$"></SPAN> Return Address LSB (3.01.09)
 <BR>($00 on reset)
 
 <P>
-Register (R/W) $C3 (C3) <SPAN CLASS="MATH"><IMG STYLE="height: 1.06ex; vertical-align: -0.11ex; " SRC="img10.svg"
+Register (R/W) $C3 (C3) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> <!-- MATH
  $\overline{\hbox{NMI}}$
  -->
-<SPAN CLASS="MATH"><IMG STYLE="height: 2.22ex; vertical-align: -0.11ex; " SRC="img5.svg"
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
  ALT="$\overline {\hbox {NMI}}$"></SPAN> Return Address MSB (3.01.09)
 <BR>($00 on reset)
 

@@ -56,74 +56,46 @@
 <H1><A ID="SECTION001310000000000000000">
 Single Byte Opcodes</A>
 </H1>
-<BR><P></P>
-<DIV class="CENTER"><A ID="8431"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.1:</STRONG>
-$00-$1F</CAPTION>
-<TR><TD><IMG STYLE="height: 34.59ex; " SRC="img143.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvautotabular{appendices/opcode/00-opcode.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
-<BR><P></P>
-<DIV class="CENTER"><A ID="8435"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.2:</STRONG>
-$20-$3F</CAPTION>
-<TR><TD><IMG STYLE="height: 34.59ex; " SRC="img144.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvautotabular{appendices/opcode/20-opcode.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
-<BR><P></P>
-<DIV class="CENTER"><A ID="8439"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.3:</STRONG>
-$40-$5F</CAPTION>
-<TR><TD><IMG STYLE="height: 34.59ex; " SRC="img145.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvautotabular{appendices/opcode/40-opcode.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
+wIntelN1=,2=,3=,4=,5=,
+  6=,7=,8=,9=,10=
+wIntelTtabular=|l|l|l|r|r||l|l|l|r|r|,
+    table head=Op&amp;Z80&amp;8080&amp;Sz&amp;T&amp;Op&amp;Z80&amp;8080&amp;Sz&amp;T
+<BR>,
+    table foot=,wIntelN
+
+<P>
+zilogN1=,2=,3=,4=,
+  5=,6=,7=,8=
+zilogTtabular=|l|l|r|r||l|l|r|r|,
+    table head=Op&amp;Mnemonic&amp;Sz&amp;T&amp;Op&amp;Mnemonic&amp;Sz&amp;T
+<BR>,
+    table foot=,zilogN
+
+<P>
 <BR><P></P>
 <DIV class="CENTER"><A ID="8443"></A>
 <TABLE>
-<CAPTION><STRONG>Table C.4:</STRONG>
-$60-$7F</CAPTION>
-<TR><TD><IMG STYLE="height: 34.59ex; " SRC="img146.svg"
+<CAPTION><STRONG>Table C.1:</STRONG>
+$00-$1F</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img143.svg"
  ALT="\begin{table}\centering\scriptsize
-\csvautotabular{appendices/opcode/60-opcode.csv}
+\csvreader[wIntelT]{appendices/opcode/00-opcode.csv}{}%
+{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
 \end{table}"></TD></TR>
 </TABLE>
 </DIV><P></P>
 <BR>
 <BR><P></P>
-<DIV class="CENTER"><A ID="8447"></A>
+<DIV class="CENTER"><A ID="8449"></A>
 <TABLE>
-<CAPTION><STRONG>Table C.5:</STRONG>
-$80-$9F</CAPTION>
-<TR><TD><IMG STYLE="height: 34.59ex; " SRC="img147.svg"
+<CAPTION><STRONG>Table C.2:</STRONG>
+$20-$3F</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img144.svg"
  ALT="\begin{table}\centering\scriptsize
-\csvautotabular{appendices/opcode/80-opcode.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
-<BR>
-<BR><P></P>
-<DIV class="CENTER"><A ID="8451"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.6:</STRONG>
-$A0-$BF</CAPTION>
-<TR><TD><IMG STYLE="height: 34.59ex; " SRC="img148.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvautotabular{appendices/opcode/a0-opcode.csv}
+\csvreader[wIntelT]{appendices/opcode/20-opcode.csv}{}%
+{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
 \end{table}"></TD></TR>
 </TABLE>
 </DIV><P></P>
@@ -131,23 +103,83 @@ $A0-$BF</CAPTION>
 <BR><P></P>
 <DIV class="CENTER"><A ID="8455"></A>
 <TABLE>
-<CAPTION><STRONG>Table C.7:</STRONG>
-$C0-$DF</CAPTION>
-<TR><TD><IMG STYLE="height: 34.59ex; " SRC="img149.svg"
+<CAPTION><STRONG>Table C.3:</STRONG>
+$40-$5F</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img145.svg"
  ALT="\begin{table}\centering\scriptsize
-\csvautotabular{appendices/opcode/c0-opcode.csv}
+\csvreader[wIntelT]{appendices/opcode/40-opcode.csv}{}%
+{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
 \end{table}"></TD></TR>
 </TABLE>
 </DIV><P></P>
 <BR>
 <BR><P></P>
-<DIV class="CENTER"><A ID="8459"></A>
+<DIV class="CENTER"><A ID="8461"></A>
+<TABLE>
+<CAPTION><STRONG>Table C.4:</STRONG>
+$60-$7F</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img146.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvreader[wIntelT]{appendices/opcode/60-opcode.csv}{}%
+{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+<BR><P></P>
+<DIV class="CENTER"><A ID="8467"></A>
+<TABLE>
+<CAPTION><STRONG>Table C.5:</STRONG>
+$80-$9F</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img147.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvreader[wIntelT]{appendices/opcode/80-opcode.csv}{}%
+{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+<BR><P></P>
+<DIV class="CENTER"><A ID="8473"></A>
+<TABLE>
+<CAPTION><STRONG>Table C.6:</STRONG>
+$A0-$BF</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img148.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvreader[wIntelT]{appendices/opcode/A0-opcode.csv}{}%
+{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+<BR><P></P>
+<DIV class="CENTER"><A ID="8479"></A>
+<TABLE>
+<CAPTION><STRONG>Table C.7:</STRONG>
+$C0-$DF</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img149.svg"
+ ALT="\begin{table}\centering\scriptsize
+\csvreader[wIntelT]{appendices/opcode/C0-opcode.csv}{}%
+{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+<BR><P></P>
+<DIV class="CENTER"><A ID="8485"></A>
 <TABLE>
 <CAPTION><STRONG>Table C.8:</STRONG>
 $E0-$FF</CAPTION>
-<TR><TD><IMG STYLE="height: 34.59ex; " SRC="img150.svg"
+<TR><TD><IMG STYLE=""
+ SRC="img150.svg"
  ALT="\begin{table}\centering\scriptsize
-\csvautotabular{appendices/opcode/e0-opcode.csv}
+\csvreader[wIntelT]{appendices/opcode/E0-opcode.csv}{}%
+{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
 \end{table}"></TD></TR>
 </TABLE>
 </DIV><P></P>
