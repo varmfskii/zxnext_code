@@ -1,4 +1,19 @@
 \section{Layer 1}
+\begin{table}[h]
+\caption{Layer 1 Mode summary}
+\centering
+\begin{tabular}{|l|c|c|c|}
+  \hline Mode & Resolution & Colour \\
+  \hline ULA & 256$\times$192 & ULA 8$\times$8\\
+  \hline Timex Alt & 256$\times$192 & ULA 8$\times$8\\
+  \hline HiCol & 256$\times$192 & ULA 8$\times$1\\
+  \hline HiRes & 512$\times$192 & 2 colours \\
+  \hline 128 Alt & 256$\times$192 & ULA 8$\times$8\\
+  \hline LoRes & 128$\times$96 & 256 colours \\
+  \hline Rad & 128$\times$96 & 16 colours \\\hline
+\end{tabular}
+\end{table}
+
 The Layer 1 consists of ZX Spectrum ULA video, Timex video modes, and
 the Spectrum Next’s lores video modes all use 16k memory bank 5 or 7
 with the data coming from some combination of addresses \$0000-\$17FF
@@ -10,6 +25,24 @@ some combination of memory \$4000-\$57FF, \$5800-\$5AFF,
 mode can either use the default ZX Spectrum colours, ULANext mode, or
 an emulation of ULAplus. In the Spectrum and Timex modes all colours are
 either Paper (foreground), paper (background), or border colours.
+
+\begin{table}[h]
+  \caption{Layer 1 Memory Map}
+  \centering
+  \begin{tabular}{| l | c | c | c | c | c | c |}
+    \hline & BM 1 & Attr 1 & BM 2 & Attr 2 & BM a & Attr a\\
+    \hline Bank & 5 & 5 & 5 & 5 & 7 & 7\\
+    start & \$0000 & \$1800 & \$2000 & \$3800 & \$0000 & \$1800\\
+    end & \$17FF & \$1AFF & \$37FF & \$3AFF & \$17FF & \$1AFF\\\hline
+    \hline ULA & * & * & & & &\\
+    \hline Timex Alt & & & * & * & &\\
+    \hline HiCol & * & & * & & &\\
+    \hline HiRes & * & & * & & &\\
+    \hline 128 Alt & & & & & * & *\\
+    \hline LoRes & * & & * & & &\\
+    \hline Rad & 1 & & 2 & & &\\\hline
+  \end{tabular}
+\end{table}
 
 \subsection{Colour Attributes}
 The ZX Spectrum Next has three major modes for colour attributes: the
@@ -128,6 +161,8 @@ lower range in the earlier version of the specification. It also means
 the standard palette can now be represented by the ULAplus palette.
 
 \subparagraph{Grayscale palette entries}
+This is an optional ULAPlus feature that is not supported on the Next.
+
 In grayscale mode, each palette entry describes an intensity from zero
 to 255. This can be achieved by simply removing the colour from the
 output signal.

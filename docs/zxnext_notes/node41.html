@@ -32,10 +32,10 @@
 <A
  HREF="node40.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html605"
+<A ID="tex2html607"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html607"
+<A ID="tex2html609"
   HREF="node199.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
@@ -45,9 +45,9 @@
  HREF="node36.html">Layer 3 (Tilemap) Mode</A>
 <B> Previous:</B> <A
  HREF="node40.html">Tile Definitions</A>
- &nbsp; <B>  <A ID="tex2html606"
-  HREF="node1.html">Contents</A></B> 
  &nbsp; <B>  <A ID="tex2html608"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html610"
   HREF="node199.html">Index</A></B> 
 <BR>
 <BR></DIV>
@@ -57,10 +57,10 @@
 Memory Organization &amp; Display Layer</A>
 </H2>
 The tilemap is a logical extension of the ULA and its data structures
-are contained in the ULAís 16k bank 5. If both the ULA and tilemap are
-enabled, this means that the tilemapís map and tile definitions should
-be arranged within the 16k to avoid overlap with the display ram used
-by the ULA.
+are contained in 16k banks 5 and 7 (first half only). If both the ULA
+and tilemap are enabled, this means that the tilemap's map and tile
+definitions should be arranged within the 24k to avoid overlap with
+the display ram used by the ULA.
 
 <P>
 The tilemap exists on the same display layer as the ULA. The graphics
