@@ -1,0 +1,20 @@
+\chapter{Serial Communication}
+
+The Spectrum Next has two independent fully featured UARTs. The UARTS
+share I/O ports so it is important to select the correct one before
+communicating with it. Each has its own 64 byte Tx buffer and 512 byte
+Rx buffer. One UART can be connected to either the ESP of joystick
+port while the other can be connected to the Raspberry Pi accelerator
+or joystick port. The UARTS are controlled using ports \$37, \$133B,
+\$143B, \$153B, and \$163B. The UARTs are connected to the IM2
+interrupt system.  Nextreg \$c6 allows interrupts to be enabled for
+the status of each UART. UART interrupts correspond to interrupts 1,
+2, 12, and 13 (see Interrupts).
+
+\input{ports/37.tex}
+\input{ports/133B.tex}
+\input{ports/143B.tex}
+\input{ports/153B.tex}
+\input{ports/163B.tex}
+\input{registers/tbblue/C0.tex}
+\input{registers/tbblue/C6.tex}

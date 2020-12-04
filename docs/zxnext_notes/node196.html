@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>esxDOS Compatible Calls</TITLE>
-<META NAME="description" CONTENT="esxDOS Compatible Calls">
+<TITLE>+3DOS compatible error codes</TITLE>
+<META NAME="description" CONTENT="+3DOS compatible error codes">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node197.html">
 <LINK REL="previous" HREF="node195.html">
 <LINK REL="next" HREF="node197.html">
 </HEAD>
@@ -26,60 +27,116 @@
  HREF="node197.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node193.html">
+ HREF="node194.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node195.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1451"
+<A ID="tex2html1453"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1453"
-  HREF="node199.html">
+<A ID="tex2html1455"
+  HREF="node200.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node197.html">List of Figures</A>
+ HREF="node197.html">esxDOS Compatible Calls</A>
 <B> Up:</B> <A
- HREF="node193.html">NextZXOS Calls</A>
+ HREF="node194.html">NextZXOS Calls</A>
 <B> Previous:</B> <A
- HREF="node195.html">+3DOS compatible error codes</A>
- &nbsp; <B>  <A ID="tex2html1452"
-  HREF="node1.html">Contents</A></B> 
+ HREF="node195.html">+3DOS Compatible Calls</A>
  &nbsp; <B>  <A ID="tex2html1454"
-  HREF="node199.html">Index</A></B> 
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1456"
+  HREF="node200.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION001633000000000000000">
-esxDOS Compatible Calls</A>
+<H2><A ID="SECTION001732000000000000000">
++3DOS compatible error codes</A>
 </H2>
 
 <P>
-<SPAN  CLASS="textbf">Low-level calls</SPAN>
+<SPAN  CLASS="textbf">Recoverable disk errors</SPAN>
 
 <P>
 <TABLE class="PAD " style="">
-<TR><TD CLASS="LEFT">disk_filemap</TD>
-<TD CLASS="LEFT">$85 (85)</TD>
-<TD CLASS="LEFT">obtain file allocation map</TD>
+<TR><TD CLASS="LEFT">0</TD>
+<TD CLASS="LEFT">rc_ready</TD>
+<TD CLASS="LEFT">Drive not ready</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">disk_strmstart</TD>
-<TD CLASS="LEFT">$86 (86)</TD>
-<TD CLASS="LEFT">start streaming operation</TD>
+<TR><TD CLASS="LEFT">1</TD>
+<TD CLASS="LEFT">rc_wp</TD>
+<TD CLASS="LEFT">Disk is write protected</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">disk_strmend</TD>
-<TD CLASS="LEFT">$87 (87)</TD>
-<TD CLASS="LEFT">end streaming operation</TD>
+<TR><TD CLASS="LEFT">2</TD>
+<TD CLASS="LEFT">rc_seek</TD>
+<TD CLASS="LEFT">Seek fail</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">3</TD>
+<TD CLASS="LEFT">rc_crc</TD>
+<TD CLASS="LEFT">CRC data error</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">4</TD>
+<TD CLASS="LEFT">rc_nodata</TD>
+<TD CLASS="LEFT">No data</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">5</TD>
+<TD CLASS="LEFT">rc_mark</TD>
+<TD CLASS="LEFT">Missing address mark</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">6</TD>
+<TD CLASS="LEFT">rc_unrecog</TD>
+<TD CLASS="LEFT">Unrecognised disk format</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">7</TD>
+<TD CLASS="LEFT">rc_unknown</TD>
+<TD CLASS="LEFT">Unknown disk error</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">8</TD>
+<TD CLASS="LEFT">rc_diskchg</TD>
+<TD CLASS="LEFT">Disk changed whilst +3DOS was using it</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">9</TD>
+<TD CLASS="LEFT">rc_unsuit</TD>
+<TD CLASS="LEFT">Unsuitable media for drive</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
@@ -88,101 +145,141 @@ esxDOS Compatible Calls</A>
 </TABLE>
 
 <P>
-<SPAN  CLASS="textbf">Miscellaneous calls</SPAN>
+<SPAN  CLASS="textbf">Non-recoverable errors</SPAN>
 
 <P>
 <TABLE class="PAD " style="">
-<TR><TD CLASS="LEFT">m_dosversion</TD>
-<TD CLASS="LEFT">$88 (88)</TD>
-<TD CLASS="LEFT">get NextZXOS version/mode information</TD>
+<TR><TD CLASS="LEFT">20</TD>
+<TD CLASS="LEFT">rc_badname</TD>
+<TD CLASS="LEFT">Bad filename</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">m_getsetdrv</TD>
-<TD CLASS="LEFT">$89 (89)</TD>
-<TD CLASS="LEFT">get/set default drive</TD>
+<TR><TD CLASS="LEFT">21</TD>
+<TD CLASS="LEFT">rc_badparam</TD>
+<TD CLASS="LEFT">Bad parameter</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">m_tapein</TD>
-<TD CLASS="LEFT">$8B (8B)</TD>
-<TD CLASS="LEFT">tape redirection control (input)</TD>
+<TR><TD CLASS="LEFT">22</TD>
+<TD CLASS="LEFT">rc_nodrive</TD>
+<TD CLASS="LEFT">Drive not found</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">m_tapeout</TD>
-<TD CLASS="LEFT">$8C (8C)</TD>
-<TD CLASS="LEFT">tape redirection control (output)</TD>
+<TR><TD CLASS="LEFT">23</TD>
+<TD CLASS="LEFT">rc_nofile</TD>
+<TD CLASS="LEFT">File not found</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">m_gethandle</TD>
-<TD CLASS="LEFT">$8D (8D)</TD>
-<TD CLASS="LEFT">get handle for current dot command</TD>
+<TR><TD CLASS="LEFT">24</TD>
+<TD CLASS="LEFT">rc_exists</TD>
+<TD CLASS="LEFT">File already exists</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">m_getdate</TD>
-<TD CLASS="LEFT">$8E (8E)</TD>
-<TD CLASS="LEFT">get current date/time</TD>
+<TR><TD CLASS="LEFT">25</TD>
+<TD CLASS="LEFT">rc_eof</TD>
+<TD CLASS="LEFT">End of file</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">m_execcmd</TD>
-<TD CLASS="LEFT">$8F (8F)</TD>
-<TD CLASS="LEFT">execute a dot command</TD>
+<TR><TD CLASS="LEFT">26</TD>
+<TD CLASS="LEFT">rc_diskfull</TD>
+<TD CLASS="LEFT">Disk full</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">m_setcaps</TD>
-<TD CLASS="LEFT">$91 (91)</TD>
-<TD CLASS="LEFT">set additional capabilities</TD>
+<TR><TD CLASS="LEFT">27</TD>
+<TD CLASS="LEFT">rc_dirfull</TD>
+<TD CLASS="LEFT">Directory full</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">m_drvapi</TD>
-<TD CLASS="LEFT">$92 (92)</TD>
-<TD CLASS="LEFT">access API for installable drivers</TD>
+<TR><TD CLASS="LEFT">28</TD>
+<TD CLASS="LEFT">rc_ro</TD>
+<TD CLASS="LEFT">Read-only file</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">m_geterr</TD>
-<TD CLASS="LEFT">$93 (93)</TD>
-<TD CLASS="LEFT">get or generate error message</TD>
+<TR><TD CLASS="LEFT">29</TD>
+<TD CLASS="LEFT">rc_number</TD>
+<TD CLASS="LEFT">File number not open (or open with wrong access)</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">m_p3dos</TD>
-<TD CLASS="LEFT">$94 (94)</TD>
-<TD CLASS="LEFT">execute +3DOS/IDEDOS/NextZXOS call</TD>
+<TR><TD CLASS="LEFT">30</TD>
+<TD CLASS="LEFT">rc_denied</TD>
+<TD CLASS="LEFT">Access denied</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">m_errh</TD>
-<TD CLASS="LEFT">$95 (95)</TD>
-<TD CLASS="LEFT">register dot command error handler</TD>
+<TR><TD CLASS="LEFT">31</TD>
+<TD CLASS="LEFT">rc_norename</TD>
+<TD CLASS="LEFT">Cannot rename between drives</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">32</TD>
+<TD CLASS="LEFT">rc_extent</TD>
+<TD CLASS="LEFT">Extent missing</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">33</TD>
+<TD CLASS="LEFT">rc_uncached</TD>
+<TD CLASS="LEFT">Uncached</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">34</TD>
+<TD CLASS="LEFT">rc_toobig</TD>
+<TD CLASS="LEFT">File too big</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">35</TD>
+<TD CLASS="LEFT">rc_notboot</TD>
+<TD CLASS="LEFT">Disk not bootable</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">36</TD>
+<TD CLASS="LEFT">rc_inuse</TD>
+<TD CLASS="LEFT">Drive in use</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
@@ -191,203 +288,122 @@ esxDOS Compatible Calls</A>
 </TABLE>
 
 <P>
-<SPAN  CLASS="textbf">File calls</SPAN>
-
-<P>
 <TABLE class="PAD " style="">
-<TR><TD CLASS="LEFT">f_open</TD>
-<TD CLASS="LEFT">$9A (9A)</TD>
-<TD CLASS="LEFT">open file</TD>
+<TR><TD CLASS="LEFT">56</TD>
+<TD CLASS="LEFT">rc_invpartition</TD>
+<TD CLASS="LEFT">Invalid partition</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">f_close</TD>
-<TD CLASS="LEFT">$9B (9B)</TD>
-<TD CLASS="LEFT">close file</TD>
+<TR><TD CLASS="LEFT">57</TD>
+<TD CLASS="LEFT">rc_partexist</TD>
+<TD CLASS="LEFT">Partition already exists</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">f_sync</TD>
-<TD CLASS="LEFT">$9C (9C)</TD>
-<TD CLASS="LEFT">sync file changes to disk</TD>
+<TR><TD CLASS="LEFT">58</TD>
+<TD CLASS="LEFT">rc_notimp</TD>
+<TD CLASS="LEFT">Not implemented</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">f_read</TD>
-<TD CLASS="LEFT">$9D (9D)</TD>
-<TD CLASS="LEFT">read file</TD>
+<TR><TD CLASS="LEFT">59</TD>
+<TD CLASS="LEFT">rc_partopen</TD>
+<TD CLASS="LEFT">Partition open</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">f_write</TD>
-<TD CLASS="LEFT">$9E (9E)</TD>
-<TD CLASS="LEFT">write file</TD>
+<TR><TD CLASS="LEFT">60</TD>
+<TD CLASS="LEFT">rc_nohandle</TD>
+<TD CLASS="LEFT">Out of handles</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">f_seek</TD>
-<TD CLASS="LEFT">$9F (9F)</TD>
-<TD CLASS="LEFT">set file position</TD>
+<TR><TD CLASS="LEFT">61</TD>
+<TD CLASS="LEFT">rc_notswap</TD>
+<TD CLASS="LEFT">Not a swap partition</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">f_fgetpos</TD>
-<TD CLASS="LEFT">$A0 (A0)</TD>
-<TD CLASS="LEFT">get file position</TD>
+<TR><TD CLASS="LEFT">62</TD>
+<TD CLASS="LEFT">rc_mapped</TD>
+<TD CLASS="LEFT">Drive already mapped</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">f_fstat</TD>
-<TD CLASS="LEFT">$A1 (A1)</TD>
-<TD CLASS="LEFT">get open file information</TD>
+<TR><TD CLASS="LEFT">63</TD>
+<TD CLASS="LEFT">rc_noxdpb</TD>
+<TD CLASS="LEFT">No XDPB</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">f_ftruncate</TD>
-<TD CLASS="LEFT">$A2 (A2)</TD>
-<TD CLASS="LEFT">truncate/extend open file</TD>
+<TR><TD CLASS="LEFT">64</TD>
+<TD CLASS="LEFT">rc_noswap</TD>
+<TD CLASS="LEFT">No suitable swap partition</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">f_opendir</TD>
-<TD CLASS="LEFT">$A3 (A3)</TD>
-<TD CLASS="LEFT">open directory for reading</TD>
+<TR><TD CLASS="LEFT">65</TD>
+<TD CLASS="LEFT">rc_invdevice</TD>
+<TD CLASS="LEFT">Invalid device</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">f_readdir</TD>
-<TD CLASS="LEFT">$A4 (A4)</TD>
-<TD CLASS="LEFT">read directory entry</TD>
+<TR><TD CLASS="LEFT">67</TD>
+<TD CLASS="LEFT">rc_cmdphase</TD>
+<TD CLASS="LEFT">Command phase error</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">f_telldir</TD>
-<TD CLASS="LEFT">$A5 (A5)</TD>
-<TD CLASS="LEFT">get directory position</TD>
+<TR><TD CLASS="LEFT">68</TD>
+<TD CLASS="LEFT">rc_dataphase</TD>
+<TD CLASS="LEFT">Data phase error</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">f_seekdir</TD>
-<TD CLASS="LEFT">$A6 (A6)</TD>
-<TD CLASS="LEFT">set directory position</TD>
+<TR><TD CLASS="LEFT">69</TD>
+<TD CLASS="LEFT">rc_notdir</TD>
+<TD CLASS="LEFT">Not a directory</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
-<TR><TD CLASS="LEFT">f_rewinddir</TD>
-<TD CLASS="LEFT">$A7 (A7)</TD>
-<TD CLASS="LEFT">rewind to start of directory</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_getcwd</TD>
-<TD CLASS="LEFT">$A8 (A8)</TD>
-<TD CLASS="LEFT">get current working directory</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_chdir</TD>
-<TD CLASS="LEFT">$A9 (A9)</TD>
-<TD CLASS="LEFT">change directory</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_mkdir</TD>
-<TD CLASS="LEFT">$AA (AA)</TD>
-<TD CLASS="LEFT">make directory</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_rmdir</TD>
-<TD CLASS="LEFT">$AB (AB)</TD>
-<TD CLASS="LEFT">remove directory</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_stat</TD>
-<TD CLASS="LEFT">$AC (AC)</TD>
-<TD CLASS="LEFT">get unopen file information</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_unlink</TD>
-<TD CLASS="LEFT">$AD (AD)</TD>
-<TD CLASS="LEFT">delete file</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_truncate</TD>
-<TD CLASS="LEFT">$AE (AE)</TD>
-<TD CLASS="LEFT">truncate/extend unopen file</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_chmod</TD>
-<TD CLASS="LEFT">$AF (AF)</TD>
-<TD CLASS="LEFT">change file attributes</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_rename</TD>
-<TD CLASS="LEFT">$B0 (B0)</TD>
-<TD CLASS="LEFT">rename/move file</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_getfree</TD>
-<TD CLASS="LEFT">$B1 (B1)</TD>
-<TD CLASS="LEFT">get free space</TD>
+<TR><TD CLASS="LEFT">74</TD>
+<TD CLASS="LEFT">rc_fragmented</TD>
+<TD CLASS="LEFT">File is fragmented, use .DEFRAG</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 <TD CLASS="LEFT">&nbsp;</TD>
 </TR>
 </TABLE>
+
+<P>
 
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
@@ -395,28 +411,28 @@ esxDOS Compatible Calls</A>
  HREF="node197.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node193.html">
+ HREF="node194.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node195.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1451"
+<A ID="tex2html1453"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1453"
-  HREF="node199.html">
+<A ID="tex2html1455"
+  HREF="node200.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node197.html">List of Figures</A>
+ HREF="node197.html">esxDOS Compatible Calls</A>
 <B> Up:</B> <A
- HREF="node193.html">NextZXOS Calls</A>
+ HREF="node194.html">NextZXOS Calls</A>
 <B> Previous:</B> <A
- HREF="node195.html">+3DOS compatible error codes</A>
- &nbsp; <B>  <A ID="tex2html1452"
-  HREF="node1.html">Contents</A></B> 
+ HREF="node195.html">+3DOS Compatible Calls</A>
  &nbsp; <B>  <A ID="tex2html1454"
-  HREF="node199.html">Index</A></B> </DIV>
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1456"
+  HREF="node200.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

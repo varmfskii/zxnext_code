@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Raspberry Pi0 Acceleration</TITLE>
-<META NAME="description" CONTENT="Raspberry Pi0 Acceleration">
+<TITLE>Serial Communication</TITLE>
+<META NAME="description" CONTENT="Serial Communication">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -32,338 +32,250 @@
 <A
  HREF="node133.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1129"
+<A ID="tex2html1131"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1131"
-  HREF="node199.html">
+<A ID="tex2html1133"
+  HREF="node200.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node135.html">System Software</A>
+ HREF="node135.html">Raspberry Pi0 Acceleration</A>
 <B> Up:</B> <A
  HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
  HREF="node133.html">Programming</A>
- &nbsp; <B>  <A ID="tex2html1130"
-  HREF="node1.html">Contents</A></B> 
  &nbsp; <B>  <A ID="tex2html1132"
-  HREF="node199.html">Index</A></B> 
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1134"
+  HREF="node200.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
 <H1><A ID="SECTION00900000000000000000">
-Raspberry Pi0 Acceleration</A>
+Serial Communication</A>
 </H1>
-The Spectrum Next has a header (with male pins) which can be attached
-to a Raspberry Pi Zero. There is a modified version of DietPi called
-NextPi which is the standard distro for the Raspberry Pi0
-accelerator. Software for the general public should be written
-assuming that it will be interfacing with a Pi0 running this distro.
 
 <P>
-If you are more adventurous, you may choose to use another distro, or
-even another accelerator that uses the Raspberry Pi style (40 pin)
-expansion bus.  Chief concers when doing this is that you have a
-console presented on the UART that defaults to 115,200 bps, you don't
-need to login, the machine is configured with a driver to treat the
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
- ALT="$I^2S$"></SPAN> interface as a sound card, and the presence of the nextpi
-scripts.
+The Spectrum Next has two independent fully featured UARTs. The UARTS
+share I/O ports so it is important to select the correct one before
+communicating with it. Each has its own 64 byte Tx buffer and 512 byte
+Rx buffer. One UART can be connected to either the ESP of joystick
+port while the other can be connected to the Raspberry Pi accelerator
+or joystick port. The UARTS are controlled using ports $37, $133B,
+$143B, $153B, and $163B. The UARTs are connected to the IM2
+interrupt system.  Nextreg $c6 allows interrupts to be enabled for
+the status of each UART. UART interrupts correspond to interrupts 1,
+2, 12, and 13 (see Interrupts).
 
 <P>
-The Raspberry Pi 0 has a Broadcom BCM2835 SoC with an ARMv6 core, a
-Videocore 4 GPU, and its own 512 MB memory and HDMI output. It has its
-own SD card from which it boots. For this application the Pi 0 ships
-with a 1GB microSD card containing NextPi a customized version of
-DietPi.
+Port $37 (37) Kempston/Mega Drive Joystick 2
+<BR>
+Read
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = &rdquo;start&rdquo; button</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = A/X button</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = C/Z button</td></tr>
+<tr><td valign="top">&nbsp;bit 4 = Fire/C/Y button</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Up</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = Down</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Left</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Right
+</td></tr></table>
+
+Disable with Nextreg $05
+<BR>
+Write ($00 on reset, 3.01.04)
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Select I/O Mode
+  <table width="90%">  <tr><td valign="top">&nbsp;00 = Bit Bang
+  </td></tr>
+<tr><td valign="top">&nbsp;01 = Clock
+  </td></tr>
+<tr><td valign="top">&nbsp;10 = UART
+  </td></tr>
+<tr><td valign="top">&nbsp;11 = Reserved (don't use)
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = Reserved, must be 0</td></tr>
+<tr><td valign="top">&nbsp;bit 4 = Select Joystick Port for Read
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = Left
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = Right
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bits 3-1 = Reserved, must be $00</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Pin 7 state (both ports)
+  
+<UL>
+<LI>Bit Bang - bit 0 on pin 7
+</LI>
+<LI>Clock - clock on pin 7
+<BR>
+0 = Slow clock (Fsys/2048 = 12.672 kHz)
+<BR>
+1 = Fast clock (Fsys/8 = 3.5 MHz)
+</LI>
+<LI>UART - Pin 7 = TX, Pin 9 = RX
+    0 = ESP
+<BR>
+1 = Pi
+  
+</LI>
+</UL></td></tr></table>
+
+** A Runt clock may appear in the first cycle
+<BR>
+The I/O mode should be set by writing this port first followed by
+enabling io mo de on the joysticks with a write to nextreg 0x05.
 
 <P>
-The Pi Zero, if installed, is a smart peripheral for the ZX Spectrum
-Next. Available interfaces are: low level access to the GPIO pins,
-higher level access to standardized I/O interfaces, and use of the Pi
-Zero as a sound card.
+Port $133B (133B) UART tx
+<BR>
+Read: UART Status
+<BR><table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Reserved (0)</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = UART at least half full (3.01.09)</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = UART full</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = UART transmit busy</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = UART receive has data
+</td></tr></table>
+
+Write: UART Transmit
 
 <P>
-When using the low level GPIO interface Pi Zero GPIO pins 2-27 can be
-configured as either inputs or outputs using nextregs $90-$93. If
-they are outputs, the output state can be set by writing to nextregs
-$98-$9b. The current status of the GPIO pins can be read from
-nextregs $98-$9b whether it is the state driven by the ZX Spectrum
-Next or the state drive by some other peripherial attached to the bus
-(normally the Raspberry Pi Zero).
-
-<P>
-Standardized I/O access with the Pi Zero can use the <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img57.svg"
- ALT="$I^2C$"></SPAN>, SPI, or
-UART interfaces and is configured using nextreg $a0. Any enabled port
-will disable low level (write) access to the corresponding GPIO
-pins.
-
-<P>
-The <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img57.svg"
- ALT="$I^2C$"></SPAN> interface is controlled using ports $103b (SCL) and $113b
-(SDA). This is the same <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img57.svg"
- ALT="$I^2C$"></SPAN> interface that is used for the optional
-Real Time Clock. Interfacing with the Pi Zero over <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img57.svg"
- ALT="$I^2C$"></SPAN> is
-complicated by the fact that it is a master/slave interface, but both
-the ZX Spectrum Next and Pi Zero are configured to be bus masters.
-
-<P>
-The SPI interface is controlled using ports $e7 (/CS) and $eb
-(/DATA). The SPI interface is shared between the SD card(s), the flash
-memory, and the Pi Zero. Interfacing with the Pi Zero over SPI is
-complicated by the fact it is a master/slave interface and both the ZX
-Spectrum Next and Pi Zero are configured to be bus masters.
-
-<P>
-The UART interface is controlled by ports $133b (TX), $143b (RX),
-and $153b (control). This is the default means of bidirectional
-communication between the ZX Spectrum Next and Pi Zero. To use the
-UART you must first enable the UART on the GPIO and connecting it to
-the Pi Zero (not hats) by setting nextreg $a0 bits 5 and 4 to 1 and
-selecting Pi for the UART by setting port $153b bit 6 to 1. Assuming
-that the serial parameters match (by default both ends are set to
-115,200 bps with 8N1 and no flow control) this will give you access to
-the serial console on the Pi Zero over the UART.
-
-<P>
-<PRE>
-;; enable UART connection with Pi Zero
-   ld c,$3b
-   ld b,$15 ; UART control
-;; select Pi on UART control
-   in a,(c)
-   or $40
-   out (c),a
-   ld b,$24 ; Next Register Select
-   ld a,$a0
-   out (c),a
-   inc b ; Next Register Data
-;; Enable UART on GPIO and select Pi
-   in a,(c)
-   or $30
-   out (c),a
-</PRE>
-
-<P>
-The <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
- ALT="$I^2S$"></SPAN> sound interface between the ZX Spectrum Next and the Pi Zero
-is controlled by nextregs $a2 and $a3. Normally, one would control
-the Pi through some other channel such as the UART recieve audio from
-the Pi to either use as a fulloy programmable sound card or to allow
-loading of tape files on the ZX Spectrum Next.
-
-<P>
-(R/W) $90 (144) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> PI GPIO Output Enable 0
-<table width="90%">
-bit 7 = Pi GPIO 7
-bit 6 = Pi GPIO 6
-bit 5 = Pi GPIO 5
-bit 4 = Pi GPIO 4
-bit 3 = Pi GPIO 3
-bit 2 = Pi GPIO 2
-bit 1 = Pi GPIO 1 (cannot be enabled)
-bit 0 = Pi GPIO 0 (cannot be enabled)<tr><td valign="top">&nbsp;$00 on soft reset
+Port $143B (143B) UART rx
+<BR>
+Read: UART Receive
+<BR>
+Write: UART Prescalar
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = select prescalar part
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = Bits 6-0 of prescalar
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = Bits 13-7 of prescalar
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bits 6-0 = Prescalar bits
 </td></tr></table>
 
 <P>
-(R/W) $91 (145) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> PI GPIO Output Enable 1
-<table width="90%">
-bit 7 = Pi GPIO 15
-bit 6 = Pi GPIO 14
-bit 5 = Pi GPIO 13
-bit 4 = Pi GPIO 12
-bit 3 = Pi GPIO 11
-bit 2 = Pi GPIO 10
-bit 1 = Pi GPIO 9
-bit 0 = Pi GPIO 8<tr><td valign="top">&nbsp;$00 on soft reset
+Port $153B (153B) UART select
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Reserved (0)</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = UART select (0 on soft reset) **
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = ESP
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = Pi *
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = Reserved (0)</td></tr>
+<tr><td valign="top">&nbsp;bit 4 = Prescalar valid in this write</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Reserved (0)</td></tr>
+<tr><td valign="top">&nbsp;bits 2-0 = Bits 16-14 of prescalar (0 on hard reset)
 </td></tr></table>
 
-<P>
-(R/W) $92 (146) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> PI GPIO Output Enable 2
-<table width="90%">
-bit 7 = Pi GPIO 23
-bit 6 = Pi GPIO 22
-bit 5 = Pi GPIO 21
-bit 4 = Pi GPIO 20
-bit 3 = Pi GPIO 19
-bit 2 = Pi GPIO 18
-bit 1 = Pi GPIO 17
-bit 0 = Pi GPIO 16<tr><td valign="top">&nbsp;$00 on soft reset
-</td></tr></table>
+* Pi GPIO must be configured for UART, see nextreg $A0
+<BR>** Either UART can be redirected to the joystick ports, see port $037
 
 <P>
-(R/W) $93 (147) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> PI GPIO Output Enable 3
-<table width="90%">
-bits 7-4 = Reserved, must be 0
-bit 3 = Pi GPIO 27
-bit 2 = Pi GPIO 26
-bit 1 = Pi GPIO 25
-bit 0 = Pi GPIO 24<tr><td valign="top">&nbsp;$00 on soft reset
+Port $153B (153B) UART frame (upcoming)
+<BR>($18 on hard reset)
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Immediately reset Rx and Tx to idle and empty FIFOs</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = Assert break (Tx=0) when Tx reaches idle</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = Enable hardware flow control *</td></tr>
+<tr><td valign="top">&nbsp;bits 4-3 = Number of bits in a frame
+  <table width="90%">  <tr><td valign="top">&nbsp;00 = 5 bits
+  </td></tr>
+<tr><td valign="top">&nbsp;01 = 6 bits
+  </td></tr>
+<tr><td valign="top">&nbsp;10 = 7 bits
+  </td></tr>
+<tr><td valign="top">&nbsp;11 = 8 bits
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = Enable parity</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Parity
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = Even parity
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = Odd parity
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Number of stop bits
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = 1 stop bit
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = 2 stop bits
+  </td></tr></table>
 </td></tr></table>
 
-<P>
-(R/W) $98 (152) <SPAN CLASS="MATH"><IMG STYLE=""
+Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> PI GPIO 0
-<table width="90%">
-bit 7 = Pi GPIO 7
-bit 6 = Pi GPIO 6
-bit 5 = Pi GPIO 5
-bit 4 = Pi GPIO 4
-bit 3 = Pi GPIO 3
-bit 2 = Pi GPIO 2
-bit 1 = Pi GPIO 1 (read only)
-bit 0 = Pi GPIO 0 (read only)<tr><td valign="top">&nbsp;$ff on soft reset
-</td></tr></table>
-
-<P>
-(R/W) $99 (153) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> PI GPIO 1
-<table width="90%">
-bit 7 = Pi GPIO 15
-bit 6 = Pi GPIO 14
-bit 5 = Pi GPIO 13
-bit 4 = Pi GPIO 12
-bit 3 = Pi GPIO 11
-bit 2 = Pi GPIO 10
-bit 1 = Pi GPIO 9
-bit 0 = Pi GPIO 8<tr><td valign="top">&nbsp;$01 on soft reset
-</td></tr></table>
-
-<P>
-(R/W) $9A (154) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> PI GPIO 2
-<table width="90%">
-bit 7 = Pi GPIO 23
-bit 6 = Pi GPIO 22
-bit 5 = Pi GPIO 21
-bit 4 = Pi GPIO 20
-bit 3 = Pi GPIO 19
-bit 2 = Pi GPIO 18
-bit 1 = Pi GPIO 17
-bit 0 = Pi GPIO 16<tr><td valign="top">&nbsp;$00 on soft reset
-</td></tr></table>
-
-<P>
-(R/W) $9B (155) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> PI GPIO 3
-<table width="90%">
-bits 7-4 = Reserved, must be 0
-bit 3 = Pi GPIO 27
-bit 2 = Pi GPIO 26
-bit 1 = Pi GPIO 25
-bit 0 = Pi GPIO 24<tr><td valign="top">&nbsp;$00 on soft reset
-</td></tr></table>
-
-<P>
-(R/W) $A0 (160) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> PI Peripheral Enable
+ ALT="$\Rightarrow$"></SPAN> Interrupt Control (3.01.09)
+<BR>($00 on reset)
 
 <UL>
-<LI>bits 7-6 = Reserved, must be 0
+<LI>bits 7-5 = Programmable portion of IM2 vector *
 </LI>
-<LI>bit 5 = Enable UART on GPIO 14,15 (overrides gpio) (soft reset
-  = 0)
+<LI>bit 4 = Reserved, must be 0
 </LI>
-<LI>bit 4 = 0 to connect Rx to GPIO 15, Tx to GPIO 14 (for comm
-  with pi hats) (soft reset = 0) = 1 to connect Rx to GPIO 14, Tx to
-  GPIO 15 (for comm with pi)
-</LI>
-<LI>bit 3 = Enable <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img57.svg"
- ALT="$I^2C$"></SPAN> on GPIO 2,3 (override gpio) (soft reset =
-  0)
+<LI>bit 3 = Enable stackless <!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> response
 </LI>
 <LI>bits 2-1 = Reserved, must be 0
 </LI>
-<LI>bit 0 = Enable SPI on GPIO 7,8,9,10,11 (overrides gpio) (soft
-  reset = 0)
+<LI>bit 0 = Maskable interrupt mode
+<table width="90%"><tr><td valign="top">&nbsp;0 - pulse</td></tr>
+<tr><td valign="top">&nbsp;1 - IM2
+</td></tr></table>
 </LI>
 </UL>
-
-<P>
-(R/W) $A2 (162) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> PI <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
- ALT="$I^2S$"></SPAN> Audio Control
+* In IM2 mode vector generated is:
 
 <UL>
-<LI>bits 7-6 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
- ALT="$I^2S$"></SPAN> enable (soft reset = 00)
-  
-<UL>
-<LI>00 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
- ALT="$I^2S$"></SPAN> off
+<LI>bits 7-5 = nextreg $C0 bits 7-5
 </LI>
-<LI>01 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
- ALT="$I^2S$"></SPAN> is mono source right
-</LI>
-<LI>10 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
- ALT="$I^2S$"></SPAN> is mono source left
-</LI>
-<LI>11 = <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
- ALT="$I^2S$"></SPAN> is stereo
-  
-</LI>
-</UL>
-</LI>
-<LI>bit 5 = Reserved, must be 0
-</LI>
-<LI>bit 4 = 0 PCM_DOUT to pi, PCM_DIN from pi (hats) (soft reset
-  = 0) = 1 PCM_DOUT from pi, PCM_DIN to pi (pi)
-</LI>
-<LI>bit 3 = Mute left side (soft reset = 0)
-</LI>
-<LI>bit 2 = Mute right side (soft reset = 0)
-</LI>
-<LI>bit 1 = Slave mode (PCM_CLK, PCM_FS supplied externally)
-  (soft reset = 0)
-</LI>
-<LI>bit 0 = Direct <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
- ALT="$I^2S$"></SPAN> audio to EAR on port $FE (soft reset = 0)
-</LI>
-</UL>
-
-<P>
-(R/W) $A3 (163) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> PI <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img56.svg"
- ALT="$I^2S$"></SPAN> Clock Divide (Master Mode)
-<table width="90%">
-bits 7-0 = Clock divide sets sample rate when in master mode
-  (soft reset = 11)<tr><td valign="top">&nbsp;clock divider = 538461 / SampleRateHz - 1
+<LI>bits 4-1 = Interrupt source
+<table width="90%"><tr><td valign="top">&nbsp;0 - line interrupt (highest priority)</td></tr>
+<tr><td valign="top">&nbsp;1 - UART 0 Rx</td></tr>
+<tr><td valign="top">&nbsp;2 - UART 1 Rx</td></tr>
+<tr><td valign="top">&nbsp;3&ndash;10 - CTC channels 0-7</td></tr>
+<tr><td valign="top">&nbsp;11 - ULA</td></tr>
+<tr><td valign="top">&nbsp;12 - UART 0 Tx</td></tr>
+<tr><td valign="top">&nbsp;13 - UART 1 Tx (lowest priority)
 </td></tr></table>
 
+</LI>
+<LI>bit 0 = 0
+</LI>
+</UL>
+
+<P>
+Register (W) $C6 (C6) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Interrupt Enable 2 (3.01.08)
+<BR>($00 on reset)
+
+<UL>
+<LI>bit 7 = Reserved, must be 0
+</LI>
+<LI>bit 6 = UART1 Tx empty
+</LI>
+<LI>bit 5 = UART1 Rx half full *
+</LI>
+<LI>bit 4 = UART1 Rx available *
+</LI>
+<LI>bit 3 = Reserved, must be 0
+</LI>
+<LI>bit 2 = UART0 Tx empty
+</LI>
+<LI>bit 1 = UART0 Rx half full *
+</LI>
+<LI>bit 0 = UART0 Rx available *
+</LI>
+</UL>
+* For each UART, Rx half full and Rx available are shared interrupts
+
+<P>
 
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
@@ -376,23 +288,23 @@ bits 7-0 = Clock divide sets sample rate when in master mode
 <A
  HREF="node133.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1129"
+<A ID="tex2html1131"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1131"
-  HREF="node199.html">
+<A ID="tex2html1133"
+  HREF="node200.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node135.html">System Software</A>
+ HREF="node135.html">Raspberry Pi0 Acceleration</A>
 <B> Up:</B> <A
  HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
  HREF="node133.html">Programming</A>
- &nbsp; <B>  <A ID="tex2html1130"
-  HREF="node1.html">Contents</A></B> 
  &nbsp; <B>  <A ID="tex2html1132"
-  HREF="node199.html">Index</A></B> </DIV>
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1134"
+  HREF="node200.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

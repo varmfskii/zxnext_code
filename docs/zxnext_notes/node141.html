@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Character I/O Functions</TITLE>
-<META NAME="description" CONTENT="Character I/O Functions">
+<TITLE>System Initialization Functions</TITLE>
+<META NAME="description" CONTENT="System Initialization Functions">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,215 +27,128 @@
  HREF="node142.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node139.html">
+ HREF="node140.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node140.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1183"
+<A ID="tex2html1185"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1185"
-  HREF="node199.html">
+<A ID="tex2html1187"
+  HREF="node200.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node142.html">Disk I/O Functions</A>
+ HREF="node142.html">Character I/O Functions</A>
 <B> Up:</B> <A
- HREF="node139.html">BIOS</A>
+ HREF="node140.html">BIOS</A>
 <B> Previous:</B> <A
- HREF="node140.html">System Initialization Functions</A>
- &nbsp; <B>  <A ID="tex2html1184"
-  HREF="node1.html">Contents</A></B> 
+ HREF="node140.html">BIOS</A>
  &nbsp; <B>  <A ID="tex2html1186"
-  HREF="node199.html">Index</A></B> 
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1188"
+  HREF="node200.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H3><A ID="SECTION001013200000000000000">
-Character I/O Functions</A>
+<H3><A ID="SECTION001113100000000000000">
+System Initialization Functions</A>
 </H3>
-This section defines the CP/M 3 character I/O routines CONST, CONIN,
-CONOUT, LIST, AUXOUT, AUXIN, LISTST, CONOST, AUXIST, and AUXOST.  CP/M
-3 assumes all simple character I/O operations are performed in
-eight-bit ASCII, upper and lowercase, with no parity. An ASCII CTRL-Z
-($1a) denotes an end-of-file condition for an input device.
+This section defines the BIOS system initialization routines BOOT,
+WBOOT, DEVTBL, DEVINI, and DRVTBL.
 
 <P>
-In CP/M 3, you can direct each of the five logical character devices
-to any combination of up to twelve physical devices. Each of the five
-logical devices has a 16-bit vector in the System Control Block (SCB)
-. Each bit of the vector represents a physical device where bit 15
-corresponds to device zero, and bit 4 is device eleven. Bits 0 through
-3 are reserved for future system use.
+<A NAME="3893"></A>
+BIOS Function 0: BOOT
 
 <P>
-<A NAME="3735"></A>
-BIOS Function 2: CONST
-
-<P>
-Sample the Status of the Console Input Device
+Get Control from Cold Start Loader and Initialize System
 <BR>
 Entry Parameters: None
-<BR>
-Returned value:
-<table width="90%"><tr><td valign="top">&nbsp;A=$ff if a console character is ready to read</td></tr>
-<tr><td valign="top">&nbsp;A=$00 if no console character is ready to read
-</td></tr></table>
-
-<P>
-Read the status of the currently assigned console device and return
-$ff in register A if a character is ready to read, and $ff in
-register A if no console characters are ready.
-
-<P>
-<A NAME="3738"></A>
-BIOS Function 3: CONIN
-
-<P>
-Read a Character from the Console
-<BR>
-Entry Parameters: None
-<BR>
-Returned Values: A=Console Character
-
-<P>
-Read the next console character into register A with no parity. If no
-console character is ready, wait until a character is available before
-returning.
-
-<P>
-<A NAME="3739"></A>
-BIOS Function 4: CONOUT
-
-<P>
-Output Character to Console
-<BR>
-Entry Parameters: C=Console Character
 <BR>
 Returned Values: None
 
 <P>
-Send the character in register C to the console output device. The
-character is in ASCII with no parity.
+The BOOT entry point gets control from the Cold Start Loader in Bank 0
+and is responsible for basic system initialization. Any remaining
+hardware initialization that is not done by the boot ROMS, the Cold
+Boot Loader, or the LDRBIOS should be performed by the BOOT routine.
 
 <P>
-<A NAME="3740"></A>
-BIOS Function 5: LIST
+<A NAME="3894"></A>
+BIOS Function 1: WBOOT
 
 <P>
-Output Character to List Device
+Get Control When a Warm Start Occurs
 <BR>
-Entry Parameters: C=Character
+Entry Parameters: None
 <BR>
 Returned Values: None
 
 <P>
-Send the character from register C to the listing device. The
-character is in ASCII with no parity.
+The WBOOT entry point is entered when a warm start occurs. A warm
+start is performed whenever a user program branches to location 0000H
+or attempts to return to the CCP.
 
 <P>
-<A NAME="3741"></A>
-BIOS Function 6: AUXOUT
+<A NAME="3895"></A>
+BIOS Function 20: DEVTBL
 
 <P>
-Output a Character to the Auxiliary Output Device
+Return Address of Character I/O Table
 <BR>
-Entry Parameters: C=Character
+Entry Parameters: None
+<BR>
+Returned Values: HL=address of Chrtbl
+
+<P>
+The DEVTBL and DEVINI entry points allow you to support device
+assignment with a flexible, yet completely optional system. It
+replaces the IOBYTE facility of CP/M 2.2.
+
+<P>
+<A NAME="3896"></A>
+BIOS Function 21: DEVINI
+
+<P>
+Initialize Character I/O Device
+<BR>
+Entry Parameters: C=device number, 0-15
 <BR>
 Returned Values: None
 
 <P>
-Send the character from register C to the currently assigned AUXOUT
-device. The character is in ASCII with no parity.
+The DEVINI routine initializes the physical character device specified
+in register C to the baud rate contained in the appropriate entry of
+the CHRTBL.
 
 <P>
-<A NAME="3742"></A>
-BIOS Function 7: AUXIN
+<A NAME="3897"></A>
+BIOS Function 22: DRVTBL
 
 <P>
-Read a Character from the Auxiliary Input Device
-<BR>
-Entry Parameters: None
-<BR>
-Returned Values: A=Character
-
-<P>
-Read the next character from the currently assigned AUXIN device into
-register A with no parity. A returned ASCII CTRL-Z ($1a) reports an
-end-of-file.
-
-<P>
-<A NAME="3743"></A>
-BIOS Function 15: LISTST
-
-<P>
-Return the Ready Status of the List Device
+Return Address of Disk Drive Table
 <BR>
 Entry Parameters: None
 <BR>
 Returned Values:
-<table width="90%"><tr><td valign="top">&nbsp;A=$00 if list device is not ready to accept a character</td></tr>
-<tr><td valign="top">&nbsp;A=$ff if list device is ready to accept a character
+<table width="90%"><tr><td valign="top">&nbsp;HL=Address of Drive Table of Disk Parameter Headers (DPH);
+  Hashing can utilized if specified by the DPHs Referenced by this
+  DRVTBL.</td></tr>
+<tr><td valign="top">&nbsp;HL=$ffff if no Drive Table; GENCPM does not set up buffers.
+  Hashing is supported.</td></tr>
+<tr><td valign="top">&nbsp;HL=$fffe if no Drive Table; GENCPM does not set up buffers.
+  Hashing is not supported.
 </td></tr></table>
 
 <P>
-<A NAME="3746"></A>
-BIOS Function 17: CONOST
-
-<P>
-Return Output Status of Console
-<BR>
-Entry Parameters: None
-<BR>
-Returned Values:
-<table width="90%"><tr><td valign="top">&nbsp;A=$ff if ready</td></tr>
-<tr><td valign="top">&nbsp;A=$00 if not ready
-</td></tr></table>
-
-<P>
-The CONOST routine checks the status of the console. CONOST returns an
-$ff if the console is ready to display another character. This entry
-point allows for full polled handshaking communications support.
-
-<P>
-<A NAME="3749"></A>
-BIOS Function 18: AUXIST
-
-<P>
-Return Input Status of Auxiliary Port
-<BR>
-Entry Parameters: None
-<BR>
-Returned Values:
-<table width="90%"><tr><td valign="top">&nbsp;A=$ff if ready</td></tr>
-<tr><td valign="top">&nbsp;A=$00 if not ready
-</td></tr></table>
-
-<P>
-The AUXIST routine checks the input status of the auxiliary port. This
-entry point allows full polled handshaking for communications support
-using an auxiliary port.
-
-<P>
-<A NAME="3752"></A>
-BIOS Function 19: AUXOST
-
-<P>
-Return Output Status of Auxiliary Port
-<BR>
-Entry Parameters: None
-<BR>
-Returned Values:
-<table width="90%"><tr><td valign="top">&nbsp;A=$ff if ready</td></tr>
-<tr><td valign="top">&nbsp;A=$00 if not ready
-</td></tr></table>
-
-<P>
-The AUXOST routine checks the output status of the auxiliary
-port. This routine allows full polled handshaking for communications
-support using an auxiliary port.
+The first instruction of this subroutine must be an LXI H,&lt;address&gt;
+where &lt;address&gt; is one of the above returned values. The GENCPM
+utility accesses the address in this instruction to locate the drive
+table and the disk parameter data structures to determine which system
+configuration to use.
 
 <P>
 
@@ -245,28 +158,28 @@ support using an auxiliary port.
  HREF="node142.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node139.html">
+ HREF="node140.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node140.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1183"
+<A ID="tex2html1185"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1185"
-  HREF="node199.html">
+<A ID="tex2html1187"
+  HREF="node200.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node142.html">Disk I/O Functions</A>
+ HREF="node142.html">Character I/O Functions</A>
 <B> Up:</B> <A
- HREF="node139.html">BIOS</A>
+ HREF="node140.html">BIOS</A>
 <B> Previous:</B> <A
- HREF="node140.html">System Initialization Functions</A>
- &nbsp; <B>  <A ID="tex2html1184"
-  HREF="node1.html">Contents</A></B> 
+ HREF="node140.html">BIOS</A>
  &nbsp; <B>  <A ID="tex2html1186"
-  HREF="node199.html">Index</A></B> </DIV>
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1188"
+  HREF="node200.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

@@ -1,14 +1,16 @@
-\port{153B}{UART control}
+\port{153B}{UART select}
 \begin{itemize}
 \item[] bit 7 = Reserved (0)
-\item[] bit 6 = UART select
+\item[] bit 6 = UART select (0 on soft reset) **
   \begin{itemize}
   \item[] 0 = ESP
-  \item[] 1 = Pi
+  \item[] 1 = Pi *
   \end{itemize}
 \item[] bit 5 = Reserved (0)
 \item[] bit 4 = Prescalar valid in this write
 \item[] bit 3 = Reserved (0)
-\item[] bits 2-0 = Bits 16-14 of prescalar
+\item[] bits 2-0 = Bits 16-14 of prescalar (0 on hard reset)
 \end{itemize}
+* Pi GPIO must be configured for UART, see nextreg \$A0\\
+** Either UART can be redirected to the joystick ports, see port \$037
 

@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Disk I/O Functions</TITLE>
-<META NAME="description" CONTENT="Disk I/O Functions">
+<TITLE>Character I/O Functions</TITLE>
+<META NAME="description" CONTENT="Character I/O Functions">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node143.html">
 <LINK REL="previous" HREF="node141.html">
 <LINK REL="next" HREF="node143.html">
 </HEAD>
@@ -26,253 +27,215 @@
  HREF="node143.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node139.html">
+ HREF="node140.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node141.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1187"
+<A ID="tex2html1189"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1189"
-  HREF="node199.html">
+<A ID="tex2html1191"
+  HREF="node200.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node143.html">Memory Select and Move</A>
+ HREF="node143.html">Disk I/O Functions</A>
 <B> Up:</B> <A
- HREF="node139.html">BIOS</A>
+ HREF="node140.html">BIOS</A>
 <B> Previous:</B> <A
- HREF="node141.html">Character I/O Functions</A>
- &nbsp; <B>  <A ID="tex2html1188"
-  HREF="node1.html">Contents</A></B> 
+ HREF="node141.html">System Initialization Functions</A>
  &nbsp; <B>  <A ID="tex2html1190"
-  HREF="node199.html">Index</A></B> 
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1192"
+  HREF="node200.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H3><A ID="SECTION001013300000000000000">
-Disk I/O Functions</A>
+<H3><A ID="SECTION001113200000000000000">
+Character I/O Functions</A>
 </H3>
-This section defines the CP/M 3 BIOS disk I/O routines HOME, SELDSK,
-SETTRK, SETSEC, SETDMA, READ, WRITE, SECTRN, MULTIO, and FLUSH.
+This section defines the CP/M 3 character I/O routines CONST, CONIN,
+CONOUT, LIST, AUXOUT, AUXIN, LISTST, CONOST, AUXIST, and AUXOST.  CP/M
+3 assumes all simple character I/O operations are performed in
+eight-bit ASCII, upper and lowercase, with no parity. An ASCII CTRL-Z
+($1a) denotes an end-of-file condition for an input device.
 
 <P>
-<A NAME="3756"></A>
-BIOS Function 8: HOME
+In CP/M 3, you can direct each of the five logical character devices
+to any combination of up to twelve physical devices. Each of the five
+logical devices has a 16-bit vector in the System Control Block (SCB)
+. Each bit of the vector represents a physical device where bit 15
+corresponds to device zero, and bit 4 is device eleven. Bits 0 through
+3 are reserved for future system use.
 
 <P>
-Select Track 00 of the Specified Drive
+<A NAME="3901"></A>
+BIOS Function 2: CONST
+
+<P>
+Sample the Status of the Console Input Device
 <BR>
 Entry Parameters: None
 <BR>
-Returned Values: None
-
-<P>
-Return the disk head of the currently selected disk to the track 00
-position. Usually, you can translate the HOME call into a call on
-SETTRK with a parameter of 0.
-
-<P>
-<A NAME="3757"></A>
-BIOS Function 9: SELDSK
-
-<P>
-Select the Specified Disk Drive
-<BR>
-Entry Parameters:
-<table width="90%"><tr><td valign="top">&nbsp;C=Disk Drive (0-15)</td></tr>
-<tr><td valign="top">&nbsp;E=Initial Select Flag
+Returned value:
+<table width="90%"><tr><td valign="top">&nbsp;A=$ff if a console character is ready to read</td></tr>
+<tr><td valign="top">&nbsp;A=$00 if no console character is ready to read
 </td></tr></table>
 
-Returned Values:
-<table width="90%"><tr><td valign="top">&nbsp;HL=Address of Disk Parameter Header (DPH) if drive exists</td></tr>
-<tr><td valign="top">&nbsp;HL=0000H if drive does not exist
-</td></tr></table>
-
-Select the disk drive specified in register C for further operations,
-where register C contains 0 for drive A, 1 for drive B, and so on to
-15 for drive P. On each disk select, SELDSK must return in HL the base
-address of a 25-byte area called the Disk Parameter Header. If there
-is an attempt to select a nonexistent drive, SELDSK returns HL=$0000
-as an error indicator.  On entry to SELDSK, you can determine if it is
-the first time the specified disk is selected. Bit 0, the least
-significant bit in register E, is set to 0 if the drive has not been
-previously selected. This information is of interest in systems that
-read configuration information from the disk to set up a dynamic disk
-definition table.
+<P>
+Read the status of the currently assigned console device and return
+$ff in register A if a character is ready to read, and $ff in
+register A if no console characters are ready.
 
 <P>
-<A NAME="3762"></A>
-BIOS Function 10: SETTRK
+<A NAME="3904"></A>
+BIOS Function 3: CONIN
 
 <P>
-Set Specified Track Number
-<BR>
-Entry Parameters: BC=Track Number
-<BR>
-Returned Values: None
-
-<P>
-Register BC contains the track number for a subsequent disk access on
-the currently selected drive. Normally, the track number is saved
-until the next READ or WRITE occurs.
-
-<P>
-<A NAME="3763"></A>
-BIOS Function 11: SETSEC
-
-<P>
-Set Specified Sector Number
-<BR>
-Entry Parameters: BC=Sector Number
-<BR>
-Returned Values: None
-
-<P>
-Register BC contains the sector number for the subsequent disk access
-on the currently selected drive. This number is the value returned by
-SECTRN. Usually, you delay actual sector selection until a READ or
-WRITE operation occurs.
-
-<P>
-<A NAME="3764"></A>
-BIOS Function 12: SETDMA
-
-<P>
-Set Address for Subsequent Disk I/O
-<BR>
-Entry Parameters: BC=Direct Memory Access Address
-<BR>
-Returned Values: None
-
-<P>
-Register BC contains the DMA (Direct Memory Access) address for the
-subsequent READ or WRITE operation. For example, if B = $00 and C =
-$80 when the BDOS calls SETDMA, then the subsequent read operation
-reads its data starting at $80, or the subsequent write operation
-gets its data from 80H, until the next call to SETDMA occurs.
-
-<P>
-<A NAME="3765"></A>
-BIOS Function 13: READ
-
-<P>
-Read a Sector from the Specified Drive
+Read a Character from the Console
 <BR>
 Entry Parameters: None
 <BR>
-Returned Values:
-<table width="90%"><tr><td valign="top">&nbsp;A=$00 if no errors occurred</td></tr>
-<tr><td valign="top">&nbsp;A=$01 if nonrecoverable error condition occurred</td></tr>
-<tr><td valign="top">&nbsp;A=$ff if media has changed
-</td></tr></table>
-
-Assume the BDOS has selected the drive, set the track, set the sector,
-and specified the DMA address. The READ subroutine attempts to read
-one sector based upon these parameters, then returns one of the error
-codes in register A as described above.
+Returned Values: A=Console Character
 
 <P>
-If the value in register A is $00, then CP/M 3 assumes that the disk
-operation completed properly. If an error occurs, the BIOS should
-attempt several retries to see if the error is recoverable before
-returning the error code.
+Read the next console character into register A with no parity. If no
+console character is ready, wait until a character is available before
+returning.
 
 <P>
-If an error occurs in a system that supports automatic density
-selection, the system should verify the density of the drive. If the
-density has changed, return a $ff in the accumulator. This causes the
-BDOS to terminate the current operation and relog in the disk.
+<A NAME="3905"></A>
+BIOS Function 4: CONOUT
 
 <P>
-<A NAME="3768"></A>
-BIOS Function 14: WRITE
-
-<P>
-Write a Sector to the Specified Disk
+Output Character to Console
 <BR>
-Entry Parameters: C=Deblocking Codes
-<BR>
-Returned Values:
-<table width="90%"><tr><td valign="top">&nbsp;A=$00 if no error occurred</td></tr>
-<tr><td valign="top">&nbsp;A=$01 if physical error occurred</td></tr>
-<tr><td valign="top">&nbsp;A=$02 if disk is Read-Only</td></tr>
-<tr><td valign="top">&nbsp;A=$ff if media has changed
-</td></tr></table>
-
-<P>
-Write the data from the currently selected DMA address to the
-currently selected drive, track, and sector. Upon each call to WRITE,
-the BDOS provides the following information in register C:
-<table width="90%"><tr><td valign="top">&nbsp;0 = deferred write</td></tr>
-<tr><td valign="top">&nbsp;1 = nondeferred write</td></tr>
-<tr><td valign="top">&nbsp;2 = deferred write to the first sector of a new data block
-</td></tr></table>
-
-<P>
-This information is provided for those BIOS implementations that do
-blocking/deblocking in the BIOS instead of the BDOS.
-
-<P>
-<A NAME="3773"></A>
-BIOS Function 16: SECTRN
-
-<P>
-Translate Sector Number Given Translate Table
-Entry Parameters:
-<table width="90%"><tr><td valign="top">&nbsp;BC=Logical Sector Number</td></tr>
-<tr><td valign="top">&nbsp;DE=Translate Table Address
-</td></tr></table>
-
-Returned Values: HL=Physical Sector Number
-
-<P>
-SECTRN performs logical sequential sector address to physical sector
-translation to improve the overall response of CP/M 3.
-
-<P>
-<A NAME="3776"></A>
-BIOS Function 23: MULTIO
-
-<P>
-Set Count of Consecutive Sectors for READ or WRITE
-<BR>
-Entry Parameters: C=Multisector Count
+Entry Parameters: C=Console Character
 <BR>
 Returned Values: None
 
 <P>
-To transfer logically consecutive disk sectors to or from contiguous
-memory locations, the BDOS issues a MULTIO call, followed by a series
-of READ or WRITE calls. This allows the BIOS to transfer multiple
-sectors in a single disk operation. The maximum value of the sector
-count is dependent on the physical sector size, ranging from 128 with
-128-byte sectors, to 4 with 4096-byte sectors. Thus, the BIOS can
-transfer up to 16K directly to or from the TPA with a single
-operation.
+Send the character in register C to the console output device. The
+character is in ASCII with no parity.
 
 <P>
-<A NAME="3777"></A>
-BIOS Function 24: FLUSH
+<A NAME="3906"></A>
+BIOS Function 5: LIST
 
 <P>
-Force Physical Buffer Flushing for User-supported Deblocking
+Output Character to List Device
+<BR>
+Entry Parameters: C=Character
+<BR>
+Returned Values: None
+
+<P>
+Send the character from register C to the listing device. The
+character is in ASCII with no parity.
+
+<P>
+<A NAME="3907"></A>
+BIOS Function 6: AUXOUT
+
+<P>
+Output a Character to the Auxiliary Output Device
+<BR>
+Entry Parameters: C=Character
+<BR>
+Returned Values: None
+
+<P>
+Send the character from register C to the currently assigned AUXOUT
+device. The character is in ASCII with no parity.
+
+<P>
+<A NAME="3908"></A>
+BIOS Function 7: AUXIN
+
+<P>
+Read a Character from the Auxiliary Input Device
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values: A=Character
+
+<P>
+Read the next character from the currently assigned AUXIN device into
+register A with no parity. A returned ASCII CTRL-Z ($1a) reports an
+end-of-file.
+
+<P>
+<A NAME="3909"></A>
+BIOS Function 15: LISTST
+
+<P>
+Return the Ready Status of the List Device
 <BR>
 Entry Parameters: None
 <BR>
 Returned Values:
-<table width="90%"><tr><td valign="top">&nbsp;A=$00 if no error occurred</td></tr>
-<tr><td valign="top">&nbsp;A=$001 if physical error occurred</td></tr>
-<tr><td valign="top">&nbsp;A=$002 if disk is Read-Only
+<table width="90%"><tr><td valign="top">&nbsp;A=$00 if list device is not ready to accept a character</td></tr>
+<tr><td valign="top">&nbsp;A=$ff if list device is ready to accept a character
 </td></tr></table>
 
 <P>
-The flush buffers entry point allows the system to force physical
-sector buffer flushing when your BIOS is performing its own record
-blocking and deblocking.  The BDOS calls the FLUSH routine to ensure
-that no dirty buffers remain in memory.
+<A NAME="3912"></A>
+BIOS Function 17: CONOST
+
+<P>
+Return Output Status of Console
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;A=$ff if ready</td></tr>
+<tr><td valign="top">&nbsp;A=$00 if not ready
+</td></tr></table>
+
+<P>
+The CONOST routine checks the status of the console. CONOST returns an
+$ff if the console is ready to display another character. This entry
+point allows for full polled handshaking communications support.
+
+<P>
+<A NAME="3915"></A>
+BIOS Function 18: AUXIST
+
+<P>
+Return Input Status of Auxiliary Port
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;A=$ff if ready</td></tr>
+<tr><td valign="top">&nbsp;A=$00 if not ready
+</td></tr></table>
+
+<P>
+The AUXIST routine checks the input status of the auxiliary port. This
+entry point allows full polled handshaking for communications support
+using an auxiliary port.
+
+<P>
+<A NAME="3918"></A>
+BIOS Function 19: AUXOST
+
+<P>
+Return Output Status of Auxiliary Port
+<BR>
+Entry Parameters: None
+<BR>
+Returned Values:
+<table width="90%"><tr><td valign="top">&nbsp;A=$ff if ready</td></tr>
+<tr><td valign="top">&nbsp;A=$00 if not ready
+</td></tr></table>
+
+<P>
+The AUXOST routine checks the output status of the auxiliary
+port. This routine allows full polled handshaking for communications
+support using an auxiliary port.
 
 <P>
 
@@ -282,28 +245,28 @@ that no dirty buffers remain in memory.
  HREF="node143.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node139.html">
+ HREF="node140.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node141.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1187"
+<A ID="tex2html1189"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1189"
-  HREF="node199.html">
+<A ID="tex2html1191"
+  HREF="node200.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node143.html">Memory Select and Move</A>
+ HREF="node143.html">Disk I/O Functions</A>
 <B> Up:</B> <A
- HREF="node139.html">BIOS</A>
+ HREF="node140.html">BIOS</A>
 <B> Previous:</B> <A
- HREF="node141.html">Character I/O Functions</A>
- &nbsp; <B>  <A ID="tex2html1188"
-  HREF="node1.html">Contents</A></B> 
+ HREF="node141.html">System Initialization Functions</A>
  &nbsp; <B>  <A ID="tex2html1190"
-  HREF="node199.html">Index</A></B> </DIV>
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1192"
+  HREF="node200.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>
