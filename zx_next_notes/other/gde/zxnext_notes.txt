@@ -1,0 +1,45 @@
+1 layer 1,2
+10 cls:print "ZX Spectrum Next Notes"
+20 print "By Theodore (Alex) Evans"
+30 print "4 December 2020"
+40 print:print "1 -  Introduction"
+50 print "2  - Video: intro, general, layer 1, layer 2"
+60 print "3  - Video: layer 3, sprites"
+70 print "4  - Audio"
+80 print "5  - Memory"
+90 print "6  - zxnDMA"
+100 print "7  - Copper"
+110 print "8  - Interrupts"
+120 print "9  - Serial"
+130 print "10 - Pi Accelerator"
+140 print "11 - System"
+150 print " - Appendices - "
+160 print "A  - Ports"
+170 print "B  - Registers"
+180 print "C  - File Formats"
+190 print "D  - Call Tables"
+200 print " - Q when done - "
+210 input "Select Chapter: ";c$
+220 if c$(1)="Q" then stop
+230 c = val(c$):if val(c$)=0 then c=code(c$(1))-code("A")+12
+240 if c<0 or c>15 then goto 10
+250 restore 1010
+260 for i=1 to c:read f$:next i
+270 f$="/"+f$:.$ guide f$
+280 goto 10
+1000 rem files
+1010 data "zxnext_notes_a.gde"
+1020 data "zxnext_notes_a.gde"
+1030 data "zxnext_notes_b.gde"
+1040 data "zxnext_notes_c.gde"
+1050 data "zxnext_notes_c.gde"
+1060 data "zxnext_notes_c.gde"
+1070 data "zxnext_notes_c.gde"
+1080 data "zxnext_notes_c.gde"
+1090 data "zxnext_notes_c.gde"
+1100 data "zxnext_notes_c.gde"
+1110 data "zxnext_notes_c.gde"
+1120 data "zxnext_notes_c.gde"
+1130 data "zxnext_notes_c.gde"
+1140 data "zxnext_notes_c.gde"
+1150 data "zxnext_notes_c.gde"

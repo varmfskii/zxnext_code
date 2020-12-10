@@ -1,23 +1,182 @@
 \chapter{File Formats}
+\section{AKY}
+Music file
 \section{BAS}
+Basic file
 \section{BMP}
+Windows bitmap. On the ZX Spectrum next, these must be uncompressed
+and 8 bpp.
 \section{DSK}
+Disk image
+\section{ESP}
+Update file for Wi-Fi module
+\section{GDE}
+ZX Spectrum Next Guide hypertext file
+\section{MC}
+A Timex hi-color image. Like .shc, but the bitmap and colour map are
+stored in display order.
+\section{MLT}
+A Timex hi-color image. Like .shc, but the colour map is stored in
+display order.
+\section{MOD}
+Modtracker music file (requires Pi accelerator to play).
 \section{NDR}
+Nexdaw music file
 \section{NEX}
+ZX Spectrum Next executable file.
+\section{NXI}
+A version of a 256x192x8 layer 2 image.
+\begin{itemize}
+\item bytes 0-511 - palette data
+\item bytes 512-49663 - image data
+\end{itemize}
 \section{O}
+ZX-80 executable file
 \section{P3D}
+Disk image file
 \section{PT3}
+Protracker 3 music file
 \section{P}
+ZX-81 executable file
+\section{SDH}
+Music file (requires Pi accelerator to play)
+\section{SID}
+Commodore 64 SID music file (requires Pi accelerator to play)
 \section{SCR}
+ZX Spectrum screen dump
+
+In basic form a 6912 byte file containing the bitmap and colour map
+for a standard spectrum image. May have ULAPlus or ULANext color data
+appended.
+
+ULAplus
+\begin{itemize}
+\item bytes 0-6143 - bitmap: memory order
+\item bytes 6144-6911 - colour map: memory order
+\item bytes 6912-6975 - ULAPlus palette data
+\end{itemize}
+ULANext
+\begin{itemize}
+\item bytes 0-6143 - bitmap: memory order
+\item bytes 6144-6911 - colour map: memory order
+\item byte 6912 - ULANext mode
+\item bytes 6913-between 6228 and 7426 - ULANext palette data, size is
+  dependent on specific ULANext mode and 8 or 9 bit palette entries.
+  \begin{tabular}{l | r | r | r | r}
+    mode & ink & paper & 8-bit & 9-bit \\
+    \$01 & 2 & 128 & 130 & 260\\
+    \$03 & 4 & 64 & 68 & 136\\
+    \$07 & 8 & 32 & 40 & 80\\
+    \$0F & 16 & 16 & 32 & 64\\
+    \$1F & 32 & 8 & 40 & 80\\
+    \$3F & 64 & 4 & 68 & 136\\
+    \$7F & 128 & 2 & 130 & 260\\
+    \$FF & 256 & 1 & 257 & 514
+  \end{tabular}
+\end{itemize}
 \section{SHC}
+Timex hi-color screen dump
+
+In basic form the 12,288 byte file containing the bitmap and colour
+map for a Timex hi-color image. May have ULAPlus or ULANext color data
+appended.
+
+ULAplus
+\begin{itemize}
+\item bytes 0-6143 - bitmap: memory order
+\item bytes 6144-12287 - colour map: memory order
+\item bytes 12288-12351 - ULAPlus palette data
+\end{itemize}
+ULANext
+\begin{itemize}
+\item bytes 0-6143 - bitmap: memory order
+\item bytes 6144-12287 - colour map: memory order
+\item byte 12288 - ULANext mode
+\item bytes 12289-between 12304 and 12802 - ULANext palette data, size
+  is dependent on specific ULANext mode and 8 or 9 bit palette entries.
+  \begin{tabular}{l | r | r | r | r}
+    mode & ink & paper & 8-bit & 9-bit \\
+    \$01 & 2 & 128 & 130 & 260\\
+    \$03 & 4 & 64 & 68 & 136\\
+    \$07 & 8 & 32 & 40 & 80\\
+    \$0F & 16 & 16 & 32 & 64\\
+    \$1F & 32 & 8 & 40 & 80\\
+    \$3F & 64 & 4 & 68 & 136\\
+    \$7F & 128 & 2 & 130 & 260\\
+    \$FF & 256 & 1 & 257 & 514
+  \end{tabular}
+\end{itemize}
 \section{SHR}
+  
+Timex hi-resolution screen dump.
+
+A 12,288 or 12,289 byte file containing a memory dump of the two 6k
+screen areas used by Timex hi-resolution mode in memory order with an
+optional byte indicating teh colours used.
 \section{SL2}
+ZX Spectrum Next layer 2 screen dump
+
+In its most basic standard form, this is a 49,152 byte file contaning
+the memory for the image data. 
+
+256x192x8
+\begin{itemize}
+\item bytes 0-49151 - image data: row dominant
+\item optional bytes 49152-49407 or 49663 - palette data (256 bytes
+  for 8-bit entries, 512 bytes for 9-bit entries)
+\end{itemize}
+320x256x8
+\begin{itemize}
+\item bytes 0-81919 - image data: column dominant
+\item optional bytes 81920-82175 or 82431 - palette data (256 bytes
+  for 8-bit entries, 512 bytes for 9-bit entries)
+\end{itemize}
+640x256x4
+\begin{itemize}
+\item bytes 0-81919 - image data: column dominant, nybbles in adjacent columns
+\item optional bytes 81920-81935 or 81951 - palette data (16 bytes for
+  8-bit entries, 32 bytes for 9-bit entries)
+\end{itemize}
 \section{SLR}
+ZX Spectrum Next low-resolution screen dump.
+
+Basic standard form 12,288 byte file contaning the memory for the two
+6k areas for 128x96x8 image files
+
+192x96x8
+\begin{itemize}
+\item bytes 0-12287 - image data: row dominant
+\item optional bytes 12288-12543 or 12799 - palette data (256 bytes
+  for 8-bit entries, 512 bytes for 9-bit entries)
+\end{itemize}
+192x96x4 (Radistan)
+\begin{itemize}
+\item bytes 0-6143 - image data: row dominant
+\item optional bytes 6144-6159 or 6175 - palette data (16 bytes for
+  8-bit entries, 32 bytes for 9-bit entries)
+\end{itemize}
 \section{SNA}
+ZX Spectrum memory snapshot
+\section{SND}
+Music file (requires Pi accelerator to play)
 \section{SNX}
+Extended ZX Spectrum memory snapshot to be run in ZX Spectrum Next mode
 \section{SPR}
+Sprite file
 \section{TAP}
+ZX Spectrum tape image
 \section{TXT,DOC,ASM,INI,CFG,MD}
+Text files
 \section{TZX}
+ZX Spectrum tape image (able to handle custom tape formats). Requires
+Pi accelerator to load.
+\section{WAV}
+PCM audio file
+\section{XM}
+XM tracker music file (requires Pi accelerator to play)
 \section{Z3 to Z8}
+Inform interactive fiction files
 \section{Z80}
+ZX Spectrum memory snapshot
+\section{ZIP}
+Zip compressed file

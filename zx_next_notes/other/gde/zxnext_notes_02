@@ -1,0 +1,2642 @@
+@node COPPER
+@{h1}Copper and Display Timing
+
+From: KevB (aka 9bitcolour)
+
+@{h2}Introduction
+
+The ZX Spectrum Next includes a co-processor named "COPPER". It functions in a
+similar way to the Copper found in the Commodore Amiga Agnus custom chip. It’s
+role is to free the Z80 of tasks that require the writing of hardware registers
+at precise pixel co-ordinates.
+
+@{h2}Overview
+
+The ZX Spectrum Next COPPER has three instructions: NOOP, MOVE, WAIT.
+
+NOOP is used to fine tune timing. MOVE writes data to a specific range of
+hardware registers. WAIT waits for a pixel position on the video display.
+
+These instructions are stored in 2k (2048 BYTES) of dedicated write-only program
+RAM also known as a "Copper list".
+
+Each instruction is 16 bits (WORD) in size allowing for a maximum of 1024
+instructions to be stored in the program RAM. The COPPER uses an internal 10 bit
+program counter (PC) which wraps to zero at the end of the list. The PC can be
+reset to zero, this is the default value after a hard/soft reset.
+
+The instructions are stored in big endian format and transferred to the 2k
+program RAM using the Z80 or DMA (bits 15..8 followed by bits 7..0).
+
+Three write-only hardware registers control access to the program RAM as well as
+the operating modes.
+
+System performance is not affected when the COPPER is executing instructions.
+
+The hardware registers and COPPER program RAM are not connected to the main
+memory BUS. The overall design of this system together with the use of alternate
+clock edges means that contention between the COPPER, Z80 and DMA has been
+eliminated.
+
+The COPPER has a base clock speed of 13.5Mhz for HDMI and 14Mhz for VGA.
+
+The bandwidth is around 14 million single cycle NOOP/WAIT instructions and 7
+million two cycle MOVE instructions per second.
+
+@{h2}Timing
+
+To fully understand the COPPER, you must first understand the display timing for
+each of the machines and video modes found in the ZX Spectrum Next.
+
+There are several display timing configurations due to the four machine types,
+two refresh rates, two video systems (VGA/HDMI) and Timex HIRES mode.
+
+Details of these timings are outlined in this chapter.
+
+@{h3}Machines
+
+The ZX Spectrum Next has four machine types (48k, 128k, Pentagon, and HDMI). The
+machine timing and HDMI determine the number of T-states per line which
+determines the base dot clock frequency and Z80/DMA clock speed.
+
+This guide groups machine types by their timing for convenience. The HDMI video
+mode overrides the default machine timing so it is included as an extra machine
+type which does not exist in the official documentation.
+
+@{h3}Display
+
+The ZX Spectrum Next doesn’t have video modes based on resolution that you would
+expect to find on graphics card based hardware. There is one fixed resolution of
+256x192 which can be doubled to 512x192 in Timex HIRES mode. What it does have
+is the ability to set the refresh rate from 50Hz to 60Hz and horizontal dot
+clock. This in turn together with the VGA and HDMI timing affects the vertical
+line count giving several combinations in total.
+
+VGA modes 0..6 are included as one single VGA mode as the internal machine
+timing is constant across those seven refresh rate steps.
+
+More details can be found in Video modes.
+
+@{h3}Resolution
+
+There are two main horizontal resolutions: standard 256x192 and Timex HIRES
+512x192.  Details of LORES 128x96 are not included to simplify this guide.
+
+The frame buffer height is fixed at 192 pixels and surrounded by a large border
+and overscan as well as horizontal and vertical blanking periods.
+
+There are five vertical line counts: 261, 262, 311, 312, 320. Several pixels are
+hidden in the overscan and blanking periods beyond the visible border.
+
+The result is 256x192 and 512x192 pixel resolutions with a large border.
+
+The colour of the visible border beyond the frame buffer can be
+manipulated. Visual changes will not show during the overscan and blanking
+periods.
+
+@{h3}Dot Clock
+
+The dot clock on the ZX Spectrum Next runs at 13.5Mhz for HDMI and around 14Mhz
+for VGA. The COPPER clock runs at the same frequency as the dot clock. For v3.00
+the copper runs at twice the frequency of the dot clock.
+
+The number of dot clocks per line is calculated by multiplying the number of
+3.5Mhz Z80 T-states per line by four. Example: 228Ts * 4 = 912 dot clocks.
+
+The number of dot clocks per second is calculated by the following:
+
+T-states per line * 4 * line count * refresh rate
+
+In standard 256x192 resolution the duration of one pixel is two dot clocks. In
+Timex HIRES 512x192 resolution the duration of one pixel is one dot clock.
+
+Details of the dot clock counts can be found in tables 5.1 and 5.2.
+
+@{h3}Coordinates
+
+The top left pixel of the frame buffer is line 0 and horizontal dot clock
+0. This is also known as "0,0".
+
+The bottom right pixel of the frame buffer in standard 256x192 resolution is
+line 191 and horizontal dot clocks 510+511.
+
+The bottom right pixel of the frame buffer in Timex HIRES 512x192 resolution is
+line 191 and horizontal dot clock 511.
+
+The line one pixel above the frame buffer is the last line of the video frame
+and equal to the total line count minus one (312-1 for example).
+
+The line one pixel below the frame buffer is line 192.
+
+The COPPER horizontal dot clock compare is locked to every eight pixels in
+standard 256x192 resolution and every sixteen pixels in Timex HIRES 512x192
+resolution. The NOOP instruction can be used to fine tune timing in single dot
+clock steps.
+
+@{h3}Compare
+
+The COPPER uses a 9 bit vertical line compare allowing it to handle the various
+line counts.
+
+The COPPER horizontal compare is 6 bits meaning that it can wait for 64
+positions across each line. The range of this value is limited by the machine
+timing as that determines the number of dot clocks per line.
+
+Each horizontal compare is in steps of 16 dot clocks to cover the full range
+across a raster line.
+
+16 dot clocks = 4 pixels in lo 128x96 resolution
+
+16 dot clocks = 8 pixels in standard 256x192
+resolution
+
+16 dot clocks = 16 pixels in high 512x192 resolution
+
+There is some slack to consider after the maximum horizontal compare value. The
+slack is calculated using the following:
+
+dot clocks per line - maximum horizontal compare * 16
+
+Table 5.5 provides details of the horizontal display, left/right border,
+blanking and COPPER dot clock/pixel position compare values:
+
+– Dot clock compare is out of range.
+
+Table 5.6 provides a detailed list of vertical display, top/bottom border and
+blanking as well as maximum COPPER line compare. It also provides the ULA VBLANK
+interrupt line number.
+
+– Line compare is out of range
+
+* ULA VBLANK interrupt.
+
+Note: The HDMI overscan and blanking period is larger than that of a VGA monitor
+which can auto-adjust alignment. The following data is based on visible results
+from various monitors thus subject to refinement.
+
+Pixels are visible during DISPLAY/BORDER and hidden during BLANKING.
+
+@{h3}Overscan
+
+The visible area of the display can extend to resolutions exceeding 256x192.
+
+The 50/60 Hz refresh rate mode dictates the vertical limit.
+
+VGA and HDMI differ with VGA providing more visible pixels beyond the range of
+HDMI. Table 5.7 provides ideal extended pixel resolutions:
+
+Maximum Extended VGA Resolutions
+
+50Hz = 352x288 (standard 256 resolution)
+
+60Hz = 352x240 (standard 256 resolution)
+
+Table 5.8 provides COPPER horizontal position and vertical line compare
+parameters for ideal extended resolutions:
+
+TOP: Initial line of the extended top border area - see notes below*
+
+BOT: Last line of the extended bottom border area - see notes below*
+
+LEFT: First pixel of the extended left border area - see notes below**
+
+RIGHT: Last pixel of the extended right border area - see notes below**
+
+* Line compare value for MOVE (bits 8..0).
+
+** The integer part is the horizontal value for MOVE (bits 14..9).
+
+** The fractional part is specified in dot clocks (NOOP instructions).
+
+@{h2}Instructions
+
+This section describes the behaviour of the COPPER instructions as well as the
+bit definitions and execution time.
+
+The three 16 bit COPPER instructions are comprised of the following bit
+definitions:
+
+H 6 bit horizontal dot clock compare
+
+V 9 bit vertical line compare
+
+R 7 bit Next register 0x00..0x7F
+
+D 8 bit data
+
+@{h3}NOOP
+
+NOOP (no-operation) executes in one dot clock. It is useful for fine tuning
+timing, initialising COPPER RAM and ’NOP’ out COPPER program instructions.
+
+It can be used to align colour and display changes to half pixel positions in
+standard 256x192 resolution. Its duration is equal to one Timex HIRES pixel.
+
+This guide uses the name ’NOOP’ to avoid confusion with the Z80 opcode NOP.
+
+@{h3}MOVE
+
+MOVE executes in two dot clocks. It moves 8 bits of data into any of the Next
+hardware registers in the range $00 (0) .. $7F (127).
+
+The WORD value $0000 is reserved for the NOOP instruction so no register access
+is carried out for that special case. Register $00 is read-only so not affected
+by the restriction of not being able to write zero to it.
+
+This instruction can perform 7 million register writes per second for VGA and
+6.75 million register writes per second for HDMI.
+
+@{h3}WAIT
+
+WAIT executes in one dot clock. It performs a compare with the current vertical
+line number and the current horizontal dot clock.
+
+WAIT will hold until the current raster line matches the 9 bit value stored in
+bits 8..0. When the line compare matches, WAIT will still hold if the current
+horizontal dot clock is less than the value in bits 14..9.
+
+This compare logic means that out of order vertical line compares will cause the
+COPPER to wait until the next video frame as the test is for an exact match of
+the line number. The COPPER will continue to the next instruction after an out
+of order horizontal pixel position compare as the test checks for the current
+dot clock being greater than or equal to the compare value.
+
+WAIT will stop the COPPER when a compare is made against an out of range
+vertical line or horizontal dot clock position as they will never occur
+
+A standard way to terminate a COPPER program is to wait for line 511 and
+horizontal position 63. This encodes into the instruction WORD $FFFF.
+
+The horizontal dot clock position compare includes an adjustment meaning that
+the compare completes three dot clocks early in standard 256x192 resolution and
+two dot clocks early in Timex HIRES 512x192 resolution. In practice, a pixel
+position can be specified with clocks to spare to write a register value before
+the pixel is displayed. This saves software having to auto-adjust positions to
+arrive early. It also means that a wait for 0,0 can affect the first pixel of
+the frame buffer before it is displayed and set the scroll registers without
+visual artefacts.
+
+@{h3}Example
+
+The following example provides a simple COPPER program to move data to a
+hardware register at two specific pixel positions. The BYTES for the program are
+listed in the left column:
+
+....
+         PAL8 equ   0x41           ; 8 bit palette hardware register
+
+$80,$00       WAIT  0,0            ; wait for pixel position 0,0 (H,V)
+$00,$00       NOOP                 ; fine tune timing by one dot clock
+$41,$E0       MOVE  PAL8,11100000b ; write RED to palette register
+
+$C0,$BF       WAIT  32,191         ; wait for pixel position 256,191
+$00,$00       NOOP                 ; fine tune timing by one dot clock
+$41,$00       MOVE  PAL8,00000000b ; write BLACK to palette register
+
+$FF,$FF       WAIT  63,511         ; wait for an out of range position
+....
+
+@{h2}Control
+
+The COPPER is controlled by the following three write-only registers:
+
+* $60 (96) Copper data
+* $61 (97) Copper control LO BYTE
+* $62 (98) Copper control HI BYTE
+
+The COPPER instructions are written one BYTE at a time to the program RAM using
+register $60 (Copper data).
+
+An index system is used to select the destination write address within the 2K
+program RAM. Eleven bits are needed to represent the index.  Registers $61 and
+$62 hold this 11 bit index.
+
+The index increments each time one BYTE is written to register $60. The index
+wraps to zero when the last BYTE of program RAM is written.
+
+The instruction data is normally written in big endian format although there is
+no rule stating that partial instruction BYTES cannot be written. It is safe to
+write to the COPPER program RAM while the COPPER is executing as long the
+instruction data written does not create a mall formed instruction which
+comprises of one half of the current executing instruction and one half the new
+instruction - this could result in unexpected behaviour.
+
+The Z80 and DMA can be used to write the instruction data.
+
+Writing to program RAM while the COPPER is running has no impact on system
+performance as the RAM is contention free. COPPER timing is not affected by the
+Z80 or DMA writing to the program RAM. Program RAM is write-only.
+
+The contents of the 2k program RAM are preserved during a hard/soft reset.
+
+Register $61 holds the lower 8 bits of the index. Register $62 holds the upper 3
+bits of the index as well as two control bits which set the COPPER operating
+mode.
+
+D 8 bit data
+
+I 11 bit index
+
+C 2 bit control
+
+The COPPER has an internal 10 bit program counter (PC). Each instruction
+advances the program counter by one after completion. The program counter wraps
+to zero after the last instruction at location 1023. This causes the copper list
+to loop.
+
+The program counter defaults to zero during a hard/soft reset.
+
+The control bits require a change to update the operating mode. This feature
+preserves COPPER operation when setting the program RAM index address.
+
+The program counter is preserved when stopping the COPPER. Two of the four
+control settings reset the internal PC to zero.
+
+Table 5.11 describes the control bits:
+
+The control mode names used in this guide differ from the official names.
+
+Here is a detailed description of the control bits:
+
+@{h3}STOP
+
+This is the default operating mode set during a hard/soft reset. The COPPER is
+idle in this state and will STOP if currently executing when entering this
+mode. It is safe to write to any location within the 2K program RAM when the
+COPPER is stopped.
+
+Entering STOP mode preserves the internal program counter so that the COPPER may
+continue when restarted.
+
+@{h3}RESET
+
+The program counter is RESET to zero when entering this mode. The COPPER is
+started if idle otherwise entering this mode acts as a jump to location zero
+when the COPPER is running.
+
+@{h3}START
+
+Entering this mode causes an idle COPPER to start executing instructions from
+the current program counter. Entering this mode while the COPPER is running has
+no effect other than to disable FRAME mode if active.
+
+@{h3}FRAME
+
+The program counter is RESET to zero when entering this mode. The COPPER is
+started if idle otherwise entering this mode acts as a jump to location zero
+when the COPPER is running.
+
+Entering this state enables FRAME mode. The program counter will be
+reset to zero each frame at 0,0.
+
+@{h2}Configuration
+
+Hardware registers provide timing and configuration data allowing software to
+build and configure COPPER programs that function correctly across the various
+video modes and machine types. It is not essential to detect the machine type
+but it should be noted that software should not assume that it is running on a
+specific machine as the COPPER hardware is available across all four machine
+types.
+
+Three registers can be read to determine the machine configuration for Ts per
+line, dot clocks, refresh rate, line count and maximum horizontal dot
+clock/pixel position compare.
+
+@{h3}Refresh Rate
+
+The refresh rate must be taken into account and can change real-time so should
+be monitored and auto-configured when the COPPER is active as the line count
+will change with the refresh rate. This could lead to the COPPER waiting for
+lines that never occur.
+
+Register (R/W) $05 () => Peripheral 1 Settings
+
+* bits 7-6 = joystick 1 mode (MSB)
+* bits 5-4 = joystick 2 mode (MSB)
+* bit 3 = joystick 1 mode (LSB)
+* bit 2 = 50/60 Hz mode (0 = 50Hz, 1 = 60Hz)
+* bit 1 = joystick 2 mode (LSB)
+* bit 0 = Enable Scandoubler
+
+Joystick modes
+
+* 000 = Sinclair 2 (67890)
+* 001 = Kempston 2 (port $37)
+* 010 = Kempston 1 (port $1F)
+* 011 = Megadrive 1 (port $1F)
+* 100 = Cursor
+* 101 = Megadrive 2 (port $37)
+* 110 = Sinclair 1 (12345)
+* 111 = I/O Mode (3.01.04) Both joysticks are places in I/O Mode if
+either is set to I/O Mode. The underlying joystick type is not changed
+and reads of this register will continue to return the last joystick
+type. Ehether the joystick is in io mode or not is invisible but this
+state can be cleared either through reset or by re-writing the gegister
+with joystick type not equal to 111. Recovery time for a normal joystick
+read after leaving I/O Mode is at most 64 scan lines.
+
+@{h3}Video Modes
+
+The video mode can only be changed during the boot process so one initial read
+is required of this register during software start up phase.
+
+The machine timing is identical for the seven VGA modes although the physical
+refresh rate of the video output speeds up for each mode in turn by roughly
+1Hz. The internal timing of the machine remains constant and as close to the
+original hardware as possible. VGA is a perfect Amstrad ZX Spectrum 128k +3 for
+example as far as timing is concerned across the seven VGA modes.
+
+The effect of this speed up means that mode 0 will execute in one second of time
+whereas mode 6 will execute in a shorter time period. Mode 0 is as close to
+50/60 Hz as possible where mode 6 is closer to 60/70 Hz.  That would mean that
+one second of machine time for mode 6 will execute in 0.83 seconds of human time
+when running 50 frames per second at 60Hz.
+
+The eighth mode (mode 7) is used for HDMI timing. Machine configuration is
+forced for this mode. Line counts, Ts and various other settings are set to meet
+the rigid HDMI timing specification. For mode 7, 50/60 Hz are rock solid but the
+original hardware timing loses Ts across all machines to meet HDMI display
+requirements.
+
+Software that was previously written for specific hardware with hard-coded
+software timing loops may fail. This is one of the risks of coding timing loops
+counting Ts. We saw evidence of this with the release of the 1985 Sinclair ZX
+Spectrum 128k+ and the later Amstrad models as previous software written for the
+ZX Spectrum 48k/48k+ would fail when trying to display colour attribute and
+border effects as the number of Ts per line was changed from 224Ts (1982
+original 48k) to 228Ts (128k models). The ZX Spectrum Next runs slower in HDMI
+mode.  Demos may fail to display correctly and games may slow down although
+setting the Z80 to 7Mhz can solve the game slow down, demos should be run in VGA
+mode for maximum compatibility.
+
+Video timing also affects audio output as the sample rate can vary depending on
+the output timing method.
+
+The following register allows software to read the video timing mode:
+
+Register (R/W) $11 () => Video Timing (writable
+in config mode only)
+
+* bits 7-3 = Reserved, must be 0
+* bits 2-0 = Mode (VGA = 0..6, HDMI = 7)
+** 000 = Base VGA timing, clk28 = 28000000
+** 001 = VGA setting 1, clk28 = 28571429
+** 010 = VGA setting 2, clk28 = 29464286
+** 011 = VGA setting 3, clk28 = 30000000
+** 100 = VGA setting 4, clk28 = 31000000
+** 101 = VGA setting 5, clk28 = 32000000
+** 110 = VGA setting 6, clk28 = 33000000
+** 111 = HDMI, clk28 = 27000000
+* 50/60Hz selection depends on bit 2 of register $05
+* Only writable in config mode
+
+@{h3}Machine Type
+
+The machine type register can be used to provide the number of Ts per line, line
+count, dot clock and maximum horizontal COPPER wait.
+
+The dot clock (DC) is the number of Ts per line * 4.
+
+The maximum horizontal COPPER wait (H) is in multiples of 16 clocks.
+
+Video mode 7 (HMDI) overrides the timing.
+
+The following list shows the various parameters that can be gained from reading
+the machine register combined with the refresh register and video mode bits:
+
+Register (R/W) $03 () => Machine Type +
+A write to this register disables the boot rom in config mode +
+bits 2-0 select machine type when in config mode
+
+* bit 7 = (W) Display Timing change enable (allow changes to bits 6-4)
+(0 on hard reset)
+* bits 6-4 = Display Timing
+* bit 3 = Display Timing user lock control
+* Read
+** 0 = No user lock on display timing
+** 1 = User lock on display timing
+* Write
+** 1 = Apply user lock on display timing (0 on hard reset)
+* bits 2-0 = Machine Type (config mode only) +
+determines roms loaded
+* Machine Types/Display Timings
+** 000 or 001 = ZX 48K
+** 010 = ZX 128K/+2 (Grey)
+** 011 = ZX +2A-B/+3e/Next Native
+** 100 = Pentagon 128K
+
+@{h3}Summary
+
+Table 5.13 provides a full list of video timing configuration data:
+
+@node INTERRUPTS
+@{h1}Interrupts
+
+@{h2}Interrupt Types
+
+The Z80 has three different hardware interrupt signals: /RESET, /NMI, and /INT.
+
+@{h3}/RESET
+
+/RESET is used to return the CPU to a known state. When the /RESET line is
+pulled low, a /RESET is generated. The CPU then does several things. I, and R
+are set to $00. PC is set to $0000. SP becomes $FFFF. A and F are set to
+$FF. The interrupt mode is set to 0. And (maskable) interrupts are disabled by
+clearing IFF1 and IFF2.
+
+@{h3}/NMI
+
+/NMI is the non-maskable interrupt. Upon receiving a non-maskable interrupt
+(/NMI being pulled low) one of two sequences occur depending on the calue of bit
+3 of the interrupt control register (nextreg $C0).
+
+Register (R/W) $C0 () => Interrupt Control
+(3.01.09) +
+($00 on reset)
+
+* bits 7-5 = Programmable portion of IM2 vector *
+* bit 4 = Reserved, must be 0
+* bit 3 = Enable stackless /NMI response
+* bits 2-1 = Reserved, must be 0
+* bit 0 = Maskable interrupt mode
+** 0 - pulse
+** 1 - IM2
+
+* In IM2 mode vector generated is:
+
+* bits 7-5 = nextreg $C0 bits 7-5
+* bits 4-1 = Interrupt source
+** 0 - line interrupt (highest priority)
+** 1 - UART 0 Rx
+** 2 - UART 1 Rx
+** 3–10 - CTC channels 0-7
+** 11 - ULA
+** 12 - UART 0 Tx
+** 13 - UART 1 Tx (lowest priority)
+* bit 0 = 0
+
+If bit 3 is clear (0) PC is pushed on the stack, IFF1 is copied to IFF2, IFF1 is
+cleared (inhibiting maskable interrupts). The /NMI should end with RETN which
+copies the contents of IFF2 to IFF1 (returning the interrupt state to what it
+was before the /NMI) and PC is popped off the stack.
+
+If bit 3 is set (1) PC is stored in the /NMI return address registers (nextregs
+$C2 and $C3), IFF1 is copied to IFF2, IFF1 is cleared (inhibiting maskable
+interrupts). The /NMI should end with RETN which copies the contents of IFF2 to
+IFF1 (returning the interrupt state to what it was before the /NMI) and PC is
+compied from the /NMI return address registers.
+
+Register (R/W) $C2 () =>
+/NMI Return Address LSB (3.01.09) +
+($00 on reset)
+
+Register (R/W) $C3 () =>
+/NMI Return Address MSB (3.01.09) +
+($00 on reset)
+
+@{h3}/INT
+
+The interrupt generally of most interest to programmers is /INT. So much so that
+if programmers talk about interrupts on the Z80, they are probebly only talking
+about /INT. The processing of /INT is controlled by IFF1 and IFF2 which are set
+using EI to enable interrupts and reset using DI to disable
+interrupts. Interrupts can happen at any time and should preserve register
+contents. If none of your code uses the alternate registers the EXX and EX
+AF,AF’ instructions can make this faster and easier.  Interrupt routined should
+end with EI and RETI to reenable interrupts, potentially inform the interrupting
+device that its interrupt has been serviced, and return from the interrupt
+routine. In general the Spectrum machines do not make any distingtion between
+RET and RETI, but future developments in the ZX Spectrum Next may make the
+distinction important.
+
+The ZX Spectrum Next has 14 internal sources for /INT signals. This can be
+enabled and disabled using nextregs $C4 – $C6. Which signals have been received
+can be read/cleared using nexregs $C8 – $CA.
+
+Interrupt Enable
+
+Register (R/W) $C4 () => Interrupt Enable 0
+(3.01.08) +
+($83 on reset)
+
+* bit 7 = Expansion bus /INT
+* bits 6-2 = Reserved must be zero
+* bit 1 = Line
+* bit 0 = ULA
+
+Register (R/W) $C5 () => Interrupt Enable 1
+(3.01.08) +
+($00 on reset)
+
+* bit 7 = ctc channel 7 zc/to
+* bit 6 = ctc channel 6 zc/to
+* bit 5 = ctc channel 5 zc/to
+* bit 4 = ctc channel 4 zc/to
+* bit 3 = ctc channel 3 zc/to
+* bit 2 = ctc channel 2 zc/to
+* bit 1 = ctc channel 1 zc/to
+* bit 0 = ctc channel 0 zc/to
+
+Register (W) $C6 () => Interrupt Enable 2
+(3.01.08) +
+($00 on reset)
+
+* bit 7 = Reserved, must be 0
+* bit 6 = UART1 Tx empty
+* bit 5 = UART1 Rx half full *
+* bit 4 = UART1 Rx available *
+* bit 3 = Reserved, must be 0
+* bit 2 = UART0 Tx empty
+* bit 1 = UART0 Rx half full *
+* bit 0 = UART0 Rx available *
+
+* For each UART, Rx half full and Rx available are shared interrupts
+
+Interupt Status
+
+Register (R/W) $C8 () latexmath:[$\Rightarrow$] Interrupt Status 0
+(3.01.09) +
+($00 on reset)
+
+* bits 7-2 = Reserved, must be zero
+* bit 1 = Line
+* bit 0 = ULA
+
+* Set bits indicate the device generated an interrupt in the past *
+Writes clear bits where bits are set except in IM2 mode
+
+Register (R/W) $C9 () latexmath:[$\Rightarrow$] Interrupt Status 1
+(3.01.09)
+
+* bit 7 = ctc channel 7 zc/to
+* bit 6 = ctc channel 6 zc/to
+* bit 5 = ctc channel 5 zc/to
+* bit 4 = ctc channel 4 zc/to
+* bit 3 = ctc channel 3 zc/to
+* bit 2 = ctc channel 2 zc/to
+* bit 1 = ctc channel 1 zc/to
+* bit 0 = ctc channel 0 zc/to
+
+* Set bits indicate the device generated an interrupt in the past *
+Writes clear bits where bits are set except in IM2 mode
+
+Register (R/W) $CA () latexmath:[$\Rightarrow$] Interrupt Status 2
+(3.01.09) ($00 on reset)
+
+* bit 7 = Reserved, must be zero
+* bit 6 = UART1 Tx empty
+* bit 5 = UART1 Rx almost full *
+* bit 4 = UART1 Rx available *
+* bit 3 = Reserved must be zero
+* bit 2 = UART0 Tx empty
+* bit 1 = UART0 Rx almost full *
+* bit 0 = UART0 Rx available *
+
+* For each UART Rx half full and Rx available are shared interrupts **
+Set bits indicate the device generated an interrupt in the past **
+Writes clear bits where bits are set except in IM2 mode
+
+Internal Interrupt Sources
+
+* 0 = Line (highest priority)
+* 1 = UART 0 Rx
+* 2 = UART 1 Rx
+* 3-10 = CTC channels 0-7
+* 11 = ULA
+* 12 = UART 0 Tx
+* 13 = UART 1 Tx (lowest priority)
+
+@{h2}Interrupt Modes
+
+@{h3}IM0
+
+When an interrupt is received by the CPU it disables interrupts and
+executes the instruction placed on the bus by the interrupting device
+and (no known use on the Next) It is enabled with the IM0 instruction
+and enabling interrupts (EI).
+
+@{h3}IM1
+
+When an interrupt is received, the CPU disables interrupts and jumps to
+an interrupt handler at $0038 (normally in ROM). The ROM interrupt
+handler updates the frame counter and scans the keyboard. This is the
+default interrupt handling method for the ZX Spectrum and is probably
+the method to use if you don’t need the ROMs for anything. It is enabled
+using the IM1 instruction and enabling interrupts.
+
+@{h3}IM2
+
+The ZX Spectrum Next has both a legacy method for handling IM2 and an
+updated one which makes better use of the capabilities of IM2 which was
+added in Core 3.01.09.
+
+The ZX Spectrum Next has 14 interrupt devices which can all be given
+independent interrupt vectors when using IM2. These interrupts are
+controlled by nextregs $C0 – $CF. The address of the vector for a given
+interrupt is created by composing the I register (bits 15-0), nextreg
+$C0 bits 7-5 (bits 7-5) and the interrupt number of the interrupt device
+(bits 4-1). This means that even if you use all 14 internal interrupt
+sources, your interrupt vector table is no more than 28 bytes which can
+be at any 32 byte boundry. It also means that far less processing has to
+be done on interrupts which are received. External interrupts are a
+little different. If no vector is supplied by a device the implied LSB
+will be $FF.
+
+While in IM2 mode, it is possible for interrupts to interrupt DMA
+transfers. This capability is controlled by The DMA Interrupt enable
+registers (nextregs $CC – $CE). When DMA is interrupted, one instruction
+of the main program will be processed, then the interrupt will be taken.
+On return, DMA will continue.
+
+Register (R/W) $CC () latexmath:[$\Rightarrow$] DMA Interrupt Enable 0
+(3.01.09) ($00 on reset)
+
+* bits 7-2 = Reserved, must be 0
+* bit 1 = Line
+* bit 0 = ULA
+
+* Set bits indicate the specified interrupt will interrupt a DMA
+operation when in IM2 mode
+
+Register (R/W) $CD () latexmath:[$\Rightarrow$] DMA Interrupt Enable 1
+(3.01.09) ($00 on reset)
+
+* bit 7 = CTC channel 7 zc/to
+* bit 6 = CTC channel 6 zc/to
+* bit 5 = CTC channel 5 zc/to
+* bit 4 = CTC channel 4 zc/to
+* bit 3 = CTC channel 3 zc/to
+* bit 2 = CTC channel 2 zc/to
+* bit 1 = CTC channel 1 zc/to
+* bit 0 = CTC channel 0 zc/to
+
+* Set bits indicate the corresponding interrupt will interrupt a DMA
+operation when in IM2 mode
+
+Register (R/W) $CE () latexmath:[$\Rightarrow$] DMA Interrupt Enable 2
+(3.01.09) ($00 on reset)
+
+* bit 7 = Reserved, must be 0
+* bit 6 = UART1 Tx empty
+* bit 5 = UART1 Rx half full
+* bit 4 = UART1 Rx available
+* bit 3 = Reserved, must be 0
+* bit 2 = UART0 Tx empty
+* bit 1 = UART0 Tx half full
+* bit 0 = UART0 Tx available
+
+* Set bits indicate the corresponding interrupt will interrupt a DMA
+operation when in IM2 mode.
+
+In legacy mode, when the CPU receives an interrupt it disables
+interrupts and jumps to an interrupt routine starting at the contents of
+the jump table at I. The start of the interrupt routine is the contents
+of I*$100+bus and I*$100+bus+1. Most devices that can supply interrupts
+on the ZX Spectrum leave the data bus in a floating state. As a result
+the interpreted state of the data bus while generally $FF is not
+entirely predictable. The solution to place your interrupt routine at an
+address where the MSB and LSB are the same ($0101, $0202, … $FFFF) then
+place 257 copies of that value in a block starting at I*$100 (you can
+set the value of the I register).
+
+Code:
+
+....
+;; my program
+org $8000
+;; enable interrupt mode im2
+ld i,$fe
+im2
+ei
+;; program body
+;; interrupt routine
+handler:
+;; preserve registers used
+;; handle interrupt
+;; restore registers
+ei
+reti
+;; jump to interrupt routine
+org $fdfd
+jp handler
+;; im2 jump table
+org $fe00 ; not actually legal
+defs $101,$fd
+....
+
+@{h2}Z80 CTC
+
+(3.01.08) Untested, assuming it acts like two Z80 CTCs.
+
+Eight independent CTC channels are available on ports $183B through
+$1F3B. These perform counter/timer functions that can be used to
+generate timer interrupts or to generate interrupts from physical
+signals.
+
+The CTC is a standard Zilog part. Its datasheet can be found at
+http://www.zilog.com/docs/z80/ps0181.pdf . The Zilog documentation is
+ambiguous around how soft resets are treated so the following clarifies
+some points in the Next’s implementation.
+
+. Hard reset requires both a control word and a time constant to be
+written to a channel even if bit 2 = 0 in the first control word.
+. Soft reset with bit 2 = 0 causes the entire control register to be
+modified. Soft reset with bit 2 = 1 does not change the control register
+contents. In both cases a time constant must follow to resume operation.
+. Changing the trigger edge selection in bit 4 while the channel is in
+operation counts as a clock edge. A pending timer trigger will be fired
+and, in counter mode, an edge will be received.
+. ZC/TO is asserted for one clock cycle and not for the entire duration
+that the count is at zero.
+
+At the moment, any interrupt generated by the CTC will assert the z80’s
+/INT line for 32 cpu cycles. This is the same way that the ULA and line
+interrupts operate.
+
+At the moment, the ZC/TO output of each channel is fed into the CLK/TRG
+input of the succeeding channel so that time and count periods can be
+cascaded.
+
+@{h3}Programming
+
+Initial values are set by a write of a channel control word followed by
+a time constant. In timer mode, the counter decrements every time it is
+triggered. In counter mode it decrements every time the prescaler
+counter reaches zero.
+
+Channel Control Word
+
+* bit 7 = Enable Interrupt
+* bit 6 = Mode
+** 0 = Timer mode
+** 1 = Counter mode
+* bit 5 = Prescalar value (Timer mode only)
+** 0 = 16
+** 1 = 256
+* bit 4 = CLK/TRG edge selection
+** 0 = Falling Edge
+** 1 = Rising Edge
+* bit 3 = Timer Trigger (Timer mode only)
+** 0 = Starts on loading of time constant
+** 1 = Starts on CLK/TRG
+* bit 2 = Time constant follows
+* bit 1 = Software reset
+* bit 0 = 0 (Control Word)
+
+If we are running at 28MHz (Mode 0) and wish to trigger an interrupt
+every 1 sec, that is 28 million T-States/cycles we could program CTC 5
+as a counter with a prescalar of 16 and a period of 175, CTC 6 as a
+counter with a prescalar of 16 and a period of 125, and CTC 7 as a timer
+with a period of 5.
+
+CTC 5 triggers ZC5 every 280 cycles or 10 usec.
+
+CTC 6 triggers ZC6 every 560,000 cycles or 20 msec.
+
+CTC 7 triggers ZC7 and an interrupt every 28,000,000 cycles or 1 sec.
+
+....
+di
+; set up interrupt routine
+im 2
+ld bc,$183B     ; CTC 0
+ld hl,$FFFA     ; address pointing to start of interrupt routine
+ld de,interrupt ; start of interrupt routine
+ld (hl),de
+ld i,$FF
+ld a,l          ; Vector to address at on this interrupt
+out (c),a
+; set up CTC 5
+ld b,$1D        ; CTC 5
+ld a,$87
+out (c),a       ; Interrupt mode, timer mode, time constant, soft, control
+ld a,$05
+out (c),a       ; once every 5 times 
+; set up CTC 6
+inc b           ; CTC 6
+ld a,$47
+out (c),a       ; 16x, counter mode, time constant, soft, control
+ld a,$7D        ; 125 = once every 2000 times
+out (c),a
+; set up CTC 7
+inc b           ; CTC 7
+ld a,$47
+out (c),a       ; 16x, counter mode, time constant, soft, control
+ld a,$AF        ; 175 = once every 2800 times
+ei
+....
+
+@node SERIAL
+@{h1}Serial Communication
+
+The Spectrum Next has two independent fully featured UARTs. The UARTS
+share I/O ports so it is important to select the correct one before
+communicating with it. Each has its own 64 byte Tx buffer and 512 byte
+Rx buffer. One UART can be connected to either the ESP of joystick port
+while the other can be connected to the Raspberry Pi accelerator or
+joystick port. The UARTS are controlled using ports $37, $133B, $143B,
+$153B, and $163B. The UARTs are connected to the IM2 interrupt system.
+Nextreg $c6 allows interrupts to be enabled for the status of each UART.
+UART interrupts correspond to interrupts 1, 2, 12, and 13 (see
+Interrupts).
+
+Port $37 () Kempston/Mega Drive Joystick 2 +
+Read
+
+* bit 7 = ”start” button
+* bit 6 = A/X button
+* bit 5 = C/Z button
+* bit 4 = Fire/C/Y button
+* bit 3 = Up
+* bit 2 = Down
+* bit 1 = Left
+* bit 0 = Right
+
+Disable with Nextreg $05 +
+Write ($00 on reset, 3.01.04)
+
+* bits 7-6 = Select I/O Mode
+** 00 = Bit Bang
+** 01 = Clock
+** 10 = UART
+** 11 = Reserved (don’t use)
+* bit 5 = Reserved, must be 0
+* bit 4 = Select Joystick Port for Read
+** 0 = Left
+** 1 = Right
+* bits 3-1 = Reserved, must be $00
+* bit 0 = Pin 7 state (both ports)
+** Bit Bang - bit 0 on pin 7
+** Clock - clock on pin 7 +
+0 = Slow clock (Fsys/2048 = 12.672 kHz) +
+1 = Fast clock (Fsys/8 = 3.5 MHz)
+** UART - Pin 7 = TX, Pin 9 = RX 0 = ESP +
+1 = Pi
+
+** A Runt clock may appear in the first cycle +
+The I/O mode should be set by writing this port first followed by
+enabling io mo de on the joysticks with a write to nextreg 0x05.
+
+Port $133B () UART tx +
+Read: UART Status +
+
+* bits 7-4 = Reserved (0)
+* bit 3 = UART at least half full (3.01.09)
+* bit 2 = UART full
+* bit 1 = UART transmit busy
+* bit 0 = UART receive has data
+
+Write: UART Transmit
+
+Port $143B () UART rx +
+Read: UART Receive +
+Write: UART Prescalar
+
+* bit 7 = select prescalar part
+** 0 = Bits 6-0 of prescalar
+** 1 = Bits 13-7 of prescalar
+* bits 6-0 = Prescalar bits
+
+Port $153B () UART select
+
+* bit 7 = Reserved (0)
+* bit 6 = UART select (0 on soft reset) **
+** 0 = ESP
+** 1 = Pi *
+* bit 5 = Reserved (0)
+* bit 4 = Prescalar valid in this write
+* bit 3 = Reserved (0)
+* bits 2-0 = Bits 16-14 of prescalar (0 on hard reset)
+
+* Pi GPIO must be configured for UART, see nextreg $A0 +
+** Either UART can be redirected to the joystick ports, see port $037
+
+Port $153B () UART frame (upcoming) +
+($18 on hard reset)
+
+* bit 7 = Immediately reset Rx and Tx to idle and empty FIFOs
+* bit 6 = Assert break (Tx=0) when Tx reaches idle
+* bit 5 = Enable hardware flow control *
+* bits 4-3 = Number of bits in a frame
+** 00 = 5 bits
+** 01 = 6 bits
+** 10 = 7 bits
+** 11 = 8 bits
+* bit 2 = Enable parity
+* bit 1 = Parity
+** 0 = Even parity
+** 1 = Odd parity
+* bit 0 = Number of stop bits
+** 0 = 1 stop bit
+** 1 = 2 stop bits
+
+Register (R/W) $C0 () latexmath:[$\Rightarrow$] Interrupt Control
+(3.01.09) +
+($00 on reset)
+
+* bits 7-5 = Programmable portion of IM2 vector *
+* bit 4 = Reserved, must be 0
+* bit 3 = Enable stackless latexmath:[$\overline{\hbox{NMI}}$] response
+* bits 2-1 = Reserved, must be 0
+* bit 0 = Maskable interrupt mode
+** 0 - pulse
+** 1 - IM2
+
+* In IM2 mode vector generated is:
+
+* bits 7-5 = nextreg $C0 bits 7-5
+* bits 4-1 = Interrupt source
+** 0 - line interrupt (highest priority)
+** 1 - UART 0 Rx
+** 2 - UART 1 Rx
+** 3–10 - CTC channels 0-7
+** 11 - ULA
+** 12 - UART 0 Tx
+** 13 - UART 1 Tx (lowest priority)
+* bit 0 = 0
+
+Register (W) $C6 () latexmath:[$\Rightarrow$] Interrupt Enable 2
+(3.01.08) +
+($00 on reset)
+
+* bit 7 = Reserved, must be 0
+* bit 6 = UART1 Tx empty
+* bit 5 = UART1 Rx half full *
+* bit 4 = UART1 Rx available *
+* bit 3 = Reserved, must be 0
+* bit 2 = UART0 Tx empty
+* bit 1 = UART0 Rx half full *
+* bit 0 = UART0 Rx available *
+
+* For each UART, Rx half full and Rx available are shared interrupts
+
+@node PI0
+@{h1}Raspberry Pi0 Acceleration
+
+The Spectrum Next has a header (with male pins) which can be attached to
+a Raspberry Pi Zero. There is a modified version of DietPi called NextPi
+which is the standard distro for the Raspberry Pi0 accelerator. Software
+for the general public should be written assuming that it will be
+interfacing with a Pi0 running this distro.
+
+If you are more adventurous, you may choose to use another distro, or
+even another accelerator that uses the Raspberry Pi style (40 pin)
+expansion bus. Chief concers when doing this is that you have a console
+presented on the UART that defaults to 115,200 bps, you don’t need to
+login, the machine is configured with a driver to treat the I^2^S
+interface as a sound card, and the presence of the nextpi scripts.
+
+The Raspberry Pi 0 has a Broadcom BCM2835 SoC with an ARMv6 core, a
+Videocore 4 GPU, and its own 512 MB memory and HDMI output. It has its
+own SD card from which it boots. For this application the Pi 0 ships
+with a 1GB microSD card containing NextPi a customized version of
+DietPi.
+
+The Pi Zero, if installed, is a smart peripheral for the ZX Spectrum
+Next. Available interfaces are: low level access to the GPIO pins,
+higher level access to standardized I/O interfaces, and use of the Pi
+Zero as a sound card.
+
+When using the low level GPIO interface Pi Zero GPIO pins 2-27 can be
+configured as either inputs or outputs using nextregs $90-$93. If they
+are outputs, the output state can be set by writing to nextregs $98-$9b.
+The current status of the GPIO pins can be read from nextregs $98-$9b
+whether it is the state driven by the ZX Spectrum Next or the state
+drive by some other peripherial attached to the bus (normally the
+Raspberry Pi Zero).
+
+Register (R/W) $90 () latexmath:[$\Rightarrow$] Pi GPIO output enable
+1/4
+
+* bit 7 = Enable Pin 7 (0 on reset)
+* bit 6 = Enable Pin 6 (0 on reset)
+* bit 5 = Enable Pin 5 (0 on reset)
+* bit 4 = Enable Pin 4 (0 on reset)
+* bit 3 = Enable Pin 3 (0 on reset)
+* bit 2 = Enable Pin 2 (0 on reset)
+* bit 1 = Enable Pin 1 (cannot be enabled) (0 on reset)
+* bit 0 = Enable Pin 0 (cannot be enabled) (0 on reset)
+
+Register (R/W) $91 () latexmath:[$\Rightarrow$] Pi GPIO output enable
+2/4
+
+* bit 7 = Enable Pin 15 (0 on reset)
+* bit 6 = Enable Pin 14 (0 on reset)
+* bit 5 = Enable Pin 13 (0 on reset)
+* bit 4 = Enable Pin 12 (0 on reset)
+* bit 3 = Enable Pin 11 (0 on reset)
+* bit 2 = Enable Pin 10 (0 on reset)
+* bit 1 = Enable Pin 9 (0 on reset)
+* bit 0 = Enable Pin 8 (0 on reset)
+
+Register (R/W) $92 () latexmath:[$\Rightarrow$] Pi GPIO output enable
+3/4
+
+* bit 7 = Enable Pin 23 (0 on reset)
+* bit 6 = Enable Pin 22 (0 on reset)
+* bit 5 = Enable Pin 21 (0 on reset)
+* bit 4 = Enable Pin 20 (0 on reset)
+* bit 3 = Enable Pin 19 (0 on reset)
+* bit 2 = Enable Pin 18 (0 on reset)
+* bit 1 = Enable Pin 17 (0 on reset)
+* bit 0 = Enable Pin 16 (0 on reset)
+
+Register (R/W) $93 () latexmath:[$\Rightarrow$] Pi GPIO output enable
+4/4
+
+* bits 7-4 = Reserved
+* bit 3 = Enable Pin 27 (0 on reset)
+* bit 2 = Enable Pin 26 (0 on reset)
+* bit 1 = Enable Pin 25 (0 on reset)
+* bit 0 = Enable Pin 24 (0 on reset)
+
+Register (R/W) $98 () latexmath:[$\Rightarrow$] Pi GPIO Pin State 1/4
+
+* bit 7 = Pin 7 Data (1 on reset)
+* bit 6 = Pin 6 Data (1 on reset)
+* bit 5 = Pin 5 Data (1 on reset)
+* bit 4 = Pin 4 Data (1 on reset)
+* bit 3 = Pin 3 Data (1 on reset)
+* bit 2 = Pin 2 Data (1 on reset)
+* bit 1 = Pin 1 Data (1 on reset)
+* bit 0 = Pin 0 Data (1 on reset)
+
+Register (R/W) $99 () latexmath:[$\Rightarrow$] Pi GPIO Pin State 2/4
+
+* bit 7 = Pin 15 Data (1 on reset)
+* bit 6 = Pin 14 Data (1 on reset)
+* bit 5 = Pin 13 Data (1 on reset)
+* bit 4 = Pin 12 Data (1 on reset)
+* bit 3 = Pin 11 Data (1 on reset)
+* bit 2 = Pin 10 Data (1 on reset)
+* bit 1 = Pin 9 Data (1 on reset)
+* bit 0 = Pin 8 Data (1 on reset)
+
+Register (R/W) $9A () latexmath:[$\Rightarrow$] Pi GPIO Pin State 3/4
+
+* bit 7 = Pin 23 Data (1 on reset)
+* bit 6 = Pin 22 Data (1 on reset)
+* bit 5 = Pin 21 Data (1 on reset)
+* bit 4 = Pin 20 Data (1 on reset)
+* bit 3 = Pin 19 Data (1 on reset)
+* bit 2 = Pin 18 Data (1 on reset)
+* bit 1 = Pin 17 Data (1 on reset)
+* bit 0 = Pin 16 Data (1 on reset)
+
+Register (R/W) $9B () latexmath:[$\Rightarrow$] Pi GPIO Pin State 4/4
+
+* bits 7-4 = Reserved
+* bit 3 = Pin 27 Data (1 on reset)
+* bit 2 = Pin 26 Data (1 on reset)
+* bit 1 = Pin 25 Data (1 on reset)
+* bit 0 = Pin 24 Data (1 on reset)
+
+Standardized I/O access with the Pi Zero can use the I^2^C , SPI, or
+UART interfaces and is configured using nextreg $a0. Any enabled port
+will disable low level (write) access to the corresponding GPIO pins.
+
+Register (R/W) $A0 () latexmath:[$\Rightarrow$] Pi Peripheral Enable
+
+* bits 7-6 = Reserved, must be 0
+* bit 5 = Enable UART on GPIO 14, 15 (0 on reset)*
+* bit 4 = Communication Type (0 on reset)
+** 0 = Rx to GPIO 15, Tx to GPIO 14 (Pi)
+** 1 = Rx to GPIO 14, Tx to GPIO 15 (Pi Hats)
+* bit 3 = Enable I^2^C on GPIO 2, 3 (0 on reset)*
+* bits 2-1 = Reserved, must be 0
+* bit 0 = Enable SPI on GPIO 7, 8, 9, 10, 11 (0 on reset)*
+
+*Overrides GPIO Enables
+
+The I^2^C interface is controlled using ports $103b (SCL) and $113b
+(SDA). This is the same I^2^C interface that is used for the optional
+Real Time Clock. Interfacing with the Pi Zero over I^2^C is complicated
+by the fact that it is a master/slave interface, but both the ZX
+Spectrum Next and Pi Zero are configured to be bus masters.
+
+Port $103B () I^2^C SCL (rtc, rpi)
+
+Port $113B () I^2^C SDA (rtc, rpi)
+
+The SPI interface is controlled using ports $e7 (/CS) and $eb (/DATA).
+The SPI interface is shared between the SD card(s), the flash memory,
+and the Pi Zero. Interfacing with the Pi Zero over SPI is complicated by
+the fact it is a master/slave interface and both the ZX Spectrum Next
+and Pi Zero are configured to be bus masters.
+
+Port $E7 () SPI latexmath:[$\overline{\hbox{CS}}$] (SD card, flash,
+rpi) +
+Disable with bit 2 of Nextreg $09
+
+Port $EB () SPI latexmath:[$\overline{\hbox{DATA}}$] (SD card, flash,
+rpi) +
+Disable with bit 2 of Nextreg $09
+
+The default means of communication between the ZX Next and the Pi is
+through the UART interface (see serial communications chapter). In order
+to communicate withe the Pi the Pi UART must be connected to the Pi by
+setting nextreg $a0 bits 5 and 4 to 1, selecting the Pi UART by setting
+port $153b bit 6 to 1 and ensuring that both ends are using matching
+communication protocols (by default 115,200 bps, 8N1 and no flow
+control). On the Pi end the UART is connected to the serial console.
+
+....
+;; enable UART connection with Pi Zero
+   ld c,$3b
+   ld b,$15 ; UART control
+;; select Pi on UART control
+   in a,(c)
+   or $40
+   out (c),a
+   ld b,$24 ; Next Register Select
+   ld a,$a0
+   out (c),a
+   inc b ; Next Register Data
+;; Enable UART on GPIO and select Pi
+   in a,(c)
+   or $30
+   out (c),a
+....
+
+The I^2^S sound interface between the ZX Spectrum Next and the Pi Zero
+is controlled by nextregs $a2 and $a3. Normally, one would control the
+Pi through some other channel such as the UART recieve audio from the Pi
+to either use as a fulloy programmable sound card or to allow loading of
+tape files on the ZX Spectrum Next.
+
+Register (R/W) $A2 () latexmath:[$\Rightarrow$] Pi I^2^S Audio Control
+
+* bits 7-6 = I^2^S State ($00 on reset)
+** 00 = I^2^S Disabled
+** 01 = I^2^S is mono, source R
+** 10 = I^2^S is mono, source L
+** 11 = I^2^S is stereo
+* bit 5 = Reserved, must be 0
+* bit 4 = Audio Flow Direction (0 on reset)
+** 0 = PCM_DOUT to Pi, PCM_DIN from Pi (Hats)
+** 1 = PCM_DOUT from Pi, PCM_DIN to Pi (Pi)
+* bit 3 = Mute left (0 on reset)
+* bit 2 = Mute right (0 on reset)
+* bit 1 = Slave mode, Reserved must be 1 (remove in 3.01.05)
+* bit 0 = Direct I^2^S audio to EAR on port $FE (0 on reset)
+
+Register (R/W) $A3 () latexmath:[$\Rightarrow$] Pi I^2^S Clock Divide
+(Master Mode) (removed in 3.01.05)
+
+* bits 7-0 = Clock divide value ($0B on reset)
+
+latexmath:[$\hbox{Divider}=\frac{538461}{\hbox{Rate}}-1$] or
+latexmath:[$\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$]
+
+@node SYSTEM
+@{h1}System Software
+
+@node CPM
+@{h2}CP/M
+
+The ZX Spextrum Next has support for CP/M+ 3.0. CP/M was the most
+popular microcomputer coperating system prior to the advent of MS-DOS.
+
+@{h3}Utilities
+
+From the Digital Research: CP/M 3 Command Reference Manual 1984
+
+This section documents all standard CP/M+ 3 commands plus those extras
+included with the ZX Spectrum Next CP/M system.
+
+*COLOURS*
+
+Parameters:*Syntax:* *COLOURS [RGB] _paper_ _ink_*
+
+*Function:* Sets the screen colours
+
+*Parameters:*
+
+Parameters_paper_ Paper (background) colour
+
+Parameters:_ink_ Ink (foreground) colour
+
+*Options:*
+
+Parameters:RGB Causes ink and paper colours to be interpreted as 9-bit
+octal RGB numbers
+
+*Notes:* Sets the screen colours using standard ZX colours or octal
+9-bit RGB numbers.
+
+*Examples:*
+
+colours 1 6
+
+colours rgb 000 750
+
+*COPYSYS*
+
+Parameters:*Syntax:* *COPYSYS*
+
+*Function:* Copy CP/M system
+
+*Notes:* COPYSYS copies the CP/M Plus system from a CP/M Plus system
+diskette to another diskette. The new diskette must have the same format
+as the original system diskette.
+
+*DATE*
+
+Parameters:*Syntax:* *DATE* +
+*DATE C* +
+*DATE CONTINUOUS* +
+*DATE _time-specification_* +
+*DATE SET*
+
+*Function:* The DATE command lets you display and set the date and time
+of day.
+
+*Parameters:*
+
+Parameters_time-specification_ Time/date in the format MM/DD/YY HH:MM:SS
+
+*Options:*
+
+Parameters:C Continuously show the date and time until a key is pressed
+
+Parameters:CONTINUOUS Continuously show the date and time until a key is
+pressed
+
+Parameters:SET Prompt the user for the current date and time
+
+*Notes:* The DATE command is a transient utility that lets you display
+and set the date and time of day. When you start CP/M 3, the date and
+time are set to the creation date of your CP/M 3 system. Use DATE to
+change this initial value to the current date and time.
+
+*Examples:*
+
+DATE
+
+DATE C
+
+DATE CONTINUOUS
+
+DATE 08/13/82 09:15:37
+
+DATE SET
+
+*DEVICE*
+
+Syntax: +
+DEVICE +
+DEVICE NAMES +
+DEVICE VALUES +
+DEVICE logical-dev \{XONlatexmath:[$|$]NOXONlatexmath:[$|$]baud-rate}, +
+DEVICE physical-dev \{XONlatexmath:[$|$]NOXONlatexmath:[$|$]baud-rate} +
+DEVICE logical-dev=physical-dev \{option} \{,physical-dev
+\{option},...} +
+DEVICE logical-dev = NULL +
+DEVICE CONSOLE \{PAGE} +
+DEVICE CONSOLE \{COLUMNS=n, LINES=n} +
+DEVICE displays current logical device assignments and physical device
+names.
+
+*DIR* (built-in)
+
+Syntax: +
+DIR +
+DIR d: +
+DIR filespec +
+DIR d: options +
+DIR filespec,... filespec options
+
+The DIR command displays the names of files catalogued in the directory
+of an online disk that belong to current user number and have the
+Directory (DIR) attribute. DIR accepts the * and ? wildcards in the file
+specification.
+
+The DIR command with options displays the names of files and the
+characteristics associated with the files. DIR is a built-in utility.
+DIR with options is a transient utility and must be loaded into memory
+from the disk.
+
+*DIRSYS/DIRS* (built-in)
+
+Syntax: +
+DIRSYS +
+DIRSYS d: +
+DIRSYS filespec
+
+The DIRSYS command lists the names of files in the current directory
+that have the system (SYS) attribute. DIRSYS accept the * and ?
+wildcards in the file specification. DIRSYS is a built-in utility.
+
+*DUMP*
+
+Syntax: +
+DUMP filespec
+
+DUMP displays the contents of a file in and ASCII format.
+
+*ECHO* (ZX Spectrum Next)
+
+Syntax: +
+ECHO string
+
+Echo characters to the terminal
+
+The following special character sequences may be used
+
+* \a alert (bell) (ASCII 7)
+* \b backspace (ASCII 8)
+* \e escape (ASCII 27)
+* \n line feed (ASCII 10)
+* \r carriage return (ASCII 13)
+* \l interpret further characters as lower-case
+* \u interpret further characters as upper-case
+* \\backslash (’\’)
+
+Note that CP/M converts all your typed characters to upper-case before
+providing them to ECHO.COM. Therefore you will need to use \l and \u to
+specify the case of characters if it is important (in ESCape sequences,
+for example).
+
+*ED*
+
+Syntax: +
+ED +
+ED input-filespec +
+ED input-filespec \{d: latexmath:[$|$] output-filespec}
+
+Character file editor. To redirect or rename the new version of the file
+specify the destination drive or destination filespec.
+
+*ERASE/ERA* (built-in)
+
+Syntax: +
+ERASE +
+ERASE filespec +
+ERASE filespec [CONFIRM]
+
+The ERASE command removes one or more files from the directory of a
+disk. Wildcard characters are accepted in the filespec. Directory and
+data space are automatically reclaimed for later use by another file.
+The ERASE command can be abbreviated to ERA.
+
+[CONFIRM] option informs the system to prompt for verification before
+erasing each file that matches the filespec. CONFIRM can be abbreviated
+to C.
+
+*EXIT* (ZX Spectrum Next)
+
+Syntax: +
+EXIT
+
+The EXIT command leaves CP/M (rebooting the ZX Spectrum Next)
+
+*EXPORT* (ZX Spectrum Next)
+
+Syntax: +
+EXPORT cpm-filespec nextzxos-filespec
+
+NextZXOS file export utility
+
+Export file to a NextZXOS drive.
+
+*GENCOM*
+
+Syntax: +
+GENCOM COM-Eilespec RSX-filespec... RSX-Eilespec \{[LOADER
+latexmath:[$|$] SCB=(Offset,value)]} +
+GENCOM RSX-filespec ... RSX-filespec \{[NULL latexmath:[$|$]
+SCB=(Offset,value)l} +
+GENCOM filename +
+GENCOM filename [SCB=(offset,value)]
+
+The GENCOM command attaches RSX files to a COM file, or creates a dummy
+COM file containing only RSXS. It can also restore a previously GENCOMed
+file to the original COM file without the header and RSXS, add or
+replace RSXs in already GENCOMed files, and attach header records to COM
+files without RSXS.
+
+*GENCPM*
+
+Syntax: +
+GENCPM \{AUTOlatexmath:[$|$]AUTO DISPLAY}
+
+GENCPM creates a memory image CPM3.SYS file, containing the CP/M 3 BDOS
+and customized BIOS. The GENCPM utility performs late resolution of
+intermodule references between system modules. GENCPM can accept its
+command input interactively from the console or from a file GENCPM.DAT.
+
+In the nonbanked system, GENCPM creates a CPM3.SYS file from the
+BDOS3.SPR and BIOS3.SPR files. In the banked system, GENCPM creates the
+CPM3.SYS file from the RESBDOS3.SPR, the BNKBDOS3.SPR and the
+BNKBIOS3.SPR files. Remember to back up your CPM3.SYS file before
+executing GENCPM, because GENCPM deletes any existing CPM3.SYS file
+before it generates a new system.
+
+*GET*
+
+Syntax: +
+GET \{CONSOLE INPUT FROM} FILE filespec options +
+GET \{CONSOLE INPUT FROM} CONSOLE
+
+GET directs the system to take console input from a file for the next
+system comand or user program entered at the console.
+
+Console input is taken from a file until the program terminates. If the
+file is exhausted before program input is terminated, the program looks
+for subsequent input from the console. If the program terminates before
+exhausting all its input, the system reverts back to the console for
+console input.
+
+*HELP*
+
+Syntax: +
+HELP +
+HELP topic +
+HELP topic subtopic +
+HELP topic [NOPAGE] +
+HELP topic subtopic1...subtopic8 +
+HELPlatexmath:[$>$]topic +
+HELPlatexmath:[$>$].subtopic
+
+HELP displays a list of topics and provides summarized information for
+CP/M Plus commands.
+
+Typing HELP topic displays information about that topic. Typing HELP
+topic subtopic displays information about that subtopics One or two
+letters is enough to identify the topics. After HELP displays
+information for your topic, it displays the special prompt
+HELPlatexmath:[$>$] on your screen, followed by a list of subtopics.
+
+* Enter ? to display list of main topics.
+* Enter a period and subtopic name to access subtopics.
+* Enter a period to redisplay what you just read.
+* Press RETURN to return to the CP/M Plus system prompt.
+* [NOPAGE] option disables the 24 lines per page console display.
+* Press any key to exit a display and return to the HELPlatexmath:[$>$]
+prompt.
+
+*HEXCOM*
+
+Syntax: +
+HEXCOM filename
+
+The HEXCOM Command generates a command file (filetype COM) from a HEX
+input file. it names the output tile with the same filename as the input
+file but with filetype COM. HEXCOM always looks for a file with filetype
+HEX.
+
+*IMPORT* (ZX Spectrum Next)
+
+Syntax: +
+IMPORT nextzxos-filespec +
+IMPORT nextzxos-filespec cpm-filespec
+
+NextZXOS file import utility
+
+List or import files from a NextZXOS drive.
+
+*INITDIR* (Not included)
+
+Syntax: +
+INITDIR d:
+
+The INITDIR command initializes a disk directory to allow date and time
+stamping of files on that disk. INITDIR can also recover time/date
+directory space.
+
+*NEXTREG* (ZX Spectrum Next)
+
+Syntax: +
+NEXTREG register \{value}
+
+NextReg Utility
+
+Show or change a NextReg register (use at your own risk!)
+
+*LIB* (Not included)
+
+Syntax: +
+LIB filespec options +
+LIB filespec options=filespec latexmath:[$<$]modifierlatexmath:[$>$]
+f,filespeclatexmath:[$<$]modifierlatexmath:[$>$]
+
+A library is a file that contains a collection of object modules.
+
+Use the LIB utility to create libraries, and to append, replace, select,
+or delete modules from an existing library. Use LIB to obtain
+information about the contents of library files. LIB creates and
+maintains library files that contain object modules in Microsoft REL
+file format. These modules are produced by the Digital Research
+relocatable macro-assembler program, RMAC, or other language translator
+that produces modules in Microsoft REL file format.
+
+You can use LINK-80 to link the object modules contained in a library to
+other object files. LINK-80 automatically selects from the library only
+those modules needed by the program being linked, and then forms an
+executable file with a filetype of Com.
+
+*LINK* (Not included)
+
+Syntax: +
+LINK filespec [options] +
+LINK filespec [options],...filespec [options] +
+LINK filespec [options]=filespec [options],... +
+LINK combines relocatable object modules such as those produced by RMAC
+and PL/I- 80 into a COM file ready for execution. Relocatable files can
+contain external references and publics. Relocatable files can reference
+modules in library files. LINK searches the library files and includes
+the referenced modules in the output file. See the Programmer’s
+Utilities Guide for the CP/M Family of Operating Systems for a complete
+description of LINK-80.
+
+Use LINK option switches to control execution parameters. Link options
+follow the file specifications and are enclosed within square brackets.
+Multiple switches are separated by commas.
+
+*MAC* (Not included)
+
+Syntax: +
+MAC filename [$options]
+
+MAC, the CP/M Plus macro assembler, reads assembly language statements
+from a file of type ASM, assembles the statements, and produces three
+output files with the input filename and filetypes of HEX, PRN, and SYM.
+Filename.HEX contains Intel hexadecimal format object code. Filename.PRN
+contains an annotated source listing that you can print or examine at
+the console. Filename.SYM contains a sorted list of symbols defined in
+the program.
+
+Use options to direct the input and output of MAC. Use a letter with the
+option to indicate the source and destination drives, and console,
+printer, or zero output. Valid drive names are A through 0. X, P, and Z
+specify console, printer, and zero output, respectively.
+
+*PATCH*
+
+Syntax: +
+PATCH filename.typ n
+
+The PATCH command displays or installs patch number n to the CP/M Plus
+system or command files. The patch number n must be between 1 and 32
+inclusive.
+
+*PIP*
+
+Syntax: +
+PIP Destination = Source +
+PIP d:[Gn]=filespec [options] +
+PIP filespec[Gn]=filespec [options] +
+PIP filespec[Gn]device=filespec [options] device
+
+The file copy program PIP copies files, combines files, and transfers
+files between disks, printers, consoles, or other devices attached to
+your computer. The first filespec is the destination. The second
+filespec is the source. Use two or more source filespecs separated by
+commas to combine two or more files into one file. [options] is any
+combination of the available options. The [Gn] option in the destination
+filespec tells PIP to copy your file to that user number. PIP with no
+command tail displays an * prompt and awaits your series of commands,
+entered and processed one line at a time. The source or destination can
+optionally be any CP/M Plus logical device.
+
+*PUT*
+
+Syntax: +
+PUT CONSOLE \{OUTPUT TO} FILE filespec \{option} +
+PUT PRINTER \{OUTPUT TO} FILE filespec \{option} +
+PUT CONSOLE \{OUTPUT TO} CONSOLE +
+PUT PRINTER \{OUTPUT TO} PRINTER
+
+PUT puts console or printer output to a file for the next command
+entered at the console, until the program terminates. Then console
+output reverts to the console. Printer output is directed to a file
+until the program terminates. Then printer output is put back to the
+printer.
+
+PUT with the SYSTEM option directs all subsequent console/printer output
+to the specified file. This option terminates when you enter the PUT
+CONSOLE or PUT PRINTER command.
+
+*RENAME/REN* (built-in)
+
+Syntax: +
+RENAME +
+RENAME new-filespec=old-filespec
+
+RENAME lets you change the name of a file in the directory of a disk. To
+change several filenames in one command use the * or ? wildcards in the
+file specifications. You can abbreviate the RENAME command to REN. REN
+prompts you for input.
+
+*RMAC* (Not included)
+
+Syntax: +
+RMAC filespec options
+
+RMAC, a relocatable macro assembler, assembles ASM files into REL files
+that you can link to create COM files.
+
+RMAC options specify the destination of the output files. Replace d with
+the destination drive letter for the output files.
+
+*SAVE*
+
+Syntax: +
+SAVE
+
+SAVE copies the contents of memory to a file. To use SAVE, first issue
+the SAVE command, then run your program which reads a file into memory.
+Your program exits to the SAVE utility which prompts you for a filespec
+to which it copies the contents of memory, and the beginning and ending
+address of the memory to be SAVED.
+
+*SET*
+
+Syntax: +
+SET [options] +
+SET d: [options] +
+SET filespec [options] +
+SET [option = modifier] +
+SET filespec [option = modifier]
+
+SET initiates password protection and time stamping of files. It also
+sets the file and drive attributes Read/Write, Read/Only, DIR and SYS.
+It lets you label a disk and passord protect the label. To enable time
+stamping of files, you must first run INITDIR to format the disk
+directory.
+
+*SET Default password operation:*
+
+Syntax: +
+SET [DEFAULT=password]
+
+Instructs the system to use a default password if you do not enter a
+password for a password-protected file.
+
+*SET Time-stamp operations:*
+
+Syntax: +
+SET d: [CREATE=ONlatexmath:[$|$]OFF] +
+SET d: [ACCESS=ONlatexmath:[$|$]OFF] +
+SET d: [UPDATE=ONlatexmath:[$|$]OFF]
+
+The above set commands allw YOU to keep a record of the time and date of
+file creation and update or of the last access update of your files.
+
+*SET Drive operations:*
+
+Syntax: +
+SET d: [RO] +
+SET d: [RW]
+
+Adds or removes write protection from a drive.
+
+*SETDEF*
+
+Syntax: +
+SETDEF +
+SETDEF [TEMPORARY=d:] +
+SETDEF d:i,d:i,d:i,d:i +
+SETDEF [ORDER= (typ1, typn)] +
+SETDEF [DISPLAY latexmath:[$|$] NO DISPLAY) +
+SETDEF [PAGE latexmath:[$|$] NOPAGE]
+
+SETDEF allows the user to display or define up to four drives for the
+program search order, the drive for temporary files, and the filetype
+search order. The SETDEF definitions affect only the loading of programs
+and/or execution of SUBMIT (SUB) files. SETDEF turns on/off the system
+Display and Console Page modes. When on, the system displays the
+location and name of programs loaded or SUBmit files executed, and stops
+after displaying one full console screen of information.
+
+*SHOW*
+
+Syntax: +
+SHOW +
+SHOW d: +
+SHOW d: [SPACE] +
+SHOW d: [LABEL] +
+SHOW d: [USERS] +
+SHOW d: [DIR] +
+SHOW d: [DRIVE]
+
+The SHOW command displays the following disk drive information:
+
+* access mode and the amount of free disk space
+* disk label
+* current user number
+* number of files for each user number on the disk
+* number of free directory entries for the disk
+* drive characteristics
+
+*SID*
+
+Syntax: +
+SID [pgm-filespec],\{sym-filespec}
+
+The SID symbolic debugger allows you to monitor and test programs
+developed for the 8080 microprocessor. SID supports real-time
+breakpoints, fully monitored execution, symbolic disassembly, assembly,
+and memory display and fill functions. SID can dynamically load SID
+utility programs to provide traceback and histogram facilities.
+
+*SUBMIT*
+
+Syntax: +
+SUBMIT +
+SUBMIT filespec +
+SUBMIT filespec argument ... argument
+
+The SUBMIT command lets you execute a group (batch) of commands from a
+SUBmit file (a file with filetype of SUB).
+
+SUB files:
+
+The SUB file can contain the following types of lines:
+
+* any valid CP/M Plus command
+* any valid CP/M Plus command with SUBMIT parameters ($0-$9)
+* any data input line
+* any program input line with parameters ($0 to $9)
+
+The command line cannot exceed 135 characters.
+
+*TERMINFO* (ZX Spectrum Next)
+
+Syntax: +
+TERMINFO
+
+This program provides information on the terminal facilities provided by
+the BIOS on the ZX Spectrum Next.
+
+*TERMSIZE* (ZX Spectrum Next)
+
+Syntax: +
+TERMSIZE top left height width
+
+Terminal resize utility
+
+Size can be up to 32x80 (defaults to 24x80, suitable for many programs).
+If setting a reduced size, the top and left parameters can be used to
+make the image more centered on your screen.
+
+*TYPE/TYP* (built-in)
+
+Syntax: +
+TYPE +
+TYPE filespec +
+TYPE filespec [PAGE] +
+TYPE filespec [NOPAGE]
+
+The TYPE command displays the contents of an ASCII character file on
+your screen.
+
+*UPGRADE* (ZX Spectrum Next)
+
+Syntax: +
+UPGRADE
+
+UPGRADE CP/M from C:/NEXTZXOS/CPMBASE.P3D
+
+*USER/USE* (built-in)
+
+Syntax: +
+USER +
+USER n
+
+The USER command sets the current user number. The disk directory can be
+divided into distinct groups according to a User Number. User numbers
+range from 0 through 15.
+
+*XREF* (Not included)
+
+Syntax: +
+XREF \{d:} filename \{$P}
+
+XREF provides a cross-reference summary of variable usage in a program.
+XREF requires the PRN and SYM files produced by MAC or RMAC for input to
+the program. The SYM and PRN files must have the same filename as the
+filename in the XREF command tail. XREF outputs a file of type XRF.
+
+@{h3}BDOS
+
+From the CP/M 3 Programmers’ Guide 1984
+
+This section documents all BDOS system calls to include the parameters
+that must be passes to them and the values that are returned to the
+calling program.
+
+BDOS function 0: *SYSTEM RESET*
+
+Entry Parameters:
+
+* C: $00
+
+The System Reset function terminates the calling program and returns
+control to the CCP via a warm start sequence. Calling this function has
+the same effect as a jump to location $0000 of Page Zero.
+
+Note that the disk subsystem is not reset by System Reset under CP/M 3.
+The calling program can pass a return code to the CCP by calling
+Function 108, Get/Set Program Return Code, prior to making a System
+Reset call or jumping to location $0000.
+
+BDOS function 1: *CONSOLE INPUT*
+
+Entry Parameters:
+
+* C: $01
+
+Returned Value:
+
+* A: ASCII Character
+
+The Console Input function reads the next character from the logical
+console, CONIN:, to register A. Graphic characters, along with carriage
+return, line-feed, and backspace, CTRL-H, are echoed to the console. Tab
+characters, CTR-L-1, are expanded in columns of 8 characters. CTRL-S,
+CTRL-Q, and CTRL-P are normally intercepted as described below. All
+other non-graphic characters are returned in register A but are not
+echoed to the console.
+
+When the Console Mode is in the default state Function 1 intercepts the
+stop scroll, CTRL-S, start scroll, CTRL-Q, and start/stop printer echo,
+CTRL-P, characters. Any characters that are typed following a CTRL-S and
+preceding a CTRL-Q are also intercepted. However, if start/stop scroll
+has been disabled by the Console Mode, the CTRL-S, CTRL-Q, and CTRL-P
+characters are not intercepted. Instead, they are returned in register
+A, but are not echoed to the console.
+
+If printer echo has been invoked, all characters that are echoed to the
+console are also sent to the list device, LST:. Function 1 does not
+return control to the calling program until a non-intercepted character
+is typed, thus suspending execution if a character is not ready.
+
+BDOS function 2: *CONSOLE OUTPUT*
+
+Entry Parameters:
+
+* C: $02
+* E: ASCII Character
+
+The Console Output function sends the ASCII character from register E to
+the logical console device, CONOUT:. When the Console Mode is in the
+default state (see Section 2.2.1), Function 2 expands tab characters,
+CTRL-1, in columns of 8 characters, checks for stop scroll, CTRL-S,
+start scroll, CTRL-Q, and echoes characters to the logical list device,
+LST:, if printer echo, CTRL-P, has been invoked.
+
+BDOS function 3: *AUXILIARY INPUT*
+
+Entry Parameters:
+
+* C: $03
+
+Returned Value:
+
+* A: ASCII Character
+
+The Auxiliary Input function reads the next character from the logical
+auxiliary input device, AUXIN:, into register A. Control does not return
+to the calling program ’I the character is read. unti
+
+BDOS function 4: *AUXILIARY OUTPUT*
+
+Entry Parameters:
+
+* C: $04
+* E: ASCII Character
+
+The Auxiliary Output function sends the ASCII character from register E
+to the logical auxiliary output device, AUXOUT:.
+
+BDOS function 5: *LIST OUTPUT*
+
+Entry Parameters:
+
+* C: $05
+* E: ASCII Character
+
+The List Output function sends the ASCII character in register E to the
+logical list device, LST:.
+
+BDOS function 6: *DIRECT CONSOLE I/O*
+
+Entry Parameters:
+
+* C: $06
+* E: function/data (see description)
+
+Returned Value:
+
+* A: char/status/no value (see description)
+
+CP/M 3 supports direct I/O to the logical console, CONIN:, for those
+specialized applications where unadorned console input and output is
+required. Use Direct Console I/O carefully because it bypasses all the
+normal control character functions. Programs that perform direct I/O
+through the BIOS under previous releases of CP/M should be changed to
+use direct I/O so that they can be fully supported under future releases
+of MP/M and CP/M.
+
+A program calls Function 6 by passing one of four different values in
+register E.
+
+* $FF Console input/status command returns an input character; if no
+character is ready, a value of zero is returned.
+* $FE Console status command (On return, register A contains 00 if no
+character is ready; otherwise it contains $FF.)
+* $FD Console input command, returns an input character; this function
+will suspend the calling process until a character is ready.
+* ASCII Function 6 assumes that register E contains a valid ASCII
+chararacter and sends it to the console.
+
+BDOS function 7: *AUXILIARY INPUT STATUS*
+
+Entry Parameters:
+
+* C: $07
+
+Returned Value:
+
+* A: Auxiliary Input Status
+
+The Auxiliary Input Status function returns the value $FF in register A
+if a character is ready for input from the logical auxiliary input
+device, AUXIN:. If no character is ready for input, the value $00 is
+returned.
+
+BDOS function 8: *AUXILIARY OUTPUT STATUS*
+
+Entry Parameters:
+
+* C: $08
+
+Returned Value:
+
+* A: Auxiliary Output Status
+
+The Auxiliary Output Status function returns the value $FF in register A
+if the logical auxiliary output device, AUXOUT:, is ready to accept a
+character for output. If the device is not ready for output, the value
+$00 is returned.
+
+BDOS function 9: *PRINT STRING*
+
+Entry Parameters:
+
+* C: $09
+* DE: String Address
+
+The Print String function sends the character string addressed by
+register pair DE to the logical console, CONOUT:, until it encounters a
+delimiter in the string. Usually the delimiter is a dollar sign, $, but
+it can be changed to any other value by Function 110, Get/Set Output
+Delimiter. If the Console Mode is in the default state, Function 9
+expands tab characters, CTRL-I, in columns of 8 characters. It also
+checks for stop scroll, CTRL-S, start scroll, CTRL-Q, and echoes to the
+logical list device, LST:, if printer echo, CTRL-P, has been invoked.
+
+BDOS function 10: *READ CONSOLE BUFFER*
+
+Entry Parameters:
+
+* C: $0A
+* DE: Buffer Address
+
+Returned Value:
+
+* Console Characters in Buffer
+
+The Read Console Buffer function reads a line of edited console input
+from the logical console, CONIN:, to a buffer that register pair DE
+addresses. It terminates input and returns to the calling program when
+it encounters a return, CTRL-M, or a line feed, CTRL-J, character.
+Function 10 also discards all input characters after the input buffer is
+filled. In addition, it outputs a bell character, CTRL-G, to the console
+when it discards a character to signal the user that the buffer is full.
+The input buffer addressed by DE has the following format:
+
+where mx is the maximum number of characters which the buffer holds, and
+nc is the number of characters placed in the buffer. The characters
+entered by the operator follow the nc value. The value mx must be set
+prior to making a Function 10 call and may range in value from 1 to 255.
+Setting mx to zero is equivalent to setting mx to one. The value nc is
+returned to the calling program and may range from zero to mx. If nc <
+mx, then uninitialized positions follow the last character, denoted by
+?? in the figure. Note that a terminating return or line feed character
+is not placed in the buffer and not included in the count nc.
+
+If register pair DE is set to zero, Function 10 assumes that an
+initialized input buffer is located at the current DMA address (see
+Function 26, Set DMA Address). This allows a program to put a string on
+the screen for the user to edit. To initialize the input buffer, set
+characters c1 through cn to the initial value followed by a binary zero
+terminator.
+
+When a program calls Function 10 with an initialized buffer, Function 10
+operates as if the user had typed in the string. When Function 10
+encounters the binary zero terminator, it accepts input from the
+console. At this point, the user can edit the initialized string or
+accept it as it is by pressing the RETURN key. However, if the
+initialized string contains a return, CTRL-M, or a linefeed, CTRL-J,
+character, Function 10 returns to the calling program without giving the
+user the opportunity to edit the string.
+
+The level of console editing supported by Function 10 differs for the
+banked and nonbanked versions of CP/M 3. Refer to the CPIM Plus (CPIM
+Version 3) Operating System User’s Guide for a detailed description of
+console editing. In the nonbanked version, Function 10 recognizes the
+following edit control characters.
+
+Nonbanked CP/M 3
+
+* rub/del Removes and echoes the last character; GENCPM can change this
+function to CTRL-H
+* CTRL-C Reboots when at the beginning of line; the Console Mode can
+disable this function
+* CTRL-E Causes physical end of line
+* CTRL-H Backspaces one character position; GENCPM can change this
+function to rub/del
+* CTRL-J (Line-feed) terminates input line
+* CTRL-M (Return) terminates input line
+* CTRL-P Echoes console output to the list device
+* CTRL-R Retypes the current line after new line
+* CTRL-U Removes current line after new line
+* CTRL-X Backspaces to beginning of current line
+
+The banked version of CP/M 3 expands upon the editing provided in the
+non-banked version. The functionality of the two versions is similar
+when the cursor is positioned at the end of the line. However, in the
+banked version, the user can move the cursor anywhere in the current
+line, insert characters, delete characters, and perform other editing
+functions. In addition, the banked version saves the previous command
+line; it can be recalled when the current line is empty. In the banked
+version, Function 10 recognizes the following edit control characters.
+
+Banked CP/M 3
+
+* rub/del Removes and echoes the last character if at the end of the
+line; otherwise deletes the character to the left of the current cursor
+position; GENCPM can change this function to CTRL-H.
+* CTRL-A Moves cursor one character to the left.
+* CTRL-B Moves cursor to the beginning of the line when not at the
+beginning; otherwise moves cursor to the end of the line.
+* CTRL-C Reboots when at the beginning of line; the Console Mode can
+disable this function.
+* CTRL-E Causes physical end-of-line; if the cursor is positioned in the
+middle of a line, the characters at and to the right of the cursor are
+displayed on the next line.
+* CTRL-F Moves cursor one character to the right.
+* CTRL-G Deletes the character at the current cursor position when in
+the middle of the line; has no effect when the cursor is at the end of
+the line.
+* CTRL-H Backspaces one character position when positioned at the end of
+the line,; otherwise deletes the character to the left of the cursor;
+GENCPM can change this function to rub/del.
+* CTRL-J (Line-feed) terminates input; the cursor can be positioned
+anywhere in the line; the entire input line is accepted; sets the
+previous line buffer to the input line.
+* CTRL-K Deletes all characters to the right of the cursor along with
+the character at the cursor.
+* CTRL-M (Return) terminates input; the cursor can be positioned
+anywhere in the line; the entire input line is accepted; sets the
+previous line buffer to the input line.
+* CTRL-P Echoes console output to the list device.
+* CTRL-R Retypes the characters to the left of the cursor on the new
+line.
+* CTRL-U Updates the previous line buffer to contain the characters to
+the left of the cursor; deletes current line, and advances to new line.
+* CTRL-W Recalls previous line if current line is empty; otherwise moves
+cursor to end-of-line.
+* CTRL-X Deletes all characters to the left of the cursor.
+
+For banked systems, Function 10 uses the console width field defined in
+the System Control Block. If the console width is exceeded when the
+cursor is positioned at the end of the line, Function 10 automatically
+advances to the next line. The beginning of the line can be edited by
+entering a CTRL-R.
+
+When a character is typed while the cursor is positioned in the middle
+of the line, the typed character is inserted into the line. Characters
+at and to the right of the cursor are shifted to the right. If the
+console width is exceeded, the characters disappear off the right of the
+screen. However, these characters are not lost. They reappear if
+characters are deleted out of the line, or if a CTRL-E is typed.
+
+BDOS function 11: *GET CONSOLE STATUS*
+
+Entry Parameters:
+
+* C: $0B
+
+Returned Value:
+
+* A: Console Status
+
+The Get Console Status function checks to see if a character has been
+typed at the logical console, CONIN:. If the Console Mode is in the
+default state, Function 11 returns the value $01 in register A when a
+character is ready. If a character is not ready, it returns a value of
+$00.
+
+If the Console Mode is in CTRL-C Only Status mode, Function 11 returns
+the value $01 in register A only if a CTRL-C has been typed at the
+console.
+
+BDOS function 12: *RETURN VERSION NUMBER*
+
+Entry Parameters:
+
+* C: $0C
+
+Returned Value:
+
+* HL: Version Number
+
+The Return Version Number function provides information that allows
+version independent programming. It returns a two-byte value in register
+pair HL: H contains $00 for CP/M and L contains $31, the BDOS file
+system version number. Function 12 is useful for writing applications
+programs that must run on multiple versions of CP/M and MP/M.
+
+BDOS function 13: *RESET DISK SYSTEM*
+
+Entry Parameters:
+
+* C: $0D
+
+The Reset Disk System function restores the file system to a reset state
+where all the disk drives are set to read-write (see Functions 28 and
+29), the default disk is set to drive A, and the default DMA address is
+reset to $0080. This function can be used, for example, by an
+application program that requires disk changes during operation.
+Function 37, Reset Drive, can also be used for this purpose.
+
+BDOS function 14: *SELECT DISK*
+
+Entry Parameters:
+
+* C: $0E
+* E: Selected Disk
+
+Returned Value:
+
+* A: Error Flag
+* H: Physical Error
+
+The Select Disk function designates the disk drive named in register E
+as the default disk for subsequent BDOS file operations. Register E is
+set to 0 for drive A, 1 for drive B, and so on through 15 for drive P in
+a full 16-drive system. In addition, Function 14 logs in the designated
+drive if it is currently in the reset state. Logging-in a drive
+activates the drive’s directory until the next disk system reset or
+drive reset operation.
+
+FCBs that specify drive code zero (dr = $00) automatically reference the
+currently selected default drive. FCBs with drive code values between 1
+and 16, however, gnore the selected default drive and directly reference
+drives A through P.
+
+Upon return, register A contains a zero if the select operation was
+successful. If a physical error was encountered, the select function
+performs different actions depending on the BDOS error mode (see
+Function 45). If the BDOS error mode is in the default mode, a message
+identifying the error is displayed at the console, and the calling
+program is terminated. Otherwise, the select function returns to the
+calling program with register A set to $FF and register H set to one of
+the following
+
+physical error codes:
+
+* 01 Disk I/O Error
+* 04 Invalid drive
+
+BDOS function 15: *OPEN FILE*
+
+Entry Parameters:
+
+* C: $0F
+* DE: FCB Address
+
+Returned Value:
+
+* A: Directory Code
+* H: Physical or Extended Error
+
+The Open File function activates the FCB for a file that exists in the
+disk directory under the currently active user number or user zero. The
+calling program passes the address of the FCB in register pair DE, with
+byte 0 of the FCB specifying the drive, bytes 1 through 11 specifying
+the filename and filetype, and byte 12 specifying the extent. Usually,
+byte 12 of the FCB is initialized to zero.
+
+If the file is password protected in Read mode, the correct password
+must be placed in the first eight bytes of the current DMA, or have been
+previously established as the default password (see Function 106). If
+the current record field of the FCB, cr, is set to $FF, Function 15
+returns the byte count of the last record of the file in the cr field.
+You can set the last record byte count for a file with Function 30, Set
+File Attributes. Note that the current record field of the FCB, cr, must
+be zeroed by the calling program before beginning read or write
+operations if the file is to be accessed sequentially from the first
+record.
+
+If the current user is non-zero, and the file to be opened does not
+exist under the current user number, the open function searches user
+zero for the file. If the file exists under user zero, and has the
+system attribute, t2’, set, the file is opened under user zero. Write
+operations are not supported for a file that is opened under user zero
+in this manner.
+
+If the open operation is successful, the user’s FCB is activated for
+read and write operations. The relevant directory information is copied
+from the matching directory FCB into bytes d0 through dn of the FCB. If
+the file is opened under user zero when the current user number is not
+zero, interface attribute f8’ is set to one in the user’s FCB. In
+addition, if the referenced file is password protected in Write mode,
+and the correct password was not passed in the DMA, or did not match the
+default password, interface attribute f7’ is set to one. Write
+operations are not supported for an activated FCB if interface attribute
+f7’ or f8’ is true.
+
+When the open operation is successful, the open function also makes an
+Access date and time stamp for the opened file when the following
+conditions are satisfied: the referenced drive has a directory label
+that requests Access date and time stamping, and the FCB extent number
+field is zero.
+
+Upon return, the Open File function returns a directory code in register
+A with the value $00 if the open was successful, or $FF, 255 decimal, if
+the file was not found. Register H is set to zero in both of these
+cases. If a physical or extended error was encountered, the Open File
+function performs different actions depending on the BDOS error mode
+(see Function 45). If the BDOS error mode is in the default mode, a
+message identifying the error is displayed at the console and the
+program is terminated. Otherwise, the Open File function returns to the
+calling program with register A set to $FF, and register H set to one of
+the following physical or extended error codes:
+
+* 01 : Disk I/O Error
+* 04 : Invalid drive error
+* 07 : File password error
+* 09 : ? in the FCB filename or filetype field
+
+BDOS function 16: *CLOSE FILE*
+
+Entry Parameters:
+
+* C: $10
+* DE: FCB Address
+
+Returned Value:
+
+* A: Directory Code
+* H: Physical or Extended Error
+
+The Close File function performs the inverse of the Open File function.
+The calling program passes the address of an FCB in register pair DE.
+The referenced FCB must have been previously activated by a successful
+Open or Make function call (see Functions 15 and 22). Interface
+attribute f5’ specifies how the file is to be closed as shown below:
+
+* f5’ = 0 - Permanent close (default mode)
+* f5’ = 1 - Partial close
+
+A permanent close operation indicates that the program has completed
+file operations on the file. A partial close operation updates the
+directory, but indicates that the file is to be maintained in the open
+state.
+
+If the referenced FCB contains new information because of write
+operations to the FCB, the close function permanently records the new
+information in the referenced disk directory. Note that the FCB does not
+contain new information, and the directory update step is bypassed if
+only read or update operations have been made to the referenced FCB.
+
+Upon return, the close function returns a directory code in register A
+with the value $00 if the close was successful,, or $FF, 255 Decimal, if
+the file was not found. Register H is set to zero in both of these
+cases. If a physical or extended error is encountered, the close
+function performs different actions depending on the BDOS error mode
+(see Function 45). If the BDOS error mode is in the default mode, a
+message identifying the error is displayed at the console, and the
+calling program is terminated. Otherwise, the close function returns to
+the calling program with register A set to $FF and register H set to one
+of the following physical error codes:
+
+* 01 Disk I/O error
+* 02 Read/only disk
+* 04 Invalid drive error
+
+BDOS function 17: *SEARCH FOR FIRST*
+
+Entry Parameters:
+
+* C: $11
+* DE: FCB Address
+
+Returned Value:
+
+* {blank}
+* A: Directory Code
+* H: Physical Error
+
+The Search For First function scans the directory for a match with the
+FCB addressed by register pair DE. Two types of searches can be
+performed. For standard searches, the calling program initializes bytes
+0 through 12 of the referenced FCB, with byte 0 specifying the drive
+directory to be searched, bytes 1 through 11 specifying the file or
+files to be searched for,, and byte 12 specifying the extent. Usually
+byte 12 is set to zero. An ASCII question mark, 63 decimal, 3F hex, in
+any of the bytes 1 through 12 matches all entries on the directory in
+the corresponding position. This facility, called ambiguous reference,
+can be used to search for multiple files on the directory. When called
+in the standard mode, the Search function scans for the first file entry
+in the specified directory that matches the FCB, and belongs to the
+current user number.
+
+The Search For First function also initializes the Search For Next
+function. After the Search function has located the first directory
+entry matching the referenced FCB, the Search For Next function can be
+called repeatedly to locate all remaining matching entries. In terms of
+execution sequence, however, the Search For Next call must either follow
+a Search For First or Search For Next call with no other intervening
+BDOS disk-related function calls.
+
+If byte 0 of the referenced FCB is set to a question mark, the Search
+function ignores the remainder of the referenced FCB, and locates the
+first directory entry residing on the current default drive. All
+remaining directory entries can be located by making multiple Search For
+Next calls. This type of search operation is not usually made by
+application programs, but it does provide complete flexibility to scan
+all current directory values. Note that this type of search operation
+must be performed to access a drive’s directory label.
+
+Upon return, the Search function returns a Directory Code in register A
+with the value 0 to 3 if the search is successful, or $FF, 255 Decimal,
+if a matching directory entry is not found. Register H is set to zero in
+both of these cases. For successful searches, the current DMA is also
+filled with the directory record containing the matching entry, and the
+relative starting position is A * 32 (that is, rotate the A register
+left 5 bits, or ADD A five times). Although it is not usually required
+for application programs, the directory information can be extracted
+from the buffer at this position.
+
+If the directory has been initialized for date and time stamping by
+INITDIR, then an SFCB resides in every fourth directory entry, and
+successful Directory Codes are restricted to the values 0 to 2. For
+successful searches, if the matching directory record is an extent zero
+entry, and if an SFCB resides at offset 96 within the current DMA,
+contents of (DMA Address + 96) = $21, the SFCB contains the date and
+time stamp information, and password mode for the file. This information
+is located at the relative starting position of 97 + (A * 10) within the
+current DMA in the following format:
+
+* 0 - 3 Create or Access Date and Time Stamp Field
+* 4 - 7 Update Date and Time Stamp Field
+* 8 : Password Mode Field
+
+If a physical error is encountered, the Search function performs
+different actions depending on the BDOS error mode (see Function 45). If
+the BDOS error mode is in the default mode, a message identifying the
+error is displayed at the console, and the calling program is
+terminated. Otherwise, the Search function returns to the calling
+program with register A set to $FF, and register H set to one of the
+following physical error codes:
+
+* 01 Disk I/O error
+* 04 Invalid drive error
+
+BDOS function 18: *SEARCH FOR NEXT*
+
+Entry Parameters:
+
+* C: $12
+
+Returned Value:
+
+* A: Directory Code
+* H: Physical Error
+
+The Search For Next function is identical to the Search For First
+function, except that the directory scan continues from the last entry
+that was matched. Function 18 returns a Directory code in register A,
+analogous to Function 17.
+
+Note: in execution sequence, a Function 18 call must follow either a
+Function 17 or another Function 18 call with no other intervening BDOS
+disk-related function calls.
+
+BDOS function 19: *DELETE FILE*
+
+Entry Parameters:
+
+* C: $13
+* DE: FCB Address
+
+Returned Value:
+
+* A: Directory Code
+* H: Extended or Physical Error
+
+The Delete File function removes files or XFCBs that match the FCB
+addressed in register pair DE. The filename and filetype can contain
+ambiguous references, that is, question marks in bytes f1’ through t3’,
+but the dr byte cannot be ambiguous, as it can in the Search and Search
+Next functions. Interface attribute f5’ specifies the type of delete
+operation that is performed.
+
+* f5’ = 0 - Standard Delete (default mode)
+* f5’ = 1 - Delete only XFCBs
+
+If any of the files that the referenced FCB specify are password
+protected, the correct password must be placed in the first eight bytes
+of the current DMA buffer, or have been previously established as the
+default password (see Function 106).
+
+For standard delete operations, the Delete function removes all
+directory entries belonging to files that match the referenced FCB. All
+disk directory and data space owned by the deleted files is returned to
+free space, and becomes available for allocation to other files.
+Directory XFCBs that were owned by the deleted files are also removed
+from the directory. If interface attribute f5’ of the FCB is set to 1,
+Function 19 deletes only the directory XFCBs that match the referenced
+FCB.
+
+Note: if any of the files that match the input FCB specification fall
+the password check, or are Read-Only, then the Delete function does not
+delete any files or XFCBS. This applies to both types of delete
+operations.
+
+In nonbanked systems, file passwords and XFCBs are not supported. Thus,
+if the Delete function is called with interface attribute f5’ set to
+true, the Delete function performs no action but returns with register A
+set to zero.
+
+Upon return, the Delete function returns a Directory Code in register A
+with the value 0 if the delete is successful, or $FF, 255 Decimal, if no
+file that matches the referenced FCB is found. Register H is set to zero
+in both of these cases. If a physical, or extended error is encountered,
+the Delete function performs different actions depending on the BDOS
+error mode (see Function 45). If the BDOS error mode is the default
+mode, a message identifying the error is displayed at the console and
+the calling program is terminated. Otherwise, the Delete function
+returns to the calling program with register A set to $FF and register H
+set to one of the following physical or extended error codes:
+
+* 01 : Disk I/O error
+* 02 : Read-Only disk
+* 03 : Read-Only file
+* 04 : Invalid drive error
+* 07 : File password error
+
+BDOS function 20: *READ SEQUENTIAL*
+
+Entry Parameters:
+
+* C: $14
+* DE: FCB Address
+
+Returned Value:
+
+* A: Error Code
+* H: Physical Error
+
+The Read Sequential function reads the next 1 to 128 128-byte records
+from a file into memory beginning at the current DMA address. The BDOS
+Multi-Sector Count (see Function 44) determines the number of records to
+be read. The default is one record. The FCB addressed by register pair
+DE must have been previously activated by an Open or Make function call.
+
+Function 20 reads each record from byte cr of the extent, then
+automatically increments the cr field to the next record position. If
+the cr field overflows, then the function automatically opens the next
+logical extent and resets the cr field to 0 in preparation for the next
+read operation. The calling program must set the cr field to 0 following
+the Open call if the intent is to read sequentially from the beginning
+of the file. Upon return, the Read Sequential function sets register A
+to zero if the read operation is successful. Otherwise, register A
+contains an error code identifying the error as shown below:
+
+* 01 Reading unwritten data (end-of-file)
+* 09 Invalid FCB
+* 10 Media change occurred
+* 255 Physical Error; refer to register H
+
+Error Code 01 is returned if no data exists at the next record position
+of the file. Usually, the no data situation is encountered at the end of
+a file. However, it can also occur if an attempt is made to read a data
+block that has not been previously written, or an extent which has not
+been created. These situations are usually restricted to files created
+or appended with the BDOS random write functions (see Functions 34 and
+40).
+
+Error Code 09 is returned if the FCB is invalidated by a previous BDOS
+close call that returns an error.
+
+Error Code 10 is returned if a media change occurs on the drive after
+the referenced FCB is activated by a BDOS Open, or Make Call.
+
+Error Code 255 is returned if a physical error is encountered and the
+BDOS error mode is Return Error mode, or Return and Display Error mode

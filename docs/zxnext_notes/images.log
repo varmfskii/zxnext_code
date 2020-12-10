@@ -1,28 +1,28 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.12.2)  4 DEC 2020 10:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2020.12.7)  10 DEC 2020 16:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **./images.tex
 (./images.tex
-LaTeX2e <2020-02-02> patch level 5
-L3 programming layer <2020-06-03>
+LaTeX2e <2020-10-01> patch level 2
+L3 programming layer <2020-12-03> xparse <2020-03-03>
 (/usr/share/texmf-dist/tex/latex/base/book.cls
-Document Class: book 2019/12/20 v1.4l Standard LaTeX document class
+Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
 (/usr/share/texmf-dist/tex/latex/base/bk11.clo
-File: bk11.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+File: bk11.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
-\c@part=\count167
-\c@chapter=\count168
-\c@section=\count169
-\c@subsection=\count170
-\c@subsubsection=\count171
-\c@paragraph=\count172
-\c@subparagraph=\count173
-\c@figure=\count174
-\c@table=\count175
+\c@part=\count177
+\c@chapter=\count178
+\c@section=\count179
+\c@subsection=\count180
+\c@subsubsection=\count181
+\c@paragraph=\count182
+\c@subparagraph=\count183
+\c@figure=\count184
+\c@table=\count185
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
-\bibindent=\dimen134
+\bibindent=\dimen138
 ) (/usr/share/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 ) (/usr/share/texmf-dist/tex/latex/csvsimple/csvsimple.sty
@@ -30,16 +30,14 @@ Package: csvsimple 2019/04/09 version 1.21 LaTeX CSV file processing
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texmf-dis
 t/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks15
-\pgfutil@tempdima=\dimen135
-\pgfutil@tempdimb=\dimen136
+\pgfutil@tempdima=\dimen139
+\pgfutil@tempdimb=\dimen140
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)) (/u
 sr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box45
-(/usr/share/texmf-dist/tex/latex/ms/everyshi.sty
-Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
-)) (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/share
-/texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2020/01/08 v3.1.5b (3.1.5b)
+\pgfutil@abb=\box47
+) (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/share/
+texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2020/12/01 v3.1.7a (3.1.7a)
 )) (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texmf
 -dist/tex/generic/pgf/utilities/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks16
@@ -47,54 +45,54 @@ Package: pgfrcs 2020/01/08 v3.1.5b (3.1.5b)
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
 \pgfkeys@tmptoks=\toks18
 ))) (/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count176
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count186
 ) (/usr/share/texmf-dist/tex/latex/tools/shellesc.sty
 Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
 Package shellesc Info: Restricted shell escape enabled on input line 77.
 )
 \csv@file=\read2
-\c@csvinputline=\count177
-\c@csvrow=\count178
-\c@csvcol=\count179
+\c@csvinputline=\count187
+\c@csvrow=\count188
+\c@csvcol=\count189
 \csv@out=\write3
 ) (/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen137
-\lightrulewidth=\dimen138
-\cmidrulewidth=\dimen139
-\belowrulesep=\dimen140
-\belowbottomsep=\dimen141
-\aboverulesep=\dimen142
-\abovetopsep=\dimen143
-\cmidrulesep=\dimen144
-\cmidrulekern=\dimen145
-\defaultaddspace=\dimen146
-\@cmidla=\count180
-\@cmidlb=\count181
-\@aboverulesep=\dimen147
-\@belowrulesep=\dimen148
-\@thisruleclass=\count182
-\@lastruleclass=\count183
-\@thisrulewidth=\dimen149
+\heavyrulewidth=\dimen141
+\lightrulewidth=\dimen142
+\cmidrulewidth=\dimen143
+\belowrulesep=\dimen144
+\belowbottomsep=\dimen145
+\aboverulesep=\dimen146
+\abovetopsep=\dimen147
+\cmidrulesep=\dimen148
+\cmidrulekern=\dimen149
+\defaultaddspace=\dimen150
+\@cmidla=\count190
+\@cmidlb=\count191
+\@aboverulesep=\dimen151
+\@belowrulesep=\dimen152
+\@thisruleclass=\count192
+\@lastruleclass=\count193
+\@thisrulewidth=\dimen153
 ) (/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \enitkv@toks@=\toks19
 \labelindent=\skip49
-\enit@outerparindent=\dimen150
+\enit@outerparindent=\dimen154
 \enit@toks=\toks20
-\enit@inbox=\box46
-\enit@count@id=\count184
-\enitdp@description=\count185
+\enit@inbox=\box48
+\enit@count@id=\count194
+\enitdp@description=\count195
 ) (/usr/share/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 ) (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
 (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks21
 ) (/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
 (/usr/share/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 ) (/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
@@ -102,45 +100,45 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 105.
 (/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen151
-\Gin@req@width=\dimen152
+\Gin@req@height=\dimen155
+\Gin@req@width=\dimen156
 ) (/usr/share/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
 ) (/usr/share/texmf-dist/tex/generic/xint/xintbinhex.sty (/usr/share/texmf-dist
 /tex/generic/xint/xintkernel.sty
 Package: xintkernel 2020/02/25 v1.4b Paraphernalia for the xint packages (JFB)
-\xint_c_ii^xiv=\count186
-\xint_c_ii^xxi=\count187
+\xint_c_ii^xiv=\count196
+\xint_c_ii^xxi=\count197
 )
 Package: xintbinhex 2020/02/25 v1.4b Expandable binary and hexadecimal conversi
 ons (JFB)
-\xint_c_ii^xv=\count188
-\xint_c_ii^xvi=\count189
+\xint_c_ii^xv=\count198
+\xint_c_ii^xvi=\count199
 ) (/usr/share/texmf-dist/tex/latex/hang/hang.sty
 Package: hang 2017/02/18 v2.1 Hanging paragraphs and list items
 \hangingindent=\skip50
 \hangingleftmargin=\skip51
 \labeledleftmargin=\skip52
 ) (/usr/share/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count190
-\lst@gtempboxa=\box47
+\lst@mode=\count266
+\lst@gtempboxa=\box49
 \lst@token=\toks22
-\lst@length=\count191
-\lst@currlwidth=\dimen153
-\lst@column=\count192
-\lst@pos=\count193
-\lst@lostspace=\dimen154
-\lst@width=\dimen155
-\lst@newlines=\count194
-\lst@lineno=\count195
-\lst@maxwidth=\dimen156
+\lst@length=\count267
+\lst@currlwidth=\dimen157
+\lst@column=\count268
+\lst@pos=\count269
+\lst@lostspace=\dimen158
+\lst@width=\dimen159
+\lst@newlines=\count270
+\lst@lineno=\count271
+\lst@maxwidth=\dimen160
 (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count196
-\lst@skipnumbers=\count197
-\lst@framebox=\box48
+\c@lstnumber=\count272
+\lst@skipnumbers=\count273
+\lst@framebox=\box50
 ) (/usr/share/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
@@ -163,26 +161,26 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-\sizebox=\box49
+\sizebox=\box51
 \lthtmlwrite=\write5
 (/usr/share/texmf-dist/tex/latex/preview/preview.sty
-Package: preview 2017/04/24 12.2 (AUCTeX/preview-latex)
+Package: preview 2017/04/24 12.3 (AUCTeX/preview-latex)
 (/usr/share/texmf-dist/tex/generic/luatex85/luatex85.sty
 Package: luatex85 2016/06/15 v1.4 pdftex aliases for luatex
 ) (/usr/share/texmf-dist/tex/latex/preview/prtightpage.def
-\PreviewBorder=\dimen157
+\PreviewBorder=\dimen161
 )
-\pr@snippet=\count198
-\pr@box=\box50
+\pr@snippet=\count274
+\pr@box=\box52
 \pr@output=\toks23
 )
-\lthtmlPageBox=\box51
-\lthtmlCropMarkHeight=\dimen158
-\lthtmlCropMarkDepth=\dimen159
-(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
-File: l3backend-pdfmode.def 2020-06-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count199
-\l__pdf_internal_box=\box52
+\lthtmlPageBox=\box53
+\lthtmlCropMarkHeight=\dimen162
+\lthtmlCropMarkDepth=\dimen163
+(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
+\l__kernel_color_stack_int=\count275
+\l__pdf_internal_box=\box54
 ) (./images.aux (/home/alex/retro/zx/zxnext/code/zx_next_notes/video/video.aux)
 (/home/alex/retro/zx/zxnext/code/zx_next_notes/audio/audio.aux) (/home/alex/ret
 ro/zx/zxnext/code/zx_next_notes/memory/memory.aux) (/home/alex/retro/zx/zxnext/
@@ -214,19 +212,18 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 121.
 LaTeX Font Info:    ... okay on input line 121.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 121.
 LaTeX Font Info:    ... okay on input line 121.
-ABD: EveryShipout initializing macros (/usr/share/texmf-dist/tex/context/base/m
-kii/supp-pdf.mkii
+(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count266
-\scratchdimen=\dimen160
-\scratchbox=\box53
-\nofMPsegments=\count267
-\nofMParguments=\count268
+\scratchcounter=\count276
+\scratchdimen=\dimen164
+\scratchbox=\box55
+\nofMPsegments=\count277
+\nofMParguments=\count278
 \everyMPshowfont=\toks24
-\MPscratchCnt=\count269
-\MPscratchDim=\dimen161
-\MPnumerator=\count270
-\makeMPintoPDFobject=\count271
+\MPscratchCnt=\count279
+\MPscratchDim=\dimen165
+\MPnumerator=\count280
+\makeMPintoPDFobject=\count281
 \everyMPtoPDFconversion=\toks25
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -237,13 +234,13 @@ Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
 (/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )) (/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 (/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
-Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
 ) (/usr/share/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
-)) (/usr/share/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
-Package: pdftexcmds 2020-06-04 v0.32 Utility functions of pdfTeX for LuaTeX (HO
+)) (/usr/share/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
 (/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2020/03/06 v1.0d TeX engine tests
@@ -262,7 +259,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count272
+\c@lstlisting=\count282
 Preview: Fontsize 10.95pt
 Preview: PDFoutput 1
 
@@ -295,35 +292,35 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 146.
 
-:tex2html_wrap_inline10085:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline10206:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline10085:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline10206:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 Preview: Tightpage -32891 -32891 32891 32891
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
-:tex2html_wrap_inline10091:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline10212:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline10091:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline10212:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [2]
 
-:tex2html_wrap_inline10094:lthtmlCropMarkHeight:=13.05666pt
+:tex2html_wrap_inline10215:lthtmlCropMarkHeight:=13.05666pt
 
-:tex2html_wrap_inline10094:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
+:tex2html_wrap_inline10215:lthtmlCropMarkDepth:=0.9125pt:1ex:=4.71457pt
 [3]
 
-:tex2html_wrap_inline10882:lthtmlCropMarkHeight:=15.48238pt
+:tex2html_wrap_inline11095:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline10882:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline11095:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [4]
 
-:tex2html_wrap_inline10885:lthtmlCropMarkHeight:=15.48238pt
+:tex2html_wrap_inline11098:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline10885:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline11098:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [5]
 
-:tex2html_wrap_inline10888:lthtmlCropMarkHeight:=15.48238pt
+:tex2html_wrap_inline11101:lthtmlCropMarkHeight:=15.48238pt
 
-:tex2html_wrap_inline10888:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
+:tex2html_wrap_inline11101:lthtmlCropMarkDepth:=0.0pt:1ex:=4.71457pt
 [6]
 
 :tex2html_wrap_inline657:lthtmlCropMarkHeight:=13.05666pt
@@ -2343,12 +2340,12 @@ l.1416 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 (That makes 100 errors; please try again.) 
 Here is how much of TeX's memory you used:
- 7013 strings out of 480478
- 115044 string characters out of 5905959
- 579381 words of memory out of 5000000
- 22842 multiletter control sequences out of 15000+600000
- 536771 words of font info for 38 fonts, out of 8000000 for 9000
+ 7065 strings out of 479383
+ 116606 string characters out of 5875830
+ 636250 words of memory out of 5000000
+ 23985 multiletter control sequences out of 15000+600000
+ 407863 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,10n,53p,795b,1180s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 70i,10n,76p,297b,1179s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 !  ==> Fatal error occurred, no output PDF file produced!

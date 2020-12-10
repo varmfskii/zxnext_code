@@ -1,0 +1,1263 @@
+@author Theodore (Alex) Evans
+@date 10 Dec 2020
+@index INDEX
+@title ZX Spectrum Next Programming Notes
+@version 201204
+@------------------------------------------------------------------------------
+@node MAIN
+@next LAYER3
+@{c}@{h1}ZX Spectrum Next Programming Notes
+
+@{c}@{h2}Theodore (Alex) Evans
+
+@{c}@{h2}4 December 2020
+
+@------------------------------------------------------------------------------
+@node INDEX
+@{r}ZX Spectrum Next Programming Notes
+
+Chapters
+ 1 Introduction
+ 2 @{" Video " LINK LAYER3}
+ 3 @{" Audio " LINK AUDIO}
+ 4 Memory
+ 5 zxnDMA
+ 6 Copper
+ 7 Interrupts
+ 8 Serial Communications
+ 9 Pi0 Acceleration
+10 System Software
+
+Appendices
+ A Ports
+ B Registers
+ C Extended Opcodes to Mnemonics
+ D Mnemonics to Extended Opcodes
+ E File Formats
+ F Call Tables
+
+@------------------------------------------------------------------------------
+@node VIDEO_TOC
+@next AUDIO_TOC
+@prev INDEX
+@{r}ZX Spectrum Next Programming Notes
+@{h1}Video Table of Contents
+
+General
+Layer 1
+Layer 2
+@{" Layer 3 (Tilemap)  " LINK LAYER3}
+@{" Sprites " LINK SPRITES}
+
+@------------------------------------------------------------------------------
+@node LAYER3
+@next SPRITES
+@prev LAYER2
+@toc VIDEO_TOC
+@{r}ZX Spectrum Next Programming Notes
+@{h2}Layer 3 (Tilemap) Mode
+
+Started with documentation by Phoebus Dokos, February 25, 2019. Partially
+rewritten for clarity and to add core 3.00.00 features.
+
+General Description
+
+The tilemap is a hardware character oriented display. It uses a set of user
+defined 4-bit, 16-colour, or 1-bit, 2-colour 8 x 8 tiles. The tiles can be
+dispplayed in two resolutions: 40 x 32 tiles (320 x 256 pixels) and 80 x 32
+tiles (640 x 256 pixels).
+
+The display area on screen is the same as the sprite layer, meaning it overlaps
+the standard 256 x 192 area by 32 pixels on all sides. Vertically this is
+larger than the physical HDMI display, which will cut off the top and bottom
+character rows making the visible area 40 x 30 or 80 x 30, but the full area is
+visible on VGA.
+
+The obvious application for the tilemap is for a fast, clearly readable and
+wide multicoloured character display. Less obvious perhaps is that it can also
+be used to make fast and wide resolution full colour backgrounds with easily
+animated components such as have historically been used in many games.
+
+The tilemap is defined by two data structures and configured using four
+NextRegs. The NextRegs are $6b (107), Tilemap Control; $6c (108), Default
+Tilemap Attribute, $6c (110); Tilemap Base Address; and $6d (111) Tile
+Definitions Base Address.
+
+Data Structures
+
+Tilemap
+
+The first data structure is the tilemap itself which indicates what characters
+occupy each cell on screen. Each tilemap entry is either one or two bytes.
+
+If entries are two bytes each, the first byte for each entry is bits 0-7 of the
+tile number, while the second byte is an attribute byte which is interpreted
+acctording to the mode set in the tilemap control register ($6b). For 40 x 32
+resolution, a full size tilemap will occupy 2560 bytes, and for 80 x 32
+resolution the space taken is twice that at 5120 bytes. The tilemap entries are
+stored in X-major order and each two-byte tilemap entry consists of a tile
+number byte (bits 0-7 of the tile number) followed an attribute byte:
+
+Tilemap Attribute Byte 4-bit
+
+-   bits 7-4 : most significant 4-bits of palette entry
+-   bit 3 : x mirror
+-   bit 2 : y mirror
+-   bit 1 : rotate
+-   bit 0 : ULA over tilemap (in 512 tile mode, bit 8 of the tile number)
+
+Tilemap Attribute Byte 1-bit
+
+-   bits 7-1 : most significan 7-bits of palette entry
+-   bit 0 : ULA over tilemap (in 512 tile mode, bit 8 of the tile number)
+
+The character displayed is indicated by the "tile number" which can be thought
+of as an ASCII code. The tile number is normally eight bits allowing up to 256
+unique tiles to be displayed but this can be extended to nine bits for 512
+unique tiles if 512 tile mode is enabled via the Tilemap Control register
+($6b).
+
+The other bits are tile attributes that modify how the tile image is drawn.
+Their function is the same as the equivalent sprite attributes for sprites.
+Bits apply rotation then mirroring, and colour can be shifted with a palette
+offset. If 512 tile mode is not enabled, bit 8 will determine if the tile is
+above or below the ULA display on a per tile basis.
+
+When using 1-byte tilemap entries, the map consists of the tile numbers for
+tile in the map with the tilemap attribute byte for every tile coming from the
+default tilemap attribute register ($6c).
+
+Tile Definitions
+
+The second data structure is the tile definitions themselves. To find the
+difinition for a specific tile you would look at (base address) + (tile number)
+* (definition size).
+
+For 4-bit, 16-colour, tiles, each 8 x 8 tile takes up 32 bytes. Each pixel uses
+four bits to select one of 16 colours. A tile is defined in X major order with
+packing in the X direction in the same way that 4-bit sprites are defined. The
+4-bit colour of each pixel is augmented by the 4-bit palette offset from the
+tilemap in the most significant bits to form an 8-bit colour index that is
+looked up in the tilemap palette to determine the final 9-bit colour sent to
+the display. Ane of the 16 colours for each tile is the transparency color.
+
+For 1-bit, 2-colour, tiles, each 8 x 8 tile takes up 8 bytes. Each pixel uses
+one bit to select one of two colours. A tile is defined in X major order with
+packing in the X direction. The 1-bit colour of each pixel is augmented by the
+7-bit palette offset from the tilemap in the most significant bits to form an
+8-bit colour index that is looked up in the tilemap palette to determine the
+final 9-bit colour sent to the display. Transparency for each tile is according
+to the global transparency colour.
+
+Memory Organization & Display Layer
+
+The tilemap is a logical extension of the ULA and its data structures are
+contained in 16k banks 5 and 7 (first half only). If both the ULA and tilemap
+are enabled, this means that the tilemap's map and tile definitions should be
+arranged within the 24k to avoid overlap with the display ram used by the ULA.
+
+The tilemap exists on the same display layer as the ULA. The graphics generated
+by the ULA and tilemap are combined before being forwarded to the SLU layer
+system as layer U.
+
+Combining ULA & Tilemap
+
+The combination of the ULA and tilemap is done in one of two modes: the
+standard mode or the stencil mode.
+
+The standard mode uses bit 8 of a tile's tilemap entry to determine if a tile
+is above or below the ULA. The source of the final pixel generated is then the
+topmost non-transparent pixel. If the ULA or tilemap is disabled then they are
+treated as transparent.
+
+The stencil mode will only be applied if both the ULA and tilemap are enabled.
+In the stencil mode, the final pixel will be transparent if either the ULA or
+tilemap are transparent. Otherwise the final pixel is a logical AND of the
+corresponding colour bits. The stencil mode allows one layer to act as a
+cut-out for the other.
+
+Programming Tilemap mode
+
+Register (R/W) $6B () => Layer 3 (Tilemap) Control
+
+-   bit 7 = Layer 3 Enable (0 on reset)
+-   bit 6 = Layer 3 Size control (0 on reset)
+    -   0 = 40x32
+    -   1 = 80x32
+-   bit 5 = Disable Arrtibute Entry (0 on reset)
+-   bit 4 = palette select (0 on reset)
+-   bit 3 = Enable Text mode (1-bit tilemap) (0 on reset)
+-   bit 2 = Reserved, must be 0
+-   bit 1 = Activate 512 tile mode (0 on reset)
+-   bit 0 = Enable Layer 3 on top of ULA (0 on reset)
+
+Bits 7 & 6 enable the tilemap and select resolution. Bit 4 selects one of two
+tilemap palettes used for final colour lookup. Bit 5 changes the structure of
+the tilemap so that it contains only 8-bit tilemap entries instead of 16-bit
+tilemap entries. If 8-bit, the tilemap only contains tile numbers and the
+attributes are instead taken from nextreg $6C.
+
+Bit 5 determines whether the attribute byte for each tile come from the tilemap
+(0) or from the default tile attribute register (1).
+
+Bit 4 selects either the primary tilemap palette (0) or the secondary tilemap
+palette (1).
+
+Bit 3 selects whether to use 4-bit, 16-colour, or 1-bit 2-colour tiles.
+
+Bit 1 activates 512 tile mode. In this mode, the "ULA over tilemap" bit in a
+tile's attribute is re-purposed as the ninth bit of the tile number, allowing
+up to 512 unique tiles to be displayed. In this mode, the ULA is always on top
+of the tilemap.
+
+Bit 0 forces the tilemap to be on top of the ULA. It can be useful in 512 tile
+mode to change the relative display order of the ULA and tilemap.
+
+Register (R/W) $6C () => Default Layer 3 Attribute*
+
+-   bits 7-4 = Palette Offset ($00 on reset)
+-   bit 3 = X mirror (0 on reset)
+-   bit 2 = Y mirror (0 on reset)
+-   bit 1 = Rotate (0 on reset)
+-   bit 0 = Bit 8 of the tile number (512 tile mode) (0 on reset)
+-   bit 0 = ULA over tilemap (256 tile mode) (0 on reset)
+
+*Active tile attribute if bit 5 of nextreg $6B is set.
+
+If bit 5 of nextreg $6B is set, the tilemap structure is modified to contain
+only 8-bit tile numbers instead of the usual 16-bit tilemap entries. In this
+case, the tile attributes used are taken from this register instead.
+
+Register (R/W) $6E () => Layer 3 Tilemap Base Address
+
+-   bit 7 = Bank Select (3.01.08)
+    -   0 = Bank 5
+    -   1 = Bank 7
+-   bit 6 = Reserved, must be 0
+-   bits 5-0 = MSB of address of the tilemap in Bank 5 (16k) or 7 (8k) ($2C on
+    reset)
+
+Soft Reset default $2C - This is because the address is $6C00 so the MSB is
+$6C. But the stored value is only the lower 6 bits so it's an offset into the
+16k Bank 5. To calculate therefore subtract $40 leaving you with $2C.
+
+The value written is an offset into the 16k Bank 5 or the 8k lower half of Bank
+7 allowinf the tilemap to be placed at any multiple of 256 bytes.
+
+This register determines the tilemap's base address in bank 5. The base address
+is the MSB of an offset into the 16k bank, allowing the tilemap to begin at any
+multiple of 256 bytes in the bank. Writing a physical MSB address in $40-$7f or
+$c0-$ff, corresponding to traditional ULA physical addresses, is permitted. The
+value read back should be treated as a fully significant 8-bit value.
+
+The tilemap will be 40 x 32 or 80 x 32 in size depending on the resolution
+selected in nextreg $6B. Each entry in the tilemap is normally two bytes but
+can be one byte if attributes are eliminated by setting bit 5 of nextreg $6B.
+
+Register (R/W) $6F () => Layer 3 Tile Definitions Base Address
+
+-   bit 7 = Select bank (3.01.08)
+    -   0 = Bank 5
+    -   1 = Bank 7
+-   bit 6 = Reserved, must be 0
+-   bits 5-0 = MSB of address of the tile definitions in Bank 5 (16k) or 7 (8k)
+    ($0C on reset)
+
+Soft Reset default $0C - This is because the address is $4C00 so the MSB is
+$4C. But the stored value is only the lower 6 bits so it's an offset into the
+16k Bank 5. To calculate therefore subtract $40 leaving you with $0C.
+
+The value written is an offset into the 16k Bank 5 or the 8k lower half of Bank
+7 allowing the tilemap to be placed at any multiple of 256 bytes.
+
+This register determines the base address of tile definitions in bank 5. As
+with nextreg $6E, the base address is the MSB of the an offset into the 16k
+bank, allowing tile definitions to begin at any multiple of 256 bytes in the
+bank. Writing a physical MSB address in $40-$7f or $c0-$ff, corresponding to
+traditional ULA physical addresses, is permitted. The value read back should be
+treated as a fully significant 8-bit value.
+
+Each tile definition is 32 bytes in size and is located at address:
+Tile Def Base Addr + 32 * (Tile Number)
+
+Register (R/W) $4C () => Level 3 Transparency Index
+
+-   bits 7-4 = Reserved, must be 0
+-   bits 3-0 = Index value ($0F on reset)
+
+Defines the transparent colour index for 4-bit tiles. The 4-bit pixels of a
+tile definition are compared to this value to determine if they are
+transparent. In the case of 1-bit tiles transparency is determined by comparing
+the final pixel colour against the global transparency colour.
+
+For palette information see palette section.
+
+Register (R/W) $1B () => Layer 3 (Tilemap) Clip Window Definition
+
+-   bits 7-0 = Coord. of the clip window
+    -   1st write = X1 position
+    -   2nd write = X2 position
+    -   3rd write = Y1 position
+    -   4rd write = Y2 position
+
+The values are 0,159,0,255 after a Reset
+Reads do not advance the clip position
+The X coords are internally doubled.
+
+The tilemap display surface extends 32 pixels around the central 256 x 192
+display. The origin of the clip window is the top left corner of this area 32
+pixels to the left and 32 pixels above the central 256 x 192 display. The X
+coordinates are internally doubled to cover the full 320 pixel width of the
+surface. The clip window indicates the portion of the tilemap display that is
+non-transparent and its indicated extent is inclusive; it will extend from X1*2
+to X2*2+1 horizontally and from Y1 to Y2 vertically.
+
+Register (R/W) $2F () => Layer 3 (Tilemap) Horizontal Scroll Control MSB
+
+-   bits 7-2 = Reserved, must be 0
+-   bits 1-0 = X Offset MSB ($00 on reset)
+
+Meaningful Range is 0-319 in 40 char mode, 0-639 in 80 char mode
+
+Register (R/W) $30 () => Layer 3 (Tilemap) Horizontal Scroll Control LSB
+
+-   bits 7-0 = X Offset LSB ($00 on reset)
+
+Meaningful range is 0-319 in 40 char mode, 0-639 in 80 char mode
+
+Register (R/W) $31 () => Layer 3 (Tilemap) Vertical Scroll Control
+
+-   bits 7-0 = Y Offset (0-255) )$00 on reset)
+
+Register (R/W) $68 () => ULA Control
+
+-   bit 7 = Disable ULA output (0 on reset)
+-   bit 6-5 = Color blending control for layering modes 6 & 7 (3.01.01)
+    -   00 = ULA as blend colour
+    -   01 = No blending
+    -   10 = ULA/Tilemap mix result as blend colour
+    -   11 = Tilemap as blend colour
+-   bit 4 = Cancel entries in 8x5 matrix for extended keys (3.01.04)
+-   bit 3 = Enable ULAplus (0 on reset)
+-   bit 2 = Enable ULA half pixel scroll (0 on reset)
+-   may change
+-   bit 1 = Reserved (must be 0)
+-   bit 0 = Enable stencil mode (0 on reset)
+-   When ULA and Layer 3 are enabled, if either are transparent, the result is
+    transparent, otherwise the result is the logical AND of both colours.
+
+Bit 0 can be set to choose stencil mode for the combined output of the ULA and
+tilemap. Bit 6 determines what colour is used in SLU modes 6 & 7 where the ULA
+is combined with Layer 2 to generate highlighting effects.
+
+Changes Since 2.00.26
+
+1.  512 Tile Mode. In 2.00.26, the 512 tile mode was automatically selected
+    when the ULA was disabled. With the ULA disabled, the tilemap attribute bit
+    "ULA on top" was re-purposed to be bit 8 of the tile number. In 2.00.27,
+    selection of the 512 tile mode is moved to bit 1 of Tilemap Control nextreg
+    $6B. This way 512 tile mode can be independently chosen without disabling
+    the ULA. The "ULA on top" bit is still taken as bit 8 of the tile number
+    and in the 512 mode, the tilemap is always displayed underneath the ULA.
+
+2.  Tilemap Always On Top of ULA. In 2.00.27, bit 0 of Tilemap Control nextreg
+    $6B is used to indicate that the tilemap should always be displayed on top
+    of the ULA. This allows the tilemap to display over the ULA when in 512
+    mode.
+
+3.  1-bit tilemaps. In 3.00.00, a number of modifications were made to
+    accomidate 1-bit tilemaps.
+
+Future Direction
+
+The following compatible changes may be applied at a later date:
+
+1.  Addition of a bit to Tilemap Control to select a reduced tilemap area of
+    size 32 x 24 or 64 x 24 that covers the ULA screen.
+
+2.  Addition of a bit to Tilemap Control to select split addressing where the
+    tilemap's tiles and attributes as well as the tile definitions are split
+    between the two 8k halves of the 16k ULA ram in the same way that the two
+    Timex display files are split. The intention is to make it easier for the
+    tilemap to co-exist with all the display modes of the ULA.
+
+@------------------------------------------------------------------------------
+@node SPRITES
+@next AUDIO
+@prev LAYER3
+@toc VIDEO_TOC
+@{r}ZX Spectrum Next Programming Notes
+@{h2}Sprites
+
+February 25, 2019 Victor Trucco
+
+The Spectrum Next has a hardware sprite system with the following
+characteristics:
+
+-   Total of 128 sprites
+-   Display surface is 320 x 256 overlapping the ULA screen by 32 pixels on
+    each side
+-   Minimum of 100 sprites per scanline*
+-   Choice of 512 colours for each pixel
+-   Site of each sprite is 16 x 16 pixels but sprites can be magnified 2x, 4x
+    or 8x horizontally and vertically
+-   Sprites can be mirrored and rotated
+-   Sprites can be grouped together to form larger sprites under the control of
+    a single anchor
+-   A 16K pattern memory can contain 64 8-bit sprite images or 128 4-bit sprite
+    images and combinations in-between
+-   A per sprite palette offset allows sprites to share images but colour them
+    differently
+-   A nextreg interface allows the copper to move sprites during the video
+    frame
+
+*A minimum of 100 16 x 16 sprites is guaranteed to be displayed in any
+scanline. Any additional sprites will not be displayed with the hardware
+ensuring sprites are not partially plotted.
+
+The actual limit is determined by how many 28MHz clock cycles there are in a
+scanline. The sprite hardware is able to plot one pixel cycle and uses one
+cycle to qualify each sprite. Since the number of cycles there are in a
+scanline varies with video timing (HDMI, VGA), the number of pixels that can be
+plotted also varies but the minimum will be 1600 pixels per line including
+overhead cycles needed to qualify 100 sprites. Since sprites magified
+horizontally involve plotting more pixels, 2x, 4x, and 8x sprites will take
+more cycles to plot and the presence of these sprites in a line will reduce the
+total number of sprites that can be plotted.
+
+Sprite Patterns
+
+Sprite patterns are the images that each sprite can take on. The images are
+stored in a 16K memory internal to the FPGA and are identified by pattern
+number. A particular sprite chooses a pattern by storing a pattern number in
+its attributes.
+
+All sprites are 16 x 16 pixels in size but the come in two flavours: 4-bit and
+8-bit. The bit width describes how many bits are used to code the colour of
+each pixel.
+
+An 8-bit sprite uses a full byte to colour each of its pixels so that each
+pixel can be one of 256 colours. In this case, a 16 x 16 sprite requires 256
+bytes of pattern memory to store its image.
+
+A 4-bit sprite uses a nibble to colour each of its pixels so that each pixel
+can be one of 16 colours. In this case, a 16 x 16 sprite requires just 128
+bytes of pattern memory to store its image.
+
+The 16K pattern memory can contain any combination of these images, whether
+they are 128 bytes or 256 bytes and their locations in the pattern memory are
+described by a pattern number. This pattern number is 7 bits with bits named as
+follows:
+
+Pattern Number
+
+    N5 N4 N3 N2 N1 N0 N6
+
+N6, despite the name, is the least significant bit.
+
+This 7-bit pattern number can identify 128 patterns in the 16k pattern memory,
+each of which are 128 bytes in size. The full 7-bits are therefore used for
+4-bit sprites.
+
+For 8-bit sprites, N6=0 always. The remaining 6 bits can identify 64 patterns,
+each of which is 256 bytes in size.
+
+The N5:N0,N6 bits are stored in a particular sprite's attributes to identify
+which image a sprite uses.
+
+8-Bit Sprite Patterns
+
+The 16 x 16 pixel image uses 8-bits for each pixel so that each pixel can be
+one of 256 colours. One colour indicates transparency and this is programmed
+into the Sprite Transparency Index register (nextreg $4B). By default the
+transparent value is $E3.
+
+As an example of an 8-bit sprite, let's have a look at figure 1.1.
+
+[Pattern Example]
+
+Using the default palette, which is initialised with RGB332 colours from 0-255,
+the hexadecimal values for this pattern arranged in a 16 x 16 array are shown
+below:
+
+    04040404040404E3E3E3E3E3E3E3E3E3
+    04FFFFFFFFFF04E3E3E3E3E3E3E3E3E3
+    04FFFBFBFBFF04E3E3E3E3E3E3E3E3E3
+    04FFFBF5F5FBFF04E3E3E3E3E3E3E3E3
+    04FFFBF5A8A8FBFF04E3E3E3E3E3E3E3
+    04FFFFFBA844A8FBFF04E3E3E3E3E3E3
+    040404FFFBA844A8FBFF04E3E3E3E3E3
+    E3E3E304FFFBA84444FBFF04E304E3E3
+    E3E3E3E304FFFB444444FBFF044D04E3
+    E3E3E3E3E304FFFB44444444FA4D04E3
+    E3E3E3E3E3E304FFFB44FFF54404E3E3
+    E3E3E3E3E3E3E304FF44F5A804E3E3E3
+    E3E3E3E3E3E3E3E304FA4404A804E3E3
+    E3E3E3E3E3E3E3044D4D04E304F504E3
+    E3E3E3E3E3E3E3E30404E3E3E304FA04
+    E3E3E3E3E3E3E3E3E3E3E3E3E3E30404
+
+Here $E3 is used as the transparent index.
+
+These 256 bytes would be stored in pattern memory in left to right, top to
+bottom order.
+
+4-Bit Sprite Patterns
+
+The 16 x 16 pixel image uses 4-bits for each pixel so that each pixel can be
+one of 16 colours. One colour indicates transparency and this is programmed
+into the lower 4-bits of the Sprite Transparency Index register (nextreg $4B).
+By default the transparency value is $3. Note that the same register is shared
+with 8-bit patterns to identify the transparent index.
+
+Since each pixel only occupies 4-bits, two pixels are stored in each byte. The
+leftmost pixel is stored in the upper 4-bits and the rightmost pixel is stored
+in the lower 4-bits.
+
+As an example we will use the same sprite image as was given in the 8-bit
+pattern example. Here only the lower 4 bits of each pixel is retained to
+confine each pixel's color to 4-bits:
+
+    4444444333333333
+    4FFFFF4333333333
+    4FBBBF4333333333
+    4FB55BF433333333
+    4FB588BF43333333
+    4FFB848BF4333333
+    444FB848BF433333
+    3334FB844BF43433
+    33334FB444BF4D43
+    333334FB4444AD43
+    3333334FB4F54433
+    33333334F4584333
+    333333334A448433
+    33333334DD434543
+    33333333443334A4
+    3333333333333344
+
+$3 is used as the transparent index.
+
+These 128 bytes would be stored in pattern memory in left to right, top to
+bottom order.
+
+The actual colour that will appear on screen will depend on the palette,
+described below. The default palette will not likely generate suitable colours
+for 4-bit sprites.
+
+Sprite Palette
+
+Each pixel of a sprite image is 8-bit for 8-bit patterns or 4-bit for 4-bit
+patterns. The pixel value is known as a pixel colour index. This colour index
+is combined with the sprite's palette offset. The palette offset is a 4-bit
+value added to the top 4-bits of the pixel colour index. The purpose of the
+palette offset is to allow a sprite to change the colour of an image.
+
+The final sprite colour index generated by the sprite hardware is then the sum
+of the pixel index and the 4-bit palette offset. In pictures using binary math:
+
+    8-bit Sprite
+    PPPP0000
+    + IIIIIIII
+    ----------
+    SSSSSSSS
+
+    4-bit Sprite
+    PPPP0000
+    + 0000IIII
+    ----------
+    SSSSSSSS = PPPPIIII
+
+Where "PPPP" is the 4-bit palette offset from the sprite's attributes and the
+"I"s represent the pixel value from the sprite pattern. The final sprite index
+is represented by the 8-bit value "SSSSSSSS".
+
+For 4-bit sprites the palette offset can be thought of as selecting one of 16
+different 16-colour palettes.
+
+This final 8-bit sprite index is then passed through the sprite palette which
+acts like a lookup table that returns the 9-bit RGB333 colour associated with
+the sprite index.
+
+At power up, the sprite palette is initialized such that the sprite index
+passes through unchanged and is therefore interpretted as an RGB332 colour. The
+missing third blue bit is generated as the logical OR of the two other blue
+bits. In short, for 8-bit sprites, the sprite index also acts like the colour
+when using the default palette.
+
+Sprite Attributes
+
+A sprite's attributes is a list of properties that determine how and where the
+sprite is drawn.
+
+Each sprite is described by either 4 or 5 attribute bytes listed below:
+
+Sprite Attribute 0
+
+    X X X X X X X X
+
+The least significant eight bits of the sprite's X coordinate. The ninth bit is
+found in sprite attribute 2.
+
+Sprite Attribute 1
+
+    Y Y Y Y Y Y Y Y
+
+The least significant eight bits of the sprite's Y coordinate. The ninth bit is
+optional and is found in attribute 4.
+
+Sprite Attribute 2
+
+    P P P P XM YM R X8/PR
+
+P = 4-bit Palette Offset
+XM = 1 to mirror the sprite image horizontally
+YM = 1 to mirror the sprite image vertically
+R = 1 to rotate the sprite image 90 degrees clockwise
+X8 = Ninth bit of the sprite's X coordinate
+PR = 1 to indicate P is relative to the anchor's palette offset (relative
+sprites only)
+Rotation is applied before mirroring.
+Relative sprites, described below, replace X8 with PR.
+
+[All Rotate and Mirror Flags]
+
+Sprite Attribute 3
+
+    V E N5 N4 N3 N2 N1 N0
+
+V = 1 to make the sprite visible
+E = 1 to enable attribute byte 4
+N = Sprite pattern to use 0-63
+If E=0, the sprite is fully described by sprite attributes 0-3. The sprite
+pattern is an 8-bit one identified by pattern N=0-63. The sprite is an anchor
+and cannot be made relative. The sprite is displayed as if sprite attribute 4
+is zero.
+If E=1, the sprite is further described by sprite attribute 4.
+
+Sprite Attribute 4
+
+A.  Extended Anchor Sprite
+
+        H N6 T X X Y Y Y8
+
+    H = 1 if the sprite pattern is 4-bit
+    N6 = 7th pattern bit if the sprite pattern is 4-bit
+    T = 0 if relative sprites are composite type else 1 for unified type
+    XX = Magnification in the X direction (00 = 1x, 01 = 2x, 10 = 4 x 4, 11 =
+    8x)
+    YY = Magnification in the Y direction (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+    Y8 = Ninth bit of the sprite's Y coordinate
+    H,N6 must not equal 0,1 as this combination is used to indicate a relative
+    sprite.
+
+B.  Relative Sprite, Composite Type
+
+        0 1 N6 X X Y Y PO
+
+    N6 = 7th pattern bit if the sprite pattern is 4-bit
+    XX = Magnification in the X direction (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+    YY = Magnification in the Y direction (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+    PO = 1 to indicate the sprite pattern number is relative to the anchor's
+
+C.  Relative Sprite, Unified Type
+
+        0 1 N6 0 0 0 0 PO
+
+    N6 = 7th pattern bit if the sprite pattern is 4-bit
+    PO = 1 to indicate the sprite pattern number is relative to the anchor's
+
+The display surface for sprites is 320 x 256. The X coordinate of the sprite is
+nine bits, ranging over 0-511, and the Y coordinate is optionally nine bits
+again ranging over 0-511 or is eight bits ranging over 0-255. The full extent
+0-511 wraps on both axes, meaning a sprite 16 pixels wide plotted at X
+coordinate 511 would see its first pixel not displayed (coordinate 511) and the
+following pixels displayed in coordinates 0-14.
+
+The full display area is visible in VGA. However, the HDMI display is
+vertically shorter so the top eight pixel rows (Y = 0-7) and the bottom eight
+pixel rows (Y = 248-255) will not be visible on an HDMI display.
+
+Sprites can be fully described by sprite attributes 0-3 if the E bit in sprite
+attribute 3 is zero. These sprites are compatible with the original sprite
+module from core versions prior to 2.00.26.
+
+If the E bit is set then a fifth sprite attribute, sprite attribute 4, becomes
+active. This attribute introduces scaling, 4-bit patterns, and relative
+sprites. Scaling is self-explanatory and 4-bit patterns were described in the
+last section. Relative sprites are described in the next section.
+
+Relative Sprites
+
+Normal sprites (sprites that are not relative) are known as anchor sprites. As
+the sprite module draws sprites in the order 0-127 (there are 128 sprites), it
+internally stores characteristics of the last anchor sprite seen. If following
+sprites are relative, they inherit some of these characteristics, which allows
+relative sprites to have, among other things, coordinates relative to the
+anchor. This means moving the anchor sprite also causes its relatives to move
+with it.
+
+There are two types of relative sprites supported known as "Composite Sprites"
+and "Unified Sprites". The type is determined by the anchor in the T bit of
+sprite attribute 4.
+
+A.  Composite Sprites
+    The sprite module records the following information from the anchor:
+
+    -   Anchor.visible
+    -   Anchor.Y
+    -   Anchor.palette_offset
+    -   Anchor.N (pattern number)
+    -   Anchor.H (indicates if the sprite uses 4-bit patterns)
+
+    These recorded items are not used by composite sprites:
+
+    -   Anchor.rotate
+    -   Anchor.xmirror
+    -   Anchor.ymirror
+    -   Anchor.xscale
+    -   Anchor.yscale
+
+    The anchor determines if all its relative sprites use 4-bit patterns or
+    not.
+
+    The visibility of a particular relative sprite is the result of ANDing the
+    anchor's visibility with the relative sprite's visibility. In other words,
+    if the anchor is invisible then so are all its relatives.
+
+    Relative sprites only have 8-bit X and Y coordinates (the ninth bits are
+    taken for other purposes). These are signed offsets from the anchor's X,Y
+    coordinate. Moving the anchor moves all its relatives along with it.
+
+    If the relative sprite has its PR bit set in sprite attribute 2, then the
+    anchor's palette offset is added to the relative sprite's to determine the
+    active palette offset for the relative sprite. Otherwise the relative
+    sprite uses its own palette offset as usual.
+
+    If the relative sprite has its PO bit set in sprite attribute 4, then the
+    anchor's pattern number is added to the relative sprite's to determine the
+    pattern used for display. Otherwise the relative sprite uses its own
+    pattern number as usual. The intention is to supply a method to easily
+    animate a large sprite by manipulating the pattern number in the anchor.
+
+    A composite sprite is like a collection of independent sprites tied to an
+    anchor.
+
+B.  Unified Sprites
+
+    Unified sprites are a further extension of the composite type. The same
+    information is recorded from the anchor and the same behaviour as described
+    under composite sprites applies.
+
+    The difference is the collection of anchor and relatives is treated as if
+    it were a single 16 x 16 sprite. The anchor's rotation, mirror, and scaling
+    bits apply to all its relatives. Rotating the anchor causes all the
+    relatives to rotate around the anchor. Mirroring the anchor causes the
+    relatives to mirror around the anchor. The sprite hardware will
+    automatically adjust X,Y coords and rotation, scaling and mirror bits of
+    all relatives according to settings in the anchor.
+
+    Unified sprites should be defined as if all its parts are 16 x 16 in size
+    with the anchor controlling the look of the whole.
+
+    A unified sprite is like a big version of an individual 16 x 16 sprite
+    controlled by the anchor.
+
+Programming Sprites
+
+Sprites are created via three io registers and a nextreg interface.
+
+Port $303B () Sprite Slot/Flags
+Write: Sprite Slot Select
+select sprite slot for Sprite Attribute and Sprite Pattern ports which
+independently auto-increment
+Read: Sprite status
+
+-   bits 7-2 = reserved
+-   bit 1 = Max sprites per line
+-   bit 0 = Collision flag
+
+    X S S S S S S S
+    N6 X N N N N N N
+
+A write to this port has two effects.
+
+One is it selects one of 128 sprites for writing sprite attributes via port
+$57.
+
+The other is it selects one of 128 4-bit patterns in pattern memory for writing
+sprite patterns via port $5B. The N6 bit shown is the least significant in the
+7-bit pattern number and should always be zero when selecting one of 64 8-bit
+patterns indicated by N.
+
+Port $57 () Sprite Attributes
+Byte 1
+
+-   bits 7-0 = LSB of X coordinate (bit 8 is in byte 3)
+
+Byte 2
+
+-   bits 7-0 = LSB of Y coordinate (bit 8 is in byte 5)
+
+Byte 3
+
+-   bits 7-4 = Palette Offset
+-   bit 3 = Enable X Mirror
+-   bit 2 = Enable Y Mirror
+-   bit 1 = Enable Roration
+-   bit 0 = By Sprite Type
+    -   Anchor = MSB of X coordinate
+    -   Relative = Enable relative palette offset
+
+Byte 4
+
+-   bit 7 = Enable visibility
+-   bit 6 = Enable Byte 5
+-   bit 5-0 = Pattern Index ("name")
+
+Byte 5 (optional)
+Anchor
+
+-   bit 7-6 = type and pattern
+    -   00 = 8-bit color
+    -   01 = relative
+    -   10 = 4-bit color, lower half of pattern (bytes 0-127)
+    -   11 = 4-bit color, upper half of pattern (byets 128-255)
+-   bit 5 = Attached relative sprite type
+    -   0 = composite
+    -   1 = big sprite
+-   bit 4-3 = X-axis scale factor
+    -   00 = 1x
+    -   01 = 2x
+    -   10 = 4x
+    -   11 = 8x
+-   bit 2-1 = Y-axis scale factor
+-   bit 0 = MSB of Y coordinate
+
+Composite Relative
+
+-   bits 7-6 = 01
+-   bit 5 = N6
+
+    8-bit
+    -   Reserved, must be 0
+
+    4-bit
+    -   0 = lower half of pattern (bytes 0-127)
+    -   1 = upper half of pattern (bytes 128-255)
+
+-   bit 4-3 = X-axis scale factor
+-   bit 2-1 = Y-axis scale factor
+-   bit 0 = Enable relative pattern offset
+
+Big-sprite Relative
+
+-   bits 7-6 = 01
+-   bit 5 = N6
+
+    8-bit
+    -   Reserved, must be 0
+
+    4-bit
+    -   0 = lower half of pattern (bytes 0-127)
+    -   1 = upper half of pattern (bytes 128-255)
+
+-   bit 4-1 = Reserved, must be 0
+-   bit 0 = Enable relative pattern offset
+
+Once a sprite is selected via port $303B, its attributes can be written to this
+port one byte after another. Sprites can have either four or five attribute
+bytes and the internal attribute pointer will move onto the next sprite after
+those four or five attribute bytes are written. This means you can select a
+sprite via port $303B and write attributes for as many sequential sprites as
+desired. The attribute pointer will roll over from sprite 127 to sprite 0.
+
+Port $5B () Sprite Pattern
+Load data into sprite pattern memory auto-incrementing. Port $303B can be used
+to set the starting sprite pattern number.
+
+Once a pattern number is selected via port $303B, the 256-byte or 128-byte
+pattern can be written to this port. The internal pattern pointer
+auto-increments after each write so as many sequential patterns as desired can
+be written. The internal pattern pointer will roll over from pattern 127 to
+pattern 0 (4-bit patterns) or from pattern 63 to pattern 0 (8-bit patterns)
+automatically.
+
+Port $303B (R)
+
+    0 0 0 0 0 0 M C
+
+M = 1 if the maximum number of sprites per line was exceeded
+C = 1 if any two displayed sprites collide on screen
+Reading this port automatically resets the M and C bits.
+
+Besides the i/o interface, there is a nextreg interface to sprite attributes.
+The nextreg interface allows the copper to manipulate sprites and grants the
+program random access to a sprite's individual attribute bytes.
+
+Register (R/W) $34 () => Sprite Number
+Lockstep (NextReg $09 bit 4 set)
+
+-   bit 7 = Pattern address offset (Add 128 to pattern address)
+-   bits 6-0 = Sprite number 0-127, Pattern number 0-63
+-   effectively performs an out to port $303B
+
+No Lockstep (NextReg $09 bit 4 clear)
+
+-   bit 7 = Reserved, must be 0
+-   bits 6-0 = Sprite number 0-127
+
+This register selects which sprite has its attributes connected to the sprite
+attribute registers
+
+Register (W) $35 () => Sprite Attribute 0
+
+-   bits 7-0 = Sprite X coordinate LSB (MSB in NextReg $37)
+
+Register (W) $75 () => Sprite Attribute 0 (Auto-incrementing)
+See nextreg $35
+
+Register (W) $36 () => Sprite Attribute 1
+
+-   bits 7-0 = Sprite Y coordinate LSB (MSB in NextReg $39)
+
+Register (W) $76 () => Sprite Attribute 1 (Auto-incrementing)
+See nextreg $36
+
+Register (W) $37 () => Sprite Attribute 2
+
+-   bits 7-4 = 4-bit Palette offset
+-   bit 3 = Enable horizontal mirror (reverse)
+-   bit 2 = Enable vertical mirror (reverse)
+-   bit 1 = Enable 90^(O) Clockwise Rotation
+
+Normal Sprites
+
+-   bit 0 = X coordinate MSB
+
+Relative Sprites
+
+-   bit 0 = Palette offset is relative to anchor sprite
+
+Rotation is applied before mirroring
+
+Register (W) $77 () => Sprite Attribute 2 (Auto-incrementing)
+See nextreg $37
+
+Register (W) $38 () => Sprite Attribute 3
+
+-   bit 7 = Enable Visiblity
+-   bit 6 = Enable Attribute 4 (0 = Attribute 4 effectively $00)
+-   bits 5-0 = Sprite Pattern Number
+
+Register (W) $78 () => Sprite Attribute 3 (Auto-incrementing)
+See nextreg $38
+
+Register (W) $39 () => Sprite Attribute 4
+Normal Sprites
+
+-   bit 7 = 4-bit pattern switch (0 = 8-bit sprite, 1 = 4-bit sprite)
+-   bit 6 = Pattern number bit-7 for 4-bit, 0 for 8-bit
+-   bit 5 = Type of attached relative sprites (0 = Composite, 1 = Unified)
+-   bits 4-3 = X scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+-   bits 2-1 = Y scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+-   bit 0 = MSB of Y coordinate
+
+Relative, Composite Sprites
+
+-   bit 7-6 = 01
+-   bit 5 = Pattern number bit-7 for 4-bit, 0 for 8-bit
+-   bits 4-3 = X scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+-   bits 2-1 = Y scaling (00 = 1x, 01 = 2x, 10 = 4x, 11 = 8x)
+-   bit 0 = Pattern number is relative to anchor
+
+Relative, Unified Sprites
+
+-   bit 7-6 = 01
+-   bit 5 = Pattern number bit-7 for 4-bit, 0 for 8-bit
+-   bits 4-1 = 0000
+-   bit 0 = Pattern number is relative to anchor
+
+Register (W) $79 () => Sprite Attribute 4 (Auto-incrementing)
+See nextreg $39
+
+Global Control of Sprites
+
+The following nextreg are also of interest for sprites.
+
+Register (R/W) $09 () => Peripheral 4 setting:
+
+-   bit 7 = PSG 2 Mono Enable (0 on hard reset)
+-   bit 6 = PSG 1 Mono Enable (0 on hard reset)
+-   bit 5 = PSG 0 Mono Enable (0 on hard reset)
+-   bit 4 = Sprite ID lockstep enable (1 = Nextreg $34 and IO Port $303B are in
+    lockstep, 0 on reset)
+-   bit 3 = divMMC mapRAM bit Control (reset bit 7 of port $E3)
+-   bit 2 = HDMI audio mute (0 on hard reset)
+-   bits 1-0 = scanlines
+    -   00 = scanlines off
+    -   01 = scanlines 12.5%
+    -   10 = scanlines 25%
+    -   11 = scanlines 50%
+-   In Sprite lockstep, NextREG $34 and Port $303B are in lockstep
+
+Register (R/W) $15 () => Sprite and Layer System Setup
+
+-   bit 7 = LoRes mode (0 on reset)
+-   bit 6 = Sprite priority (1 = sprite 0 on top, 0 = sprite 127 on top) (0 on
+    reset)
+-   bit 5 = Enable sprite clipping in over border mode (0 on reset)
+-   bits 4-2 = set layers priorities (000 on reset)
+    -   000 - S L U
+    -   001 - L S U
+    -   010 - S U L
+    -   011 - L U S
+    -   100 - U S L
+    -   101 - U L S
+    -   110 - S(U+L) ULA and Layer 2 combined, colours clamped to 7
+    -   111 - S(U+L-5) ULA and Layer 2 combined, colours clamped to [0,7]
+-   bit 1 = Enable Sprites Over border (0 on reset)
+-   bit 0 = Enable Sprites (0 on reset)
+
+The sprite module draws sprites in the order 0-127 in each scanline. Bit 6
+determines whether sprite 0 is topmost or sprite 127 is topmost.
+
+Bits 4:2 determine layer priority and how sprites overlay or are obscured by
+other layers.
+
+Register (R/W) $19 () => Sprite Clip Window Definition
+
+-   bits 7-0 = Cood. of the clip window
+    -   1st write - X1 position
+    -   2nd write - X2 position
+    -   3rd write - Y1 position
+    -   4rd write - Y2 position
+
+The values are 0,255,0,191 after a Reset
+Reads do not advance the clip position
+
+When the clip window is enabled for sprites in "over border" mode, the X coords
+are internally doubled and the clip window origin is moved to the sprite origin
+inside the border.
+
+When the clip window is enabled for sprites in "over border" mode, the X coords
+are internally doubled and the clip window origin is moved to the sprite origin
+inside the border.
+
+Sprites will only be visible inside the clipping window. When not in
+over-border mode (bit 1 of nextreg $15) the clipping window is given in ULA
+screen coordinates with 0,0 correspoding to the top left corner of the ULA
+screen. In over-border mode, the clipping window's origin is moved to the
+sprite coordinate origin 32 pixels to the left and 32 pixels above the ULA
+screen origin.
+
+Regardless, sprite position is always in sprite coordinates with 32,32
+corresponding to the top left corner of the ULA screen.
+
+Register (R/W) $1C () => Clip Window Control
+
+Read
+-   bits 7-6 = Layer 3 Clip Index
+-   bits 5-4 = Layer 0/1 Clip Index
+-   bits 3-2 = Sprite clip index
+-   bits 1-0 = Layer 2 Clip Index
+
+Write
+-   bits 7-4 = Reserved, must be 0
+-   bit 3 - reset Layer 3 clip index
+-   bit 2 - reset Layer 0/1 clip index
+-   bit 1 - reset sprite clip index.
+-   bit 0 - reset Layer 2 clip index.
+
+Register (R/W) $4B () => Sprite Transparency Index
+
+-   bits 7-0 = Index value ($E3 if reset)
+
+For 4-bit sprites only the bottom 4-bits are relevant.
+
+@------------------------------------------------------------------------------
+@node AUDIO
+@next ONEBIT
+@prev SPRITES
+@toc AUDIO_TOC
+@{r}ZX Spectrum Next Programming Notes
+@{h1}Audio
+
+@------------------------------------------------------------------------------
+@node AUDIO_TOC
+@next MEM_TOC
+@prev VIDEO_TOC
+@{r}ZX Spectrum Next Programming Notes
+@{h1}Video Table of Contents
+
+@{" ZX Spectrum 1-bit " LINK ONEBIT}
+@{" 8-bit Samples " LINK EIGHTBIT}
+@{" Turbosound (3xAY) " LINK TURBOSOUND}
+@{" Raspberry Pi Audio " LINK PIAUDIO}
+
+@------------------------------------------------------------------------------
+@node ONEBIT
+@next EIGHTBIT
+@prev ONEBIT
+@toc AUDIO_TOC
+@{r}ZX Spectrum Next Programming Notes
+@{h2}ZX Spectrum 1-bit
+
+The baseline sound of the ZX Spectrum was produced by toggling the Ear bit (bit
+4) of $fe (254) The ULA port to produce 1-bit audio. It is enabled by bit 4 of
+Next register $08 (8). While this does work on the ZX Spectrum Next, there are
+other much better methods and this is only supported for backward
+compatibility.
+
+Code:
+
+    ;; enable internal speaker
+    ld bc,$243B
+    ld a,$08
+    out (c),a
+    ld bc,$253B
+    in a,(c)
+    or $10
+    out (c),a
+
+@------------------------------------------------------------------------------
+@node EIGHTBIT
+@next TURBOSOUND
+@prev ONEBIT
+@toc AUDIO_TOC
+@{r}ZX Spectrum Next Programming Notes
+@{h2}Sampled 8-bit
+
+The ZX Next has four 8-bit D/A audio channels connected to provide sampled
+stereo sound. Channels A and B are the left channels, while C and D are the
+right channels. In order use 8-bit sound, it must first be enabled by setting
+bit 3 on nextreg $08. In order to emulate legacy hardware there are a number of
+ports that can be used to control the four channels additionally these are
+mirrored to three nextregs to enable driving audio using the copper. Channel A
+is mapped to ports $0f, $3f, and $f1; channel B to ports $1f and $f3 and
+nextreg $2C; channel C to ports $4f, and $f9 and nextreg $2E; and channel D to:
+$5f and $fb; with port $df connected to both channel A and C and nextreg $2D
+connected to both channel A and D.
+
+Code:
+
+    ;; enable SpecDrum/Convox audio
+    ld bc,$243B
+    ld a,$08
+    out (c),a
+    ld bc,$253B
+    in a,(c)
+    or $08
+    out (c),a
+
+@------------------------------------------------------------------------------
+@node TURBOSOUND
+@next PIAUDIO
+@prev EIGHTBIT
+@toc AUDIO_TOC
+@{r}ZX Spectrum Next Programming Notes
+@{h2}Turbosound
+
+TurboSound consists of the implementation of three AY-3-8912 chips. To enable
+TurboSound set bit 1 of Next Register $08 (8). Once enabled the sound chips and
+registers of the sound chips are selected using port $fffd (65533) TurboSound
+Next Control while the registers are accessed using $bffd () Sound Chip
+Register Access. To enable access to a particular chip write 111111xx to the
+control register where 01=AY1, 10=AY2, and 11=AY3. Access to particular
+registers of the selected chip is selected by writing the register number to
+the control register. You can then access a chip register using the access
+port.
+
+Code:
+
+    ;; enable TurboSound audio
+    ld bc,$243B
+    ld a,$08
+    out (c),a
+    ld bc,$253B
+    in a,(c)
+    or $02
+    out (c),a
+
+Each of the three AY chips has three channels, A, B, and C whose mapping is
+controlled by bit 5 of Next register 0x08 (8).
+
+Register (R/W) $00 () => Channel A fine tune
+
+Register (R/W) $01 () => Channel A coarse tune (4 bits)
+
+Register (R/W) $02 () => Channel B fine tune
+
+Register (R/W) $03 () => Channel B coarse tune (4 bits)
+
+Register (R/W) $04 () => Channel C fine tune
+
+Register (R/W) $05 () => Channel C coarse tune (4 bits)
+
+Register (R/W) $06 () => Noise period (5 bits)
+
+Register (R/W) $07 () => Tone Enable
+
+-   bit 5 = Channel C tone enable (0=enable, 1=disable)
+-   bit 4 = Channel B tone enable (0=enable, 1=disable)
+-   bit 3 = Channel A tone enable (0=enable, 1=disable)
+-   bit 2 = Channel C noise enable (0=enable, 1=disable)
+-   bit 1 = Channel B noise enable (0=enable, 1=disable)
+-   bit 0 = Channel A noise enable (0=enable, 1=disable)
+
+Register (R/W) $08 () => Channel A amplitude
+
+-   bit 4 = enable fixed amplitude
+    -   0 = fixed amplitude
+    -   1 = use envelope generator (bits 0-3 ignored)
+-   bits 3-0 = value of fixed amplitude
+
+Register (R/W) $09 () => Channel B amplitude
+
+-   bit 4 = enable fixed amplitude
+    -   0 = fixed amplitude
+    -   1 = use envelope generator (bits 0-3 ignored)
+-   bits 3-0 = value of fixed amplitude
+
+Register (R/W) $0A () => Channel C amplitude
+
+-   bit 4 = enable fixed amplitude
+    -   0 = fixed amplitude
+    -   1 = use envelope generator (bits 0-3 ignored)
+-   bits 3-0 = value of fixed amplitude
+
+Register (R/W) $0B () => Envelope period fine
+
+Register (R/W) $0C () => Envelope period coarse
+
+Register (R/W) $0D () => Envelope shape
+
+-   bit 3 = Continue
+    -   0 = drop to amplitude 0 after 1 cycle
+    -   1 = use 'Hold' value
+-   bit 2 = Attack
+    -   0 = generator counts down
+    -   1 = generator counts up
+-   bit 1 = Alternate
+
+    hold = 0
+    -   0 = generator resets after each cycle
+    -   1=generator reverses direction each cycle
+
+    hold=1
+    -   0 = hold final value
+    -   1 = hold initial value
+
+-   bit 0 = Hold
+    -   0 = cycle continuously
+    -   1 = perform one cycle and hold
+
+@------------------------------------------------------------------------------
+@node PIAUDIO
+@prev TURBOSOUND
+@toc AUDIO_TOC
+@{r}ZX Spectrum Next Programming Notes
+@{h2}Pi Audio
+
+If connected the Pi Zero is configured to use the ZX Next as a soundcard over
+an I2S interface making the Raspberry Pi a fully configurable audio source for
+the ZX Spectrum Next.
