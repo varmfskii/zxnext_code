@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Overview</TITLE>
+<META NAME="description" CONTENT="Overview">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="previous" HREF="node98.html">
+<LINK REL="next" HREF="node100.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node100.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node97.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node98.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html955"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html957"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node100.html">Timing</A>
+<B> Up:</B> <A
+ HREF="node97.html">Copper and Display Timing</A>
+<B> Previous:</B> <A
+ HREF="node98.html">Introduction</A>
+ &nbsp; <B>  <A ID="tex2html956"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html958"
+  HREF="node200.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H4><A ID="SECTION00700020000000000000">
+Overview</A>
+</H4>
+
+<P>
+The ZX Spectrum Next COPPER has three instructions: NOOP, MOVE, WAIT. 
+
+<P>
+NOOP is used to fine tune timing. MOVE writes data to a specific range
+of hardware registers. WAIT waits for a pixel position on the video
+display.
+
+<P>
+These instructions are stored in 2k (2048 BYTES) of dedicated
+write-only program RAM also known as a &ldquo;Copper list&rdquo;.
+
+<P>
+Each instruction is 16 bits (WORD) in size allowing for a maximum of
+1024 instructions to be stored in the program RAM. The COPPER uses an
+internal 10 bit program counter (PC) which wraps to zero at the end of
+the list. The PC can be reset to zero, this is the default value after
+a hard/soft reset.
+
+<P>
+The instructions are stored in big endian format and transferred to
+the 2k program RAM using the Z80 or DMA (bits 15..8 followed by bits
+7..0).
+
+<P>
+Three write-only hardware registers control access to the program RAM
+as well as the operating modes.
+
+<P>
+System performance is not affected when the COPPER is executing instructions.
+
+<P>
+The hardware registers and COPPER program RAM are not connected to the
+main memory BUS. The overall design of this system together with the
+use of alternate clock edges means that contention between the COPPER,
+Z80 and DMA has been eliminated.
+
+<P>
+The COPPER has a base clock speed of 13.5Mhz for HDMI and 14Mhz for VGA.
+
+<P>
+The bandwidth is around 14 million single cycle NOOP/WAIT instructions
+and 7 million two cycle MOVE instructions per second.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node100.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node97.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node98.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html955"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html957"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node100.html">Timing</A>
+<B> Up:</B> <A
+ HREF="node97.html">Copper and Display Timing</A>
+<B> Previous:</B> <A
+ HREF="node98.html">Introduction</A>
+ &nbsp; <B>  <A ID="tex2html956"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html958"
+  HREF="node200.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

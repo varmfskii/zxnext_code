@@ -90,7 +90,7 @@ Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE=""
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN> response
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> response**
 </LI>
 <LI>bits 2-1 = Reserved, must be 0
 </LI>
@@ -119,6 +119,19 @@ Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE=""
 <LI>bit 0 = 0
 </LI>
 </UL>
+
+<P>
+* In IM2 mode the expansion bus is the lowest priority interrupter and
+  if no vector is supplied externally the $FF is generated.
+
+<P>
+** The return address pushed during an nmi acknowledge cycle will not
+   be written to memory (stack pointer will be decremented) and the
+   RETN after acknowledge will take the return address from nextreg
+   instead of memory (the stack pointer will be incremented). If bit 3
+   = 0 and in other circumstances, RETN functions normally.
+
+<P>
 
 <P>
 If bit 3 is clear (0) PC is pushed on the stack, IFF1 is copied to

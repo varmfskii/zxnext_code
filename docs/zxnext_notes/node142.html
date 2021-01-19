@@ -71,7 +71,7 @@ corresponds to device zero, and bit 4 is device eleven. Bits 0 through
 3 are reserved for future system use.
 
 <P>
-<A NAME="3901"></A>
+<A NAME="3911"></A>
 BIOS Function 2: CONST
 
 <P>
@@ -90,7 +90,7 @@ $ff in register A if a character is ready to read, and $ff in
 register A if no console characters are ready.
 
 <P>
-<A NAME="3904"></A>
+<A NAME="3914"></A>
 BIOS Function 3: CONIN
 
 <P>
@@ -106,7 +106,7 @@ console character is ready, wait until a character is available before
 returning.
 
 <P>
-<A NAME="3905"></A>
+<A NAME="3915"></A>
 BIOS Function 4: CONOUT
 
 <P>
@@ -121,7 +121,7 @@ Send the character in register C to the console output device. The
 character is in ASCII with no parity.
 
 <P>
-<A NAME="3906"></A>
+<A NAME="3916"></A>
 BIOS Function 5: LIST
 
 <P>
@@ -136,7 +136,7 @@ Send the character from register C to the listing device. The
 character is in ASCII with no parity.
 
 <P>
-<A NAME="3907"></A>
+<A NAME="3917"></A>
 BIOS Function 6: AUXOUT
 
 <P>
@@ -151,7 +151,7 @@ Send the character from register C to the currently assigned AUXOUT
 device. The character is in ASCII with no parity.
 
 <P>
-<A NAME="3908"></A>
+<A NAME="3918"></A>
 BIOS Function 7: AUXIN
 
 <P>
@@ -167,7 +167,7 @@ register A with no parity. A returned ASCII CTRL-Z ($1a) reports an
 end-of-file.
 
 <P>
-<A NAME="3909"></A>
+<A NAME="3919"></A>
 BIOS Function 15: LISTST
 
 <P>
@@ -181,7 +181,7 @@ Returned Values:
 </td></tr></table>
 
 <P>
-<A NAME="3912"></A>
+<A NAME="3922"></A>
 BIOS Function 17: CONOST
 
 <P>
@@ -200,7 +200,7 @@ $ff if the console is ready to display another character. This entry
 point allows for full polled handshaking communications support.
 
 <P>
-<A NAME="3915"></A>
+<A NAME="3925"></A>
 BIOS Function 18: AUXIST
 
 <P>
@@ -219,7 +219,7 @@ entry point allows full polled handshaking for communications support
 using an auxiliary port.
 
 <P>
-<A NAME="3918"></A>
+<A NAME="3928"></A>
 BIOS Function 19: AUXOST
 
 <P>

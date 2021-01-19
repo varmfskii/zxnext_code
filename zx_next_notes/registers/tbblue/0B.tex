@@ -1,0 +1,37 @@
+\register{R/W}{0B}{Joystick I/O Mode}
+\begin{itemize}
+\item bit 7 = 1 to enable i/o mode
+\item bit 6 = Reserved, must be 0
+\item bits 5-4 = I/O Mode
+  \begin{itemize}
+  \item 00 = bit bang
+  \item 01 = clock
+  \item 10 = uart on left joystick port
+  \item 11 = uart on right joystick port
+  \end{itemize}
+\item bits 3-1 = Reserved, must be 0
+\item bit 0 = Parameter
+  \begin{itemize}
+  \item[] bit bang : copied to pin 7
+  \item[] clock
+    \begin{itemize}
+    \item 0 = hold high when clock becomes high
+    \item 1 = run *
+    \end{itemize}
+  \item[] uart
+    \begin{itemize}
+    \item 0 = redirect esp uart0 to joystick
+    \item 1 = redirect pi uart1 to joystick\\
+      (Tx out on pin 7, Rx in from pin 9, CTS\_n in from pin 6 **)
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+The state of output pin 7 is stored internally in a register and is
+retained across changing modes and while i/o mode is disabled.  While
+in i/o mode, keyboard joystick types (Sinclair, Cursor, etc) produce
+no readings but the current state of pins can still be read via the
+Kempston ports.  When leaving i/o mode, joystick operation resumes
+after ~64 scan lines have passed.\\
+* CTC channel 3 is currently used to drive pin 7 in clock mode.  Freq
+= Fctc3 / 2.\\
+** CTS\_n is only active if the seleced uart is in hw flow control mode.

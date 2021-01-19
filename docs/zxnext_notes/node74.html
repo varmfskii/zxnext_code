@@ -90,20 +90,35 @@ Register (R/W) $06 (06) <SPAN CLASS="MATH"><IMG STYLE=""
  ALT="$\Rightarrow$"></SPAN> Peripheral 2 Settings
 
 <UL>
-<LI>bit 7 = F8 CPU Speed Hotkey Enable (1 on reset)
+<LI>bit 7 = Enable F8 cpu speed hotkey (soft reset = 1)
 </LI>
-<LI>bit 6 = Enable classic audio mode (beep and tape to internal speaker,
-  other audio to ear and HDMI, 3.01.02)
+<LI>bit 6 = Divert BEEP only to internal speaker (hard reset = 0)
 </LI>
-<LI>bit 5 = F3 50Hz/60Hz Hotkey Enable (1 on reset)
+<LI>bit 5 = Enable F3 50/60 Hz hotkey (soft reset = 1)
 </LI>
-<LI>bit 4 = divMMC Automap/NMI Enable (0 on hard reset)
+<LI>bit 4 = Enable divmmc nmi by DRIVE button (hard reset = 0)
 </LI>
-<LI>bit 3 = NMI Button Enable (0 on hard reset)
+<LI>bit 3 = Enable multiface nmi by M1 button (hard reset = 0)
 </LI>
-<LI>bit 2 = PS/2 Mode (0 = keyboard, 1 = mouse)
+<LI>bit 2 = PS/2 mode (config mode only)
+
+<UL>
+<LI>0 = keyboard primary
 </LI>
-<LI>bits 1-0 = PSG Mode (00 = YM, 01 = AY, 11 = hold all PSGs in Reset)
+<LI>1 = mouse primary
+</LI>
+</UL>
+</LI>
+<LI>bits 1-0 = Audio chip mode
+
+<UL>
+<LI>00 = YM
+</LI>
+<LI>01 = AY
+</LI>
+<LI>11 = Hold all AY in reset
+</LI>
+</UL>
 </LI>
 </UL>
 

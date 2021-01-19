@@ -1,0 +1,478 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Layer 1</TITLE>
+<META NAME="description" CONTENT="Layer 1">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node28.html">
+<LINK REL="previous" HREF="node4.html">
+<LINK REL="next" HREF="node11.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node11.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node9.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html431"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html433"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node11.html">Colour Attributes</A>
+<B> Up:</B> <A
+ HREF="node3.html">Video</A>
+<B> Previous:</B> <A
+ HREF="node9.html">Clipping</A>
+ &nbsp; <B>  <A ID="tex2html432"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html434"
+  HREF="node200.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A ID="SECTION00320000000000000000">
+Layer 1</A>
+</H1>
+<BR><P></P>
+<DIV class="CENTER">
+
+<DIV class="CENTER"><A ID="142"></A>
+<TABLE class="PAD  BORDER" style="">
+<CAPTION><STRONG>Table 2.1:</STRONG>
+Layer 1 Mode summary</CAPTION>
+<TR><TD CLASS="LEFT">Mode</TD>
+<TD CLASS="CENTER">Resolution</TD>
+<TD CLASS="CENTER">Colour</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">ULA</TD>
+<TD CLASS="CENTER">256<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img11.svg"
+ ALT="$\times$"></SPAN>192</TD>
+<TD CLASS="CENTER">ULA 8<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img11.svg"
+ ALT="$\times$"></SPAN>8</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">Timex Alt</TD>
+<TD CLASS="CENTER">256<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img11.svg"
+ ALT="$\times$"></SPAN>192</TD>
+<TD CLASS="CENTER">ULA 8<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img11.svg"
+ ALT="$\times$"></SPAN>8</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">HiCol</TD>
+<TD CLASS="CENTER">256<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img11.svg"
+ ALT="$\times$"></SPAN>192</TD>
+<TD CLASS="CENTER">ULA 8<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img11.svg"
+ ALT="$\times$"></SPAN>1</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">HiRes</TD>
+<TD CLASS="CENTER">512<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img11.svg"
+ ALT="$\times$"></SPAN>192</TD>
+<TD CLASS="CENTER">2 colours</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">128 Alt</TD>
+<TD CLASS="CENTER">256<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img11.svg"
+ ALT="$\times$"></SPAN>192</TD>
+<TD CLASS="CENTER">ULA 8<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img11.svg"
+ ALT="$\times$"></SPAN>8</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">LoRes</TD>
+<TD CLASS="CENTER">128<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img11.svg"
+ ALT="$\times$"></SPAN>96</TD>
+<TD CLASS="CENTER">256 colours</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">Rad</TD>
+<TD CLASS="CENTER">128<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img11.svg"
+ ALT="$\times$"></SPAN>96</TD>
+<TD CLASS="CENTER">16 colours</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+</TR>
+</TABLE></DIV>
+</DIV>
+<BR>
+
+<P>
+The Layer 1 consists of ZX Spectrum ULA video, Timex video modes, and
+the Spectrum Next’s lores video modes all use 16k memory bank 5 or 7
+with the data coming from some combination of addresses $0000-$17FF
+(bitmap 1), $1800-$1AFF (attribute 1), $2000-$37FF (bitmap 2), and
+$3800-$3AFF (attribute 2) within the selected bank.  Assuming
+default memory mapping and the use of bank 5 this will be mapped as
+some combination of memory $4000-$57FF, $5800-$5AFF,
+$6000-$77FF, $780-$7AFF. All of the modes other than the lores
+mode can either use the default ZX Spectrum colours, ULANext mode, or
+an emulation of ULAplus. In the Spectrum and Timex modes all colours are
+either Paper (foreground), paper (background), or border colours.
+
+<P>
+<BR><P></P>
+<DIV class="CENTER">
+  
+  <DIV class="CENTER">  <A ID="148"></A>
+<TABLE class="PAD  BORDER" style="">
+<CAPTION><STRONG>Table 2.2:</STRONG>
+Layer 1 Memory Map</CAPTION>
+<TR><TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">BM 1</TD>
+<TD CLASS="LEFT">Attr 1</TD>
+<TD CLASS="LEFT">BM 2</TD>
+<TD CLASS="CENTER">Attr 2</TD>
+<TD CLASS="LEFT">BM a</TD>
+<TD CLASS="LEFT">Attr a</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">Bank</TD>
+<TD CLASS="LEFT">5</TD>
+<TD CLASS="LEFT">5</TD>
+<TD CLASS="LEFT">5</TD>
+<TD CLASS="CENTER">5</TD>
+<TD CLASS="LEFT">7</TD>
+<TD CLASS="LEFT">7</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">start</TD>
+<TD CLASS="LEFT">$0000</TD>
+<TD CLASS="LEFT">$1800</TD>
+<TD CLASS="LEFT">$2000</TD>
+<TD CLASS="CENTER">$3800</TD>
+<TD CLASS="LEFT">$0000</TD>
+<TD CLASS="LEFT">$1800</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">end</TD>
+<TD CLASS="LEFT">$17FF</TD>
+<TD CLASS="LEFT">$1AFF</TD>
+<TD CLASS="LEFT">$37FF</TD>
+<TD CLASS="CENTER">$3AFF</TD>
+<TD CLASS="LEFT">$17FF</TD>
+<TD CLASS="LEFT">$1AFF</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">ULA</TD>
+<TD CLASS="LEFT">*</TD>
+<TD CLASS="LEFT">*</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">Timex Alt</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">*</TD>
+<TD CLASS="CENTER">*</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">HiCol</TD>
+<TD CLASS="LEFT">*</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">*</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">HiRes</TD>
+<TD CLASS="LEFT">*</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">*</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">128 Alt</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">*</TD>
+<TD CLASS="LEFT">*</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">LoRes</TD>
+<TD CLASS="LEFT">*</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">*</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">Rad</TD>
+<TD CLASS="LEFT">1</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">2</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="CENTER">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+</TR>
+</TABLE></DIV>
+</DIV>
+<BR>
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html435"
+  HREF="node11.html">Colour Attributes</A>
+<UL>
+<LI><A ID="tex2html436"
+  HREF="node12.html">ULA Colour</A>
+<LI><A ID="tex2html437"
+  HREF="node13.html">ULANext</A>
+<LI><A ID="tex2html438"
+  HREF="node14.html">ULAplus</A>
+<UL>
+<LI><A ID="tex2html439"
+  HREF="node15.html">I/O ports</A>
+<LI><A ID="tex2html440"
+  HREF="node16.html">GRB palette entries</A>
+<LI><A ID="tex2html441"
+  HREF="node17.html">Grayscale palette entries</A>
+<LI><A ID="tex2html442"
+  HREF="node18.html">Limitations</A>
+<LI><A ID="tex2html443"
+  HREF="node19.html">Emulation</A>
+<LI><A ID="tex2html444"
+  HREF="node20.html">Palette file format</A>
+</UL>
+</UL>
+<BR>
+<LI><A ID="tex2html445"
+  HREF="node21.html">Layer 1 Scrolling</A>
+<LI><A ID="tex2html446"
+  HREF="node22.html">Layer 1 Clipping</A>
+<LI><A ID="tex2html447"
+  HREF="node23.html">ZX Spectrum Mode</A>
+<LI><A ID="tex2html448"
+  HREF="node24.html">Alternate Page Mode</A>
+<LI><A ID="tex2html449"
+  HREF="node25.html">Timex Hi-Colour Mode</A>
+<LI><A ID="tex2html450"
+  HREF="node26.html">Timex Hi-Resolution Mode</A>
+<LI><A ID="tex2html451"
+  HREF="node27.html">Lo-Resolution Mode</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node11.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node3.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node9.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html431"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html433"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node11.html">Colour Attributes</A>
+<B> Up:</B> <A
+ HREF="node3.html">Video</A>
+<B> Previous:</B> <A
+ HREF="node9.html">Clipping</A>
+ &nbsp; <B>  <A ID="tex2html432"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html434"
+  HREF="node200.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -5,7 +5,12 @@ Read
 \end{itemize}
 Write  
 \begin{itemize}
-\item bits 7-1 = Reserved, must be 0
+\item bit 7 = PS/2 or Joystick
+\begin{itemize}
+\item 0 = PS/2 keymap
+\item 1 = Key joystick
+\end{itemize}
+\item bits 6-1 = Reserved, must be 0
 \item bit 0 = PS/2 Keymap Address MSB
 \end{itemize}
 

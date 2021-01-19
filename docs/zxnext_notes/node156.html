@@ -167,7 +167,7 @@ Register (R/W) $03 (03) <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Machine Type
 <BR>
-A write to this register disables the boot rom in config mode
+A write to this register disables the boot rom
 <BR>
 bits 2-0 select machine type when in config mode
 <table width="90%">
@@ -258,16 +258,26 @@ Joystick modes
 </LI>
 <LI>110 = Sinclair 1 (12345)
 </LI>
-<LI>111 = I/O Mode (3.01.04)
-Both joysticks are places in I/O Mode if either is set to I/O
-Mode. The underlying joystick type is not changed and reads of this
-register will continue to return the last joystick type. Ehether the
-joystick is in io mode or not is invisible but this state can be
-cleared either through reset or by re-writing the gegister with
-joystick type not equal to 111. Recovery time for a normal joystick
-read after leaving I/O Mode is at most 64 scan lines.
+<LI>111 = User Defined Keys Joystick
 </LI>
 </UL>
+<table width="90%"><tr><td align="right" valign="top">*</td><td valign="top">&nbsp;Joysticks can be placed in i/o mode via nextreg 0x0B.</td></tr>
+<tr><td align="right" valign="top">*</td><td valign="top">&nbsp;Programming the user defined keys joystick is done through the ps2
+keymap interface on nextreg 0x28, 0x29 and 0x2B:
+</td></tr></table>
+
+<OL>
+<LI>Write 128 to nextreg 0x28
+</LI>
+<LI>Write 0 (left joystick) or 16 (right joystick) to nextreg 0x29
+</LI>
+<LI>Write eleven bytes to nextreg 0x2B. The bytes correspond to the eleven
+buttons on an md pad (X=11 Z Y START A C B U D L R=1)
+</LI>
+<LI>Each byte written identifies a key in the 8x7 membrane; bits 5:3 select
+the row and bits 2:0 select the column with 111 meaning no action
+</LI>
+</OL>
 
 <P>
 Register (R/W) $06 (06) <SPAN CLASS="MATH"><IMG STYLE=""
@@ -275,20 +285,35 @@ Register (R/W) $06 (06) <SPAN CLASS="MATH"><IMG STYLE=""
  ALT="$\Rightarrow$"></SPAN> Peripheral 2 Settings
 
 <UL>
-<LI>bit 7 = F8 CPU Speed Hotkey Enable (1 on reset)
+<LI>bit 7 = Enable F8 cpu speed hotkey (soft reset = 1)
 </LI>
-<LI>bit 6 = Enable classic audio mode (beep and tape to internal speaker,
-  other audio to ear and HDMI, 3.01.02)
+<LI>bit 6 = Divert BEEP only to internal speaker (hard reset = 0)
 </LI>
-<LI>bit 5 = F3 50Hz/60Hz Hotkey Enable (1 on reset)
+<LI>bit 5 = Enable F3 50/60 Hz hotkey (soft reset = 1)
 </LI>
-<LI>bit 4 = divMMC Automap/NMI Enable (0 on hard reset)
+<LI>bit 4 = Enable divmmc nmi by DRIVE button (hard reset = 0)
 </LI>
-<LI>bit 3 = NMI Button Enable (0 on hard reset)
+<LI>bit 3 = Enable multiface nmi by M1 button (hard reset = 0)
 </LI>
-<LI>bit 2 = PS/2 Mode (0 = keyboard, 1 = mouse)
+<LI>bit 2 = PS/2 mode (config mode only)
+
+<UL>
+<LI>0 = keyboard primary
 </LI>
-<LI>bits 1-0 = PSG Mode (00 = YM, 01 = AY, 11 = hold all PSGs in Reset)
+<LI>1 = mouse primary
+</LI>
+</UL>
+</LI>
+<LI>bits 1-0 = Audio chip mode
+
+<UL>
+<LI>00 = YM
+</LI>
+<LI>01 = AY
+</LI>
+<LI>11 = Hold all AY in reset
+</LI>
+</UL>
 </LI>
 </UL>
 
@@ -404,7 +429,9 @@ Register (R/W) $0A (0A) <SPAN CLASS="MATH"><IMG STYLE=""
 </LI>
 </UL>
 </LI>
-<LI>bits 5-4 = Reserved, must be zero
+<LI>bit 5 = Reserved, must be zero
+</LI>
+<LI>bit 4 = Enable divmmc automap (hard reset = 0) (3.01.10)
 </LI>
 <LI>bit 3 = 1 to reverse left and right mouse buttons (3.01.07)
 </LI>
@@ -427,6 +454,65 @@ Register (R/W) $0A (0A) <SPAN CLASS="MATH"><IMG STYLE=""
 </UL>
 
 <P>
+Register (R/W) $0B (0B) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Joystick I/O Mode
+
+<UL>
+<LI>bit 7 = 1 to enable i/o mode
+</LI>
+<LI>bit 6 = Reserved, must be 0
+</LI>
+<LI>bits 5-4 = I/O Mode
+  
+<UL>
+<LI>00 = bit bang
+</LI>
+<LI>01 = clock
+</LI>
+<LI>10 = uart on left joystick port
+</LI>
+<LI>11 = uart on right joystick port
+  
+</LI>
+</UL>
+</LI>
+<LI>bits 3-1 = Reserved, must be 0
+</LI>
+<LI>bit 0 = Parameter
+  <table width="90%">  <tr><td valign="top">&nbsp;bit bang : copied to pin 7
+  </td></tr>
+<tr><td valign="top">&nbsp;clock
+    
+<UL>
+<LI>0 = hold high when clock becomes high
+</LI>
+<LI>1 = run *
+    
+</LI>
+</UL>
+  </td></tr>
+<tr><td valign="top">&nbsp;uart
+    
+<UL>
+<LI>0 = redirect esp uart0 to joystick
+</LI>
+<LI>1 = redirect pi uart1 to joystick
+<BR>      (Tx out on pin 7, Rx in from pin 9, CTS_n in from pin 6 **)
+    
+</LI>
+</UL></td></tr></table>
+</LI>
+</UL>
+The state of output pin 7 is stored internally in a register and is
+retained across changing modes and while i/o mode is disabled.  While
+in i/o mode, keyboard joystick types (Sinclair, Cursor, etc) produce
+no readings but the current state of pins can still be read via the
+Kempston ports.  When leaving i/o mode, joystick operation resumes
+after&nbsp;64 scan lines have passed.
+<BR>* CTC channel 3 is currently used to drive pin 7 in clock mode.  Freq
+= Fctc3 / 2.
+<BR>** CTS_n is only active if the seleced uart is in hw flow control mode.
 Register (R) $0E (0E) <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Core Version (sub minor number)
@@ -796,7 +882,16 @@ Read
 Write  
 
 <UL>
-<LI>bits 7-1 = Reserved, must be 0
+<LI>bit 7 = PS/2 or Joystick
+
+<UL>
+<LI>0 = PS/2 keymap
+</LI>
+<LI>1 = Key joystick
+</LI>
+</UL>
+</LI>
+<LI>bits 6-1 = Reserved, must be 0
 </LI>
 <LI>bit 0 = PS/2 Keymap Address MSB
 </LI>
@@ -2477,6 +2572,28 @@ Register (R) $B1 (B1) <SPAN CLASS="MATH"><IMG STYLE=""
 <LI>bit 0 = 1 if EXTEND pressed
 </LI>
 </UL>
+Register (R) $B2 (B2) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Extended MD Pad Buttons (3.01.10)
+
+<UL>
+<LI>bit 7 = 1 if Right Pad X Pressed
+</LI>
+<LI>bit 6 = 1 if Right Pad Z Pressed
+</LI>
+<LI>bit 5 = 1 if Right Pad Y Pressed
+</LI>
+<LI>bit 4 = 1 if Right Pad START Pressed
+</LI>
+<LI>bit 3 = 1 if Left Pad X Pressed
+</LI>
+<LI>bit 2 = 1 if Left Pad Z Pressed
+</LI>
+<LI>bit 1 = 1 if Left Pad Y Pressed
+</LI>
+<LI>bit 0 = 1 if Left Pad START Pressed
+</LI>
+</UL>
 Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Control (3.01.09)
@@ -2492,7 +2609,7 @@ Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE=""
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN> response
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> response**
 </LI>
 <LI>bits 2-1 = Reserved, must be 0
 </LI>
@@ -2523,6 +2640,17 @@ Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE=""
 </UL>
 
 <P>
+* In IM2 mode the expansion bus is the lowest priority interrupter and
+  if no vector is supplied externally the $FF is generated.
+
+<P>
+** The return address pushed during an nmi acknowledge cycle will not
+   be written to memory (stack pointer will be decremented) and the
+   RETN after acknowledge will take the return address from nextreg
+   instead of memory (the stack pointer will be incremented). If bit 3
+   = 0 and in other circumstances, RETN functions normally.
+
+<P>
 Register (R/W) $C2 (C2) <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> <!-- MATH
@@ -2548,7 +2676,7 @@ Register (R/W) $C3 (C3) <SPAN CLASS="MATH"><IMG STYLE=""
 Register (R/W) $C4 (C4) <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img10.svg"
  ALT="$\Rightarrow$"></SPAN> Interrupt Enable 0 (3.01.08)
-<BR>($83 on reset)
+<BR>($81 on reset)
 
 <UL>
 <LI>bit 7 = Expansion bus <!-- MATH

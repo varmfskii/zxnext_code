@@ -1,0 +1,482 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Raspberry Pi0 Acceleration</TITLE>
+<META NAME="description" CONTENT="Raspberry Pi0 Acceleration">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node136.html">
+<LINK REL="previous" HREF="node134.html">
+<LINK REL="next" HREF="node136.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node136.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="zxnext_notes.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node134.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html1135"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html1137"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node136.html">System Software</A>
+<B> Up:</B> <A
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
+<B> Previous:</B> <A
+ HREF="node134.html">Serial Communication</A>
+ &nbsp; <B>  <A ID="tex2html1136"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1138"
+  HREF="node200.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A ID="SECTION001000000000000000000">
+Raspberry Pi0 Acceleration</A>
+</H1>
+The Spectrum Next has a header (with male pins) which can be attached
+to a Raspberry Pi Zero. There is a modified version of DietPi called
+NextPi which is the standard distro for the Raspberry Pi0
+accelerator. Software for the general public should be written
+assuming that it will be interfacing with a Pi0 running this distro.
+
+<P>
+If you are more adventurous, you may choose to use another distro, or
+even another accelerator that uses the Raspberry Pi style (40 pin)
+expansion bus.  Chief concers when doing this is that you have a
+console presented on the UART that defaults to 115,200 bps, you don't
+need to login, the machine is configured with a driver to treat the
+ I<SUP>2</SUP>S interface as a sound card, and the presence of the nextpi
+scripts.
+
+<P>
+The Raspberry Pi 0 has a Broadcom BCM2835 SoC with an ARMv6 core, a
+Videocore 4 GPU, and its own 512 MB memory and HDMI output. It has its
+own SD card from which it boots. For this application the Pi 0 ships
+with a 1GB microSD card containing NextPi a customized version of
+DietPi.
+
+<P>
+The Pi Zero, if installed, is a smart peripheral for the ZX Spectrum
+Next. Available interfaces are: low level access to the GPIO pins,
+higher level access to standardized I/O interfaces, and use of the Pi
+Zero as a sound card.
+
+<P>
+When using the low level GPIO interface Pi Zero GPIO pins 2-27 can be
+configured as either inputs or outputs using nextregs $90-$93. If
+they are outputs, the output state can be set by writing to nextregs
+$98-$9b. The current status of the GPIO pins can be read from
+nextregs $98-$9b whether it is the state driven by the ZX Spectrum
+Next or the state drive by some other peripherial attached to the bus
+(normally the Raspberry Pi Zero).
+
+<P>
+Register (R/W) $90 (90) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 1/4
+
+<UL>
+<LI>bit 7 = Enable Pin 7 (0 on reset)
+</LI>
+<LI>bit 6 = Enable Pin 6 (0 on reset)
+</LI>
+<LI>bit 5 = Enable Pin 5 (0 on reset)
+</LI>
+<LI>bit 4 = Enable Pin 4 (0 on reset)
+</LI>
+<LI>bit 3 = Enable Pin 3 (0 on reset)
+</LI>
+<LI>bit 2 = Enable Pin 2 (0 on reset)
+</LI>
+<LI>bit 1 = Enable Pin 1 (cannot be enabled) (0 on reset)
+</LI>
+<LI>bit 0 = Enable Pin 0 (cannot be enabled) (0 on reset)
+</LI>
+</UL>
+Register (R/W) $91 (91) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 2/4
+
+<UL>
+<LI>bit 7 = Enable Pin 15 (0 on reset)
+</LI>
+<LI>bit 6 = Enable Pin 14 (0 on reset)
+</LI>
+<LI>bit 5 = Enable Pin 13 (0 on reset)
+</LI>
+<LI>bit 4 = Enable Pin 12 (0 on reset)
+</LI>
+<LI>bit 3 = Enable Pin 11 (0 on reset)
+</LI>
+<LI>bit 2 = Enable Pin 10 (0 on reset)
+</LI>
+<LI>bit 1 = Enable Pin 9 (0 on reset)
+</LI>
+<LI>bit 0 = Enable Pin 8 (0 on reset)
+</LI>
+</UL>
+
+<P>
+Register (R/W) $92 (92) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 3/4
+
+<UL>
+<LI>bit 7 = Enable Pin 23 (0 on reset)
+</LI>
+<LI>bit 6 = Enable Pin 22 (0 on reset)
+</LI>
+<LI>bit 5 = Enable Pin 21 (0 on reset)
+</LI>
+<LI>bit 4 = Enable Pin 20 (0 on reset)
+</LI>
+<LI>bit 3 = Enable Pin 19 (0 on reset)
+</LI>
+<LI>bit 2 = Enable Pin 18 (0 on reset)
+</LI>
+<LI>bit 1 = Enable Pin 17 (0 on reset)
+</LI>
+<LI>bit 0 = Enable Pin 16 (0 on reset)
+</LI>
+</UL>
+
+<P>
+Register (R/W) $93 (93) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 4/4
+
+<UL>
+<LI>bits 7-4 = Reserved
+</LI>
+<LI>bit 3 = Enable Pin 27 (0 on reset)
+</LI>
+<LI>bit 2 = Enable Pin 26 (0 on reset)
+</LI>
+<LI>bit 1 = Enable Pin 25 (0 on reset)
+</LI>
+<LI>bit 0 = Enable Pin 24 (0 on reset)
+</LI>
+</UL>
+
+<P>
+Register (R/W) $98 (98) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Pi GPIO Pin State 1/4
+
+<UL>
+<LI>bit 7 = Pin 7 Data (1 on reset)
+</LI>
+<LI>bit 6 = Pin 6 Data (1 on reset)
+</LI>
+<LI>bit 5 = Pin 5 Data (1 on reset)
+</LI>
+<LI>bit 4 = Pin 4 Data (1 on reset)
+</LI>
+<LI>bit 3 = Pin 3 Data (1 on reset)
+</LI>
+<LI>bit 2 = Pin 2 Data (1 on reset)
+</LI>
+<LI>bit 1 = Pin 1 Data (1 on reset)
+</LI>
+<LI>bit 0 = Pin 0 Data (1 on reset)
+</LI>
+</UL>
+
+<P>
+Register (R/W) $99 (99) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Pi GPIO Pin State 2/4
+
+<UL>
+<LI>bit 7 = Pin 15 Data (1 on reset)
+</LI>
+<LI>bit 6 = Pin 14 Data (1 on reset)
+</LI>
+<LI>bit 5 = Pin 13 Data (1 on reset)
+</LI>
+<LI>bit 4 = Pin 12 Data (1 on reset)
+</LI>
+<LI>bit 3 = Pin 11 Data (1 on reset)
+</LI>
+<LI>bit 2 = Pin 10 Data (1 on reset)
+</LI>
+<LI>bit 1 = Pin 9 Data (1 on reset)
+</LI>
+<LI>bit 0 = Pin 8 Data (1 on reset)
+</LI>
+</UL>
+
+<P>
+Register (R/W) $9A (9A) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Pi GPIO Pin State 3/4
+
+<UL>
+<LI>bit 7 = Pin 23 Data (1 on reset)
+</LI>
+<LI>bit 6 = Pin 22 Data (1 on reset)
+</LI>
+<LI>bit 5 = Pin 21 Data (1 on reset)
+</LI>
+<LI>bit 4 = Pin 20 Data (1 on reset)
+</LI>
+<LI>bit 3 = Pin 19 Data (1 on reset)
+</LI>
+<LI>bit 2 = Pin 18 Data (1 on reset)
+</LI>
+<LI>bit 1 = Pin 17 Data (1 on reset)
+</LI>
+<LI>bit 0 = Pin 16 Data (1 on reset)
+</LI>
+</UL>
+
+<P>
+Register (R/W) $9B (9B) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Pi GPIO Pin State 4/4
+
+<UL>
+<LI>bits 7-4 = Reserved
+</LI>
+<LI>bit 3 = Pin 27 Data (1 on reset)
+</LI>
+<LI>bit 2 = Pin 26 Data (1 on reset)
+</LI>
+<LI>bit 1 = Pin 25 Data (1 on reset)
+</LI>
+<LI>bit 0 = Pin 24 Data (1 on reset)
+</LI>
+</UL>
+
+<P>
+Standardized I/O access with the Pi Zero can use the  I<SUP>2</SUP>C , SPI, or
+UART interfaces and is configured using nextreg $a0. Any enabled port
+will disable low level (write) access to the corresponding GPIO
+pins.
+
+<P>
+Register (R/W) $A0 (A0) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Pi Peripheral Enable
+
+<UL>
+<LI>bits 7-6 = Reserved, must be 0
+</LI>
+<LI>bit 5 = Enable UART on GPIO 14, 15 (0 on reset)*
+</LI>
+<LI>bit 4 = Communication Type (0 on reset)
+  
+<UL>
+<LI>0 = Rx to GPIO 15, Tx to GPIO 14 (Pi)
+</LI>
+<LI>1 = Rx to GPIO 14, Tx to GPIO 15 (Pi Hats)
+  
+</LI>
+</UL>
+</LI>
+<LI>bit 3 = Enable  I<SUP>2</SUP>C on GPIO 2, 3 (0 on reset)*
+</LI>
+<LI>bits 2-1 = Reserved, must be 0
+</LI>
+<LI>bit 0 = Enable SPI on GPIO 7, 8, 9, 10, 11 (0 on reset)*
+</LI>
+</UL>
+*Overrides GPIO Enables
+
+<P>
+The  I<SUP>2</SUP>C interface is controlled using ports $103b (SCL) and $113b
+(SDA). This is the same  I<SUP>2</SUP>C interface that is used for the optional
+Real Time Clock. Interfacing with the Pi Zero over  I<SUP>2</SUP>C is
+complicated by the fact that it is a master/slave interface, but both
+the ZX Spectrum Next and Pi Zero are configured to be bus masters.
+
+<P>
+Port $103B (103B)  I<SUP>2</SUP>C SCL (rtc, rpi)
+
+<P>
+Port $113B (113B)  I<SUP>2</SUP>C SDA (rtc, rpi)
+
+<P>
+The SPI interface is controlled using ports $e7 (/CS) and $eb
+(/DATA). The SPI interface is shared between the SD card(s), the flash
+memory, and the Pi Zero. Interfacing with the Pi Zero over SPI is
+complicated by the fact it is a master/slave interface and both the ZX
+Spectrum Next and Pi Zero are configured to be bus masters.
+
+<P>
+Port $E7 (E7) SPI <!-- MATH
+ $\overline{\hbox{CS}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img56.svg"
+ ALT="$\overline{\hbox{CS}}$"></SPAN> (SD card, flash, rpi)
+<BR>
+Disable with bit 2 of Nextreg $09
+
+<P>
+Port $EB (EB) SPI <!-- MATH
+ $\overline{\hbox{DATA}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img57.svg"
+ ALT="$\overline{\hbox{DATA}}$"></SPAN> (SD card, flash, rpi)
+<BR>
+Disable with bit 2 of Nextreg $09
+
+<P>
+The default means of communication between the ZX Next and the Pi is
+through the UART interface (see serial communications chapter). In
+order to communicate withe the Pi the Pi UART must be connected to the
+Pi by setting nextreg $a0 bits 5 and 4 to 1, selecting the Pi UART by
+setting port $153b bit 6 to 1 and ensuring that both ends are using
+matching communication protocols (by default 115,200 bps, 8N1 and no
+flow control). On the Pi end the UART is connected to the serial
+console.
+
+<P>
+<PRE>
+;; enable UART connection with Pi Zero
+   ld c,$3b
+   ld b,$15 ; UART control
+;; select Pi on UART control
+   in a,(c)
+   or $40
+   out (c),a
+   ld b,$24 ; Next Register Select
+   ld a,$a0
+   out (c),a
+   inc b ; Next Register Data
+;; Enable UART on GPIO and select Pi
+   in a,(c)
+   or $30
+   out (c),a
+</PRE>
+
+<P>
+The  I<SUP>2</SUP>S sound interface between the ZX Spectrum Next and the Pi Zero
+is controlled by nextregs $a2 and $a3. Normally, one would control
+the Pi through some other channel such as the UART recieve audio from
+the Pi to either use as a fulloy programmable sound card or to allow
+loading of tape files on the ZX Spectrum Next.
+
+<P>
+Register (R/W) $A2 (A2) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Pi  I<SUP>2</SUP>S Audio Control
+
+<UL>
+<LI>bits 7-6 =  I<SUP>2</SUP>S State ($00 on reset)
+  
+<UL>
+<LI>00 =  I<SUP>2</SUP>S Disabled
+</LI>
+<LI>01 =  I<SUP>2</SUP>S is mono, source R
+</LI>
+<LI>10 =  I<SUP>2</SUP>S is mono, source L
+</LI>
+<LI>11 =  I<SUP>2</SUP>S is stereo
+  
+</LI>
+</UL>
+</LI>
+<LI>bit 5 = Reserved, must be 0
+</LI>
+<LI>bit 4 = Audio Flow Direction (0 on reset)
+  
+<UL>
+<LI>0 = PCM_DOUT to Pi, PCM_DIN from Pi (Hats)
+</LI>
+<LI>1 = PCM_DOUT from Pi, PCM_DIN to Pi (Pi)
+  
+</LI>
+</UL>
+</LI>
+<LI>bit 3 = Mute left (0 on reset)
+</LI>
+<LI>bit 2 = Mute right (0 on reset)
+</LI>
+<LI>bit 1 = Slave mode, Reserved must be 1 (remove in 3.01.05)
+</LI>
+<LI>bit 0 = Direct  I<SUP>2</SUP>S audio to EAR on port $FE (0 on reset)
+</LI>
+</UL>
+
+<P>
+Register (R/W) $A3 (A3) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Pi  I<SUP>2</SUP>S Clock Divide (Master Mode) (removed in 3.01.05)
+
+<UL>
+<LI>bits 7-0 = Clock divide value ($0B on reset)
+</LI>
+</UL>
+<!-- MATH
+ $\hbox{Divider}=\frac{538461}{\hbox{Rate}}-1$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img58.svg"
+ ALT="$\hbox{Divider}=\frac{538461}{\hbox{Rate}}-1$"></SPAN> or
+<!-- MATH
+ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img59.svg"
+ ALT="$\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$"></SPAN>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node136.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="zxnext_notes.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node134.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html1135"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html1137"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node136.html">System Software</A>
+<B> Up:</B> <A
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
+<B> Previous:</B> <A
+ HREF="node134.html">Serial Communication</A>
+ &nbsp; <B>  <A ID="tex2html1136"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1138"
+  HREF="node200.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

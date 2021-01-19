@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Tilemap</TITLE>
+<META NAME="description" CONTENT="Tilemap">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node40.html">
+<LINK REL="previous" HREF="node38.html">
+<LINK REL="next" HREF="node40.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node40.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node38.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node38.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html601"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html603"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node40.html">Tile Definitions</A>
+<B> Up:</B> <A
+ HREF="node38.html">Data Structures</A>
+<B> Previous:</B> <A
+ HREF="node38.html">Data Structures</A>
+ &nbsp; <B>  <A ID="tex2html602"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html604"
+  HREF="node200.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H4><A ID="SECTION00342010000000000000">
+Tilemap</A>
+</H4>
+
+<P>
+The first data structure is the tilemap itself which indicates what
+characters occupy each cell on screen. Each tilemap entry is either
+one or two bytes.
+
+<P>
+If entries are two bytes each, the first byte for each entry is bits
+0-7 of the tile number, while the second byte is an attribute byte
+which is interpreted acctording to the mode set in the tilemap control
+register ($6b). For <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img29.svg"
+ ALT="$40\times32$"></SPAN> resolution, a full size tilemap will
+occupy 2560 bytes, and for <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img30.svg"
+ ALT="$80\times32$"></SPAN> resolution the space taken is
+twice that at 5120 bytes. The tilemap entries are stored in X-major
+order and each two-byte tilemap entry consists of a tile number byte
+(bits 0-7 of the tile number) followed an attribute byte:
+
+<P>
+Tilemap Attribute Byte 4-bit
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 : most significant 4-bits of palette entry</td></tr>
+<tr><td valign="top">&nbsp;bit 3 : x mirror</td></tr>
+<tr><td valign="top">&nbsp;bit 2 : y mirror</td></tr>
+<tr><td valign="top">&nbsp;bit 1 : rotate</td></tr>
+<tr><td valign="top">&nbsp;bit 0 : ULA over tilemap (in 512 tile mode, bit 8 of the tile
+  number)
+</td></tr></table>
+
+<P>
+Tilemap Attribute Byte 1-bit
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-1 : most significan 7-bits of palette entry</td></tr>
+<tr><td valign="top">&nbsp;bit 0 : ULA over tilemap (in 512 tile mode, bit 8 of the tile
+  number)
+</td></tr></table>
+
+<P>
+The character displayed is indicated by the “tile number” which can be
+thought of as an ASCII code. The tile number is normally eight bits
+allowing up to 256 unique tiles to be displayed but this can be
+extended to nine bits for 512 unique tiles if 512 tile mode is enabled
+via the Tilemap Control register ($6b).
+
+<P>
+The other bits are tile attributes that modify how the tile image is
+drawn. Their function is the same as the equivalent sprite attributes
+for sprites. Bits apply rotation then mirroring, and colour can be
+shifted with a palette offset. If 512 tile mode is not enabled, bit 8
+will determine if the tile is above or below the ULA display on a per
+tile basis.
+
+<P>
+When using 1-byte tilemap entries, the map consists of the tile
+numbers for tile in the map with the tilemap attribute byte for every
+tile coming from the default tilemap attribute register ($6c).
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node40.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node38.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node38.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html601"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html603"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node40.html">Tile Definitions</A>
+<B> Up:</B> <A
+ HREF="node38.html">Data Structures</A>
+<B> Previous:</B> <A
+ HREF="node38.html">Data Structures</A>
+ &nbsp; <B>  <A ID="tex2html602"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html604"
+  HREF="node200.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

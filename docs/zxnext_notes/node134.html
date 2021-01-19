@@ -83,50 +83,11 @@ Read
 <tr><td valign="top">&nbsp;bit 0 = Right
 </td></tr></table>
 
-Disable with Nextreg $05
+The XYZ buttons on md pads can be read through nextreg 0xB2.
 <BR>
-Write ($00 on reset, 3.01.04)
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Select I/O Mode
-  <table width="90%">  <tr><td valign="top">&nbsp;00 = Bit Bang
-  </td></tr>
-<tr><td valign="top">&nbsp;01 = Clock
-  </td></tr>
-<tr><td valign="top">&nbsp;10 = UART
-  </td></tr>
-<tr><td valign="top">&nbsp;11 = Reserved (don't use)
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;bit 5 = Reserved, must be 0</td></tr>
-<tr><td valign="top">&nbsp;bit 4 = Select Joystick Port for Read
-  <table width="90%">  <tr><td valign="top">&nbsp;0 = Left
-  </td></tr>
-<tr><td valign="top">&nbsp;1 = Right
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;bits 3-1 = Reserved, must be $00</td></tr>
-<tr><td valign="top">&nbsp;bit 0 = Pin 7 state (both ports)
-  
-<UL>
-<LI>Bit Bang - bit 0 on pin 7
-</LI>
-<LI>Clock - clock on pin 7
+The joysticks can also be placed in i/o mode see nextreg 0x0B.
 <BR>
-0 = Slow clock (Fsys/2048 = 12.672 kHz)
-<BR>
-1 = Fast clock (Fsys/8 = 3.5 MHz)
-</LI>
-<LI>UART - Pin 7 = TX, Pin 9 = RX
-    0 = ESP
-<BR>
-1 = Pi
-  
-</LI>
-</UL></td></tr></table>
-
-** A Runt clock may appear in the first cycle
-<BR>
-The I/O mode should be set by writing this port first followed by
-enabling io mo de on the joysticks with a write to nextreg 0x05.
+All eleven md pad buttons can be assigned to the keyboard see nextreg 0x05.
 
 <P>
 Port $133B (133B) UART tx
@@ -219,7 +180,7 @@ Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE=""
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN> response
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> response**
 </LI>
 <LI>bits 2-1 = Reserved, must be 0
 </LI>
@@ -248,6 +209,17 @@ Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE=""
 <LI>bit 0 = 0
 </LI>
 </UL>
+
+<P>
+* In IM2 mode the expansion bus is the lowest priority interrupter and
+  if no vector is supplied externally the $FF is generated.
+
+<P>
+** The return address pushed during an nmi acknowledge cycle will not
+   be written to memory (stack pointer will be decremented) and the
+   RETN after acknowledge will take the return address from nextreg
+   instead of memory (the stack pointer will be incremented). If bit 3
+   = 0 and in other circumstances, RETN functions normally.
 
 <P>
 Register (W) $C6 (C6) <SPAN CLASS="MATH"><IMG STYLE=""

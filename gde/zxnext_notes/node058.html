@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Sampled 8-bit</TITLE>
+<META NAME="description" CONTENT="Sampled 8-bit">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node59.html">
+<LINK REL="previous" HREF="node57.html">
+<LINK REL="next" HREF="node59.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node59.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node56.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node57.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html697"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html699"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node59.html">Turbosound</A>
+<B> Up:</B> <A
+ HREF="node56.html">Audio</A>
+<B> Previous:</B> <A
+ HREF="node57.html">ZX Spectrum 1-bit</A>
+ &nbsp; <B>  <A ID="tex2html698"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html700"
+  HREF="node200.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A ID="SECTION00420000000000000000">
+Sampled 8-bit</A>
+</H1>
+
+<P>
+The ZX Next has four 8-bit D/A audio channels connected to provide
+sampled stereo sound. Channels A and B are the left channels, while C
+and D are the right channels. In order use 8-bit sound, it must first
+be enabled by setting bit 3 on nextreg $08. In order to emulate
+legacy hardware there are a number of ports that can be used to
+control the four channels additionally these are mirrored to three
+nextregs to enable driving audio using the copper.  Channel A is
+mapped to ports $0f, $3f, and $f1; channel B to ports $1f and $f3
+and nextreg $2C; channel C to ports $4f, and $f9 and nextreg $2E;
+and channel D to: $5f and $fb; with port $df connected to both
+channel A and C and nextreg $2D connected to both channel A and D.
+
+<P>
+Code:
+<PRE>
+;; enable SpecDrum/Convox audio
+ld bc,$243B
+ld a,$08
+out (c),a
+ld bc,$253B
+in a,(c)
+or $08
+out (c),a
+</PRE>
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

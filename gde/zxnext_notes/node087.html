@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>WR0 – Write Register Group 0</TITLE>
+<META NAME="description" CONTENT="WR0 – Write Register Group 0">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node88.html">
+<LINK REL="previous" HREF="node86.html">
+<LINK REL="next" HREF="node88.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node88.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node86.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node86.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html882"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html884"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node88.html">WR1 – Write Register</A>
+<B> Up:</B> <A
+ HREF="node86.html">zxnDMA Registers</A>
+<B> Previous:</B> <A
+ HREF="node86.html">zxnDMA Registers</A>
+ &nbsp; <B>  <A ID="tex2html883"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html885"
+  HREF="node200.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H4><A ID="SECTION00660010000000000000">
+WR0 – Write Register Group 0</A>
+</H4>
+<PRE>
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 0   |   |   |   |   |   |   |
+     |   |   |   |   |   0   0  Do not use
+     |   |   |   |   |   0   1  Transfer (Prefer this for Z80 DMA compatibility)
+     |   |   |   |   |   1   0  Do not use (Behaves like Transfer, Search on Z80
+     |   |   |   |   |                       DMA)
+     |   |   |   |   |   1   1  Do not use (Behaves like Transfer, Search/Trans-
+     |   |   |   |   |                      fer on Z80 DMA)
+     |   |   |   |   0 = Port B -&gt; Port A (Byte transfer direction)
+     |   |   |   |   1 = Port A -&gt; Port B
+     |   |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT A STARTING ADDRESS (LOW BYTE)
+     |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT A STARTING ADDRESS (HIGH BYTE)
+     |   V
+D7  D6  D5  D4  D3  D2  D1  D0  BLOCK LENGTH (LOW BYTE)
+     V
+D7  D6  D5  D4  D3  D2  D1  D0  BLOCK LENGTH (HIGH BYTE)
+</PRE>
+Several registers are accessible from WR0. The first write to WR0 is
+to the base register byte. Bits D6:D3 are optionally set to indicate
+that associated registers in this group will be written next. The
+order the writes come in are from D3 to D6 (right to left). For
+example, if bits D6 and D3 are set, the next two writes will be
+directed to PORT A STARTING ADDRESS LOW followed by BLOCK LENGTH HIGH.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

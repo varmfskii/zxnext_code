@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Memory</TITLE>
+<META NAME="description" CONTENT="Memory">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node80.html">
+<LINK REL="previous" HREF="node56.html">
+<LINK REL="next" HREF="node62.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node62.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="zxnext_notes.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node60.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html710"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html712"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node62.html">Memory Management</A>
+<B> Up:</B> <A
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
+<B> Previous:</B> <A
+ HREF="node60.html">Pi Audio</A>
+ &nbsp; <B>  <A ID="tex2html711"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html713"
+  HREF="node200.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A ID="SECTION00500000000000000000">
+Memory</A>
+</H1>
+The ZX Spectrum Next commonly has with either 1MB or 2MB SRAM
+memory. This is more the 64kB directly addressable by its Z80N CPU. It
+is therefore necessary to use some form of memory paging to address
+all of the memory. This is accomplished using 8k pages or 16k
+banks. 256k of the total memory is used by the ROM images and device
+specific RAM leaving either 768k (pages 0-95/banks 0-47) or 1792k
+(pages 0-223/banks 0-111) that can be paged in as RAM. Pages 10, 11,
+and 14 are a little odd in that rather than coming from the normal
+SRAM, they come from BRAM internal to the FPGA.
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html714"
+  HREF="node62.html">Memory Management</A>
+<UL>
+<LI><A ID="tex2html715"
+  HREF="node63.html">Default Layout</A>
+<LI><A ID="tex2html716"
+  HREF="node64.html">RAM</A>
+<UL>
+<LI><A ID="tex2html717"
+  HREF="node65.html">ZX Spectrum Next Native</A>
+<LI><A ID="tex2html718"
+  HREF="node66.html">ZX Spectrum 128</A>
+</UL>
+<LI><A ID="tex2html719"
+  HREF="node70.html">ROM</A>
+<UL>
+<LI><A ID="tex2html720"
+  HREF="node71.html">ZX Next native</A>
+<LI><A ID="tex2html721"
+  HREF="node72.html">ZX Spectrum 128k</A>
+<LI><A ID="tex2html722"
+  HREF="node74.html">divMMC</A>
+<LI><A ID="tex2html723"
+  HREF="node75.html">Multiface</A>
+</UL>
+</UL>
+<BR>
+<LI><A ID="tex2html724"
+  HREF="node76.html">Interactions between paging methods</A>
+<LI><A ID="tex2html725"
+  HREF="node77.html">Memory Map</A>
+<UL>
+<LI><A ID="tex2html726"
+  HREF="node78.html">Global Memory Map</A>
+<LI><A ID="tex2html727"
+  HREF="node79.html">Z80 Visible Memory Map</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
+
+</BODY>
+</HTML>

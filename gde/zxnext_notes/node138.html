@@ -1,0 +1,1111 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Utilities</TITLE>
+<META NAME="description" CONTENT="Utilities">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node139.html">
+<LINK REL="previous" HREF="node137.html">
+<LINK REL="next" HREF="node139.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node139.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node137.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node137.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html1170"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html1172"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node139.html">BDOS</A>
+<B> Up:</B> <A
+ HREF="node137.html">CP/M</A>
+<B> Previous:</B> <A
+ HREF="node137.html">CP/M</A>
+ &nbsp; <B>  <A ID="tex2html1171"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1173"
+  HREF="node200.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A ID="SECTION001111000000000000000">
+Utilities</A>
+</H2>
+
+<P>
+From the Digital Research: CP/M 3 Command Reference Manual 1984
+
+<P>
+This section documents all standard CP/M+ 3 commands plus those extras
+included with the ZX Spectrum Next CP/M system.
+
+<P>
+<SPAN CLASS="XLARGE"><SPAN  CLASS="textbf">COLOURS</SPAN></SPAN>
+
+<P>
+<BR>
+<IMG STYLE=""
+ SRC="img60.svg"
+ ALT="\begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
+\textbf{COLOURS [RGB] \textit{paper} \textit{ink}}
+\end{labeledpar}">
+<BR>
+
+<P>
+<SPAN  CLASS="textbf">Function:</SPAN> Sets the screen colours
+
+<P>
+<SPAN  CLASS="textbf">Parameters:</SPAN>
+<BR>
+<IMG STYLE=""
+ SRC="img61.svg"
+ ALT="\begin{labeledpar}{Parameters}{\textit{paper}}
+Paper (background) colour
+\end{labeledpar}">
+<BR>
+<BR>
+<IMG STYLE=""
+ SRC="img62.svg"
+ ALT="\begin{labeledpar}{Parameters:}{\textit{ink}}
+Ink (foreground) colour
+\end{labeledpar}">
+<BR>
+
+<P>
+<SPAN  CLASS="textbf">Options:</SPAN>
+<BR>
+<IMG STYLE=""
+ SRC="img63.svg"
+ ALT="\begin{labeledpar}{Parameters:}{RGB}
+Causes ink and paper colours to be interpreted as 9-bit octal RGB numbers
+\end{labeledpar}">
+<BR>
+
+<P>
+<SPAN  CLASS="textbf">Notes:</SPAN> Sets the screen colours using standard ZX colours
+or octal 9-bit RGB numbers.
+
+<P>
+<SPAN  CLASS="textbf">Examples:</SPAN>
+
+<P>
+colours 1 6
+
+<P>
+colours rgb 000 750
+
+<P>
+<SPAN CLASS="XLARGE"><SPAN  CLASS="textbf">COPYSYS</SPAN></SPAN>
+
+<P>
+<BR>
+<IMG STYLE=""
+ SRC="img64.svg"
+ ALT="\begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
+\textbf{COPYSYS}
+\end{labeledpar}">
+<BR>
+
+<P>
+<SPAN  CLASS="textbf">Function:</SPAN> Copy CP/M system
+
+<P>
+<SPAN  CLASS="textbf">Notes:</SPAN> COPYSYS copies the CP/M Plus system from a CP/M Plus
+system diskette to another diskette.  The new diskette must have the
+same format as the original system diskette.
+
+<P>
+<SPAN CLASS="XLARGE"><SPAN  CLASS="textbf">DATE</SPAN></SPAN>
+
+<P>
+<BR>
+<IMG STYLE=""
+ SRC="img65.svg"
+ ALT="\begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
+\textbf{DATE}\\
+\textbf{DATE ...
+...
+\textbf{DATE \textit{time-specification}}\\
+\textbf{DATE SET}
+\end{labeledpar}">
+<BR>
+
+<P>
+<SPAN  CLASS="textbf">Function:</SPAN> The DATE command lets you display and set the date
+and time of day.
+
+<P>
+<SPAN  CLASS="textbf">Parameters:</SPAN>
+<BR>
+<IMG STYLE=""
+ SRC="img66.svg"
+ ALT="\begin{labeledpar}{Parameters}{\textit{time-specification}}
+Time/date in the format MM/DD/YY HH:MM:SS
+\end{labeledpar}">
+<BR>
+
+<P>
+<SPAN  CLASS="textbf">Options:</SPAN>
+<BR>
+<IMG STYLE=""
+ SRC="img67.svg"
+ ALT="\begin{labeledpar}{Parameters:}{C}
+Continuously show the date and time until a key is pressed
+\end{labeledpar}">
+<BR>
+<BR>
+<IMG STYLE=""
+ SRC="img68.svg"
+ ALT="\begin{labeledpar}{Parameters:}{CONTINUOUS}
+Continuously show the date and time until a key is pressed
+\end{labeledpar}">
+<BR>
+<BR>
+<IMG STYLE=""
+ SRC="img69.svg"
+ ALT="\begin{labeledpar}{Parameters:}{SET}
+Prompt the user for the current date and time
+\end{labeledpar}">
+<BR>
+
+<P>
+<SPAN  CLASS="textbf">Notes:</SPAN> The DATE command is a transient utility that lets you
+display and set the date and time of day.  When you start CP/M 3, the
+date and time are set to the creation date of your CP/M 3 system. Use
+DATE to change this initial value to the current date and time.
+
+<P>
+<SPAN  CLASS="textbf">Examples:</SPAN>
+
+<P>
+DATE
+
+<P>
+DATE C
+
+<P>
+DATE CONTINUOUS
+
+<P>
+DATE 08/13/82 09:15:37
+
+<P>
+DATE SET
+
+<P>
+<SPAN  CLASS="textbf">DEVICE</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+DEVICE
+<BR>
+DEVICE NAMES
+<BR>
+DEVICE VALUES
+<BR>
+DEVICE logical-dev {XON<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img70.svg"
+ ALT="\(\vert\)"></SPAN>NOXON<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img70.svg"
+ ALT="\(\vert\)"></SPAN>baud-rate},
+<BR>
+DEVICE physical-dev {XON<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img70.svg"
+ ALT="\(\vert\)"></SPAN>NOXON<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img70.svg"
+ ALT="\(\vert\)"></SPAN>baud-rate}
+<BR>
+DEVICE logical-dev=physical-dev {option} {,physical-dev {option},...}
+<BR>
+DEVICE logical-dev = NULL
+<BR>
+DEVICE CONSOLE {PAGE}
+<BR>
+DEVICE CONSOLE {COLUMNS=n, LINES=n}
+<BR>
+<P>
+DEVICE displays current logical device assignments and physical device
+names.
+
+<P>
+<SPAN  CLASS="textbf">DIR</SPAN> (built-in)
+
+<P>
+=0.7cm Syntax:
+<BR>
+DIR
+<BR>
+DIR d:
+<BR>
+DIR filespec
+<BR>
+DIR d: options
+<BR>
+DIR filespec,... filespec options
+
+<P>
+The DIR command displays the names of files catalogued in the
+directory of an online disk that belong to current user number and
+have the Directory (DIR) attribute. DIR accepts the * and ? wildcards
+in the file specification.
+
+<P>
+The DIR command with options displays the names of files and the
+characteristics associated with the files. DIR is a built-in
+utility. DIR with options is a transient utility and must be loaded
+into memory from the disk.
+
+<P>
+<SPAN  CLASS="textbf">DIRSYS/DIRS</SPAN> (built-in)
+
+<P>
+=0.7cm Syntax:
+<BR>
+DIRSYS
+<BR>
+DIRSYS d:
+<BR>
+DIRSYS filespec
+
+<P>
+The DIRSYS command lists the names of files in the current directory
+that have the system (SYS) attribute. DIRSYS accept the * and ?
+wildcards in the file specification. DIRSYS is a built-in utility.
+
+<P>
+<SPAN  CLASS="textbf">DUMP</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+DUMP filespec
+
+<P>
+DUMP displays the contents of a file in and ASCII format.
+
+<P>
+<SPAN  CLASS="textbf">ECHO</SPAN> (ZX Spectrum Next)
+
+<P>
+=0.7cm Syntax:
+<BR>
+ECHO string
+
+<P>
+Echo characters to the terminal
+
+<P>
+The following special character sequences may be used
+
+<UL>
+<LI>\a alert (bell) (ASCII 7)
+</LI>
+<LI>\b backspace (ASCII 8)
+</LI>
+<LI>\e escape (ASCII 27)
+</LI>
+<LI>\n line feed (ASCII 10)
+</LI>
+<LI>\r carriage return (ASCII 13)
+</LI>
+<LI>\l interpret further characters as lower-case
+</LI>
+<LI>\u interpret further characters as upper-case
+</LI>
+<LI>\\backslash ('\')
+</LI>
+</UL>
+
+<P>
+Note that CP/M converts all your typed characters to upper-case before
+providing them to ECHO.COM. Therefore you will need to use
+\l and \u to specify the case of
+characters if it is important (in ESCape sequences, for example).
+
+<P>
+<SPAN  CLASS="textbf">ED</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+ED
+<BR>
+ED input-filespec
+<BR>
+ED input-filespec {d: <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img70.svg"
+ ALT="\(\vert\)"></SPAN> output-filespec}
+
+<P>
+Character file editor. To redirect or rename the new version of the
+file specify the destination drive or destination filespec.
+
+<P>
+<SPAN  CLASS="textbf">ERASE/ERA</SPAN> (built-in)
+
+<P>
+=0.7cm Syntax:
+<BR>
+ERASE
+<BR>
+ERASE filespec
+<BR>
+ERASE filespec [CONFIRM]
+
+<P>
+The ERASE command removes one or more files from the directory of a
+disk. Wildcard characters are accepted in the filespec. Directory and
+data space are automatically reclaimed for later use by another
+file. The ERASE command can be abbreviated to ERA.
+
+<P>
+[CONFIRM] option informs the system to prompt for verification before
+erasing each file that matches the filespec. CONFIRM can be
+abbreviated to C.
+
+<P>
+<SPAN  CLASS="textbf">EXIT</SPAN> (ZX Spectrum Next)
+
+<P>
+=0.7cm Syntax:
+<BR>
+EXIT
+
+<P>
+The EXIT command leaves CP/M (rebooting the ZX Spectrum Next)
+
+<P>
+<SPAN  CLASS="textbf">EXPORT</SPAN> (ZX Spectrum Next)
+
+<P>
+=0.7cm Syntax:
+<BR>
+EXPORT cpm-filespec nextzxos-filespec
+
+<P>
+NextZXOS file export utility
+
+<P>
+Export file to a NextZXOS drive.
+
+<P>
+<SPAN  CLASS="textbf">GENCOM</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+GENCOM COM-Eilespec RSX-filespec... RSX-Eilespec {[LOADER <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img70.svg"
+ ALT="\(\vert\)"></SPAN>
+  SCB=(Offset,value)]}
+<BR>
+GENCOM RSX-filespec ... RSX-filespec {[NULL <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img70.svg"
+ ALT="\(\vert\)"></SPAN>
+  SCB=(Offset,value)l}
+<BR>
+GENCOM filename
+<BR>
+GENCOM filename [SCB=(offset,value)]
+
+<P>
+The GENCOM command attaches RSX files to a COM file, or creates a
+dummy COM file containing only RSXS. It can also restore a previously
+GENCOMed file to the original COM file without the header and RSXS,
+add or replace RSXs in already GENCOMed files, and attach header
+records to COM files without RSXS.
+
+<P>
+<SPAN  CLASS="textbf">GENCPM</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+GENCPM {AUTO<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img70.svg"
+ ALT="\(\vert\)"></SPAN>AUTO DISPLAY}
+
+<P>
+GENCPM creates a memory image CPM3.SYS file, containing the CP/M 3
+BDOS and customized BIOS. The GENCPM utility performs late resolution
+of intermodule references between system modules. GENCPM can accept
+its command input interactively from the console or from a file
+GENCPM.DAT.
+
+<P>
+In the nonbanked system, GENCPM creates a CPM3.SYS file from the
+BDOS3.SPR and BIOS3.SPR files. In the banked system, GENCPM creates
+the CPM3.SYS file from the RESBDOS3.SPR, the BNKBDOS3.SPR and the
+BNKBIOS3.SPR files. Remember to back up your CPM3.SYS file before
+executing GENCPM, because GENCPM deletes any existing CPM3.SYS file
+before it generates a new system.
+
+<P>
+<SPAN  CLASS="textbf">GET</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+GET {CONSOLE INPUT FROM} FILE filespec options
+<BR>
+GET {CONSOLE INPUT FROM} CONSOLE
+
+<P>
+GET directs the system to take console input from a file for the next
+system comand or user program entered at the console.
+
+<P>
+Console input is taken from a file until the program terminates. If
+the file is exhausted before program input is terminated, the program
+looks for subsequent input from the console. If the program terminates
+before exhausting all its input, the system reverts back to the
+console for console input.
+
+<P>
+<SPAN  CLASS="textbf">HELP</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+HELP
+<BR>
+HELP topic
+<BR>
+HELP topic subtopic
+<BR>
+HELP topic [NOPAGE]
+<BR>
+HELP topic subtopic1...subtopic8
+<BR>
+HELP<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img71.svg"
+ ALT="\(&gt;\)"></SPAN>topic
+<BR>
+HELP<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img71.svg"
+ ALT="\(&gt;\)"></SPAN>.subtopic
+
+<P>
+HELP displays a list of topics and provides summarized information for
+CP/M Plus commands.
+
+<P>
+Typing HELP topic displays information about that topic. Typing HELP
+topic subtopic displays information about that subtopics One or two
+letters is enough to identify the topics. After HELP displays
+information for your topic, it displays the special prompt HELP<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img71.svg"
+ ALT="\(&gt;\)"></SPAN>
+on your screen, followed by a list of subtopics.
+
+<P>
+
+<UL>
+<LI>Enter ? to display list of main topics.
+</LI>
+<LI>Enter a period and subtopic name to access subtopics.
+</LI>
+<LI>Enter a period to redisplay what you just read.
+</LI>
+<LI>Press RETURN to return to the CP/M Plus system prompt.
+</LI>
+<LI>[NOPAGE] option disables the 24 lines per page console display.
+</LI>
+<LI>Press any key to exit a display and return to the HELP<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img71.svg"
+ ALT="\(&gt;\)"></SPAN> prompt.
+</LI>
+</UL>
+
+<P>
+<SPAN  CLASS="textbf">HEXCOM</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+HEXCOM filename
+
+<P>
+The HEXCOM Command generates a command file (filetype COM) from a HEX
+input file. it names the output tile with the same filename as the
+input file but with filetype COM. HEXCOM always looks for a file with
+filetype HEX.
+
+<P>
+<SPAN  CLASS="textbf">IMPORT</SPAN> (ZX Spectrum Next)
+
+<P>
+=0.7cm Syntax:
+<BR>
+IMPORT nextzxos-filespec
+<BR>
+IMPORT nextzxos-filespec cpm-filespec
+
+<P>
+NextZXOS file import utility
+
+<P>
+List or import files from a NextZXOS drive.
+
+<P>
+<SPAN  CLASS="textbf">INITDIR</SPAN> (Not included)
+
+<P>
+=0.7cm Syntax:
+<BR>
+INITDIR d:
+
+<P>
+The INITDIR command initializes a disk directory to allow date and
+time stamping of files on that disk. INITDIR can also recover
+time/date directory space.
+
+<P>
+<SPAN  CLASS="textbf">NEXTREG</SPAN> (ZX Spectrum Next)
+
+<P>
+=0.7cm Syntax:
+<BR>
+NEXTREG register {value}
+
+<P>
+NextReg Utility
+
+<P>
+Show or change a NextReg register (use at your own risk!)
+
+<P>
+<SPAN  CLASS="textbf">LIB</SPAN> (Not included)
+
+<P>
+=0.7cm Syntax:
+<BR>
+LIB filespec options
+<BR>
+LIB filespec options=filespec <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img72.svg"
+ ALT="\(&lt;\)"></SPAN>modifier<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img71.svg"
+ ALT="\(&gt;\)"></SPAN> f,filespec<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img72.svg"
+ ALT="\(&lt;\)"></SPAN>modifier<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img71.svg"
+ ALT="\(&gt;\)"></SPAN>
+
+<P>
+A library is a file that contains a collection of object modules.
+
+<P>
+Use the LIB utility to create libraries, and to append, replace,
+select, or delete modules from an existing library. Use LIB to obtain
+information about the contents of library files.  LIB creates and
+maintains library files that contain object modules in Microsoft REL
+file format.  These modules are produced by the Digital Research
+relocatable macro-assembler program, RMAC, or other language
+translator that produces modules in Microsoft REL file format.
+
+<P>
+You can use LINK-80 to link the object modules contained in a library
+to other object files.  LINK-80 automatically selects from the library
+only those modules needed by the program being linked, and then forms
+an executable file with a filetype of Com.
+
+<P>
+<SPAN  CLASS="textbf">LINK</SPAN> (Not included)
+
+<P>
+=0.7cm Syntax:
+<BR>
+LINK filespec [options]
+<BR>
+LINK filespec [options],...filespec [options]
+<BR>
+LINK filespec [options]=filespec [options],...
+<BR>
+<P>
+LINK combines relocatable object modules such as those produced by
+RMAC and PL/I- 80 into a COM file ready for execution. Relocatable
+files can contain external references and publics.  Relocatable files
+can reference modules in library files. LINK searches the library
+files and includes the referenced modules in the output file. See the
+Programmer's Utilities Guide for the CP/M Family of Operating Systems
+for a complete description of LINK-80.
+
+<P>
+Use LINK option switches to control execution parameters. Link options
+follow the file specifications and are enclosed within square
+brackets. Multiple switches are separated by commas.
+
+<P>
+<SPAN  CLASS="textbf">MAC</SPAN> (Not included)
+
+<P>
+=0.7cm Syntax:
+<BR>
+MAC filename [$options]
+
+<P>
+MAC, the CP/M Plus macro assembler, reads assembly language statements
+from a file of type ASM, assembles the statements, and produces three
+output files with the input filename and filetypes of HEX, PRN, and
+SYM. Filename.HEX contains Intel hexadecimal format object
+code. Filename.PRN contains an annotated source listing that you can
+print or examine at the console. Filename.SYM contains a sorted list
+of symbols defined in the program.
+
+<P>
+Use options to direct the input and output of MAC. Use a letter with
+the option to indicate the source and destination drives, and console,
+printer, or zero output. Valid drive names are A through 0. X, P, and
+Z specify console, printer, and zero output, respectively.
+
+<P>
+<SPAN  CLASS="textbf">PATCH</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+PATCH filename.typ n
+
+<P>
+The PATCH command displays or installs patch number n to the CP/M Plus
+system or command files. The patch number n must be between 1 and 32
+inclusive.
+
+<P>
+<SPAN  CLASS="textbf">PIP</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+PIP Destination = Source
+<BR>
+PIP d:[Gn]=filespec [options]
+<BR>
+PIP filespec[Gn]=filespec [options]
+<BR>
+PIP filespec[Gn]device=filespec [options] device
+
+<P>
+The file copy program PIP copies files, combines files, and transfers
+files between disks, printers, consoles, or other devices attached to
+your computer. The first filespec is the destination. The second
+filespec is the source. Use two or more source filespecs separated by
+commas to combine two or more files into one file. [options] is any
+combination of the available options. The [Gn] option in the
+destination filespec tells PIP to copy your file to that user
+number. PIP with no command tail displays an * prompt and awaits your
+series of commands, entered and processed one line at a time. The
+source or destination can optionally be any CP/M Plus logical device.
+
+<P>
+<SPAN  CLASS="textbf">PUT</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+PUT CONSOLE {OUTPUT TO} FILE filespec {option}
+<BR>
+PUT PRINTER {OUTPUT TO} FILE filespec {option}
+<BR>
+PUT CONSOLE {OUTPUT TO} CONSOLE
+<BR>
+PUT PRINTER {OUTPUT TO} PRINTER
+
+<P>
+PUT puts console or printer output to a file for the next command
+entered at the console, until the program terminates. Then console
+output reverts to the console. Printer output is directed to a file
+until the program terminates. Then printer output is put back to the
+printer.
+
+<P>
+PUT with the SYSTEM option directs all subsequent console/printer
+output to the specified file.  This option terminates when you enter
+the PUT CONSOLE or PUT PRINTER command.
+
+<P>
+<SPAN  CLASS="textbf">RENAME/REN</SPAN> (built-in)
+
+<P>
+=0.7cm Syntax:
+<BR>
+RENAME
+<BR>
+RENAME new-filespec=old-filespec
+
+<P>
+RENAME lets you change the name of a file in the directory of a
+disk. To change several filenames in one command use the * or ?
+wildcards in the file specifications. You can abbreviate the RENAME
+command to REN. REN prompts you for input.
+
+<P>
+<SPAN  CLASS="textbf">RMAC</SPAN> (Not included)
+
+<P>
+=0.7cm Syntax:
+<BR>
+RMAC filespec options
+
+<P>
+RMAC, a relocatable macro assembler, assembles ASM files into REL
+files that you can link to create COM files.
+
+<P>
+RMAC options specify the destination of the output files. Replace d
+with the destination drive letter for the output files.
+
+<P>
+<SPAN  CLASS="textbf">SAVE</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+SAVE
+
+<P>
+SAVE copies the contents of memory to a file. To use SAVE, first issue
+the SAVE command, then run your program which reads a file into
+memory. Your program exits to the SAVE utility which prompts you for a
+filespec to which it copies the contents of memory, and the beginning
+and ending address of the memory to be SAVED.
+
+<P>
+<SPAN  CLASS="textbf">SET</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+SET [options]
+<BR>
+SET d: [options]
+<BR>
+SET filespec [options]
+<BR>
+SET [option = modifier]
+<BR>
+SET filespec [option = modifier]
+
+<P>
+SET initiates password protection and time stamping of files. It also
+sets the file and drive attributes Read/Write, Read/Only, DIR and
+SYS. It lets you label a disk and passord protect the label. To enable
+time stamping of files, you must first run INITDIR to format the disk
+directory.
+
+<P>
+<SPAN  CLASS="textbf">SET Default password operation:</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+SET [DEFAULT=password]
+
+<P>
+Instructs the system to use a default password if you do not enter a
+password for a password-protected file.
+
+<P>
+<SPAN  CLASS="textbf">SET Time-stamp operations:</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+SET d: [CREATE=ON<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img70.svg"
+ ALT="\(\vert\)"></SPAN>OFF]
+<BR>
+SET d: [ACCESS=ON<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img70.svg"
+ ALT="\(\vert\)"></SPAN>OFF]
+<BR>
+SET d: [UPDATE=ON<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img70.svg"
+ ALT="\(\vert\)"></SPAN>OFF]
+
+<P>
+The above set commands allw YOU to keep a record of the time and date
+of file creation and update or of the last access update of your
+files.
+
+<P>
+<SPAN  CLASS="textbf">SET Drive operations:</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+SET d: [RO]
+<BR>
+SET d: [RW]
+
+<P>
+Adds or removes write protection from a drive.
+
+<P>
+<SPAN  CLASS="textbf">SETDEF</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+SETDEF
+<BR>
+SETDEF [TEMPORARY=d:]
+<BR>
+SETDEF d:i,d:i,d:i,d:i
+<BR>
+SETDEF [ORDER= (typ1, typn)]
+<BR>
+SETDEF [DISPLAY <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img70.svg"
+ ALT="\(\vert\)"></SPAN> NO DISPLAY)
+<BR>
+SETDEF [PAGE <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img70.svg"
+ ALT="\(\vert\)"></SPAN> NOPAGE]
+
+<P>
+SETDEF allows the user to display or define up to four drives for the
+program search order, the drive for temporary files, and the filetype
+search order. The SETDEF definitions affect only the loading of
+programs and/or execution of SUBMIT (SUB) files. SETDEF turns on/off
+the system Display and Console Page modes. When on, the system
+displays the location and name of programs loaded or SUBmit files
+executed, and stops after displaying one full console screen of
+information.
+
+<P>
+<SPAN  CLASS="textbf">SHOW</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+SHOW
+<BR>
+SHOW d:
+<BR>
+SHOW d: [SPACE]
+<BR>
+SHOW d: [LABEL]
+<BR>
+SHOW d: [USERS]
+<BR>
+SHOW d: [DIR]
+<BR>
+SHOW d: [DRIVE]
+
+<P>
+The SHOW command displays the following disk drive information:
+
+<UL>
+<LI>access mode and the amount of free disk space
+</LI>
+<LI>disk label
+</LI>
+<LI>current user number
+</LI>
+<LI>number of files for each user number on the disk
+</LI>
+<LI>number of free directory entries for the disk
+</LI>
+<LI>drive characteristics
+</LI>
+</UL>
+
+<P>
+<SPAN  CLASS="textbf">SID</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+SID [pgm-filespec],{sym-filespec}
+
+<P>
+The SID symbolic debugger allows you to monitor and test programs
+developed for the 8080 microprocessor. SID supports real-time
+breakpoints, fully monitored execution, symbolic disassembly,
+assembly, and memory display and fill functions. SID can dynamically
+load SID utility programs to provide traceback and histogram
+facilities.
+
+<P>
+<SPAN  CLASS="textbf">SUBMIT</SPAN>
+
+<P>
+=0.7cm Syntax:
+<BR>
+SUBMIT
+<BR>
+SUBMIT filespec
+<BR>
+SUBMIT filespec argument ... argument
+
+<P>
+The SUBMIT command lets you execute a group (batch) of commands from a
+SUBmit file (a file with filetype of SUB).
+
+<P>
+SUB files:
+
+<P>
+The SUB file can contain the following types of lines:
+
+<UL>
+<LI>any valid CP/M Plus command
+</LI>
+<LI>any valid CP/M Plus command with SUBMIT parameters ($0-$9)
+</LI>
+<LI>any data input line
+</LI>
+<LI>any program input line with parameters ($0 to $9)
+</LI>
+</UL>
+
+<P>
+The command line cannot exceed 135 characters.
+
+<P>
+<SPAN  CLASS="textbf">TERMINFO</SPAN> (ZX Spectrum Next)
+
+<P>
+=0.7cm Syntax:
+<BR>
+TERMINFO
+
+<P>
+This program provides information on the terminal facilities provided
+by the BIOS on the ZX Spectrum Next.
+
+<P>
+<SPAN  CLASS="textbf">TERMSIZE</SPAN> (ZX Spectrum Next)
+
+<P>
+=0.7cm Syntax:
+<BR>
+TERMSIZE top left height width
+
+<P>
+Terminal resize utility
+
+<P>
+Size can be up to 32x80 (defaults to 24x80, suitable for many
+programs). If setting a reduced size, the top and left parameters can
+be used to make the image more centered on your screen.
+
+<P>
+<SPAN  CLASS="textbf">TYPE/TYP</SPAN> (built-in)
+
+<P>
+=0.7cm Syntax:
+<BR>
+TYPE
+<BR>
+TYPE filespec
+<BR>
+TYPE filespec [PAGE]
+<BR>
+TYPE filespec [NOPAGE]
+
+<P>
+The TYPE command displays the contents of an ASCII character file on
+your screen.
+
+<P>
+<SPAN  CLASS="textbf">UPGRADE</SPAN> (ZX Spectrum Next)
+
+<P>
+=0.7cm Syntax:
+<BR>
+UPGRADE
+
+<P>
+UPGRADE CP/M from C:/NEXTZXOS/CPMBASE.P3D
+
+<P>
+<SPAN  CLASS="textbf">USER/USE</SPAN> (built-in)
+
+<P>
+=0.7cm Syntax:
+<BR>
+USER
+<BR>
+USER n
+
+<P>
+The USER command sets the current user number. The disk directory can
+be divided into distinct groups according to a User Number. User
+numbers range from 0 through 15.
+
+<P>
+<SPAN  CLASS="textbf">XREF</SPAN> (Not included)
+
+<P>
+=0.7cm Syntax:
+<BR>
+XREF {d:} filename {$P}
+
+<P>
+XREF provides a cross-reference summary of variable usage in a
+program. XREF requires the PRN and SYM files produced by MAC or RMAC
+for input to the program. The SYM and PRN files must have the same
+filename as the filename in the XREF command tail. XREF outputs a file
+of type XRF.
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node139.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node137.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node137.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html1170"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html1172"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node139.html">BDOS</A>
+<B> Up:</B> <A
+ HREF="node137.html">CP/M</A>
+<B> Previous:</B> <A
+ HREF="node137.html">CP/M</A>
+ &nbsp; <B>  <A ID="tex2html1171"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1173"
+  HREF="node200.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

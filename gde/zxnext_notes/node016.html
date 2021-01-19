@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>GRB palette entries</TITLE>
+<META NAME="description" CONTENT="GRB palette entries">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node17.html">
+<LINK REL="previous" HREF="node15.html">
+<LINK REL="next" HREF="node17.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node17.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node14.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node15.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html487"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html489"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node17.html">Grayscale palette entries</A>
+<B> Up:</B> <A
+ HREF="node14.html">ULAplus</A>
+<B> Previous:</B> <A
+ HREF="node15.html">I/O ports</A>
+ &nbsp; <B>  <A ID="tex2html488"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html490"
+  HREF="node200.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H5><A ID="SECTION00321032000000000000">
+GRB palette entries</A>
+</H5>
+
+<P>
+G3R3B2 encoding
+<BR>
+For a device using the GRB colour space the palette entry is
+interpreted as follows
+
+<UL>
+<LI>Bits 7-5: Green intensity.
+</LI>
+<LI>Bits 4-2: Red intensity.
+</LI>
+<LI>Bits 1-0: Blue intensity.
+</LI>
+</UL>
+
+<P>
+This colour space uses a sub-set of 9-bit GRB. The missing lowest blue
+bit is set to OR of the other two blue bits (Bb becomes 000 for 00,
+and Bb1 for anything else). This gives access to a fixed half the
+potential 512 colour palette. The reduces the jump in intensity in the
+lower range in the earlier version of the specification. It also means
+the standard palette can now be represented by the ULAplus palette.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

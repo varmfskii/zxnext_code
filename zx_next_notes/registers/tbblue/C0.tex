@@ -3,7 +3,7 @@
 \begin{itemize}
 \item bits 7-5 = Programmable portion of IM2 vector *
 \item bit 4 = Reserved, must be 0
-\item bit 3 = Enable stackless \textoverline{NMI} response
+\item bit 3 = Enable stackless \textoverline{NMI} response**
 \item bits 2-1 = Reserved, must be 0
 \item bit 0 = Maskable interrupt mode
 \begin{itemize}
@@ -26,4 +26,14 @@
 \end{itemize}
 \item bit 0 = 0
 \end{itemize}
+
+* In IM2 mode the expansion bus is the lowest priority interrupter and
+  if no vector is supplied externally the \$FF is generated.
+
+** The return address pushed during an nmi acknowledge cycle will not
+   be written to memory (stack pointer will be decremented) and the
+   RETN after acknowledge will take the return address from nextreg
+   instead of memory (the stack pointer will be incremented). If bit 3
+   = 0 and in other circumstances, RETN functions normally.
+
 

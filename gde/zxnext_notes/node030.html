@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Layer 2 , Write only overlaid on ROM</TITLE>
+<META NAME="description" CONTENT="Layer 2 , Write only overlaid on ROM">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node31.html">
+<LINK REL="previous" HREF="node29.html">
+<LINK REL="next" HREF="node31.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node31.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node29.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node29.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html554"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html556"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node31.html">Layer 2 resolution</A>
+<B> Up:</B> <A
+ HREF="node29.html">Configuration</A>
+<B> Previous:</B> <A
+ HREF="node29.html">Configuration</A>
+ &nbsp; <B>  <A ID="tex2html555"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html557"
+  HREF="node200.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H4><A ID="SECTION00331010000000000000">
+Layer 2 <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img1.svg"
+ ALT="$256\times 192$"></SPAN>, Write only overlaid on ROM</A>
+</H4>
+<PRE>
+p_layer2: defl $123b
+start:
+  ld bc,p_layer2
+  ld a,$03       ; enable, wo, 1st 16k
+  out (c),a
+  call wrtpage
+  ld bc,p_layer2
+  ld a,$43       ; enable, wo, 2nd 16k
+  out (c),a
+  call wrtpage
+  ld bc,p_layer2
+  ld a,$83       ; enable, wo, 3rd 16k
+  out (c),a
+  call wrtpage
+  ret
+wrtpage:  
+  ld hl,$0000
+  ld bc,$0040    ; 40*256 writes
+loop:
+  ld (hl),b
+  inc hl
+  djnz loop
+  dec c
+  jr nz,loop
+</PRE>
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

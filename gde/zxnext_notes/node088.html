@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>WR1 – Write Register Group 1</TITLE>
+<META NAME="description" CONTENT="WR1 – Write Register Group 1">
+<META NAME="keywords" CONTENT="zxnext_notes">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2020.2">
+
+<LINK REL="STYLESHEET" HREF="zxnext_notes.css">
+
+<LINK REL="next" HREF="node89.html">
+<LINK REL="previous" HREF="node87.html">
+<LINK REL="next" HREF="node89.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node89.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node86.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node87.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html886"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html888"
+  HREF="node200.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node89.html">WR2 – Write Register</A>
+<B> Up:</B> <A
+ HREF="node86.html">zxnDMA Registers</A>
+<B> Previous:</B> <A
+ HREF="node87.html">WR0 – Write Register</A>
+ &nbsp; <B>  <A ID="tex2html887"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html889"
+  HREF="node200.html">Index</A></B> 
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H4><A ID="SECTION00660020000000000000">
+WR1 – Write Register Group 1</A>
+</H4>
+<PRE>
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 0   |   |   |   |   1   0   0
+     |   |   |   |
+     |   |   |   0 = Port A is memory
+     |   |   |   1 = Port A is IO
+     |   |   |
+     |   0   0 = Port A address decrements
+     |   0   1 = Port A address increments
+     |   1   0 = Port A address is fixed
+     |   1   1 = Port A address is fixed
+     |
+     V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT A VARIABLE TIMING BYTE
+ 0   0   0   0   0   0   |   |
+                         0   0 = Cycle Length = 4
+                         0   1 = Cycle Length = 3
+                         1   0 = Cycle Length = 2
+                         1   1 = Do not use
+</PRE>
+The cycle length is the number of cycles used in a read or write
+ operation. The first cycle asserts signals and the last cycle
+ releases them. There is no half cycle timing for the control signals.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>
