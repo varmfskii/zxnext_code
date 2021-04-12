@@ -3,5 +3,7 @@
 \item[] bits 7-5 = Unused
 \item[] bit 4 = enable ear output 
 \item[] bit 3 = enable mic output
-\item[] bit 2-0 = border colour 
+\item[] bit 2-0 = border colour\\
+* nextreg \$08 bit 0 can be set to delect issue 2 keyboard which will
+  affect reads of bit 6.
 \end{itemize}

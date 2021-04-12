@@ -1,10 +1,11 @@
 \section{Z80 CTC}
-(3.01.08) Untested, assuming it acts like two Z80 CTCs.
+(3.01.08) Currently does not woprk properly, in particular IM2 still
+acts much like the original spectrum interrupt mode.
 
-Eight independent CTC channels are available on ports \$183B through
-\$1F3B.  These perform counter/timer functions that can be used to
-generate timer interrupts or to generate interrupts from physical
-signals.
+Eight (currently four) independent CTC channels are available on ports
+\$183B through \$1F3B.  These perform counter/timer functions that can
+be used to generate timer interrupts or to generate interrupts on
+behalf of physical signals.
 
 The CTC is a standard Zilog part.  Its datasheet can be found at
 http://www.zilog.com/docs/z80/ps0181.pdf .  The Zilog documentation is
