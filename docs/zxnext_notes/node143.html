@@ -59,7 +59,7 @@ This section defines the CP/M 3 BIOS disk I/O routines HOME, SELDSK,
 SETTRK, SETSEC, SETDMA, READ, WRITE, SECTRN, MULTIO, and FLUSH.
 
 <P>
-<A NAME="3932"></A>
+<A NAME="3934"></A>
 BIOS Function 8: HOME
 
 <P>
@@ -75,7 +75,7 @@ position. Usually, you can translate the HOME call into a call on
 SETTRK with a parameter of 0.
 
 <P>
-<A NAME="3933"></A>
+<A NAME="3935"></A>
 BIOS Function 9: SELDSK
 
 <P>
@@ -104,7 +104,7 @@ read configuration information from the disk to set up a dynamic disk
 definition table.
 
 <P>
-<A NAME="3938"></A>
+<A NAME="3940"></A>
 BIOS Function 10: SETTRK
 
 <P>
@@ -120,7 +120,7 @@ the currently selected drive. Normally, the track number is saved
 until the next READ or WRITE occurs.
 
 <P>
-<A NAME="3939"></A>
+<A NAME="3941"></A>
 BIOS Function 11: SETSEC
 
 <P>
@@ -137,7 +137,7 @@ SECTRN. Usually, you delay actual sector selection until a READ or
 WRITE operation occurs.
 
 <P>
-<A NAME="3940"></A>
+<A NAME="3942"></A>
 BIOS Function 12: SETDMA
 
 <P>
@@ -155,7 +155,7 @@ reads its data starting at $80, or the subsequent write operation
 gets its data from 80H, until the next call to SETDMA occurs.
 
 <P>
-<A NAME="3941"></A>
+<A NAME="3943"></A>
 BIOS Function 13: READ
 
 <P>
@@ -187,7 +187,7 @@ density has changed, return a $ff in the accumulator. This causes the
 BDOS to terminate the current operation and relog in the disk.
 
 <P>
-<A NAME="3944"></A>
+<A NAME="3946"></A>
 BIOS Function 14: WRITE
 
 <P>
@@ -216,7 +216,7 @@ This information is provided for those BIOS implementations that do
 blocking/deblocking in the BIOS instead of the BDOS.
 
 <P>
-<A NAME="3949"></A>
+<A NAME="3951"></A>
 BIOS Function 16: SECTRN
 
 <P>
@@ -233,7 +233,7 @@ SECTRN performs logical sequential sector address to physical sector
 translation to improve the overall response of CP/M 3.
 
 <P>
-<A NAME="3952"></A>
+<A NAME="3954"></A>
 BIOS Function 23: MULTIO
 
 <P>
@@ -254,7 +254,7 @@ transfer up to 16K directly to or from the TPA with a single
 operation.
 
 <P>
-<A NAME="3953"></A>
+<A NAME="3955"></A>
 BIOS Function 24: FLUSH
 
 <P>

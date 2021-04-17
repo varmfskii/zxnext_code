@@ -1,0 +1,13 @@
+\register{R/W}{B8}{Divmmc Entry Points 1 (3.01.10)}\\
+(\$CD on reset)
+\begin{itemize}
+\item bit 7 = enable automap on address \$3Dxx (instant, ROM3, TRDOS)
+\item bit 6 = enable automap on address \$1FF8-1FFF (delayed)
+\item bit 5 = enable automap on address \$056A (delayed, ROM3, tape traps, nextzxos)
+\item bit 4 = enable automap on address \$04D7 (delayed, ROM3, tape traps, nextzxos)
+\item bit 3 = enable automap on address \$0562 (delayed, ROM3, tape traps, esxdos, divmmc)
+\item bit 2 = enable automap on address \$04C6 (delayed, ROM3, tape traps, esxdos, divmmc)
+\item bit 1 = enable automap on address \$0066 (instant, button)
+\item bit 0 = enable automap on address \$0066 (delayed, button)
+\end{itemize}
+

@@ -324,7 +324,9 @@ Port $FE (FE) ULA
 <table width="90%"><tr><td valign="top">&nbsp;bits 7-5 = Unused</td></tr>
 <tr><td valign="top">&nbsp;bit 4 = enable ear output </td></tr>
 <tr><td valign="top">&nbsp;bit 3 = enable mic output</td></tr>
-<tr><td valign="top">&nbsp;bit 2-0 = border colour 
+<tr><td valign="top">&nbsp;bit 2-0 = border colour
+<BR>* nextreg $08 bit 0 can be set to delect issue 2 keyboard which will
+  affect reads of bit 6.
 </td></tr></table>
 
 Port $FF (FF) Timex Sinclair/Floating Bus

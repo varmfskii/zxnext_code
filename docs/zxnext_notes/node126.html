@@ -125,11 +125,12 @@ Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE=""
   if no vector is supplied externally the $FF is generated.
 
 <P>
-** The return address pushed during an nmi acknowledge cycle will not
-   be written to memory (stack pointer will be decremented) and the
-   RETN after acknowledge will take the return address from nextreg
-   instead of memory (the stack pointer will be incremented). If bit 3
-   = 0 and in other circumstances, RETN functions normally.
+** The return address pushed during an nmi acknowledge cycle will be
+   written to the appropriate nextreg instead of memory (the stack
+   pointer will be decremented) and the RETN after acknowledge will
+   take its return address from nextreg instead of memory (the stack
+   pointer will be incremented). If bit 3 = 0 and in other
+   circumstances, RETN functions normally.
 
 <P>
 

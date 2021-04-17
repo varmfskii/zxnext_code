@@ -116,7 +116,10 @@ keymap interface on nextreg 0x28, 0x29 and 0x2B:
 buttons on an md pad (X=11 Z Y START A C B U D L R=1)
 </LI>
 <LI>Each byte written identifies a key in the 8x7 membrane; bits 5:3 select
-the row and bits 2:0 select the column with 111 meaning no action
+the row and bits 2:0 select the column with 111 meaning no action.
+<BR>*
+In all joystick modes, excess buttons on an md pad not read via ports
+will generate key input if so programmed.
 </LI>
 </OL>
 

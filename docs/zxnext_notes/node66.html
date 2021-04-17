@@ -85,17 +85,16 @@ You should echo writes to $5B67
 
 <P>
 Port $7FFD (7FFD) Memory Paging Control
-<table width="90%"><tr><td valign="top">&nbsp;bits 6-7 = reserved</td></tr>
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Extra two bits for 16k RAM bank if in Pentagon 512k/1024k
+        mapping mode (nextreg $8f)</td></tr>
 <tr><td valign="top">&nbsp;bit 5 = Lock memory paging</td></tr>
 <tr><td valign="top">&nbsp;bit 4 = low bit of ROM Select (high bit is in Port $1FFD) 
-  <table width="90%">  <tr><td valign="top">&nbsp;00 = ROM0 = 128k editor and menu system
-  </td></tr>
-<tr><td valign="top">&nbsp;01 = ROM1 = 128k syntax checker
-  </td></tr>
-<tr><td valign="top">&nbsp;10 = ROM2 = +3DOS
-  </td></tr>
-<tr><td valign="top">&nbsp;11 = ROM3 = 48k BASIC
-  </td></tr></table>
+  <table width="90%"> <tr><td valign="top">&nbsp;00 = ROM0 = 128k editor and menu
+  system </td></tr>
+<tr><td valign="top">&nbsp;01 = ROM1 = 128k syntax checker </td></tr>
+<tr><td valign="top">&nbsp;10 = ROM2 =
+  +3DOS </td></tr>
+<tr><td valign="top">&nbsp;11 = ROM3 = 48k BASIC </td></tr></table>
 </td></tr>
 <tr><td valign="top">&nbsp;bit 3 = Shadow screen toggle</td></tr>
 <tr><td valign="top">&nbsp;bits 2-0 = LSB of Bank number for slot 4 (MSB is in Port $DFFD)

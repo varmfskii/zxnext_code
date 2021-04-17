@@ -1,0 +1,10 @@
+\register{R/W}{D8}{I/O Traps (experimental)(3.01.10)}
+\begin{itemize}
+\item bits 7-1 = Reserved, must be 0
+\item bit 0 = Enable FDC traps on ports \$2ffd and \$3ffd
+\end{itemize}
+* An i/o trap generates a multiface nmi with nextreg \$02 indicating
+  which trap occurred\\
+* Avoid triggering traps via dma or while the divmmc or multiface is
+  paged in
+
