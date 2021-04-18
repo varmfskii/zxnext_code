@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>WR5 – Write Register Group 5</TITLE>
-<META NAME="description" CONTENT="WR5 – Write Register Group 5">
+<TITLE>Programming the zxnDMA</TITLE>
+<META NAME="description" CONTENT="Programming the zxnDMA">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,53 +27,68 @@
  HREF="node93.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node86.html">
+ HREF="node87.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node91.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html928"
+<A ID="tex2html937"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html930"
-  HREF="node213.html">
+<A ID="tex2html939"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node93.html">WR6 – Command Register</A>
+ HREF="node93.html">zxnDMA Registers</A>
 <B> Up:</B> <A
- HREF="node86.html">zxnDMA Registers</A>
+ HREF="node87.html">zxnDMA</A>
 <B> Previous:</B> <A
- HREF="node91.html">WR4 – Write Register</A>
- &nbsp; <B>  <A ID="tex2html929"
+ HREF="node91.html">Modes of Operation</A>
+ &nbsp; <B>  <A ID="tex2html938"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html931"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html940"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00660060000000000000">
-WR5 – Write Register Group 5</A>
-</H4>
-<PRE>
-D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
- 1   0   |   |   0   0   1   0
-         |   |
-         |   0 = /ce only
-         |   1 = /ce &amp; /wait multiplexed
-         |
-         0 = Stop on end of block
-         1 = Auto restart on end of block
-</PRE>
-The /ce &amp; /wait mode is implemented in the zxnDMA but is not currently
-used. This mode has an external device using the DMA's /ce pin to
-insert wait states during the DMA's transfer.
+<H1><A ID="SECTION00750000000000000000">
+Programming the zxnDMA</A>
+</H1>
+Like the Z80 DMA chip, the zxnDMA has seven write registers named
+WR0-WR6 that control the device. Each register WR0-WR6 can have zero
+or more parameters associated with it.
 
 <P>
-The auto restart feature causes the DMA to automatically reload its
-source and destination addresses and reset its byte counter to zero to
-repeat the last transfer when a previous one is finished.
+In a first write to the zxnDMA port, the write value is compared
+against a bitmask to determine which of the WR0-WR6 is the
+target. Remaining bits in the written value can contain data as well
+as a list of associated parameter bits. The parameter bits determine
+if further writes are expected to deliver parameter values. If there
+are multiple parameter bits set, the expected order of parameter
+values written is determined by parameter bit position from right to
+left (bit 0 through bit 7). Once all parameters are written, the
+zxnDMA again expects a regular register write selecting WR0-WR6.
+
+<P>
+The table X.Y describes the registers and the bitmask required to
+select them on the zxnDMA.
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="2182"></A>
+<TABLE>
+<CAPTION><STRONG>Table 6.1:</STRONG>
+zxnDMA Registers</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img46.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{zxndma/registers.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
 
 <P>
 <BR><HR>

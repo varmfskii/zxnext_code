@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>esxDOS Compatible Calls</TITLE>
-<META NAME="description" CONTENT="esxDOS Compatible Calls">
+<TITLE>TAP</TITLE>
+<META NAME="description" CONTENT="TAP">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node211.html">
 <LINK REL="previous" HREF="node209.html">
 <LINK REL="next" HREF="node211.html">
 </HEAD>
@@ -26,398 +27,37 @@
  HREF="node211.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node207.html">
+ HREF="node175.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node209.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1548"
+<A ID="tex2html1573"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1550"
-  HREF="node213.html">
+<A ID="tex2html1575"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node211.html">List of Figures</A>
+ HREF="node211.html">TXT,DOC,ASM,INI,CFG,MD</A>
 <B> Up:</B> <A
- HREF="node207.html">NextZXOS Calls</A>
+ HREF="node175.html">File Formats</A>
 <B> Previous:</B> <A
- HREF="node209.html">+3DOS compatible error codes</A>
- &nbsp; <B>  <A ID="tex2html1549"
+ HREF="node209.html">SPR</A>
+ &nbsp; <B>  <A ID="tex2html1574"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1551"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1576"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION001733000000000000000">
-esxDOS Compatible Calls</A>
-</H2>
-
-<P>
-<SPAN  CLASS="textbf">Low-level calls</SPAN>
-
-<P>
-<TABLE class="PAD " style="">
-<TR><TD CLASS="LEFT">disk_filemap</TD>
-<TD CLASS="LEFT">$85 (85)</TD>
-<TD CLASS="LEFT">obtain file allocation map</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">disk_strmstart</TD>
-<TD CLASS="LEFT">$86 (86)</TD>
-<TD CLASS="LEFT">start streaming operation</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">disk_strmend</TD>
-<TD CLASS="LEFT">$87 (87)</TD>
-<TD CLASS="LEFT">end streaming operation</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-</TABLE>
-
-<P>
-<SPAN  CLASS="textbf">Miscellaneous calls</SPAN>
-
-<P>
-<TABLE class="PAD " style="">
-<TR><TD CLASS="LEFT">m_dosversion</TD>
-<TD CLASS="LEFT">$88 (88)</TD>
-<TD CLASS="LEFT">get NextZXOS version/mode information</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">m_getsetdrv</TD>
-<TD CLASS="LEFT">$89 (89)</TD>
-<TD CLASS="LEFT">get/set default drive</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">m_tapein</TD>
-<TD CLASS="LEFT">$8B (8B)</TD>
-<TD CLASS="LEFT">tape redirection control (input)</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">m_tapeout</TD>
-<TD CLASS="LEFT">$8C (8C)</TD>
-<TD CLASS="LEFT">tape redirection control (output)</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">m_gethandle</TD>
-<TD CLASS="LEFT">$8D (8D)</TD>
-<TD CLASS="LEFT">get handle for current dot command</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">m_getdate</TD>
-<TD CLASS="LEFT">$8E (8E)</TD>
-<TD CLASS="LEFT">get current date/time</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">m_execcmd</TD>
-<TD CLASS="LEFT">$8F (8F)</TD>
-<TD CLASS="LEFT">execute a dot command</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">m_setcaps</TD>
-<TD CLASS="LEFT">$91 (91)</TD>
-<TD CLASS="LEFT">set additional capabilities</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">m_drvapi</TD>
-<TD CLASS="LEFT">$92 (92)</TD>
-<TD CLASS="LEFT">access API for installable drivers</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">m_geterr</TD>
-<TD CLASS="LEFT">$93 (93)</TD>
-<TD CLASS="LEFT">get or generate error message</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">m_p3dos</TD>
-<TD CLASS="LEFT">$94 (94)</TD>
-<TD CLASS="LEFT">execute +3DOS/IDEDOS/NextZXOS call</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">m_errh</TD>
-<TD CLASS="LEFT">$95 (95)</TD>
-<TD CLASS="LEFT">register dot command error handler</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-</TABLE>
-
-<P>
-<SPAN  CLASS="textbf">File calls</SPAN>
-
-<P>
-<TABLE class="PAD " style="">
-<TR><TD CLASS="LEFT">f_open</TD>
-<TD CLASS="LEFT">$9A (9A)</TD>
-<TD CLASS="LEFT">open file</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_close</TD>
-<TD CLASS="LEFT">$9B (9B)</TD>
-<TD CLASS="LEFT">close file</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_sync</TD>
-<TD CLASS="LEFT">$9C (9C)</TD>
-<TD CLASS="LEFT">sync file changes to disk</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_read</TD>
-<TD CLASS="LEFT">$9D (9D)</TD>
-<TD CLASS="LEFT">read file</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_write</TD>
-<TD CLASS="LEFT">$9E (9E)</TD>
-<TD CLASS="LEFT">write file</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_seek</TD>
-<TD CLASS="LEFT">$9F (9F)</TD>
-<TD CLASS="LEFT">set file position</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_fgetpos</TD>
-<TD CLASS="LEFT">$A0 (A0)</TD>
-<TD CLASS="LEFT">get file position</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_fstat</TD>
-<TD CLASS="LEFT">$A1 (A1)</TD>
-<TD CLASS="LEFT">get open file information</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_ftruncate</TD>
-<TD CLASS="LEFT">$A2 (A2)</TD>
-<TD CLASS="LEFT">truncate/extend open file</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_opendir</TD>
-<TD CLASS="LEFT">$A3 (A3)</TD>
-<TD CLASS="LEFT">open directory for reading</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_readdir</TD>
-<TD CLASS="LEFT">$A4 (A4)</TD>
-<TD CLASS="LEFT">read directory entry</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_telldir</TD>
-<TD CLASS="LEFT">$A5 (A5)</TD>
-<TD CLASS="LEFT">get directory position</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_seekdir</TD>
-<TD CLASS="LEFT">$A6 (A6)</TD>
-<TD CLASS="LEFT">set directory position</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_rewinddir</TD>
-<TD CLASS="LEFT">$A7 (A7)</TD>
-<TD CLASS="LEFT">rewind to start of directory</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_getcwd</TD>
-<TD CLASS="LEFT">$A8 (A8)</TD>
-<TD CLASS="LEFT">get current working directory</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_chdir</TD>
-<TD CLASS="LEFT">$A9 (A9)</TD>
-<TD CLASS="LEFT">change directory</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_mkdir</TD>
-<TD CLASS="LEFT">$AA (AA)</TD>
-<TD CLASS="LEFT">make directory</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_rmdir</TD>
-<TD CLASS="LEFT">$AB (AB)</TD>
-<TD CLASS="LEFT">remove directory</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_stat</TD>
-<TD CLASS="LEFT">$AC (AC)</TD>
-<TD CLASS="LEFT">get unopen file information</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_unlink</TD>
-<TD CLASS="LEFT">$AD (AD)</TD>
-<TD CLASS="LEFT">delete file</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_truncate</TD>
-<TD CLASS="LEFT">$AE (AE)</TD>
-<TD CLASS="LEFT">truncate/extend unopen file</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_chmod</TD>
-<TD CLASS="LEFT">$AF (AF)</TD>
-<TD CLASS="LEFT">change file attributes</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_rename</TD>
-<TD CLASS="LEFT">$B0 (B0)</TD>
-<TD CLASS="LEFT">rename/move file</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-<TR><TD CLASS="LEFT">f_getfree</TD>
-<TD CLASS="LEFT">$B1 (B1)</TD>
-<TD CLASS="LEFT">get free space</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-<TD CLASS="LEFT">&nbsp;</TD>
-</TR>
-</TABLE>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node211.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node207.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node209.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1548"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1550"
-  HREF="node213.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node211.html">List of Figures</A>
-<B> Up:</B> <A
- HREF="node207.html">NextZXOS Calls</A>
-<B> Previous:</B> <A
- HREF="node209.html">+3DOS compatible error codes</A>
- &nbsp; <B>  <A ID="tex2html1549"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1551"
-  HREF="node213.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<H1><A ID="SECTION0017260000000000000000">
+TAP</A>
+</H1>
+ZX Spectrum tape image
+<BR><HR>
 
 </BODY>
 </HTML>

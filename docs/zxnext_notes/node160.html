@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Single Byte Opcodes</TITLE>
-<META NAME="description" CONTENT="Single Byte Opcodes">
+<TITLE>8-bit</TITLE>
+<META NAME="description" CONTENT="8-bit">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -32,159 +32,368 @@
 <A
  HREF="node159.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1304"
+<A ID="tex2html1312"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1306"
-  HREF="node213.html">
+<A ID="tex2html1314"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node161.html">$CBxx Bit Operations</A>
+ HREF="node161.html">16-bit</A>
 <B> Up:</B> <A
- HREF="node159.html">Extended Opcodes to Mnemonics</A>
+ HREF="node159.html">Ports</A>
 <B> Previous:</B> <A
- HREF="node159.html">Extended Opcodes to Mnemonics</A>
- &nbsp; <B>  <A ID="tex2html1305"
+ HREF="node159.html">Ports</A>
+ &nbsp; <B>  <A ID="tex2html1313"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1307"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1315"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION001410000000000000000">
-Single Byte Opcodes</A>
+<H1><A ID="SECTION001310000000000000000">
+8-bit</A>
 </H1>
-wIntelN1=,2=,3=,4=,5=,
-  6=,7=,8=,9=,10=
-wIntelTtabular=|l|l|l|r|r||l|l|l|r|r|,
-    table head=Op&amp;Z80&amp;8080&amp;Sz&amp;T&amp;Op&amp;Z80&amp;8080&amp;Sz&amp;T
-<BR>,
-    table foot=,wIntelN
+Port $6B (6B) DMA Control (Z80 Mode, 3.01.02)
 
 <P>
-zilogN1=,2=,3=,4=,
-  5=,6=,7=,8=
-zilogTtabular=|l|l|r|r||l|l|r|r|,
-    table head=Op&amp;Mnemonic&amp;Sz&amp;T&amp;Op&amp;Mnemonic&amp;Sz&amp;T
-<BR>,
-    table foot=,zilogN
+Port $0F (0F) DAC B
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
+</td></tr></table>
+
+Disable with bit 3 of Nextreg $08
 
 <P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="8784"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.1:</STRONG>
-$00-$1F</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img142.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvreader[wIntelT]{appendices/opcode/00-opcode.csv}{}%
-{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+Port $1F (1F) Kempston/Mega Drive Joystick 1/DAC A
 <BR>
-<BR><P></P>
-<DIV class="CENTER"><A ID="8790"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.2:</STRONG>
-$20-$3F</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img143.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvreader[wIntelT]{appendices/opcode/20-opcode.csv}{}%
-{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+Read
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = &rdquo;start&rdquo; button</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = A/X button</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = C/Z button</td></tr>
+<tr><td valign="top">&nbsp;bit 4 = Fire/C/Y button</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Up</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = Down</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Left</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Right
+</td></tr></table>
+
+Disable with Nextreg $05
 <BR>
-<BR><P></P>
-<DIV class="CENTER"><A ID="8796"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.3:</STRONG>
-$40-$5F</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img144.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvreader[wIntelT]{appendices/opcode/40-opcode.csv}{}%
-{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+Write
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
+</td></tr></table>
+
+The XYZ buttons on md pads can be read through nextreg 0xB2.
 <BR>
-<BR><P></P>
-<DIV class="CENTER"><A ID="8802"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.4:</STRONG>
-$60-$7F</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img145.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvreader[wIntelT]{appendices/opcode/60-opcode.csv}{}%
-{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+The joysticks can also be placed in i/o mode see nextreg 0x0B.
 <BR>
-<BR><P></P>
-<DIV class="CENTER"><A ID="8808"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.5:</STRONG>
-$80-$9F</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img146.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvreader[wIntelT]{appendices/opcode/80-opcode.csv}{}%
-{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+All eleven md pad buttons can be assigned to the keyboard see nextreg 0x05.
+Port $37 (37) Kempston/Mega Drive Joystick 2
 <BR>
-<BR><P></P>
-<DIV class="CENTER"><A ID="8814"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.6:</STRONG>
-$A0-$BF</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img147.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvreader[wIntelT]{appendices/opcode/A0-opcode.csv}{}%
-{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+Read
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = &rdquo;start&rdquo; button</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = A/X button</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = C/Z button</td></tr>
+<tr><td valign="top">&nbsp;bit 4 = Fire/C/Y button</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Up</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = Down</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Left</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Right
+</td></tr></table>
+
+The XYZ buttons on md pads can be read through nextreg 0xB2.
 <BR>
-<BR><P></P>
-<DIV class="CENTER"><A ID="8820"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.7:</STRONG>
-$C0-$DF</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img148.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvreader[wIntelT]{appendices/opcode/C0-opcode.csv}{}%
-{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+The joysticks can also be placed in i/o mode see nextreg 0x0B.
 <BR>
-<BR><P></P>
-<DIV class="CENTER"><A ID="8826"></A>
-<TABLE>
-<CAPTION><STRONG>Table C.8:</STRONG>
-$E0-$FF</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img149.svg"
- ALT="\begin{table}\centering\scriptsize
-\csvreader[wIntelT]{appendices/opcode/E0-opcode.csv}{}%
-{\opa&amp;\zia&amp;\ina&amp;\sza&amp;\tma&amp;\opb&amp;\zib&amp;\inb&amp;\szb&amp;\tmb}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+All eleven md pad buttons can be assigned to the keyboard see nextreg 0x05.
+
+<P>
+Port $3F (3F) DAC A
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
+</td></tr></table>
+
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $4F (4F) DAC C
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
+</td></tr></table>
+
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $57 (57) Sprite Attributes
 <BR>
-<BR><HR>
+Byte 1
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = LSB of X coordinate (bit 8 is in byte 3)
+</td></tr></table>
+
+Byte 2
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = LSB of Y coordinate (bit 8 is in byte 5)
+</td></tr></table>
+
+Byte 3
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Palette Offset</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Enable X Mirror</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = Enable Y Mirror</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Enable Roration</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = By Sprite Type
+  <table width="90%">  <tr><td valign="top">&nbsp;Anchor = MSB of X coordinate
+  </td></tr>
+<tr><td valign="top">&nbsp;Relative = Enable relative palette offset
+  </td></tr></table>
+</td></tr></table>
+
+Byte 4
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Enable visibility</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = Enable Byte 5</td></tr>
+<tr><td valign="top">&nbsp;bit 5-0 = Pattern Index (&ldquo;name&rdquo;)
+</td></tr></table>
+
+Byte 5 (optional)
+<BR>
+Anchor
+<table width="90%"><tr><td valign="top">&nbsp;bit 7-6 = type and pattern
+  <table width="90%">  <tr><td valign="top">&nbsp;00 = 8-bit color
+  </td></tr>
+<tr><td valign="top">&nbsp;01 = relative
+  </td></tr>
+<tr><td valign="top">&nbsp;10 = 4-bit color, lower half of pattern (bytes 0-127)
+  </td></tr>
+<tr><td valign="top">&nbsp;11 = 4-bit color, upper half of pattern (byets 128-255)
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = Attached relative sprite type
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = composite
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = big sprite
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 4-3 = X-axis scale factor
+  <table width="90%">  <tr><td valign="top">&nbsp;00 = <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img37.svg"
+ ALT="$1\times$"></SPAN>
+  </td></tr>
+<tr><td valign="top">&nbsp;01 = <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img34.svg"
+ ALT="$2\times$"></SPAN> 
+  </td></tr>
+<tr><td valign="top">&nbsp;10 = <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img35.svg"
+ ALT="$4\times$"></SPAN> 
+  </td></tr>
+<tr><td valign="top">&nbsp;11 = <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img36.svg"
+ ALT="$8\times$"></SPAN></td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 2-1 = Y-axis scale factor</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = MSB of Y coordinate
+</td></tr></table>
+
+Composite Relative
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = 01</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = N6
+<BR>
+8-bit
+  <table width="90%">  <tr><td valign="top">&nbsp;Reserved, must be 0
+  </td></tr></table>
+
+  4-bit
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = lower half of pattern (bytes 0-127)
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = upper half of pattern (bytes 128-255)
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 4-3 = X-axis scale factor</td></tr>
+<tr><td valign="top">&nbsp;bit 2-1 = Y-axis scale factor</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Enable relative pattern offset
+</td></tr></table>
+
+Big-sprite Relative
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = 01</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = N6
+<BR>
+8-bit
+  <table width="90%">  <tr><td valign="top">&nbsp;Reserved, must be 0
+  </td></tr></table>
+
+  4-bit
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = lower half of pattern (bytes 0-127)
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = upper half of pattern (bytes 128-255)
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 4-1 = Reserved, must be 0</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Enable relative pattern offset
+</td></tr></table>
+
+<P>
+Port $5B (5B) Sprite Pattern
+<BR>
+Load data into sprite pattern memory auto-incrementing. Port $303B
+can be used to set the starting sprite pattern number.
+
+<P>
+Port $5F (5F) DAC D
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
+</td></tr></table>
+
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $6B (6B) DMA Control (Next Mode, 3.01.02)
+
+<P>
+Port $DF (DF) DAC A,D
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
+</td></tr></table>
+
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $E3 (E3) divMMC Control
+<BR>
+Disable with bit 2 of Nextreg $09
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = conmem, enable divMMC memory</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = mapram, enable divMMC allRAM mode</td></tr>
+<tr><td valign="top">&nbsp;bits 3-0 = bank, selected divMMC ram bank for $2000-$3FFF region
+conmem can be used to manually control divMMC mapping. When enabled
+<BR>$0000-$1FFF contains esxDOS ROM or esxDOS page 3
+<BR>$2000-$3FFF contains esxDOS RAM page selected by bits 3-0
+divMMC automatically maps itself in when instruction fetches hit
+specific addresses in the ROM. When this happens, the esxDOS ROM (or divMMC
+bank 3 if mapram is set) appears in $0000-$1FFF and the selected divMMC
+bank appears as RAM in $2000-$3FFF
+bit 6 can only be set, once set only a power cycle can reset it.
+nextreg $09 bit 3 can be set to reset this bit.
+</td></tr></table>
+
+divMMC automapping is normally disabled by NextZXOS see nextreg $06 bit 4.
+<BR>
+Port $E7 (E7) SPI <!-- MATH
+ $\overline{\hbox{CS}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img61.svg"
+ ALT="$\overline{\hbox{CS}}$"></SPAN> (SD card, flash, rpi)
+<BR>
+Disable with bit 2 of Nextreg $09
+
+<P>
+Port $EB (EB) SPI <!-- MATH
+ $\overline{\hbox{DATA}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img62.svg"
+ ALT="$\overline{\hbox{DATA}}$"></SPAN> (SD card, flash, rpi)
+<BR>
+Disable with bit 2 of Nextreg $09
+
+<P>
+Port $F1 (F1) DAC A (precedence over $xxFD)
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
+</td></tr></table>
+
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $F3 (F3) DAC B
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
+</td></tr></table>
+
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $F9 (F9) DAC C (precedence over $xxFD)
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
+</td></tr></table>
+
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $FB (FB) DAC A,D
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
+</td></tr></table>
+
+Disable with bit 3 of Nextreg $08
+
+<P>
+Port $FE (FE) ULA
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-5 = Unused</td></tr>
+<tr><td valign="top">&nbsp;bit 4 = enable ear output </td></tr>
+<tr><td valign="top">&nbsp;bit 3 = enable mic output</td></tr>
+<tr><td valign="top">&nbsp;bit 2-0 = border colour
+<BR>* nextreg $08 bit 0 can be set to delect issue 2 keyboard which will
+  affect reads of bit 6.
+</td></tr></table>
+
+Port $FF (FF) Timex Sinclair/Floating Bus
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = memory paging (not on ZX Next)</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = Disable generation of interrupts</td></tr>
+<tr><td valign="top">&nbsp;bit 5-3 = Hi-res mode color combination
+  <table width="90%">  <tr><td valign="top">&nbsp;000 = Black on white (indexes 0, 135)
+  </td></tr>
+<tr><td valign="top">&nbsp;001 = Blue on Yellow (indexes 1, 134)
+  </td></tr>
+<tr><td valign="top">&nbsp;010 = Green on Magenta (indexes 2, 133)
+  </td></tr>
+<tr><td valign="top">&nbsp;011 = Cyan on Red (indexes 3, 132)
+  </td></tr>
+<tr><td valign="top">&nbsp;100 = Red on Cyan (indexes 4, 131)
+  </td></tr>
+<tr><td valign="top">&nbsp;101 = Magenta on Green (indexes 5, 130)
+  </td></tr>
+<tr><td valign="top">&nbsp;110 = Yellow on Blue (indexes 6, 129)
+  </td></tr>
+<tr><td valign="top">&nbsp;111 = White on Black (indexes 7, 128)
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 2-0 = ULA Mode
+  <table width="90%">  <tr><td valign="top">&nbsp;000 = Normal ULA address
+  </td></tr>
+<tr><td valign="top">&nbsp;001 = Alternate ULA address
+  </td></tr>
+<tr><td valign="top">&nbsp;010 = Hi-color mode 
+  </td></tr>
+<tr><td valign="top">&nbsp;110 = Hi-res mode
+  </td></tr></table>
+</td></tr></table>
+
+Disable with bit 2 of Nextreg $08
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node161.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node159.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node159.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html1312"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html1314"
+  HREF="node227.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node161.html">16-bit</A>
+<B> Up:</B> <A
+ HREF="node159.html">Ports</A>
+<B> Previous:</B> <A
+ HREF="node159.html">Ports</A>
+ &nbsp; <B>  <A ID="tex2html1313"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1315"
+  HREF="node227.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

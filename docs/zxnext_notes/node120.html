@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Video Modes</TITLE>
-<META NAME="description" CONTENT="Video Modes">
+<TITLE>Control</TITLE>
+<META NAME="description" CONTENT="Control">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node121.html">
-<LINK REL="previous" HREF="node119.html">
+<LINK REL="next" HREF="node125.html">
+<LINK REL="previous" HREF="node115.html">
 <LINK REL="next" HREF="node121.html">
 </HEAD>
 
@@ -27,116 +27,167 @@
  HREF="node121.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node118.html">
+ HREF="node104.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node119.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1084"
+<A ID="tex2html1094"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1086"
-  HREF="node213.html">
+<A ID="tex2html1096"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node121.html">Machine Type</A>
+ HREF="node121.html">STOP</A>
 <B> Up:</B> <A
- HREF="node118.html">Configuration</A>
+ HREF="node104.html">Copper and Display Timing</A>
 <B> Previous:</B> <A
- HREF="node119.html">Refresh Rate</A>
- &nbsp; <B>  <A ID="tex2html1085"
+ HREF="node119.html">Example</A>
+ &nbsp; <B>  <A ID="tex2html1095"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1087"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1097"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00740020000000000000">
-Video Modes</A>
-</H4>
+<H1><A ID="SECTION00830000000000000000">
+Control</A>
+</H1>
 
 <P>
-The video mode can only be changed during the boot process so one
-initial read is required of this register during software start up
-phase.
+The COPPER is controlled by the following three write-only registers:
 
 <P>
-The machine timing is identical for the seven VGA modes although the
-physical refresh rate of the video output speeds up for each mode in
-turn by roughly 1Hz. The internal timing of the machine remains
-constant and as close to the original hardware as possible. VGA is a
-perfect Amstrad ZX Spectrum 128k +3 for example as far as timing is
-concerned across the seven VGA modes.
-
-<P>
-The effect of this speed up means that mode 0 will execute in one
-second of time whereas mode 6 will execute in a shorter time
-period. Mode 0 is as close to 50/60 Hz as possible where mode 6 is
-closer to 60/70 Hz. That would mean that one second of machine time
-for mode 6 will execute in 0.83 seconds of human time when running 50
-frames per second at 60Hz.
-
-<P>
-The eighth mode (mode 7) is used for HDMI timing. Machine
-configuration is forced for this mode. Line counts, Ts and various
-other settings are set to meet the rigid HDMI timing
-specification. For mode 7, 50/60 Hz are rock solid but the original
-hardware timing loses Ts across all machines to meet HDMI display
-requirements.
-
-<P>
-Software that was previously written for specific hardware with
-hard-coded software timing loops may fail. This is one of the risks of
-coding timing loops counting Ts. We saw evidence of this with the
-release of the 1985 Sinclair ZX Spectrum 128k+ and the later Amstrad
-models as previous software written for the ZX Spectrum 48k/48k+ would
-fail when trying to display colour attribute and border effects as the
-number of Ts per line was changed from 224Ts (1982 original 48k) to
-228Ts (128k models). The ZX Spectrum Next runs slower in HDMI
-mode. Demos may fail to display correctly and games may slow down
-although setting the Z80 to 7Mhz can solve the game slow down, demos
-should be run in VGA mode for maximum compatibility.
-
-<P>
-Video timing also affects audio output as the sample rate can vary
-depending on the output timing method.
-
-<P>
-The following register allows software to read the video timing mode:
-
-<P>
-Register (R/W) $11 (11) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> Video Timing (writable in config mode only)
-<table width="90%">
-bits 7-3 = Reserved, must be 0
-bits 2-0 = Mode (VGA = 0..6, HDMI = 7)
-  
-<UL>
-<LI>000 = Base VGA timing, clk28 = 28000000
-</LI>
-<LI>001 = VGA setting 1, clk28 = 28571429
-</LI>
-<LI>010 = VGA setting 2, clk28 = 29464286
-</LI>
-<LI>011 = VGA setting 3, clk28 = 30000000
-</LI>
-<LI>100 = VGA setting 4, clk28 = 31000000
-</LI>
-<LI>101 = VGA setting 5, clk28 = 32000000
-</LI>
-<LI>110 = VGA setting 6, clk28 = 33000000
-</LI>
-<LI>111 = HDMI, clk28 = 27000000
-  
-</LI>
-</UL><tr><td valign="top">&nbsp;50/60Hz selection depends on bit 2 of register $05</td></tr>
-<tr><td valign="top">&nbsp;Only writable in config mode
+<table width="90%"><tr><td valign="top">&nbsp;$60 (96)   Copper data</td></tr>
+<tr><td valign="top">&nbsp;$61 (97)   Copper control LO BYTE</td></tr>
+<tr><td valign="top">&nbsp;$62 (98)   Copper control HI BYTE
 </td></tr></table>
 
 <P>
+The COPPER instructions are written one BYTE at a time to the program
+RAM using register $60 (Copper data).
+
+<P>
+An index system is used to select the destination write address within
+the 2K program RAM. Eleven bits are needed to represent the
+index. Registers $61 and $62 hold this 11 bit index.
+
+<P>
+The index increments each time one BYTE is written to register
+$60. The index wraps to zero when the last BYTE of program RAM is
+written.
+
+<P>
+The instruction data is normally written in big endian format although
+there is no rule stating that partial instruction BYTES cannot be
+written. It is safe to write to the COPPER program RAM while the
+COPPER is executing as long the instruction data written does not
+create a mall formed instruction which comprises of one half of the
+current executing instruction and one half the new instruction - this
+could result in unexpected behaviour.
+
+<P>
+The Z80 and DMA can be used to write the instruction data.
+
+<P>
+Writing to program RAM while the COPPER is running has no impact on
+system performance as the RAM is contention free. COPPER timing is not
+affected by the Z80 or DMA writing to the program RAM. Program RAM is
+write-only.
+
+<P>
+The contents of the 2k program RAM are preserved during a hard/soft reset.
+
+<P>
+Register $61 holds the lower 8 bits of the index. Register $62 holds
+the upper 3 bits of the index as well as two control bits which set
+the COPPER operating mode.
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="2374"></A>
+<TABLE>
+<CAPTION><STRONG>Table 7.10:</STRONG>
+Register Bit Definitions</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img58.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/regbit.csv}
+\par
+\raggedright D 8 bit data
+\par
+I 11 bit index
+\par
+C 2 bit control
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+The COPPER has an internal 10 bit program counter (PC). Each
+instruction advances the program counter by one after completion. The
+program counter wraps to zero after the last instruction at location
+1023. This causes the copper list to loop.
+
+<P>
+The program counter defaults to zero during a hard/soft reset.
+
+<P>
+The control bits require a change to update the operating mode. This
+feature preserves COPPER operation when setting the program RAM index
+address.
+
+<P>
+The program counter is preserved when stopping the COPPER. Two of the
+four control settings reset the internal PC to zero.
+
+<P>
+Table 5.11 describes the control bits:
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="2378"></A>
+<TABLE>
+<CAPTION><STRONG>Table 7.11:</STRONG>
+Control Mode Definitions</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img59.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/controlmodes.csv}
+\par
+\ragged...
+...ntrol mode names used in this guide differ from
+the official names.
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
+Here is a detailed description of the control bits:
+
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html1098"
+  HREF="node121.html">STOP</A>
+<LI><A ID="tex2html1099"
+  HREF="node122.html">RESET</A>
+<LI><A ID="tex2html1100"
+  HREF="node123.html">START</A>
+<LI><A ID="tex2html1101"
+  HREF="node124.html">FRAME</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
 
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
@@ -144,28 +195,28 @@ bits 2-0 = Mode (VGA = 0..6, HDMI = 7)
  HREF="node121.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node118.html">
+ HREF="node104.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node119.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1084"
+<A ID="tex2html1094"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1086"
-  HREF="node213.html">
+<A ID="tex2html1096"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node121.html">Machine Type</A>
+ HREF="node121.html">STOP</A>
 <B> Up:</B> <A
- HREF="node118.html">Configuration</A>
+ HREF="node104.html">Copper and Display Timing</A>
 <B> Previous:</B> <A
- HREF="node119.html">Refresh Rate</A>
- &nbsp; <B>  <A ID="tex2html1085"
+ HREF="node119.html">Example</A>
+ &nbsp; <B>  <A ID="tex2html1095"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1087"
-  HREF="node213.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html1097"
+  HREF="node227.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

@@ -1,0 +1,113 @@
+\chapter{Basic Input/Output}
+
+The basic I/O (human interface) system of the ZX Spectrum Next
+supports keyboard, mouse and game controllers. These all extend the
+functionality found on common ZX Spectrum peripherals. game
+controllers and PS/2 keyboards can be customized to simulate responses
+on the stock keyboard.
+
+\section{Keyboard}
+
+The ZX Spectrum Next can use a classic ZX Spectrum keyboard with a
+$8\times 5$ matrix, an extended ZX Spectrum Next keyboard with a
+$8\times 7$ matrix (the one used in a cased Next or the custom cases
+for the N-Go), or a PS/2 keyboard. In all of these cases the system
+translates the physical signals to look like a classic Spectrum
+keyboard with access to the additional lines of the ZX Spectrum Next
+keyboard as well.
+
+The classic Spectrum part of the matrix is accessed using port \$xxFE
+where there is a single unset bit in ``xx'' to select the row being
+read. Next extensions are read using Nextregs \$B0 and \$B1 to read
+columns 5 and 6.
+
+\begin{center}
+  \begin{tabular}{ | c || c | c | c | c | c | c | c || c | }
+    \hline
+    Bit & 0 & 1 & 2 & 3 & 4 & \$B0 & \$B1 & b \\
+    \hline
+    \$FEFE & Cap Sh & Z & X & C & V & $\Rightarrow$ & Extend & 0 \\
+    \$FDFE & A & S & D & F & G & $\Leftarrow$ & Cap Lk & 1 \\
+    \$FBFE & Q & W & E & R & T & $\Downarrow$ & Graph & 2 \\
+    \$F7FE & 1 & 2 & 3 & 4 & 5 & $\Uparrow$ & True Vid & 3 \\
+    \$FBFE & 0 & 9 & 8 & 7 & 6 & . & Inv Vid & 4  \\
+    \$EFFE & P & O & I & U & Y & , & Break & 5  \\
+    \$DFFE & Enter & L & K & J & H & \textquotedbl & Edit & 6 \\
+    \$BFFE & Space & Sym Sh & M & N & B & ; & Del & 7 \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\input{ports/7FFE.tex}
+\input{ports/BFFE.tex}
+\input{ports/DFFE.tex}
+\input{ports/EFFE.tex}
+\input{ports/F7FE.tex}
+\input{ports/FBFE.tex}
+\input{ports/FDFE.tex}
+\input{ports/FEFE.tex}
+\input{registers/tbblue/B0.tex}
+\input{registers/tbblue/B1.tex}
+
+\section{Game Controllers}
+
+The ZX Spectrum used a number of joystick standards and the ZX
+Spectrum Next can make Atari controllers or Mega Drive controllers
+look like many of these standards. Atari joystick and driving (not the
+similar looking paddle) controllers are supported by the
+interface. The interface supports Mega Drive controllers with up to 11
+buttons (start, a, b, c, x, y, z, up, down, left, right). It is
+possible to map unused buttons to keys and simulate unavailable
+buttons with keys.
+
+Nextreg \$05 selects the interface mode for each of the two
+joysticks. If in Kempston or Megadrive mode the joystick 1 can be read
+using port \$1F and joystick 2 using port \$37. When using these ports
+in Megadrive mode, some buttons will be paired A/X, B/Y, C/Z with B/Y
+also corresponding to the single fire button on Atari joysticks. In
+order to disambiguate presses of A/X, B/Y, and C/Z it is necessary to
+also read nextreg \$B2.
+
+\input{ports/1F.tex}
+\input{ports/37.tex}
+\input{registers/tbblue/05.tex}
+\input{registers/tbblue/B2.tex}
+
+\section{Mouse}
+
+A mouse attached to the PS/2 port looks like a kempston mouse to the
+system. Port \$FADF is used to read the state of the mouse wheel and
+buttons while ports \$FBDF and \$FBDF are used to read the X and Y
+positions.
+
+\input{ports/FADF.tex}
+\input{ports/FBDF.tex}
+\input{ports/FFDF.tex}
+
+\section{Keymapping}
+
+Both a PS/2 keyboard and the contoller buttons can be given custom
+keyboard mappings. These mappings are accomplished using nextregs \$28
+(keymap address MSB), \$29 (keymap address LSB), \$2A (keymap data
+MSB) and \$2B (keymap data LSB).
+
+\input{registers/tbblue/28.tex}
+\input{registers/tbblue/29.tex}
+\input{registers/tbblue/2A.tex}
+\input{registers/tbblue/2B.tex}
+
+\subsection{Keyboard}
+
+To remap PS/2 keyboard keys, the starting address for the keymap data
+is written to nextregs \$28 and \$29 keyboard data address followed by
+writing the data to nextregs \$2A and \$2B with the write to \$2B
+autoincrementing the address for the data.
+
+\subsection{Joystick}
+
+To map joystick buttons an \$80 is written to nextreg followed by a
+\$00 (left) or \$10 (right) to nextreg \$29 to select which joystick
+is being mapped to the keyboard 11 writes to nextgreg \$2B to indicate
+the key(s) for each button. Each byte to addresses the row and column
+of the ZX Next keyboard with bits 5-3 being the row and bits 2-0 being
+the column (column 7, 111 is no action).

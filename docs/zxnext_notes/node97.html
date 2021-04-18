@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Copper and Display Timing</TITLE>
-<META NAME="description" CONTENT="Copper and Display Timing">
+<TITLE>WR3 – Write Register Group 3</TITLE>
+<META NAME="description" CONTENT="WR3 – Write Register Group 3">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node123.html">
-<LINK REL="previous" HREF="node80.html">
+<LINK REL="next" HREF="node98.html">
+<LINK REL="previous" HREF="node96.html">
 <LINK REL="next" HREF="node98.html">
 </HEAD>
 
@@ -27,112 +27,52 @@
  HREF="node98.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="zxnext_notes.html">
+ HREF="node93.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node96.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html948"
+<A ID="tex2html966"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html950"
-  HREF="node213.html">
+<A ID="tex2html968"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node98.html">Introduction</A>
+ HREF="node98.html">WR4 – Write Register</A>
 <B> Up:</B> <A
- HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
+ HREF="node93.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node96.html">Programming examples</A>
- &nbsp; <B>  <A ID="tex2html949"
+ HREF="node96.html">WR2 – Write Register</A>
+ &nbsp; <B>  <A ID="tex2html967"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html951"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html969"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00700000000000000000">
-Copper and Display Timing</A>
-</H1>
-From: KevB (aka 9bitcolour)
+<H4><A ID="SECTION00760040000000000000">
+WR3 – Write Register Group 3</A>
+</H4>
+<PRE>
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 1   |   0   0   0   0   0   0
+     |
+     1 = DMA Enable
+</PRE>
+The Z80 DMA defines more fields but they are ignored by the zxnDMA.
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+The two other registers defined by the Z80 DMA in this group on D4 and
+D3 are implemented by the zxnDMA but they do nothing.
 
-<UL CLASS="ChildLinks">
-<LI><UL>
-<LI><UL>
-<LI><UL>
-<LI><A ID="tex2html952"
-  HREF="node98.html">Introduction</A>
-<LI><A ID="tex2html953"
-  HREF="node99.html">Overview</A>
-</UL>
-</UL>
-</UL>
-<BR>
-<LI><A ID="tex2html954"
-  HREF="node100.html">Timing</A>
-<UL>
-<LI><A ID="tex2html955"
-  HREF="node101.html">Machines</A>
-<LI><A ID="tex2html956"
-  HREF="node102.html">Display</A>
-<LI><A ID="tex2html957"
-  HREF="node103.html">Resolution</A>
-<LI><A ID="tex2html958"
-  HREF="node104.html">Dot Clock</A>
-<LI><A ID="tex2html959"
-  HREF="node105.html">Coordinates</A>
-<LI><A ID="tex2html960"
-  HREF="node106.html">Compare</A>
-<LI><A ID="tex2html961"
-  HREF="node107.html">Overscan</A>
-</UL>
-<BR>
-<LI><A ID="tex2html962"
-  HREF="node108.html">Instructions</A>
-<UL>
-<LI><A ID="tex2html963"
-  HREF="node109.html">NOOP</A>
-<LI><A ID="tex2html964"
-  HREF="node110.html">MOVE</A>
-<LI><A ID="tex2html965"
-  HREF="node111.html">WAIT</A>
-<LI><A ID="tex2html966"
-  HREF="node112.html">Example</A>
-</UL>
-<BR>
-<LI><A ID="tex2html967"
-  HREF="node113.html">Control</A>
-<UL>
-<LI><A ID="tex2html968"
-  HREF="node114.html">STOP</A>
-<LI><A ID="tex2html969"
-  HREF="node115.html">RESET</A>
-<LI><A ID="tex2html970"
-  HREF="node116.html">START</A>
-<LI><A ID="tex2html971"
-  HREF="node117.html">FRAME</A>
-</UL>
-<BR>
-<LI><A ID="tex2html972"
-  HREF="node118.html">Configuration</A>
-<UL>
-<LI><A ID="tex2html973"
-  HREF="node119.html">Refresh Rate</A>
-<LI><A ID="tex2html974"
-  HREF="node120.html">Video Modes</A>
-<LI><A ID="tex2html975"
-  HREF="node121.html">Machine Type</A>
-<LI><A ID="tex2html976"
-  HREF="node122.html">Summary</A>
-</UL></UL>
-<!--End of Table of Child-Links-->
+<P>
+It is preferred to start the DMA by writing an Enable DMA command to
+WR6.
+
+<P>
 <BR><HR>
 
 </BODY>

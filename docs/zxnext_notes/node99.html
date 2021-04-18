@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Overview</TITLE>
-<META NAME="description" CONTENT="Overview">
+<TITLE>WR5 – Write Register Group 5</TITLE>
+<META NAME="description" CONTENT="WR5 – Write Register Group 5">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node100.html">
 <LINK REL="previous" HREF="node98.html">
 <LINK REL="next" HREF="node100.html">
 </HEAD>
@@ -26,111 +27,56 @@
  HREF="node100.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node97.html">
+ HREF="node93.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node98.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html981"
+<A ID="tex2html974"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html983"
-  HREF="node213.html">
+<A ID="tex2html976"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node100.html">Timing</A>
+ HREF="node100.html">WR6 – Command Register</A>
 <B> Up:</B> <A
- HREF="node97.html">Copper and Display Timing</A>
+ HREF="node93.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node98.html">Introduction</A>
- &nbsp; <B>  <A ID="tex2html982"
+ HREF="node98.html">WR4 – Write Register</A>
+ &nbsp; <B>  <A ID="tex2html975"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html984"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html977"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00700020000000000000">
-Overview</A>
+<H4><A ID="SECTION00760060000000000000">
+WR5 – Write Register Group 5</A>
 </H4>
+<PRE>
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 1   0   |   |   0   0   1   0
+         |   |
+         |   0 = /ce only
+         |   1 = /ce &amp; /wait multiplexed
+         |
+         0 = Stop on end of block
+         1 = Auto restart on end of block
+</PRE>
+The /ce &amp; /wait mode is implemented in the zxnDMA but is not currently
+used. This mode has an external device using the DMA's /ce pin to
+insert wait states during the DMA's transfer.
 
 <P>
-The ZX Spectrum Next COPPER has three instructions: NOOP, MOVE, WAIT. 
+The auto restart feature causes the DMA to automatically reload its
+source and destination addresses and reset its byte counter to zero to
+repeat the last transfer when a previous one is finished.
 
 <P>
-NOOP is used to fine tune timing. MOVE writes data to a specific range
-of hardware registers. WAIT waits for a pixel position on the video
-display.
-
-<P>
-These instructions are stored in 2k (2048 BYTES) of dedicated
-write-only program RAM also known as a &ldquo;Copper list&rdquo;.
-
-<P>
-Each instruction is 16 bits (WORD) in size allowing for a maximum of
-1024 instructions to be stored in the program RAM. The COPPER uses an
-internal 10 bit program counter (PC) which wraps to zero at the end of
-the list. The PC can be reset to zero, this is the default value after
-a hard/soft reset.
-
-<P>
-The instructions are stored in big endian format and transferred to
-the 2k program RAM using the Z80 or DMA (bits 15..8 followed by bits
-7..0).
-
-<P>
-Three write-only hardware registers control access to the program RAM
-as well as the operating modes.
-
-<P>
-System performance is not affected when the COPPER is executing instructions.
-
-<P>
-The hardware registers and COPPER program RAM are not connected to the
-main memory BUS. The overall design of this system together with the
-use of alternate clock edges means that contention between the COPPER,
-Z80 and DMA has been eliminated.
-
-<P>
-The COPPER has a base clock speed of 13.5Mhz for HDMI and 14Mhz for VGA.
-
-<P>
-The bandwidth is around 14 million single cycle NOOP/WAIT instructions
-and 7 million two cycle MOVE instructions per second.
-
-<P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node100.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node97.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node98.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html981"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html983"
-  HREF="node213.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node100.html">Timing</A>
-<B> Up:</B> <A
- HREF="node97.html">Copper and Display Timing</A>
-<B> Previous:</B> <A
- HREF="node98.html">Introduction</A>
- &nbsp; <B>  <A ID="tex2html982"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html984"
-  HREF="node213.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<BR><HR>
 
 </BODY>
 </HTML>

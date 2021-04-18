@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Accessing the zxnDMA</TITLE>
-<META NAME="description" CONTENT="Accessing the zxnDMA">
+<TITLE>Multiface</TITLE>
+<META NAME="description" CONTENT="Multiface">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node83.html">
 <LINK REL="previous" HREF="node81.html">
 <LINK REL="next" HREF="node83.html">
 </HEAD>
@@ -27,7 +26,7 @@
  HREF="node83.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node80.html">
+ HREF="node77.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node81.html">
@@ -36,34 +35,42 @@
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
 <A ID="tex2html881"
-  HREF="node213.html">
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node83.html">Description</A>
+ HREF="node83.html">Interactions between paging methods</A>
 <B> Up:</B> <A
- HREF="node80.html">zxnDMA</A>
+ HREF="node77.html">ROM</A>
 <B> Previous:</B> <A
- HREF="node81.html">Overview</A>
+ HREF="node81.html">divMMC</A>
  &nbsp; <B>  <A ID="tex2html880"
   HREF="node1.html">Contents</A></B> 
  &nbsp; <B>  <A ID="tex2html882"
-  HREF="node213.html">Index</A></B> 
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00620000000000000000">
-Accessing the zxnDMA</A>
-</H1>
-The zxnDMA is mapped to a single Read/Write IO Port 0x6B which is the
-same one used by the Datagear but unlike the Datagear it doesn't also
-map itself to a second port 0x0B similar to the MB-02 interface.
+<H4><A ID="SECTION00613040000000000000">
+Multiface</A>
+</H4>
 
 <P>
-<PRE>
-PORT $6b: zxnDMA
-</PRE>
+Need to find useful docs on the Multiface memory.
+
+<P>
+9f 1-In, 128-In2
+<BR>
+1f 1-Out
+<BR>
+bf 128-In, 3-Out
+<BR>
+3f 128-Out, 3-In, 3-button
+<BR>
+7f3f 3-7ffd
+<BR>
+1f3f 3-1ffd
 
 <P>
 <BR><HR>

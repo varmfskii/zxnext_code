@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Ports</TITLE>
-<META NAME="description" CONTENT="Ports">
+<TITLE>Clock Support Function</TITLE>
+<META NAME="description" CONTENT="Clock Support Function">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node155.html">
-<LINK REL="previous" HREF="node136.html">
+<LINK REL="previous" HREF="node151.html">
 <LINK REL="next" HREF="node153.html">
 </HEAD>
 
@@ -27,63 +26,57 @@
  HREF="node153.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="zxnext_notes.html">
+ HREF="node151.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node151.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1260"
+<A ID="tex2html1274"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1262"
-  HREF="node213.html">
+<A ID="tex2html1276"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node153.html">8-bit</A>
+ HREF="node153.html">NextZXOS</A>
 <B> Up:</B> <A
- HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
+ HREF="node151.html">Memory Select and Move</A>
 <B> Previous:</B> <A
- HREF="node151.html">esxDOS compatible API</A>
- &nbsp; <B>  <A ID="tex2html1261"
+ HREF="node151.html">Memory Select and Move</A>
+ &nbsp; <B>  <A ID="tex2html1275"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1263"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1277"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION001200000000000000000">
-Ports</A>
-</H1>
+<H3><A ID="SECTION001214100000000000000">
+Clock Support Function</A>
+</H3>
+This section defines the clock support function TIME.
 
 <P>
-<BR><P></P>
-<DIV class="CENTER"><A ID="6622"></A>
-<TABLE>
-<CAPTION><STRONG>Table A.1:</STRONG>
-ZX Spectrum Ports</CAPTION>
-<TR><TD><IMG STYLE=""
- SRC="img139.svg"
- ALT="\begin{table}\centering\tiny
-\csvautotabular{appendices/ports/ports.csv}
-\end{table}"></TD></TR>
-</TABLE>
-</DIV><P></P>
+<A NAME="4203"></A>
+BIOS Function 26: TIME
+
+<P>
+Get and Set Time
 <BR>
+Entry Parameters: C=Time Get/Set Flag
+<BR>
+Returned values: None
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
-
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html1264"
-  HREF="node153.html">8-bit</A>
-<LI><A ID="tex2html1265"
-  HREF="node154.html">16-bit</A>
-</UL>
-<!--End of Table of Child-Links-->
+The BDOS calls the TIME function to indicate to the BIOS whether it
+has just set the Time and Date fields in the SCB, or whether the BDOS
+is about to get the Time and Date from the SCB. On entry to the TIME
+function, a zero in register C indicates that the BIOS should update
+the Time and Date fields in the SCB. A $ff in register C indicates
+that the BDOS has just set the Time and Date in the SCB and the BIOS
+should update its clock. Upon exit, you must restore register pairs HL
+and DE to their entry values.
 <BR><HR>
 
 </BODY>

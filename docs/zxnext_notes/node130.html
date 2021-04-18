@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>IM1</TITLE>
-<META NAME="description" CONTENT="IM1">
+<TITLE>Interrupts</TITLE>
+<META NAME="description" CONTENT="Interrupts">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node131.html">
-<LINK REL="previous" HREF="node129.html">
+<LINK REL="next" HREF="node141.html">
+<LINK REL="previous" HREF="node104.html">
 <LINK REL="next" HREF="node131.html">
 </HEAD>
 
@@ -27,43 +27,86 @@
  HREF="node131.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node128.html">
+ HREF="zxnext_notes.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node129.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1140"
+<A ID="tex2html1142"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1142"
-  HREF="node213.html">
+<A ID="tex2html1144"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node131.html">IM2</A>
+ HREF="node131.html">Interrupt Types</A>
 <B> Up:</B> <A
- HREF="node128.html">Interrupt Modes</A>
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
- HREF="node129.html">IM0</A>
- &nbsp; <B>  <A ID="tex2html1141"
-  HREF="node1.html">Contents</A></B> 
+ HREF="node129.html">Summary</A>
  &nbsp; <B>  <A ID="tex2html1143"
-  HREF="node213.html">Index</A></B> 
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1145"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00820020000000000000">
-IM1</A>
-</H4>
-When an interrupt is received, the CPU disables interrupts and jumps
-to an interrupt handler at $0038 (normally in ROM). The ROM interrupt
-handler updates the frame counter and scans the keyboard. This is the
-default interrupt handling method for the ZX Spectrum and is probably
-the method to use if you don’t need the ROMs for anything. It is
-enabled using the IM1 instruction and enabling interrupts.
+<H1><A ID="SECTION00900000000000000000">
+Interrupts</A>
+</H1>
 
 <P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html1146"
+  HREF="node131.html">Interrupt Types</A>
+<UL>
+<LI><A ID="tex2html1147"
+  HREF="node132.html"><!-- MATH
+ $\overline{\hbox{RESET}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img4.svg"
+ ALT="$\overline {\hbox {RESET}}$"></SPAN></A>
+<LI><A ID="tex2html1148"
+  HREF="node133.html"><!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN></A>
+<LI><A ID="tex2html1149"
+  HREF="node134.html"><!-- MATH
+ $\overline{\hbox{INT}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img6.svg"
+ ALT="$\overline {\hbox {INT}}$"></SPAN></A>
+</UL>
+<BR>
+<LI><A ID="tex2html1150"
+  HREF="node135.html">Interrupt Modes</A>
+<UL>
+<LI><A ID="tex2html1151"
+  HREF="node136.html">IM0</A>
+<LI><A ID="tex2html1152"
+  HREF="node137.html">IM1</A>
+<LI><A ID="tex2html1153"
+  HREF="node138.html">IM2</A>
+</UL>
+<BR>
+<LI><A ID="tex2html1154"
+  HREF="node139.html">Z80 CTC</A>
+<UL>
+<LI><A ID="tex2html1155"
+  HREF="node140.html">Programming</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

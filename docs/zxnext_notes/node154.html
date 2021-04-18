@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>16-bit</TITLE>
-<META NAME="description" CONTENT="16-bit">
+<TITLE>NextZXOS</TITLE>
+<META NAME="description" CONTENT="NextZXOS">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -26,425 +26,57 @@
  HREF="node155.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node152.html">
+ HREF="node143.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node153.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1270"
+<A ID="tex2html1282"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1272"
-  HREF="node213.html">
+<A ID="tex2html1284"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node155.html">Registers</A>
+ HREF="node155.html">+3DOS compatible API</A>
 <B> Up:</B> <A
- HREF="node152.html">Ports</A>
+ HREF="node143.html">System Software</A>
 <B> Previous:</B> <A
- HREF="node153.html">8-bit</A>
- &nbsp; <B>  <A ID="tex2html1271"
+ HREF="node153.html">NextZXOS</A>
+ &nbsp; <B>  <A ID="tex2html1283"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1273"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1285"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION001220000000000000000">
-16-bit</A>
+<H1><A ID="SECTION001230000000000000000">
+NextZXOS</A>
 </H1>
-Port $103B (103B)  I<SUP>2</SUP>C SCL (rtc, rpi)
+A ZX Spectrum I/O system supported by the ZX Spectrum Next. This
+Documentation is largely from Garry Lancaster's DOCs at
+https://gitlab.com/thesmog358/tbblue/blob/master/docs/nextzxos/NextZXOS_and_esxDOS_APIs.pdf. Before
+making any calls disable writes to Layer 2 in the $0000-$3fff area with port $123b.
 
 <P>
-Port $113B (113B)  I<SUP>2</SUP>C SDA (rtc, rpi)
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<P>
-Port $123B (123B) Layer 2
-<BR>
-Bit 4 = 0
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Video RAM bank select
-  <table width="90%">  <tr><td valign="top">&nbsp;00 = first 16k
-  </td></tr>
-<tr><td valign="top">&nbsp;01 = second 16k
-  </td></tr>
-<tr><td valign="top">&nbsp;10 = third 16k
-  </td></tr>
-<tr><td valign="top">&nbsp;11 = first 48k
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;bit 5 = Reserved, must be 0</td></tr>
-<tr><td valign="top">&nbsp;bit 4 = 0</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = Shadow layer 2 select</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = Enable layer 2 read paging</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = Layer 2 visible (mirrored in register $69)</td></tr>
-<tr><td valign="top">&nbsp;bit 0 = Enable layer 2 write paging
-</td></tr></table>
-
-Bit 4 = 1
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-5 = Reserved, must be 0</td></tr>
-<tr><td valign="top">&nbsp;bit 4 = 1</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = Reserved, must be 0</td></tr>
-<tr><td valign="top">&nbsp;bit 2-0 = 16k bank relative offset
-</td></tr></table>
-
-<P>
-Port $133B (133B) UART tx
-<BR>
-Read: UART Status
-<BR><table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Reserved (0)</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = UART at least half full (3.01.09)</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = UART full</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = UART transmit busy</td></tr>
-<tr><td valign="top">&nbsp;bit 0 = UART receive has data
-</td></tr></table>
-
-Write: UART Transmit
-
-<P>
-Port $143B (143B) UART rx
-<BR>
-Read: UART Receive
-<BR>
-Write: UART Prescalar
-<table width="90%"><tr><td valign="top">&nbsp;bit 7 = select prescalar part
-  <table width="90%">  <tr><td valign="top">&nbsp;0 = Bits 6-0 of prescalar
-  </td></tr>
-<tr><td valign="top">&nbsp;1 = Bits 13-7 of prescalar
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;bits 6-0 = Prescalar bits
-</td></tr></table>
-
-<P>
-Port $153B (153B) UART select
-<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Reserved (0)</td></tr>
-<tr><td valign="top">&nbsp;bit 6 = UART select (0 on soft reset) **
-  <table width="90%">  <tr><td valign="top">&nbsp;0 = ESP
-  </td></tr>
-<tr><td valign="top">&nbsp;1 = Pi *
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;bit 5 = Reserved (0)</td></tr>
-<tr><td valign="top">&nbsp;bit 4 = Prescalar valid in this write</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = Reserved (0)</td></tr>
-<tr><td valign="top">&nbsp;bits 2-0 = Bits 16-14 of prescalar (0 on hard reset)
-</td></tr></table>
-
-* Pi GPIO must be configured for UART, see nextreg $A0
-<BR>** Either UART can be redirected to the joystick ports, see port $037
-
-<P>
-Port $153B (153B) UART frame (upcoming)
-<BR>($18 on hard reset)
-<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Immediately reset Rx and Tx to idle and empty FIFOs</td></tr>
-<tr><td valign="top">&nbsp;bit 6 = Assert break (Tx=0) when Tx reaches idle</td></tr>
-<tr><td valign="top">&nbsp;bit 5 = Enable hardware flow control *</td></tr>
-<tr><td valign="top">&nbsp;bits 4-3 = Number of bits in a frame
-  <table width="90%">  <tr><td valign="top">&nbsp;00 = 5 bits
-  </td></tr>
-<tr><td valign="top">&nbsp;01 = 6 bits
-  </td></tr>
-<tr><td valign="top">&nbsp;10 = 7 bits
-  </td></tr>
-<tr><td valign="top">&nbsp;11 = 8 bits
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = Enable parity</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = Parity
-  <table width="90%">  <tr><td valign="top">&nbsp;0 = Even parity
-  </td></tr>
-<tr><td valign="top">&nbsp;1 = Odd parity
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;bit 0 = Number of stop bits
-  <table width="90%">  <tr><td valign="top">&nbsp;0 = 1 stop bit
-  </td></tr>
-<tr><td valign="top">&nbsp;1 = 2 stop bits
-  </td></tr></table>
-</td></tr></table>
-
-* The ESP ignores hardware flow control
-<BR>* In joystick i/o mode only cts is available
-
-<P>
-Port $183B (183B) CTC Channel 0
-Port $193B (193B) CTC Channel 1
-Port $1A3B (1A3B) CTC Channel 2
-Port $1B3B (1B3B) CTC Channel 3
-Port $1C3B (1C3B) CTC Channel 4
-Port $1D3B (1D3B) CTC Channel 5
-Port $1E3B (1E3B) CTC Channel 6
-Port $183B (183B) CTC Channel 7
-Port $1FFD (1FFD) Plus 3 Memory Paging Control
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-3 = Unused, nust be 0</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = High bit of ROM selection (low bit is in Port $7FFD)
-  <table width="90%">  <tr><td valign="top">&nbsp;00 = ROM0 = 128k editor and menu system
-  </td></tr>
-<tr><td valign="top">&nbsp;01 = ROM1 = 128k syntax checker
-  </td></tr>
-<tr><td valign="top">&nbsp;10 = ROM2 = +3DOS
-  </td></tr>
-<tr><td valign="top">&nbsp;11 = ROM3 = 48k BASIC
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = Special mode: Low bit of memory configuration number</td></tr>
-<tr><td valign="top">&nbsp;bit 0 = Paging mode
-  <table width="90%">  <tr><td valign="top">&nbsp;0 = Normal
-  </td></tr>
-<tr><td valign="top">&nbsp;1 = Special
-  </td></tr></table>
-</td></tr></table>
-
-You should echo writes to $5B67
-
-<P>
-Port $243B (243B) Next Register Select
-
-<P>
-Port $253B (253B) Next Register Data
-
-<P>
-Port $303B (303B) Sprite Slot/Flags
-<BR>
-Write: Sprite Slot Select
-<BR>
-select sprite slot for Sprite Attribute and Sprite Pattern ports which
-independently auto-increment
-<BR>
-Read: Sprite status
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-2 = reserved</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = Max sprites per line</td></tr>
-<tr><td valign="top">&nbsp;bit 0 = Collision flag
-</td></tr></table>
-
-<P>
-Port $7FFD (7FFD) Memory Paging Control
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Extra two bits for 16k RAM bank if in Pentagon 512k/1024k
-        mapping mode (nextreg $8f)</td></tr>
-<tr><td valign="top">&nbsp;bit 5 = Lock memory paging</td></tr>
-<tr><td valign="top">&nbsp;bit 4 = low bit of ROM Select (high bit is in Port $1FFD) 
-  <table width="90%"> <tr><td valign="top">&nbsp;00 = ROM0 = 128k editor and menu
-  system </td></tr>
-<tr><td valign="top">&nbsp;01 = ROM1 = 128k syntax checker </td></tr>
-<tr><td valign="top">&nbsp;10 = ROM2 =
-  +3DOS </td></tr>
-<tr><td valign="top">&nbsp;11 = ROM3 = 48k BASIC </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = Shadow screen toggle</td></tr>
-<tr><td valign="top">&nbsp;bits 2-0 = LSB of Bank number for slot 4 (MSB is in Port $DFFD)
-</td></tr></table>
-
-Disable with bit 5 port $7FFD
-
-<P>
-Port $7FFE (7FFE) Keyboard 8 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0: 'B'</td></tr>
-<tr><td valign="top">&nbsp;bit 1: 'N'</td></tr>
-<tr><td valign="top">&nbsp;bit 2: 'M'</td></tr>
-<tr><td valign="top">&nbsp;bit 3: Symbol Shift</td></tr>
-<tr><td valign="top">&nbsp;bit 4: Space
-</td></tr></table>
-
-<P>
-Port $BF3B (BF3B) ULAplus register
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Select register group
-
-<UL>
-<LI>00 = palette group
-</LI>
-<LI>01 = mode group
-</LI>
-</UL></td></tr>
-<tr><td valign="top">&nbsp;bits 5-0 = data
-<table width="90%"><tr><td valign="top">&nbsp;If palette group, selects index 0-63 in ULAplus palette</td></tr>
-<tr><td valign="top">&nbsp;If mode group, ignored
-</td></tr></table>
-</td></tr></table>
-
-<P>
-Port $BFF5 (BFF5) AY Info (3.01.09
-<BR>(R)
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-6 = Active AY chip
-
-<UL>
-<LI>01 = AY 0 active
-</LI>
-<LI>10 = AY 1 active
-</LI>
-<LI>11 = AY 2 active
-</LI>
-</UL></td></tr>
-<tr><td valign="top">&nbsp;bit 5 = Reserved</td></tr>
-<tr><td valign="top">&nbsp;bits 4-0 = currently selected AY register
-</td></tr></table>
-
-Port $BFFD (BFFD) AY Data
-
-<P>
-Port $BFFE (BFFE) Keyboard 7 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0 = 'H'</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = 'J'</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = 'K'</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = 'L'</td></tr>
-<tr><td valign="top">&nbsp;bit 4 = Enter
-</td></tr></table>
-
-<P>
-Port $DFFD (DFFD) Next Memory Bank Select
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Reserved, must be 0</td></tr>
-<tr><td valign="top">&nbsp;bits 3-0 = MSB of bank number for slot 4 (LSB is in Port $7FFD)
-</td></tr></table>
-
-<P>
-Port $DFFE (DFFE) Keyboard 6 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0 = 'Y'</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = 'U'</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = 'I'</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = 'O'</td></tr>
-<tr><td valign="top">&nbsp;bit 4 = 'P'
-</td></tr></table>
-
-<P>
-Port $EFF7 (EFF7) Pentagon 1024 paging
-<table width="90%"><tr><td valign="top">&nbsp;bit 3 = 1 to overlay the bottom 16k with ram from 16k bank 0</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = 0 to enable Pentagon 1024 mapping and disable bit 5 port
-0x7ffd locking, 1 to select standard zx128 mapping **</td></tr>
-<tr><td valign="top">&nbsp;** Applies only when pentagon 1024 mapping mode is enabled via
-nextreg 0x8f.
-</td></tr></table>
-
-<P>
-Port $EFFE (EFFE) Keyboard 5 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0 = ‘6’</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = ‘7’</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = ‘8’</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = ‘9’</td></tr>
-<tr><td valign="top">&nbsp;bit 4 = ‘0’
-</td></tr></table>
-
-<P>
-Port $F7FE (F7FE) Keyboard 4 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0 = ‘5’</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = ‘4’</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = ‘3’</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = ‘2’</td></tr>
-<tr><td valign="top">&nbsp;bit 4 = ‘1’
-</td></tr></table>
-
-<P>
-Port $FADF (FADF) Kempston Mouse Buttons
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Wheel delta since last read</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = fourth button</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = middle button</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = left button</td></tr>
-<tr><td valign="top">&nbsp;bit 0 = right button
-</td></tr></table>
-
-<P>
-Port $FBDF (FBDF) Kempston Mouse X
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = X coordinate of mouse
-</td></tr></table>
-
-<P>
-Port $FBFE (FBFE) Keyboard 3 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0 = ‘T’</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = ‘R’</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = ‘E’</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = ‘W’</td></tr>
-<tr><td valign="top">&nbsp;bit 4 = ‘Q’
-</td></tr></table>
-
-<P>
-Port $FDFE (FDFE) Keyboard 2 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0 = ‘G’</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = ‘F’</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = ‘D’</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = ‘S’</td></tr>
-<tr><td valign="top">&nbsp;bit 4 = ‘A’
-</td></tr></table>
-
-<P>
-Port $FEFE (FEFE) Keyboard 1 (read only)
-<table width="90%"><tr><td valign="top">&nbsp;bit 0 = ‘V’</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = ‘C’</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = ‘X’</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = ‘Z’</td></tr>
-<tr><td valign="top">&nbsp;bit 4 = Caps Shift
-</td></tr></table>
-
-<P>
-Port $FF3B (FF3B) ULAplus data
-<table width="90%"><tr><td valign="top">&nbsp;If palette group, 8-bit (RRRGGGBB) value for current index</td></tr>
-<tr><td valign="top">&nbsp;If mode group, bit 1 = enable ULAplus
-</td></tr></table>
-
-<P>
-Port $FFDF (FFDF) Kempston Mouse Y
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = Y coordinate of mouse (0-192)
-</td></tr></table>
-
-<P>
-Port $FFFD (FFFD) AY Control and AY register Select (3.01.09)
-<BR>
-Read
-<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = data in selected register of active AY chip
-</td></tr></table>
-
-Select Chip
-<table width="90%"><tr><td valign="top">&nbsp;bit 7 = 1</td></tr>
-<tr><td valign="top">&nbsp;bit 6 = Enable left</td></tr>
-<tr><td valign="top">&nbsp;bit 5 = Enable Right</td></tr>
-<tr><td valign="top">&nbsp;bits 4-2 = Reserved, must be 1</td></tr>
-<tr><td valign="top">&nbsp;bits 1-0 = AY chip select
-  <table width="90%">  <tr><td valign="top">&nbsp;00 = Unused
-  </td></tr>
-<tr><td valign="top">&nbsp;01 = AY 2
-  </td></tr>
-<tr><td valign="top">&nbsp;10 = AY 1
-  </td></tr>
-<tr><td valign="top">&nbsp;11 = AY 0
-  </td></tr></table>
-</td></tr></table>
-
-Select Register
-<table width="90%"><tr><td valign="top">&nbsp;bit 7 = 0</td></tr>
-<tr><td valign="top">&nbsp;bits 6-5 = Reserved, must be 0</td></tr>
-<tr><td valign="top">&nbsp;bits 4-0 = Register Number
-</td></tr></table>
-
-<P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node155.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node152.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node153.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1270"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1272"
-  HREF="node213.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node155.html">Registers</A>
-<B> Up:</B> <A
- HREF="node152.html">Ports</A>
-<B> Previous:</B> <A
- HREF="node153.html">8-bit</A>
- &nbsp; <B>  <A ID="tex2html1271"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1273"
-  HREF="node213.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html1286"
+  HREF="node155.html">+3DOS compatible API</A>
+<LI><A ID="tex2html1287"
+  HREF="node156.html">esxDOS compatible API</A>
+<LI><A ID="tex2html1288"
+  HREF="node157.html">Next Extensions</A>
+<LI><A ID="tex2html1289"
+  HREF="node158.html">esxDOS compatible API</A>
+</UL>
+<!--End of Table of Child-Links-->
+<BR><HR>
 
 </BODY>
 </HTML>

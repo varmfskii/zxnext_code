@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Programming</TITLE>
-<META NAME="description" CONTENT="Programming">
+<TITLE>zxnext_notes</TITLE>
+<META NAME="description" CONTENT="zxnext_notes">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node134.html">
 <LINK REL="previous" HREF="node132.html">
 <LINK REL="next" HREF="node134.html">
 </HEAD>
@@ -26,131 +27,180 @@
  HREF="node134.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node132.html">
+ HREF="node131.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node132.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1153"
+<A ID="tex2html1167"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1155"
-  HREF="node213.html">
+<A ID="tex2html1169"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
-<B> Next:</B> <A
- HREF="node134.html">Serial Communication</A>
+<B> Next:</B> 
 <B> Up:</B> <A
- HREF="node132.html">Z80 CTC</A>
-<B> Previous:</B> <A
- HREF="node132.html">Z80 CTC</A>
- &nbsp; <B>  <A ID="tex2html1154"
+ HREF="node131.html">Interrupt Types</A>
+<B> Previous:</B> 
+ &nbsp; <B>  <A ID="tex2html1168"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1156"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1170"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00830010000000000000">
-Programming</A>
+<H4><A ID="SECTION00910020000000000000">
+<!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN></A>
 </H4>
-Initial values are set by a write of a channel control word followed
-by a time constant. In timer mode, the counter decrements every time
-it is triggered. In counter mode it decrements every time the
-prescaler counter reaches zero.
+<!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> is the non-maskable interrupt. Upon receiving a
+non-maskable interrupt (<!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> being pulled low) one of
+two sequences occur depending on the calue of bit 3 of the interrupt
+control register (nextreg $C0).
 
 <P>
-Channel Control Word
-<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Enable Interrupt</td></tr>
-<tr><td valign="top">&nbsp;bit 6 = Mode
-  
+Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Interrupt Control (3.01.09)
+<BR>($00 on reset)
+
 <UL>
-<LI>0 = Timer mode
+<LI>bits 7-5 = Programmable portion of IM2 vector *
 </LI>
-<LI>1 = Counter mode
-  
+<LI>bit 4 = Reserved, must be 0
 </LI>
-</UL></td></tr>
-<tr><td valign="top">&nbsp;bit 5 = Prescalar value (Timer mode only)
-  
+<LI>bit 3 = Enable stackless <!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> response**
+</LI>
+<LI>bits 2-1 = Reserved, must be 0
+</LI>
+<LI>bit 0 = Maskable interrupt mode
+<table width="90%"><tr><td valign="top">&nbsp;0 - pulse</td></tr>
+<tr><td valign="top">&nbsp;1 - IM2
+</td></tr></table>
+</LI>
+</UL>
+* In IM2 mode vector generated is:
+
 <UL>
-<LI>0 = 16
+<LI>bits 7-5 = nextreg $C0 bits 7-5
 </LI>
-<LI>1 = 256
-  
-</LI>
-</UL></td></tr>
-<tr><td valign="top">&nbsp;bit 4 = CLK/TRG edge selection
-  
-<UL>
-<LI>0 = Falling Edge
-</LI>
-<LI>1 = Rising Edge
-  
-</LI>
-</UL></td></tr>
-<tr><td valign="top">&nbsp;bit 3 = Timer Trigger (Timer mode only)
-  
-<UL>
-<LI>0 = Starts on loading of time constant
-</LI>
-<LI>1 = Starts on CLK/TRG
-  
-</LI>
-</UL></td></tr>
-<tr><td valign="top">&nbsp;bit 2 = Time constant follows</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = Software reset</td></tr>
-<tr><td valign="top">&nbsp;bit 0 = 0 (Control Word)
+<LI>bits 4-1 = Interrupt source
+<table width="90%"><tr><td valign="top">&nbsp;0 - line interrupt (highest priority)</td></tr>
+<tr><td valign="top">&nbsp;1 - UART 0 Rx</td></tr>
+<tr><td valign="top">&nbsp;2 - UART 1 Rx</td></tr>
+<tr><td valign="top">&nbsp;3&ndash;10 - CTC channels 0-7</td></tr>
+<tr><td valign="top">&nbsp;11 - ULA</td></tr>
+<tr><td valign="top">&nbsp;12 - UART 0 Tx</td></tr>
+<tr><td valign="top">&nbsp;13 - UART 1 Tx (lowest priority)
 </td></tr></table>
 
-<P>
-If we are running at 28MHz (Mode 0) and wish to trigger an interrupt
-every 1 sec, that is 28 million T-States/cycles we could program CTC 5
-as a counter with a prescalar of 16 and a period of 175, CTC 6 as a
-counter with a prescalar of 16 and a period of 125, and CTC 7 as a
-timer with a period of 5.
+</LI>
+<LI>bit 0 = 0
+</LI>
+</UL>
 
 <P>
-CTC 5 triggers ZC5 every 280 cycles or 10 usec.
+* In IM2 mode the expansion bus is the lowest priority interrupter and
+  if no vector is supplied externally the $FF is generated.
 
 <P>
-CTC 6 triggers ZC6 every 560,000 cycles or 20 msec.
+** The return address pushed during an nmi acknowledge cycle will be
+   written to the appropriate nextreg instead of memory (the stack
+   pointer will be decremented) and the RETN after acknowledge will
+   take its return address from nextreg instead of memory (the stack
+   pointer will be incremented). If bit 3 = 0 and in other
+   circumstances, RETN functions normally.
 
 <P>
-CTC 7 triggers ZC7 and an interrupt every 28,000,000 cycles or 1 sec.
 
 <P>
-<PRE>
-di
-; set up interrupt routine
-im 2
-ld bc,$183B     ; CTC 0
-ld hl,$FFFA     ; address pointing to start of interrupt routine
-ld de,interrupt ; start of interrupt routine
-ld (hl),de
-ld i,$FF
-ld a,l          ; Vector to address at on this interrupt
-out (c),a
-; set up CTC 5
-ld b,$1D        ; CTC 5
-ld a,$87
-out (c),a       ; Interrupt mode, timer mode, time constant, soft, control
-ld a,$05
-out (c),a       ; once every 5 times 
-; set up CTC 6
-inc b           ; CTC 6
-ld a,$47
-out (c),a       ; 16x, counter mode, time constant, soft, control
-ld a,$7D        ; 125 = once every 2000 times
-out (c),a
-; set up CTC 7
-inc b           ; CTC 7
-ld a,$47
-out (c),a       ; 16x, counter mode, time constant, soft, control
-ld a,$AF        ; 175 = once every 2800 times
-ei
-</PRE>
+If bit 3 is clear (0) PC is pushed on the stack, IFF1 is copied to
+IFF2, IFF1 is cleared (inhibiting maskable interrupts). The
+<!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> should end with RETN which copies the contents of
+IFF2 to IFF1 (returning the interrupt state to what it was before the
+<!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN>) and PC is popped off the stack.
+
+<P>
+If bit 3 is set (1) PC is stored in the <!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> return
+address registers (nextregs $C2 and $C3), IFF1 is copied to IFF2,
+IFF1 is cleared (inhibiting maskable interrupts). The
+<!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> should end with RETN which copies the contents of
+IFF2 to IFF1 (returning the interrupt state to what it was before the
+<!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN>) and PC is compied from the <!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN>
+return address registers.
+
+<P>
+Register (R/W) $C2 (C2) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> <!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> Return Address LSB (3.01.09)
+<BR>($00 on reset)
+
+<P>
+Register (R/W) $C3 (C3) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> <!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> Return Address MSB (3.01.09)
+<BR>($00 on reset)
 
 <P>
 
@@ -160,28 +210,26 @@ ei
  HREF="node134.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node132.html">
+ HREF="node131.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node132.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1153"
+<A ID="tex2html1167"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1155"
-  HREF="node213.html">
+<A ID="tex2html1169"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
-<B> Next:</B> <A
- HREF="node134.html">Serial Communication</A>
+<B> Next:</B> 
 <B> Up:</B> <A
- HREF="node132.html">Z80 CTC</A>
-<B> Previous:</B> <A
- HREF="node132.html">Z80 CTC</A>
- &nbsp; <B>  <A ID="tex2html1154"
+ HREF="node131.html">Interrupt Types</A>
+<B> Previous:</B> 
+ &nbsp; <B>  <A ID="tex2html1168"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1156"
-  HREF="node213.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html1170"
+  HREF="node227.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

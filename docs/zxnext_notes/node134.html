@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Serial Communication</TITLE>
-<META NAME="description" CONTENT="Serial Communication">
+<TITLE>zxnext_notes</TITLE>
+<META NAME="description" CONTENT="zxnext_notes">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node135.html">
-<LINK REL="previous" HREF="node123.html">
+<LINK REL="previous" HREF="node133.html">
 <LINK REL="next" HREF="node135.html">
 </HEAD>
 
@@ -27,204 +26,129 @@
  HREF="node135.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="zxnext_notes.html">
+ HREF="node131.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node133.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1157"
+<A ID="tex2html1171"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1159"
-  HREF="node213.html">
+<A ID="tex2html1173"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node135.html">Raspberry Pi0 Acceleration</A>
+ HREF="node135.html">Interrupt Modes</A>
 <B> Up:</B> <A
- HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
-<B> Previous:</B> <A
- HREF="node133.html">Programming</A>
- &nbsp; <B>  <A ID="tex2html1158"
+ HREF="node131.html">Interrupt Types</A>
+<B> Previous:</B> 
+ &nbsp; <B>  <A ID="tex2html1172"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1160"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1174"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00900000000000000000">
-Serial Communication</A>
-</H1>
+<H4><A ID="SECTION00910030000000000000">
+<!-- MATH
+ $\overline{\hbox{INT}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img6.svg"
+ ALT="$\overline {\hbox {INT}}$"></SPAN></A>
+</H4>
+The interrupt generally of most interest to programmers is
+<!-- MATH
+ $\overline{\hbox{INT}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img6.svg"
+ ALT="$\overline {\hbox {INT}}$"></SPAN>. So much so that if programmers talk about
+interrupts on the Z80, they are probebly only talking about
+<!-- MATH
+ $\overline{\hbox{INT}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img6.svg"
+ ALT="$\overline {\hbox {INT}}$"></SPAN>. The processing of <!-- MATH
+ $\overline{\hbox{INT}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img6.svg"
+ ALT="$\overline {\hbox {INT}}$"></SPAN> is controlled
+by IFF1 and IFF2 which are set using EI to enable interrupts and reset
+using DI to disable interrupts. Interrupts can happen at any time and
+should preserve register contents.  If none of your code uses the
+alternate registers the EXX and EX AF,AF’ instructions can make this
+faster and easier. Interrupt routined should end with EI and RETI to
+reenable interrupts, potentially inform the interrupting device that
+its interrupt has been serviced, and return from the interrupt
+routine. In general the Spectrum machines do not make any distingtion
+between RET and RETI, but future developments in the ZX Spectrum Next
+may make the distinction important.
 
 <P>
-The Spectrum Next has two independent fully featured UARTs. The UARTS
-share I/O ports so it is important to select the correct one before
-communicating with it. Each has its own 64 byte Tx buffer and 512 byte
-Rx buffer. One UART can be connected to either the ESP of joystick
-port while the other can be connected to the Raspberry Pi accelerator
-or joystick port. The UARTS are controlled using ports $37, $133B,
-$143B, $153B, and $163B. The UARTs are connected to the IM2
-interrupt system.  Nextreg $c6 allows interrupts to be enabled for
-the status of each UART. UART interrupts correspond to interrupts 1,
-2, 12, and 13 (see Interrupts).
+The ZX Spectrum Next has 14 internal sources for <!-- MATH
+ $\overline{\hbox{INT}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img6.svg"
+ ALT="$\overline {\hbox {INT}}$"></SPAN>
+signals. This can be enabled and disabled using nextregs $C4 &ndash;
+$C6. Which signals have been received can be read/cleared using
+nexregs $C8 &ndash; $CA.
 
 <P>
-Port $37 (37) Kempston/Mega Drive Joystick 2
-<BR>
-Read
-<table width="90%"><tr><td valign="top">&nbsp;bit 7 = &rdquo;start&rdquo; button</td></tr>
-<tr><td valign="top">&nbsp;bit 6 = A/X button</td></tr>
-<tr><td valign="top">&nbsp;bit 5 = C/Z button</td></tr>
-<tr><td valign="top">&nbsp;bit 4 = Fire/C/Y button</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = Up</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = Down</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = Left</td></tr>
-<tr><td valign="top">&nbsp;bit 0 = Right
-</td></tr></table>
-
-The XYZ buttons on md pads can be read through nextreg 0xB2.
-<BR>
-The joysticks can also be placed in i/o mode see nextreg 0x0B.
-<BR>
-All eleven md pad buttons can be assigned to the keyboard see nextreg 0x05.
+Interrupt Enable
 
 <P>
-Port $133B (133B) UART tx
-<BR>
-Read: UART Status
-<BR><table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Reserved (0)</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = UART at least half full (3.01.09)</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = UART full</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = UART transmit busy</td></tr>
-<tr><td valign="top">&nbsp;bit 0 = UART receive has data
-</td></tr></table>
-
-Write: UART Transmit
-
-<P>
-Port $143B (143B) UART rx
-<BR>
-Read: UART Receive
-<BR>
-Write: UART Prescalar
-<table width="90%"><tr><td valign="top">&nbsp;bit 7 = select prescalar part
-  <table width="90%">  <tr><td valign="top">&nbsp;0 = Bits 6-0 of prescalar
-  </td></tr>
-<tr><td valign="top">&nbsp;1 = Bits 13-7 of prescalar
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;bits 6-0 = Prescalar bits
-</td></tr></table>
-
-<P>
-Port $153B (153B) UART select
-<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Reserved (0)</td></tr>
-<tr><td valign="top">&nbsp;bit 6 = UART select (0 on soft reset) **
-  <table width="90%">  <tr><td valign="top">&nbsp;0 = ESP
-  </td></tr>
-<tr><td valign="top">&nbsp;1 = Pi *
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;bit 5 = Reserved (0)</td></tr>
-<tr><td valign="top">&nbsp;bit 4 = Prescalar valid in this write</td></tr>
-<tr><td valign="top">&nbsp;bit 3 = Reserved (0)</td></tr>
-<tr><td valign="top">&nbsp;bits 2-0 = Bits 16-14 of prescalar (0 on hard reset)
-</td></tr></table>
-
-* Pi GPIO must be configured for UART, see nextreg $A0
-<BR>** Either UART can be redirected to the joystick ports, see port $037
-
-<P>
-Port $153B (153B) UART frame (upcoming)
-<BR>($18 on hard reset)
-<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Immediately reset Rx and Tx to idle and empty FIFOs</td></tr>
-<tr><td valign="top">&nbsp;bit 6 = Assert break (Tx=0) when Tx reaches idle</td></tr>
-<tr><td valign="top">&nbsp;bit 5 = Enable hardware flow control *</td></tr>
-<tr><td valign="top">&nbsp;bits 4-3 = Number of bits in a frame
-  <table width="90%">  <tr><td valign="top">&nbsp;00 = 5 bits
-  </td></tr>
-<tr><td valign="top">&nbsp;01 = 6 bits
-  </td></tr>
-<tr><td valign="top">&nbsp;10 = 7 bits
-  </td></tr>
-<tr><td valign="top">&nbsp;11 = 8 bits
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;bit 2 = Enable parity</td></tr>
-<tr><td valign="top">&nbsp;bit 1 = Parity
-  <table width="90%">  <tr><td valign="top">&nbsp;0 = Even parity
-  </td></tr>
-<tr><td valign="top">&nbsp;1 = Odd parity
-  </td></tr></table>
-</td></tr>
-<tr><td valign="top">&nbsp;bit 0 = Number of stop bits
-  <table width="90%">  <tr><td valign="top">&nbsp;0 = 1 stop bit
-  </td></tr>
-<tr><td valign="top">&nbsp;1 = 2 stop bits
-  </td></tr></table>
-</td></tr></table>
-
-* The ESP ignores hardware flow control
-<BR>* In joystick i/o mode only cts is available
-
-<P>
-Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE=""
+Register (R/W) $C4 (C4) <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> Interrupt Control (3.01.09)
+ ALT="$\Rightarrow$"></SPAN> Interrupt Enable 0 (3.01.08)
+<BR>($81 on reset)
+
+<UL>
+<LI>bit 7 = Expansion bus <!-- MATH
+ $\overline{\hbox{INT}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img6.svg"
+ ALT="$\overline {\hbox {INT}}$"></SPAN>
+</LI>
+<LI>bits 6-2 = Reserved must be zero
+</LI>
+<LI>bit 1 = Line
+</LI>
+<LI>bit 0 = ULA
+</LI>
+</UL>
+
+<P>
+Register (R/W) $C5 (C5) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Interrupt Enable 1 (3.01.08)
 <BR>($00 on reset)
 
 <UL>
-<LI>bits 7-5 = Programmable portion of IM2 vector *
+<LI>bit 7 = ctc channel 7 zc/to
 </LI>
-<LI>bit 4 = Reserved, must be 0
+<LI>bit 6 = ctc channel 6 zc/to
 </LI>
-<LI>bit 3 = Enable stackless <!-- MATH
- $\overline{\hbox{NMI}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN> response**
+<LI>bit 5 = ctc channel 5 zc/to
 </LI>
-<LI>bits 2-1 = Reserved, must be 0
+<LI>bit 4 = ctc channel 4 zc/to
 </LI>
-<LI>bit 0 = Maskable interrupt mode
-<table width="90%"><tr><td valign="top">&nbsp;0 - pulse</td></tr>
-<tr><td valign="top">&nbsp;1 - IM2
-</td></tr></table>
+<LI>bit 3 = ctc channel 3 zc/to
+</LI>
+<LI>bit 2 = ctc channel 2 zc/to
+</LI>
+<LI>bit 1 = ctc channel 1 zc/to
+</LI>
+<LI>bit 0 = ctc channel 0 zc/to
 </LI>
 </UL>
-* In IM2 mode vector generated is:
-
-<UL>
-<LI>bits 7-5 = nextreg $C0 bits 7-5
-</LI>
-<LI>bits 4-1 = Interrupt source
-<table width="90%"><tr><td valign="top">&nbsp;0 - line interrupt (highest priority)</td></tr>
-<tr><td valign="top">&nbsp;1 - UART 0 Rx</td></tr>
-<tr><td valign="top">&nbsp;2 - UART 1 Rx</td></tr>
-<tr><td valign="top">&nbsp;3&ndash;10 - CTC channels 0-7</td></tr>
-<tr><td valign="top">&nbsp;11 - ULA</td></tr>
-<tr><td valign="top">&nbsp;12 - UART 0 Tx</td></tr>
-<tr><td valign="top">&nbsp;13 - UART 1 Tx (lowest priority)
-</td></tr></table>
-
-</LI>
-<LI>bit 0 = 0
-</LI>
-</UL>
-
-<P>
-* In IM2 mode the expansion bus is the lowest priority interrupter and
-  if no vector is supplied externally the $FF is generated.
-
-<P>
-** The return address pushed during an nmi acknowledge cycle will be
-   written to the appropriate nextreg instead of memory (the stack
-   pointer will be decremented) and the RETN after acknowledge will
-   take its return address from nextreg instead of memory (the stack
-   pointer will be incremented). If bit 3 = 0 and in other
-   circumstances, RETN functions normally.
 
 <P>
 Register (W) $C6 (C6) <SPAN CLASS="MATH"><IMG STYLE=""
@@ -253,6 +177,91 @@ Register (W) $C6 (C6) <SPAN CLASS="MATH"><IMG STYLE=""
 * For each UART, Rx half full and Rx available are shared interrupts
 
 <P>
+Interupt Status
+
+<P>
+Register (R/W) $C8 (C8) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Interrupt Status 0 (3.01.09)
+<BR>($00 on reset)
+
+<UL>
+<LI>bits 7-2 = Reserved, must be zero
+</LI>
+<LI>bit 1 = Line
+</LI>
+<LI>bit 0 = ULA
+</LI>
+</UL>
+* Set bits indicate the device generated an interrupt in the past
+* Writes clear bits where bits are set except in IM2 mode
+
+<P>
+Register (R/W) $C9 (C9) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Interrupt Status 1 (3.01.09)
+
+<UL>
+<LI>bit 7 = ctc channel 7 zc/to
+</LI>
+<LI>bit 6 = ctc channel 6 zc/to
+</LI>
+<LI>bit 5 = ctc channel 5 zc/to
+</LI>
+<LI>bit 4 = ctc channel 4 zc/to
+</LI>
+<LI>bit 3 = ctc channel 3 zc/to
+</LI>
+<LI>bit 2 = ctc channel 2 zc/to
+</LI>
+<LI>bit 1 = ctc channel 1 zc/to
+</LI>
+<LI>bit 0 = ctc channel 0 zc/to
+</LI>
+</UL>
+* Set bits indicate the device generated an interrupt in the past
+* Writes clear bits where bits are set except in IM2 mode
+
+<P>
+Register (R/W) $CA (CA) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Interrupt Status 2 (3.01.09)
+($00 on reset)
+
+<UL>
+<LI>bit 7 = Reserved, must be zero
+</LI>
+<LI>bit 6 = UART1 Tx empty
+</LI>
+<LI>bit 5 = UART1 Rx almost full *
+</LI>
+<LI>bit 4 = UART1 Rx available *
+</LI>
+<LI>bit 3 = Reserved must be zero
+</LI>
+<LI>bit 2 = UART0 Tx empty
+</LI>
+<LI>bit 1 = UART0 Rx almost full *
+</LI>
+<LI>bit 0 = UART0 Rx available *
+</LI>
+</UL>
+* For each UART Rx half full and Rx available are shared interrupts
+** Set bits indicate the device generated an interrupt in the past
+** Writes clear bits where bits are set except in IM2 mode
+
+<P>
+Internal Interrupt Sources
+<table width="90%"><tr><td valign="top">&nbsp;0 = Line (highest priority)</td></tr>
+<tr><td valign="top">&nbsp;1 = UART 0 Rx</td></tr>
+<tr><td valign="top">&nbsp;2 = UART 1 Rx</td></tr>
+<tr><td valign="top">&nbsp;3-10 = CTC channels 0-7</td></tr>
+<tr><td valign="top">&nbsp;11 = ULA</td></tr>
+<tr><td valign="top">&nbsp;12 = UART 0 Tx</td></tr>
+<tr><td valign="top">&nbsp;13 = UART 1 Tx (lowest priority)
+</td></tr></table>
+
+<P>
 
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
@@ -260,28 +269,27 @@ Register (W) $C6 (C6) <SPAN CLASS="MATH"><IMG STYLE=""
  HREF="node135.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="zxnext_notes.html">
+ HREF="node131.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node133.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1157"
+<A ID="tex2html1171"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1159"
-  HREF="node213.html">
+<A ID="tex2html1173"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node135.html">Raspberry Pi0 Acceleration</A>
+ HREF="node135.html">Interrupt Modes</A>
 <B> Up:</B> <A
- HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
-<B> Previous:</B> <A
- HREF="node133.html">Programming</A>
- &nbsp; <B>  <A ID="tex2html1158"
+ HREF="node131.html">Interrupt Types</A>
+<B> Previous:</B> 
+ &nbsp; <B>  <A ID="tex2html1172"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1160"
-  HREF="node213.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html1174"
+  HREF="node227.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

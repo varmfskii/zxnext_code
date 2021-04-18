@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>CP/M</TITLE>
-<META NAME="description" CONTENT="CP/M">
+<TITLE>IM1</TITLE>
+<META NAME="description" CONTENT="IM1">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node146.html">
+<LINK REL="next" HREF="node138.html">
 <LINK REL="previous" HREF="node136.html">
 <LINK REL="next" HREF="node138.html">
 </HEAD>
@@ -27,66 +27,43 @@
  HREF="node138.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node136.html">
+ HREF="node135.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node136.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1184"
+<A ID="tex2html1186"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1186"
-  HREF="node213.html">
+<A ID="tex2html1188"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node138.html">Utilities</A>
+ HREF="node138.html">IM2</A>
 <B> Up:</B> <A
- HREF="node136.html">System Software</A>
+ HREF="node135.html">Interrupt Modes</A>
 <B> Previous:</B> <A
- HREF="node136.html">System Software</A>
- &nbsp; <B>  <A ID="tex2html1185"
-  HREF="node1.html">Contents</A></B> 
+ HREF="node136.html">IM0</A>
  &nbsp; <B>  <A ID="tex2html1187"
-  HREF="node213.html">Index</A></B> 
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1189"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION001110000000000000000">
-CP/M</A>
-</H1>
-The ZX Spextrum Next has support for CP/M+ 3.0. CP/M was the most
-popular microcomputer coperating system prior to the advent of MS-DOS.
+<H4><A ID="SECTION00920020000000000000">
+IM1</A>
+</H4>
+When an interrupt is received, the CPU disables interrupts and jumps
+to an interrupt handler at $0038 (normally in ROM). The ROM interrupt
+handler updates the frame counter and scans the keyboard. This is the
+default interrupt handling method for the ZX Spectrum and is probably
+the method to use if you don’t need the ROMs for anything. It is
+enabled using the IM1 instruction and enabling interrupts.
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
-
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html1188"
-  HREF="node138.html">Utilities</A>
-<LI><A ID="tex2html1189"
-  HREF="node139.html">BDOS</A>
-<LI><A ID="tex2html1190"
-  HREF="node140.html">BIOS</A>
-<UL>
-<LI><A ID="tex2html1191"
-  HREF="node141.html">System Initialization Functions</A>
-<LI><A ID="tex2html1192"
-  HREF="node142.html">Character I/O Functions</A>
-<LI><A ID="tex2html1193"
-  HREF="node143.html">Disk I/O Functions</A>
-</UL>
-<BR>
-<LI><A ID="tex2html1194"
-  HREF="node144.html">Memory Select and Move Functions</A>
-<UL>
-<LI><A ID="tex2html1195"
-  HREF="node145.html">Clock Support Function</A>
-</UL></UL>
-<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

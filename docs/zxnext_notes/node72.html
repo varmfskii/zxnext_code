@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>ZX Spectrum 128k</TITLE>
-<META NAME="description" CONTENT="ZX Spectrum 128k">
+<TITLE>ZX Spectrum Next Native</TITLE>
+<META NAME="description" CONTENT="ZX Spectrum Next Native">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node74.html">
+<LINK REL="next" HREF="node73.html">
 <LINK REL="previous" HREF="node71.html">
 <LINK REL="next" HREF="node73.html">
 </HEAD>
@@ -27,47 +27,183 @@
  HREF="node73.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node70.html">
+ HREF="node71.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node71.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html820"
+<A ID="tex2html830"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html822"
-  HREF="node213.html">
+<A ID="tex2html832"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node73.html">ROM paging and selection</A>
+ HREF="node73.html">ZX Spectrum 128</A>
 <B> Up:</B> <A
- HREF="node70.html">ROM</A>
+ HREF="node71.html">RAM</A>
 <B> Previous:</B> <A
- HREF="node71.html">ZX Next native</A>
- &nbsp; <B>  <A ID="tex2html821"
+ HREF="node71.html">RAM</A>
+ &nbsp; <B>  <A ID="tex2html831"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html823"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html833"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00513020000000000000">
-ZX Spectrum 128k</A>
+<H4><A ID="SECTION00612010000000000000">
+ZX Spectrum Next Native</A>
 </H4>
+Registers $50 to $57 control the which SRAM pages are in each of the
+eight memory slots.  Registers $50 and $51 support the special value
+$FF which indicates that the currently selected ROM is to be mapped
+into slots 0 and/or 1 ($0000-$3FFF).
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+Register (R/W) $50 (50) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 0 Control
 
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html824"
-  HREF="node73.html">ROM paging and selection</A>
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $0000 to $1FFF ($ff on
+  reset)
+</LI>
 </UL>
-<!--End of Table of Child-Links-->
-<BR><HR>
+Pages can be from 0 to 223 on a fully expanded Next.
+<BR>
+A 255 value causes the ROM to become visible.
+Register (R/W) $51 (51) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 1 Control
+
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $2000 to $3FFF ($ff on
+  reset)
+</LI>
+</UL>
+Pages can be from 0 to 223 on a fully expanded Next.
+<BR>
+A 255 value causes the ROM to become visible.
+
+<P>
+Register (R/W) $52 (52) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 2 Control
+
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $4000 to $5FFF ($0A on
+  reset)
+</LI>
+</UL>
+Pages can be from 0 to 223 on a fully expanded Next.
+
+<P>
+Register (R/W) $53 (53) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 3 Control
+
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $6000 to $7FFF ($0B on
+  reset)
+</LI>
+</UL>
+Pages can be from 0 to 223 on a fully expanded Next.
+
+<P>
+Register (R/W) $54 (54) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 4 Control
+
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $8000 to $9FFF ($04 on
+  reset)
+</LI>
+</UL>
+Pages can be from 0 to 223 on a fully expanded Next.
+
+<P>
+Register (R/W) $55 (55) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 5 Control
+
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $A000 to $BFFF ($05 on
+  reset)
+</LI>
+</UL>
+Pages can be from 0 to 223 on a fully expanded Next.
+
+<P>
+Register (R/W) $56 (56) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 6 Control
+
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $C000 to $DFFF ($00 on
+  reset)
+</LI>
+</UL>
+Pages can be from 0 to 223 on a fully expanded Next.
+
+<P>
+Register (R/W) $57 (57) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> MMU Slot 7 Control
+
+<UL>
+<LI>bits 7-0 = 8k RAM page at position $E000 to $FFFF ($01 on
+  reset)
+</LI>
+</UL>
+Pages can be from 0 to 223 on a fully expanded Next.
+
+<P>
+Writing to ports $1FFD, $7FFD and $DFFD writes $FF to MMU0 and
+MMU1 and writes appropriate values to MMU6 and MMU7 to map in the
+selected 16k bank.
+
+<P>
++3 special modes override the MMUs if used.
+
+<P>
+In addition the ZX Next has special controls which allow the data area
+for Layer 2 to be overlaied on memory in a fashion that permits
+selective read or write access. For details see the section on Layer 2
+video.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node73.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node71.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node71.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html830"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html832"
+  HREF="node227.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node73.html">ZX Spectrum 128</A>
+<B> Up:</B> <A
+ HREF="node71.html">RAM</A>
+<B> Previous:</B> <A
+ HREF="node71.html">RAM</A>
+ &nbsp; <B>  <A ID="tex2html831"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html833"
+  HREF="node227.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

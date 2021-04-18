@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>ZX Spectrum Next Native</TITLE>
-<META NAME="description" CONTENT="ZX Spectrum Next Native">
+<TITLE>Keymapping</TITLE>
+<META NAME="description" CONTENT="Keymapping">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node66.html">
 <LINK REL="previous" HREF="node64.html">
 <LINK REL="next" HREF="node66.html">
 </HEAD>
@@ -27,183 +26,117 @@
  HREF="node66.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node64.html">
+ HREF="node61.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node64.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html784"
+<A ID="tex2html768"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html786"
-  HREF="node213.html">
+<A ID="tex2html770"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node66.html">ZX Spectrum 128</A>
+ HREF="node66.html">Keyboard</A>
 <B> Up:</B> <A
- HREF="node64.html">RAM</A>
+ HREF="node61.html">Basic Input/Output</A>
 <B> Previous:</B> <A
- HREF="node64.html">RAM</A>
- &nbsp; <B>  <A ID="tex2html785"
+ HREF="node64.html">Mouse</A>
+ &nbsp; <B>  <A ID="tex2html769"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html787"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html771"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00512010000000000000">
-ZX Spectrum Next Native</A>
-</H4>
-Registers $50 to $57 control the which SRAM pages are in each of the
-eight memory slots.  Registers $50 and $51 support the special value
-$FF which indicates that the currently selected ROM is to be mapped
-into slots 0 and/or 1 ($0000-$3FFF).
+<H1><A ID="SECTION00540000000000000000">
+Keymapping</A>
+</H1>
 
 <P>
-Register (R/W) $50 (50) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> MMU Slot 0 Control
+Both a PS/2 keyboard and the contoller buttons can be given custom
+keyboard mappings. These mappings are accomplished using nextregs $28
+(keymap address MSB), $29 (keymap address LSB), $2A (keymap data
+MSB) and $2B (keymap data LSB).
 
-<UL>
-<LI>bits 7-0 = 8k RAM page at position $0000 to $1FFF ($ff on
-  reset)
-</LI>
-</UL>
-Pages can be from 0 to 223 on a fully expanded Next.
+<P>
+Register (R/W) $28 (28) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Stored Palette Value and PS/2 Keymap Address MSB
 <BR>
-A 255 value causes the ROM to become visible.
-Register (R/W) $51 (51) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> MMU Slot 1 Control
+Read
 
 <UL>
-<LI>bits 7-0 = 8k RAM page at position $2000 to $3FFF ($ff on
-  reset)
+<LI>bits 7-0 = Stored palette value (see NextREG $44)
 </LI>
 </UL>
-Pages can be from 0 to 223 on a fully expanded Next.
-<BR>
-A 255 value causes the ROM to become visible.
-
-<P>
-Register (R/W) $52 (52) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> MMU Slot 2 Control
+Write  
 
 <UL>
-<LI>bits 7-0 = 8k RAM page at position $4000 to $5FFF ($0A on
-  reset)
-</LI>
-</UL>
-Pages can be from 0 to 223 on a fully expanded Next.
-
-<P>
-Register (R/W) $53 (53) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> MMU Slot 3 Control
+<LI>bit 7 = PS/2 or Joystick
 
 <UL>
-<LI>bits 7-0 = 8k RAM page at position $6000 to $7FFF ($0B on
-  reset)
+<LI>0 = PS/2 keymap
+</LI>
+<LI>1 = Key joystick
 </LI>
 </UL>
-Pages can be from 0 to 223 on a fully expanded Next.
+</LI>
+<LI>bits 6-1 = Reserved, must be 0
+</LI>
+<LI>bit 0 = PS/2 Keymap Address MSB
+</LI>
+</UL>
 
 <P>
-Register (R/W) $54 (54) <SPAN CLASS="MATH"><IMG STYLE=""
+Register (W) $29 (29) <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> MMU Slot 4 Control
+ ALT="$\Rightarrow$"></SPAN> PS/2 Keymap Address LSB
 
 <UL>
-<LI>bits 7-0 = 8k RAM page at position $8000 to $9FFF ($04 on
-  reset)
+<LI>bits 7-0 = PS/2 Keymap Address LSB
 </LI>
 </UL>
-Pages can be from 0 to 223 on a fully expanded Next.
 
 <P>
-Register (R/W) $55 (55) <SPAN CLASS="MATH"><IMG STYLE=""
+Register (W) $2A (2A) <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> MMU Slot 5 Control
+ ALT="$\Rightarrow$"></SPAN> PS/2 Keymap Data MSB
 
 <UL>
-<LI>bits 7-0 = 8k RAM page at position $A000 to $BFFF ($05 on
-  reset)
+<LI>bits 7-1 = Reserved, must be 0
+</LI>
+<LI>bit 0 = PS/2 Keymap Data MSB
 </LI>
 </UL>
-Pages can be from 0 to 223 on a fully expanded Next.
 
 <P>
-Register (R/W) $56 (56) <SPAN CLASS="MATH"><IMG STYLE=""
+Register (W) $2B (2B) <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> MMU Slot 6 Control
+ ALT="$\Rightarrow$"></SPAN> PS/2 Keymap Data LSB
 
 <UL>
-<LI>bits 7-0 = 8k RAM page at position $C000 to $DFFF ($00 on
-  reset)
+<LI>bits 7-0 = PS/2 Keymap Data LSB
 </LI>
 </UL>
-Pages can be from 0 to 223 on a fully expanded Next.
+(writing this register auto-increments the address)
 
 <P>
-Register (R/W) $57 (57) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> MMU Slot 7 Control
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<UL>
-<LI>bits 7-0 = 8k RAM page at position $E000 to $FFFF ($01 on
-  reset)
-</LI>
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html772"
+  HREF="node66.html">Keyboard</A>
+<LI><A ID="tex2html773"
+  HREF="node67.html">Joystick</A>
 </UL>
-Pages can be from 0 to 223 on a fully expanded Next.
-
-<P>
-Writing to ports $1FFD, $7FFD and $DFFD writes $FF to MMU0 and
-MMU1 and writes appropriate values to MMU6 and MMU7 to map in the
-selected 16k bank.
-
-<P>
-+3 special modes override the MMUs if used.
-
-<P>
-In addition the ZX Next has special controls which allow the data area
-for Layer 2 to be overlaied on memory in a fashion that permits
-selective read or write access. For details see the section on Layer 2
-video.
-
-<P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node66.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node64.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node64.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html784"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html786"
-  HREF="node213.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node66.html">ZX Spectrum 128</A>
-<B> Up:</B> <A
- HREF="node64.html">RAM</A>
-<B> Previous:</B> <A
- HREF="node64.html">RAM</A>
- &nbsp; <B>  <A ID="tex2html785"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html787"
-  HREF="node213.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<!--End of Table of Child-Links-->
+<BR><HR>
 
 </BODY>
 </HTML>

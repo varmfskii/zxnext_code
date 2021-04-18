@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>WR3 – Write Register Group 3</TITLE>
-<META NAME="description" CONTENT="WR3 – Write Register Group 3">
+<TITLE>Description</TITLE>
+<META NAME="description" CONTENT="Description">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,50 +27,53 @@
  HREF="node91.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node86.html">
+ HREF="node87.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node89.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html920"
+<A ID="tex2html929"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html922"
-  HREF="node213.html">
+<A ID="tex2html931"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node91.html">WR4 – Write Register</A>
+ HREF="node91.html">Modes of Operation</A>
 <B> Up:</B> <A
- HREF="node86.html">zxnDMA Registers</A>
+ HREF="node87.html">zxnDMA</A>
 <B> Previous:</B> <A
- HREF="node89.html">WR2 – Write Register</A>
- &nbsp; <B>  <A ID="tex2html921"
+ HREF="node89.html">Accessing the zxnDMA</A>
+ &nbsp; <B>  <A ID="tex2html930"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html923"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html932"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00660040000000000000">
-WR3 – Write Register Group 3</A>
-</H4>
-<PRE>
-D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
- 1   |   0   0   0   0   0   0
-     |
-     1 = DMA Enable
-</PRE>
-The Z80 DMA defines more fields but they are ignored by the zxnDMA.
+<H1><A ID="SECTION00730000000000000000">
+Description</A>
+</H1>
+The normal Z80 DMA (Z8410) chip is a pipelined device and because of
+that it has numerous off-by-one idiosyncrasies and requirements on the
+order that certain commands should be carried out. These issues are
+not duplicated in the zxnDMA. You can continue to program the zxnDMA
+as if it is were a Z8410 DMA device but it can also be programmed in a
+simpler manner.
 
 <P>
-The two other registers defined by the Z80 DMA in this group on D4 and
-D3 are implemented by the zxnDMA but they do nothing.
+The single channel of the zxnDMA chip consists of two ports named A
+and B. Transfers can occur in either direction between ports A and B,
+each port can describe a target in memory or IO, and each can be
+configured to autoincrement, autodecrement or stay fixed after a byte
+is transferred.
 
 <P>
-It is preferred to start the DMA by writing an Enable DMA command to
-WR6.
+A special feature of the zxnDMA can force each byte transfer to take a
+fixed amount of time so that the zxnDMA can be used to deliver sampled
+audio.
 
 <P>
 <BR><HR>

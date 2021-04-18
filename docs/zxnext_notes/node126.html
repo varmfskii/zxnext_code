@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>zxnext_notes</TITLE>
-<META NAME="description" CONTENT="zxnext_notes">
+<TITLE>Refresh Rate</TITLE>
+<META NAME="description" CONTENT="Refresh Rate">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,180 +27,101 @@
  HREF="node127.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node124.html">
+ HREF="node125.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node125.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1121"
+<A ID="tex2html1126"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1123"
-  HREF="node213.html">
+<A ID="tex2html1128"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
-<B> Next:</B> 
+<B> Next:</B> <A
+ HREF="node127.html">Video Modes</A>
 <B> Up:</B> <A
- HREF="node124.html">Interrupt Types</A>
-<B> Previous:</B> 
- &nbsp; <B>  <A ID="tex2html1122"
+ HREF="node125.html">Configuration</A>
+<B> Previous:</B> <A
+ HREF="node125.html">Configuration</A>
+ &nbsp; <B>  <A ID="tex2html1127"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1124"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1129"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00810020000000000000">
-<!-- MATH
- $\overline{\hbox{NMI}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN></A>
+<H4><A ID="SECTION00840010000000000000">
+Refresh Rate</A>
 </H4>
-<!-- MATH
- $\overline{\hbox{NMI}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN> is the non-maskable interrupt. Upon receiving a
-non-maskable interrupt (<!-- MATH
- $\overline{\hbox{NMI}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN> being pulled low) one of
-two sequences occur depending on the calue of bit 3 of the interrupt
-control register (nextreg $C0).
 
 <P>
-Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE=""
+The refresh rate must be taken into account and can change real-time
+so should be monitored and auto-configured when the COPPER is active
+as the line count will change with the refresh rate. This could lead
+to the COPPER waiting for lines that never occur.
+
+<P>
+Register (R/W) $05 (05) <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> Interrupt Control (3.01.09)
-<BR>($00 on reset)
+ ALT="$\Rightarrow$"></SPAN> Peripheral 1 Settings
 
 <UL>
-<LI>bits 7-5 = Programmable portion of IM2 vector *
+<LI>bits 7-6 = joystick 1 mode (MSB)
 </LI>
-<LI>bit 4 = Reserved, must be 0
+<LI>bits 5-4 = joystick 2 mode (MSB)
 </LI>
-<LI>bit 3 = Enable stackless <!-- MATH
- $\overline{\hbox{NMI}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN> response**
+<LI>bit 3 = joystick 1 mode (LSB)
 </LI>
-<LI>bits 2-1 = Reserved, must be 0
+<LI>bit 2 = 50/60 Hz mode (0 = 50Hz, 1 = 60Hz)
 </LI>
-<LI>bit 0 = Maskable interrupt mode
-<table width="90%"><tr><td valign="top">&nbsp;0 - pulse</td></tr>
-<tr><td valign="top">&nbsp;1 - IM2
-</td></tr></table>
+<LI>bit 1 = joystick 2 mode (LSB)
+</LI>
+<LI>bit 0 = Enable Scandoubler
 </LI>
 </UL>
-* In IM2 mode vector generated is:
+Joystick modes
 
 <UL>
-<LI>bits 7-5 = nextreg $C0 bits 7-5
+<LI>000 = Sinclair 2 (67890)
 </LI>
-<LI>bits 4-1 = Interrupt source
-<table width="90%"><tr><td valign="top">&nbsp;0 - line interrupt (highest priority)</td></tr>
-<tr><td valign="top">&nbsp;1 - UART 0 Rx</td></tr>
-<tr><td valign="top">&nbsp;2 - UART 1 Rx</td></tr>
-<tr><td valign="top">&nbsp;3&ndash;10 - CTC channels 0-7</td></tr>
-<tr><td valign="top">&nbsp;11 - ULA</td></tr>
-<tr><td valign="top">&nbsp;12 - UART 0 Tx</td></tr>
-<tr><td valign="top">&nbsp;13 - UART 1 Tx (lowest priority)
-</td></tr></table>
-
+<LI>001 = Kempston 2 (port $37)
 </LI>
-<LI>bit 0 = 0
+<LI>010 = Kempston 1 (port $1F)
+</LI>
+<LI>011 = Megadrive 1 (port $1F)
+</LI>
+<LI>100 = Cursor
+</LI>
+<LI>101 = Megadrive 2 (port $37)
+</LI>
+<LI>110 = Sinclair 1 (12345)
+</LI>
+<LI>111 = User Defined Keys Joystick
 </LI>
 </UL>
+<table width="90%"><tr><td align="right" valign="top">*</td><td valign="top">&nbsp;Joysticks can be placed in i/o mode via nextreg 0x0B.</td></tr>
+<tr><td align="right" valign="top">*</td><td valign="top">&nbsp;Programming the user defined keys joystick is done through the ps2
+keymap interface on nextreg 0x28, 0x29 and 0x2B:
+</td></tr></table>
 
-<P>
-* In IM2 mode the expansion bus is the lowest priority interrupter and
-  if no vector is supplied externally the $FF is generated.
-
-<P>
-** The return address pushed during an nmi acknowledge cycle will be
-   written to the appropriate nextreg instead of memory (the stack
-   pointer will be decremented) and the RETN after acknowledge will
-   take its return address from nextreg instead of memory (the stack
-   pointer will be incremented). If bit 3 = 0 and in other
-   circumstances, RETN functions normally.
-
-<P>
-
-<P>
-If bit 3 is clear (0) PC is pushed on the stack, IFF1 is copied to
-IFF2, IFF1 is cleared (inhibiting maskable interrupts). The
-<!-- MATH
- $\overline{\hbox{NMI}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN> should end with RETN which copies the contents of
-IFF2 to IFF1 (returning the interrupt state to what it was before the
-<!-- MATH
- $\overline{\hbox{NMI}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN>) and PC is popped off the stack.
-
-<P>
-If bit 3 is set (1) PC is stored in the <!-- MATH
- $\overline{\hbox{NMI}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN> return
-address registers (nextregs $C2 and $C3), IFF1 is copied to IFF2,
-IFF1 is cleared (inhibiting maskable interrupts). The
-<!-- MATH
- $\overline{\hbox{NMI}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN> should end with RETN which copies the contents of
-IFF2 to IFF1 (returning the interrupt state to what it was before the
-<!-- MATH
- $\overline{\hbox{NMI}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN>) and PC is compied from the <!-- MATH
- $\overline{\hbox{NMI}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN>
-return address registers.
-
-<P>
-Register (R/W) $C2 (C2) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> <!-- MATH
- $\overline{\hbox{NMI}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN> Return Address LSB (3.01.09)
-<BR>($00 on reset)
-
-<P>
-Register (R/W) $C3 (C3) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> <!-- MATH
- $\overline{\hbox{NMI}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN> Return Address MSB (3.01.09)
-<BR>($00 on reset)
+<OL>
+<LI>Write 128 to nextreg 0x28
+</LI>
+<LI>Write 0 (left joystick) or 16 (right joystick) to nextreg 0x29
+</LI>
+<LI>Write eleven bytes to nextreg 0x2B. The bytes correspond to the eleven
+buttons on an md pad (X=11 Z Y START A C B U D L R=1)
+</LI>
+<LI>Each byte written identifies a key in the 8x7 membrane; bits 5:3 select
+the row and bits 2:0 select the column with 111 meaning no action.
+<BR>*
+In all joystick modes, excess buttons on an md pad not read via ports
+will generate key input if so programmed.
+</LI>
+</OL>
 
 <P>
 
@@ -210,26 +131,28 @@ Register (R/W) $C3 (C3) <SPAN CLASS="MATH"><IMG STYLE=""
  HREF="node127.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node124.html">
+ HREF="node125.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node125.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1121"
+<A ID="tex2html1126"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1123"
-  HREF="node213.html">
+<A ID="tex2html1128"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
-<B> Next:</B> 
+<B> Next:</B> <A
+ HREF="node127.html">Video Modes</A>
 <B> Up:</B> <A
- HREF="node124.html">Interrupt Types</A>
-<B> Previous:</B> 
- &nbsp; <B>  <A ID="tex2html1122"
+ HREF="node125.html">Configuration</A>
+<B> Previous:</B> <A
+ HREF="node125.html">Configuration</A>
+ &nbsp; <B>  <A ID="tex2html1127"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1124"
-  HREF="node213.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html1129"
+  HREF="node227.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

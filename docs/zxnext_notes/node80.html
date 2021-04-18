@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>zxnDMA</TITLE>
-<META NAME="description" CONTENT="zxnDMA">
+<TITLE>ROM paging and selection</TITLE>
+<META NAME="description" CONTENT="ROM paging and selection">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node97.html">
-<LINK REL="previous" HREF="node61.html">
+<LINK REL="previous" HREF="node79.html">
 <LINK REL="next" HREF="node81.html">
 </HEAD>
 
@@ -27,83 +26,51 @@
  HREF="node81.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="zxnext_notes.html">
+ HREF="node79.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node79.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html855"
+<A ID="tex2html871"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html857"
-  HREF="node213.html">
+<A ID="tex2html873"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node81.html">Overview</A>
+ HREF="node81.html">divMMC</A>
 <B> Up:</B> <A
- HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
+ HREF="node79.html">ZX Spectrum 128k</A>
 <B> Previous:</B> <A
- HREF="node79.html">Z80 Visible Memory Map</A>
- &nbsp; <B>  <A ID="tex2html856"
+ HREF="node79.html">ZX Spectrum 128k</A>
+ &nbsp; <B>  <A ID="tex2html872"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html858"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html874"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00600000000000000000">
-zxnDMA</A>
-</H1>
- February 25, 2019  Phoebus Dokos  Off  Hardware, Resources,
+<H5><A ID="SECTION00613021000000000000">
+ROM paging and selection</A>
+</H5>
 
 <P>
-The ZX Spectrum Next DMA (zxnDMA)
+$0000-$3fff is usually mapped to ROM. This area can only be fully
+remapped using Next memory management. ROM is not considered one of
+the numbered banks; it is mapped to the two 8k-banks by default, or by
+setting their 8k-bank numbers to 255.
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+The 128k Spectrum has 2 ROM pages. Which of these is mapped is
+selected by altering Bit 4 of Memory Paging Control ($7FFD). The
++2a/+3 has 4 ROM pages; the extra bit needed to select between these
+is bit 2 of Plus 3 Memory Paging Control ($1FFD). This maintains
+compatibility with the original machines' ROM paging as long as the
+ROM is not paged out.
 
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html859"
-  HREF="node81.html">Overview</A>
-<LI><A ID="tex2html860"
-  HREF="node82.html">Accessing the zxnDMA</A>
-<LI><A ID="tex2html861"
-  HREF="node83.html">Description</A>
-<LI><A ID="tex2html862"
-  HREF="node84.html">Modes of Operation</A>
-<LI><A ID="tex2html863"
-  HREF="node85.html">Programming the zxnDMA</A>
-<LI><A ID="tex2html864"
-  HREF="node86.html">zxnDMA Registers</A>
-<UL>
-<LI><A ID="tex2html865"
-  HREF="node87.html">WR0 – Write Register Group 0</A>
-<LI><A ID="tex2html866"
-  HREF="node88.html">WR1 – Write Register Group 1</A>
-<LI><A ID="tex2html867"
-  HREF="node89.html">WR2 – Write Register Group 2</A>
-<LI><A ID="tex2html868"
-  HREF="node90.html">WR3 – Write Register Group 3</A>
-<LI><A ID="tex2html869"
-  HREF="node91.html">WR4 – Write Register Group 4</A>
-<LI><A ID="tex2html870"
-  HREF="node92.html">WR5 – Write Register Group 5</A>
-<LI><A ID="tex2html871"
-  HREF="node93.html">WR6 – Command Register</A>
-<LI><A ID="tex2html872"
-  HREF="node94.html">Operating speed</A>
-<LI><A ID="tex2html873"
-  HREF="node95.html">The DMA and Interrupts</A>
-</UL>
-<BR>
-<LI><A ID="tex2html874"
-  HREF="node96.html">Programming examples</A>
-</UL>
-<!--End of Table of Child-Links-->
+<P>
 <BR><HR>
 
 </BODY>

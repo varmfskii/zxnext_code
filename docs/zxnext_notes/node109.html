@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>NOOP</TITLE>
-<META NAME="description" CONTENT="NOOP">
+<TITLE>Display</TITLE>
+<META NAME="description" CONTENT="Display">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,51 +27,55 @@
  HREF="node110.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node108.html">
+ HREF="node107.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node108.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1032"
+<A ID="tex2html1046"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1034"
-  HREF="node213.html">
+<A ID="tex2html1048"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node110.html">MOVE</A>
+ HREF="node110.html">Resolution</A>
 <B> Up:</B> <A
- HREF="node108.html">Instructions</A>
+ HREF="node107.html">Timing</A>
 <B> Previous:</B> <A
- HREF="node108.html">Instructions</A>
- &nbsp; <B>  <A ID="tex2html1033"
+ HREF="node108.html">Machines</A>
+ &nbsp; <B>  <A ID="tex2html1047"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1035"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1049"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00720010000000000000">
-NOOP</A>
+<H4><A ID="SECTION00810020000000000000">
+Display</A>
 </H4>
 
 <P>
-NOOP (no-operation) executes in one dot clock. It is useful for fine
-tuning timing, initialising COPPER RAM and 'NOP' out COPPER program
-instructions.
-
-<P>
-It can be used to align colour and display changes to half pixel
-positions in standard <SPAN CLASS="MATH"><IMG STYLE=""
+The ZX Spectrum Next doesn't have video modes based on resolution that
+you would expect to find on graphics card based hardware. There is one
+fixed resolution of <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img1.svg"
- ALT="$256\times 192$"></SPAN> resolution. Its duration is equal
-to one Timex HIRES pixel.
+ ALT="$256\times 192$"></SPAN> which can be doubled to
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img22.svg"
+ ALT="$512\times192$"></SPAN> in Timex HIRES mode. What it does have is the ability
+to set the refresh rate from 50Hz to 60Hz and horizontal dot
+clock. This in turn together with the VGA and HDMI timing affects the
+vertical line count giving several combinations in total.
 
 <P>
-This guide uses the name 'NOOP' to avoid confusion with the Z80 opcode
-NOP.
+VGA modes 0..6 are included as one single VGA mode as the internal
+machine timing is constant across those seven refresh rate steps.
+
+<P>
+More details can be found in Video modes.
 
 <P>
 <BR><HR>

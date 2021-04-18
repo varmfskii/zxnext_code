@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>MOVE</TITLE>
-<META NAME="description" CONTENT="MOVE">
+<TITLE>Resolution</TITLE>
+<META NAME="description" CONTENT="Resolution">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,49 +27,69 @@
  HREF="node111.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node108.html">
+ HREF="node107.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node109.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1036"
+<A ID="tex2html1050"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1038"
-  HREF="node213.html">
+<A ID="tex2html1052"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node111.html">WAIT</A>
+ HREF="node111.html">Dot Clock</A>
 <B> Up:</B> <A
- HREF="node108.html">Instructions</A>
+ HREF="node107.html">Timing</A>
 <B> Previous:</B> <A
- HREF="node109.html">NOOP</A>
- &nbsp; <B>  <A ID="tex2html1037"
+ HREF="node109.html">Display</A>
+ &nbsp; <B>  <A ID="tex2html1051"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1039"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1053"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00720020000000000000">
-MOVE</A>
+<H4><A ID="SECTION00810030000000000000">
+Resolution</A>
 </H4>
 
 <P>
-MOVE executes in two dot clocks. It moves 8 bits of data into any of
-the Next hardware registers in the range $00 (0) .. $7F (127).
+There are two main horizontal resolutions: standard <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img1.svg"
+ ALT="$256\times 192$"></SPAN> and
+Timex HIRES <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img22.svg"
+ ALT="$512\times192$"></SPAN>. Details of LORES <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img27.svg"
+ ALT="$128\times96$"></SPAN> are not
+included to simplify this guide.
 
 <P>
-The WORD value $0000 is reserved for the NOOP instruction so no
-register access is carried out for that special case. Register $00 is
-read-only so not affected by the restriction of not being able to
-write zero to it.
+The frame buffer height is fixed at 192 pixels and surrounded by a
+large border and overscan as well as horizontal and vertical blanking
+periods.
 
 <P>
-This instruction can perform 7 million register writes per second for
-VGA and 6.75 million register writes per second for HDMI.
+There are five vertical line counts: 261, 262, 311, 312, 320. Several
+pixels are hidden in the overscan and blanking periods beyond the
+visible border.
+
+<P>
+The result is <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img1.svg"
+ ALT="$256\times 192$"></SPAN> and <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img22.svg"
+ ALT="$512\times192$"></SPAN> pixel resolutions with
+a large border.
+
+<P>
+The colour of the visible border beyond the frame buffer can be
+manipulated. Visual changes will not show during the overscan and
+blanking periods.
 
 <P>
 <BR><HR>

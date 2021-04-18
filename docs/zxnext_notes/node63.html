@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Default Layout</TITLE>
-<META NAME="description" CONTENT="Default Layout">
+<TITLE>Game Controllers</TITLE>
+<META NAME="description" CONTENT="Game Controllers">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,42 +27,214 @@
  HREF="node64.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node62.html">
+ HREF="node61.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node62.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html771"
+<A ID="tex2html760"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html773"
-  HREF="node213.html">
+<A ID="tex2html762"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node64.html">RAM</A>
+ HREF="node64.html">Mouse</A>
 <B> Up:</B> <A
- HREF="node62.html">Memory Management</A>
+ HREF="node61.html">Basic Input/Output</A>
 <B> Previous:</B> <A
- HREF="node62.html">Memory Management</A>
- &nbsp; <B>  <A ID="tex2html772"
+ HREF="node62.html">Keyboard</A>
+ &nbsp; <B>  <A ID="tex2html761"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html774"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html763"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION00511000000000000000">
-Default Layout</A>
-</H2>
-The default mapping of memory banks is the same as on 128k Spectrum
-models with a ROM0 (128k editor and menu system) mapped in at
-$0000-$3FFF, bank 5 at $4000-$7FFF, bank 2 at $8000-$BFFF, and
-bank 0 at $C000-$FFFF.
+<H1><A ID="SECTION00520000000000000000">
+Game Controllers</A>
+</H1>
 
 <P>
-<BR><HR>
+The ZX Spectrum used a number of joystick standards and the ZX
+Spectrum Next can make Atari controllers or Mega Drive controllers
+look like many of these standards. Atari joystick and driving (not the
+similar looking paddle) controllers are supported by the
+interface. The interface supports Mega Drive controllers with up to 11
+buttons (start, a, b, c, x, y, z, up, down, left, right). It is
+possible to map unused buttons to keys and simulate unavailable
+buttons with keys.
+
+<P>
+Nextreg $05 selects the interface mode for each of the two
+joysticks. If in Kempston or Megadrive mode the joystick 1 can be read
+using port $1F and joystick 2 using port $37. When using these ports
+in Megadrive mode, some buttons will be paired A/X, B/Y, C/Z with B/Y
+also corresponding to the single fire button on Atari joysticks. In
+order to disambiguate presses of A/X, B/Y, and C/Z it is necessary to
+also read nextreg $B2.
+
+<P>
+Port $1F (1F) Kempston/Mega Drive Joystick 1/DAC A
+<BR>
+Read
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = &rdquo;start&rdquo; button</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = A/X button</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = C/Z button</td></tr>
+<tr><td valign="top">&nbsp;bit 4 = Fire/C/Y button</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Up</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = Down</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Left</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Right
+</td></tr></table>
+
+Disable with Nextreg $05
+<BR>
+Write
+<table width="90%"><tr><td valign="top">&nbsp;bits 7-0 = DAC Value
+</td></tr></table>
+
+The XYZ buttons on md pads can be read through nextreg 0xB2.
+<BR>
+The joysticks can also be placed in i/o mode see nextreg 0x0B.
+<BR>
+All eleven md pad buttons can be assigned to the keyboard see nextreg 0x05.
+Port $37 (37) Kempston/Mega Drive Joystick 2
+<BR>
+Read
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = &rdquo;start&rdquo; button</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = A/X button</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = C/Z button</td></tr>
+<tr><td valign="top">&nbsp;bit 4 = Fire/C/Y button</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Up</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = Down</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Left</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Right
+</td></tr></table>
+
+The XYZ buttons on md pads can be read through nextreg 0xB2.
+<BR>
+The joysticks can also be placed in i/o mode see nextreg 0x0B.
+<BR>
+All eleven md pad buttons can be assigned to the keyboard see nextreg 0x05.
+
+<P>
+Register (R/W) $05 (05) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Peripheral 1 Settings
+
+<UL>
+<LI>bits 7-6 = joystick 1 mode (MSB)
+</LI>
+<LI>bits 5-4 = joystick 2 mode (MSB)
+</LI>
+<LI>bit 3 = joystick 1 mode (LSB)
+</LI>
+<LI>bit 2 = 50/60 Hz mode (0 = 50Hz, 1 = 60Hz)
+</LI>
+<LI>bit 1 = joystick 2 mode (LSB)
+</LI>
+<LI>bit 0 = Enable Scandoubler
+</LI>
+</UL>
+Joystick modes
+
+<UL>
+<LI>000 = Sinclair 2 (67890)
+</LI>
+<LI>001 = Kempston 2 (port $37)
+</LI>
+<LI>010 = Kempston 1 (port $1F)
+</LI>
+<LI>011 = Megadrive 1 (port $1F)
+</LI>
+<LI>100 = Cursor
+</LI>
+<LI>101 = Megadrive 2 (port $37)
+</LI>
+<LI>110 = Sinclair 1 (12345)
+</LI>
+<LI>111 = User Defined Keys Joystick
+</LI>
+</UL>
+<table width="90%"><tr><td align="right" valign="top">*</td><td valign="top">&nbsp;Joysticks can be placed in i/o mode via nextreg 0x0B.</td></tr>
+<tr><td align="right" valign="top">*</td><td valign="top">&nbsp;Programming the user defined keys joystick is done through the ps2
+keymap interface on nextreg 0x28, 0x29 and 0x2B:
+</td></tr></table>
+
+<OL>
+<LI>Write 128 to nextreg 0x28
+</LI>
+<LI>Write 0 (left joystick) or 16 (right joystick) to nextreg 0x29
+</LI>
+<LI>Write eleven bytes to nextreg 0x2B. The bytes correspond to the eleven
+buttons on an md pad (X=11 Z Y START A C B U D L R=1)
+</LI>
+<LI>Each byte written identifies a key in the 8x7 membrane; bits 5:3 select
+the row and bits 2:0 select the column with 111 meaning no action.
+<BR>*
+In all joystick modes, excess buttons on an md pad not read via ports
+will generate key input if so programmed.
+</LI>
+</OL>
+
+<P>
+Register (R) $B2 (B2) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Extended MD Pad Buttons (3.01.10)
+
+<UL>
+<LI>bit 7 = 1 if Right Pad X Pressed
+</LI>
+<LI>bit 6 = 1 if Right Pad Z Pressed
+</LI>
+<LI>bit 5 = 1 if Right Pad Y Pressed
+</LI>
+<LI>bit 4 = 1 if Right Pad START Pressed
+</LI>
+<LI>bit 3 = 1 if Left Pad X Pressed
+</LI>
+<LI>bit 2 = 1 if Left Pad Z Pressed
+</LI>
+<LI>bit 1 = 1 if Left Pad Y Pressed
+</LI>
+<LI>bit 0 = 1 if Left Pad START Pressed
+</LI>
+</UL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node64.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node61.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node62.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html760"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html762"
+  HREF="node227.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node64.html">Mouse</A>
+<B> Up:</B> <A
+ HREF="node61.html">Basic Input/Output</A>
+<B> Previous:</B> <A
+ HREF="node62.html">Keyboard</A>
+ &nbsp; <B>  <A ID="tex2html761"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html763"
+  HREF="node227.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

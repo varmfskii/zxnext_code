@@ -6,30 +6,34 @@ Basic file
 \section{BMP}
 Windows bitmap. On the ZX Spectrum next, these must be uncompressed
 and 8 bpp.
+\section{DOT, DOTX, DOTN, DOTN-X}
+\paragraph{DOT}
+A command file which returns after completion. Can be no longer than
+8k and must be compiled to reside in memory starting at \$2000. Rather
+than using this extension, these live in the dot directory. This is
+loaded into divmmc memory.
+
+\paragraph{DOTX}
+An extended dot file than can be more than 8k
+
+\paragraph{DOTN}
+A ZX Next Specific extention to a dot file, allowed to be over 8k
+
+\paragraph{DOTN-X}
+An extended version of a dotn file.
+
 \section{DSK}
 Disk image
 \section{ESP}
 Update file for Wi-Fi module
 \section{GDE}
 ZX Spectrum Next Guide hypertext file
-\section{MC}
-A Timex hi-color image. Like .shc, but the bitmap and colour map are
-stored in display order.
-\section{MLT}
-A Timex hi-color image. Like .shc, but the colour map is stored in
-display order.
 \section{MOD}
 Modtracker music file (requires Pi accelerator to play).
 \section{NDR}
 Nexdaw music file
 \section{NEX}
 ZX Spectrum Next executable file.
-\section{NXI}
-A version of a 256x192x8 layer 2 image.
-\begin{itemize}
-\item bytes 0-511 - palette data
-\item bytes 512-49663 - image data
-\end{itemize}
 \section{O}
 ZX-80 executable file
 \section{P3D}
@@ -74,7 +78,8 @@ ULANext
     \$FF & 256 & 1 & 257 & 514
   \end{tabular}
 \end{itemize}
-\section{SHC}
+\section{SHC, MC, MLT}
+\paragraph{SHC}
 Timex hi-color screen dump
 
 In basic form the 12,288 byte file containing the bitmap and colour
@@ -106,6 +111,15 @@ ULANext
     \$FF & 256 & 1 & 257 & 514
   \end{tabular}
 \end{itemize}
+
+\paragraph{MC}
+A Timex hi-color image. Like .shc, but the bitmap and colour map are
+stored in display order.
+
+\paragraph{MLT}
+A Timex hi-color image. Like .shc, but the colour map is stored in
+display order.
+
 \section{SHR}
   
 Timex hi-resolution screen dump.
@@ -113,7 +127,8 @@ Timex hi-resolution screen dump.
 A 12,288 or 12,289 byte file containing a memory dump of the two 6k
 screen areas used by Timex hi-resolution mode in memory order with an
 optional byte indicating teh colours used.
-\section{SL2}
+\section{SL2, NXI}
+\paragraph{SL2}
 ZX Spectrum Next layer 2 screen dump
 
 In its most basic standard form, this is a 49,152 byte file contaning
@@ -136,6 +151,13 @@ the memory for the image data.
 \item bytes 0-81919 - image data: column dominant, nybbles in adjacent columns
 \item optional bytes 81920-81935 or 81951 - palette data (16 bytes for
   8-bit entries, 32 bytes for 9-bit entries)
+\end{itemize}
+
+\paragraph{NXI}
+A version of a 256x192x8 layer 2 image.
+\begin{itemize}
+\item bytes 0-511 - palette data
+\item bytes 512-49663 - image data
 \end{itemize}
 \section{SLR}
 ZX Spectrum Next low-resolution screen dump.

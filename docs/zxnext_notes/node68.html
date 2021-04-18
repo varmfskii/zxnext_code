@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Paging out ROM</TITLE>
-<META NAME="description" CONTENT="Paging out ROM">
+<TITLE>Memory</TITLE>
+<META NAME="description" CONTENT="Memory">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node69.html">
-<LINK REL="previous" HREF="node67.html">
+<LINK REL="next" HREF="node87.html">
+<LINK REL="previous" HREF="node61.html">
 <LINK REL="next" HREF="node69.html">
 </HEAD>
 
@@ -27,48 +27,89 @@
  HREF="node69.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node66.html">
+ HREF="zxnext_notes.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node67.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html799"
+<A ID="tex2html782"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html801"
-  HREF="node213.html">
+<A ID="tex2html784"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node69.html">Spectrum 128 Special Paging</A>
+ HREF="node69.html">Memory Management</A>
 <B> Up:</B> <A
- HREF="node66.html">ZX Spectrum 128</A>
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
- HREF="node67.html">Spectrum 128 Standard Paging</A>
- &nbsp; <B>  <A ID="tex2html800"
+ HREF="node67.html">Joystick</A>
+ &nbsp; <B>  <A ID="tex2html783"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html802"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html785"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H5><A ID="SECTION00512022000000000000">
-Paging out ROM</A>
-</H5>
+<H1><A ID="SECTION00600000000000000000">
+Memory</A>
+</H1>
+The ZX Spectrum Next commonly has with either 1MB or 2MB SRAM
+memory. This is more the 64kB directly addressable by its Z80N CPU. It
+is therefore necessary to use some form of memory paging to address
+all of the memory. This is accomplished using 8k pages or 16k
+banks. 256k of the total memory is used by the ROM images and device
+specific RAM leaving either 768k (pages 0-95/banks 0-47) or 1792k
+(pages 0-223/banks 0-111) that can be paged in as RAM. Pages 10, 11,
+and 14 are a little odd in that rather than coming from the normal
+SRAM, they come from BRAM internal to the FPGA.
 
 <P>
-ROM can be paged out by enabling AllRam mode, or by using Next memory
-management. Beware that some programs may assume that they can find
-ROM service routines at fixed addresses between $0000-$3fff. More
-importantly, if the default interrupt mode (IM 1) is set, the Z80 will
-jump the program counter to $0038 every frame expecting to find an
-interrupt handler there. If it does not, pain and suffering will
-likely result. DI is your friend. On the plus side, this does allow
-you to write your own interrupt handler without the nuisance of using
-IM 2.
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<P>
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html786"
+  HREF="node69.html">Memory Management</A>
+<UL>
+<LI><A ID="tex2html787"
+  HREF="node70.html">Default Layout</A>
+<LI><A ID="tex2html788"
+  HREF="node71.html">RAM</A>
+<UL>
+<LI><A ID="tex2html789"
+  HREF="node72.html">ZX Spectrum Next Native</A>
+<LI><A ID="tex2html790"
+  HREF="node73.html">ZX Spectrum 128</A>
+</UL>
+<LI><A ID="tex2html791"
+  HREF="node77.html">ROM</A>
+<UL>
+<LI><A ID="tex2html792"
+  HREF="node78.html">ZX Next native</A>
+<LI><A ID="tex2html793"
+  HREF="node79.html">ZX Spectrum 128k</A>
+<LI><A ID="tex2html794"
+  HREF="node81.html">divMMC</A>
+<LI><A ID="tex2html795"
+  HREF="node82.html">Multiface</A>
+</UL>
+</UL>
+<BR>
+<LI><A ID="tex2html796"
+  HREF="node83.html">Interactions between paging methods</A>
+<LI><A ID="tex2html797"
+  HREF="node84.html">Memory Map</A>
+<UL>
+<LI><A ID="tex2html798"
+  HREF="node85.html">Global Memory Map</A>
+<LI><A ID="tex2html799"
+  HREF="node86.html">Z80 Visible Memory Map</A>
+</UL></UL>
+<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

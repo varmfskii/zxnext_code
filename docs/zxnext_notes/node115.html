@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>RESET</TITLE>
-<META NAME="description" CONTENT="RESET">
+<TITLE>Instructions</TITLE>
+<META NAME="description" CONTENT="Instructions">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node116.html">
-<LINK REL="previous" HREF="node114.html">
+<LINK REL="next" HREF="node120.html">
+<LINK REL="previous" HREF="node107.html">
 <LINK REL="next" HREF="node116.html">
 </HEAD>
 
@@ -27,42 +27,82 @@
  HREF="node116.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node113.html">
+ HREF="node104.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node114.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1060"
+<A ID="tex2html1070"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1062"
-  HREF="node213.html">
+<A ID="tex2html1072"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node116.html">START</A>
+ HREF="node116.html">NOOP</A>
 <B> Up:</B> <A
- HREF="node113.html">Control</A>
+ HREF="node104.html">Copper and Display Timing</A>
 <B> Previous:</B> <A
- HREF="node114.html">STOP</A>
- &nbsp; <B>  <A ID="tex2html1061"
+ HREF="node114.html">Overscan</A>
+ &nbsp; <B>  <A ID="tex2html1071"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1063"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1073"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00730020000000000000">
-RESET</A>
-</H4>
+<H1><A ID="SECTION00820000000000000000">
+Instructions</A>
+</H1>
 
 <P>
-The program counter is RESET to zero when entering this mode. The
-COPPER is started if idle otherwise entering this mode acts as a jump
-to location zero when the COPPER is running.
+This section describes the behaviour of the COPPER instructions as
+well as the bit definitions and execution time.
 
 <P>
+The three 16 bit COPPER instructions are comprised of the following
+bit definitions:
+
+<P>
+<BR><P></P>
+<DIV class="CENTER"><A ID="2361"></A>
+<TABLE>
+<CAPTION><STRONG>Table 7.9:</STRONG>
+Instruction Bit Definition</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img57.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{copper/instrbit.csv}
+\par
+\raggedrigh...
+...line compare
+\par
+R 7 bit Next register 0x00..0x7F
+\par
+D 8 bit data
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html1074"
+  HREF="node116.html">NOOP</A>
+<LI><A ID="tex2html1075"
+  HREF="node117.html">MOVE</A>
+<LI><A ID="tex2html1076"
+  HREF="node118.html">WAIT</A>
+<LI><A ID="tex2html1077"
+  HREF="node119.html">Example</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

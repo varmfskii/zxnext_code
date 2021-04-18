@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Interactions between paging methods</TITLE>
-<META NAME="description" CONTENT="Interactions between paging methods">
+<TITLE>Spectrum 128 Special Paging</TITLE>
+<META NAME="description" CONTENT="Spectrum 128 Special Paging">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node77.html">
-<LINK REL="previous" HREF="node62.html">
+<LINK REL="previous" HREF="node75.html">
 <LINK REL="next" HREF="node77.html">
 </HEAD>
 
@@ -27,50 +26,58 @@
  HREF="node77.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node61.html">
+ HREF="node73.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node75.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html837"
+<A ID="tex2html849"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html839"
-  HREF="node213.html">
+<A ID="tex2html851"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node77.html">Memory Map</A>
+ HREF="node77.html">ROM</A>
 <B> Up:</B> <A
- HREF="node61.html">Memory</A>
+ HREF="node73.html">ZX Spectrum 128</A>
 <B> Previous:</B> <A
- HREF="node75.html">Multiface</A>
- &nbsp; <B>  <A ID="tex2html838"
+ HREF="node75.html">Paging out ROM</A>
+ &nbsp; <B>  <A ID="tex2html850"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html840"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html852"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00520000000000000000">
-Interactions between paging methods</A>
-</H1>
+<H5><A ID="SECTION00612023000000000000">
+Spectrum 128 Special Paging</A>
+</H5>
 
 <P>
-Changes made in 128 style and Next style memory management are
-synchronized. The most recent change always has priority. This means
-that
+&ldquo;Special paging mode&rdquo; (also called &ldquo;AllRam mode&rdquo; or &ldquo;CP/M mode&rdquo;)
+is enabled by writing a value with the LSB set to Plus 3 Memory Paging
+Control ($1FFD). Depending on the 3 low bits of this value a memory
+configuration is selected as follows:
 
 <P>
-using 128-style memory management to select a new 16k-bank in 16k-slot
-4 will update the MMU registers for the two 8k-slots with the
-corresponding 8k-bank numbers.  enabling AllRam mode will update all
-of the 8k-bank values with the appropriate 8k-slot numbers. These may
-then be overwritten using Next memory management without needing to
-alter the value at port $1FFD.  Since the 128-style memory management
-ports are not readable, there is no synchronization applicable in the
-other direction.
+<BR><P></P>
+<DIV class="CENTER"><A ID="1996"></A>
+<TABLE>
+<CAPTION><STRONG>Table 5.1:</STRONG>
+Special Paging Modes</CAPTION>
+<TR><TD><IMG STYLE=""
+ SRC="img45.svg"
+ ALT="\begin{table}\centering
+\csvautotabular{memory/zx128mm.csv}
+\end{table}"></TD></TR>
+</TABLE>
+</DIV><P></P>
+<BR>
+
+<P>
 <BR><HR>
 
 </BODY>

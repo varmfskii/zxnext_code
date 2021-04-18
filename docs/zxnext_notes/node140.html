@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>BIOS</TITLE>
-<META NAME="description" CONTENT="BIOS">
+<TITLE>Programming</TITLE>
+<META NAME="description" CONTENT="Programming">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node144.html">
 <LINK REL="previous" HREF="node139.html">
 <LINK REL="next" HREF="node141.html">
 </HEAD>
@@ -27,49 +26,163 @@
  HREF="node141.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node137.html">
+ HREF="node139.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node139.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1204"
+<A ID="tex2html1199"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1206"
-  HREF="node213.html">
+<A ID="tex2html1201"
+  HREF="node227.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node141.html">System Initialization Functions</A>
+ HREF="node141.html">Serial Communication</A>
 <B> Up:</B> <A
- HREF="node137.html">CP/M</A>
+ HREF="node139.html">Z80 CTC</A>
 <B> Previous:</B> <A
- HREF="node139.html">BDOS</A>
- &nbsp; <B>  <A ID="tex2html1205"
+ HREF="node139.html">Z80 CTC</A>
+ &nbsp; <B>  <A ID="tex2html1200"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1207"
-  HREF="node213.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1202"
+  HREF="node227.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION001113000000000000000">
-BIOS</A>
-</H2>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+<H4><A ID="SECTION00930010000000000000">
+Programming</A>
+</H4>
+Initial values are set by a write of a channel control word followed
+by a time constant. In timer mode, the counter decrements every time
+it is triggered. In counter mode it decrements every time the
+prescaler counter reaches zero.
 
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html1208"
-  HREF="node141.html">System Initialization Functions</A>
-<LI><A ID="tex2html1209"
-  HREF="node142.html">Character I/O Functions</A>
-<LI><A ID="tex2html1210"
-  HREF="node143.html">Disk I/O Functions</A>
-</UL>
-<!--End of Table of Child-Links-->
-<BR><HR>
+<P>
+Channel Control Word
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Enable Interrupt</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = Mode
+  
+<UL>
+<LI>0 = Timer mode
+</LI>
+<LI>1 = Counter mode
+  
+</LI>
+</UL></td></tr>
+<tr><td valign="top">&nbsp;bit 5 = Prescalar value (Timer mode only)
+  
+<UL>
+<LI>0 = 16
+</LI>
+<LI>1 = 256
+  
+</LI>
+</UL></td></tr>
+<tr><td valign="top">&nbsp;bit 4 = CLK/TRG edge selection
+  
+<UL>
+<LI>0 = Falling Edge
+</LI>
+<LI>1 = Rising Edge
+  
+</LI>
+</UL></td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Timer Trigger (Timer mode only)
+  
+<UL>
+<LI>0 = Starts on loading of time constant
+</LI>
+<LI>1 = Starts on CLK/TRG
+  
+</LI>
+</UL></td></tr>
+<tr><td valign="top">&nbsp;bit 2 = Time constant follows</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Software reset</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = 0 (Control Word)
+</td></tr></table>
+
+<P>
+If we are running at 28MHz (Mode 0) and wish to trigger an interrupt
+every 1 sec, that is 28 million T-States/cycles we could program CTC 5
+as a counter with a prescalar of 16 and a period of 175, CTC 6 as a
+counter with a prescalar of 16 and a period of 125, and CTC 7 as a
+timer with a period of 5.
+
+<P>
+CTC 5 triggers ZC5 every 280 cycles or 10 usec.
+
+<P>
+CTC 6 triggers ZC6 every 560,000 cycles or 20 msec.
+
+<P>
+CTC 7 triggers ZC7 and an interrupt every 28,000,000 cycles or 1 sec.
+
+<P>
+<PRE>
+di
+; set up interrupt routine
+im 2
+ld bc,$183B     ; CTC 0
+ld hl,$FFFA     ; address pointing to start of interrupt routine
+ld de,interrupt ; start of interrupt routine
+ld (hl),de
+ld i,$FF
+ld a,l          ; Vector to address at on this interrupt
+out (c),a
+; set up CTC 5
+ld b,$1D        ; CTC 5
+ld a,$87
+out (c),a       ; Interrupt mode, timer mode, time constant, soft, control
+ld a,$05
+out (c),a       ; once every 5 times 
+; set up CTC 6
+inc b           ; CTC 6
+ld a,$47
+out (c),a       ; 16x, counter mode, time constant, soft, control
+ld a,$7D        ; 125 = once every 2000 times
+out (c),a
+; set up CTC 7
+inc b           ; CTC 7
+ld a,$47
+out (c),a       ; 16x, counter mode, time constant, soft, control
+ld a,$AF        ; 175 = once every 2800 times
+ei
+</PRE>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node141.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node139.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node139.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html1199"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html1201"
+  HREF="node227.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node141.html">Serial Communication</A>
+<B> Up:</B> <A
+ HREF="node139.html">Z80 CTC</A>
+<B> Previous:</B> <A
+ HREF="node139.html">Z80 CTC</A>
+ &nbsp; <B>  <A ID="tex2html1200"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1202"
+  HREF="node227.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>
