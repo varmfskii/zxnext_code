@@ -91,6 +91,32 @@ keyboard mappings. These mappings are accomplished using nextregs \$28
 (keymap address MSB), \$29 (keymap address LSB), \$2A (keymap data
 MSB) and \$2B (keymap data LSB).
 
+Keymap data format:
+\begin{itemize}
+\item bit 8 = reserved, must be 0
+\item bits 7-6 = modifier
+  \begin{itemize}
+  \item[] 00 = No modifier
+  \item[] 01 = Caps Shift
+  \item[] 10 = Symbol Shift
+  \item[] 11 = Special Function
+  \end{itemize}
+\item bits 5-3 = row
+\item bits 2-0 = column (111 = no action)
+\end{itemize}
+
+If data is special function, the row will 0 and the column will be as follows:
+\begin{itemize}
+\item 0 = F1, hard reset
+\item 0 = F2, toggle scandoubler/hdmi reset
+\item 0 = F3, toggle 50/60 Hz
+\item 0 = F4, soft reset
+\item 0 = F5, (temporary) expansion bus on
+\item 0 = F6, (temporary) expansion bus off
+\item 0 = F7, change scanline weight
+\item 0 = F8, change CPU speed
+\end{itemize}  
+
 \input{registers/tbblue/28.tex}
 \input{registers/tbblue/29.tex}
 \input{registers/tbblue/2A.tex}
@@ -102,6 +128,15 @@ To remap PS/2 keyboard keys, the starting address for the keymap data
 is written to nextregs \$28 and \$29 keyboard data address followed by
 writing the data to nextregs \$2A and \$2B with the write to \$2B
 autoincrementing the address for the data.
+
+PS/2 keyboard function keys F9-F12 cannot be remapped and have a fixed function.
+\begin{itemize}
+\item F9 = Multiface NMI/Function key modifier (with 1-8 sends special
+  function F1-F8)
+\item F10 = divMMC NMI
+\item F11 = expansion bus on
+\item F12 = expansion bus off
+\end{itemize}
 
 \subsection{Joystick}
 

@@ -31,11 +31,11 @@
 <A
  HREF="node64.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html768"
+<A ID="tex2html774"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html770"
-  HREF="node227.html">
+<A ID="tex2html776"
+  HREF="node230.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -44,10 +44,10 @@
  HREF="node61.html">Basic Input/Output</A>
 <B> Previous:</B> <A
  HREF="node64.html">Mouse</A>
- &nbsp; <B>  <A ID="tex2html769"
+ &nbsp; <B>  <A ID="tex2html775"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html771"
-  HREF="node227.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html777"
+  HREF="node230.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
@@ -61,6 +61,51 @@ Both a PS/2 keyboard and the contoller buttons can be given custom
 keyboard mappings. These mappings are accomplished using nextregs $28
 (keymap address MSB), $29 (keymap address LSB), $2A (keymap data
 MSB) and $2B (keymap data LSB).
+
+<P>
+Keymap data format:
+
+<UL>
+<LI>bit 8 = reserved, must be 0
+</LI>
+<LI>bits 7-6 = modifier
+  <table width="90%">  <tr><td valign="top">&nbsp;00 = No modifier
+  </td></tr>
+<tr><td valign="top">&nbsp;01 = Caps Shift
+  </td></tr>
+<tr><td valign="top">&nbsp;10 = Symbol Shift
+  </td></tr>
+<tr><td valign="top">&nbsp;11 = Special Function
+  </td></tr></table>
+
+</LI>
+<LI>bits 5-3 = row
+</LI>
+<LI>bits 2-0 = column (111 = no action)
+</LI>
+</UL>
+
+<P>
+If data is special function, the row will 0 and the column will be as follows:
+
+<UL>
+<LI>0 = F1, hard reset
+</LI>
+<LI>0 = F2, toggle scandoubler/hdmi reset
+</LI>
+<LI>0 = F3, toggle 50/60 Hz
+</LI>
+<LI>0 = F4, soft reset
+</LI>
+<LI>0 = F5, (temporary) expansion bus on
+</LI>
+<LI>0 = F6, (temporary) expansion bus off
+</LI>
+<LI>0 = F7, change scanline weight
+</LI>
+<LI>0 = F8, change CPU speed
+</LI>
+</UL>  
 
 <P>
 Register (R/W) $28 (28) <SPAN CLASS="MATH"><IMG STYLE=""
@@ -130,13 +175,42 @@ Register (W) $2B (2B) <SPAN CLASS="MATH"><IMG STYLE=""
 <A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
 <UL CLASS="ChildLinks">
-<LI><A ID="tex2html772"
+<LI><A ID="tex2html778"
   HREF="node66.html">Keyboard</A>
-<LI><A ID="tex2html773"
+<LI><A ID="tex2html779"
   HREF="node67.html">Joystick</A>
 </UL>
 <!--End of Table of Child-Links-->
-<BR><HR>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node66.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node61.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node64.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html774"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html776"
+  HREF="node230.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node66.html">Keyboard</A>
+<B> Up:</B> <A
+ HREF="node61.html">Basic Input/Output</A>
+<B> Previous:</B> <A
+ HREF="node64.html">Mouse</A>
+ &nbsp; <B>  <A ID="tex2html775"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html777"
+  HREF="node230.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

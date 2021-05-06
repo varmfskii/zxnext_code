@@ -1,4 +1,4 @@
-Register Group,Register Function Description,Bitmask,Notes
+Group,Register Function Description,Bitmask,Notes
 WR0,Direction Operation and Port A configuration,0XXXXXAA,AA must NOT be 00
 WR1,Port A configuration,0XXXX100,
 WR2,Port B configuration,0XXXX000,

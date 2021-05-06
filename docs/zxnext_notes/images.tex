@@ -1,5 +1,5 @@
 \batchmode
-\documentclass[11pt]{book}
+\documentclass[10pt]{book}
 \RequirePackage{ifthen}
 
 
@@ -19,6 +19,17 @@
 
 \setlength{\parskip}{6pt} 
 \setlist{nosep}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@verbatim}
+         {\verbatim@font}
+         {\verbatim@font\scriptsize }
+         {}{}
+\makeatother
+\usepackage{pdflscape}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multicol}
 \makeindex
 
 
@@ -143,37 +154,37 @@
 % !!! IMAGES START HERE !!!
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline10611}%
+\lthtmlinlinemathA{tex2html_wrap_inline10829}%
 $256\times 192$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline10617}%
+\lthtmlinlinemathA{tex2html_wrap_inline10835}%
 $320\times 256$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline10620}%
+\lthtmlinlinemathA{tex2html_wrap_inline10838}%
 $640\times 256$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline11601}%
+\lthtmlinlinemathA{tex2html_wrap_inline11843}%
 $\overline {\hbox {RESET}}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline11604}%
+\lthtmlinlinemathA{tex2html_wrap_inline11846}%
 $\overline {\hbox {NMI}}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline11607}%
+\lthtmlinlinemathA{tex2html_wrap_inline11849}%
 $\overline {\hbox {INT}}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -183,25 +194,25 @@ $\overline {\hbox {INT}}$%
 \stepcounter{section}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline659}%
+\lthtmlinlinemathA{tex2html_wrap_inline671}%
 $256\times192\times256$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline661}%
+\lthtmlinlinemathA{tex2html_wrap_inline673}%
 $320\times256\times256$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline663}%
+\lthtmlinlinemathA{tex2html_wrap_inline675}%
 $640\times256\times16$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline665}%
+\lthtmlinlinemathA{tex2html_wrap_inline677}%
 $\Rightarrow$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -212,7 +223,7 @@ $\Rightarrow$%
 \stepcounter{subsection}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline683}%
+\lthtmlinlinemathA{tex2html_wrap_inline695}%
 $\times$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -220,7 +231,7 @@ $\times$%
 \stepcounter{subsection}
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlfigureA{table157}%
+\lthtmlfigureA{table169}%
 \begin{table}\centering
   
   \csvautotabular{video/flash.csv}
@@ -230,7 +241,7 @@ $\times$%
 
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlfigureA{table162}%
+\lthtmlfigureA{table174}%
 \begin{table}\centering
   
   \csvautotabular{video/palfmt.csv}
@@ -249,64 +260,64 @@ $\times$%
 \stepcounter{subsection}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline723}%
+\lthtmlinlinemathA{tex2html_wrap_inline735}%
 $8\times8$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline725}%
+\lthtmlinlinemathA{tex2html_wrap_inline737}%
 $32\times24$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline735}%
+\lthtmlinlinemathA{tex2html_wrap_inline747}%
 $0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline739}%
+\lthtmlinlinemathA{tex2html_wrap_inline751}%
 $0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline741}%
+\lthtmlinlinemathA{tex2html_wrap_inline753}%
 $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline743}%
+\lthtmlinlinemathA{tex2html_wrap_inline755}%
 $1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline747}%
+\lthtmlinlinemathA{tex2html_wrap_inline759}%
 $8\times1$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline749}%
+\lthtmlinlinemathA{tex2html_wrap_inline761}%
 $32\times192$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline757}%
+\lthtmlinlinemathA{tex2html_wrap_inline769}%
 $512\times192$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table233}%
+\lthtmlfigureA{table245}%
 \begin{table}\centering
   
   \csvautotabular{video/hires.csv}
@@ -315,32 +326,32 @@ $512\times192$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline759}%
+\lthtmlinlinemathA{tex2html_wrap_inline771}%
 $64\times32$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline763}%
+\lthtmlinlinemathA{tex2html_wrap_inline775}%
 $64\times24$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline765}%
+\lthtmlinlinemathA{tex2html_wrap_inline777}%
 $C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline767}%
+\lthtmlinlinemathA{tex2html_wrap_inline779}%
 $128\times96$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline769}%
+\lthtmlinlinemathA{tex2html_wrap_inline781}%
 $100xxxxx$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -356,25 +367,25 @@ $100xxxxx$%
 \stepcounter{section}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline819}%
+\lthtmlinlinemathA{tex2html_wrap_inline831}%
 $40\times32$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline823}%
+\lthtmlinlinemathA{tex2html_wrap_inline835}%
 $80\times32$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline829}%
+\lthtmlinlinemathA{tex2html_wrap_inline841}%
 $40\times30$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline831}%
+\lthtmlinlinemathA{tex2html_wrap_inline843}%
 $80\times30$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -389,25 +400,25 @@ $80\times30$%
 \stepcounter{paragraph}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline875}%
+\lthtmlinlinemathA{tex2html_wrap_inline887}%
 $16\times16$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline877}%
+\lthtmlinlinemathA{tex2html_wrap_inline889}%
 $2\times$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline879}%
+\lthtmlinlinemathA{tex2html_wrap_inline891}%
 $4\times$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline881}%
+\lthtmlinlinemathA{tex2html_wrap_inline893}%
 $8\times$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -419,13 +430,13 @@ $8\times$%
 \stepcounter{subsection}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline903}%
+\lthtmlinlinemathA{tex2html_wrap_inline915}%
 $1\times$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline907}%
+\lthtmlinlinemathA{tex2html_wrap_inline919}%
 $4\times4$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -433,7 +444,7 @@ $4\times4$%
 \stepcounter{subsection}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline963}%
+\lthtmlinlinemathA{tex2html_wrap_inline975}%
 $^O$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -447,31 +458,31 @@ $^O$%
 \stepcounter{chapter}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline1832}%
+\lthtmlinlinemathA{tex2html_wrap_inline1852}%
 $8\times 5$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline1834}%
+\lthtmlinlinemathA{tex2html_wrap_inline1854}%
 $8\times 7$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline1838}%
+\lthtmlinlinemathA{tex2html_wrap_inline1858}%
 $\Leftarrow$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline1840}%
+\lthtmlinlinemathA{tex2html_wrap_inline1860}%
 $\Downarrow$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline1842}%
+\lthtmlinlinemathA{tex2html_wrap_inline1862}%
 $\Uparrow$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -491,7 +502,7 @@ $\Uparrow$%
 \stepcounter{subparagraph}
 \stepcounter{subparagraph}
 {\newpage\clearpage
-\lthtmlfigureA{table1995}%
+\lthtmlfigureA{table2021}%
 \begin{table}\centering
   
   \csvautotabular{memory/zx128mm.csv}
@@ -516,7 +527,7 @@ $\Uparrow$%
 \stepcounter{section}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table2181}%
+\lthtmlfigureA{table2207}%
 \begin{table}\centering
   
   \csvautotabular{zxndma/registers.csv}
@@ -544,7 +555,7 @@ $\Uparrow$%
 \stepcounter{paragraph}
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlfigureA{table2324}%
+\lthtmlfigureA{table2350}%
 \begin{table}\centering
   
   \csvautotabular{copper/perline.csv}
@@ -553,7 +564,7 @@ $\Uparrow$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2328}%
+\lthtmlfigureA{table2354}%
 \begin{table}\centering
   
   \csvautotabular{copper/persec.csv}
@@ -564,7 +575,7 @@ $\Uparrow$%
 \stepcounter{paragraph}
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlfigureA{table2334}%
+\lthtmlfigureA{table2360}%
 \begin{table}\centering
   
   \csvautotabular{copper/maxhcmp.csv}
@@ -573,7 +584,7 @@ $\Uparrow$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2338}%
+\lthtmlfigureA{table2364}%
 \begin{table}\centering
   
   \csvautotabular{copper/aftermaxcmp.csv}
@@ -582,7 +593,7 @@ $\Uparrow$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2342}%
+\lthtmlfigureA{table2368}%
 \begin{table}\centering
   
   \csvautotabular{copper/htime.csv}
@@ -593,7 +604,7 @@ $\Uparrow$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2346}%
+\lthtmlfigureA{table2372}%
 \begin{table}\centering\tiny
   
   \csvautotabular{copper/vtime.csv}
@@ -607,19 +618,19 @@ $\Uparrow$%
 
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline2460}%
+\lthtmlinlinemathA{tex2html_wrap_inline2486}%
 $352\times288$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline2462}%
+\lthtmlinlinemathA{tex2html_wrap_inline2488}%
 $352\times240$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2351}%
+\lthtmlfigureA{table2377}%
 \begin{table}\centering
   
   \csvautotabular{copper/idealres.csv}
@@ -628,7 +639,7 @@ $352\times240$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2355}%
+\lthtmlfigureA{table2381}%
 \begin{table}\centering\small
   
   \csvautotabular{copper/idealparam.csv}
@@ -652,7 +663,7 @@ RIGHT: Last pixel of the extended right border area - see notes below**
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table2360}%
+\lthtmlfigureA{table2386}%
 \begin{table}\centering
   
   \csvautotabular{copper/instrbit.csv}
@@ -674,7 +685,7 @@ D   8 bit data
 \stepcounter{paragraph}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table2373}%
+\lthtmlfigureA{table2399}%
 \begin{table}\centering
   
   \csvautotabular{copper/regbit.csv}
@@ -689,7 +700,7 @@ C   2 bit control
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table2377}%
+\lthtmlfigureA{table2403}%
 \begin{table}\centering
   
   \csvautotabular{copper/controlmodes.csv}
@@ -710,7 +721,7 @@ C   2 bit control
 \stepcounter{paragraph}
 \stepcounter{paragraph}
 {\newpage\clearpage
-\lthtmlfigureA{table2419}%
+\lthtmlfigureA{table2445}%
 \begin{table}\centering
   
   \csvautotabular{copper/videotiming.csv}
@@ -732,25 +743,25 @@ C   2 bit control
 \stepcounter{chapter}
 \stepcounter{chapter}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline3441}%
+\lthtmlinlinemathA{tex2html_wrap_inline3467}%
 $\overline{\hbox{CS}}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline3443}%
+\lthtmlinlinemathA{tex2html_wrap_inline3469}%
 $\overline{\hbox{DATA}}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline3449}%
+\lthtmlinlinemathA{tex2html_wrap_inline3475}%
 $\hbox{Divider}=\frac{538461}{\hbox{Rate}}-1$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline3451}%
+\lthtmlinlinemathA{tex2html_wrap_inline3477}%
 $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -759,7 +770,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \stepcounter{section}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar3507}%
+\lthtmlfigureA{labeledpar3533}%
 \begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
 \textbf{COLOURS [RGB] \textit{paper} \textit{ink}}
 \end{labeledpar}%
@@ -767,7 +778,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar3515}%
+\lthtmlfigureA{labeledpar3541}%
 \begin{labeledpar}{Parameters}{\textit{paper}}
   Paper (background) colour
 \end{labeledpar}%
@@ -775,7 +786,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar3519}%
+\lthtmlfigureA{labeledpar3545}%
 \begin{labeledpar}{Parameters:}{\textit{ink}}
   Ink (foreground) colour
 \end{labeledpar}%
@@ -783,7 +794,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar3524}%
+\lthtmlfigureA{labeledpar3550}%
 \begin{labeledpar}{Parameters:}{RGB}
   Causes ink and paper colours to be interpreted as 9-bit octal RGB numbers
 \end{labeledpar}%
@@ -791,7 +802,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar3531}%
+\lthtmlfigureA{labeledpar3557}%
 \begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
 \textbf{COPYSYS}
 \end{labeledpar}%
@@ -799,7 +810,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar3539}%
+\lthtmlfigureA{labeledpar3565}%
 \begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
 \textbf{DATE}\\
 \textbf{DATE C}\\
@@ -811,7 +822,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar3550}%
+\lthtmlfigureA{labeledpar3576}%
 \begin{labeledpar}{Parameters}{\textit{time-specification}}
   Time/date in the format MM/DD/YY HH:MM:SS
 \end{labeledpar}%
@@ -819,7 +830,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar3555}%
+\lthtmlfigureA{labeledpar3581}%
 \begin{labeledpar}{Parameters:}{C}
   Continuously show the date and time until a key is pressed
 \end{labeledpar}%
@@ -827,7 +838,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar3559}%
+\lthtmlfigureA{labeledpar3585}%
 \begin{labeledpar}{Parameters:}{CONTINUOUS}
   Continuously show the date and time until a key is pressed
 \end{labeledpar}%
@@ -835,7 +846,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{labeledpar3563}%
+\lthtmlfigureA{labeledpar3589}%
 \begin{labeledpar}{Parameters:}{SET}
   Prompt the user for the current date and time
 \end{labeledpar}%
@@ -843,26 +854,26 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline4535}%
+\lthtmlinlinemathA{tex2html_wrap_inline4561}%
 \(|\)%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline4543}%
+\lthtmlinlinemathA{tex2html_wrap_inline4569}%
 \(>\)%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline4547}%
+\lthtmlinlinemathA{tex2html_wrap_inline4573}%
 \(<\)%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlfigureA{table3962}%
+\lthtmlfigureA{table3988}%
 \begin{table}\centering
   
 \csvautotabular{system/cpm/scb.csv}
@@ -871,7 +882,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table4083}%
+\lthtmlfigureA{table4109}%
 \begin{table}\centering
   
 \csvautotabular{system/cpm/return_codes.csv}
@@ -880,7 +891,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table4133}%
+\lthtmlfigureA{table4159}%
 \begin{table}\centering
   
 \csvautotabular{system/cpm/fcb.csv}
@@ -900,7 +911,7 @@ $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$%
 \stepcounter{subsection}
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4333}%
+\lthtmlfigureA{lstlisting4359}%
 \begin{lstlisting}[language=C]
 unsigned char esx_disk_filemap(uint8_t handle,struct esx_filemap *fmap)
 \end{lstlisting}%
@@ -908,7 +919,7 @@ unsigned char esx_disk_filemap(uint8_t handle,struct esx_filemap *fmap)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4336}%
+\lthtmlfigureA{lstlisting4362}%
 \begin{lstlisting}[language=C]
 void *esx_disk_stream_bytes(void *dst,uint16_t len)
 \end{lstlisting}%
@@ -916,7 +927,7 @@ void *esx_disk_stream_bytes(void *dst,uint16_t len)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4339}%
+\lthtmlfigureA{lstlisting4365}%
 \begin{lstlisting}[language=C]
 unsigned char esx_disk_stream_end(void)
 \end{lstlisting}%
@@ -924,7 +935,7 @@ unsigned char esx_disk_stream_end(void)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4342}%
+\lthtmlfigureA{lstlisting4368}%
 \begin{lstlisting}[language=C]
 void *esx_disk_stream_sectors(void *dst,uint8_t sectors)
 \end{lstlisting}%
@@ -932,7 +943,7 @@ void *esx_disk_stream_sectors(void *dst,uint8_t sectors)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4345}%
+\lthtmlfigureA{lstlisting4371}%
 \begin{lstlisting}[language=C]
 unsigned char esx_disk_stream_start(struct esx_filemap_entry *entry)
 \end{lstlisting}%
@@ -940,7 +951,7 @@ unsigned char esx_disk_stream_start(struct esx_filemap_entry *entry)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4348}%
+\lthtmlfigureA{lstlisting4374}%
 \begin{lstlisting}[language=C]
 unsigned char esx_dos_catalog(struct esx_cat *cat)
 \end{lstlisting}%
@@ -948,7 +959,7 @@ unsigned char esx_dos_catalog(struct esx_cat *cat)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4351}%
+\lthtmlfigureA{lstlisting4377}%
 \begin{lstlisting}[language=C]
 unsigned char esx_dos_catalog_next(struct esx_cat *cat)
 \end{lstlisting}%
@@ -956,7 +967,7 @@ unsigned char esx_dos_catalog_next(struct esx_cat *cat)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4354}%
+\lthtmlfigureA{lstlisting4380}%
 \begin{lstlisting}[language=C]
 unsigned char esx_dos_get_drive(void)
 unsigned char esx_dos_set_drive(unsigned char drive)
@@ -966,7 +977,7 @@ unsigned char esx_dos_set_drive(unsigned char drive)
 
 \stepcounter{subsection}
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4358}%
+\lthtmlfigureA{lstlisting4384}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_chdir(unsigned char *pathname)
 \end{lstlisting}%
@@ -974,7 +985,7 @@ unsigned char esx_f_chdir(unsigned char *pathname)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4361}%
+\lthtmlfigureA{lstlisting4387}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_chmod(unsigned char *filename, uint8_t attr_mask, uint8_t attr)
 \end{lstlisting}%
@@ -982,7 +993,7 @@ unsigned char esx_f_chmod(unsigned char *filename, uint8_t attr_mask, uint8_t at
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4364}%
+\lthtmlfigureA{lstlisting4390}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_close(unsigned char handle)
 \end{lstlisting}%
@@ -990,7 +1001,7 @@ unsigned char esx_f_close(unsigned char handle)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4367}%
+\lthtmlfigureA{lstlisting4393}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_closedir(unsigned char handle)
 \end{lstlisting}%
@@ -998,7 +1009,7 @@ unsigned char esx_f_closedir(unsigned char handle)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4370}%
+\lthtmlfigureA{lstlisting4396}%
 \begin{lstlisting}[language=C]
 uint32_t esx_f_fgetpos(unsigned char handle)
 \end{lstlisting}%
@@ -1006,7 +1017,7 @@ uint32_t esx_f_fgetpos(unsigned char handle)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4373}%
+\lthtmlfigureA{lstlisting4399}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_fstat(unsigned char handle, struct esx_stat *es)
 \end{lstlisting}%
@@ -1014,7 +1025,7 @@ unsigned char esx_f_fstat(unsigned char handle, struct esx_stat *es)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4376}%
+\lthtmlfigureA{lstlisting4402}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_ftrunc(unsigned char handle, uint32_t size)
 \end{lstlisting}%
@@ -1022,7 +1033,7 @@ unsigned char esx_f_ftrunc(unsigned char handle, uint32_t size)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4379}%
+\lthtmlfigureA{lstlisting4405}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_get_canonical_path(char *pathname, char *canonical)
 \end{lstlisting}%
@@ -1030,7 +1041,7 @@ unsigned char esx_f_get_canonical_path(char *pathname, char *canonical)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4382}%
+\lthtmlfigureA{lstlisting4408}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_getcwd(unsigned char *buf)
 \end{lstlisting}%
@@ -1038,7 +1049,7 @@ unsigned char esx_f_getcwd(unsigned char *buf)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4385}%
+\lthtmlfigureA{lstlisting4411}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_getcwd_drive(unsigned char drive, char *buf)
 \end{lstlisting}%
@@ -1046,7 +1057,7 @@ unsigned char esx_f_getcwd_drive(unsigned char drive, char *buf)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4388}%
+\lthtmlfigureA{lstlisting4414}%
 \begin{lstlisting}[language=C]
 uint32_t esx_f_getfree(void)
 \end{lstlisting}%
@@ -1054,7 +1065,7 @@ uint32_t esx_f_getfree(void)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4391}%
+\lthtmlfigureA{lstlisting4417}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_mkdir(unsigned char *pathname)
 \end{lstlisting}%
@@ -1062,7 +1073,7 @@ unsigned char esx_f_mkdir(unsigned char *pathname)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4394}%
+\lthtmlfigureA{lstlisting4420}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_open(unsigned char *filename,unsigned char mode)
 \end{lstlisting}%
@@ -1070,7 +1081,7 @@ unsigned char esx_f_open(unsigned char *filename,unsigned char mode)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4397}%
+\lthtmlfigureA{lstlisting4423}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_opendir(unsigned char *dirname)
 unsigned char esx_f_opendir_ex(unsigned char *dirname,uint8_t mode)
@@ -1079,7 +1090,7 @@ unsigned char esx_f_opendir_ex(unsigned char *dirname,uint8_t mode)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4400}%
+\lthtmlfigureA{lstlisting4426}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_open_p3(unsigned char *filename,unsigned char mode,struct esx_p3_hdr *h)
 \end{lstlisting}%
@@ -1087,7 +1098,7 @@ unsigned char esx_f_open_p3(unsigned char *filename,unsigned char mode,struct es
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4403}%
+\lthtmlfigureA{lstlisting4429}%
 \begin{lstlisting}[language=C]
 uint16_t esx_f_read(unsigned char handle, void *dst, size_t nbytes)
 \end{lstlisting}%
@@ -1095,7 +1106,7 @@ uint16_t esx_f_read(unsigned char handle, void *dst, size_t nbytes)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4406}%
+\lthtmlfigureA{lstlisting4432}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_readdir(unsigned char handle,struct esx_dirent *dirent)
 \end{lstlisting}%
@@ -1103,7 +1114,7 @@ unsigned char esx_f_readdir(unsigned char handle,struct esx_dirent *dirent)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4409}%
+\lthtmlfigureA{lstlisting4435}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_rename(unsigned char *old, unsigned char *new)
 \end{lstlisting}%
@@ -1111,7 +1122,7 @@ unsigned char esx_f_rename(unsigned char *old, unsigned char *new)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4412}%
+\lthtmlfigureA{lstlisting4438}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_rewinddir(unsigned char handle)
 \end{lstlisting}%
@@ -1119,7 +1130,7 @@ unsigned char esx_f_rewinddir(unsigned char handle)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4415}%
+\lthtmlfigureA{lstlisting4441}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_rmdir(unsigned char *pathname)
 \end{lstlisting}%
@@ -1127,7 +1138,7 @@ unsigned char esx_f_rmdir(unsigned char *pathname)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4418}%
+\lthtmlfigureA{lstlisting4444}%
 \begin{lstlisting}[language=C]
 uint32_t esx_f_seek(unsigned char handle, uint32_t distance, unsigned char whence)
 \end{lstlisting}%
@@ -1135,7 +1146,7 @@ uint32_t esx_f_seek(unsigned char handle, uint32_t distance, unsigned char whenc
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4421}%
+\lthtmlfigureA{lstlisting4447}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_seekdir(unsigned char handle,uint32_t pos)
 \end{lstlisting}%
@@ -1143,7 +1154,7 @@ unsigned char esx_f_seekdir(unsigned char handle,uint32_t pos)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4425}%
+\lthtmlfigureA{lstlisting4451}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_sync(unsigned char handle)
 \end{lstlisting}%
@@ -1151,7 +1162,7 @@ unsigned char esx_f_sync(unsigned char handle)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4428}%
+\lthtmlfigureA{lstlisting4454}%
 \begin{lstlisting}[language=C]
 uint32_t esx_f_telldir(unsigned char handle)
 \end{lstlisting}%
@@ -1159,7 +1170,7 @@ uint32_t esx_f_telldir(unsigned char handle)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4431}%
+\lthtmlfigureA{lstlisting4457}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_trunc(unsigned char *filename,uint32_t size)
 \end{lstlisting}%
@@ -1167,7 +1178,7 @@ unsigned char esx_f_trunc(unsigned char *filename,uint32_t size)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4434}%
+\lthtmlfigureA{lstlisting4460}%
 \begin{lstlisting}[language=C]
 unsigned char esx_f_unlink(unsigned char *filename)
 \end{lstlisting}%
@@ -1175,7 +1186,7 @@ unsigned char esx_f_unlink(unsigned char *filename)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4437}%
+\lthtmlfigureA{lstlisting4463}%
 \begin{lstlisting}[language=C]
 uint16_t esx_f_write(unsigned char handle, void *src, size_t nbytes)
 \end{lstlisting}%
@@ -1183,7 +1194,7 @@ uint16_t esx_f_write(unsigned char handle, void *src, size_t nbytes)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4440}%
+\lthtmlfigureA{lstlisting4466}%
 \begin{lstlisting}[language=C]
 unsigned char esx_ide_bank_alloc(unsigned char banktype)
 \end{lstlisting}%
@@ -1191,7 +1202,7 @@ unsigned char esx_ide_bank_alloc(unsigned char banktype)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4443}%
+\lthtmlfigureA{lstlisting4469}%
 \begin{lstlisting}[language=C]
 unsigned char esx_ide_bank_avail(unsigned char banktype)
 \end{lstlisting}%
@@ -1199,7 +1210,7 @@ unsigned char esx_ide_bank_avail(unsigned char banktype)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4446}%
+\lthtmlfigureA{lstlisting4472}%
 \begin{lstlisting}[language=C]
 unsigned char esx_ide_bank_free(unsigned char banktype, unsigned char page)
 \end{lstlisting}%
@@ -1207,7 +1218,7 @@ unsigned char esx_ide_bank_free(unsigned char banktype, unsigned char page)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4449}%
+\lthtmlfigureA{lstlisting4475}%
 \begin{lstlisting}[language=C]
 unsigned char esx_ide_bank_reserve(unsigned char banktype,unsigned char page)
 \end{lstlisting}%
@@ -1215,7 +1226,7 @@ unsigned char esx_ide_bank_reserve(unsigned char banktype,unsigned char page)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4452}%
+\lthtmlfigureA{lstlisting4478}%
 \begin{lstlisting}[language=C]
 unsigned char esx_ide_bank_total(unsigned char banktype)
 \end{lstlisting}%
@@ -1223,7 +1234,7 @@ unsigned char esx_ide_bank_total(unsigned char banktype)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4455}%
+\lthtmlfigureA{lstlisting4481}%
 \begin{lstlisting}[language=C]
 unsigned char esx_ide_browser(uint8_t browsercaps, void *filetypes, char *help,char *dst_sfn, char *dst_lfn)
 \end{lstlisting}%
@@ -1231,7 +1242,7 @@ unsigned char esx_ide_browser(uint8_t browsercaps, void *filetypes, char *help,c
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4458}%
+\lthtmlfigureA{lstlisting4484}%
 \begin{lstlisting}[language=C]
 unsigned char esx_ide_get_lfn(struct esx_lfn *dir, struct esx_cat_entry *query)
 \end{lstlisting}%
@@ -1239,7 +1250,7 @@ unsigned char esx_ide_get_lfn(struct esx_lfn *dir, struct esx_cat_entry *query)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4461}%
+\lthtmlfigureA{lstlisting4487}%
 \begin{lstlisting}[language=C]
 unsigned char esx_ide_mode_get(struct esx_mode *mode)
 \end{lstlisting}%
@@ -1247,7 +1258,7 @@ unsigned char esx_ide_mode_get(struct esx_mode *mode)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4464}%
+\lthtmlfigureA{lstlisting4490}%
 \begin{lstlisting}[language=C]
 unsigned char esx_ide_mode_set(struct esx_mode *mode)
 \end{lstlisting}%
@@ -1255,7 +1266,7 @@ unsigned char esx_ide_mode_set(struct esx_mode *mode)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4468}%
+\lthtmlfigureA{lstlisting4494}%
 \begin{lstlisting}[language=C]
 unsigned char esx_m_drvapi(struct esx_drvapi *)
 \end{lstlisting}%
@@ -1263,7 +1274,7 @@ unsigned char esx_m_drvapi(struct esx_drvapi *)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4471}%
+\lthtmlfigureA{lstlisting4497}%
 \begin{lstlisting}[language=C]
 void esx_m_errh(void (*handler)(uint8_t error))
 \end{lstlisting}%
@@ -1271,7 +1282,7 @@ void esx_m_errh(void (*handler)(uint8_t error))
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4474}%
+\lthtmlfigureA{lstlisting4500}%
 \begin{lstlisting}[language=C]
 uint16_t esx_m_execcmd(unsigned char *cmdline)
 \end{lstlisting}%
@@ -1279,7 +1290,7 @@ uint16_t esx_m_execcmd(unsigned char *cmdline)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4477}%
+\lthtmlfigureA{lstlisting4503}%
 \begin{lstlisting}[language=C]
 unsigned char esx_m_getdate(struct dos_tm *)
 \end{lstlisting}%
@@ -1287,7 +1298,7 @@ unsigned char esx_m_getdate(struct dos_tm *)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4480}%
+\lthtmlfigureA{lstlisting4506}%
 \begin{lstlisting}[language=C]
 void esx_m_geterr(uint16_t error,unsigned char *msg)
 \end{lstlisting}%
@@ -1295,7 +1306,7 @@ void esx_m_geterr(uint16_t error,unsigned char *msg)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4483}%
+\lthtmlfigureA{lstlisting4509}%
 \begin{lstlisting}[language=C]
 unsigned char esx_m_gethandle(void)
 \end{lstlisting}%
@@ -1303,7 +1314,7 @@ unsigned char esx_m_gethandle(void)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4486}%
+\lthtmlfigureA{lstlisting4512}%
 \begin{lstlisting}[language=C]
 unsigned char esx_m_getdrv(void)
 unsigned char esx_m_setdrv(unsigned char drive)
@@ -1312,7 +1323,7 @@ unsigned char esx_m_setdrv(unsigned char drive)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4489}%
+\lthtmlfigureA{lstlisting4515}%
 \begin{lstlisting}[language=C]
 unsigned char esx_m_setcaps(unsigned char caps)
 \end{lstlisting}%
@@ -1320,7 +1331,7 @@ unsigned char esx_m_setcaps(unsigned char caps)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4492}%
+\lthtmlfigureA{lstlisting4518}%
 \begin{lstlisting}[language=C]
 unsigned char esx_m_tapein_close(void)
 unsigned char esx_m_tapein_flags(uint8_t flags)
@@ -1334,7 +1345,7 @@ unsigned char esx_m_tapein_toggle_pause(void)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4495}%
+\lthtmlfigureA{lstlisting4521}%
 \begin{lstlisting}[language=C]
 unsigned char esx_m_tapeout_close(void)
 unsigned char esx_m_tapeout_info(uint8_t *drive,unsigned char *filename)
@@ -1345,7 +1356,7 @@ unsigned char esx_m_tapeout_trunc(unsigned char *filename)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4498}%
+\lthtmlfigureA{lstlisting4524}%
 \begin{lstlisting}[language=C]
 struct esx_dirent_slice *esx_slice_dirent(struct esx_dirent *)
 \end{lstlisting}%
@@ -1353,7 +1364,7 @@ struct esx_dirent_slice *esx_slice_dirent(struct esx_dirent *)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4501}%
+\lthtmlfigureA{lstlisting4527}%
 \begin{lstlisting}[language=C]
 unsigned char extended_sna_load(unsigned char handle)
 \end{lstlisting}%
@@ -1361,7 +1372,7 @@ unsigned char extended_sna_load(unsigned char handle)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4504}%
+\lthtmlfigureA{lstlisting4530}%
 \begin{lstlisting}[language=C]
 unsigned char *p3dos_copy_cstr_to_pstr(char *pdst, const char *csrc)
 \end{lstlisting}%
@@ -1369,7 +1380,7 @@ unsigned char *p3dos_copy_cstr_to_pstr(char *pdst, const char *csrc)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4507}%
+\lthtmlfigureA{lstlisting4533}%
 \begin{lstlisting}[language=C]
 unsigned char *p3dos_copy_pstr_to_cstr(char *cdst, const char *psrc)
 \end{lstlisting}%
@@ -1377,7 +1388,7 @@ unsigned char *p3dos_copy_pstr_to_cstr(char *cdst, const char *psrc)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4510}%
+\lthtmlfigureA{lstlisting4536}%
 \begin{lstlisting}[language=C]
 unsigned char *p3dos_cstr_to_pstr(unsigned char *s)
 \end{lstlisting}%
@@ -1385,7 +1396,7 @@ unsigned char *p3dos_cstr_to_pstr(unsigned char *s)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4513}%
+\lthtmlfigureA{lstlisting4539}%
 \begin{lstlisting}[language=C]
 char *p3dos_dosname_from_catname(char *dosname, char *catname)
 \end{lstlisting}%
@@ -1393,7 +1404,7 @@ char *p3dos_dosname_from_catname(char *dosname, char *catname)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4516}%
+\lthtmlfigureA{lstlisting4542}%
 \begin{lstlisting}[language=C]
 unsigned char p3dos_edrv_from_pdrv(unsigned char pdrv)
 \end{lstlisting}%
@@ -1401,7 +1412,7 @@ unsigned char p3dos_edrv_from_pdrv(unsigned char pdrv)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4519}%
+\lthtmlfigureA{lstlisting4545}%
 \begin{lstlisting}[language=C]
 unsigned char p3dos_pdrv_from_edrv(unsigned char edrv)
 \end{lstlisting}%
@@ -1409,7 +1420,7 @@ unsigned char p3dos_pdrv_from_edrv(unsigned char edrv)
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{lstlisting4522}%
+\lthtmlfigureA{lstlisting4548}%
 \begin{lstlisting}[language=C]
 unsigned char *p3dos_pstr_to_cstr(unsigned char *s)
 \end{lstlisting}%
@@ -1419,7 +1430,7 @@ unsigned char *p3dos_pstr_to_cstr(unsigned char *s)
 \appendix
 \stepcounter{chapter}
 {\newpage\clearpage
-\lthtmlfigureA{table6856}%
+\lthtmlfigureA{table6882}%
 \begin{table}\centering\tiny
   
   \csvautotabular{appendices/ports/ports.csv}
@@ -1432,13 +1443,13 @@ unsigned char *p3dos_pstr_to_cstr(unsigned char *s)
 \stepcounter{chapter}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline8554}%
+\lthtmlinlinemathA{tex2html_wrap_inline8580}%
 $\overline{\hbox{IORQULA}}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlinlinemathA{tex2html_wrap_inline8556}%
+\lthtmlinlinemathA{tex2html_wrap_inline8582}%
 $\overline{\hbox{ROMCS}}$%
 \lthtmlindisplaymathZ
 \lthtmlcheckvsize\clearpage}
@@ -1448,7 +1459,7 @@ $\overline{\hbox{ROMCS}}$%
 \stepcounter{chapter}
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table9048}%
+\lthtmlfigureA{table9074}%
 \begin{table}\centering\scriptsize
   
   \csvreader[wIntelT]{appendices/opcode/00-opcode.csv}{}%
@@ -1458,7 +1469,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9054}%
+\lthtmlfigureA{table9080}%
 \begin{table}\centering\scriptsize
   
   \csvreader[wIntelT]{appendices/opcode/20-opcode.csv}{}%
@@ -1468,7 +1479,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9060}%
+\lthtmlfigureA{table9086}%
 \begin{table}\centering\scriptsize
   
   \csvreader[wIntelT]{appendices/opcode/40-opcode.csv}{}%
@@ -1478,7 +1489,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9066}%
+\lthtmlfigureA{table9092}%
 \begin{table}\centering\scriptsize
   
   \csvreader[wIntelT]{appendices/opcode/60-opcode.csv}{}%
@@ -1488,7 +1499,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9072}%
+\lthtmlfigureA{table9098}%
 \begin{table}\centering\scriptsize
   
   \csvreader[wIntelT]{appendices/opcode/80-opcode.csv}{}%
@@ -1498,7 +1509,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9078}%
+\lthtmlfigureA{table9104}%
 \begin{table}\centering\scriptsize
   
   \csvreader[wIntelT]{appendices/opcode/A0-opcode.csv}{}%
@@ -1508,7 +1519,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9084}%
+\lthtmlfigureA{table9110}%
 \begin{table}\centering\scriptsize
   
   \csvreader[wIntelT]{appendices/opcode/C0-opcode.csv}{}%
@@ -1518,7 +1529,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9090}%
+\lthtmlfigureA{table9116}%
 \begin{table}\centering\scriptsize
   
   \csvreader[wIntelT]{appendices/opcode/E0-opcode.csv}{}%
@@ -1529,7 +1540,7 @@ $\overline{\hbox{ROMCS}}$%
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table9097}%
+\lthtmlfigureA{table9123}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/cb00-opcode.csv}{}%
@@ -1539,7 +1550,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9103}%
+\lthtmlfigureA{table9129}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/cb20-opcode.csv}{}%
@@ -1549,7 +1560,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9109}%
+\lthtmlfigureA{table9135}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/cb40-opcode.csv}{}%
@@ -1559,7 +1570,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9115}%
+\lthtmlfigureA{table9141}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/cb60-opcode.csv}{}%
@@ -1569,7 +1580,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9121}%
+\lthtmlfigureA{table9147}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/cb80-opcode.csv}{}%
@@ -1579,7 +1590,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9127}%
+\lthtmlfigureA{table9153}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/cba0-opcode.csv}{}%
@@ -1589,7 +1600,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9133}%
+\lthtmlfigureA{table9159}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/cbc0-opcode.csv}{}%
@@ -1599,7 +1610,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9139}%
+\lthtmlfigureA{table9165}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/cbe0-opcode.csv}{}%
@@ -1610,7 +1621,7 @@ $\overline{\hbox{ROMCS}}$%
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table9146}%
+\lthtmlfigureA{table9172}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/dd00-opcode.csv}{}%
@@ -1620,7 +1631,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9152}%
+\lthtmlfigureA{table9178}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/dd60-opcode.csv}{}%
@@ -1630,7 +1641,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9158}%
+\lthtmlfigureA{table9184}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/dd90-opcode.csv}{}%
@@ -1641,7 +1652,7 @@ $\overline{\hbox{ROMCS}}$%
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table9165}%
+\lthtmlfigureA{table9191}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/ed00-opcode.csv}{}%
@@ -1653,7 +1664,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9171}%
+\lthtmlfigureA{table9197}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/ed50-opcode.csv}{}%
@@ -1663,7 +1674,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9177}%
+\lthtmlfigureA{table9203}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/ed90-opcode.csv}{}%
@@ -1676,7 +1687,7 @@ $\overline{\hbox{ROMCS}}$%
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table9184}%
+\lthtmlfigureA{table9210}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/fd00-opcode.csv}{}%
@@ -1686,7 +1697,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9190}%
+\lthtmlfigureA{table9216}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/fd60-opcode.csv}{}%
@@ -1696,7 +1707,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9196}%
+\lthtmlfigureA{table9222}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/fd90-opcode.csv}{}%
@@ -1707,7 +1718,7 @@ $\overline{\hbox{ROMCS}}$%
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table9203}%
+\lthtmlfigureA{table9229}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/ddcb00-opcode.csv}{}%
@@ -1718,7 +1729,7 @@ $\overline{\hbox{ROMCS}}$%
 
 \stepcounter{section}
 {\newpage\clearpage
-\lthtmlfigureA{table9210}%
+\lthtmlfigureA{table9236}%
 \begin{table}\centering\scriptsize
   
   \csvreader[zilogT]{appendices/opcode/fdcb00-opcode.csv}{}%
@@ -1729,7 +1740,7 @@ $\overline{\hbox{ROMCS}}$%
 
 \stepcounter{chapter}
 {\newpage\clearpage
-\lthtmlfigureA{table9387}%
+\lthtmlfigureA{table9413}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/aci-mnemonics.csv}
@@ -1738,7 +1749,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9391}%
+\lthtmlfigureA{table9417}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/add-mnemonics.csv}
@@ -1747,7 +1758,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9395}%
+\lthtmlfigureA{table9421}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/adi-mnemonics.csv}
@@ -1756,7 +1767,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9399}%
+\lthtmlfigureA{table9425}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/bit0-mnemonics.csv}
@@ -1765,7 +1776,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9403}%
+\lthtmlfigureA{table9429}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/bit4-mnemonics.csv}
@@ -1774,7 +1785,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9407}%
+\lthtmlfigureA{table9433}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/brlc-mnemonics.csv}
@@ -1783,7 +1794,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9411}%
+\lthtmlfigureA{table9437}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/cp-mnemonics.csv}
@@ -1792,7 +1803,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9415}%
+\lthtmlfigureA{table9441}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/dcx-mnemonics.csv}
@@ -1801,7 +1812,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9419}%
+\lthtmlfigureA{table9445}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/in-mnemonics.csv}
@@ -1810,7 +1821,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9423}%
+\lthtmlfigureA{table9449}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/jc-mnemonics.csv}
@@ -1819,7 +1830,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9427}%
+\lthtmlfigureA{table9453}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/ld0-mnemonics.csv}
@@ -1828,7 +1839,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9431}%
+\lthtmlfigureA{table9457}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/ld1-mnemonics.csv}
@@ -1837,7 +1848,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9435}%
+\lthtmlfigureA{table9461}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/ld2-mnemonics.csv}
@@ -1846,7 +1857,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9439}%
+\lthtmlfigureA{table9465}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/ld3-mnemonics.csv}
@@ -1855,7 +1866,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9443}%
+\lthtmlfigureA{table9469}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/ld4-mnemonics.csv}
@@ -1864,7 +1875,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9447}%
+\lthtmlfigureA{table9473}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/ld5-mnemonics.csv}
@@ -1873,7 +1884,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9451}%
+\lthtmlfigureA{table9477}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/lda-mnemonics.csv}
@@ -1882,7 +1893,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9455}%
+\lthtmlfigureA{table9481}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/mov0-mnemonics.csv}
@@ -1891,7 +1902,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9459}%
+\lthtmlfigureA{table9485}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/mov1-mnemonics.csv}
@@ -1900,7 +1911,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9463}%
+\lthtmlfigureA{table9489}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/mul-mnemonics.csv}
@@ -1909,7 +1920,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9467}%
+\lthtmlfigureA{table9493}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/out-mnemonics.csv}
@@ -1918,7 +1929,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9471}%
+\lthtmlfigureA{table9497}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/res0-mnemonics.csv}
@@ -1927,7 +1938,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9475}%
+\lthtmlfigureA{table9501}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/res4-mnemonics.csv}
@@ -1936,7 +1947,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9479}%
+\lthtmlfigureA{table9505}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/ret-mnemonics.csv}
@@ -1945,7 +1956,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9483}%
+\lthtmlfigureA{table9509}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/rr-mnemonics.csv}
@@ -1954,7 +1965,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9487}%
+\lthtmlfigureA{table9513}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/sbb-mnemonics.csv}
@@ -1963,7 +1974,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9491}%
+\lthtmlfigureA{table9517}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/set0-mnemonics.csv}
@@ -1972,7 +1983,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9495}%
+\lthtmlfigureA{table9521}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/set4-mnemonics.csv}
@@ -1981,7 +1992,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9499}%
+\lthtmlfigureA{table9525}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/setae-mnemonics.csv}
@@ -1990,7 +2001,7 @@ $\overline{\hbox{ROMCS}}$%
 \lthtmlcheckvsize\clearpage}
 
 {\newpage\clearpage
-\lthtmlfigureA{table9503}%
+\lthtmlfigureA{table9529}%
 \begin{table}\centering\scriptsize
   
   \csvautotabular{appendices/mnemonic/sub-mnemonics.csv}
@@ -2043,10 +2054,17 @@ $\overline{\hbox{ROMCS}}$%
 \stepcounter{section}
 \stepcounter{chapter}
 \stepcounter{section}
+\begingroup \endgroup
 \stepcounter{section}
 \stepcounter{section}
 \stepcounter{subsection}
+\begingroup \endgroup
 \stepcounter{subsection}
+\begingroup \endgroup
 \stepcounter{subsection}
+\begingroup \endgroup
+\stepcounter{chapter}
+\stepcounter{section}
+\stepcounter{section}
 
 \end{document}

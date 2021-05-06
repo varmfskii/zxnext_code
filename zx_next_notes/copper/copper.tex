@@ -125,12 +125,12 @@ one pixel is one dot clock.
 
 Details of the dot clock counts can be found in tables 5.1 and 5.2.
 
-\begin{table}[h]\centering
+\begin{table}[ht]\centering
   \caption{Vertical Line Counts and Dot Clock Combinations}
   \csvautotabular{copper/perline.csv}
 \end{table}
 
-\begin{table}[h]\centering
+\begin{table}[ht]\centering
   \caption{Dot Clocks per Second}
   \csvautotabular{copper/persec.csv}
 \end{table}
@@ -167,7 +167,7 @@ The COPPER horizontal compare is 6 bits meaning that it can wait for
 the machine timing as that determines the number of dot clocks per
 line.
 
-\begin{table}[h]\centering
+\begin{table}[ht]\centering
   \caption{Maximum Horizontal COPPER Compare}
   \csvautotabular{copper/maxhcmp.csv}
 \end{table}
@@ -186,7 +186,7 @@ value. The slack is calculated using the following:
 
 dot clocks per line - maximum horizontal compare * 16
           
-\begin{table}[h]\centering
+\begin{table}[ht]\centering
   \caption{Slack Dot Clocks After Maximum Compare}
   \csvautotabular{copper/aftermaxcmp.csv}
 \end{table}
@@ -194,7 +194,7 @@ dot clocks per line - maximum horizontal compare * 16
 Table 5.5 provides details of the horizontal display, left/right
 border, blanking and COPPER dot clock/pixel position compare values:
 
-\begin{table}[h]\centering
+\begin{table}[ht]\centering
   \caption{Horizontal Timing}
   \csvautotabular{copper/htime.csv}
 
@@ -205,7 +205,7 @@ Table 5.6 provides a detailed list of vertical display, top/bottom
 border and blanking as well as maximum COPPER line compare. It also
 provides the ULA VBLANK interrupt line number.
 
-\begin{table}[h]\centering\tiny
+\begin{table}[ht]\centering\tiny
   \caption{Vertical Timing}
   \csvautotabular{copper/vtime.csv}
 
@@ -238,7 +238,7 @@ Maximum Extended VGA Resolutions
 
 60Hz = $352\times240$ (standard 256 resolution)
 
-\begin{table}[h]\centering
+\begin{table}[ht]\centering
   \caption{Ideal Extended Resolutions for Both VGA and HDMI}
   \csvautotabular{copper/idealres.csv}
 \end{table}
@@ -246,7 +246,7 @@ Maximum Extended VGA Resolutions
 Table 5.8 provides COPPER horizontal position and vertical
 line compare parameters for ideal extended resolutions:
 
-\begin{table}[h]\centering\small
+\begin{table}[ht]\centering\small
   \caption{Ideal Extended Resolution Display Parameters}
   \csvautotabular{copper/idealparam.csv}
 
@@ -273,7 +273,7 @@ well as the bit definitions and execution time.
 The three 16 bit COPPER instructions are comprised of the following
 bit definitions:
 
-\begin{table}[h]\centering
+\begin{table}[ht]\centering
   \caption{Instruction Bit Definition}
   \csvautotabular{copper/instrbit.csv}
 
@@ -408,7 +408,7 @@ Register \$61 holds the lower 8 bits of the index. Register \$62 holds
 the upper 3 bits of the index as well as two control bits which set
 the COPPER operating mode.
 
-\begin{table}[h]\centering
+\begin{table}[ht]\centering
   \caption{Register Bit Definitions}
   \csvautotabular{copper/regbit.csv}
 
@@ -435,7 +435,7 @@ four control settings reset the internal PC to zero.
 
 Table 5.11 describes the control bits:
 
-\begin{table}[h]\centering
+\begin{table}[ht]\centering
   \caption{Control Mode Definitions}
   \csvautotabular{copper/controlmodes.csv}
 
@@ -567,7 +567,7 @@ and video mode bits:
 Table 5.13 provides a full list of video timing configuration
 data:
 
-\begin{table}[h]\centering
+\begin{table}[ht]\centering
   \caption{Summary of Video Modes}
   \csvautotabular{copper/videotiming.csv}
 \end{table}

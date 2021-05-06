@@ -32,11 +32,11 @@
 <A
  HREF="node65.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html774"
+<A ID="tex2html780"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html776"
-  HREF="node227.html">
+<A ID="tex2html782"
+  HREF="node230.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
@@ -45,10 +45,10 @@
  HREF="node65.html">Keymapping</A>
 <B> Previous:</B> <A
  HREF="node65.html">Keymapping</A>
- &nbsp; <B>  <A ID="tex2html775"
+ &nbsp; <B>  <A ID="tex2html781"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html777"
-  HREF="node227.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html783"
+  HREF="node230.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
@@ -62,6 +62,21 @@ To remap PS/2 keyboard keys, the starting address for the keymap data
 is written to nextregs $28 and $29 keyboard data address followed by
 writing the data to nextregs $2A and $2B with the write to $2B
 autoincrementing the address for the data.
+
+<P>
+PS/2 keyboard function keys F9-F12 cannot be remapped and have a fixed function.
+
+<UL>
+<LI>F9 = Multiface NMI/Function key modifier (with 1-8 sends special
+  function F1-F8)
+</LI>
+<LI>F10 = divMMC NMI
+</LI>
+<LI>F11 = expansion bus on
+</LI>
+<LI>F12 = expansion bus off
+</LI>
+</UL>
 
 <P>
 <BR><HR>

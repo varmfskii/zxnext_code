@@ -1,12 +1,16 @@
 \section{NextZXOS Calls}
 
+\pagebreak
 \subsection{+3DOS Compatible Calls}
 
-\textbf{Filesystem Calls}
-
-\begin{tabular}[h]{ l l l }
+\begingroup
+\scriptsize
+\begin{longtable}[ht]{ l l l }
+  \hline
+  \multicolumn{3}{l}{\normalsize\textbf{Filesystem Calls}}\\
+  \hline
   DOS\_VERSION & \hexdec{0103} & Get +3DOS issue and version numbers\\
-  *DOS\_OPEN & \hexdec{0106} & Create and/or open a file\\
+  DOS\_OPEN* & \hexdec{0106} & Create and/or open a file\\
   DOS\_CLOSE & \hexdec{0109} & Close a file\\
   DOS\_ABANDON & \hexdec{010C} & Abandon a file\\
   DOS\_REF\_HEAD & \hexdec{010F} & Point at the header data for this file\\
@@ -14,55 +18,45 @@
   DOS\_WRITE & \hexdec{0115} & Write bytes from memory\\
   DOS\_BYTE\_READ & \hexdec{0118} & Read a byte\\
   DOS\_BYTE\_WRITE & \hexdec{011B} & Write a byte\\
-  *DOS\_CATALOG & \hexdec{011E} & Catalog disk directory\\
-  *DOS\_FREE\_SPACE & \hexdec{0121} & Free space on disk\\
+  DOS\_CATALOG* & \hexdec{011E} & Catalog disk directory\\
+  DOS\_FREE\_SPACE* & \hexdec{0121} & Free space on disk\\
   DOS\_DELETE & \hexdec{0124} & Delete a file\\
   DOS\_RENAME & \hexdec{0127} & Rename a file\\
   DOS\_BOOT & \hexdec{012A} & Boot an operating system or other program\\
   DOS\_SET\_DRIVE & \hexdec{012D} & Set/get default drive\\
   DOS\_SET\_USER & \hexdec{0130} & Set/get default user number\\
-  *DOS\_GET\_POSITION & \hexdec{0133} & Get file pointer for random access\\
+  DOS\_GET\_POSITION* & \hexdec{0133} & Get file pointer for random access\\
   DOS\_SET\_POSITION & \hexdec{0136} & Set file pointer for random access\\
-  *DOS\_GET\_EOF & \hexdec{0139} & Get end of file position for random access\\
+  DOS\_GET\_EOF* & \hexdec{0139} & Get end of file position for random access\\
   DOS\_GET\_1346 & \hexdec{013C} & Get memory usage in pages 1, 3, 4, 6\\
   DOS\_SET\_1346 & \hexdec{013F} & Re-allocate memory usage in pages 1, 3, 4, 6\\
   DOS\_FLUSH & \hexdec{0142} & Bring disk up to date\\
   DOS\_SET\_ACCESS & \hexdec{0145} & Change open file's access mode\\
   DOS\_SET\_ATTRIBUTES & \hexdec{0148} & Change a file's attributes\\
   DOS\_SET\_MESSAGE & \hexdec{014E} & Enable/disable error messages\\
-\end{tabular}
-
-\begin{tabular}[h]{ l l l }
+  \\
   DD\_L\_XDPB & \hexdec{0187} & Initialise an XDPB from a disk specification\\
   DD\_L\_DPB & \hexdec{018A} & Initialise a DPB from a disk specification\\
-\end{tabular}
-
-\textbf{System Calls}
-
-\begin{tabular}[h]{ l l l }
+  \hline
+  \multicolumn{3}{l}{\normalsize\textbf{System Calls}}\\
+  \hline
   DOS\_INITIALISE & \hexdec{0100} & Initialise +3DOS\\
-\end{tabular}
-
-\begin{tabular}[h]{ l l l }
+  \\
   IDE\_INTERFACE & \hexdec{00A3} & Initialise card interfaces\\
   IDE\_INIT & \hexdec{00A6} & Initialise IDEDOS\\
   IDE\_DRIVE & \hexdec{00A9} & Get unit handle\\
-  *IDE\_SECTOR\_READ & \hexdec{00AC} & Low-level sector read\\
-  *IDE\_SECTOR\_WRITE & \hexdec{00AF} & Low-level sector write\\
+  IDE\_SECTOR\_READ* & \hexdec{00AC} & Low-level sector read\\
+  IDE\_SECTOR\_WRITE* & \hexdec{00AF} & Low-level sector write\\
   IDE\_PARTITON\_READ & \hexdec{00C4} & Read a partition entry\\
   IDE\_PARTITION\_OPEN & \hexdec{00CD} & Open a partition\\
   IDE\_PARTITION\_CLOSE & \hexdec{00D0} & Close a partition\\
   IDE\_PARTITIONS & \hexdec{01A5} & Get number of open partitions\\
-\end{tabular}
-
-\textbf{Unimplemented Calls}
-
-\begin{tabular}[h]{ l l l }
+  \hline
+  \multicolumn{3}{l}{\normalsize\textbf{Unimplemented Calls}}\\
+  \hline
   DOS\_OPEN\_DRIVE & \hexdec{014B} & Open a drive as a single file\\
   DOS\_MAP\_B & \hexdec{0154} & Map B: onto unit 0 or 1\\
-\end{tabular}
-
-\begin{tabular}[h]{ l l l }
+  \\
   DD\_INTERFACE & \hexdec{0157} & Is the floppy disk driver interface present?\\
   DD\_INIT & \hexdec{015A} & Initialise disk driver\\
   DD\_SETUP & \hexdec{015D} & Specify drive parameters\\
@@ -85,9 +79,7 @@
   DD\_L\_ON\_MOTOR & \hexdec{0196} & Motor on, wait for motor-on time\\
   DD\_L\_T\_OFF\_MOTOR & \hexdec{0199} & Start the motor-off ticker\\
   DD\_L\_OFF\_MOTOR & \hexdec{019C} & Turn the motor off\\
-\end{tabular}
-
-\begin{tabular}[h]{ l l l }
+  \\
   IDE\_FORMAT & \hexdec{00B2} & Format a partition\\
   IDE\_PARTITION\_NEW & \hexdec{00B8} & Create partition\\
   IDE\_PARTITION\_INIT & \hexdec{00BB} & Initialise partition\\
@@ -99,77 +91,81 @@
   IDE\_PARTITION\_SETINFO & \hexdec{00D6} & Set byte in type-specific partition information\\
   IDE\_DOS\_UNPERMANENT & \hexdec{00FA} & Remove permanent drive mapping\\
   IDE\_IDENTIFY & \hexdec{01A2} & Return IDE drive identity information\\
-\end{tabular}
+\end{longtable}
+\endgroup
 
 \subsection{+3DOS compatible error codes}
 
-\textbf{Recoverable disk errors}
 
-\begin{tabular}[h]{ l l l }
-0 & rc\_ready & Drive not ready\\
-1 & rc\_wp & Disk is write protected\\
-2 & rc\_seek & Seek fail\\
-3 & rc\_crc & CRC data error\\
-4 & rc\_nodata & No data\\
-5 & rc\_mark & Missing address mark\\
-6 & rc\_unrecog & Unrecognised disk format\\
-7 & rc\_unknown & Unknown disk error\\
-8 & rc\_diskchg & Disk changed whilst +3DOS was using it\\
-9 & rc\_unsuit & Unsuitable media for drive\\
-\end{tabular}
-
-\textbf{Non-recoverable errors}
-
-\begin{tabular}[h]{ l l l }
-20 & rc\_badname & Bad filename\\
-21 & rc\_badparam & Bad parameter\\
-22 & rc\_nodrive & Drive not found\\
-23 & rc\_nofile & File not found\\
-24 & rc\_exists & File already exists\\
-25 & rc\_eof & End of file\\
-26 & rc\_diskfull & Disk full\\
-27 & rc\_dirfull & Directory full\\
-28 & rc\_ro & Read-only file\\
-29 & rc\_number & File number not open (or open with wrong access)\\
-30 & rc\_denied & Access denied\\
-31 & rc\_norename & Cannot rename between drives\\
-32 & rc\_extent & Extent missing\\
-33 & rc\_uncached & Uncached\\
-34 & rc\_toobig & File too big\\
-35 & rc\_notboot & Disk not bootable\\
-36 & rc\_inuse & Drive in use\\
-\end{tabular}
-
-\begin{tabular}[h]{ l l l }
-56 & rc\_invpartition & Invalid partition\\
-57 & rc\_partexist & Partition already exists\\
-58 & rc\_notimp & Not implemented\\
-59 & rc\_partopen & Partition open\\
-60 & rc\_nohandle & Out of handles\\
-61 & rc\_notswap & Not a swap partition\\
-62 & rc\_mapped & Drive already mapped\\
-63 & rc\_noxdpb & No XDPB\\
-64 & rc\_noswap & No suitable swap partition\\
-65 & rc\_invdevice & Invalid device\\
-67 & rc\_cmdphase & Command phase error\\
-68 & rc\_dataphase & Data phase error\\
-69 & rc\_notdir & Not a directory\\
-74 & rc\_fragmented & File is fragmented, use .DEFRAG\\
-\end{tabular}
+\begingroup
+\scriptsize
+\begin{longtable}[ht]{ l l l }
+  \hline
+  \multicolumn{3}{l}{\normalsize\textbf{Recoverable disk errors}}\\
+  \hline
+  0 & rc\_ready & Drive not ready\\
+  1 & rc\_wp & Disk is write protected\\
+  2 & rc\_seek & Seek fail\\
+  3 & rc\_crc & CRC data error\\
+  4 & rc\_nodata & No data\\
+  5 & rc\_mark & Missing address mark\\
+  6 & rc\_unrecog & Unrecognised disk format\\
+  7 & rc\_unknown & Unknown disk error\\
+  8 & rc\_diskchg & Disk changed whilst +3DOS was using it\\
+  9 & rc\_unsuit & Unsuitable media for drive\\
+  \hline
+  \multicolumn{3}{l}{\normalsize\textbf{Non-Recoverable errors}}\\
+  \hline
+  20 & rc\_badname & Bad filename\\
+  21 & rc\_badparam & Bad parameter\\
+  22 & rc\_nodrive & Drive not found\\
+  23 & rc\_nofile & File not found\\
+  24 & rc\_exists & File already exists\\
+  25 & rc\_eof & End of file\\
+  26 & rc\_diskfull & Disk full\\
+  27 & rc\_dirfull & Directory full\\
+  28 & rc\_ro & Read-only file\\
+  29 & rc\_number & File number not open (or open with wrong access)\\
+  30 & rc\_denied & Access denied\\
+  31 & rc\_norename & Cannot rename between drives\\
+  32 & rc\_extent & Extent missing\\
+  33 & rc\_uncached & Uncached\\
+  34 & rc\_toobig & File too big\\
+  35 & rc\_notboot & Disk not bootable\\
+  36 & rc\_inuse & Drive in use\\
+  \\
+  56 & rc\_invpartition & Invalid partition\\
+  57 & rc\_partexist & Partition already exists\\
+  58 & rc\_notimp & Not implemented\\
+  59 & rc\_partopen & Partition open\\
+  60 & rc\_nohandle & Out of handles\\
+  61 & rc\_notswap & Not a swap partition\\
+  62 & rc\_mapped & Drive already mapped\\
+  63 & rc\_noxdpb & No XDPB\\
+  64 & rc\_noswap & No suitable swap partition\\
+  65 & rc\_invdevice & Invalid device\\
+  67 & rc\_cmdphase & Command phase error\\
+  68 & rc\_dataphase & Data phase error\\
+  69 & rc\_notdir & Not a directory\\
+  74 & rc\_fragmented & File is fragmented, use .DEFRAG\\
+\end{longtable}
+\endgroup
 
 \subsection{esxDOS Compatible Calls}
 
-\textbf{Low-level calls}
 
-\begin{tabular}{ l l l }
+\begingroup
+\scriptsize
+\begin{longtable}{ l l l }
+  \hline
+  \multicolumn{3}{l}{\normalsize\textbf{Low-level calls}}\\
+  \hline
   disk\_filemap & \hexdec{85} & obtain file allocation map \\
   disk\_strmstart & \hexdec{86} & start streaming operation \\
   disk\_strmend & \hexdec{87} & end streaming operation \\
-\end{tabular}
-
-\textbf{Miscellaneous calls}
-
-\begin{tabular}{ l l l }
+  \hline
+  \multicolumn{3}{l}{\normalsize\textbf{Miscellaneous calls}}\\
+  \hline
   m\_dosversion & \hexdec{88} & get NextZXOS version/mode information \\
   m\_getsetdrv & \hexdec{89} & get/set default drive \\
   m\_tapein & \hexdec{8B} & tape redirection control (input) \\
@@ -182,11 +178,9 @@
   m\_geterr & \hexdec{93} & get or generate error message \\
   m\_p3dos & \hexdec{94} & execute +3DOS/IDEDOS/NextZXOS call \\
   m\_errh & \hexdec{95} & register dot command error handler \\
-\end{tabular}
-
-\textbf{File calls}
-
-\begin{tabular}{ l l l }
+  \hline
+  \multicolumn{3}{l}{\normalsize\textbf{File calls}}\\
+  \hline
   f\_open & \hexdec{9A} & open file \\
   f\_close & \hexdec{9B} & close file \\
   f\_sync & \hexdec{9C} & sync file changes to disk \\
@@ -211,4 +205,5 @@
   f\_chmod & \hexdec{AF} & change file attributes \\
   f\_rename & \hexdec{B0} & rename/move file \\
   f\_getfree & \hexdec{B1} & get free space \\
-\end{tabular}
+\end{longtable}
+\endgroup

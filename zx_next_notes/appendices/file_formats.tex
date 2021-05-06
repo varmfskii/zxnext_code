@@ -66,17 +66,20 @@ ULANext
 \item byte 6912 - ULANext mode
 \item bytes 6913-between 6228 and 7426 - ULANext palette data, size is
   dependent on specific ULANext mode and 8 or 9 bit palette entries.
-  \begin{tabular}{l | r | r | r | r}
-    mode & ink & paper & 8-bit & 9-bit \\
-    \$01 & 2 & 128 & 130 & 260\\
-    \$03 & 4 & 64 & 68 & 136\\
-    \$07 & 8 & 32 & 40 & 80\\
-    \$0F & 16 & 16 & 32 & 64\\
-    \$1F & 32 & 8 & 40 & 80\\
-    \$3F & 64 & 4 & 68 & 136\\
-    \$7F & 128 & 2 & 130 & 260\\
-    \$FF & 256 & 1 & 257 & 514
-  \end{tabular}
+
+  \begin{center}
+    \begin{tabular}{l | r | r | r | r}
+      mode & ink & paper & 8-bit & 9-bit \\
+      \$01 & 2 & 128 & 130 & 260\\
+      \$03 & 4 & 64 & 68 & 136\\
+      \$07 & 8 & 32 & 40 & 80\\
+      \$0F & 16 & 16 & 32 & 64\\
+      \$1F & 32 & 8 & 40 & 80\\
+      \$3F & 64 & 4 & 68 & 136\\
+      \$7F & 128 & 2 & 130 & 260\\
+      \$FF & 256 & 1 & 257 & 514
+    \end{tabular}
+  \end{center}
 \end{itemize}
 \section{SHC, MC, MLT}
 \paragraph{SHC}
@@ -99,17 +102,20 @@ ULANext
 \item byte 12288 - ULANext mode
 \item bytes 12289-between 12304 and 12802 - ULANext palette data, size
   is dependent on specific ULANext mode and 8 or 9 bit palette entries.
-  \begin{tabular}{l | r | r | r | r}
-    mode & ink & paper & 8-bit & 9-bit \\
-    \$01 & 2 & 128 & 130 & 260\\
-    \$03 & 4 & 64 & 68 & 136\\
-    \$07 & 8 & 32 & 40 & 80\\
-    \$0F & 16 & 16 & 32 & 64\\
-    \$1F & 32 & 8 & 40 & 80\\
-    \$3F & 64 & 4 & 68 & 136\\
-    \$7F & 128 & 2 & 130 & 260\\
-    \$FF & 256 & 1 & 257 & 514
-  \end{tabular}
+
+  \begin{center}
+    \begin{tabular}{l | r | r | r | r}
+      mode & ink & paper & 8-bit & 9-bit \\
+      \$01 & 2 & 128 & 130 & 260\\
+      \$03 & 4 & 64 & 68 & 136\\
+      \$07 & 8 & 32 & 40 & 80\\
+      \$0F & 16 & 16 & 32 & 64\\
+      \$1F & 32 & 8 & 40 & 80\\
+      \$3F & 64 & 4 & 68 & 136\\
+      \$7F & 128 & 2 & 130 & 260\\
+      \$FF & 256 & 1 & 257 & 514
+    \end{tabular}
+  \end{center}
 \end{itemize}
 
 \paragraph{MC}
@@ -126,7 +132,7 @@ Timex hi-resolution screen dump.
 
 A 12,288 or 12,289 byte file containing a memory dump of the two 6k
 screen areas used by Timex hi-resolution mode in memory order with an
-optional byte indicating teh colours used.
+optional byte indicating the colours used.
 \section{SL2, NXI}
 \paragraph{SL2}
 ZX Spectrum Next layer 2 screen dump

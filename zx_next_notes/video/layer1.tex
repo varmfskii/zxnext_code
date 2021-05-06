@@ -1,5 +1,5 @@
 \section{Layer 1}
-\begin{table}[h]
+\begin{table}[ht]
 \caption{Layer 1 Mode summary}
 \centering
 \begin{tabular}{|l|c|c|c|}
@@ -26,7 +26,7 @@ mode can either use the default ZX Spectrum colours, ULANext mode, or
 an emulation of ULAplus. In the Spectrum and Timex modes all colours are
 either Paper (foreground), paper (background), or border colours.
 
-\begin{table}[h]
+\begin{table}[ht]
   \caption{Layer 1 Memory Map}
   \centering
   \begin{tabular}{| l | c | c | c | c | c | c |}
@@ -56,7 +56,7 @@ In ULA colour INKs are mapped to indices 0-7, Bright INKS to indices
 8-15, PAPERs to indices 16-23 and Bright PAPERs to indices 24-31. This
 is the default state for interpreting ULA palettes.
 
-\begin{table}[h]\centering
+\begin{table}[ht]\centering
   \caption{ULA Colour}
   \csvautotabular{video/flash.csv}
 \end{table}
@@ -72,7 +72,7 @@ paper. ULANext is enabled using bit 0 of nextreg \$43 (palette
 control) and controlled with nextreg \$42 (ULA Next attribute byte
 format)
 
-\begin{table}[h]\centering
+\begin{table}[ht]\centering
   \caption{ULANext}
   \csvautotabular{video/palfmt.csv}
 \end{table}
@@ -428,7 +428,7 @@ width. It is selected by writing to the Timex ULA port (\$ff with
 values that also select which two colours (or colour entries in
 ULANext mode) you use.
 
-\begin{table}[h]\centering
+\begin{table}[ht]\centering
   \caption{Hi-Resolution Colours}
   \csvautotabular{video/hires.csv}
 \end{table}

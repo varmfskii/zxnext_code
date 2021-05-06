@@ -1,1 +1,161 @@
 \section{BDOS Call Table}
+
+\begingroup
+\scriptsize
+\begin{longtable}{ | l | l | l | l | }
+  \hline
+  \textbf{Name} & & \textbf{Parameters} & \textbf{Return Value}\\
+  \hline
+  \endhead
+  SYSTEM RESET & \hexdec{00} & & \\
+  \hline
+  CONSOLE INPUT & \hexdec{01} & & A=character \\
+  \hline
+  CONSOLE OUTPUT & \hexdec{02} & E=character & \\
+  \hline
+  AUXILIARY INPUT & \hexdec{03} & & A=character \\
+  \hline
+  AUXILIARY OUTPUT & \hexdec{04} & E=character & \\
+  \hline
+  LIST OUTPUT & \hexdec{05} & E=character & \\
+  \hline
+  DIRECT CONSOLE I/O & \hexdec{06} & E=function/data & A=char/status \\
+  \hline
+  AUXILIARY INPUT STATUS & \hexdec{07} & & A=status \\
+  \hline
+  AUXILIARY OUTPUT STATUS & \hexdec{08} & & A=status \\
+  \hline
+  PRINT STRING & \hexdec{09} & DE=string address & \\
+  \hline
+  READ CONSOLE BUFFER & \hexdec{0A} & DE=buffer address & data in buffer \\
+  \hline
+  GET CONSOLE STATUS & \hexdec{0B} & & A=status \\
+  \hline
+  RETURN VERSTION NUMBER & \hexdec{0C} & & HL=version number \\
+  \hline
+  RESET DISK SYSTEM & \hexdec{0D} & & \\
+  \hline
+  SELECT DISK & \hexdec{0E} & E=disk & A=error flag, E=error \\
+  \hline
+  OPEN FILE & \hexdec{0F} & DE=FCB address & A=dir code, H=error \\
+  \hline
+  CLOSE FILE & \hexdec{10} & DE=FCB address & A=dir code, H=error \\
+  \hline
+  SEARCH FOR FIRST & \hexdec{11} & DE=FCB address & A=dir code, H=error \\
+  \hline
+  SEARCH FOR NEXT & \hexdec{12} & & A=dir code, H=error \\
+  \hline
+  DELETE FILE & \hexdec{13} & DE=FCB address & A=dir code, H=error \\
+  \hline
+  READ SEQUENTIAL & \hexdec{14} & DE=FCB address & A=error code, H=phys error \\
+  \hline
+  WRITE SEQUENTIAL & \hexdec{15} & DE=FCB address & A=error code, H=phys error \\
+  \hline
+  MAKE FILE & \hexdec{16} & DE=FCB address & A=dir code, H=error \\
+  \hline
+  RENAME FILE & \hexdec{17} & DE=FCB address & A=dir code, H=error \\
+  \hline
+  RETURN LOGIN VECTOR & \hexdec{18} & & HL=login vector \\
+  \hline
+  RETURN CURRENT DISK & \hexdec{19} & & A=current disk \\
+  \hline
+  SET DMA ADDRESS & \hexdec{1A} & DE=DMA address & \\
+  \hline
+  GET ADDRESS (ALLOC) & \hexdec{1B} & & HL=ALLOC address \\
+  \hline
+  WRITE PROTECT DISK & \hexdec{1C} & & \\
+  \hline
+  GET READ-ONLY VECTOR & \hexdec{1D} & & HL=R/O Vector Value \\
+  \hline
+  SET FILE ATTRIBUTES & \hexdec{1E} & DE=FCB address & A=dir code, H=error \\
+  \hline
+  GET ADDR (DPB PARAMS) & \hexdec{1F} & & HL=DPB address \\
+  \hline
+  GET USER CODE & \hexdec{20} & E=\$FF & A=user code \\
+  \hline
+  SET USER CODE & \hexdec{20} & E=user code & \\
+  \hline
+  READ RANDOM & \hexdec{21} & DE=FCB address & A=error code, H=phys error \\
+  \hline
+  WRITE RANDOM & \hexdec{22} & DE=FCB address & A=error code, H=phys error \\
+  \hline
+  COMPUTE FILE SIZE & \hexdec{23} & DE=FCB address & A=error flag, H=error, \\
+  & & & FCB modified \\
+  \hline
+  SET RANDOM RECORD & \hexdec{24} & DE=FCB address & FCB modified \\
+  \hline
+  RESET DRIVE & \hexdec{25} & DE=Drive vector & A=\$00 \\
+  \hline
+  ACCESS DRIVE & \hexdec{26} & & \\
+  \hline
+  FREE DRIVE & \hexdec{27} & & \\
+  \hline
+  WRITE RANDOM WITH ZERO & \hexdec{28} & DE=FCB address & A=error code, H=phys error \\
+  FILL & & & \\
+  \hline
+  TEST AND WRITE RECORD & \hexdec{29} & DE=FCB address & A=error code, H=phys error \\
+  \hline
+  LOCK RECORD & \hexdec{2A} & DE=FCB address & A=\$00 \\
+  \hline
+  UNLOCK RECORD & \hexdec{2B} & DE=FCB address & A=\$00 \\
+  \hline
+  SET MULTI-SECTOR COUNT & \hexdec{2C} & E=Number of sectors & A=return code \\
+  \hline
+  SET BDOS ERROR MODE & \hexdec{2D} & E=BDOS Error mode & \\
+  \hline
+  GET FREE DISK SPACE & \hexdec{2E} & E=Drive & DMA Buffer modified, \\
+  & & & A=error flag, H=error code \\
+  \hline
+  CHAIN TO PROGRAM & \hexdec{2F} & E=chain flag & no return \\
+  \hline
+  FLUSH BUFFERS & \hexdec{30} & & A=error flag, H=error \\
+  \hline
+  GET/SET SYSTEM CONTROL & \hexdec{31} & DE=SCB PB address & A=returned byte, \\
+  BLOCK & & & HL=returned word \\
+  \hline
+  DIRECT BIOS CALL & \hexdec{32} & DE=BIOS PB address & BIOS return \\
+  \hline
+  LOAD OVERLAY & \hexdec{3B} & DE=FCB address & A=error code, H=phys error \\
+  \hline
+  CALL RESIDENT SYSTEM & \hexdec{3C} & DE=RSX PB address & A=error code, H=phys error \\
+  EXTENSION & & & \\
+  \hline
+  FREE BLOCKS & \hexdec{62} & & A=error flag, H=error \\
+  \hline
+  TRUNCATE FILE & \hexdec{63} & DE=FCB address & A=dir code, H=error \\
+  \hline
+  SET DIRECTORY LABEL & \hexdec{64} & DE=FCB address & A=dir code, H=error \\
+  \hline
+  RETURN DIRECTORY & \hexdec{65} & E=drive & A=dir label data byte \\
+  LABEL DATA & & & H=error \\
+  \hline
+  READ FILE STAMPS AND & \hexdec{66} & DE=FCB address & A=dir code, H=error \\
+  PASSWORD MODE & & & \\
+  \hline
+  WRITE XFCB & \hexdec{67} & DE=FCB address & A=dir code, H=error \\
+  \hline
+  SET DATE AND TIME & \hexdec{68} & DE=DAT address & \\
+  \hline
+  GET DATE AND TIME & \hexdec{69} & DE=DAT address & DAT modified, A=seconds \\
+  \hline
+  SET DEFAULT PASSWORD & \hexdec{6A} & DE=password address &  \\
+  \hline
+  RETURN SERIAL NUMBER & \hexdec{6B} & DE=serial number files & serial number field set \\
+  \hline
+  GET PROGRAM RET CODE & \hexdec{6C} & DE=\$FFFF & HL=program return code \\
+  \hline
+  SET PROGRAM RET CODE & \hexdec{6C} & DE=program return code & \\
+  \hline
+  GET CONSOLE MODE & \hexdec{6D} & DE=\$FFFF & HL=console mode \\
+  \hline
+  SET CONSOLE MODE & \hexdec{6D} & DE=console mode & \\
+  \hline
+  PRINT BLOCK & \hexdec{6F} & DE=CCB address & \\
+  \hline
+  LIST BLOCK & \hexdec{70} & DE=CCB address & \\
+  \hline
+  PARSE FILENAME & \hexdec{98} & DE=PCFB address & HL=return code, \\
+  & & & PCFB modified \\
+  \hline
+\end{longtable}
+\endgroup

@@ -1,4 +1,4 @@
-\documentclass[11pt]{book}
+\documentclass[10pt]{book}
 \usepackage{csvsimple}
 \usepackage{booktabs}
 \usepackage[shortlabels]{enumitem}
@@ -14,6 +14,17 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
 \setlist{nosep}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@verbatim}
+         {\verbatim@font}
+         {\verbatim@font\scriptsize}
+         {}{}
+\makeatother
+\usepackage{pdflscape}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multicol}
 \makeindex
 
 \title{ZX Spectrum Next Programming Notes}
@@ -49,6 +60,7 @@
 \include{appendices/mnemonic/mnemonic-opcode}
 \include{appendices/file_formats}
 \include{appendices/call_tables}
+\include{appendices/keyboard}
 \listoffigures
 \listoftables
 \printindex
