@@ -1,0 +1,40 @@
+[2:34 PM]
+
+The first step is being able to select if signals can generate
+interrupts and what style it is (pulsed or sticky).  For example, the
+current ula and line interrupts are pulsed because that's how the
+spectrum did it -- the int line is asserted for about 32 cpu cycles.
+A sticky interrupt would keep the int line asserted until the isr
+clears the condition by reading the signals status register.  A
+stickly interrupt would solve the DMA problem where the CPU cannot see
+interrupts while the DMA holds the bus.  If the interrupt is sticky,
+the CPU will see it after the DMA operation is finished.  So the CPU
+will get a late interrupt but it will see it.
+
+[2:35 PM]
+
+So all source signals (ula, line, ctc, etc) will pass through this
+programmable selection, pulsed or sticky.  Another register decides if
+the signals will generate an interrupt or not.  If not, the program
+must poll the signals register to see if the device is doing
+something.  If yes, the int line is held accordingly to generate an
+interrupt.
+
+[2:36 PM]
+
+So this will feed into how a spectrum normally deals with interrupts
+now -- there is one isr and it deals with everything.  ISRs would poll
+the signals register if they care to find out what actually caused the
+interrupt.
+
+[2:39 PM]
+
+The next step is im2 vectors and interrupt priorities.  This will
+include all signal sources as interrupt sources, not just the ctc, and
+how the interrupt vectors are generated is not decided yet.  It could
+be similar to what you posted with a programmable fixed portion of the
+vector and then some bits varying depending on the id of the highest
+priority interrupt source.  For compatilibilty reasons, 255 is special
+for the ula and expansion bus so how that is dealt with, if a new
+vector will be optionally generated for those cases, etc is not
+decided yet.

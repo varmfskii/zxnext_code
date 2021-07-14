@@ -3,8 +3,7 @@
 \item bits 7-1 = Reserved, must be 0
 \item bit 0 = Enable FDC traps on ports \$2ffd and \$3ffd
 \end{itemize}
-* An i/o trap generates a multiface nmi with nextreg \$02 indicating
-  which trap occurred\\
-* Avoid triggering traps via dma or while the divmmc or multiface is
-  paged in
-
+* An i/o trap generates a multiface \textoverline{NMI} with nextreg \$02
+  indicating which trap occurred\\
+* Traps cannot be triggered by the DMA or while the multiface, dma, or
+ external \textoverline{NMI} is active
