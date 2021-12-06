@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>The DMA and Interrupts</TITLE>
-<META NAME="description" CONTENT="The DMA and Interrupts">
+<TITLE>WR4 – Write Register Group 4</TITLE>
+<META NAME="description" CONTENT="WR4 – Write Register Group 4">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node103.html">
 <LINK REL="previous" HREF="node101.html">
 <LINK REL="next" HREF="node103.html">
 </HEAD>
@@ -26,53 +27,54 @@
  HREF="node103.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node93.html">
+ HREF="node97.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node101.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html992"
+<A ID="tex2html1001"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html994"
-  HREF="node230.html">
+<A ID="tex2html1003"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node103.html">Programming examples</A>
+ HREF="node103.html">WR5 – Write Register</A>
 <B> Up:</B> <A
- HREF="node93.html">zxnDMA Registers</A>
+ HREF="node97.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node101.html">Operating speed</A>
- &nbsp; <B>  <A ID="tex2html993"
+ HREF="node101.html">WR3 – Write Register</A>
+ &nbsp; <B>  <A ID="tex2html1002"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html995"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1004"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00760090000000000000">
-The DMA and Interrupts</A>
+<H4><A ID="SECTION00760050000000000000">
+WR4 – Write Register Group 4</A>
 </H4>
-
-<P>
-The zxnDMA cannot currently generate interrupts.
-
-<P>
-The other side of this is that while the DMA controls the bus, the Z80
-cannot respond to interrupts. On the Z80, the nmi interrupt is edge
-triggered so if an nmi occurs the fact that it occurred is stored
-internally in the Z80 so that it will respond when it is woken up. On
-the other hand, maskable interrupts are level triggered. That is, the
-Z80 must be active to regularly sample the /INT line to determine if a
-maskable interrupt is occurring. On the Spectrum and the ZX Next, the
-ULA (and line interrupt) are only asserted for a fixed amount of time
-&nbsp;30 cycles at 3.5MHz. If the DMA is executing a transfer while the
-interrupt is asserted, the CPU will not be able to see this and it
-will most likely miss the interrupt. In burst mode, the CPU will never
-miss these interrupts, although this may change if multiple channels
-are implemented.
+<PRE>
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 1   |   |   0   |   |   0   1
+     |   |       |   |
+     0   0 = Do not use (Behaves like Continuous mode, Byte mode on Z80 DMA)
+     0   1 = Continuous mode
+     1   0 = Burst mode
+     1   1 = Do not use
+                 |   |
+                 |   V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT B STARTING ADDRESS (LOW BYTE)
+                 |
+                 V
+D7  D6  D5  D4  D3  D2  D1  D0  PORT B STARTING ADDRESS (HIGH BYTE)
+</PRE>
+The Z80 DMA defines three more registers in this group through D4 that
+define interrupt behaviour. Interrups and pulse generation are not
+implemented in the zxnDMA nor are these registers available for
+writing.
 
 <P>
 <BR><HR>

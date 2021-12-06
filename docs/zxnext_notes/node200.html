@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>MLT</TITLE>
-<META NAME="description" CONTENT="MLT">
+<TITLE>SCR</TITLE>
+<META NAME="description" CONTENT="SCR">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,6 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
+<LINK REL="next" HREF="node201.html">
 <LINK REL="previous" HREF="node199.html">
 <LINK REL="next" HREF="node201.html">
 </HEAD>
@@ -26,40 +27,227 @@
  HREF="node201.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node197.html">
+ HREF="node179.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node199.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1537"
+<A ID="tex2html1543"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1539"
-  HREF="node230.html">
+<A ID="tex2html1545"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node201.html">SHR</A>
+ HREF="node201.html">SHC, MC, MLT</A>
 <B> Up:</B> <A
- HREF="node197.html">SHC, MC, MLT</A>
+ HREF="node179.html">File Formats</A>
 <B> Previous:</B> <A
- HREF="node199.html">MC</A>
- &nbsp; <B>  <A ID="tex2html1538"
+ HREF="node199.html">SID</A>
+ &nbsp; <B>  <A ID="tex2html1544"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1540"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1546"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION0017180030000000000000">
-MLT</A>
-</H4>
-A Timex hi-color image. Like .shc, but the colour map is stored in
-display order.
+<H1><A ID="SECTION0017170000000000000000">
+SCR</A>
+</H1>
+ZX Spectrum screen dump
 
 <P>
-<BR><HR>
+In basic form a 6912 byte file containing the bitmap and colour map
+for a standard spectrum image. May have ULAPlus or ULANext color data
+appended.
+
+<P>
+ULAplus
+
+<UL>
+<LI>bytes 0-6143 - bitmap: memory order
+</LI>
+<LI>bytes 6144-6911 - colour map: memory order
+</LI>
+<LI>bytes 6912-6975 - ULAPlus palette data
+</LI>
+</UL>
+ULANext
+
+<UL>
+<LI>bytes 0-6143 - bitmap: memory order
+</LI>
+<LI>bytes 6144-6911 - colour map: memory order
+</LI>
+<LI>byte 6912 - ULANext mode
+</LI>
+<LI>bytes 6913-between 6228 and 7426 - ULANext palette data, size is
+  dependent on specific ULANext mode and 8 or 9 bit palette entries.
+
+<P>
+<DIV class="CENTER">
+<TABLE class="PAD  BORDER" style="">
+<TR><TD CLASS="LEFT">mode</TD>
+<TD CLASS="LEFT">ink</TD>
+<TD CLASS="LEFT">paper</TD>
+<TD CLASS="RIGHT">8-bit</TD>
+<TD CLASS="LEFT">9-bit</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">$01</TD>
+<TD CLASS="LEFT">2</TD>
+<TD CLASS="LEFT">128</TD>
+<TD CLASS="RIGHT">130</TD>
+<TD CLASS="LEFT">260</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">$03</TD>
+<TD CLASS="LEFT">4</TD>
+<TD CLASS="LEFT">64</TD>
+<TD CLASS="RIGHT">68</TD>
+<TD CLASS="LEFT">136</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">$07</TD>
+<TD CLASS="LEFT">8</TD>
+<TD CLASS="LEFT">32</TD>
+<TD CLASS="RIGHT">40</TD>
+<TD CLASS="LEFT">80</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">$0F</TD>
+<TD CLASS="LEFT">16</TD>
+<TD CLASS="LEFT">16</TD>
+<TD CLASS="RIGHT">32</TD>
+<TD CLASS="LEFT">64</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">$1F</TD>
+<TD CLASS="LEFT">32</TD>
+<TD CLASS="LEFT">8</TD>
+<TD CLASS="RIGHT">40</TD>
+<TD CLASS="LEFT">80</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">$3F</TD>
+<TD CLASS="LEFT">64</TD>
+<TD CLASS="LEFT">4</TD>
+<TD CLASS="RIGHT">68</TD>
+<TD CLASS="LEFT">136</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">$7F</TD>
+<TD CLASS="LEFT">128</TD>
+<TD CLASS="LEFT">2</TD>
+<TD CLASS="RIGHT">130</TD>
+<TD CLASS="LEFT">260</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD CLASS="LEFT">$FF</TD>
+<TD CLASS="LEFT">256</TD>
+<TD CLASS="LEFT">1</TD>
+<TD CLASS="RIGHT">257</TD>
+<TD CLASS="LEFT">514</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="LEFT">&nbsp;</TD>
+<TD CLASS="RIGHT">&nbsp;</TD>
+</TR>
+</TABLE>
+</DIV>
+</LI>
+</UL>
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node201.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node179.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node199.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html1543"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html1545"
+  HREF="node234.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node201.html">SHC, MC, MLT</A>
+<B> Up:</B> <A
+ HREF="node179.html">File Formats</A>
+<B> Previous:</B> <A
+ HREF="node199.html">SID</A>
+ &nbsp; <B>  <A ID="tex2html1544"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1546"
+  HREF="node234.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

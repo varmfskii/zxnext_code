@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Next Extensions</TITLE>
-<META NAME="description" CONTENT="Next Extensions">
+<TITLE>NextZXOS</TITLE>
+<META NAME="description" CONTENT="NextZXOS">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -16,7 +16,7 @@
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node158.html">
-<LINK REL="previous" HREF="node156.html">
+<LINK REL="previous" HREF="node148.html">
 <LINK REL="next" HREF="node158.html">
 </HEAD>
 
@@ -27,145 +27,35 @@
  HREF="node158.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node154.html">
+ HREF="node147.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node156.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1304"
+<A ID="tex2html1309"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1306"
-  HREF="node230.html">
+<A ID="tex2html1311"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node158.html">esxDOS compatible API</A>
+ HREF="node158.html">NextZXOS</A>
 <B> Up:</B> <A
- HREF="node154.html">NextZXOS</A>
+ HREF="node147.html">System Software</A>
 <B> Previous:</B> <A
- HREF="node156.html">esxDOS compatible API</A>
- &nbsp; <B>  <A ID="tex2html1305"
+ HREF="node156.html">Clock Support Function</A>
+ &nbsp; <B>  <A ID="tex2html1310"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1307"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1312"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION001233000000000000000">
-Next Extensions</A>
-</H2>
-
-<P>
-$0085 <SPAN  CLASS="textbf">DISK_FILEMAP</SPAN>
-
-<P>
-<BR>
-<IMG STYLE=""
- SRC="img81.svg"
- ALT="\begin{lstlisting}[language=C]
-unsigned char esx_disk_filemap(uint8_t handle,struct esx_filemap *fmap)
-\end{lstlisting}">
-<BR>
-
-<P>
-Obtain a map of card addresses describing the space occupies by the
-file. Can be called multiple times if the buffer is filled, continuing
-from previous.
-
-<P>
-<SPAN  CLASS="textbf">DISK_STREAM_BYTES</SPAN>
-
-<P>
-<BR>
-<IMG STYLE=""
- SRC="img82.svg"
- ALT="\begin{lstlisting}[language=C]
-void *esx_disk_stream_bytes(void *dst,uint16_t len)
-\end{lstlisting}">
-<BR>
-
-<P>
-$0087 <SPAN  CLASS="textbf">DISK_STREAM_END</SPAN>
-
-<P>
-<BR>
-<IMG STYLE=""
- SRC="img83.svg"
- ALT="\begin{lstlisting}[language=C]
-unsigned char esx_disk_stream_end(void)
-\end{lstlisting}">
-<BR>
-
-<P>
-Stop current streaming operation.
-
-<P>
-<SPAN  CLASS="textbf">DISK_STREAM_SECTORS</SPAN>
-
-<P>
-<BR>
-<IMG STYLE=""
- SRC="img84.svg"
- ALT="\begin{lstlisting}[language=C]
-void *esx_disk_stream_sectors(void *dst,uint8_t sectors)
-\end{lstlisting}">
-<BR>
-
-<P>
-$0086 <SPAN  CLASS="textbf">DISK_STREAM_START</SPAN>
-
-<P>
-<BR>
-<IMG STYLE=""
- SRC="img85.svg"
- ALT="\begin{lstlisting}[language=C]
-unsigned char esx_disk_stream_start(struct esx_filemap_entry *entry)
-\end{lstlisting}">
-<BR>
-
-<P>
-Start reading from the card in streaming mode.
-
-<P>
-<SPAN  CLASS="textbf">DOS_CATALOG</SPAN>
-
-<P>
-<BR>
-<IMG STYLE=""
- SRC="img86.svg"
- ALT="\begin{lstlisting}[language=C]
-unsigned char esx_dos_catalog(struct esx_cat *cat)
-\end{lstlisting}">
-<BR>
-
-<P>
-<SPAN  CLASS="textbf">DOS_CATALOG_NEXT</SPAN>
-
-<P>
-<BR>
-<IMG STYLE=""
- SRC="img87.svg"
- ALT="\begin{lstlisting}[language=C]
-unsigned char esx_dos_catalog_next(struct esx_cat *cat)
-\end{lstlisting}">
-<BR>
-
-<P>
-<SPAN  CLASS="textbf">DOS_GETSET_DRIVE</SPAN>
-
-<P>
-<BR>
-<IMG STYLE=""
- SRC="img88.svg"
- ALT="\begin{lstlisting}[language=C]
-unsigned char esx_dos_get_drive(void)
-unsigned char esx_dos_set_drive(unsigned char drive)
-\end{lstlisting}">
-<BR>
-
-<P>
+<H1><A ID="SECTION001220000000000000000">
+NextZXOS</A>
+</H1>
 <BR><HR>
 
 </BODY>

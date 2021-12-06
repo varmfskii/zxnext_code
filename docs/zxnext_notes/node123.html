@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>START</TITLE>
-<META NAME="description" CONTENT="START">
+<TITLE>Example</TITLE>
+<META NAME="description" CONTENT="Example">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node124.html">
 <LINK REL="previous" HREF="node122.html">
 <LINK REL="next" HREF="node124.html">
 </HEAD>
@@ -27,41 +26,55 @@
  HREF="node124.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node120.html">
+ HREF="node119.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node122.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1116"
+<A ID="tex2html1121"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1118"
-  HREF="node230.html">
+<A ID="tex2html1123"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node124.html">FRAME</A>
+ HREF="node124.html">Control</A>
 <B> Up:</B> <A
- HREF="node120.html">Control</A>
+ HREF="node119.html">Instructions</A>
 <B> Previous:</B> <A
- HREF="node122.html">RESET</A>
- &nbsp; <B>  <A ID="tex2html1117"
+ HREF="node122.html">WAIT</A>
+ &nbsp; <B>  <A ID="tex2html1122"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1119"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1124"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00830030000000000000">
-START</A>
+<H4><A ID="SECTION00820040000000000000">
+Example</A>
 </H4>
 
 <P>
-Entering this mode causes an idle COPPER to start executing
-instructions from the current program counter. Entering this mode
-while the COPPER is running has no effect other than to disable FRAME
-mode if active.
+The following example provides a simple COPPER program to move data to
+a hardware register at two specific pixel positions. The BYTES for the
+program are listed in the left column:
+
+<P>
+<PRE>
+         PAL8 equ   0x41           ; 8 bit palette hardware register
+
+$80,$00       WAIT  0,0            ; wait for pixel position 0,0 (H,V)
+$00,$00       NOOP                 ; fine tune timing by one dot clock
+$41,$E0       MOVE  PAL8,11100000b ; write RED to palette register
+
+$C0,$BF       WAIT  32,191         ; wait for pixel position 256,191
+$00,$00       NOOP                 ; fine tune timing by one dot clock
+$41,$00       MOVE  PAL8,00000000b ; write BLACK to palette register
+
+$FF,$FF       WAIT  63,511         ; wait for an out of range position
+</PRE>
 
 <P>
 <BR><HR>

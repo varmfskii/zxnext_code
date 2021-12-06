@@ -1,0 +1,30 @@
+\section{Memory Decoding}
+
+The ZX Next uses a heirarchical memory decoding scheme. Looking at the
+virtual memory address, the decode order is:
+
+\paragraph{ROM area} \$0000-\$1000
+
+\begin{enumerate}
+\item bootrom
+\item multiface
+\item divmmc
+\item layer 2 mapping
+\item mmu
+\item config
+\item romcs expansion bus
+\item rom
+\end{enumerate}
+
+\paragraph{Mid memory} \$2000-\$DFFF
+
+\begin{enumerate}
+\item layer 2 mapping
+\item mmu
+\end{enumerate}
+
+\paragraph{High memory} \$E000-\$FFFF
+
+\begin{enumerate}
+\item mmu
+\end{enumerate}

@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Overview</TITLE>
-<META NAME="description" CONTENT="Overview">
+<TITLE>The DMA and Interrupts</TITLE>
+<META NAME="description" CONTENT="The DMA and Interrupts">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -26,111 +26,56 @@
  HREF="node107.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node104.html">
+ HREF="node97.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node105.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1033"
+<A ID="tex2html1017"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1035"
-  HREF="node230.html">
+<A ID="tex2html1019"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node107.html">Timing</A>
+ HREF="node107.html">Programming examples</A>
 <B> Up:</B> <A
- HREF="node104.html">Copper and Display Timing</A>
+ HREF="node97.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node105.html">Introduction</A>
- &nbsp; <B>  <A ID="tex2html1034"
+ HREF="node105.html">Operating speed</A>
+ &nbsp; <B>  <A ID="tex2html1018"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1036"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1020"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00800020000000000000">
-Overview</A>
+<H4><A ID="SECTION00760090000000000000">
+The DMA and Interrupts</A>
 </H4>
 
 <P>
-The ZX Spectrum Next COPPER has three instructions: NOOP, MOVE, WAIT. 
+The zxnDMA cannot currently generate interrupts.
 
 <P>
-NOOP is used to fine tune timing. MOVE writes data to a specific range
-of hardware registers. WAIT waits for a pixel position on the video
-display.
+The other side of this is that while the DMA controls the bus, the Z80
+cannot respond to interrupts. On the Z80, the nmi interrupt is edge
+triggered so if an nmi occurs the fact that it occurred is stored
+internally in the Z80 so that it will respond when it is woken up. On
+the other hand, maskable interrupts are level triggered. That is, the
+Z80 must be active to regularly sample the /INT line to determine if a
+maskable interrupt is occurring. On the Spectrum and the ZX Next, the
+ULA (and line interrupt) are only asserted for a fixed amount of time
+&nbsp;30 cycles at 3.5MHz. If the DMA is executing a transfer while the
+interrupt is asserted, the CPU will not be able to see this and it
+will most likely miss the interrupt. In burst mode, the CPU will never
+miss these interrupts, although this may change if multiple channels
+are implemented.
 
 <P>
-These instructions are stored in 2k (2048 BYTES) of dedicated
-write-only program RAM also known as a &ldquo;Copper list&rdquo;.
-
-<P>
-Each instruction is 16 bits (WORD) in size allowing for a maximum of
-1024 instructions to be stored in the program RAM. The COPPER uses an
-internal 10 bit program counter (PC) which wraps to zero at the end of
-the list. The PC can be reset to zero, this is the default value after
-a hard/soft reset.
-
-<P>
-The instructions are stored in big endian format and transferred to
-the 2k program RAM using the Z80 or DMA (bits 15..8 followed by bits
-7..0).
-
-<P>
-Three write-only hardware registers control access to the program RAM
-as well as the operating modes.
-
-<P>
-System performance is not affected when the COPPER is executing instructions.
-
-<P>
-The hardware registers and COPPER program RAM are not connected to the
-main memory BUS. The overall design of this system together with the
-use of alternate clock edges means that contention between the COPPER,
-Z80 and DMA has been eliminated.
-
-<P>
-The COPPER has a base clock speed of 13.5Mhz for HDMI and 14Mhz for VGA.
-
-<P>
-The bandwidth is around 14 million single cycle NOOP/WAIT instructions
-and 7 million two cycle MOVE instructions per second.
-
-<P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node107.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node104.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node105.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1033"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1035"
-  HREF="node230.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node107.html">Timing</A>
-<B> Up:</B> <A
- HREF="node104.html">Copper and Display Timing</A>
-<B> Previous:</B> <A
- HREF="node105.html">Introduction</A>
- &nbsp; <B>  <A ID="tex2html1034"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1036"
-  HREF="node230.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<BR><HR>
 
 </BODY>
 </HTML>

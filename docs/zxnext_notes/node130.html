@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Interrupts</TITLE>
-<META NAME="description" CONTENT="Interrupts">
+<TITLE>Refresh Rate</TITLE>
+<META NAME="description" CONTENT="Refresh Rate">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node141.html">
-<LINK REL="previous" HREF="node104.html">
+<LINK REL="next" HREF="node131.html">
+<LINK REL="previous" HREF="node129.html">
 <LINK REL="next" HREF="node131.html">
 </HEAD>
 
@@ -27,87 +27,133 @@
  HREF="node131.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="zxnext_notes.html">
+ HREF="node129.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node129.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1148"
+<A ID="tex2html1157"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1150"
-  HREF="node230.html">
+<A ID="tex2html1159"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node131.html">Interrupt Types</A>
+ HREF="node131.html">Video Modes</A>
 <B> Up:</B> <A
- HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
+ HREF="node129.html">Configuration</A>
 <B> Previous:</B> <A
- HREF="node129.html">Summary</A>
- &nbsp; <B>  <A ID="tex2html1149"
+ HREF="node129.html">Configuration</A>
+ &nbsp; <B>  <A ID="tex2html1158"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1151"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1160"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00900000000000000000">
-Interrupts</A>
-</H1>
+<H4><A ID="SECTION00840010000000000000">
+Refresh Rate</A>
+</H4>
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+The refresh rate must be taken into account and can change real-time
+so should be monitored and auto-configured when the COPPER is active
+as the line count will change with the refresh rate. This could lead
+to the COPPER waiting for lines that never occur.
 
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html1152"
-  HREF="node131.html">Interrupt Types</A>
+<P>
+Register (R/W) $05 (05) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Peripheral 1 Settings
+
 <UL>
-<LI><A ID="tex2html1153"
-  HREF="node132.html"><!-- MATH
- $\overline{\hbox{RESET}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img4.svg"
- ALT="$\overline {\hbox {RESET}}$"></SPAN></A>
-<LI><A ID="tex2html1154"
-  HREF="node133.html"><!-- MATH
- $\overline{\hbox{NMI}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img5.svg"
- ALT="$\overline {\hbox {NMI}}$"></SPAN></A>
-<LI><A ID="tex2html1155"
-  HREF="node134.html"><!-- MATH
- $\overline{\hbox{INT}}$
- -->
-<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img6.svg"
- ALT="$\overline {\hbox {INT}}$"></SPAN></A>
+<LI>bits 7-6 = joystick 1 mode (MSB)
+</LI>
+<LI>bits 5-4 = joystick 2 mode (MSB)
+</LI>
+<LI>bit 3 = joystick 1 mode (LSB)
+</LI>
+<LI>bit 2 = 50/60 Hz mode (0 = 50Hz, 1 = 60Hz)
+</LI>
+<LI>bit 1 = joystick 2 mode (LSB)
+</LI>
+<LI>bit 0 = Enable Scandoubler
+</LI>
 </UL>
-<BR>
-<LI><A ID="tex2html1156"
-  HREF="node135.html">Interrupt Modes</A>
+Joystick modes
+
 <UL>
-<LI><A ID="tex2html1157"
-  HREF="node136.html">IM0</A>
-<LI><A ID="tex2html1158"
-  HREF="node137.html">IM1</A>
-<LI><A ID="tex2html1159"
-  HREF="node138.html">IM2</A>
+<LI>000 = Sinclair 2 (67890)
+</LI>
+<LI>001 = Kempston 2 (port $37)
+</LI>
+<LI>010 = Kempston 1 (port $1F)
+</LI>
+<LI>011 = Megadrive 1 (port $1F)
+</LI>
+<LI>100 = Cursor
+</LI>
+<LI>101 = Megadrive 2 (port $37)
+</LI>
+<LI>110 = Sinclair 1 (12345)
+</LI>
+<LI>111 = User Defined Keys Joystick
+</LI>
 </UL>
+<table width="90%"><tr><td align="right" valign="top">*</td><td valign="top">&nbsp;Joysticks can be placed in i/o mode via nextreg 0x0B.</td></tr>
+<tr><td align="right" valign="top">*</td><td valign="top">&nbsp;Programming the user defined keys joystick is done through the ps2
+keymap interface on nextreg 0x28, 0x29 and 0x2B:
+</td></tr></table>
+
+<OL>
+<LI>Write 128 to nextreg 0x28
+</LI>
+<LI>Write 0 (left joystick) or 16 (right joystick) to nextreg 0x29
+</LI>
+<LI>Write eleven bytes to nextreg 0x2B. The bytes correspond to the eleven
+buttons on an md pad (X=11 Z Y START A C B U D L R=1)
+</LI>
+<LI>Each byte written identifies a key in the 8x7 membrane; bits 5:3 select
+the row and bits 2:0 select the column with 111 meaning no action.
+<BR>*
+In all joystick modes, excess buttons on an md pad not read via ports
+will generate key input if so programmed.
+</LI>
+</OL>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node131.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node129.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node129.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html1157"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html1159"
+  HREF="node234.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
-<LI><A ID="tex2html1160"
-  HREF="node139.html">Z80 CTC</A>
-<UL>
-<LI><A ID="tex2html1161"
-  HREF="node140.html">Programming</A>
-</UL></UL>
-<!--End of Table of Child-Links-->
-<BR><HR>
+<B> Next:</B> <A
+ HREF="node131.html">Video Modes</A>
+<B> Up:</B> <A
+ HREF="node129.html">Configuration</A>
+<B> Previous:</B> <A
+ HREF="node129.html">Configuration</A>
+ &nbsp; <B>  <A ID="tex2html1158"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1160"
+  HREF="node234.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

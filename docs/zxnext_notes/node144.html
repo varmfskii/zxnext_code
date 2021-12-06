@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>CP/M</TITLE>
-<META NAME="description" CONTENT="CP/M">
+<TITLE>Programming</TITLE>
+<META NAME="description" CONTENT="Programming">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node153.html">
 <LINK REL="previous" HREF="node143.html">
 <LINK REL="next" HREF="node145.html">
 </HEAD>
@@ -32,62 +31,158 @@
 <A
  HREF="node143.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1236"
+<A ID="tex2html1230"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1238"
-  HREF="node230.html">
+<A ID="tex2html1232"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node145.html">Utilities</A>
+ HREF="node145.html">Serial Communication</A>
 <B> Up:</B> <A
- HREF="node143.html">System Software</A>
+ HREF="node143.html">Z80 CTC</A>
 <B> Previous:</B> <A
- HREF="node143.html">System Software</A>
- &nbsp; <B>  <A ID="tex2html1237"
+ HREF="node143.html">Z80 CTC</A>
+ &nbsp; <B>  <A ID="tex2html1231"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1239"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1233"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION001210000000000000000">
-CP/M</A>
-</H1>
-The ZX Spextrum Next has support for CP/M+ 3.0. CP/M was the most
-popular microcomputer coperating system prior to the advent of MS-DOS.
+<H4><A ID="SECTION00930010000000000000">
+Programming</A>
+</H4>
+Initial values are set by a write of a channel control word followed
+by a time constant. In timer mode, the counter decrements every time
+it is triggered. In counter mode it decrements every time the
+prescaler counter reaches zero.
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+Channel Control Word
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Enable Interrupt</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = Mode
+  
+<UL>
+<LI>0 = Timer mode
+</LI>
+<LI>1 = Counter mode
+  
+</LI>
+</UL></td></tr>
+<tr><td valign="top">&nbsp;bit 5 = Prescalar value (Timer mode only)
+  
+<UL>
+<LI>0 = 16
+</LI>
+<LI>1 = 256
+  
+</LI>
+</UL></td></tr>
+<tr><td valign="top">&nbsp;bit 4 = CLK/TRG edge selection
+  
+<UL>
+<LI>0 = Falling Edge
+</LI>
+<LI>1 = Rising Edge
+  
+</LI>
+</UL></td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Timer Trigger (Timer mode only)
+  
+<UL>
+<LI>0 = Starts on loading of time constant
+</LI>
+<LI>1 = Starts on CLK/TRG
+  
+</LI>
+</UL></td></tr>
+<tr><td valign="top">&nbsp;bit 2 = Time constant follows</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Software reset</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = 0 (Control Word)
+</td></tr></table>
 
-<UL CLASS="ChildLinks">
-<LI><A ID="tex2html1240"
-  HREF="node145.html">Utilities</A>
-<LI><A ID="tex2html1241"
-  HREF="node146.html">BDOS</A>
-<LI><A ID="tex2html1242"
-  HREF="node147.html">BIOS</A>
-<UL>
-<LI><A ID="tex2html1243"
-  HREF="node148.html">System Initialization Functions</A>
-<LI><A ID="tex2html1244"
-  HREF="node149.html">Character I/O Functions</A>
-<LI><A ID="tex2html1245"
-  HREF="node150.html">Disk I/O Functions</A>
-</UL>
+<P>
+If we are running at 28MHz (Mode 0) and wish to trigger an interrupt
+every 1 sec, that is 28 million T-States/cycles we could program CTC 5
+as a counter with a prescalar of 16 and a period of 175, CTC 6 as a
+counter with a prescalar of 16 and a period of 125, and CTC 7 as a
+timer with a period of 5.
+
+<P>
+CTC 5 triggers ZC5 every 280 cycles or 10 usec.
+
+<P>
+CTC 6 triggers ZC6 every 560,000 cycles or 20 msec.
+
+<P>
+CTC 7 triggers ZC7 and an interrupt every 28,000,000 cycles or 1 sec.
+
+<P>
+<PRE>
+di
+; set up interrupt routine
+im 2
+ld bc,$183B     ; CTC 0
+ld hl,$FFFA     ; address pointing to start of interrupt routine
+ld de,interrupt ; start of interrupt routine
+ld (hl),de
+ld i,$FF
+ld a,l          ; Vector to address at on this interrupt
+out (c),a
+; set up CTC 5
+ld b,$1D        ; CTC 5
+ld a,$87
+out (c),a       ; Interrupt mode, timer mode, time constant, soft, control
+ld a,$05
+out (c),a       ; once every 5 times 
+; set up CTC 6
+inc b           ; CTC 6
+ld a,$47
+out (c),a       ; 16x, counter mode, time constant, soft, control
+ld a,$7D        ; 125 = once every 2000 times
+out (c),a
+; set up CTC 7
+inc b           ; CTC 7
+ld a,$47
+out (c),a       ; 16x, counter mode, time constant, soft, control
+ld a,$AF        ; 175 = once every 2800 times
+ei
+</PRE>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node145.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node143.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node143.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html1230"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html1232"
+  HREF="node234.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
-<LI><A ID="tex2html1246"
-  HREF="node151.html">Memory Select and Move Functions</A>
-<UL>
-<LI><A ID="tex2html1247"
-  HREF="node152.html">Clock Support Function</A>
-</UL></UL>
-<!--End of Table of Child-Links-->
-<BR><HR>
+<B> Next:</B> <A
+ HREF="node145.html">Serial Communication</A>
+<B> Up:</B> <A
+ HREF="node143.html">Z80 CTC</A>
+<B> Previous:</B> <A
+ HREF="node143.html">Z80 CTC</A>
+ &nbsp; <B>  <A ID="tex2html1231"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html1233"
+  HREF="node234.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

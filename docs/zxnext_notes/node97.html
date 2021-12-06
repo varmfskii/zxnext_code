@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>WR3 – Write Register Group 3</TITLE>
-<META NAME="description" CONTENT="WR3 – Write Register Group 3">
+<TITLE>zxnDMA Registers</TITLE>
+<META NAME="description" CONTENT="zxnDMA Registers">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node98.html">
+<LINK REL="next" HREF="node107.html">
 <LINK REL="previous" HREF="node96.html">
 <LINK REL="next" HREF="node98.html">
 </HEAD>
@@ -27,7 +27,7 @@
  HREF="node98.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node93.html">
+ HREF="node91.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node96.html">
@@ -36,43 +36,57 @@
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
 <A ID="tex2html974"
-  HREF="node230.html">
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node98.html">WR4 – Write Register</A>
+ HREF="node98.html">WR0 – Write Register</A>
 <B> Up:</B> <A
- HREF="node93.html">zxnDMA Registers</A>
+ HREF="node91.html">zxnDMA</A>
 <B> Previous:</B> <A
- HREF="node96.html">WR2 – Write Register</A>
+ HREF="node96.html">Programming the zxnDMA</A>
  &nbsp; <B>  <A ID="tex2html973"
   HREF="node1.html">Contents</A></B> 
  &nbsp; <B>  <A ID="tex2html975"
-  HREF="node230.html">Index</A></B> 
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00760040000000000000">
-WR3 – Write Register Group 3</A>
-</H4>
-<PRE>
-D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
- 1   |   0   0   0   0   0   0
-     |
-     1 = DMA Enable
-</PRE>
-The Z80 DMA defines more fields but they are ignored by the zxnDMA.
+<H1><A ID="SECTION00760000000000000000">
+zxnDMA Registers</A>
+</H1>
+These are described below following the same convention used by Zilog
+for its DMA chip:
 
 <P>
-The two other registers defined by the Z80 DMA in this group on D4 and
-D3 are implemented by the zxnDMA but they do nothing.
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
-<P>
-It is preferred to start the DMA by writing an Enable DMA command to
-WR6.
-
-<P>
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html976"
+  HREF="node98.html">WR0 – Write Register Group 0</A>
+<LI><A ID="tex2html977"
+  HREF="node99.html">WR1 – Write Register Group 1</A>
+<LI><A ID="tex2html978"
+  HREF="node100.html">WR2 – Write Register Group 2</A>
+<LI><A ID="tex2html979"
+  HREF="node101.html">WR3 – Write Register Group 3</A>
+<LI><A ID="tex2html980"
+  HREF="node102.html">WR4 – Write Register Group 4</A>
+<LI><A ID="tex2html981"
+  HREF="node103.html">WR5 – Write Register Group 5</A>
+<LI><A ID="tex2html982"
+  HREF="node104.html">WR6 – Command Register</A>
+<LI><A ID="tex2html983"
+  HREF="node105.html">Operating speed</A>
+<LI><A ID="tex2html984"
+  HREF="node106.html">The DMA and Interrupts</A>
+</UL></UL></UL>
+<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

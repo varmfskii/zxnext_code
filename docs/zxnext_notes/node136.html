@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>IM0</TITLE>
-<META NAME="description" CONTENT="IM0">
+<TITLE>zxnext_notes</TITLE>
+<META NAME="description" CONTENT="zxnext_notes">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -32,34 +32,55 @@
 <A
  HREF="node135.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1188"
+<A ID="tex2html1194"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1190"
-  HREF="node230.html">
+<A ID="tex2html1196"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
-<B> Next:</B> <A
- HREF="node137.html">IM1</A>
+<B> Next:</B> 
 <B> Up:</B> <A
- HREF="node135.html">Interrupt Modes</A>
+ HREF="node135.html">Interrupt Types</A>
 <B> Previous:</B> <A
- HREF="node135.html">Interrupt Modes</A>
- &nbsp; <B>  <A ID="tex2html1189"
+ HREF="node135.html">Interrupt Types</A>
+ &nbsp; <B>  <A ID="tex2html1195"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1191"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1197"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00920010000000000000">
-IM0</A>
+<H4><A ID="SECTION00910010000000000000">
+<!-- MATH
+ $\overline{\hbox{RESET}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img4.svg"
+ ALT="$\overline {\hbox {RESET}}$"></SPAN></A>
 </H4>
-When an interrupt is received by the CPU it disables interrupts and
-executes the instruction placed on the bus by the interrupting device
-and (no known use on the Next) It is enabled with the IM0 instruction
-and enabling interrupts (EI).
+<!-- MATH
+ $\overline{\hbox{RESET}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img4.svg"
+ ALT="$\overline {\hbox {RESET}}$"></SPAN> is used to return the CPU to a known state. When
+the <!-- MATH
+ $\overline{\hbox{RESET}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img4.svg"
+ ALT="$\overline {\hbox {RESET}}$"></SPAN> line is pulled low, a <!-- MATH
+ $\overline{\hbox{RESET}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img4.svg"
+ ALT="$\overline {\hbox {RESET}}$"></SPAN> is
+generated. The CPU then does several things. I, and R are set to $00.
+PC is set to $0000. SP becomes $FFFF. A and F are set to $FF.  The
+interrupt mode is set to 0. And (maskable) interrupts are disabled by
+clearing IFF1 and IFF2.
 
 <P>
 <BR><HR>

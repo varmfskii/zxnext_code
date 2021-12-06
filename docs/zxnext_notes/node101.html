@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Operating speed</TITLE>
-<META NAME="description" CONTENT="Operating speed">
+<TITLE>WR3 – Write Register Group 3</TITLE>
+<META NAME="description" CONTENT="WR3 – Write Register Group 3">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,53 +27,50 @@
  HREF="node102.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node93.html">
+ HREF="node97.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node100.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html988"
+<A ID="tex2html997"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html990"
-  HREF="node230.html">
+<A ID="tex2html999"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node102.html">The DMA and Interrupts</A>
+ HREF="node102.html">WR4 – Write Register</A>
 <B> Up:</B> <A
- HREF="node93.html">zxnDMA Registers</A>
+ HREF="node97.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node100.html">WR6 – Command Register</A>
- &nbsp; <B>  <A ID="tex2html989"
+ HREF="node100.html">WR2 – Write Register</A>
+ &nbsp; <B>  <A ID="tex2html998"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html991"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1000"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00760080000000000000">
-Operating speed</A>
+<H4><A ID="SECTION00760040000000000000">
+WR3 – Write Register Group 3</A>
 </H4>
+<PRE>
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 1   |   0   0   0   0   0   0
+     |
+     1 = DMA Enable
+</PRE>
+The Z80 DMA defines more fields but they are ignored by the zxnDMA.
 
 <P>
-The zxnDMA operates at the same speed as the CPU, that is 3.5MHz, 7MHz
-or 14MHz. This is a contended clock that is modified by the ULA and
-the auto-slowdown by Layer2.
+The two other registers defined by the Z80 DMA in this group on D4 and
+D3 are implemented by the zxnDMA but they do nothing.
 
 <P>
-Auto-slowdown occurs without user intervention if speed exceeds 7Mhz
-and the active Layer2 display is being generated (higher speed
-operation resumes when the active Layer2 display is not
-generated). Programmers do NOT need to account for speed differences
-regarding DMA transfers as this happens automatically.
-
-<P>
-Because of this, the cycle lengths for Ports A and B can be set to
-their minimum values without ill effects. The cycle lengths specified
-for Ports A and B are intended to selectively slow down read or write
-cycles for hardware that cannot operate at the DMA's full speed.
+It is preferred to start the DMA by writing an Enable DMA command to
+WR6.
 
 <P>
 <BR><HR>

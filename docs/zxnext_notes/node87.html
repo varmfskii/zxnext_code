@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>zxnDMA</TITLE>
-<META NAME="description" CONTENT="zxnDMA">
+<TITLE>Memory Decoding</TITLE>
+<META NAME="description" CONTENT="Memory Decoding">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,7 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node104.html">
-<LINK REL="previous" HREF="node68.html">
+<LINK REL="previous" HREF="node84.html">
 <LINK REL="next" HREF="node88.html">
 </HEAD>
 
@@ -27,39 +26,39 @@
  HREF="node88.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="zxnext_notes.html">
+ HREF="node68.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node86.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html907"
+<A ID="tex2html913"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html909"
-  HREF="node230.html">
+<A ID="tex2html915"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node88.html">Overview</A>
+ HREF="node88.html">ROM area</A>
 <B> Up:</B> <A
- HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
+ HREF="node68.html">Memory</A>
 <B> Previous:</B> <A
  HREF="node86.html">Z80 Visible Memory Map</A>
- &nbsp; <B>  <A ID="tex2html908"
+ &nbsp; <B>  <A ID="tex2html914"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html910"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html916"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00700000000000000000">
-zxnDMA</A>
+<H1><A ID="SECTION00640000000000000000">
+Memory Decoding</A>
 </H1>
- February 25, 2019  Phoebus Dokos  Off  Hardware, Resources,
 
 <P>
-The ZX Spectrum Next DMA (zxnDMA)
+The ZX Next uses a heirarchical memory decoding scheme. Looking at the
+virtual memory address, the decode order is:
 
 <P>
 <BR><HR>
@@ -67,42 +66,15 @@ The ZX Spectrum Next DMA (zxnDMA)
 <A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
 
 <UL CLASS="ChildLinks">
-<LI><A ID="tex2html911"
-  HREF="node88.html">Overview</A>
-<LI><A ID="tex2html912"
-  HREF="node89.html">Accessing the zxnDMA</A>
-<LI><A ID="tex2html913"
-  HREF="node90.html">Description</A>
-<LI><A ID="tex2html914"
-  HREF="node91.html">Modes of Operation</A>
-<LI><A ID="tex2html915"
-  HREF="node92.html">Programming the zxnDMA</A>
-<LI><A ID="tex2html916"
-  HREF="node93.html">zxnDMA Registers</A>
-<UL>
+<LI><UL>
+<LI><UL>
 <LI><A ID="tex2html917"
-  HREF="node94.html">WR0 – Write Register Group 0</A>
+  HREF="node88.html">ROM area</A>
 <LI><A ID="tex2html918"
-  HREF="node95.html">WR1 – Write Register Group 1</A>
+  HREF="node89.html">Mid memory</A>
 <LI><A ID="tex2html919"
-  HREF="node96.html">WR2 – Write Register Group 2</A>
-<LI><A ID="tex2html920"
-  HREF="node97.html">WR3 – Write Register Group 3</A>
-<LI><A ID="tex2html921"
-  HREF="node98.html">WR4 – Write Register Group 4</A>
-<LI><A ID="tex2html922"
-  HREF="node99.html">WR5 – Write Register Group 5</A>
-<LI><A ID="tex2html923"
-  HREF="node100.html">WR6 – Command Register</A>
-<LI><A ID="tex2html924"
-  HREF="node101.html">Operating speed</A>
-<LI><A ID="tex2html925"
-  HREF="node102.html">The DMA and Interrupts</A>
-</UL>
-<BR>
-<LI><A ID="tex2html926"
-  HREF="node103.html">Programming examples</A>
-</UL>
+  HREF="node90.html">High memory</A>
+</UL></UL></UL>
 <!--End of Table of Child-Links-->
 <BR><HR>
 

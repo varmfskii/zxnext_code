@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Configuration</TITLE>
-<META NAME="description" CONTENT="Configuration">
+<TITLE>STOP</TITLE>
+<META NAME="description" CONTENT="STOP">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="previous" HREF="node120.html">
+<LINK REL="next" HREF="node126.html">
+<LINK REL="previous" HREF="node124.html">
 <LINK REL="next" HREF="node126.html">
 </HEAD>
 
@@ -26,67 +27,47 @@
  HREF="node126.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node104.html">
+ HREF="node124.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node124.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1124"
+<A ID="tex2html1133"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1126"
-  HREF="node230.html">
+<A ID="tex2html1135"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node126.html">Refresh Rate</A>
+ HREF="node126.html">RESET</A>
 <B> Up:</B> <A
- HREF="node104.html">Copper and Display Timing</A>
+ HREF="node124.html">Control</A>
 <B> Previous:</B> <A
- HREF="node124.html">FRAME</A>
- &nbsp; <B>  <A ID="tex2html1125"
+ HREF="node124.html">Control</A>
+ &nbsp; <B>  <A ID="tex2html1134"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1127"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1136"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00840000000000000000">
-Configuration</A>
-</H1>
+<H4><A ID="SECTION00830010000000000000">
+STOP</A>
+</H4>
 
 <P>
-Hardware registers provide timing and configuration data allowing
-software to build and configure COPPER programs that function
-correctly across the various video modes and machine types. It is not
-essential to detect the machine type but it should be noted that
-software should not assume that it is running on a specific machine as
-the COPPER hardware is available across all four machine types.
+This is the default operating mode set during a hard/soft reset. The
+COPPER is idle in this state and will STOP if currently executing when
+entering this mode. It is safe to write to any location within the 2K
+program RAM when the COPPER is stopped.
 
 <P>
-Three registers can be read to determine the machine configuration for
-Ts per line, dot clocks, refresh rate, line count and maximum
-horizontal dot clock/pixel position compare.
+Entering STOP mode preserves the internal program counter so that the
+COPPER may continue when restarted.
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
-
-<UL CLASS="ChildLinks">
-<LI><UL>
-<LI><UL>
-<LI><A ID="tex2html1128"
-  HREF="node126.html">Refresh Rate</A>
-<LI><A ID="tex2html1129"
-  HREF="node127.html">Video Modes</A>
-<LI><A ID="tex2html1130"
-  HREF="node128.html">Machine Type</A>
-<LI><A ID="tex2html1131"
-  HREF="node129.html">Summary</A>
-</UL></UL></UL>
-<!--End of Table of Child-Links-->
 <BR><HR>
 
 </BODY>

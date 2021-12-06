@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Copper and Display Timing</TITLE>
-<META NAME="description" CONTENT="Copper and Display Timing">
+<TITLE>WR6 – Command Register</TITLE>
+<META NAME="description" CONTENT="WR6 – Command Register">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,8 +15,8 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node130.html">
-<LINK REL="previous" HREF="node87.html">
+<LINK REL="next" HREF="node105.html">
+<LINK REL="previous" HREF="node103.html">
 <LINK REL="next" HREF="node105.html">
 </HEAD>
 
@@ -27,112 +27,109 @@
  HREF="node105.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="zxnext_notes.html">
+ HREF="node97.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node103.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1000"
+<A ID="tex2html1009"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1002"
-  HREF="node230.html">
+<A ID="tex2html1011"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node105.html">Introduction</A>
+ HREF="node105.html">Operating speed</A>
 <B> Up:</B> <A
- HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
+ HREF="node97.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node103.html">Programming examples</A>
- &nbsp; <B>  <A ID="tex2html1001"
+ HREF="node103.html">WR5 – Write Register</A>
+ &nbsp; <B>  <A ID="tex2html1010"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1003"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1012"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00800000000000000000">
-Copper and Display Timing</A>
-</H1>
-From: KevB (aka 9bitcolour)
+<H4><A ID="SECTION00760070000000000000">
+WR6 – Command Register</A>
+</H4>
+<PRE>
+D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
+ 1   ?   ?   ?   ?   ?   1   1
+     |   |   |   |   |
+     1   0   0   0   0 = \$C3 = Reset
+     1   0   0   0   1 = \$C7 = Reset Port A Timing
+     1   0   0   1   0 = \$CB = Reset Port B Timing
+     0   1   1   1   1 = \$BF = Read Status Byte
+     0   0   0   1   0 = \$8B = Reinitialize Status Byte
+     0   1   0   0   1 = \$A7 = Initialize Read Sequence
+     1   0   0   1   1 = \$CF = Load
+     1   0   1   0   0 = \$D3 = Continue
+     0   0   0   0   1 = \$87 = Enable DMA
+     0   0   0   0   0 = \$83 = Disable DMA
+ +-- 0   1   1   1   0 = \$BB = Read Mask Follows
+ |
+D7  D6  D5  D4  D3  D2  D1  D0  READ MASK
+ 0   |   |   |   |   |   |   |
+     |   |   |   |   |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Status Byte
+     |   |   |   |   |   |
+     |   |   |   |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Byte Counter Low
+     |   |   |   |   |
+     |   |   |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Byte Counter High
+     |   |   |   |
+     |   |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Port A Address Low
+     |   |   |
+     |   |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Port A Address High
+     |   |
+     |   V
+D7  D6  D5  D4  D3  D2  D1  D0  Port B Address Low
+     |
+     V
+D7  D6  D5  D4  D3  D2  D1  D0  Port B Address High
+</PRE>
+Unimplemented Z80 DMA commands are ignored.
 
 <P>
-<BR><HR>
-<!--Table of Child-Links-->
-<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+Prior to starting the DMA, a LOAD command must be issued to copy the
+Port A and Port B addresses into the DMA's internal pointers. Then an
+ìEnable DMAî command is issued to start the DMA.
 
-<UL CLASS="ChildLinks">
-<LI><UL>
-<LI><UL>
-<LI><UL>
-<LI><A ID="tex2html1004"
-  HREF="node105.html">Introduction</A>
-<LI><A ID="tex2html1005"
-  HREF="node106.html">Overview</A>
-</UL>
-</UL>
-</UL>
-<BR>
-<LI><A ID="tex2html1006"
-  HREF="node107.html">Timing</A>
-<UL>
-<LI><A ID="tex2html1007"
-  HREF="node108.html">Machines</A>
-<LI><A ID="tex2html1008"
-  HREF="node109.html">Display</A>
-<LI><A ID="tex2html1009"
-  HREF="node110.html">Resolution</A>
-<LI><A ID="tex2html1010"
-  HREF="node111.html">Dot Clock</A>
-<LI><A ID="tex2html1011"
-  HREF="node112.html">Coordinates</A>
-<LI><A ID="tex2html1012"
-  HREF="node113.html">Compare</A>
-<LI><A ID="tex2html1013"
-  HREF="node114.html">Overscan</A>
-</UL>
-<BR>
-<LI><A ID="tex2html1014"
-  HREF="node115.html">Instructions</A>
-<UL>
-<LI><A ID="tex2html1015"
-  HREF="node116.html">NOOP</A>
-<LI><A ID="tex2html1016"
-  HREF="node117.html">MOVE</A>
-<LI><A ID="tex2html1017"
-  HREF="node118.html">WAIT</A>
-<LI><A ID="tex2html1018"
-  HREF="node119.html">Example</A>
-</UL>
-<BR>
-<LI><A ID="tex2html1019"
-  HREF="node120.html">Control</A>
-<UL>
-<LI><A ID="tex2html1020"
-  HREF="node121.html">STOP</A>
-<LI><A ID="tex2html1021"
-  HREF="node122.html">RESET</A>
-<LI><A ID="tex2html1022"
-  HREF="node123.html">START</A>
-<LI><A ID="tex2html1023"
-  HREF="node124.html">FRAME</A>
-</UL>
-<BR>
-<LI><A ID="tex2html1024"
-  HREF="node125.html">Configuration</A>
-<UL>
-<LI><A ID="tex2html1025"
-  HREF="node126.html">Refresh Rate</A>
-<LI><A ID="tex2html1026"
-  HREF="node127.html">Video Modes</A>
-<LI><A ID="tex2html1027"
-  HREF="node128.html">Machine Type</A>
-<LI><A ID="tex2html1028"
-  HREF="node129.html">Summary</A>
-</UL></UL>
-<!--End of Table of Child-Links-->
+<P>
+The ìContinueî command resets the DMA’s byte counter so that a
+following ìEnable DMAî allows the DMA to repeat the last transfer but
+using the current internal address pointers. I.e. it continues from
+where the last copy operation left off.
+
+<P>
+Registers can be read via an IO read from the DMA port after setting
+the read mask. (At power up the read mask is set to $7f). Register
+values are the current internal dma counter values. So ìPort Address A
+Lowî is the lower 8-bits of Port A’s next transfer address. Once the
+end of the read mask is reached, further reads loop around to the
+first one.
+
+<P>
+The format of the DMA status byte is as follows:
+
+<P>
+00E1101T
+
+<P>
+E is set to 0 if the total block length has been transferred
+at least once.
+
+<P>
+T is set to 1 if at least one byte has been transferred.
+
+<P>
 <BR><HR>
 
 </BODY>

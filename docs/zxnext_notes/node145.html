@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Utilities</TITLE>
-<META NAME="description" CONTENT="Utilities">
+<TITLE>Serial Communication</TITLE>
+<META NAME="description" CONTENT="Serial Communication">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -16,7 +16,7 @@
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
 <LINK REL="next" HREF="node146.html">
-<LINK REL="previous" HREF="node144.html">
+<LINK REL="previous" HREF="node134.html">
 <LINK REL="next" HREF="node146.html">
 </HEAD>
 
@@ -27,1055 +27,232 @@
  HREF="node146.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node144.html">
+ HREF="zxnext_notes.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node144.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1248"
+<A ID="tex2html1234"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1250"
-  HREF="node230.html">
+<A ID="tex2html1236"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node146.html">BDOS</A>
+ HREF="node146.html">Raspberry Pi0 Acceleration</A>
 <B> Up:</B> <A
- HREF="node144.html">CP/M</A>
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
- HREF="node144.html">CP/M</A>
- &nbsp; <B>  <A ID="tex2html1249"
+ HREF="node144.html">Programming</A>
+ &nbsp; <B>  <A ID="tex2html1235"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1251"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1237"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H2><A ID="SECTION001211000000000000000">
-Utilities</A>
-</H2>
+<H1><A ID="SECTION001000000000000000000">
+Serial Communication</A>
+</H1>
 
 <P>
-From the Digital Research: CP/M 3 Command Reference Manual 1984
+The Spectrum Next has two independent fully featured UARTs. The UARTS
+share I/O ports so it is important to select the correct one before
+communicating with it. Each has its own 64 byte Tx buffer and 512 byte
+Rx buffer. One UART can be connected to either the ESP of joystick
+port while the other can be connected to the Raspberry Pi accelerator
+or joystick port. The UARTS are controlled using ports $37, $133B,
+$143B, $153B, and $163B. The UARTs are connected to the IM2
+interrupt system.  Nextreg $c6 allows interrupts to be enabled for
+the status of each UART. UART interrupts correspond to interrupts 1,
+2, 12, and 13 (see Interrupts).
 
 <P>
-This section documents all standard CP/M+ 3 commands plus those extras
-included with the ZX Spectrum Next CP/M system.
-
-<P>
-<SPAN CLASS="XLARGE"><SPAN  CLASS="textbf">COLOURS</SPAN></SPAN>
-
-<P>
+Port $37 (37) Kempston/Mega Drive Joystick 2
 <BR>
-<IMG STYLE=""
- SRC="img65.svg"
- ALT="\begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
-\textbf{COLOURS [RGB] \textit{paper} \textit{ink}}
-\end{labeledpar}">
+Read
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = &rdquo;start&rdquo; button</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = A/X button</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = C/Z button</td></tr>
+<tr><td valign="top">&nbsp;bit 4 = Fire/C/Y button</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Up</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = Down</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Left</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Right
+</td></tr></table>
+
+The XYZ buttons on md pads can be read through nextreg 0xB2.
 <BR>
+The joysticks can also be placed in i/o mode see nextreg 0x0B.
+<BR>
+All eleven md pad buttons can be assigned to the keyboard see nextreg 0x05.
 
 <P>
-<SPAN  CLASS="textbf">Function:</SPAN> Sets the screen colours
+Port $133B (133B) UART tx
+<BR>
+Read: UART Status
+<BR><table width="90%"><tr><td valign="top">&nbsp;bits 7-4 = Reserved (0)</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = UART at least half full (3.01.09)</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = UART full</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = UART transmit busy</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = UART receive has data
+</td></tr></table>
+
+Write: UART Transmit
 
 <P>
-<SPAN  CLASS="textbf">Parameters:</SPAN>
+Port $143B (143B) UART rx
 <BR>
-<IMG STYLE=""
- SRC="img66.svg"
- ALT="\begin{labeledpar}{Parameters}{\textit{paper}}
-Paper (background) colour
-\end{labeledpar}">
+Read: UART Receive
 <BR>
-<BR>
-<IMG STYLE=""
- SRC="img67.svg"
- ALT="\begin{labeledpar}{Parameters:}{\textit{ink}}
-Ink (foreground) colour
-\end{labeledpar}">
-<BR>
+Write: UART Prescalar
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = select prescalar part
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = Bits 6-0 of prescalar
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = Bits 13-7 of prescalar
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bits 6-0 = Prescalar bits
+</td></tr></table>
 
 <P>
-<SPAN  CLASS="textbf">Options:</SPAN>
-<BR>
-<IMG STYLE=""
- SRC="img68.svg"
- ALT="\begin{labeledpar}{Parameters:}{RGB}
-Causes ink and paper colours to be interpreted as 9-bit octal RGB numbers
-\end{labeledpar}">
-<BR>
+Port $153B (153B) UART select
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Reserved (0)</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = UART select (0 on soft reset) **
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = ESP
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = Pi *
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = Reserved (0)</td></tr>
+<tr><td valign="top">&nbsp;bit 4 = Prescalar valid in this write</td></tr>
+<tr><td valign="top">&nbsp;bit 3 = Reserved (0)</td></tr>
+<tr><td valign="top">&nbsp;bits 2-0 = Bits 16-14 of prescalar (0 on hard reset)
+</td></tr></table>
+
+* Pi GPIO must be configured for UART, see nextreg $A0
+<BR>** Either UART can be redirected to the joystick ports, see port $037
 
 <P>
-<SPAN  CLASS="textbf">Notes:</SPAN> Sets the screen colours using standard ZX colours
-or octal 9-bit RGB numbers.
+Port $153B (153B) UART frame (upcoming)
+<BR>($18 on hard reset)
+<table width="90%"><tr><td valign="top">&nbsp;bit 7 = Immediately reset Rx and Tx to idle and empty FIFOs</td></tr>
+<tr><td valign="top">&nbsp;bit 6 = Assert break (Tx=0) when Tx reaches idle</td></tr>
+<tr><td valign="top">&nbsp;bit 5 = Enable hardware flow control *</td></tr>
+<tr><td valign="top">&nbsp;bits 4-3 = Number of bits in a frame
+  <table width="90%">  <tr><td valign="top">&nbsp;00 = 5 bits
+  </td></tr>
+<tr><td valign="top">&nbsp;01 = 6 bits
+  </td></tr>
+<tr><td valign="top">&nbsp;10 = 7 bits
+  </td></tr>
+<tr><td valign="top">&nbsp;11 = 8 bits
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 2 = Enable parity</td></tr>
+<tr><td valign="top">&nbsp;bit 1 = Parity
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = Even parity
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = Odd parity
+  </td></tr></table>
+</td></tr>
+<tr><td valign="top">&nbsp;bit 0 = Number of stop bits
+  <table width="90%">  <tr><td valign="top">&nbsp;0 = 1 stop bit
+  </td></tr>
+<tr><td valign="top">&nbsp;1 = 2 stop bits
+  </td></tr></table>
+</td></tr></table>
+
+* The ESP ignores hardware flow control
+<BR>* In joystick i/o mode only cts is available
 
 <P>
-<SPAN  CLASS="textbf">Examples:</SPAN>
-
-<P>
-colours 1 6
-
-<P>
-colours rgb 000 750
-
-<P>
-<SPAN CLASS="XLARGE"><SPAN  CLASS="textbf">COPYSYS</SPAN></SPAN>
-
-<P>
-<BR>
-<IMG STYLE=""
- SRC="img69.svg"
- ALT="\begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
-\textbf{COPYSYS}
-\end{labeledpar}">
-<BR>
-
-<P>
-<SPAN  CLASS="textbf">Function:</SPAN> Copy CP/M system
-
-<P>
-<SPAN  CLASS="textbf">Notes:</SPAN> COPYSYS copies the CP/M Plus system from a CP/M Plus
-system diskette to another diskette.  The new diskette must have the
-same format as the original system diskette.
-
-<P>
-<SPAN CLASS="XLARGE"><SPAN  CLASS="textbf">DATE</SPAN></SPAN>
-
-<P>
-<BR>
-<IMG STYLE=""
- SRC="img70.svg"
- ALT="\begin{labeledpar}{Parameters:}{\textbf{Syntax:}}
-\textbf{DATE}\\
-\textbf{DATE ...
-...
-\textbf{DATE \textit{time-specification}}\\
-\textbf{DATE SET}
-\end{labeledpar}">
-<BR>
-
-<P>
-<SPAN  CLASS="textbf">Function:</SPAN> The DATE command lets you display and set the date
-and time of day.
-
-<P>
-<SPAN  CLASS="textbf">Parameters:</SPAN>
-<BR>
-<IMG STYLE=""
- SRC="img71.svg"
- ALT="\begin{labeledpar}{Parameters}{\textit{time-specification}}
-Time/date in the format MM/DD/YY HH:MM:SS
-\end{labeledpar}">
-<BR>
-
-<P>
-<SPAN  CLASS="textbf">Options:</SPAN>
-<BR>
-<IMG STYLE=""
- SRC="img72.svg"
- ALT="\begin{labeledpar}{Parameters:}{C}
-Continuously show the date and time until a key is pressed
-\end{labeledpar}">
-<BR>
-<BR>
-<IMG STYLE=""
- SRC="img73.svg"
- ALT="\begin{labeledpar}{Parameters:}{CONTINUOUS}
-Continuously show the date and time until a key is pressed
-\end{labeledpar}">
-<BR>
-<BR>
-<IMG STYLE=""
- SRC="img74.svg"
- ALT="\begin{labeledpar}{Parameters:}{SET}
-Prompt the user for the current date and time
-\end{labeledpar}">
-<BR>
-
-<P>
-<SPAN  CLASS="textbf">Notes:</SPAN> The DATE command is a transient utility that lets you
-display and set the date and time of day.  When you start CP/M 3, the
-date and time are set to the creation date of your CP/M 3 system. Use
-DATE to change this initial value to the current date and time.
-
-<P>
-<SPAN  CLASS="textbf">Examples:</SPAN>
-
-<P>
-DATE
-
-<P>
-DATE C
-
-<P>
-DATE CONTINUOUS
-
-<P>
-DATE 08/13/82 09:15:37
-
-<P>
-DATE SET
-
-<P>
-<SPAN  CLASS="textbf">DEVICE</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-DEVICE
-<BR>
-DEVICE NAMES
-<BR>
-DEVICE VALUES
-<BR>
-DEVICE logical-dev {XON<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img75.svg"
- ALT="\(\vert\)"></SPAN>NOXON<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img75.svg"
- ALT="\(\vert\)"></SPAN>baud-rate},
-<BR>
-DEVICE physical-dev {XON<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img75.svg"
- ALT="\(\vert\)"></SPAN>NOXON<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img75.svg"
- ALT="\(\vert\)"></SPAN>baud-rate}
-<BR>
-DEVICE logical-dev=physical-dev {option} {,physical-dev {option},...}
-<BR>
-DEVICE logical-dev = NULL
-<BR>
-DEVICE CONSOLE {PAGE}
-<BR>
-DEVICE CONSOLE {COLUMNS=n, LINES=n}
-<BR>
-<P>
-DEVICE displays current logical device assignments and physical device
-names.
-
-<P>
-<SPAN  CLASS="textbf">DIR</SPAN> (built-in)
-
-<P>
-=0.7cm Syntax:
-<BR>
-DIR
-<BR>
-DIR d:
-<BR>
-DIR filespec
-<BR>
-DIR d: options
-<BR>
-DIR filespec,... filespec options
-
-<P>
-The DIR command displays the names of files catalogued in the
-directory of an online disk that belong to current user number and
-have the Directory (DIR) attribute. DIR accepts the * and ? wildcards
-in the file specification.
-
-<P>
-The DIR command with options displays the names of files and the
-characteristics associated with the files. DIR is a built-in
-utility. DIR with options is a transient utility and must be loaded
-into memory from the disk.
-
-<P>
-<SPAN  CLASS="textbf">DIRSYS/DIRS</SPAN> (built-in)
-
-<P>
-=0.7cm Syntax:
-<BR>
-DIRSYS
-<BR>
-DIRSYS d:
-<BR>
-DIRSYS filespec
-
-<P>
-The DIRSYS command lists the names of files in the current directory
-that have the system (SYS) attribute. DIRSYS accept the * and ?
-wildcards in the file specification. DIRSYS is a built-in utility.
-
-<P>
-<SPAN  CLASS="textbf">DUMP</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-DUMP filespec
-
-<P>
-DUMP displays the contents of a file in and ASCII format.
-
-<P>
-<SPAN  CLASS="textbf">ECHO</SPAN> (ZX Spectrum Next)
-
-<P>
-=0.7cm Syntax:
-<BR>
-ECHO string
-
-<P>
-Echo characters to the terminal
-
-<P>
-The following special character sequences may be used
+Register (R/W) $C0 (C0) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Interrupt Control (3.01.09)
+<BR>($00 on reset)
 
 <UL>
-<LI>\a alert (bell) (ASCII 7)
+<LI>bits 7-5 = Programmable portion of IM2 vector *
 </LI>
-<LI>\b backspace (ASCII 8)
+<LI>bit 4 = Reserved, must be 0
 </LI>
-<LI>\e escape (ASCII 27)
+<LI>bit 3 = Enable stackless <!-- MATH
+ $\overline{\hbox{NMI}}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img5.svg"
+ ALT="$\overline {\hbox {NMI}}$"></SPAN> response**
 </LI>
-<LI>\n line feed (ASCII 10)
+<LI>bits 2-1 = Reserved, must be 0
 </LI>
-<LI>\r carriage return (ASCII 13)
+<LI>bit 0 = Maskable interrupt mode
+<table width="90%"><tr><td valign="top">&nbsp;0 - pulse</td></tr>
+<tr><td valign="top">&nbsp;1 - IM2
+</td></tr></table>
 </LI>
-<LI>\l interpret further characters as lower-case
+</UL>
+* In IM2 mode vector generated is:
+
+<UL>
+<LI>bits 7-5 = nextreg $C0 bits 7-5
 </LI>
-<LI>\u interpret further characters as upper-case
+<LI>bits 4-1 = Interrupt source
+<table width="90%"><tr><td valign="top">&nbsp;0 - line interrupt (highest priority)</td></tr>
+<tr><td valign="top">&nbsp;1 - UART 0 Rx</td></tr>
+<tr><td valign="top">&nbsp;2 - UART 1 Rx</td></tr>
+<tr><td valign="top">&nbsp;3&ndash;10 - CTC channels 0-7</td></tr>
+<tr><td valign="top">&nbsp;11 - ULA</td></tr>
+<tr><td valign="top">&nbsp;12 - UART 0 Tx</td></tr>
+<tr><td valign="top">&nbsp;13 - UART 1 Tx (lowest priority)
+</td></tr></table>
+
 </LI>
-<LI>\\backslash ('\')
+<LI>bit 0 = 0
 </LI>
 </UL>
 
 <P>
-Note that CP/M converts all your typed characters to upper-case before
-providing them to ECHO.COM. Therefore you will need to use
-\l and \u to specify the case of
-characters if it is important (in ESCape sequences, for example).
+* In IM2 mode the expansion bus is the lowest priority interrupter and
+  if no vector is supplied externally the $FF is generated.
 
 <P>
-<SPAN  CLASS="textbf">ED</SPAN>
+** The return address pushed during an nmi acknowledge cycle will be
+   written to the appropriate nextreg instead of memory (the stack
+   pointer will be decremented) and the RETN after acknowledge will
+   take its return address from nextreg instead of memory (the stack
+   pointer will be incremented). If bit 3 = 0 and in other
+   circumstances, RETN functions normally.
 
 <P>
-=0.7cm Syntax:
-<BR>
-ED
-<BR>
-ED input-filespec
-<BR>
-ED input-filespec {d: <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img75.svg"
- ALT="\(\vert\)"></SPAN> output-filespec}
-
-<P>
-Character file editor. To redirect or rename the new version of the
-file specify the destination drive or destination filespec.
-
-<P>
-<SPAN  CLASS="textbf">ERASE/ERA</SPAN> (built-in)
-
-<P>
-=0.7cm Syntax:
-<BR>
-ERASE
-<BR>
-ERASE filespec
-<BR>
-ERASE filespec [CONFIRM]
-
-<P>
-The ERASE command removes one or more files from the directory of a
-disk. Wildcard characters are accepted in the filespec. Directory and
-data space are automatically reclaimed for later use by another
-file. The ERASE command can be abbreviated to ERA.
-
-<P>
-[CONFIRM] option informs the system to prompt for verification before
-erasing each file that matches the filespec. CONFIRM can be
-abbreviated to C.
-
-<P>
-<SPAN  CLASS="textbf">EXIT</SPAN> (ZX Spectrum Next)
-
-<P>
-=0.7cm Syntax:
-<BR>
-EXIT
-
-<P>
-The EXIT command leaves CP/M (rebooting the ZX Spectrum Next)
-
-<P>
-<SPAN  CLASS="textbf">EXPORT</SPAN> (ZX Spectrum Next)
-
-<P>
-=0.7cm Syntax:
-<BR>
-EXPORT cpm-filespec nextzxos-filespec
-
-<P>
-NextZXOS file export utility
-
-<P>
-Export file to a NextZXOS drive.
-
-<P>
-<SPAN  CLASS="textbf">GENCOM</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-GENCOM COM-Eilespec RSX-filespec... RSX-Eilespec {[LOADER <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img75.svg"
- ALT="\(\vert\)"></SPAN>
-  SCB=(Offset,value)]}
-<BR>
-GENCOM RSX-filespec ... RSX-filespec {[NULL <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img75.svg"
- ALT="\(\vert\)"></SPAN>
-  SCB=(Offset,value)l}
-<BR>
-GENCOM filename
-<BR>
-GENCOM filename [SCB=(offset,value)]
-
-<P>
-The GENCOM command attaches RSX files to a COM file, or creates a
-dummy COM file containing only RSXS. It can also restore a previously
-GENCOMed file to the original COM file without the header and RSXS,
-add or replace RSXs in already GENCOMed files, and attach header
-records to COM files without RSXS.
-
-<P>
-<SPAN  CLASS="textbf">GENCPM</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-GENCPM {AUTO<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img75.svg"
- ALT="\(\vert\)"></SPAN>AUTO DISPLAY}
-
-<P>
-GENCPM creates a memory image CPM3.SYS file, containing the CP/M 3
-BDOS and customized BIOS. The GENCPM utility performs late resolution
-of intermodule references between system modules. GENCPM can accept
-its command input interactively from the console or from a file
-GENCPM.DAT.
-
-<P>
-In the nonbanked system, GENCPM creates a CPM3.SYS file from the
-BDOS3.SPR and BIOS3.SPR files. In the banked system, GENCPM creates
-the CPM3.SYS file from the RESBDOS3.SPR, the BNKBDOS3.SPR and the
-BNKBIOS3.SPR files. Remember to back up your CPM3.SYS file before
-executing GENCPM, because GENCPM deletes any existing CPM3.SYS file
-before it generates a new system.
-
-<P>
-<SPAN  CLASS="textbf">GET</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-GET {CONSOLE INPUT FROM} FILE filespec options
-<BR>
-GET {CONSOLE INPUT FROM} CONSOLE
-
-<P>
-GET directs the system to take console input from a file for the next
-system comand or user program entered at the console.
-
-<P>
-Console input is taken from a file until the program terminates. If
-the file is exhausted before program input is terminated, the program
-looks for subsequent input from the console. If the program terminates
-before exhausting all its input, the system reverts back to the
-console for console input.
-
-<P>
-<SPAN  CLASS="textbf">HELP</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-HELP
-<BR>
-HELP topic
-<BR>
-HELP topic subtopic
-<BR>
-HELP topic [NOPAGE]
-<BR>
-HELP topic subtopic1...subtopic8
-<BR>
-HELP<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img76.svg"
- ALT="\(&gt;\)"></SPAN>topic
-<BR>
-HELP<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img76.svg"
- ALT="\(&gt;\)"></SPAN>.subtopic
-
-<P>
-HELP displays a list of topics and provides summarized information for
-CP/M Plus commands.
-
-<P>
-Typing HELP topic displays information about that topic. Typing HELP
-topic subtopic displays information about that subtopics One or two
-letters is enough to identify the topics. After HELP displays
-information for your topic, it displays the special prompt HELP<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img76.svg"
- ALT="\(&gt;\)"></SPAN>
-on your screen, followed by a list of subtopics.
-
-<P>
+Register (W) $C6 (C6) <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img10.svg"
+ ALT="$\Rightarrow$"></SPAN> Interrupt Enable 2 (3.01.08)
+<BR>($00 on reset)
 
 <UL>
-<LI>Enter ? to display list of main topics.
+<LI>bit 7 = Reserved, must be 0
 </LI>
-<LI>Enter a period and subtopic name to access subtopics.
+<LI>bit 6 = UART1 Tx empty
 </LI>
-<LI>Enter a period to redisplay what you just read.
+<LI>bit 5 = UART1 Rx half full *
 </LI>
-<LI>Press RETURN to return to the CP/M Plus system prompt.
+<LI>bit 4 = UART1 Rx available *
 </LI>
-<LI>[NOPAGE] option disables the 24 lines per page console display.
+<LI>bit 3 = Reserved, must be 0
 </LI>
-<LI>Press any key to exit a display and return to the HELP<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img76.svg"
- ALT="\(&gt;\)"></SPAN> prompt.
+<LI>bit 2 = UART0 Tx empty
 </LI>
-</UL>
-
-<P>
-<SPAN  CLASS="textbf">HEXCOM</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-HEXCOM filename
-
-<P>
-The HEXCOM Command generates a command file (filetype COM) from a HEX
-input file. it names the output tile with the same filename as the
-input file but with filetype COM. HEXCOM always looks for a file with
-filetype HEX.
-
-<P>
-<SPAN  CLASS="textbf">IMPORT</SPAN> (ZX Spectrum Next)
-
-<P>
-=0.7cm Syntax:
-<BR>
-IMPORT nextzxos-filespec
-<BR>
-IMPORT nextzxos-filespec cpm-filespec
-
-<P>
-NextZXOS file import utility
-
-<P>
-List or import files from a NextZXOS drive.
-
-<P>
-<SPAN  CLASS="textbf">INITDIR</SPAN> (Not included)
-
-<P>
-=0.7cm Syntax:
-<BR>
-INITDIR d:
-
-<P>
-The INITDIR command initializes a disk directory to allow date and
-time stamping of files on that disk. INITDIR can also recover
-time/date directory space.
-
-<P>
-<SPAN  CLASS="textbf">NEXTREG</SPAN> (ZX Spectrum Next)
-
-<P>
-=0.7cm Syntax:
-<BR>
-NEXTREG register {value}
-
-<P>
-NextReg Utility
-
-<P>
-Show or change a NextReg register (use at your own risk!)
-
-<P>
-<SPAN  CLASS="textbf">LIB</SPAN> (Not included)
-
-<P>
-=0.7cm Syntax:
-<BR>
-LIB filespec options
-<BR>
-LIB filespec options=filespec <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img77.svg"
- ALT="\(&lt;\)"></SPAN>modifier<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img76.svg"
- ALT="\(&gt;\)"></SPAN> f,filespec<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img77.svg"
- ALT="\(&lt;\)"></SPAN>modifier<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img76.svg"
- ALT="\(&gt;\)"></SPAN>
-
-<P>
-A library is a file that contains a collection of object modules.
-
-<P>
-Use the LIB utility to create libraries, and to append, replace,
-select, or delete modules from an existing library. Use LIB to obtain
-information about the contents of library files.  LIB creates and
-maintains library files that contain object modules in Microsoft REL
-file format.  These modules are produced by the Digital Research
-relocatable macro-assembler program, RMAC, or other language
-translator that produces modules in Microsoft REL file format.
-
-<P>
-You can use LINK-80 to link the object modules contained in a library
-to other object files.  LINK-80 automatically selects from the library
-only those modules needed by the program being linked, and then forms
-an executable file with a filetype of Com.
-
-<P>
-<SPAN  CLASS="textbf">LINK</SPAN> (Not included)
-
-<P>
-=0.7cm Syntax:
-<BR>
-LINK filespec [options]
-<BR>
-LINK filespec [options],...filespec [options]
-<BR>
-LINK filespec [options]=filespec [options],...
-<BR>
-<P>
-LINK combines relocatable object modules such as those produced by
-RMAC and PL/I- 80 into a COM file ready for execution. Relocatable
-files can contain external references and publics.  Relocatable files
-can reference modules in library files. LINK searches the library
-files and includes the referenced modules in the output file. See the
-Programmer's Utilities Guide for the CP/M Family of Operating Systems
-for a complete description of LINK-80.
-
-<P>
-Use LINK option switches to control execution parameters. Link options
-follow the file specifications and are enclosed within square
-brackets. Multiple switches are separated by commas.
-
-<P>
-<SPAN  CLASS="textbf">MAC</SPAN> (Not included)
-
-<P>
-=0.7cm Syntax:
-<BR>
-MAC filename [$options]
-
-<P>
-MAC, the CP/M Plus macro assembler, reads assembly language statements
-from a file of type ASM, assembles the statements, and produces three
-output files with the input filename and filetypes of HEX, PRN, and
-SYM. Filename.HEX contains Intel hexadecimal format object
-code. Filename.PRN contains an annotated source listing that you can
-print or examine at the console. Filename.SYM contains a sorted list
-of symbols defined in the program.
-
-<P>
-Use options to direct the input and output of MAC. Use a letter with
-the option to indicate the source and destination drives, and console,
-printer, or zero output. Valid drive names are A through 0. X, P, and
-Z specify console, printer, and zero output, respectively.
-
-<P>
-<SPAN  CLASS="textbf">PATCH</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-PATCH filename.typ n
-
-<P>
-The PATCH command displays or installs patch number n to the CP/M Plus
-system or command files. The patch number n must be between 1 and 32
-inclusive.
-
-<P>
-<SPAN  CLASS="textbf">PIP</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-PIP Destination = Source
-<BR>
-PIP d:[Gn]=filespec [options]
-<BR>
-PIP filespec[Gn]=filespec [options]
-<BR>
-PIP filespec[Gn]device=filespec [options] device
-
-<P>
-The file copy program PIP copies files, combines files, and transfers
-files between disks, printers, consoles, or other devices attached to
-your computer. The first filespec is the destination. The second
-filespec is the source. Use two or more source filespecs separated by
-commas to combine two or more files into one file. [options] is any
-combination of the available options. The [Gn] option in the
-destination filespec tells PIP to copy your file to that user
-number. PIP with no command tail displays an * prompt and awaits your
-series of commands, entered and processed one line at a time. The
-source or destination can optionally be any CP/M Plus logical device.
-
-<P>
-<SPAN  CLASS="textbf">PUT</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-PUT CONSOLE {OUTPUT TO} FILE filespec {option}
-<BR>
-PUT PRINTER {OUTPUT TO} FILE filespec {option}
-<BR>
-PUT CONSOLE {OUTPUT TO} CONSOLE
-<BR>
-PUT PRINTER {OUTPUT TO} PRINTER
-
-<P>
-PUT puts console or printer output to a file for the next command
-entered at the console, until the program terminates. Then console
-output reverts to the console. Printer output is directed to a file
-until the program terminates. Then printer output is put back to the
-printer.
-
-<P>
-PUT with the SYSTEM option directs all subsequent console/printer
-output to the specified file.  This option terminates when you enter
-the PUT CONSOLE or PUT PRINTER command.
-
-<P>
-<SPAN  CLASS="textbf">RENAME/REN</SPAN> (built-in)
-
-<P>
-=0.7cm Syntax:
-<BR>
-RENAME
-<BR>
-RENAME new-filespec=old-filespec
-
-<P>
-RENAME lets you change the name of a file in the directory of a
-disk. To change several filenames in one command use the * or ?
-wildcards in the file specifications. You can abbreviate the RENAME
-command to REN. REN prompts you for input.
-
-<P>
-<SPAN  CLASS="textbf">RMAC</SPAN> (Not included)
-
-<P>
-=0.7cm Syntax:
-<BR>
-RMAC filespec options
-
-<P>
-RMAC, a relocatable macro assembler, assembles ASM files into REL
-files that you can link to create COM files.
-
-<P>
-RMAC options specify the destination of the output files. Replace d
-with the destination drive letter for the output files.
-
-<P>
-<SPAN  CLASS="textbf">SAVE</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-SAVE
-
-<P>
-SAVE copies the contents of memory to a file. To use SAVE, first issue
-the SAVE command, then run your program which reads a file into
-memory. Your program exits to the SAVE utility which prompts you for a
-filespec to which it copies the contents of memory, and the beginning
-and ending address of the memory to be SAVED.
-
-<P>
-<SPAN  CLASS="textbf">SET</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-SET [options]
-<BR>
-SET d: [options]
-<BR>
-SET filespec [options]
-<BR>
-SET [option = modifier]
-<BR>
-SET filespec [option = modifier]
-
-<P>
-SET initiates password protection and time stamping of files. It also
-sets the file and drive attributes Read/Write, Read/Only, DIR and
-SYS. It lets you label a disk and passord protect the label. To enable
-time stamping of files, you must first run INITDIR to format the disk
-directory.
-
-<P>
-<SPAN  CLASS="textbf">SET Default password operation:</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-SET [DEFAULT=password]
-
-<P>
-Instructs the system to use a default password if you do not enter a
-password for a password-protected file.
-
-<P>
-<SPAN  CLASS="textbf">SET Time-stamp operations:</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-SET d: [CREATE=ON<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img75.svg"
- ALT="\(\vert\)"></SPAN>OFF]
-<BR>
-SET d: [ACCESS=ON<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img75.svg"
- ALT="\(\vert\)"></SPAN>OFF]
-<BR>
-SET d: [UPDATE=ON<SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img75.svg"
- ALT="\(\vert\)"></SPAN>OFF]
-
-<P>
-The above set commands allw YOU to keep a record of the time and date
-of file creation and update or of the last access update of your
-files.
-
-<P>
-<SPAN  CLASS="textbf">SET Drive operations:</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-SET d: [RO]
-<BR>
-SET d: [RW]
-
-<P>
-Adds or removes write protection from a drive.
-
-<P>
-<SPAN  CLASS="textbf">SETDEF</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-SETDEF
-<BR>
-SETDEF [TEMPORARY=d:]
-<BR>
-SETDEF d:i,d:i,d:i,d:i
-<BR>
-SETDEF [ORDER= (typ1, typn)]
-<BR>
-SETDEF [DISPLAY <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img75.svg"
- ALT="\(\vert\)"></SPAN> NO DISPLAY)
-<BR>
-SETDEF [PAGE <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img75.svg"
- ALT="\(\vert\)"></SPAN> NOPAGE]
-
-<P>
-SETDEF allows the user to display or define up to four drives for the
-program search order, the drive for temporary files, and the filetype
-search order. The SETDEF definitions affect only the loading of
-programs and/or execution of SUBMIT (SUB) files. SETDEF turns on/off
-the system Display and Console Page modes. When on, the system
-displays the location and name of programs loaded or SUBmit files
-executed, and stops after displaying one full console screen of
-information.
-
-<P>
-<SPAN  CLASS="textbf">SHOW</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-SHOW
-<BR>
-SHOW d:
-<BR>
-SHOW d: [SPACE]
-<BR>
-SHOW d: [LABEL]
-<BR>
-SHOW d: [USERS]
-<BR>
-SHOW d: [DIR]
-<BR>
-SHOW d: [DRIVE]
-
-<P>
-The SHOW command displays the following disk drive information:
-
-<UL>
-<LI>access mode and the amount of free disk space
+<LI>bit 1 = UART0 Rx half full *
 </LI>
-<LI>disk label
-</LI>
-<LI>current user number
-</LI>
-<LI>number of files for each user number on the disk
-</LI>
-<LI>number of free directory entries for the disk
-</LI>
-<LI>drive characteristics
+<LI>bit 0 = UART0 Rx available *
 </LI>
 </UL>
+* For each UART, Rx half full and Rx available are shared interrupts
 
 <P>
-<SPAN  CLASS="textbf">SID</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-SID [pgm-filespec],{sym-filespec}
-
-<P>
-The SID symbolic debugger allows you to monitor and test programs
-developed for the 8080 microprocessor. SID supports real-time
-breakpoints, fully monitored execution, symbolic disassembly,
-assembly, and memory display and fill functions. SID can dynamically
-load SID utility programs to provide traceback and histogram
-facilities.
-
-<P>
-<SPAN  CLASS="textbf">SUBMIT</SPAN>
-
-<P>
-=0.7cm Syntax:
-<BR>
-SUBMIT
-<BR>
-SUBMIT filespec
-<BR>
-SUBMIT filespec argument ... argument
-
-<P>
-The SUBMIT command lets you execute a group (batch) of commands from a
-SUBmit file (a file with filetype of SUB).
-
-<P>
-SUB files:
-
-<P>
-The SUB file can contain the following types of lines:
-
-<UL>
-<LI>any valid CP/M Plus command
-</LI>
-<LI>any valid CP/M Plus command with SUBMIT parameters ($0-$9)
-</LI>
-<LI>any data input line
-</LI>
-<LI>any program input line with parameters ($0 to $9)
-</LI>
-</UL>
-
-<P>
-The command line cannot exceed 135 characters.
-
-<P>
-<SPAN  CLASS="textbf">TERMINFO</SPAN> (ZX Spectrum Next)
-
-<P>
-=0.7cm Syntax:
-<BR>
-TERMINFO
-
-<P>
-This program provides information on the terminal facilities provided
-by the BIOS on the ZX Spectrum Next.
-
-<P>
-<SPAN  CLASS="textbf">TERMSIZE</SPAN> (ZX Spectrum Next)
-
-<P>
-=0.7cm Syntax:
-<BR>
-TERMSIZE top left height width
-
-<P>
-Terminal resize utility
-
-<P>
-Size can be up to 32x80 (defaults to 24x80, suitable for many
-programs). If setting a reduced size, the top and left parameters can
-be used to make the image more centered on your screen.
-
-<P>
-<SPAN  CLASS="textbf">TYPE/TYP</SPAN> (built-in)
-
-<P>
-=0.7cm Syntax:
-<BR>
-TYPE
-<BR>
-TYPE filespec
-<BR>
-TYPE filespec [PAGE]
-<BR>
-TYPE filespec [NOPAGE]
-
-<P>
-The TYPE command displays the contents of an ASCII character file on
-your screen.
-
-<P>
-<SPAN  CLASS="textbf">UPGRADE</SPAN> (ZX Spectrum Next)
-
-<P>
-=0.7cm Syntax:
-<BR>
-UPGRADE
-
-<P>
-UPGRADE CP/M from C:/NEXTZXOS/CPMBASE.P3D
-
-<P>
-<SPAN  CLASS="textbf">USER/USE</SPAN> (built-in)
-
-<P>
-=0.7cm Syntax:
-<BR>
-USER
-<BR>
-USER n
-
-<P>
-The USER command sets the current user number. The disk directory can
-be divided into distinct groups according to a User Number. User
-numbers range from 0 through 15.
-
-<P>
-<SPAN  CLASS="textbf">XREF</SPAN> (Not included)
-
-<P>
-=0.7cm Syntax:
-<BR>
-XREF {d:} filename {$P}
-
-<P>
-XREF provides a cross-reference summary of variable usage in a
-program. XREF requires the PRN and SYM files produced by MAC or RMAC
-for input to the program. The SYM and PRN files must have the same
-filename as the filename in the XREF command tail. XREF outputs a file
-of type XRF.
 
 <DIV CLASS="navigation"><HR>
 <!--Navigation Panel-->
@@ -1083,28 +260,28 @@ of type XRF.
  HREF="node146.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node144.html">
+ HREF="zxnext_notes.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node144.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1248"
+<A ID="tex2html1234"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1250"
-  HREF="node230.html">
+<A ID="tex2html1236"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node146.html">BDOS</A>
+ HREF="node146.html">Raspberry Pi0 Acceleration</A>
 <B> Up:</B> <A
- HREF="node144.html">CP/M</A>
+ HREF="zxnext_notes.html">ZX Spectrum Next Programming</A>
 <B> Previous:</B> <A
- HREF="node144.html">CP/M</A>
- &nbsp; <B>  <A ID="tex2html1249"
+ HREF="node144.html">Programming</A>
+ &nbsp; <B>  <A ID="tex2html1235"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1251"
-  HREF="node230.html">Index</A></B> </DIV>
+ &nbsp; <B>  <A ID="tex2html1237"
+  HREF="node234.html">Index</A></B> </DIV>
 <!--End of Navigation Panel-->
 
 </BODY>

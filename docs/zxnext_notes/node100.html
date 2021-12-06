@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>WR6 – Command Register</TITLE>
-<META NAME="description" CONTENT="WR6 – Command Register">
+<TITLE>WR2 – Write Register Group 2</TITLE>
+<META NAME="description" CONTENT="WR2 – Write Register Group 2">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,110 +27,111 @@
  HREF="node101.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node93.html">
+ HREF="node97.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node99.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html984"
+<A ID="tex2html993"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html986"
-  HREF="node230.html">
+<A ID="tex2html995"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node101.html">Operating speed</A>
+ HREF="node101.html">WR3 – Write Register</A>
 <B> Up:</B> <A
- HREF="node93.html">zxnDMA Registers</A>
+ HREF="node97.html">zxnDMA Registers</A>
 <B> Previous:</B> <A
- HREF="node99.html">WR5 – Write Register</A>
- &nbsp; <B>  <A ID="tex2html985"
+ HREF="node99.html">WR1 – Write Register</A>
+ &nbsp; <B>  <A ID="tex2html994"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html987"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html996"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00760070000000000000">
-WR6 – Command Register</A>
+<H4><A ID="SECTION00760030000000000000">
+WR2 – Write Register Group 2</A>
 </H4>
 <PRE>
 D7  D6  D5  D4  D3  D2  D1  D0  BASE REGISTER BYTE
- 1   ?   ?   ?   ?   ?   1   1
-     |   |   |   |   |
-     1   0   0   0   0 = \$C3 = Reset
-     1   0   0   0   1 = \$C7 = Reset Port A Timing
-     1   0   0   1   0 = \$CB = Reset Port B Timing
-     0   1   1   1   1 = \$BF = Read Status Byte
-     0   0   0   1   0 = \$8B = Reinitialize Status Byte
-     0   1   0   0   1 = \$A7 = Initialize Read Sequence
-     1   0   0   1   1 = \$CF = Load
-     1   0   1   0   0 = \$D3 = Continue
-     0   0   0   0   1 = \$87 = Enable DMA
-     0   0   0   0   0 = \$83 = Disable DMA
- +-- 0   1   1   1   0 = \$BB = Read Mask Follows
- |
-D7  D6  D5  D4  D3  D2  D1  D0  READ MASK
- 0   |   |   |   |   |   |   |
-     |   |   |   |   |   |   V
-D7  D6  D5  D4  D3  D2  D1  D0  Status Byte
-     |   |   |   |   |   |
-     |   |   |   |   |   V
-D7  D6  D5  D4  D3  D2  D1  D0  Byte Counter Low
-     |   |   |   |   |
-     |   |   |   |   V
-D7  D6  D5  D4  D3  D2  D1  D0  Byte Counter High
+ 0   |   |   |   |   0   0   0
      |   |   |   |
-     |   |   |   V
-D7  D6  D5  D4  D3  D2  D1  D0  Port A Address Low
+     |   |   |   0 = Port B is memory
+     |   |   |   1 = Port B is IO
      |   |   |
-     |   |   V
-D7  D6  D5  D4  D3  D2  D1  D0  Port A Address High
-     |   |
-     |   V
-D7  D6  D5  D4  D3  D2  D1  D0  Port B Address Low
+     |   0   0 = Port B address decrements
+     |   0   1 = Port B address increments
+     |   1   0 = Port B address is fixed
+     |   1   1 = Port B address is fixed
      |
      V
-D7  D6  D5  D4  D3  D2  D1  D0  Port B Address High
+D7  D6  D5  D4  D3  D2  D1  D0  PORT B VARIABLE TIMING BYTE
+ 0   0   |   0   0   0   |   |
+         |               0   0 = Cycle Length = 4
+         |               0   1 = Cycle Length = 3
+         |               1   0 = Cycle Length = 2
+         |               1   1 = Do not use
+         |
+         V
+D7  D6  D5  D4  D3  D2  D1  D0  ZXN PRESCALAR (FIXED TIME TRANSFER)
 </PRE>
-Unimplemented Z80 DMA commands are ignored.
+The ZXN PRESCALAR is a feature of the zxnDMA implementation. If
+non-zero, a delay will be inserted after each byte is transferred such
+that the total time needed for each transfer is determined by the
+prescalar. This works in both the continuous mode and the burst
+mode. If the DMA is operated in burst mode, the DMA will give up any
+waiting time to the CPU so that the CPU can run while the DMA is idle.
 
 <P>
-Prior to starting the DMA, a LOAD command must be issued to copy the
-Port A and Port B addresses into the DMA's internal pointers. Then an
-ìEnable DMAî command is issued to start the DMA.
+The rate of transfer is given by the formula &ldquo;Frate = 875kHz /
+prescalar&rdquo; or, rearranged, &ldquo;prescalar = 875kHz / Frate&rdquo;. The formula
+is framed in terms of a sample rate (Frate) but Frate can be inverted
+to set a transfer time for each byte instead. The 875kHz constant is a
+nominal value assuming a 28MHz system clock; the system clock actually
+varies from this depending on the video timing selected by the user
+(HDMI, VGA0-6) so for complete accuracy the constant should be
+prorated according to documentation for nextreg $11.
 
 <P>
-The ìContinueî command resets the DMA’s byte counter so that a
-following ìEnable DMAî allows the DMA to repeat the last transfer but
-using the current internal address pointers. I.e. it continues from
-where the last copy operation left off.
+In a DMA audio setting, selecting a sample rate of 16kHz would mean
+setting the prescalar value to 55. This sample period is constant
+across changes in CPU speed.
 
 <P>
-Registers can be read via an IO read from the DMA port after setting
-the read mask. (At power up the read mask is set to $7f). Register
-values are the current internal dma counter values. So ìPort Address A
-Lowî is the lower 8-bits of Port A’s next transfer address. Once the
-end of the read mask is reached, further reads loop around to the
-first one.
 
-<P>
-The format of the DMA status byte is as follows:
-
-<P>
-00E1101T
-
-<P>
-E is set to 0 if the total block length has been transferred
-at least once.
-
-<P>
-T is set to 1 if at least one byte has been transferred.
-
-<P>
-<BR><HR>
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node101.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node97.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node99.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
+<A ID="tex2html993"
+  HREF="node1.html">
+<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
+<A ID="tex2html995"
+  HREF="node234.html">
+<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
+<BR>
+<B> Next:</B> <A
+ HREF="node101.html">WR3 – Write Register</A>
+<B> Up:</B> <A
+ HREF="node97.html">zxnDMA Registers</A>
+<B> Previous:</B> <A
+ HREF="node99.html">WR1 – Write Register</A>
+ &nbsp; <B>  <A ID="tex2html994"
+  HREF="node1.html">Contents</A></B> 
+ &nbsp; <B>  <A ID="tex2html996"
+  HREF="node234.html">Index</A></B> </DIV>
+<!--End of Navigation Panel-->
 
 </BODY>
 </HTML>

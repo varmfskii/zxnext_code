@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Accessing the zxnDMA</TITLE>
-<META NAME="description" CONTENT="Accessing the zxnDMA">
+<TITLE>Mid memory</TITLE>
+<META NAME="description" CONTENT="Mid memory">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -32,38 +32,39 @@
 <A
  HREF="node88.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html931"
+<A ID="tex2html924"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html933"
-  HREF="node230.html">
+<A ID="tex2html926"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node90.html">Description</A>
+ HREF="node90.html">High memory</A>
 <B> Up:</B> <A
- HREF="node87.html">zxnDMA</A>
+ HREF="node87.html">Memory Decoding</A>
 <B> Previous:</B> <A
- HREF="node88.html">Overview</A>
- &nbsp; <B>  <A ID="tex2html932"
+ HREF="node88.html">ROM area</A>
+ &nbsp; <B>  <A ID="tex2html925"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html934"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html927"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H1><A ID="SECTION00720000000000000000">
-Accessing the zxnDMA</A>
-</H1>
-The zxnDMA is mapped to a single Read/Write IO Port 0x6B which is the
-same one used by the Datagear but unlike the Datagear it doesn't also
-map itself to a second port 0x0B similar to the MB-02 interface.
+<H4><A ID="SECTION00640020000000000000">
+Mid memory</A>
+</H4> $2000-$DFFF
 
 <P>
-<PRE>
-PORT $6b: zxnDMA
-</PRE>
+
+<OL>
+<LI>layer 2 mapping
+</LI>
+<LI>mmu
+</LI>
+</OL>
 
 <P>
 <BR><HR>

@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>Machine Type</TITLE>
-<META NAME="description" CONTENT="Machine Type">
+<TITLE>FRAME</TITLE>
+<META NAME="description" CONTENT="FRAME">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -15,7 +15,6 @@
 
 <LINK REL="STYLESHEET" HREF="zxnext_notes.css">
 
-<LINK REL="next" HREF="node129.html">
 <LINK REL="previous" HREF="node127.html">
 <LINK REL="next" HREF="node129.html">
 </HEAD>
@@ -27,132 +26,47 @@
  HREF="node129.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node125.html">
+ HREF="node124.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node127.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1140"
+<A ID="tex2html1145"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1142"
-  HREF="node230.html">
+<A ID="tex2html1147"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node129.html">Summary</A>
+ HREF="node129.html">Configuration</A>
 <B> Up:</B> <A
- HREF="node125.html">Configuration</A>
+ HREF="node124.html">Control</A>
 <B> Previous:</B> <A
- HREF="node127.html">Video Modes</A>
- &nbsp; <B>  <A ID="tex2html1141"
+ HREF="node127.html">START</A>
+ &nbsp; <B>  <A ID="tex2html1146"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1143"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1148"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00840030000000000000">
-Machine Type</A>
+<H4><A ID="SECTION00830040000000000000">
+FRAME</A>
 </H4>
 
 <P>
-The machine type register can be used to provide the number of Ts per
-line, line count, dot clock and maximum horizontal COPPER wait.
+The program counter is RESET to zero when entering this mode. The
+COPPER is started if idle otherwise entering this mode acts as a jump
+to location zero when the COPPER is running.
 
 <P>
-The dot clock (DC) is the number of Ts per line * 4.
+Entering this state enables FRAME mode. The program counter will be
+reset to zero each frame at 0,0.
 
 <P>
-The maximum horizontal COPPER wait (H) is in multiples of 16 clocks.
-
-<P>
-Video mode 7 (HMDI) overrides the timing.
-
-<P>
-The following list shows the various parameters that can be gained
-from reading the machine register combined with the refresh register
-and video mode bits:
-
-<P>
-Register (R/W) $03 (03) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
- ALT="$\Rightarrow$"></SPAN> Machine Type
-<BR>
-A write to this register disables the boot rom
-<BR>
-bits 2-0 select machine type when in config mode
-<table width="90%">
-bit 7 = (W) Display Timing change enable (allow changes to
-  bits 6-4) (0 on hard reset)
-bits 6-4 = Display Timing
-bit 3 = Display Timing user lock control
-  <tr><td valign="top">&nbsp;Read
-  
-<UL>
-<LI>0 = No user lock on display timing
-</LI>
-<LI>1 = User lock on display timing
-  
-</LI>
-</UL>
-  </td></tr>
-<tr><td valign="top">&nbsp;Write
-  
-<UL>
-<LI>1 = Apply user lock on display timing (0 on hard reset)
-  
-</LI>
-</UL>
-bits 2-0 = Machine Type (config mode only)
-<BR>
-determines roms loaded</td></tr>
-<tr><td valign="top">&nbsp;Machine Types/Display Timings
-  
-<UL>
-<LI>000 or 001 = ZX 48K
-</LI>
-<LI>010 = ZX 128K/+2 (Grey)
-</LI>
-<LI>011 = ZX +2A-B/+3e/Next Native
-</LI>
-<LI>100 = Pentagon 128K
-  
-</LI>
-</UL></td></tr></table>
-
-<P>
-
-<DIV CLASS="navigation"><HR>
-<!--Navigation Panel-->
-<A
- HREF="node129.html">
-<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
-<A
- HREF="node125.html">
-<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
-<A
- HREF="node127.html">
-<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1140"
-  HREF="node1.html">
-<IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1142"
-  HREF="node230.html">
-<IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
-<BR>
-<B> Next:</B> <A
- HREF="node129.html">Summary</A>
-<B> Up:</B> <A
- HREF="node125.html">Configuration</A>
-<B> Previous:</B> <A
- HREF="node127.html">Video Modes</A>
- &nbsp; <B>  <A ID="tex2html1141"
-  HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1143"
-  HREF="node230.html">Index</A></B> </DIV>
-<!--End of Navigation Panel-->
+<BR><HR>
 
 </BODY>
 </HTML>

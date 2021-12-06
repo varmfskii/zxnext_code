@@ -3,8 +3,8 @@
 <!--Converted with LaTeX2HTML 2020.2 (Released July 1, 2020) -->
 <HTML lang="en">
 <HEAD>
-<TITLE>STOP</TITLE>
-<META NAME="description" CONTENT="STOP">
+<TITLE>MOVE</TITLE>
+<META NAME="description" CONTENT="MOVE">
 <META NAME="keywords" CONTENT="zxnext_notes">
 <META NAME="resource-type" CONTENT="document">
 <META NAME="distribution" CONTENT="global">
@@ -27,45 +27,49 @@
  HREF="node122.html">
 <IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
 <A
- HREF="node120.html">
+ HREF="node119.html">
 <IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
 <A
  HREF="node120.html">
 <IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A> 
-<A ID="tex2html1108"
+<A ID="tex2html1113"
   HREF="node1.html">
 <IMG WIDTH="65" HEIGHT="24" ALT="contents" SRC="contents.png"></A> 
-<A ID="tex2html1110"
-  HREF="node230.html">
+<A ID="tex2html1115"
+  HREF="node234.html">
 <IMG WIDTH="43" HEIGHT="24" ALT="index" SRC="index.png"></A> 
 <BR>
 <B> Next:</B> <A
- HREF="node122.html">RESET</A>
+ HREF="node122.html">WAIT</A>
 <B> Up:</B> <A
- HREF="node120.html">Control</A>
+ HREF="node119.html">Instructions</A>
 <B> Previous:</B> <A
- HREF="node120.html">Control</A>
- &nbsp; <B>  <A ID="tex2html1109"
+ HREF="node120.html">NOOP</A>
+ &nbsp; <B>  <A ID="tex2html1114"
   HREF="node1.html">Contents</A></B> 
- &nbsp; <B>  <A ID="tex2html1111"
-  HREF="node230.html">Index</A></B> 
+ &nbsp; <B>  <A ID="tex2html1116"
+  HREF="node234.html">Index</A></B> 
 <BR>
 <BR></DIV>
 <!--End of Navigation Panel-->
 
-<H4><A ID="SECTION00830010000000000000">
-STOP</A>
+<H4><A ID="SECTION00820020000000000000">
+MOVE</A>
 </H4>
 
 <P>
-This is the default operating mode set during a hard/soft reset. The
-COPPER is idle in this state and will STOP if currently executing when
-entering this mode. It is safe to write to any location within the 2K
-program RAM when the COPPER is stopped.
+MOVE executes in two dot clocks. It moves 8 bits of data into any of
+the Next hardware registers in the range $00 (0) .. $7F (127).
 
 <P>
-Entering STOP mode preserves the internal program counter so that the
-COPPER may continue when restarted.
+The WORD value $0000 is reserved for the NOOP instruction so no
+register access is carried out for that special case. Register $00 is
+read-only so not affected by the restriction of not being able to
+write zero to it.
+
+<P>
+This instruction can perform 7 million register writes per second for
+VGA and 6.75 million register writes per second for HDMI.
 
 <P>
 <BR><HR>
