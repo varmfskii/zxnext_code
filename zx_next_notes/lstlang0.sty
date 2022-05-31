@@ -1,0 +1,143 @@
+
+%%
+%% Motorola 6809 lwasm definition (c) 2022 Theodore (Alex) Evans
+%%
+\lst@definelanguage[M6809]{Assembler}{
+  morekeywords={
+    abx, adca, adcb, adda, addb, addd, anda, andb, andcc, asl, asla,
+    aslb, asr, asra, asrb, bcc, lbcc, bcs, lbcs, beq, lbeq, bge, lbge,
+    bgt, lbgt, bhi, lbhi, bhs, lbhs, bit, ble, lble, blo, lblo, bls,
+    lbls, blt, lblt, bmi, lbmi, bne, lbne, bpl, lbpl, bra, lbra, brn,
+    lbrn, bsr, lbsr, bvc, lbvc, bvs, lbvs, clr, clra, clrb, cmpa,
+    cmpb, cmpd, cmps, cmpu, cmpx, cmpy, com, coma, comb, cwai, daa,
+    dec, deca, decb, eora, eorb, exg, inc, inca, incb, jmp, jsr, lda,
+    ldb, ldd, lds, ldu, ldx, ldy, leas, leau, leax, leay, lsl, lsla,
+    lslb, lsr, lsra, lsrb, mul, neg, nega, negb, nop, ora, orb, orcc,
+    pshs, pshu, puls, pulu, rol, rola, rolb, ror, rora, rorb, rti,
+    rts, sbc, sbca, sbcb, sex, sta, stb, std, sts, stu, stx, sty,
+    suba, subb, subd, swi, swi2, swi3, sync, tfr, tst, tsta, tstb
+  },
+  morekeywords=[2]{
+    *pragma, *pragmapop, *pragmapush, .4byte, .ascii, .ascis, .asciz,
+    .blkb, .byte, .db, .ds, .dw, .globl, .quad, .rs, .str, .strs,
+    .strz, .word, aliogn, else, emod, end, endc, endif, endm, endsect,
+    endsection, endstruct, equ, error, export, extdep, extern,
+    external, fcb, fcc, fcn, fcs, fcz, fdb, fill, fqb, if, ifdef,
+    ifeq, ifgt, ifle, iflt, ifndef, ifne, ifpragma, import, include,
+    includebin, macro, mod, module, org, os9, pragma, reorg, rmb, rmd,
+    rmq, section, set, setdp, struct, warning, zmb, zmd, zmq
+  },
+  %morekeywords=[3]{
+    %a, b, cc, d, dp, pc, pcr, s, u, x, y
+  %},
+  sensitive=false,
+  morecomment=[l]*,
+  morecomment=[l];,
+  morestring=[b]",
+  alsoletter=._?@,
+  alsodigit=$
+}[keywords,comments,strings]
+
+%%
+%% Hitachi 6309 lwasm definition (c) 2022 Theodore (Alex) Evans
+%%
+\lst@definelanguage[H6309]{Assembler}[M6809]{Assembler}{
+  morekeywords={
+    
+    adcd, adcr, adde, addf, addw, addr, andd, andr, asld, asrd, bitd,
+    bitmd, clrd, clre, clrf, clrw, cmpe, cmpf, cmpw, cmpr, comd, come,
+    comf, comw, decd, dece, decf, decw, divd, divq, eord, eorr, incd,
+    ince, incf, incw, lde, ldf, ldq, ldq, ldmd, ldw, lsld, lsrd, lsrw,
+    muld, negd, ord, orr, pshsw, pshuw, pulsw, puluw, rold, rolw,
+    rord, sbcd, sbcr, sexw, ste, stf, stq, stw, sube, subf, subw,
+    subr, tfm, tstd, tste, tstf, tstw
+
+  }%,
+  %morekeywords=[3]{
+    %e, f, md, q, w
+  %}
+}[keywords,comments,strings]
+
+
+%%
+%% Intel 8080 definition (c) 2022 Theodore (Alex) Evan
+%%
+\lst@definelanguage[I8080]{Assembler}{
+  morekeywords={
+    aci, adc, add, adi, ana, ani, call, cc, cm, cma, cmc, cmp, cnc,
+    cnz, cp, cpe, cpi, cpo, cz, daa, dad, dcr, dcx, di, ei, hlt, in,
+    inr, inx, jc, jm, jmp, jnc, jnz, jp, jpe, jpo, jz, lda, ldax,
+    lhld, lxi, mov, mvi, nop, ora, ori, out, pchl, pop, push, ral,
+    rar, rc, rlc, rm, rnc, rnz, rp, rpe, rpo, rrc, rst, rz, sbb, sbi,
+    shld, sphl, sta, stax, stc, sub, sui, xchg, xra, xri, xthl
+  },
+  sensitive=false,
+  morecomment=[l]*,
+  morecomment=[l];,
+  morestring=[b]",
+  alsoletter=._?@,
+  alsodigit=$
+}[keywords,comments,strings]
+
+%%
+%% Zilog Z80 sjasmplus definition (c) 2022 Theodore (Alex) Evans
+%%
+\lst@definelanguage[Z80]{Assembler}{
+  morekeywords={
+    adc, add, and, bit, call, ccf, cp, cpd, cpdr, cpi, cpir, cpl, daa,
+    dec, di, djnz, ei, ex, exx, halt, im, in, inc, ind, indr, ini,
+    inir, jp, jr, ld, ldd, lddr, ldi, ldir, neg, nop, or otdr, otir,
+    out, outd, outi, pop, push, res, ret, reti, retn, rl, rla, rlc,
+    rlca, rld, rr, rra, rrca, rrd, rst, sbc, scf, set, sl1, sla, sra,
+    srl, sub, xor
+  },
+  morekeywords=[2]{
+    .abyte, .abytec, .abytez, .align, .assert, .binary, .block,
+    .bplist, .byte, .cspectmap, .d24, .db, .dc, .dd, .defarray+,
+    .defarray, .defb, .defd, .defdevice, .defg, .define+, .define,
+    .defl, .defm, .defs, .defw, .dephase, .device, .dg, .dh, .disp,
+    .display, .dm, .ds, .dup, .dw, .dword, .dz, .else, .elseif,
+    .emptytap, .emptytrd, .encoding, .end, .endif, .endlua, .endlua,
+    .endm, .endmod, .endmodule, .ends, .endt, .ent, .equ, .export,
+    .fpos, .hex, .if, .ifdef, .ifn, .ifndef, .ifnused, .ifused,
+    .incbin, .inchob, .include, .includelua, .inctrd, .insert,
+    .labelslist, .lua, .lua, .macro, .memorymap, .mmu, .module, .opt,
+    .org, .outend, .output, .page, .phase, .relocate_end,
+    .relocate_start, .relocate_table, .rept, .save3dos, .savebin,
+    .savecdt, .savecpcsna, .savedev, .savehob, .savenex, .savesna,
+    .savetap, .savetrd, .setbp, .setbreakpoint, .shellexec, .size,
+    .sldopt, .slot, .struct, .tapend, .tapout, .textarea, .undefine,
+    .unphase, .while, .word, abyte, abytec, abytez, align, assert,
+    binary, block, bplist, byte, cspectmap, d24, db, dc, dd,
+    defarray+, defarray, defb, defd, defdevice, defg, define+, define,
+    defl, defm, defs, defw, dephase, device, dg, dh, disp, display,
+    dm, ds, dup, dw, dword, dz, else, elseif, emptytap, emptytrd,
+    encoding, end, endif, endlua, endlua, endm, endmod, endmodule,
+    ends, endt, ent, equ, export, fpos, hex, if, ifdef, ifn, ifndef,
+    ifnused, ifused, incbin, inchob, include, includelua, inctrd,
+    insert, labelslist, lua, lua, macro, memorymap, mmu, module, opt,
+    org, outend, output, page, phase, relocate_end, relocate_start,
+    relocate_table, rept, save3dos, savebin, savecdt, savecpcsna,
+    savedev, savehob, savenex, savesna, savetap, savetrd, setbp,
+    setbreakpoint, shellexec, size, sldopt, slot, struct, tapend,
+    tapout, textarea, undefine, unphase, while, word
+  },
+  sensitive=false,
+  morecomment=[l];,
+  morecomment=[l]//,
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  alsoletter=_@,
+  alsodigit=.!?
+}[keywords,comments,strings]
+
+%%
+%% Z80n sjasmplus (Spectrum Next extetionsions) (c) Theodore (Alex) Evans
+%%
+\lst@definelanguage[Z80n]{Assembler}[Z80]{Assembler}{
+  morekeywords={
+    bsla, bsra, bsrc, bsrf, bsrl, lddrx, lddx, ldirx, ldix, ldpirx,
+    ldws, mirror, mul, nextreg, outinb, pixelad, pixeldn, setae,
+    swapnib, test
+  }
+}[keywords,comments,strings]

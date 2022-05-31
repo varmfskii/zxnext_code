@@ -75,23 +75,7 @@ matching communication protocols (by default 115,200 bps, 8N1 and no
 flow control). On the Pi end the UART is connected to the serial
 console.
 
-\begin{verbatim}
-;; enable UART connection with Pi Zero
-   ld c,$3b
-   ld b,$15 ; UART control
-;; select Pi on UART control
-   in a,(c)
-   or $40
-   out (c),a
-   ld b,$24 ; Next Register Select
-   ld a,$a0
-   out (c),a
-   inc b ; Next Register Data
-;; Enable UART on GPIO and select Pi
-   in a,(c)
-   or $30
-   out (c),a
-\end{verbatim}
+\lstinputlisting{pi_serial.asm}
 
 The \iis sound interface between the ZX Spectrum Next and the Pi Zero
 is controlled by nextregs \$a2 and \$a3. Normally, one would control

@@ -8,16 +8,7 @@ the ZX Spectrum Next, there are other much better methods and this is
 only supported for backward compatibility.
 
 Code:
-\begin{verbatim}
-;; enable internal speaker
-ld bc,$243B
-ld a,$08
-out (c),a
-ld bc,$253B
-in a,(c)
-or $10
-out (c),a
-\end{verbatim}
+\lstinputlisting{audio/speaker.asm}
 
 \section{Sampled 8-bit}
 
@@ -34,16 +25,7 @@ and channel D to: \$5f and \$fb; with port \$df connected to both
 channel A and C and nextreg \$2D connected to both channel A and D.
 
 Code:
-\begin{verbatim}
-;; enable SpecDrum/Convox audio
-ld bc,$243B
-ld a,$08
-out (c),a
-ld bc,$253B
-in a,(c)
-or $08
-out (c),a
-\end{verbatim}
+\lstinputlisting{audio/convox.asm}
 
 \section{Turbosound}
 
@@ -59,16 +41,7 @@ control register. You can then access a chip register using the access
 port.
 
 Code:
-\begin{verbatim}
-;; enable TurboSound audio
-ld bc,$243B
-ld a,$08
-out (c),a
-ld bc,$253B
-in a,(c)
-or $02
-out (c),a
-\end{verbatim}
+\lstinputlisting{audio/turbo.asm}
 
 Each of the three AY chips has three channels, A, B, and C whose
 mapping is controlled by bit 5 of Next register 0x08 (8).

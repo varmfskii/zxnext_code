@@ -70,42 +70,21 @@ use pixel addresses of <!-- MATH
  $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img18.svg"
+ SRC="img19.svg"
  ALT="$1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN> and
 the attributes to the attribute 2 area with addresses of
 <!-- MATH
  $1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img19.svg"
+ SRC="img20.svg"
  ALT="$1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>.
 
 <P>
 Code:
 
 <P>
-<PRE>
-;; disable LoRes mode:
-ld bc,$243B ; next register select port
-ld a,$15
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-and $7f
-out (c),a
-;; set Timex mode
-ld bc,$243B ; next register select port
-ld a,$08
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-or $04
-out (c),a
-;; set alternate page mode
-ld c,$ff
-ld a,$01
-out (c),a
-</PRE>
+video/timex_alt.asm
 
 <P>
 <BR><HR>

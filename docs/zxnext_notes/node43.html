@@ -58,7 +58,7 @@ Programming Tilemap mode</A>
 
 <P>
 Register (R/W) $6B (6B) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Control
 
 <UL>
@@ -121,7 +121,7 @@ tilemap.
 
 <P>
 Register (R/W) $6C (6C) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Default Layer 3 Attribute*
 
 <UL>
@@ -148,7 +148,7 @@ register instead.
 
 <P>
 Register (R/W) $6E (6E) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 Tilemap Base Address
 
 <UL>
@@ -184,9 +184,9 @@ should be treated as a fully significant 8-bit value.
 
 <P>
 The tilemap will be <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img29.svg"
- ALT="$40\times32$"></SPAN> or <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img30.svg"
+ ALT="$40\times32$"></SPAN> or <SPAN CLASS="MATH"><IMG STYLE=""
+ SRC="img31.svg"
  ALT="$80\times32$"></SPAN> in size depending on
 the resolution selected in nextreg $6B. Each entry in the tilemap is
 normally two bytes but can be one byte if attributes are eliminated by
@@ -194,7 +194,7 @@ setting bit 5 of nextreg $6B.
 
 <P>
 Register (R/W) $6F (6F) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 Tile Definitions Base Address
 
 <UL>
@@ -235,9 +235,9 @@ Each tile definition is 32 bytes in size and is located at address:
 Tile Def Base Addr + 32 * (Tile Number)
 
 <P>
-<A NAME="386"></A>
+<A NAME="419"></A>
 Register (R/W) $4C (4C) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Level 3 Transparency Index
 
 <UL>
@@ -258,9 +258,9 @@ colour.
 For palette information see palette section.
 
 <P>
-<A NAME="392"></A>
+<A NAME="425"></A>
 Register (R/W) $1B (1B) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Clip Window Definition
 
 <UL>
@@ -296,9 +296,9 @@ non-transparent and its indicated extent is inclusive; it will extend
 from X1*2 to X2*2+1 horizontally and from Y1 to Y2 vertically.
 
 <P>
-<A NAME="400"></A>
+<A NAME="433"></A>
 Register (R/W) $2F (2F) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Horizontal Scroll Control MSB
 
 <UL>
@@ -311,7 +311,7 @@ Meaningful Range is 0-319 in 40 char mode, 0-639 in 80 char mode
 
 <P>
 Register (R/W) $30 (30) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Horizontal Scroll Control LSB
 
 <UL>
@@ -322,7 +322,7 @@ Meaningful range is 0-319 in 40 char mode, 0-639 in 80 char mode
 
 <P>
 Register (R/W) $31 (31) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Layer 3 (Tilemap) Vertical Scroll Control
 
 <UL>
@@ -332,7 +332,7 @@ Register (R/W) $31 (31) <SPAN CLASS="MATH"><IMG STYLE=""
 
 <P>
 Register (R/W) $68 (68) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> ULA Control
 <table width="90%">
 bit 7 = Disable ULA output (0 on reset)

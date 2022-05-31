@@ -135,27 +135,6 @@ same (\$0101, \$0202, … \$FFFF) then place 257 copies of that value in
 a block starting at I*\$100 (you can set the value of the I register).
 
 Code:
-\begin{verbatim}
-;; my program
-org $8000
-;; enable interrupt mode im2
-ld i,$fe
-im2
-ei
-;; program body
-;; interrupt routine
-handler:
-;; preserve registers used
-;; handle interrupt
-;; restore registers
-ei
-reti
-;; jump to interrupt routine
-org $fdfd
-jp handler
-;; im2 jump table
-org $fe00 ; not actually legal
-defs $101,$fd
-\end{verbatim}
+\lstinputlisting{interrupts/interrupt.asm}
 
 \input{interrupts/ctc.tex}

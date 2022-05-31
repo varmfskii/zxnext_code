@@ -1,60 +1,72 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.11.23)  6 DEC 2021 08:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.4.18)  31 MAY 2022 18:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **./images.tex
 (./images.tex
-LaTeX2e <2020-10-01> patch level 4
-L3 programming layer <2021-02-18>
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-04-10>
 (/usr/share/texmf-dist/tex/latex/base/book.cls
-Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
+Document Class: book 2021/10/04 v1.4n Standard LaTeX document class
 (/usr/share/texmf-dist/tex/latex/base/bk10.clo
-File: bk10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+File: bk10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count179
-\c@chapter=\count180
-\c@section=\count181
-\c@subsection=\count182
-\c@subsubsection=\count183
-\c@paragraph=\count184
-\c@subparagraph=\count185
-\c@figure=\count186
-\c@table=\count187
+\c@part=\count185
+\c@chapter=\count186
+\c@section=\count187
+\c@subsection=\count188
+\c@subsubsection=\count189
+\c@paragraph=\count190
+\c@subparagraph=\count191
+\c@figure=\count192
+\c@table=\count193
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
 ) (/usr/share/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-) (/usr/share/texmf-dist/tex/latex/csvsimple/csvsimple.sty
-Package: csvsimple 2019/04/09 version 1.21 LaTeX CSV file processing
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+) (/usr/share/texmf-dist/tex/latex/csvsimple/csvsimple.sty (/usr/share/texmf-di
+st/tex/latex/l3packages/l3keys2e/l3keys2e.sty (/usr/share/texmf-dist/tex/latex/
+l3kernel/expl3.sty
+Package: expl3 2022-04-10 L3 programming layer (loader) 
+(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-04-14 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count194
+\l__pdf_internal_box=\box50
+))
+Package: l3keys2e 2022-01-12 LaTeX2e option processing using LaTeX3 keys
+)
+Package: csvsimple 2022/02/01 v2.3.0 LaTeX CSV file processing
+) (/usr/share/texmf-dist/tex/latex/csvsimple/csvsimple-legacy.sty
+Package: csvsimple-legacy 2022/02/01 version 2.3.0 LaTeX2e CSV file processing
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texmf-dis
 t/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks15
+\pgfutil@everybye=\toks16
 \pgfutil@tempdima=\dimen139
 \pgfutil@tempdimb=\dimen140
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)) (/u
 sr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box47
+\pgfutil@abb=\box51
 ) (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/share/
 texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2020/12/27 v3.1.8b (3.1.8b)
+Package: pgfrcs 2021/05/15 v3.1.9a (3.1.9a)
 )) (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texmf
 -dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks16
-\pgfkeys@temptoks=\toks17
+\pgfkeys@pathtoks=\toks17
+\pgfkeys@temptoks=\toks18
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
-\pgfkeys@tmptoks=\toks18
+\pgfkeys@tmptoks=\toks19
 ))) (/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count188
+\etb@tempcnta=\count195
 ) (/usr/share/texmf-dist/tex/latex/tools/shellesc.sty
 Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
 Package shellesc Info: Restricted shell escape enabled on input line 77.
 )
 \csv@file=\read2
-\c@csvinputline=\count189
-\c@csvrow=\count190
-\c@csvcol=\count191
+\c@csvinputline=\count196
+\c@csvrow=\count197
+\c@csvcol=\count198
 \csv@out=\write3
 ) (/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
@@ -68,147 +80,143 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen148
 \cmidrulekern=\dimen149
 \defaultaddspace=\dimen150
-\@cmidla=\count192
-\@cmidlb=\count193
+\@cmidla=\count199
+\@cmidlb=\count266
 \@aboverulesep=\dimen151
 \@belowrulesep=\dimen152
-\@thisruleclass=\count194
-\@lastruleclass=\count195
+\@thisruleclass=\count267
+\@lastruleclass=\count268
 \@thisrulewidth=\dimen153
 ) (/usr/share/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\enitkv@toks@=\toks19
+\enitkv@toks@=\toks20
 \labelindent=\skip49
 \enit@outerparindent=\dimen154
-\enit@toks=\toks20
-\enit@inbox=\box48
-\enit@count@id=\count196
-\enitdp@description=\count197
+\enit@toks=\toks21
+\enit@inbox=\box52
+\enit@count@id=\count269
+\enitdp@description=\count270
 ) (/usr/share/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 ) (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks21
+\KV@toks@=\toks22
 ) (/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
 (/usr/share/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 ) (/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 105.
+Package graphics Info: Driver file: pdftex.def on input line 107.
 (/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen155
 \Gin@req@width=\dimen156
 ) (/usr/share/texmf-dist/tex/latex/base/makeidx.sty
-Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
+Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
 ) (/usr/share/texmf-dist/tex/generic/xint/xintbinhex.sty (/usr/share/texmf-dist
 /tex/generic/xint/xintkernel.sty
-Package: xintkernel 2021/03/29 v1.4d Paraphernalia for the xint packages (JFB)
-\xint_c_ii^xiv=\count198
-\xint_c_ii^xxi=\count199
+Package: xintkernel 2021/07/13 v1.4j Paraphernalia for the xint packages (JFB)
+\xint_c_ii^xiv=\count271
+\xint_c_ii^xxi=\count272
 )
-Package: xintbinhex 2021/03/29 v1.4d Expandable binary and hexadecimal conversi
+Package: xintbinhex 2021/07/13 v1.4j Expandable binary and hexadecimal conversi
 ons (JFB)
-\xint_c_ii^xv=\count266
-\xint_c_ii^xvi=\count267
+\xint_c_ii^xv=\count273
+\xint_c_ii^xvi=\count274
 ) (/usr/share/texmf-dist/tex/latex/hang/hang.sty
 Package: hang 2017/02/18 v2.1 Hanging paragraphs and list items
 \hangingindent=\skip50
 \hangingleftmargin=\skip51
 \labeledleftmargin=\skip52
 ) (/usr/share/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count268
-\lst@gtempboxa=\box49
-\lst@token=\toks22
-\lst@length=\count269
+\lst@mode=\count275
+\lst@gtempboxa=\box53
+\lst@token=\toks23
+\lst@length=\count276
 \lst@currlwidth=\dimen157
-\lst@column=\count270
-\lst@pos=\count271
+\lst@column=\count277
+\lst@pos=\count278
 \lst@lostspace=\dimen158
 \lst@width=\dimen159
-\lst@newlines=\count272
-\lst@lineno=\count273
+\lst@newlines=\count279
+\lst@lineno=\count280
 \lst@maxwidth=\dimen160
 (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count274
-\lst@skipnumbers=\count275
-\lst@framebox=\box50
+\c@lstnumber=\count281
+\lst@skipnumbers=\count282
+\lst@framebox=\box54
 ) (/usr/share/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
 (/usr/share/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 ) (/usr/share/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 ) (/usr/share/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
 (/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2020/03/06 v1.0d TeX engine tests
+Package: iftex 2022/02/03 v1.0f TeX engine tests
 ) (/usr/share/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ) (/usr/share/texmf-dist/tex/latex/tools/longtable.sty
-Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
 \LTleft=\skip53
 \LTright=\skip54
 \LTpre=\skip55
 \LTpost=\skip56
-\LTchunksize=\count276
+\LTchunksize=\count283
 \LTcapwidth=\dimen161
-\LT@head=\box51
-\LT@firsthead=\box52
-\LT@foot=\box53
-\LT@lastfoot=\box54
-\LT@cols=\count277
-\LT@rows=\count278
-\c@LT@tables=\count279
-\c@LT@chunks=\count280
-\LT@p@ftn=\toks23
+\LT@head=\box55
+\LT@firsthead=\box56
+\LT@foot=\box57
+\LT@lastfoot=\box58
+\LT@gbox=\box59
+\LT@cols=\count284
+\LT@rows=\count285
+\c@LT@tables=\count286
+\c@LT@chunks=\count287
+\LT@p@ftn=\toks24
 ) (/usr/share/texmf-dist/tex/latex/tools/array.sty
-Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
+Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
 \col@sep=\dimen162
-\ar@mcellbox=\box55
+\ar@mcellbox=\box60
 \extrarowheight=\dimen163
-\NC@list=\toks24
+\NC@list=\toks25
 \extratabsurround=\skip57
 \backup@length=\skip58
-\ar@cellbox=\box56
+\ar@cellbox=\box61
 ) (/usr/share/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
-\c@tracingmulticols=\count281
-\mult@box=\box57
+Package: multicol 2021/10/28 v1.9b multicolumn formatting (FMi)
+\c@tracingmulticols=\count288
+\mult@box=\box62
 \multicol@leftmargin=\dimen164
-\c@unbalance=\count282
-\c@collectmore=\count283
-\doublecol@number=\count284
-\multicoltolerance=\count285
-\multicolpretolerance=\count286
+\c@unbalance=\count289
+\c@collectmore=\count290
+\doublecol@number=\count291
+\multicoltolerance=\count292
+\multicolpretolerance=\count293
 \full@width=\dimen165
 \page@free=\dimen166
 \premulticols=\dimen167
 \postmulticols=\dimen168
 \multicolsep=\skip59
 \multicolbaselineskip=\skip60
-\partial@page=\box58
-\last@line=\box59
+\partial@page=\box63
+\last@line=\box64
 \maxbalancingoverflow=\dimen169
-\mult@rightbox=\box60
-\mult@grightbox=\box61
-\mult@gfirstbox=\box62
-\mult@firstbox=\box63
-\@tempa=\box64
-\@tempa=\box65
-\@tempa=\box66
-\@tempa=\box67
-\@tempa=\box68
+\mult@rightbox=\box65
+\mult@grightbox=\box66
+\mult@firstbox=\box67
+\mult@gfirstbox=\box68
 \@tempa=\box69
 \@tempa=\box70
 \@tempa=\box71
@@ -241,61 +249,60 @@ Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \@tempa=\box98
 \@tempa=\box99
 \@tempa=\box100
-\c@minrows=\count287
-\c@columnbadness=\count288
-\c@finalcolumnbadness=\count289
+\@tempa=\box101
+\@tempa=\box102
+\@tempa=\box103
+\@tempa=\box104
+\c@minrows=\count294
+\c@columnbadness=\count295
+\c@finalcolumnbadness=\count296
 \last@try=\dimen170
 \multicolovershoot=\dimen171
 \multicolundershoot=\dimen172
-\mult@nat@firstbox=\box101
-\colbreak@box=\box102
-\mc@col@check@num=\count290
+\mult@nat@firstbox=\box105
+\colbreak@box=\box106
+\mc@col@check@num=\count297
+) (/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
 )
 \@indexfile=\write4
 \openout4 = `images.idx'.
 
 Writing index file images.idx
-(/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
-(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package xcolor Info: Driver file: pdftex.def on input line 225.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
-Package xcolor Info: Model `RGB' extended on input line 1364.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
-)
-\sizebox=\box103
+\sizebox=\box107
 \lthtmlwrite=\write5
 (/usr/share/texmf-dist/tex/latex/preview/preview.sty
-Package: preview 2017/04/24 12.3 (AUCTeX/preview-latex)
+Package: preview 2017/04/24 13.1 (AUCTeX/preview-latex)
 (/usr/share/texmf-dist/tex/generic/luatex85/luatex85.sty
 Package: luatex85 2016/06/15 v1.4 pdftex aliases for luatex
 ) (/usr/share/texmf-dist/tex/latex/preview/prtightpage.def
 \PreviewBorder=\dimen173
 )
-\pr@snippet=\count291
-\pr@box=\box104
-\pr@output=\toks25
+\pr@snippet=\count298
+\pr@box=\box108
+\pr@output=\toks26
 )
-\lthtmlPageBox=\box105
+\lthtmlPageBox=\box109
 \lthtmlCropMarkHeight=\dimen174
 \lthtmlCropMarkDepth=\dimen175
-(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count292
-\l__pdf_internal_box=\box106
-) (./images.aux (/home/alex/retro/zx/zxnext/code/zx_next_notes/video/video.aux)
-(/home/alex/retro/zx/zxnext/code/zx_next_notes/audio/audio.aux) (/home/alex/ret
-ro/zx/zxnext/code/zx_next_notes/io.aux) (/home/alex/retro/zx/zxnext/code/zx_nex
-t_notes/memory/memory.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/zxndm
-a/zxndma.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/copper/copper.aux)
+(./images.aux (/home/alex/retro/zx/zxnext/code/zx_next_notes/video/video.aux) (
+/home/alex/retro/zx/zxnext/code/zx_next_notes/audio/audio.aux) (/home/alex/retr
+o/zx/zxnext/code/zx_next_notes/io.aux) (/home/alex/retro/zx/zxnext/code/zx_next
+_notes/memory/memory.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/zxndma
+/zxndma.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/copper/copper.aux) 
 (/home/alex/retro/zx/zxnext/code/zx_next_notes/interrupts/interrupts.aux) (/hom
 e/alex/retro/zx/zxnext/code/zx_next_notes/serial.aux) (/home/alex/retro/zx/zxne
 xt/code/zx_next_notes/pi0.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/s
@@ -311,33 +318,33 @@ ode.aux) (/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/file_formats
 ) (/home/alex/retro/zx/zxnext/code/zx_next_notes/appendices/keyboard.aux))
 \openout1 = `images.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 134.
-LaTeX Font Info:    ... okay on input line 134.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 134.
-LaTeX Font Info:    ... okay on input line 134.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 134.
-LaTeX Font Info:    ... okay on input line 134.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 134.
-LaTeX Font Info:    ... okay on input line 134.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 134.
-LaTeX Font Info:    ... okay on input line 134.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 134.
-LaTeX Font Info:    ... okay on input line 134.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 134.
-LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 159.
+LaTeX Font Info:    ... okay on input line 159.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 159.
+LaTeX Font Info:    ... okay on input line 159.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 159.
+LaTeX Font Info:    ... okay on input line 159.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 159.
+LaTeX Font Info:    ... okay on input line 159.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 159.
+LaTeX Font Info:    ... okay on input line 159.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 159.
+LaTeX Font Info:    ... okay on input line 159.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 159.
+LaTeX Font Info:    ... okay on input line 159.
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count293
+\scratchcounter=\count299
 \scratchdimen=\dimen176
-\scratchbox=\box107
-\nofMPsegments=\count294
-\nofMParguments=\count295
-\everyMPshowfont=\toks26
-\MPscratchCnt=\count296
+\scratchbox=\box110
+\nofMPsegments=\count300
+\nofMParguments=\count301
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count302
 \MPscratchDim=\dimen177
-\MPnumerator=\count297
-\makeMPintoPDFobject=\count298
-\everyMPtoPDFconversion=\toks27
+\MPnumerator=\count303
+\makeMPintoPDFobject=\count304
+\everyMPtoPDFconversion=\toks28
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 (/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
@@ -369,7 +376,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count299
+\c@lstlisting=\count305
 Preview: Fontsize 10pt
 Preview: PDFoutput 1
 
@@ -396,890 +403,57 @@ latex2htmlLength oddsidemargin=35.0pt
 latex2htmlLength evensidemargin=89.0pt
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 159.
+(Font)              <9> on input line 302.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 159.
+(Font)              <6> on input line 302.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 302.
 
-:tex2html_wrap_inline10864:lthtmlCropMarkHeight:=12.44444pt
+Overfull \hbox (18.07397pt too wide) in paragraph at lines 302--303
+ [][] 
+ []
 
-:tex2html_wrap_inline10864:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
+
+:table2444:lthtmlCropMarkHeight:=215.19778pt
+
+:table2444:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
 Preview: Tightpage -32891 -32891 32891 32891
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-
-:tex2html_wrap_inline10870:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline10870:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[2]
-
-:tex2html_wrap_inline10873:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline10873:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[3]
-
-:tex2html_wrap_inline11903:lthtmlCropMarkHeight:=14.8871pt
-
-:tex2html_wrap_inline11903:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[4]
-
-:tex2html_wrap_inline11906:lthtmlCropMarkHeight:=14.8871pt
-
-:tex2html_wrap_inline11906:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[5]
-
-:tex2html_wrap_inline11909:lthtmlCropMarkHeight:=14.8871pt
-
-:tex2html_wrap_inline11909:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[6]
-
-:tex2html_wrap_inline671:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline671:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[7]
-
-:tex2html_wrap_inline673:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline673:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[8]
-
-:tex2html_wrap_inline675:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline675:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[9]
-
-:tex2html_wrap_inline677:lthtmlCropMarkHeight:=9.66875pt
-
-:tex2html_wrap_inline677:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[10]
-
-:tex2html_wrap_inline695:lthtmlCropMarkHeight:=11.83333pt
-
-:tex2html_wrap_inline695:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[11]
-
-:table169:lthtmlCropMarkHeight:=31.19998pt
-
-:table169:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[12]
-
-:table174:lthtmlCropMarkHeight:=115.19998pt
-
-:table174:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[13]
-
-:tex2html_wrap_inline735:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline735:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[14]
-
-:tex2html_wrap_inline737:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline737:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[15]
-
-:tex2html_wrap_inline747:lthtmlCropMarkHeight:=12.83331pt
-
-:tex2html_wrap_inline747:lthtmlCropMarkDepth:=1.49998pt:1ex:=4.3045pt
-[16]
-
-:tex2html_wrap_inline751:lthtmlCropMarkHeight:=12.83331pt
-
-:tex2html_wrap_inline751:lthtmlCropMarkDepth:=1.49998pt:1ex:=4.3045pt
-[17]
-
-:tex2html_wrap_inline753:lthtmlCropMarkHeight:=12.83331pt
-
-:tex2html_wrap_inline753:lthtmlCropMarkDepth:=1.49998pt:1ex:=4.3045pt
-[18]
-
-:tex2html_wrap_inline755:lthtmlCropMarkHeight:=12.83331pt
-
-:tex2html_wrap_inline755:lthtmlCropMarkDepth:=1.49998pt:1ex:=4.3045pt
-[19]
-
-:tex2html_wrap_inline759:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline759:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[20]
-
-:tex2html_wrap_inline761:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline761:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[21]
-
-:tex2html_wrap_inline769:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline769:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[22]
-
-:table245:lthtmlCropMarkHeight:=115.19998pt
-
-:table245:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[23]
-
-:tex2html_wrap_inline771:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline771:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[24]
-
-:tex2html_wrap_inline775:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline775:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[25]
-
-:tex2html_wrap_inline777:lthtmlCropMarkHeight:=12.83331pt
-
-:tex2html_wrap_inline777:lthtmlCropMarkDepth:=1.49998pt:1ex:=4.3045pt
-[26]
-
-:tex2html_wrap_inline779:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline779:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[27]
-
-:tex2html_wrap_inline781:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline781:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[28]
-
-:tex2html_wrap_inline831:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline831:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[29]
-
-:tex2html_wrap_inline835:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline835:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[30]
-
-:tex2html_wrap_inline841:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline841:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[31]
-
-:tex2html_wrap_inline843:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline843:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[32]
-
-:tex2html_wrap_inline887:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline887:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[33]
-
-:tex2html_wrap_inline889:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline889:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[34]
-
-:tex2html_wrap_inline891:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline891:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[35]
-
-:tex2html_wrap_inline893:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline893:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[36]
-
-:tex2html_wrap_inline915:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline915:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[37]
-
-:tex2html_wrap_inline919:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline919:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[38]
-
-:tex2html_wrap_inline975:lthtmlCropMarkHeight:=14.41226pt
-
-:tex2html_wrap_inline975:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[39]
-
-:tex2html_wrap_inline1852:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline1852:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[40]
-
-:tex2html_wrap_inline1854:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline1854:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[41]
-
-:tex2html_wrap_inline1858:lthtmlCropMarkHeight:=9.66875pt
-
-:tex2html_wrap_inline1858:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[42]
-
-:tex2html_wrap_inline1860:lthtmlCropMarkHeight:=12.94444pt
-
-:tex2html_wrap_inline1860:lthtmlCropMarkDepth:=1.94443pt:1ex:=4.3045pt
-[43]
-
-:tex2html_wrap_inline1862:lthtmlCropMarkHeight:=12.94444pt
-
-:tex2html_wrap_inline1862:lthtmlCropMarkDepth:=1.94443pt:1ex:=4.3045pt
-[44]
-
-:table2021:lthtmlCropMarkHeight:=67.19998pt
-
-:table2021:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[45]
-Overfull \hbox (80.33795pt too wide) in paragraph at lines 537--538
- [][] 
- []
-
-
-:table2231:lthtmlCropMarkHeight:=91.19998pt
-
-:table2231:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[46]
-
-:table2374:lthtmlCropMarkHeight:=103.19998pt
-
-:table2374:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[47]
-
-:table2378:lthtmlCropMarkHeight:=103.19998pt
-
-:table2378:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[48]
-
-:table2384:lthtmlCropMarkHeight:=67.19998pt
-
-:table2384:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[49]
-
-:table2388:lthtmlCropMarkHeight:=67.19998pt
-
-:table2388:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[50]
-Overfull \hbox (13.49394pt too wide) in paragraph at lines 603--604
- [][] 
- []
-
-
-:table2392:lthtmlCropMarkHeight:=125.03116pt
-
-:table2392:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[51]
-
-:table2396:lthtmlCropMarkHeight:=144.61557pt
-
-:table2396:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[52]
-
-:tex2html_wrap_inline2510:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline2510:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[53]
-
-:tex2html_wrap_inline2512:lthtmlCropMarkHeight:=12.44444pt
-
-:tex2html_wrap_inline2512:lthtmlCropMarkDepth:=0.83333pt:1ex:=4.3045pt
-[54]
-
-:table2401:lthtmlCropMarkHeight:=43.19998pt
-
-:table2401:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[55]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 649.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 649.
+(Font)              <7> on input line 326.
 
-Overfull \hbox (18.07397pt too wide) in paragraph at lines 649--650
- [][] 
- []
+:table2449:lthtmlCropMarkHeight:=99.08719pt
 
-
-:table2405:lthtmlCropMarkHeight:=215.19778pt
-
-:table2405:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[56]
-
-:table2410:lthtmlCropMarkHeight:=99.08719pt
-
-:table2410:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[57]
-
-:table2423:lthtmlCropMarkHeight:=87.08719pt
-
-:table2423:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[58]
-
-:table2427:lthtmlCropMarkHeight:=65.64212pt
-
-:table2427:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[59]
-Overfull \hbox (106.77776pt too wide) in paragraph at lines 731--732
- [][] 
- []
-
-
-:table2469:lthtmlCropMarkHeight:=283.19998pt
-
-:table2469:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[60]
-
-:tex2html_wrap_inline3491:lthtmlCropMarkHeight:=14.8871pt
-
-:tex2html_wrap_inline3491:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[61]
-
-:tex2html_wrap_inline3493:lthtmlCropMarkHeight:=14.8871pt
-
-:tex2html_wrap_inline3493:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[62]
-
-:tex2html_wrap_inline3499:lthtmlCropMarkHeight:=14.44843pt
-
-:tex2html_wrap_inline3499:lthtmlCropMarkDepth:=4.98718pt:1ex:=4.3045pt
-[63]
-
-:tex2html_wrap_inline3501:lthtmlCropMarkHeight:=14.44843pt
-
-:tex2html_wrap_inline3501:lthtmlCropMarkDepth:=5.82053pt:1ex:=4.3045pt
-[64]
-
-:labeledpar3557:lthtmlCropMarkHeight:=21.99756pt
-
-:labeledpar3557:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[65]
-
-:labeledpar3565:lthtmlCropMarkHeight:=21.99756pt
-
-:labeledpar3565:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[66]
-
-:labeledpar3569:lthtmlCropMarkHeight:=21.99756pt
-
-:labeledpar3569:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[67]
-
-:labeledpar3574:lthtmlCropMarkHeight:=30.8872pt
-
-:labeledpar3574:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[68]
-
-:labeledpar3581:lthtmlCropMarkHeight:=20.84506pt
-
-:labeledpar3581:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[69]
-
-:labeledpar3589:lthtmlCropMarkHeight:=66.9011pt
-
-:labeledpar3589:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[70]
-
-:labeledpar3600:lthtmlCropMarkHeight:=21.99756pt
-
-:labeledpar3600:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[71]
-
-:labeledpar3605:lthtmlCropMarkHeight:=20.83118pt
-
-:labeledpar3605:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[72]
-
-:labeledpar3609:lthtmlCropMarkHeight:=20.83118pt
-
-:labeledpar3609:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[73]
-
-:labeledpar3613:lthtmlCropMarkHeight:=20.83118pt
-
-:labeledpar3613:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[74]
-
-:tex2html_wrap_inline4585:lthtmlCropMarkHeight:=13.5pt
-
-:tex2html_wrap_inline4585:lthtmlCropMarkDepth:=2.5pt:1ex:=4.3045pt
-[75]
-
-:tex2html_wrap_inline4593:lthtmlCropMarkHeight:=11.39098pt
-
-:tex2html_wrap_inline4593:lthtmlCropMarkDepth:=0.39098pt:1ex:=4.3045pt
-[76]
-
-:tex2html_wrap_inline4597:lthtmlCropMarkHeight:=11.39098pt
-
-:tex2html_wrap_inline4597:lthtmlCropMarkDepth:=0.39098pt:1ex:=4.3045pt
-[77]
-
-:table4012:lthtmlCropMarkHeight:=475.19998pt
-
-:table4012:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[78]
-Overfull \hbox (73.1864pt too wide) in paragraph at lines 892--893
- [][] 
- []
-
-
-:table4133:lthtmlCropMarkHeight:=103.19998pt
-
-:table4133:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[79]
-Overfull \hbox (10.03516pt too wide) in paragraph at lines 901--902
- [][] 
- []
-
-
-:table4183:lthtmlCropMarkHeight:=319.19998pt
-
-:table4183:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[80] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+:table2449:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
+[2] (/home/alex/retro/zx/zxnext/code/zx_next_notes/lstlang0.sty) (/usr/share/te
+xmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 )
-Overfull \hbox (76.89925pt too wide) in paragraph at lines 920--921
-[][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (76.89925pt too wide) in paragraph at lines 388--389
+[][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-:lstlisting4383:lthtmlCropMarkHeight:=30.0pt
+:lstlisting4576:lthtmlCropMarkHeight:=102.0pt
 
-:lstlisting4383:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[81]
+:lstlisting4576:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
+[3]
+Overfull \hbox (82.89783pt too wide) in paragraph at lines 400--401
+[][][][][][][][][][][][][][][][][][][][] 
+ []
 
-:lstlisting4386:lthtmlCropMarkHeight:=30.0pt
 
-:lstlisting4386:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[82]
-
-:lstlisting4389:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4389:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[83]
-
-:lstlisting4392:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4392:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[84]
-Overfull \hbox (58.9035pt too wide) in paragraph at lines 952--953
+Overfull \hbox (4.91628pt too wide) in paragraph at lines 401--402
 [][][][][][][][][][][][][][][] 
  []
 
 
-:lstlisting4395:lthtmlCropMarkHeight:=30.0pt
+:lstlisting4579:lthtmlCropMarkHeight:=66.0pt
 
-:lstlisting4395:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[85]
-
-:lstlisting4398:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4398:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[86]
-
-:lstlisting4401:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4401:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[87]
-
-:lstlisting4404:lthtmlCropMarkHeight:=42.0pt
-
-:lstlisting4404:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[88]
-
-:lstlisting4408:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4408:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[89]
-Overfull \hbox (148.88222pt too wide) in paragraph at lines 994--995
-[][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4411:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4411:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[90]
-
-:lstlisting4414:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4414:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[91]
-
-:lstlisting4417:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4417:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[92]
-
-:lstlisting4420:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4420:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[93]
-Overfull \hbox (58.9035pt too wide) in paragraph at lines 1026--1027
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4423:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4423:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[94]
-Overfull \hbox (28.9106pt too wide) in paragraph at lines 1034--1035
-[][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4426:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4426:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[95]
-Overfull \hbox (76.89925pt too wide) in paragraph at lines 1042--1043
-[][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4429:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4429:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[96]
-
-:lstlisting4432:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4432:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[97]
-Overfull \hbox (34.90918pt too wide) in paragraph at lines 1058--1059
-[][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4435:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4435:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[98]
-
-:lstlisting4438:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4438:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[99]
-
-:lstlisting4441:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4441:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[100]
-Overfull \hbox (58.9035pt too wide) in paragraph at lines 1082--1083
-[][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4444:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4444:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[101]
-Overfull \hbox (52.90492pt too wide) in paragraph at lines 1091--1092
-[][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4447:lthtmlCropMarkHeight:=42.0pt
-
-:lstlisting4447:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[102]
-Overfull \hbox (202.86945pt too wide) in paragraph at lines 1099--1100
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4450:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4450:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[103]
-Overfull \hbox (52.90492pt too wide) in paragraph at lines 1107--1108
-[][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4453:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4453:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[104]
-Overfull \hbox (100.89357pt too wide) in paragraph at lines 1115--1116
-[][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4456:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4456:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[105]
-Overfull \hbox (46.90634pt too wide) in paragraph at lines 1123--1124
-[][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4459:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4459:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[106]
-
-:lstlisting4462:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4462:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[107]
-
-:lstlisting4465:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4465:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[108]
-Overfull \hbox (142.88364pt too wide) in paragraph at lines 1147--1148
-[][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4468:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4468:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[109]
-Overfull \hbox (22.91202pt too wide) in paragraph at lines 1155--1156
-[][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4471:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4471:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[110]
-
-:lstlisting4475:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4475:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[111]
-
-:lstlisting4478:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4478:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[112]
-Overfull \hbox (34.90918pt too wide) in paragraph at lines 1179--1180
-[][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4481:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4481:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[113]
-
-:lstlisting4484:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4484:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[114]
-Overfull \hbox (58.9035pt too wide) in paragraph at lines 1195--1196
-[][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4487:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4487:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[115]
-
-:lstlisting4490:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4490:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[116]
-
-:lstlisting4493:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4493:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[117]
-Overfull \hbox (100.89357pt too wide) in paragraph at lines 1219--1220
-[][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4496:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4496:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[118]
-Overfull \hbox (112.89073pt too wide) in paragraph at lines 1227--1228
-[][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4499:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4499:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[119]
-
-:lstlisting4502:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4502:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[120]
-Overfull \hbox (298.84674pt too wide) in paragraph at lines 1243--1244
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4505:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4505:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[121]
-Overfull \hbox (124.8879pt too wide) in paragraph at lines 1251--1252
-[][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4508:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4508:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[122]
-
-:lstlisting4511:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4511:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[123]
-
-:lstlisting4514:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4514:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[124]
-
-:lstlisting4518:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4518:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[125]
-
-:lstlisting4521:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4521:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[126]
-
-:lstlisting4524:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4524:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[127]
-
-:lstlisting4527:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4527:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[128]
-
-:lstlisting4530:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4530:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[129]
-
-:lstlisting4533:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4533:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[130]
-
-:lstlisting4536:lthtmlCropMarkHeight:=42.0pt
-
-:lstlisting4536:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[131]
-
-:lstlisting4539:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4539:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[132]
-Overfull \hbox (76.89925pt too wide) in paragraph at lines 1343--1344
-[][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4542:lthtmlCropMarkHeight:=102.0pt
-
-:lstlisting4542:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[133]
-Overfull \hbox (82.89783pt too wide) in paragraph at lines 1355--1356
-[][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (4.91628pt too wide) in paragraph at lines 1356--1357
-[][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4545:lthtmlCropMarkHeight:=66.0pt
-
-:lstlisting4545:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[134]
-Overfull \hbox (22.91202pt too wide) in paragraph at lines 1365--1366
-[][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4548:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4548:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[135]
-
-:lstlisting4551:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4551:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[136]
-Overfull \hbox (58.9035pt too wide) in paragraph at lines 1381--1382
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4554:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4554:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[137]
-Overfull \hbox (58.9035pt too wide) in paragraph at lines 1389--1390
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4557:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4557:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[138]
-
-:lstlisting4560:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4560:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[139]
-Overfull \hbox (22.91202pt too wide) in paragraph at lines 1405--1406
-[][][][][][][][][][][][][][][][][][] 
- []
-
-
-:lstlisting4563:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4563:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[140]
-
-:lstlisting4566:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4566:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[141]
-
-:lstlisting4569:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4569:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[142]
-
-:lstlisting4572:lthtmlCropMarkHeight:=30.0pt
-
-:lstlisting4572:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[143]
-Overfull \hbox (0.73985pt too wide) in paragraph at lines 1440--1441
- [][] 
- []
-
-
-:table6906:lthtmlCropMarkHeight:=331.19998pt
-
-:table6906:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[144]
-
-:tex2html_wrap_inline8613:lthtmlCropMarkHeight:=14.8871pt
-
-:tex2html_wrap_inline8613:lthtmlCropMarkDepth:=1.94397pt:1ex:=4.3045pt
-[145]
-
-:tex2html_wrap_inline8615:lthtmlCropMarkHeight:=14.8871pt
-
-:tex2html_wrap_inline8615:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
-[146]
+:lstlisting4579:lthtmlCropMarkDepth:=0.0pt:1ex:=4.3045pt
+[4]
 
 ! Package pgfkeys Error: I do not know the key '/csv/wIntelT' and I am going to
  ignore it. Perhaps you misspelled it.
@@ -1288,7 +462,7 @@ See the pgfkeys package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 This error message was generated by an \errmessage
 command, so I can't give any explicit help.
@@ -1298,7 +472,7 @@ and deduce the truth by order and method.
 ! Undefined control sequence.
 \csv@@body ->\opa 
                   &\zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1309,7 +483,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &
                    \zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1321,7 +495,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia 
                         &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1332,7 +506,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &
                          \ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1344,7 +518,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina 
                               &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1355,7 +529,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &
                                \sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1367,7 +541,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina &\sza 
                                     &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1378,7 +552,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &\sza &
                                      \tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1390,7 +564,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma 
                                           &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1401,7 +575,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma &
                                            \opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1413,7 +587,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb 
                                                 &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1424,7 +598,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb &
                                                  \zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1436,7 +610,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\zia &\ina &\sza &\tma &\opb &\zib 
                                                   &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1447,7 +621,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ...\zia &\ina &\sza &\tma &\opb &\zib &
                                                   \inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1459,7 +633,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\ina &\sza &\tma &\opb &\zib &\inb 
                                                   &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1470,7 +644,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ...\ina &\sza &\tma &\opb &\zib &\inb &
                                                   \szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1482,7 +656,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\sza &\tma &\opb &\zib &\inb &\szb 
                                                   &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1493,7 +667,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ...\sza &\tma &\opb &\zib &\inb &\szb &
                                                   \tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1505,7 +679,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\tma &\opb &\zib &\inb &\szb &\tmb 
                                                   
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1516,7 +690,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \csv@@body ->\opa 
                   &\zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1527,7 +701,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &
                    \zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1539,7 +713,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia 
                         &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1550,7 +724,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &
                          \ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1562,7 +736,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina 
                               &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1573,7 +747,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &
                                \sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1585,7 +759,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina &\sza 
                                     &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1596,7 +770,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &\sza &
                                      \tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1608,7 +782,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma 
                                           &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1619,7 +793,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma &
                                            \opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1631,7 +805,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb 
                                                 &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1642,7 +816,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb &
                                                  \zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1654,7 +828,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\zia &\ina &\sza &\tma &\opb &\zib 
                                                   &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1665,7 +839,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ...\zia &\ina &\sza &\tma &\opb &\zib &
                                                   \inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1677,7 +851,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\ina &\sza &\tma &\opb &\zib &\inb 
                                                   &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1688,7 +862,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ...\ina &\sza &\tma &\opb &\zib &\inb &
                                                   \szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1700,7 +874,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\sza &\tma &\opb &\zib &\inb &\szb 
                                                   &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1711,7 +885,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ...\sza &\tma &\opb &\zib &\inb &\szb &
                                                   \tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1723,7 +897,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\tma &\opb &\zib &\inb &\szb &\tmb 
                                                   
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1734,7 +908,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \csv@@body ->\opa 
                   &\zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1745,7 +919,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &
                    \zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1757,7 +931,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia 
                         &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1768,7 +942,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &
                          \ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1780,7 +954,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina 
                               &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1791,7 +965,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &
                                \sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1803,7 +977,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina &\sza 
                                     &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1814,7 +988,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &\sza &
                                      \tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1826,7 +1000,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma 
                                           &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1837,7 +1011,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma &
                                            \opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1849,7 +1023,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb 
                                                 &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1860,7 +1034,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb &
                                                  \zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1872,7 +1046,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\zia &\ina &\sza &\tma &\opb &\zib 
                                                   &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1883,7 +1057,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ...\zia &\ina &\sza &\tma &\opb &\zib &
                                                   \inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1895,7 +1069,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\ina &\sza &\tma &\opb &\zib &\inb 
                                                   &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1906,7 +1080,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ...\ina &\sza &\tma &\opb &\zib &\inb &
                                                   \szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1918,7 +1092,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\sza &\tma &\opb &\zib &\inb &\szb 
                                                   &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1929,7 +1103,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ...\sza &\tma &\opb &\zib &\inb &\szb &
                                                   \tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1941,7 +1115,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\tma &\opb &\zib &\inb &\szb &\tmb 
                                                   
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1952,7 +1126,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \csv@@body ->\opa 
                   &\zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1963,7 +1137,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &
                    \zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1975,7 +1149,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia 
                         &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1986,7 +1160,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &
                          \ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1998,7 +1172,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina 
                               &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2009,7 +1183,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &
                                \sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2021,7 +1195,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina &\sza 
                                     &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2032,7 +1206,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &\sza &
                                      \tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2044,7 +1218,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma 
                                           &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2055,7 +1229,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma &
                                            \opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2067,7 +1241,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb 
                                                 &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2078,7 +1252,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb &
                                                  \zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2090,7 +1264,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\zia &\ina &\sza &\tma &\opb &\zib 
                                                   &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2101,7 +1275,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ...\zia &\ina &\sza &\tma &\opb &\zib &
                                                   \inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2113,7 +1287,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\ina &\sza &\tma &\opb &\zib &\inb 
                                                   &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2124,7 +1298,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ...\ina &\sza &\tma &\opb &\zib &\inb &
                                                   \szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2136,7 +1310,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\sza &\tma &\opb &\zib &\inb &\szb 
                                                   &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2147,7 +1321,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ...\sza &\tma &\opb &\zib &\inb &\szb &
                                                   \tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2159,7 +1333,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\tma &\opb &\zib &\inb &\szb &\tmb 
                                                   
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2170,7 +1344,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \csv@@body ->\opa 
                   &\zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2181,7 +1355,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &
                    \zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2193,7 +1367,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia 
                         &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2204,7 +1378,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &
                          \ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2216,7 +1390,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina 
                               &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2227,7 +1401,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &
                                \sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2239,7 +1413,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina &\sza 
                                     &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2250,7 +1424,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &\sza &
                                      \tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2262,7 +1436,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma 
                                           &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2273,7 +1447,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma &
                                            \opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2285,7 +1459,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb 
                                                 &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2296,7 +1470,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &\ina &\sza &\tma &\opb &
                                                  \zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2308,7 +1482,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\zia &\ina &\sza &\tma &\opb &\zib 
                                                   &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2319,7 +1493,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ...\zia &\ina &\sza &\tma &\opb &\zib &
                                                   \inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2331,7 +1505,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\ina &\sza &\tma &\opb &\zib &\inb 
                                                   &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2342,7 +1516,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ...\ina &\sza &\tma &\opb &\zib &\inb &
                                                   \szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2354,7 +1528,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\sza &\tma &\opb &\zib &\inb &\szb 
                                                   &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2365,7 +1539,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ...\sza &\tma &\opb &\zib &\inb &\szb &
                                                   \tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2377,7 +1551,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ...&\tma &\opb &\zib &\inb &\szb &\tmb 
                                                   
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2388,7 +1562,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 \csv@@body ->\opa 
                   &\zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2399,7 +1573,7 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &
                    \zia &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2411,7 +1585,7 @@ might try typing `S' now just to see what is salvageable.
 ! Undefined control sequence.
 \csv@@body ->\opa &\zia 
                         &\ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2422,16 +1596,16 @@ and I'll forget about whatever was undefined.
 ! Misplaced alignment tab character &.
 \csv@@body ->\opa &\zia &
                          \ina &\sza &\tma &\opb &\zib &\inb &\szb &\tmb 
-l.1470 ...\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
+l.422 ...&\ina&\sza&\tma&\opb&\zib&\inb&\szb&\tmb}
                                                   
 (That makes 100 errors; please try again.) 
 Here is how much of TeX's memory you used:
- 7622 strings out of 478994
- 123022 string characters out of 5864750
- 646327 words of memory out of 5000000
- 24886 multiletter control sequences out of 15000+600000
- 410813 words of font info for 41 fonts, out of 8000000 for 9000
+ 7879 strings out of 478238
+ 136946 string characters out of 5850456
+ 624487 words of memory out of 5000000
+ 25906 multiletter control sequences out of 15000+600000
+ 474489 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,10n,78p,570b,1181s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 72i,9n,77p,570b,1189s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 !  ==> Fatal error occurred, no output PDF file produced!

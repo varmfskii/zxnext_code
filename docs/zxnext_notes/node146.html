@@ -95,7 +95,7 @@ Next or the state drive by some other peripherial attached to the bus
 
 <P>
 Register (R/W) $90 (90) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 1/4
 
 <UL>
@@ -117,7 +117,7 @@ Register (R/W) $90 (90) <SPAN CLASS="MATH"><IMG STYLE=""
 </LI>
 </UL>
 Register (R/W) $91 (91) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 2/4
 
 <UL>
@@ -141,7 +141,7 @@ Register (R/W) $91 (91) <SPAN CLASS="MATH"><IMG STYLE=""
 
 <P>
 Register (R/W) $92 (92) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 3/4
 
 <UL>
@@ -165,7 +165,7 @@ Register (R/W) $92 (92) <SPAN CLASS="MATH"><IMG STYLE=""
 
 <P>
 Register (R/W) $93 (93) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO output enable 4/4
 
 <UL>
@@ -183,7 +183,7 @@ Register (R/W) $93 (93) <SPAN CLASS="MATH"><IMG STYLE=""
 
 <P>
 Register (R/W) $98 (98) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO Pin State 1/4
 
 <UL>
@@ -207,7 +207,7 @@ Register (R/W) $98 (98) <SPAN CLASS="MATH"><IMG STYLE=""
 
 <P>
 Register (R/W) $99 (99) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO Pin State 2/4
 
 <UL>
@@ -231,7 +231,7 @@ Register (R/W) $99 (99) <SPAN CLASS="MATH"><IMG STYLE=""
 
 <P>
 Register (R/W) $9A (9A) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO Pin State 3/4
 
 <UL>
@@ -255,7 +255,7 @@ Register (R/W) $9A (9A) <SPAN CLASS="MATH"><IMG STYLE=""
 
 <P>
 Register (R/W) $9B (9B) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Pi GPIO Pin State 4/4
 
 <UL>
@@ -279,7 +279,7 @@ pins.
 
 <P>
 Register (R/W) $A0 (A0) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Pi Peripheral Enable
 
 <UL>
@@ -331,7 +331,7 @@ Port $E7 (E7) SPI <!-- MATH
  $\overline{\hbox{CS}}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img61.svg"
+ SRC="img62.svg"
  ALT="$\overline{\hbox{CS}}$"></SPAN> (SD card, flash, rpi)
 <BR>
 Disable with bit 2 of Nextreg $09
@@ -341,7 +341,7 @@ Port $EB (EB) SPI <!-- MATH
  $\overline{\hbox{DATA}}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img62.svg"
+ SRC="img63.svg"
  ALT="$\overline{\hbox{DATA}}$"></SPAN> (SD card, flash, rpi)
 <BR>
 Disable with bit 2 of Nextreg $09
@@ -357,23 +357,7 @@ flow control). On the Pi end the UART is connected to the serial
 console.
 
 <P>
-<PRE>
-;; enable UART connection with Pi Zero
-   ld c,$3b
-   ld b,$15 ; UART control
-;; select Pi on UART control
-   in a,(c)
-   or $40
-   out (c),a
-   ld b,$24 ; Next Register Select
-   ld a,$a0
-   out (c),a
-   inc b ; Next Register Data
-;; Enable UART on GPIO and select Pi
-   in a,(c)
-   or $30
-   out (c),a
-</PRE>
+pi_serial.asm
 
 <P>
 The  I<SUP>2</SUP>S sound interface between the ZX Spectrum Next and the Pi Zero
@@ -384,7 +368,7 @@ loading of tape files on the ZX Spectrum Next.
 
 <P>
 Register (R/W) $A2 (A2) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Pi  I<SUP>2</SUP>S Audio Control
 
 <UL>
@@ -426,7 +410,7 @@ Register (R/W) $A2 (A2) <SPAN CLASS="MATH"><IMG STYLE=""
 
 <P>
 Register (R/W) $A3 (A3) <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img10.svg"
+ SRC="img11.svg"
  ALT="$\Rightarrow$"></SPAN> Pi  I<SUP>2</SUP>S Clock Divide (Master Mode) (removed in 3.01.05)
 
 <UL>
@@ -437,13 +421,13 @@ Register (R/W) $A3 (A3) <SPAN CLASS="MATH"><IMG STYLE=""
  $\hbox{Divider}=\frac{538461}{\hbox{Rate}}-1$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img63.svg"
+ SRC="img64.svg"
  ALT="$\hbox{Divider}=\frac{538461}{\hbox{Rate}}-1$"></SPAN> or
 <!-- MATH
  $\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img64.svg"
+ SRC="img65.svg"
  ALT="$\hbox{Rate}=\frac{538461}{\hbox{Divider}+1}$"></SPAN>
 
 <P>

@@ -62,7 +62,7 @@ Timex mode 6
 
 <P>
 This is a monochrome <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img22.svg"
+ SRC="img23.svg"
  ALT="$512\times192$"></SPAN> video mode located at global
 coordinates (32, 32) to (287, 223) with each pixel being half
 width. It is selected by writing to the Timex ULA port ($ff with
@@ -71,12 +71,12 @@ ULANext mode) you use.
 
 <P>
 <BR><P></P>
-<DIV class="CENTER"><A ID="246"></A>
+<DIV class="CENTER"><A ID="286"></A>
 <TABLE>
 <CAPTION><STRONG>Table 2.5:</STRONG>
 Hi-Resolution Colours</CAPTION>
 <TR><TD><IMG STYLE=""
- SRC="img23.svg"
+ SRC="img24.svg"
  ALT="\begin{table}\centering
 \csvautotabular{video/hires.csv}
 \end{table}"></TD></TR>
@@ -90,44 +90,23 @@ Pixels are mapped into both the bitmap 1 and bitmap 2 areas where
 The pixels within a byte being rendered left to right lsb to msb as in
 other Spectrum video modes.  The addresses for each row within a
 character are based on a <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img24.svg"
+ SRC="img25.svg"
  ALT="$64\times32$"></SPAN> grid of <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img14.svg"
+ SRC="img15.svg"
  ALT="$8\times8$"></SPAN> characters
 which using a <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img25.svg"
+ SRC="img26.svg"
  ALT="$64\times24$"></SPAN> R, C, and Y scheme gives us addresses of
 the form <!-- MATH
  $C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img26.svg"
+ SRC="img27.svg"
  ALT="$C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1$"></SPAN>.
 
 <P>
 Code:
-<PRE>
-;; disable LoRes mode:
-ld bc,$243B ; next register select port
-ld a,$15
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-and $7f
-out (c),a
-;; set Timex mode
-ld bc,$243B ; next register select port
-ld a,$08
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-or $04
-out (c),a
-;; set hi-res mode, black on white
-ld c,$ff
-ld a,$06
-out (c),a
-</PRE>
+video/timex_hires.asm
 
 <P>
 <BR><HR>

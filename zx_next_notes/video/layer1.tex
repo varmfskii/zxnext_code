@@ -199,79 +199,7 @@ paper\_colour = (FLASH * 2 + BRIGHT) * 16 + PAPER + 8
 \subparagraph{Palette file format}
 The palette format doubles as the BASIC patch loader. This enables you
 to edit patches produced by other people.
-\begin{verbatim}
-; 64 colour palette file format (internal) - version 1.0
-; copyright (c) 2009 Andrew Owen
-;
-; The palette file is stored as a BASIC program with embedded machine code
-
-header:
-
-db 0x00 ; program file
-db 0x14, 0x01, "64colour" ; file name
-dw 0x0097 ; data length
-dw 0x0000 ; autostart line
-dw 0x0097 ; program length
-
-basic:
-
-; 0 RANDOMIZE USR ((PEEK VAL "2
-; 3635"+VAL "256"*PEEK VAL "23636"
-; )+VAL "48"): LOAD "": REM
-
-db 0x00, 0x00, 0x93, 0x00, 0xf9, 0xc0, 0x28, 0x28
-db 0xbe, 0xb0, 0x22, 0x32, 0x33, 0x36, 0x33, 0x35
-db 0x22, 0x2b, 0xb0, 0x22, 0x32, 0x35, 0x36, 0x22
-db 0x2a, 0xbe, 0xb0, 0x22, 0x32, 0x33, 0x36, 0x33
-db 0x36, 0x22, 0x29, 0x2b, 0xb0, 0x22, 0x34, 0x38
-db 0x22, 0x29, 0x3a, 0xef, 0x22, 0x22, 0x3a, 0xea
-
-start:
-
-di ; disable interrupts
-ld hl, 38 ; HL = length of code
-add hl, bc ; BC = entry point (start) from BASIC
-ld bc, 0xbf3b ; register select
-ld a, 64 ; mode group
-out (c), a ;
-ld a, 1 ;
-ld b, 0xff ; choose register port
-out (c), a ; turn palette mode on
-xor a ; first register
-
-setreg:
-
-ld b, 0xbf ; choose register port
-out (c), a ; select register
-ex af, af' ; save current register select
-ld a, (hl) ; get data
-ld b, 0xff ; choose data port
-out (c), a ; set it
-ex af, af' ; restore current register
-inc hl ; advance pointer
-inc a ; increase register
-cp 64 ; are we nearly there yet?
-jr nz, setreg ; repeat until all 64 have been done
-ei ; enable interrupts
-ret ; return
-
-; this is where the actual data is stored. The following is an example palette.
-
-registers:
-
-db 0x00, 0x02, 0x18, 0x1b, 0xc0, 0xc3, 0xd8, 0xdb ; INK
-db 0x00, 0x02, 0x18, 0x1b, 0xc0, 0xc3, 0xd8, 0xdb ; PAPER
-db 0x00, 0x03, 0x1c, 0x1f, 0xe0, 0xe3, 0xfc, 0xff ; +BRIGHT
-db 0x00, 0x03, 0x1c, 0x1f, 0xe0, 0xe3, 0xfc, 0xff ;
-db 0xdb, 0xd8, 0xc3, 0xc0, 0x1b, 0x18, 0x02, 0x00 ; +FLASH
-db 0xdb, 0xd8, 0xc3, 0xc0, 0x1b, 0x18, 0x02, 0x00 ;
-db 0xff, 0xfc, 0xe3, 0xe0, 0x1f, 0x1c, 0x03, 0x00 ; +BRIGHT/
-db 0xff, 0xfc, 0xe3, 0xe0, 0x1f, 0x1c, 0x03, 0x00 ; +FLASH
-
-terminating_byte:
-
-db 0x0d 
-\end{verbatim}
+\lstinputlisting{video/l1_palette.asm}
 
 \subsection{Layer 1 Scrolling}
 Layer 1 has two sets of scrolling registers. One for the the legacy
@@ -327,21 +255,7 @@ $0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$ in other words mapped lineally
 column-wise starting at the beginning of the attribute 1 area.
 
 Code:
-\begin{verbatim}
-  ;; from any other Timex mode:
-  ld a,$00
-  ld c,$ff
-  out (c),a
-
-  ;; from LoRes mode:
-  ld bc,$243B ; next register select port
-  ld a,$15
-  out (c),a
-  ld bc,$253B ; next register r/w port
-  in a,(c)
-  and $7f
-  out (c),a
-\end{verbatim}
+\lstinputlisting{video/timex0.asm}
 
 \subsection{Alternate Page Mode}
 
@@ -358,28 +272,7 @@ $1110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$.
 
 Code:
 
-\begin{verbatim}
-;; disable LoRes mode:
-ld bc,$243B ; next register select port
-ld a,$15
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-and $7f
-out (c),a
-;; set Timex mode
-ld bc,$243B ; next register select port
-ld a,$08
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-or $04
-out (c),a
-;; set alternate page mode
-ld c,$ff
-ld a,$01
-out (c),a
-\end{verbatim}
+\lstinputlisting{video/timex_alt.asm}
 
 \subsection{Timex Hi-Colour Mode}
 
@@ -395,28 +288,7 @@ the bitmap 2 area with $8\times1$ colour attribute areas corresponding
 to the addresses $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$.
 
 Code:
-\begin{verbatim}
-;; disable LoRes mode:
-ld bc,$243B ; next register select port
-ld a,$15
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-and $7f
-out (c),a
-;; set Timex mode
-ld bc,$243B ; next register select port
-ld a,$08
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-or $04
-out (c),a
-;; set hi-colour mode
-ld c,$ff
-ld a,$02
-out (c),a
-\end{verbatim}
+\lstinputlisting{video/timex_hicol.asm}
 
 \subsection{Timex Hi-Resolution Mode}
 
@@ -442,28 +314,7 @@ which using a $64\times24$ R, C, and Y scheme gives us addresses of
 the form $C_0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_5C_4C_3C_2C_1$.
 
 Code:
-\begin{verbatim}
-;; disable LoRes mode:
-ld bc,$243B ; next register select port
-ld a,$15
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-and $7f
-out (c),a
-;; set Timex mode
-ld bc,$243B ; next register select port
-ld a,$08
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-or $04
-out (c),a
-;; set hi-res mode, black on white
-ld c,$ff
-ld a,$06
-out (c),a
-\end{verbatim}
+\lstinputlisting{video/timex_hires.asm}
 
 \subsection{Lo-Resolution Mode}
 This is a Spectrum Next specific video mode with a resolution of
@@ -486,23 +337,7 @@ decide whether it is 16 or 256 colours.
 \input{registers/tbblue/6A.tex}
 
 Code: 256 colour
-\begin{verbatim}
-;; enable LoRes mode:
-nextreg $15,$80
-;; 256-colour mode
-ld bc,$243B ; next register select port
-ld a,$6A
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-and $EF ; lores radistan control
-out (c),a
-\end{verbatim}
+\lstinputlisting{video/lores256.asm}
 
 Code: 16 colour
-\begin{verbatim}
-;; enable LoRes mode:
-nextreg $15,$80
-;; 16-colour mode
-nextreg $6A,$10
-\end{verbatim}
+\lstinputlisting{video/lores16.asm}

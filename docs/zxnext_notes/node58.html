@@ -72,16 +72,7 @@ channel A and C and nextreg $2D connected to both channel A and D.
 
 <P>
 Code:
-<PRE>
-;; enable SpecDrum/Convox audio
-ld bc,$243B
-ld a,$08
-out (c),a
-ld bc,$253B
-in a,(c)
-or $08
-out (c),a
-</PRE>
+audio/convox.asm
 
 <P>
 <BR><HR>

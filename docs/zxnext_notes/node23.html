@@ -66,10 +66,10 @@ Spectrum. It uses <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img1.svg"
  ALT="$256\times 192$"></SPAN> pixels located at global coordinates
 (32, 32) to (287, 223) with <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img14.svg"
+ SRC="img15.svg"
  ALT="$8\times8$"></SPAN> colour attribute areas mapped
 into a <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img15.svg"
+ SRC="img16.svg"
  ALT="$32\times24$"></SPAN> grid. If Timex modes are not enabled, this and the
 LoRes mode are the only ones available, so you would switch back to
 this mode by writing 000xxxxx to Next register $15 (21, the sprites
@@ -86,10 +86,10 @@ The easiest way to visualize the mapping of this mode is to think of
 the <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img1.svg"
  ALT="$256\times 192$"></SPAN> area as being divided into a <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img15.svg"
+ SRC="img16.svg"
  ALT="$32\times24$"></SPAN> grid of
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img14.svg"
+ SRC="img15.svg"
  ALT="$8\times8$"></SPAN> characters.  IF we consider X and Y as the position in the
 grid and R to the the row within the character.  For ink/paper
 selection, 0=paper, 1=ink and the entries are stored left to right as
@@ -98,36 +98,22 @@ lsb to msb within the bye.  The address for a pixel value is:
  $0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img16.svg"
+ SRC="img17.svg"
  ALT="$0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>. Each <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img14.svg"
+ SRC="img15.svg"
  ALT="$8\times8$"></SPAN> cell has
 its own colour attribute where the address for an attribute cell is
 <!-- MATH
  $0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img17.svg"
+ SRC="img18.svg"
  ALT="$0110R_4R_3R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN> in other words mapped lineally
 column-wise starting at the beginning of the attribute 1 area.
 
 <P>
 Code:
-<PRE>
-  ;; from any other Timex mode:
-  ld a,$00
-  ld c,$ff
-  out (c),a
-
-  ;; from LoRes mode:
-  ld bc,$243B ; next register select port
-  ld a,$15
-  out (c),a
-  ld bc,$253B ; next register r/w port
-  in a,(c)
-  and $7f
-  out (c),a
-</PRE>
+video/timex0.asm
 
 <P>
 

@@ -11,6 +11,7 @@
 \usepackage{listings}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
+\usepackage{listings}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
 \setlist{nosep}
@@ -25,11 +26,32 @@
 \usepackage{longtable}
 \usepackage{array}
 \usepackage{multicol}
-\makeindex
+\usepackage{xcolor}
 
-\title{ZX Spectrum Next Programming Notes}
-\date{\today}
-\author{Theodore (Alex) Evans}
+\definecolor{comment}{RGB}{0,128,0}     % dark green
+\definecolor{string}{RGB}{255,0,0}      % red
+\definecolor{instruction}{RGB}{0,0,255} % blue
+\definecolor{directive}{RGB}{128,0,128} % purple
+%\definecolor{register}{RGB}{128,0,0}    % dark red
+
+\lstdefinestyle{asm}{
+	commentstyle=\color{comment},
+	stringstyle=\color{string},
+	keywordstyle=\color{instruction},
+	keywordstyle=[2]\color{directive},
+	%keywordstyle=[3]\color{register},
+	basicstyle=\footnotesize\ttfamily,
+	%numbers=left,
+	%numberstyle=\tiny,
+	%numbersep=5pt,
+	frame=lines,
+	breaklines=true,
+	prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+	showstringspaces=false,
+	upquote=true,
+	tabsize=4,
+}
+
 % custom sequences for consistency
 \newcommand{\iis}{ I\textsuperscript{2}S }
 \newcommand{\iic}{ I\textsuperscript{2}C }
@@ -37,7 +59,13 @@
 \newcommand{\register}[3]{Register (#1) \hexdec{#2} $\Rightarrow$ #3}
 \newcommand{\port}[2]{Port \hexdec{#1} #2}
 \newcommand{\textoverline}[1]{$\overline{\hbox{#1}}$}
+
+\makeindex
+\title{ZX Spectrum Next Programming Notes}
+\date{\today}
+\author{Theodore (Alex) Evans}
 \begin{document}
+\lstset{language=[Z80n]Assembler, style=asm}
 \frontmatter
 \maketitle
 \tableofcontents

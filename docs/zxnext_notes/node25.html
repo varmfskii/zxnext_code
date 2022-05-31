@@ -65,10 +65,10 @@ This mode is a <SPAN CLASS="MATH"><IMG STYLE=""
  SRC="img1.svg"
  ALT="$256\times 192$"></SPAN> video mode located at global coordinates
 (32, 32) to (287, 223) with <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img20.svg"
+ SRC="img21.svg"
  ALT="$8\times1$"></SPAN> colour attribute mapping on a
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img21.svg"
+ SRC="img22.svg"
  ALT="$32\times192$"></SPAN> grid. It is selected by writing 2 to the Timex ULA port
 ($ff).  Pixel mapping in this mode is the same as in ZX Spectrum mode
 using the bitmap 1 area based on
@@ -76,42 +76,21 @@ using the bitmap 1 area based on
  $0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img16.svg"
+ SRC="img17.svg"
  ALT="$0R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>.  The colour attributes use
 the bitmap 2 area with <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img20.svg"
+ SRC="img21.svg"
  ALT="$8\times1$"></SPAN> colour attribute areas corresponding
 to the addresses <!-- MATH
  $1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$
  -->
 <SPAN CLASS="MATH"><IMG STYLE=""
- SRC="img18.svg"
+ SRC="img19.svg"
  ALT="$1R_4R_3Y_2Y_1Y_0R_2R_1R_0C_4C_3C_2C_1C_0$"></SPAN>.
 
 <P>
 Code:
-<PRE>
-;; disable LoRes mode:
-ld bc,$243B ; next register select port
-ld a,$15
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-and $7f
-out (c),a
-;; set Timex mode
-ld bc,$243B ; next register select port
-ld a,$08
-out (c),a
-ld bc,$253B ; next register r/w port
-in a,(c)
-or $04
-out (c),a
-;; set hi-colour mode
-ld c,$ff
-ld a,$02
-out (c),a
-</PRE>
+video/timex_hicol.asm
 
 <P>
 <BR><HR>
