@@ -5,7 +5,7 @@ build() {
     pdflatex zxnext_notes.tex
     makeindex zxnext_notes.idx
     pdflatex zxnext_notes.tex
-    latex2html zxnext_notes.tex
+    #latex2html zxnext_notes.tex #doesn't work
 }
 
 test_action() {

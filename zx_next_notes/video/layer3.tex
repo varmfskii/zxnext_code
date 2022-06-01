@@ -103,6 +103,20 @@ that is looked up in the tilemap palette to determine the final 9-bit
 colour sent to the display. Transparency for each tile is according to
 the global transparency colour.
 
+The tilemap display surface extends 32 pixels around the central
+$256\times192$ display. The origin of the clip window is the top left
+corner of this area 32 pixels to the left and 32 pixels above the
+central $256\times192$ display. The X coordinates are internally
+doubled to cover the full 320 pixel width of the surface. The clip
+window indicates the portion of the tilemap display that is
+non-transparent and its indicated extent is inclusive; it will extend
+from X1*2 to X2*2+1 horizontally and from Y1 to Y2 vertically.
+
+Bit 0 can be set to choose stencil mode for the combined output of the
+ULA and tilemap. Bit 6 determines what colour is used in SLU modes 6 \&
+7 where the ULA is combined with Layer 2 to generate highlighting
+effects.
+
 \subsection{Memory Organization \& Display Layer}
 The tilemap is a logical extension of the ULA and its data structures
 are contained in 16k banks 5 and 7 (first half only). If both the ULA
@@ -129,7 +143,13 @@ either the ULA or tilemap are transparent. Otherwise the final pixel
 is a logical AND of the corresponding colour bits. The stencil mode
 allows one layer to act as a cut-out for the other.
 
-\subsection{Programming Tilemap mode}
+\subsection{Configuration}
+
+\input{registers/tbblue/68.tex}
+
+Bit 0 controls how Layer 1 (ULA) and Layer 3 are combined. If cleared
+they are combined in the normal manner. Priority and transparency
+determine which of the two is shown. Setting enables stencil mode.
 
 \input{registers/tbblue/6B.tex}
 
@@ -158,6 +178,7 @@ Bit 0 forces the tilemap to be on top of the ULA. It can be useful in
 512 tile mode to change the relative display order of the ULA and
 tilemap.
 
+\index{attribute}
 \input{registers/tbblue/6C.tex}
 
 If bit 5 of nextreg \$6B is set, the tilemap structure is modified to
@@ -165,6 +186,7 @@ contain only 8-bit tile numbers instead of the usual 16-bit tilemap
 entries. In this case, the tile attributes used are taken from this
 register instead.
 
+\index{address}
 \input{registers/tbblue/6E.tex}
 
 This register determines the tilemapís base address in bank 5. The
@@ -203,28 +225,25 @@ colour.
 
 For palette information see palette section.
 
-\index{clip window}
-\input{registers/tbblue/1B.tex}
+\paragraph{40x32 Tilemap, no attributes}
+\lstinputlisting{video/layer3.asm}
 
-The tilemap display surface extends 32 pixels around the central
-$256\times192$ display. The origin of the clip window is the top left
-corner of this area 32 pixels to the left and 32 pixels above the
-central $256\times192$ display. The X coordinates are internally
-doubled to cover the full 320 pixel width of the surface. The clip
-window indicates the portion of the tilemap display that is
-non-transparent and its indicated extent is inclusive; it will extend
-from X1*2 to X2*2+1 horizontally and from Y1 to Y2 vertically.
+\subsection{Scrolling}
+Scrolling Layer 3 is controlled by registers \$2F, \$30, and \$31.
 
 \index{scroll offset}
 \input{registers/tbblue/2F.tex}
 \input{registers/tbblue/30.tex}
 \input{registers/tbblue/31.tex}
-\input{registers/tbblue/68.tex}
 
-Bit 0 can be set to choose stencil mode for the combined output of the
-ULA and tilemap. Bit 6 determines what colour is used in SLU modes 6 \&
-7 where the ULA is combined with Layer 2 to generate highlighting
-effects.
+\subsection{Clipping}
+The Clip area for is based on the local coordinate system for the mode
+in question and is set using register \$18 with the option of
+selection which write in active using register \$1C.
+
+\index{clip window}
+\input{registers/tbblue/1B.tex}
+\input{registers/tbblue/1C.tex}
 
 \paragraph{Changes Since 2.00.26}
 
@@ -243,6 +262,10 @@ effects.
   display over the ULA when in 512 mode.
 \item 1-bit tilemaps. In 3.00.00, a number of modifications were made
   to accomidate 1-bit tilemaps.
+\item Bank select. In 3.01.08 bit 7 of both Tilemap Base
+  Address nextreg \$6E and Tile Definitions Base Address nextreg \$6F
+  enabled selecting bewteen bank 5 (16k) and bank 7 (8k). Before this
+  Layer 3 exclusively used bank 5.
 \end{enumerate}
 
 \paragraph{Future Direction}
@@ -253,10 +276,4 @@ The following compatible changes may be applied at a later date:
 \item Addition of a bit to Tilemap Control to select a reduced tilemap
   area of size $32\times24$ or $64\times24$ that covers the ULA
   screen.
-\item Addition of a bit to Tilemap Control to select split addressing
-  where the tilemap’s tiles and attributes as well as the tile
-  definitions are split between the two 8k halves of the 16k ULA ram
-  in the same way that the two Timex display files are split. The
-  intention is to make it easier for the tilemap to co-exist with all
-  the display modes of the ULA.
 \end{enumerate}
