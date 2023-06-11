@@ -1,9 +1,10 @@
 \register{R/W}{10}{Core Boot}\\
 Read
 \begin{itemize}
-\item bits 7-2 = Reserved
-\item bit 1 = Drive button pressed
-\item bit 0 = \textoverline{NMI} button pressed
+\item bits 7 = Reserved
+\item bits 6-2 = Core ID (3.02.00)
+\item bit 1 = Drive (divmmc) button pressed
+\item bit 0 = M1 (multiface) button pressed
 \end{itemize}
 Write
 \begin{itemize}

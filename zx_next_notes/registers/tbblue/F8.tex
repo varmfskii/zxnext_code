@@ -1,0 +1,9 @@
+\register{R/W}{F8}{XADC REG (issue 4 only)(3.02.00)} reset = 0
+\begin{itemize}
+\item bit 7 = 1 to write to XADC DRP port, 0 to read from XADC DRP port **
+\item bits 6-0 = XADC DRP register address DADDR
+\end{itemize}
+* An XADC register read or write is initiated by writing to this register\\
+* There must be at least six 28 MHz cycles after each r/w to this register\\
+** Reads as 0
+

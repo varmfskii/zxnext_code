@@ -1,8 +1,11 @@
 \register{R/W}{15}{Sprite and Layer System Setup}
 \begin{itemize}
 \item bit 7 = LoRes mode (0 on reset)
-\item bit 6 = Sprite priority (1 = sprite 0 on top, 0 = sprite 127 on
-  top) (0 on reset)
+\item bit 6 = Sprite priority (0 on reset)
+\begin{itemize}
+\item 0 = sprite 127 on top
+\item 1 = sprite 0 on top
+\end{itemize}
 \item bit 5 = Enable sprite clipping in over border mode (0 on reset)
 \item bits 4-2 = set layers priorities (000 on reset)
   \begin{itemize}

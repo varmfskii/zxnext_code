@@ -1,0 +1,61 @@
+\register{R/W}{F0}{XDEV CMD (issue 4 only)(3.02.00)}\\
+\begin{itemize}
+\item Select mode\\
+Read
+\begin{itemize}
+\item bit 7 = 1
+\item bits 6-2 = reserved
+\item bits 1-0 = currently selected device
+\begin{itemize}
+\item[] 00 = none
+\item[] 01 = Xilinx DNA
+\item[] 10 = Xilinx XADC
+\end{itemize}
+\end{itemize}
+Write
+\begin{itemize}
+\item bit 7 = 1 to enter select mode, 0 to enter selected device mode (no other bits have effect)
+\item bit 6 = 1 to change selected device
+\item bits 5-2 = reserved
+\item bits 1-0 = selected device
+\begin{itemize}
+\item[] 00 = none
+\item[] 01 = Xilinx DNA
+\item[] 10 = Xilinx XADC
+\end{itemize}
+\end{itemize}
+\item Xilinx DNA Mode\\
+Read
+\begin{itemize}
+\item bits 7-1 = reserved
+\item bit 0 = dna bit (serial stream shifts left)\\
+the first eight bits read will indicate the length of the following
+dna bits
+\end{itemize}
+Write
+\begin{itemize}
+\item bit 7 = 1 to enter select mode (write has no other effect)\\
+otherwise causes dna string to reload, ready for fresh read
+\item bits 6-0 = reserved
+\end{itemize}
+\item Xilinx XADC Mode (Documented in Xilinx Series 7 UG480)\\
+Read
+\begin{itemize}
+\item bit 7 = reserved
+\item bit 6 = 1 if XADC is busy with conversion (BUSY)
+\item bits 5-2 = reserved
+\item bit 1 = 1 if XADC conversion completed since last read (EOC, read clears)
+\item bit 0 = 1 if XADC conversion sequence completed since last read (EOS, read clears)
+\end{itemize}
+Write
+\begin{itemize}
+\item bit 7 = 1 to enter select mode (write has no other effect)
+\item bit 6 = 1 to reset XADC (RESET)
+\item bits 5-1 = reserved
+\item bit 0 = 1 to start conversion (CONVST)
+\end{itemize}
+\end{itemize}
+* Re-enter select mode at any time by writing to the register with bit 7 set\\
+* Select a device to communicate with by writing to the register with bits 6 \& 7 set\\
+* Exit select mode by writing zero to bit 7; thereafter the particular device is attached to the nextreg
+

@@ -1,0 +1,13 @@
+\register{R/W}{DA}{I/O Trap Cause (experimental)(3.02.00)}
+\begin{itemize}
+\item bits 7-0 = The trap cause
+\begin{itemize}
+\item[] 0 = none (zero at same time as nextreg \$02 bit 4 is 0)
+\item[] 1 = port \$2FFD read
+\item[] 2 = port \$3FFD read
+\item[] 3 = port \$3FFD write
+\end{itemize}
+\end{itemize}
+* If nextreg \$02 bit 4 indicates an I/O cycle was trapped, this
+  register indicates the cause
+
