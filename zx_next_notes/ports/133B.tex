@@ -1,11 +1,14 @@
 \port{133B}{UART tx}\\
 Read: UART Status\\
 \begin{itemize}
-\item[] bits 7-4 = Reserved (0)
-\item[] bit 3 = UART at least half full (3.01.09)
-\item[] bit 2 = UART full
-\item[] bit 1 = UART transmit busy
-\item[] bit 0 = UART receive has data
+\item[] bit 7 = RX in break condition
+\item[] bit 6 = RX framing error
+\item[] bit 5 = next RX byte was recieved after error (framing, overflow)
+\item[] bit 4 = TX buffer is empty
+\item[] bit 3 = RX buffer near full (over 3/4) (3.01.09)
+\item[] bit 2 = RX buffer overflow
+\item[] bit 1 = TX buffer full
+\item[] bit 0 = RX buffer has data
 \end{itemize}
 Write: UART Transmit
 
