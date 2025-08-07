@@ -39,10 +39,10 @@ loop:
 	call readx		; handle x, y, and z buttons
 	in a,(joy1)		; check for both start buttons pressed
 	bit 7,a			; if so exit
-	jp nz,loop
+	jp z,loop
 	in a,(joy2)
 	bit 7,a
-	jp nz,loop
+	jp z,loop
 	ret
 
 read1:
@@ -160,7 +160,7 @@ sb:	equ $88
 fx:	equ $6b
 fy:	equ $4d
 fz:	equ $2f
-	savenex open "joystick.nex",start
+	savenex open "megadrive.nex",start
 	savenex auto
 	savenex close
 	
